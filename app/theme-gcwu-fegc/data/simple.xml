@@ -27,6 +27,7 @@
                     </dataLayers>
                     <parameter name="buffer" value="2"/>
                 </layer>
+              </layers>
         </theme>
     </themes>
 </configuration>
