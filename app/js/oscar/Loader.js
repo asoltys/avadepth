@@ -77,7 +77,7 @@ c++){this.callbacks.push(b[c])
 };
 var _OscarLoader=new OscarLoader(host.location);
 _OscarLoader.addResource({location:"../jquery/css/smoothness/jquery-ui-1.8.16.custom.css",type:"css"});
-_OscarLoader.addResource({location:"../jquery/js/jquery-1.6.2.min.js",type:"js"});
+_OscarLoader.addResource({location:"../jquery/js/jquery.min.js",type:"js"});
 _OscarLoader.addResource({location:"../jquery/js/jquery-ui-1.8.16.custom.min.js",type:"js"});
 _OscarLoader.addResource({location:"../proj4js/lib/proj4js.js",type:"js"});
 _OscarLoader.addResource({location:"../openlayers/OpenLayers.js",type:"js"});
