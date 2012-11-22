@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration version="2.0">
+    <themes>
+        <theme bgColor="#fff" numzoomlevels="16">
+            <name>World Theme</name>
+            <srs>EPSG:4326</srs>
+            <covers>
+                <cover type="MAX" maxX="" maxY="" minX="" minY=""/>
+                <cover type="DEFAULT" maxX="" maxY="" minX="" minY=""/>
+            </covers>
+            <layers>
+                <layer>
+                    <name>CARIS World Map</name>
+                    <urls>
+                        <url>http://sfs.caris.com/spatialfusionserver/services/ows/wms/world</url>
+                        <url>http://server.caris.com/spatialfusionserver/services/ows/wms/fredericton_world</url>
+                    </urls>
+                    <format>image/png</format>
+                    <layerType>WMS</layerType>
+                    <dataLayers>
+                        <dataLayer>
+                            <layerName>World</layerName>
+                        </dataLayer>
+                        <dataLayer>
+                            <layerName>Ocean</layerName>
+                        </dataLayer>
+                    </dataLayers>
+                    <parameter name="buffer" value="2"/>
+                </layer>
+        </theme>
+    </themes>
+</configuration>
