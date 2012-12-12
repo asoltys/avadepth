@@ -10,11 +10,6 @@
 
             <layers>
                 <layer>
-                    <name>Open Street Maps</name>
-                    <layerType>OSM</layerType>
-                </layer>
-
-                <layer>
                     <name>CARIS World Map</name>
                     <urls>
                         <url>http://sfs.caris.com/spatialfusionserver/services/ows/wms/world</url>
@@ -31,6 +26,15 @@
                         </dataLayer>
                     </dataLayers>
                     <parameter name="buffer" value="2"/>
+                </layer>
+                <layer>
+                    <name>CARIS YouTube Channel</name>
+                    <urls>
+                        <url><![CDATA[http://gdata.youtube.com/feeds/api/videos?author=CARISGIS&prettyprint=true&v=1&orderby=published]]></url>
+                    </urls>
+                    <layerType>MARKER</layerType>
+                    <parameter name="formatType" value="YouTube" />
+                    <parameter name="srs" value="EPSG:4326" />
                 </layer>
               </layers>
         </theme>

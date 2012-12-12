@@ -38,22 +38,26 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <script src="../js/oscar/Loader.js"></script>
 
 <script>
-_OscarLoader.onReady(init);
-	function init() {
-		OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
-		var options = {
-			controls : [ new oscar.Control.PanZoomBar,
-					new OpenLayers.Control.MousePosition,
-					new OpenLayers.Control.ScaleLine ]
-		};
-		var map = new oscar.Map("map", options);
-		var ts = new oscar.Control.ThemeSwitcher({
-			closed : true
-		});
-		map.addControl(ts);
-		ts.getThemeManager().autoDraw = true;
-		ts.getConfigManager().load("data/simple.xml");
-	}
+var map, toolBar;
+var  layerToggle;
+var configUrl = "data/test.xml";
+
+function initCodeInAction() {
+    OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
+    var options = {
+            controls:[new oscar.Control.PanZoomBar]
+    };
+    map = new oscar.Map("map",options);
+    var toolbar = new oscar.Control.ToolBar();
+    map.addControl(toolbar);
+
+    var ts = new oscar.Control.ThemeSwitcher({closed:true});
+    map.addControl(ts);
+    ts.getThemeManager().autoDraw=true;
+    ts.getConfigManager().load(configUrl);
+    map.addControl(new OpenLayers.Control.MousePosition());
+}
+_OscarLoader.onReady(initCodeInAction);
 </script>
 <!-- CustomScriptsCSSEnd -->
 </head>
