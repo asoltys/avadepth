@@ -1,114 +1,369 @@
-var hostUtility=function(c){var j={location:null,parameters:{devMode:false}};
-var e=document.getElementsByTagName("script");
-for(var f=0,h=e.length;
-f<h;
-f++){var a=e[f].getAttribute("src");
-if(a){var g=a.indexOf(c);
-if(g>-1){if(a.indexOf("?")>-1){var d=a.split("?").pop().split("&");
-for(var f=0;
-f<d.length;
-f++){var b=d[f].split("=");
-j.parameters[b[0]]=b[1]
-}}j.location=a.substring(0,g);
-break
-}}}return j
+/*
+ * CARIS oscar - Open Spatial Component ARchitecture
+ *
+ * Copyright 2012 CARIS <http://www.caris.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Class: Loader 
+ * 
+ * Loads JavaScript dependencies required by Oscar.
+ */
+
+var hostUtility = function(scriptName) {
+	var host = {
+		location :null,
+		parameters : {
+			devMode :false
+		}
+	};
+	var scripts = document.getElementsByTagName('script');
+	for ( var i = 0, len = scripts.length; i < len; i++) {
+		var src = scripts[i].getAttribute('src');
+		if (src) {
+			var index = src.indexOf(scriptName);
+			if (index > -1) {
+				if (src.indexOf("?") > -1) {
+					var params = src.split("?").pop().split("&");
+					for ( var i = 0; i < params.length; i++) {
+						var param = params[i].split("=");
+						host.parameters[param[0]] = param[1];
+					}
+				}
+				host.location = src.substring(0, index);
+				break;
+			}
+		}
+	}
+	return host;
+}
+
+var scriptName = "Loader.js";
+var host = hostUtility(scriptName);
+
+var OscarLoader = function(base) {
+	/**
+	 * JavaScript resources
+	 */
+	this.jsResources = [];
+	/**
+	 * CSS Resources
+	 */
+	this.cssResources = [];
+	/**
+	 * base URL for resources.
+	 */
+	this.base = base;
+	/**
+	 * Header block of the document
+	 */
+	this.header = null;
+	/**
+	 * List of callback functions
+	 */
+	this.callbacks = [];
+	/**
+	 * Method: loadJS
+	 * 
+	 * Loads a JavaScript resource object.
+	 */
+	this.loadJS = function(resource) {
+		var now = new Date();
+		var element = document.createElement("script");
+		var ctx = this;
+
+		element.onload = function() {
+			ctx.loadJSResources()
+		};
+		if (/MSIE/.test(navigator.userAgent)) {
+			element.onreadystatechange = this.checkReadyState;
+		}
+		element.src = this.base + resource.location;
+
+		this.appendResource(element);
+	};
+	/**
+	 * Method: loadCSS
+	 * 
+	 * Loads a CSS object literal.
+	 * 
+	 */
+	this.loadCSS = function(resource) {
+		var now = new Date();
+		var element = document.createElement("link");
+		element.rel = "stylesheet";
+		element.type = "text/css"
+		element.href = this.base + resource.location;
+		this.appendResource(element);
+	}
+	/**
+	 * Method: loadResource
+	 * 
+	 * Single method to call, checks the type of the resource and passes control
+	 * to the proper method.
+	 */
+	this.loadResource = function(resource) {
+		switch (resource.type) {
+		case "js":
+			this.loadJS(resource);
+			break;
+		case "css":
+			this.loadCSS(resource);
+			break;
+		}
+	};
+	/**
+	 * Method: appendResource
+	 * 
+	 * Appends the resource to the <head> or <body> block of the document.
+	 */
+	this.appendResource = function(element) {
+		if (this.header == null) {
+			var header = document.getElementsByTagName("head").length ? document
+					.getElementsByTagName("head")[0]
+					: document.body;
+		}
+		var context = this;
+		header.appendChild(element);
+	};
+	/**
+	 * Method: addResource
+	 * 
+	 * Adds a resource object to the corresponding array.
+	 */
+	this.addResource = function(resource) {
+		switch (resource.type) {
+		case "js":
+			this.jsResources.push(resource);
+			break;
+		case "css":
+			this.cssResources.push(resource);
+			break;
+		}
+	};
+	/**
+	 * Method: load
+	 * 
+	 * Begins loading resources.
+	 */
+	this.load = function() {
+		for ( var i = 0; i < this.cssResources.length; i++) {
+			this.loadResource(this.cssResources[i]);
+		}
+		this.loadJSResources();
+	};
+	/**
+	 * Method: loadJSResources
+	 * 
+	 * Loads the JavaScript resources to make sure the previous is loaded before
+	 * another one attemps to load.
+	 */
+	this.loadJSResources = function() {
+		var resource = this.jsResources.shift();
+		if (resource != null)
+			this.loadResource(resource);
+		else {
+			for ( var i = 0; i < this.callbacks.length; i++) {
+				var cb = this.callbacks[i];
+				cb.call();
+			}
+		}
+
+	};
+	/**
+	 * Method: checkReadyState
+	 * 
+	 * This if for Internet Explorer to handle it's issues with onload.
+	 */
+	this.checkReadyState = function() {
+		if (this.readyState == 'loaded' || this.readyState == "complete") {
+			this.onload();
+		}
+	};
+	/**
+	 * APIMethod: onReady
+	 * 
+	 * Takes in a function or an array of functions to call when the script
+	 * resources are finished loading.
+	 * 
+	 * If the resources are already loaded it will call them immediately.
+	 * 
+	 * Parameters: 
+	 * cb - The function or the array of functions to be called after loading.
+	 */
+	this.onReady = function(cb) {
+		if (this.jsResources.length == 0) {
+			if (typeof cb == 'object') {
+				for ( var i = 0; i < cb.length; i++) {
+					cb[i].call();
+				}
+			} else {
+				cb.call();
+			}
+			return;
+		}
+		if (typeof cb == 'object') {
+			for ( var i = 0; i < cb.length; i++) {
+				this.callbacks.push(cb[i]);
+			}
+		} else {
+			this.callbacks.push(cb);
+		}
+	};
 };
-var scriptName="Loader.js";
-var host=hostUtility(scriptName);
-var OscarLoader=function(a){this.jsResources=[];
-this.cssResources=[];
-this.base=a;
-this.header=null;
-this.callbacks=[];
-this.loadJS=function(e){var c=new Date();
-var d=document.createElement("script");
-var b=this;
-d.onload=function(){b.loadJSResources()
-};
-if(/MSIE/.test(navigator.userAgent)){d.onreadystatechange=this.checkReadyState
-}d.src=this.base+e.location;
-this.appendResource(d)
-};
-this.loadCSS=function(d){var b=new Date();
-var c=document.createElement("link");
-c.rel="stylesheet";
-c.type="text/css";
-c.href=this.base+d.location;
-this.appendResource(c)
-};
-this.loadResource=function(b){switch(b.type){case"js":this.loadJS(b);
-break;
-case"css":this.loadCSS(b);
-break
-}};
-this.appendResource=function(c){if(this.header==null){var d=document.getElementsByTagName("head").length?document.getElementsByTagName("head")[0]:document.body
-}var b=this;
-d.appendChild(c)
-};
-this.addResource=function(b){switch(b.type){case"js":this.jsResources.push(b);
-break;
-case"css":this.cssResources.push(b);
-break
-}};
-this.load=function(){for(var b=0;
-b<this.cssResources.length;
-b++){this.loadResource(this.cssResources[b])
-}this.loadJSResources()
-};
-this.loadJSResources=function(){var d=this.jsResources.shift();
-if(d!=null){this.loadResource(d)
-}else{for(var c=0;
-c<this.callbacks.length;
-c++){var b=this.callbacks[c];
-b.call()
-}}};
-this.checkReadyState=function(){if(this.readyState=="loaded"||this.readyState=="complete"){this.onload()
-}};
-this.onReady=function(b){if(this.jsResources.length==0){if(typeof b=="object"){for(var c=0;
-c<b.length;
-c++){b[c].call()
-}}else{b.call()
-}return
-}if(typeof b=="object"){for(var c=0;
-c<b.length;
-c++){this.callbacks.push(b[c])
-}}else{this.callbacks.push(b)
-}}
-};
-var _OscarLoader=new OscarLoader(host.location);
-_OscarLoader.addResource({location:"../jquery/css/smoothness/jquery-ui-1.8.16.custom.css",type:"css"});
-_OscarLoader.addResource({location:"../jquery/js/jquery.min.js",type:"js"});
-_OscarLoader.addResource({location:"../jquery/js/jquery-ui-1.8.16.custom.min.js",type:"js"});
-_OscarLoader.addResource({location:"../proj4js/lib/proj4js.js",type:"js"});
-_OscarLoader.addResource({location:"../openlayers/OpenLayers.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/yahoo-dom-event/yahoo-dom-event.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/element/element-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/button/button-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/container/container-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/datasource/datasource.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/json/json.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/dragdrop/dragdrop.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/treeview/treeview.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/animation/animation.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/autocomplete/autocomplete.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/connection/connection.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/datatable/datatable.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/paginator/paginator-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/resize/resize.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/layout/layout-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/connection/connection.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/resize/resize-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/tabview/tabview-min.js",type:"js"});
-_OscarLoader.addResource({location:"../yui/build/fonts/fonts-min.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/button/assets/skins/sam/button.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/autocomplete/assets/skins/sam/autocomplete.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/container/assets/skins/sam/container.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/paginator/assets/skins/sam/paginator.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/datatable/assets/skins/sam/datatable.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/datatable/assets/skins/sam/datatable-skin.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/layout/assets/skins/sam/layout.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/resize/assets/skins/sam/resize.css",type:"css"});
-_OscarLoader.addResource({location:"../yui/build/tabview/assets/skins/sam/tabview.css",type:"css"});
-_OscarLoader.addResource({location:"theme/default/style.css",type:"css"});
-_OscarLoader.addResource({location:"oscar.js",type:"js"});
+/**
+ * Resource List:
+ */
+var _OscarLoader = new OscarLoader(host.location);
+_OscarLoader.addResource( {
+	location :"../jquery/css/smoothness/jquery-ui-1.8.16.custom.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../jquery/js/jquery-ui-1.8.16.custom.min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../proj4js/lib/proj4js.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../openlayers/OpenLayers.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/yahoo-dom-event/yahoo-dom-event.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/element/element-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/button/button-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/container/container-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/datasource/datasource.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/json/json.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/dragdrop/dragdrop.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/treeview/treeview.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/animation/animation.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/autocomplete/autocomplete.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/connection/connection.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/datatable/datatable.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/paginator/paginator-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/resize/resize.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/layout/layout-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/connection/connection.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/resize/resize-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/tabview/tabview-min.js",
+	type :"js"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/fonts/fonts-min.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/button/assets/skins/sam/button.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/autocomplete/assets/skins/sam/autocomplete.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/container/assets/skins/sam/container.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/paginator/assets/skins/sam/paginator.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/datatable/assets/skins/sam/datatable.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/datatable/assets/skins/sam/datatable-skin.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/layout/assets/skins/sam/layout.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/resize/assets/skins/sam/resize.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"../yui/build/tabview/assets/skins/sam/tabview.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"theme/default/style.css",
+	type :"css"
+});
+_OscarLoader.addResource( {
+	location :"oscar.js",
+	type :"js"
+});
+
+/**
+ * Start loading the resources.
+ */
 _OscarLoader.load();
