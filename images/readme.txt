@@ -1,0 +1,1 @@
+This image directory is where all graph files are temporarily created.
