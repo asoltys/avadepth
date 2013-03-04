@@ -210,6 +210,7 @@ div.olMap {
 
 div.olMapViewport {
 	text-align: left;
+  z-index:10;
 }
 
 div.olLayerDiv {

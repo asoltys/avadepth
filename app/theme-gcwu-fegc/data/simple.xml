@@ -1,41 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration version="2.0">
     <themes>
-        <theme bgColor="#fff" numzoomlevels="16">
+        <theme bgColor="#fff" numzoomlevels="8">
             <name>World Theme</name>
-            <srs>EPSG:900913</srs>
+            <srs>EPSG:3857</srs>
             <covers>                
-              <cover type="DEFAULT" minX="-9437144.82186" minY="-8345323.21793" maxX="15531469.08619" maxY="7152437.13879" />
+              <cover type="DEFAULT" minX="-13724000" minY="6290988" maxX="-13634000" maxY="6307919" />
             </covers>
-
             <layers>
-                <layer>
-                    <name>CARIS World Map</name>
+              <layer>
+                <name>Open Street Maps</name>
+                <layerType>OSM</layerType>
+              </layer>
+              <layer>
+                <name>CCG Bathymetry</name>
+                <urls>
+                  <url>http://avadepth.ccg-gcc.gc.ca:8080/spatialfusionserver/services/ows/wms/ccgwms</url>
+                </urls>
+                <format>image/png</format>
+                <layerType>WMS</layerType>
+                <dataLayers>
+                  <dataLayer>
+                    <layerName>Bathymetry</layerName>
+                  </dataLayer>
+                </dataLayers>
+                <parameter name="buffer" value="2"/>
+              </layer>
+<!--
+                  <layer>
+                    <name>CCG Bathymetry Tiles</name>
                     <urls>
-                        <url>http://sfs.caris.com/spatialfusionserver/services/ows/wms/world</url>
-                        <url>http://server.caris.com/spatialfusionserver/services/ows/wms/fredericton_world</url>
+                      <url><![CDATA[http://avadepth.ccg-gcc.gc.ca:8080/spatialfusionserver/services/ows/wmts/CCGBathyTile]]></url>
                     </urls>
                     <format>image/png</format>
-                    <layerType>WMS</layerType>
+                    <layerType>WMTS</layerType>
+                    <tileMatrixSet>GoogleMapsCompatible</tileMatrixSet>
                     <dataLayers>
-                        <dataLayer>
-                            <layerName>World</layerName>
-                        </dataLayer>
-                        <dataLayer>
-                            <layerName>Ocean</layerName>
-                        </dataLayer>
+                      <dataLayer>
+                        <layerName>Bathymetry</layerName>
+                      </dataLayer>
                     </dataLayers>
                     <parameter name="buffer" value="2"/>
-                </layer>
-                <layer>
-                    <name>CARIS YouTube Channel</name>
-                    <urls>
-                        <url><![CDATA[http://gdata.youtube.com/feeds/api/videos?author=CARISGIS&prettyprint=true&v=1&orderby=published]]></url>
-                    </urls>
-                    <layerType>MARKER</layerType>
-                    <parameter name="formatType" value="YouTube" />
-                    <parameter name="srs" value="EPSG:4326" />
-                </layer>
+                  </layer>
+                  -->
               </layers>
         </theme>
     </themes>

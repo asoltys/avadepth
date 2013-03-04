@@ -5,23 +5,28 @@
             <name>World Theme</name>
             <srs>EPSG:900913</srs>
             <covers>                
-				<cover type="DEFAULT" minX="-9437144.82186" minY="-8345323.21793" maxX="15531469.08619" maxY="7152437.13879" />
+				<cover type="DEFAULT" minX="-9437144.82186" minY="-8345323.21793" maxX="19531469.08619" maxY="7152437.13879" />
             </covers>
             
             <layers>
                 <layer>
                     <name>Open Street Maps</name>
                     <layerType>OSM</layerType>
-                </layer>
-                <layer>
-                    <name>CARIS YouTube Channel</name>
+                  </layer>
+                  <layer>
+                    <name>Bathymetry</name>
                     <urls>
-                        <url><![CDATA[http://gdata.youtube.com/feeds/api/videos?author=CARISGIS&prettyprint=true&v=1&orderby=published]]></url>
+                      <url>http://sfs.caris.com/spatialfusionserver/services/ows/wms/world</url>
                     </urls>
-                    <layerType>MARKER</layerType>
-                    <parameter name="formatType" value="YouTube" />
-                    <parameter name="srs" value="EPSG:4326" />
-                </layer>
+                    <format>image/png</format>
+                    <layerType>WMS</layerType>
+                    <dataLayers>
+                      <dataLayer>
+                        <layerName>Ocean</layerName>
+                      </dataLayer>
+                    </dataLayers>
+                    <parameter name="buffer" value="2" />
+                  </layer>
             </layers>
         </theme>
     </themes>
