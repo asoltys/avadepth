@@ -1,120 +1,120 @@
 <%@ Page Language="vb" AutoEventWireup="false" Codebehind="index.aspx.vb" Inherits="AvadepthNet.AvadepthNet.web.index"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-   <HEAD>
-      <title>CCG Avadepth Website</title>
-      <meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
-      <meta content="Visual Basic .NET 7.1" name="CODE_LANGUAGE">
-      <meta content="JavaScript" name="vs_defaultClientScript">
-      <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
-      <LINK href="Styles.css" type="text/css" rel="stylesheet">
+<!DOCTYPE html>
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
+<!-- WET 3.0, PWGSC 1.0 file: 2col-eng.html -->
+<!-- TitleStart -->
+<title>Avadepth</title>
+<!-- TitleEnd -->
+<!-- MetadataStart -->
+<meta name="description" content="Avadepth" />
+<meta name="dcterms.description" content="Avadepth" />
+<meta name="dcterms.creator" content="DFO" />
+<meta name="dcterms.title" content="Avadepth" />
+<meta name="dcterms.issued" title="W3CDTF" content="2013-02-27" />
+<meta name="dcterms.modified" title="W3CDTF" content="<!--#config timefmt='%Y-%m-%d'--><!--#echo var='LAST_MODIFIED'-->" />
+<meta name="dcterms.subject" title="gccore" content="Waterways; Bathymetry; Hydrography" />
+<meta name="dcterms.language" title="ISO639-2" content="eng" />
+<meta name="keywords" content="Fraser River, Waterways, Bathymetry, Hydrographic Data, Coast Guard" />
+<!-- MetadataEnd -->
+<!--#include virtual="/boew-wet/wet3.0/html5/includes/tete-head.html" -->
 
-      <script type="text/javascript">
-         var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', 'UA-5411606-40']);
-         _gaq.push(['_trackPageview']);
+<!-- CustomScriptsCSSStart -->
+<script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-5411606-40']);
+   _gaq.push(['_trackPageview']);
 
-         (function() {
-         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
-      </script>
+   (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+</script>
+<!-- CustomScriptsCSSEnd -->
+</head>
+<body><div id="wb-body-sec">
+<div id="wb-skip">
+<ul id="wb-tphp">
+<li id="wb-skip1"><a href="#wb-cont">Skip to main content</a></li>
+<li id="wb-skip2"><a href="#wb-nav">Skip to secondary menu</a></li>
+</ul>
+</div>
 
-   </HEAD>
-   <body MS_POSITIONING="GridLayout">
-      <form id="Form1" method="post" runat="server">
-         <table cellSpacing="0" cellPadding="0" width="750" border="0">
-            <TBODY>
-               <tr>
-                  <td vAlign="top">
-                     <table height="100%" width="100%" border="0">
-                        <tr>
-                           <td colSpan="2">
-                              <table cellSpacing="4" cellPadding="0" width="100%" border="0">
-                                 <tr>
-                                    <td><IMG src="CGFIP-s.gif"></td>
-                                    <td align="right"><IMG height="21" alt="WD" src="wd-patch.gif" width="94" align="absMiddle">
-                                    </td>
-                                 </tr>
-                              </table>
-                              <IMG alt="Available Water Depths Forecasting" src="images/newbanner.gif" align="absMiddle"><br>
-                              <IMG src="images/newhr.gif">
-                           </td>
-                        </tr>
-                        <TR>
-                           <TD bgColor="#f3f3f3">
-                              <p align="center"><font size="3"><IMG height="170" src="images/ccg-logotran.gif" width="130">
-                                    <form name="Signin" action="xt_LookupRecord.asp" method="post">
-                                       <center>
-                                          <table border="0">
-                                             <TBODY>
-                                                <tr>
-                                                   <td width="100%"><FONT face="ARIAL">User name</FONT><br>
-                                                      <asp:textbox id="txtUserName" runat="server" Wrap="False" Width="100px"></asp:textbox></td>
-                                                </tr>
-                                                <tr>
-                                                   <td width="100%"><FONT face="ARIAL">Password</FONT><br>
-                                                      <asp:textbox id="txtPassword" runat="server" Wrap="False" Width="100px" TextMode="Password"></asp:textbox></td>
-                                                </tr>
-                                                <tr>
-                                                   <td width="100%">
-                                                      <P><asp:imagebutton id="btnLogin" runat="server" ImageUrl="images/btnLogin.gif"></asp:imagebutton><BR>
-                                                         <asp:label class="NormalRed" id="Message" runat="server" CssClass="standard-text"></asp:label><br>
-                                 </font><font size="1"><A href="passwordrecovery.htm">forgot your password?</A></font></p>
-                           </TD>
-                        </TR>
-                     </table>
-         </CENTER></form>
-      <font size="3">
-         <table width="100%" border="0">
-            <TBODY>
-               <tr>
-                  <td vAlign="top"></td>
-                  <td></td>
-               </tr>
-               <tr>
-                  <td vAlign="top"><font size="3"><IMG alt="" src="Bullet_home.GIF" border="0"> </font>
-                  </td>
-                  <td>
-                     <p align="left">To access Avadepth <A href="register.aspx">setup</A> a new account.</p>
-                  </td>
-               </tr>
-               <tr>
-                  <td vAlign="top"><font size="3"><a href="http://www.demographicsnow.com/AllocateOnline.dll?ShowPage=Static/whats_new.htm"><IMG alt="" src="Bullet_home.GIF" border="0"></a>
-                     </font>
-                  </td>
-                  <td><A href="samples.htm">View Sample<br>
-                        Reports</A>.</td>
-               </tr>
-               <tr>
-                  <td vAlign="top"></td>
-      </font>
-      <td>&nbsp;</td>
-      </TR></TBODY></TABLE></FONT></TD>
-      <TD><font face="arial" size="2">Avadepth - forecasts of available water depths for vessels 
-            navigating the Fraser River South Arm Channel.</font><BR>
-         <CENTER><IMG alt="Fraser River" src="fraser-ov.gif" vspace="10" border="0"></CENTER>
-         <p><font face="arial"><font size="2">Avadepth - is distributed weekly to river pilots, 
-                  Port Metro Vancouver, and shipping companies to assist them in 
-                  determining the maximum draft and the best sailing times.</font><small> </small>
-            </font>
-         </p>
-         <p><font face="arial" size="2">The computerized reporting system predicts draft availability and the 
-               corresponding "transit window" for deep sea ships to navigate the South Arm 
-               Main Channel of the Fraser River between Sand Heads (kilometre 0) and Fraser 
-               Surrey Docks (kilometre 34).</font><small> </small></FONT>
-         </p>
-      </TD>
-      </TR>
-      <tr>
-         <td vAlign="top" colSpan="2"><IMG src="images/newhr.gif">
-         </td>
-      </tr>
-      <tr>
-         <td vAlign="top"><IMG src="CAN(1).gif" align="left">
-         </td>
-      </tr>
-      </TBODY></TABLE></TD></TR></TBODY></TABLE></FORM>
-   </body>
-</HTML>
+<div id="wb-head"><div id="wb-head-in"><header>
+<!-- HeaderStart -->
+<!--#include virtual="/boew-wet/wet3.0/html5/includes/banner_gc-gc_banner-eng.html" -->
+<!--#include virtual="/site/wet3.0/html5/includes/banner_site-site_banner-eng.html" -->
+<nav role="navigation">
+<!--#include virtual="/site/wet3.0/html5/includes/nav_mega-mega_nav-eng.html" -->
+
+<div id="gcwu-bc"><h2>Breadcrumb trail</h2><div id="gcwu-bc-in">
+<ol>
+<!--#include virtual="/site/wet3.0/html5/includes/pain-bread-eng.html" -->
+<!--#include virtual="/site30/includes/pain-bread-section-eng.html" -->
+</ol>
+</div></div>
+</nav>
+<!-- HeaderEnd -->
+</header></div></div>
+
+<div id="wb-core"><div id="wb-core-in" class="equalize">
+<div id="wb-main" role="main"><div id="wb-main-in">
+<!-- MainContentStart -->
+<img src="images/newbanner.gif" alt="Avadepth Water Depth Forecasting for the Fraser River" />
+<form name="Signin" action="xt_LookupRecord.asp" method="post" runat="server">
+<asp:textbox id="txtUserName" runat="server" Wrap="False" Width="100px"></asp:textbox>
+<asp:textbox id="txtPassword" runat="server" Wrap="False" Width="100px" TextMode="Password"></asp:textbox>
+<asp:imagebutton id="btnLogin" runat="server" ImageUrl="images/btnLogin.gif"></asp:imagebutton>
+<asp:label class="NormalRed" id="Message" runat="server"></asp:label>
+</form>
+<p><a href="passwordrecovery.htm">forgot your password?</a></p>
+<p>To access Avadepth <A href="register.aspx">setup</a> a new account.</p>
+<p><a href="samples.htm">View Sample Reports</a></p>
+<p>
+  Avadepth - forecasts of available water depths for vessels 
+  navigating the Fraser River South Arm Channel.
+</p>
+<img alt="Fraser River" src="fraser-ov.gif">
+<p>
+Avadepth - is distributed weekly to river pilots, 
+Port Metro Vancouver, and shipping companies to assist them in 
+determining the maximum draft and the best sailing times.The computerized reporting system predicts draft availability and the 
+corresponding "transit window" for deep sea ships to navigate the South Arm 
+Main Channel of the Fraser River between Sand Heads (kilometre 0) and Fraser 
+Surrey Docks (kilometre 34).
+</p>
+
+<!-- EndEditableContent -->
+<dl id="gcwu-date-mod" role="contentinfo">
+<dt>Date modified:</dt><dd><span><time><!--#config timefmt='%Y-%m-%d'--><!--#echo var='LAST_MODIFIED'--></time></span></dd>
+</dl>
+<div class="clear"></div>
+<!-- MainContentEnd -->
+</div></div>
+
+<div id="wb-sec"><div id="wb-sec-in">
+<!--#include virtual="/site30/includes/nav_gauche-nav_left-eng.html" -->
+</div></div>
+</div></div>
+
+<div id="wb-foot"><div id="wb-foot-in"><footer><h2>Footer</h2>
+<!-- FooterStart -->
+<!--#include virtual="/site/wet3.0/html5/includes/pied_site-site_footer-eng.html" -->
+<!--#include virtual="/boew-wet/wet3.0/html5/includes/pied_gc-gc_footer-eng.html" -->
+<!-- FooterEnd -->
+</footer>
+</div></div></div>
+
+<!-- ScriptsStart -->
+<!--#include virtual="/boew-wet/wet3.0/html5/includes/script_pied-script_footer.html" -->
+<!-- ScriptsEnd -->
+</body>
+</html>
