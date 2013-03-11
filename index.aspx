@@ -2,9 +2,7 @@
 <!DOCTYPE html>
 <!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
 <!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
-<!--[if gt IE 8]><!-->
 <html lang="en" class="no-js">
-<!--<![endif]-->
 <head>
 <meta charset="utf-8" />
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -68,16 +66,9 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div id="wb-core"><div id="wb-core-in" class="equalize">
 <div id="wb-main" role="main"><div id="wb-main-in">
 <!-- MainContentStart -->
-<img src="images/newbanner.gif" alt="Avadepth Water Depth Forecasting for the Fraser River" />
-<form name="Signin" action="xt_LookupRecord.asp" method="post" runat="server">
-<asp:textbox id="txtUserName" runat="server" Wrap="False" Width="100px"></asp:textbox>
-<asp:textbox id="txtPassword" runat="server" Wrap="False" Width="100px" TextMode="Password"></asp:textbox>
-<asp:imagebutton id="btnLogin" runat="server" ImageUrl="images/btnLogin.gif"></asp:imagebutton>
-<asp:label class="NormalRed" id="Message" runat="server"></asp:label>
-</form>
-<p><a href="passwordrecovery.htm">forgot your password?</a></p>
-<p>To access Avadepth <A href="register.aspx">setup</a> a new account.</p>
-<p><a href="samples.htm">View Sample Reports</a></p>
+<div class="span-4">
+<h1>Avadepth</h1>
+
 <p>
   Avadepth - forecasts of available water depths for vessels 
   navigating the Fraser River South Arm Channel.
@@ -91,6 +82,8 @@ corresponding "transit window" for deep sea ships to navigate the South Arm
 Main Channel of the Fraser River between Sand Heads (kilometre 0) and Fraser 
 Surrey Docks (kilometre 34).
 </p>
+</div>
+
 
 <!-- EndEditableContent -->
 <dl id="gcwu-date-mod" role="contentinfo">
@@ -101,7 +94,24 @@ Surrey Docks (kilometre 34).
 </div></div>
 
 <div id="wb-sec"><div id="wb-sec-in">
-<!--#include virtual="/site30/includes/nav_gauche-nav_left-eng.html" -->
+
+    <h3>Login</h3>
+
+    <form id="Form1" method="post" runat="server">
+      <div>
+        <label for="txtUserName">Username</label>
+        <asp:textbox id="txtUserName" runat="server" Wrap="False" Width="100px"></asp:textbox>
+      </div>
+      <div>
+        <label for="txtPassword">Password</label>
+        <asp:textbox id="txtPassword" runat="server" Wrap="False" Width="100px" TextMode="Password"></asp:textbox>
+      </div>
+      <asp:button id="btnLogin" runat="server" text="Login"></asp:button>
+      <asp:label class="NormalRed" id="Message" runat="server"></asp:label>
+      <p><a href="register.aspx">setup</a> a new account</p>
+      <p><a href="passwordrecovery.htm">forgot your password?</a></p>
+    </form>
+
 </div></div>
 </div></div>
 
