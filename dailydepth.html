@@ -1,64 +1,18 @@
 <!--#include virtual="/header.html" -->
-
 <script>
   $(function() {
-    $('#dt').datepicker();
-
-    s = '';
-    for (i = 6; i < 36; i++) {
-        s += '<option value=' + i + '>' + i + '</option>';
-    }
-    $('#chainage').append(s);
-
-    $('#dt').change(function () {
-
-        $.getJSON('/api/depths?date=' + $(this).val(), function (data) {
-
-            $('#flows option').remove();
-
-            s = '';
-            $.each(data.Flowrates, function (idx, itm) {
-                s += '<option value=' + itm + '>' + itm + '</option>';
-            });
-
-            $('#flows').append(s);
-
-            $('#flowPred').text(data.Predicted);
-            $('#flowAct').text(data.Actual);
-        });
-    });
-
-    $('#display').click(function () {
-        switch ($("input:radio[name=discharge]:checked").val()) {
-            case '0':
-                flow = $('#flowPred').text(); break;
-            case '1':
-                flow = $('#flowAct').text(); break;
-            case '2':
-            case '3':
-                flow = $('#flows').val();
-                break;
-        }
-
-        $.getJSON('/api/depths/calculate?date=' + $('#dt').val() +
-            '&chainage=' + $('#chainage').val() + 
-            '&flowRate=' + flow + '&flowType=0' + 
-            '&width=' + $('#width').val() + 
-            '&sounding=0', function (data) {
-            $('tr', '#location tbody').remove();
-
-            s = '';
-            $.each(data.items[0].items, function (idx, itm) {
-                s += '<tr><td>' + itm.period + '</td><td>' + itm.chainage + '</td><td>' + itm.depth + '</td><td>' + itm.location + '</td></tr>';
-            });
-
-            $('#location tbody').append(s);
-        });
-      });
-
+    $('#date').datepicker();
+    $('#date').change(function () {
+        $.getJSON(
+          '/api/depths?date=' + $(this).val(), 
+          function (data) {
+            body.text(data);
+          }
+        );
     });
   });
 </script>
+
 
 <form>
   <div class="span-2">
