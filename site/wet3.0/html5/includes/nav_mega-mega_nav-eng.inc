@@ -8,9 +8,8 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href="">Background &amp; Theory of Operation</a></li>
+<li><a href="/theory.html">Background &amp; Theory of Operation</a></li>
 <li><a href="/links.html">Links</a></li>
-<li><a href="/contact.html">Contact Us</a></li>
 </ul>
 </section>
 </div>
@@ -21,7 +20,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='#'>Daily Depths</a></li>
+<li><a href='/daily_depths.html'>Daily Depths</a></li>
 <li><a href='#'>Transit Window</a></li>
 <li><a href='#'>Predicted Water Levels & Velocities</a></li>
 </ul>
