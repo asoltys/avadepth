@@ -4,7 +4,7 @@
 wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
 <!-- DataAjaxFragmentStart -->
 
-<li><section><h3><a href="http://www.tpsgc-pwgsc.gc.ca/comm/services-eng.html">About Avadepth</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">About Avadepth</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <ul>
@@ -15,7 +15,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="clear"></div>
 </div></section></li>
 
-<li><section><h3><a href="http://www.tpsgc-pwgsc.gc.ca/comm/services-eng.html">Avadepth Reports</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Avadepth Reports</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <ul>
@@ -37,7 +37,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="clear"></div>
 </div></section></li>
 
-<li><section><h3><a href="http://www.tpsgc-pwgsc.gc.ca/comm/services-eng.html">Channel Bottom Conditions</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <h4>Current Channel Overview</h4>
@@ -64,7 +64,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="clear"></div>
 </div></section></li>
 
-<li><section><h3><a href="http://www.tpsgc-pwgsc.gc.ca/comm/services-eng.html">Bathymetry Analysis</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Bathymetry Analysis</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <ul>
