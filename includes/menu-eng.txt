@@ -8,7 +8,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href="/theory.html">Background &amp; Theory of Operation</a></li>
+<li><a href="/theory-theorie-eng.html">Background &amp; Theory of Operation</a></li>
 </ul>
 </section>
 </div>
@@ -19,7 +19,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/available_depths.html'>Available Depths</a></li>
+<li><a href='/ad-pd-eng.html'>Available Depths</a></li>
 <li><a href='#'>Transit Window</a></li>
 <li><a href='#'>Predicted Water Levels & Velocities</a></li>
 </ul>
@@ -42,7 +42,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <h4>Current Channel Overview</h4>
 <ul>
-<li><a href='/current_channel.html'>Fraser - Main Arm</a></li>
+<li><a href='/cc-ca-eng.html'>Fraser - Main Arm</a></li>
 <li><a href='#'>Fraser - North Arm</a></li>
 <li><a href='#'>Fraser - South Arm</a></li>
 <li><a href='#'>Pitt River, BC</a></li>
