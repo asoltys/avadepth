@@ -9,7 +9,6 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href="/theory.html">Background &amp; Theory of Operation</a></li>
-<li><a href="/links.html">Links</a></li>
 </ul>
 </section>
 </div>
@@ -43,7 +42,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <h4>Current Channel Overview</h4>
 <ul>
-<li><a href='#'>Fraser - Main Arm</a></li>
+<li><a href='/current_channel.html'>Fraser - Main Arm</a></li>
 <li><a href='#'>Fraser - North Arm</a></li>
 <li><a href='#'>Fraser - South Arm</a></li>
 <li><a href='#'>Pitt River, BC</a></li>
