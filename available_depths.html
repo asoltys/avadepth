@@ -3,6 +3,7 @@
 <script>
   $(function() {
     $('#date').datepicker();
+    $('#date').val(moment().format('MM/DD/YYYY'));
     $('#date').change(function () {
         $.getJSON(
           '/api/depths?date=' + $(this).val(), 
@@ -19,7 +20,7 @@
   form#daily_depth div { margin-bottom: 15px; }
 </style>
 
-<h1>Available Depth Report</h1>
+<h1>Available Depths</h1>
 
 <form id="daily_depth">
   <div class="span-3">
@@ -27,7 +28,7 @@
     <input id="date" type="text" name="date" />
 
     <label for="discharge">River Discharge:</label>
-    <input type="radio" name="discharge" /> Predicted (1275m3/s)<br />
+    <input type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
     <input type="radio" name="discharge" /> Actual (0m3/s)<br />
     <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s<br />
 
@@ -70,13 +71,13 @@
   <div class="span-3">
     <div>
       <label for="condition">Channel Condition:</label>
-      <input type="radio" name="condition" /> Current Soundings &nbsp;
+      <input type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;
       <input type="radio" name="condition" /> Design Grade
     </div>
 
     <div>
       <label for="channel">Navigation Channel:</label>
-      <input type="radio" name="channel" /> Inner Limit &nbsp;
+      <input type="radio" name="channel" checked="checked" /> Inner Limit &nbsp;
       <input type="radio" name="channel" /> Outer Limit
     </div>
 

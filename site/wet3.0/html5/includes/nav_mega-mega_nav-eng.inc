@@ -20,7 +20,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/daily_depths.html'>Daily Depths</a></li>
+<li><a href='/available_depths.html'>Available Depths</a></li>
 <li><a href='#'>Transit Window</a></li>
 <li><a href='#'>Predicted Water Levels & Velocities</a></li>
 </ul>
