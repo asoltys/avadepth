@@ -55,6 +55,26 @@ wet-boew.github.io/wet-boew/License-eng.txt / wet-boew.github.io/wet-boew/Licenc
   padding:3px 3px 3px 25px
 }
 </style>
+
+<script>
+  $(function() {
+    $('#date').datepicker();
+    $('#date').val(moment().format('MM/DD/YYYY'));
+    $('#date').change(function () {
+        $.getJSON(
+          '/api/depths?date=' + $(this).val(), 
+          function (data) {
+            body.text(data);
+          }
+        );
+    });
+  });
+</script>
+
+<style>
+  form#daily_depth label { font-weight: bold; }
+  form#daily_depth div { margin-bottom: 15px; }
+</style>
 <!-- CustomCSSEnd -->
 </head>
 

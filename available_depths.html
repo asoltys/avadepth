@@ -1,24 +1,5 @@
 <!--#include virtual="/header.html" -->
 
-<script>
-  $(function() {
-    $('#date').datepicker();
-    $('#date').val(moment().format('MM/DD/YYYY'));
-    $('#date').change(function () {
-        $.getJSON(
-          '/api/depths?date=' + $(this).val(), 
-          function (data) {
-            body.text(data);
-          }
-        );
-    });
-  });
-</script>
-
-<style>
-  label { font-weight: bold; }
-  form#daily_depth div { margin-bottom: 15px; }
-</style>
 
 <h1>Available Depths</h1>
 
@@ -28,7 +9,7 @@
     <input id="date" type="text" name="date" />
 
     <label for="discharge">River Discharge:</label>
-    <input type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
+    <input id="discharge" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
     <input type="radio" name="discharge" /> Actual (0m3/s)<br />
     <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s<br />
 
@@ -71,19 +52,19 @@
   <div class="span-3">
     <div>
       <label for="condition">Channel Condition:</label>
-      <input type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;
+      <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;
       <input type="radio" name="condition" /> Design Grade
     </div>
 
     <div>
       <label for="channel">Navigation Channel:</label>
-      <input type="radio" name="channel" checked="checked" /> Inner Limit &nbsp;
+      <input id="channel" type="radio" name="channel" checked="checked" /> Inner Limit &nbsp;
       <input type="radio" name="channel" /> Outer Limit
     </div>
 
     <div>
       <label for="width">Available Width:</label>
-      <select>
+      <select id="width">
         <option value="100" selected="selected">100</option>
         <option value="95">95</option>
         <option value="90">90</option>
@@ -223,7 +204,7 @@
 </div>
 
 <div class="span-4">
-  <img src="daily_depth.jpg" style="height: 400px; width: 300px;" />
+  <img src="daily_depth.jpg" style="height: 400px; width: 300px;" alt="Daily Depths Chart" />
 </div>
 
 <!--#include virtual="/footer.html" -->
