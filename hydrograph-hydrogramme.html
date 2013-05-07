@@ -1,0 +1,79 @@
+<!--#include virtual="/header.html" -->
+ <script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.js"></script>
+<script type="text/javascript">
+$(function() {
+var d3 = [[0, 2774], [1, 2774],[2, 2770],[3, 2550],[4, 2378],[5, 2274],[6, 1981],[7, 1774],[8, 1674],[9, 1634],[10, 1624],[11, 1614],[12, 1600],[13, 1585],[14, 2278],[15, 1774],[16, 1885],[17, 1485],[18, 1985],[19, 1885], [20, 1785],[21, 2200],[22, 2100],[23, 2378],[24, 2370],[25, 2330],[26, 2290],[27, 2250],[28, 2210],[29, 2170],[30, 2130]];
+var d2 = [[0, 800], [1, 800],[2, 800],[3, 800],[4, 810],[5, 780],[6, 781],[7, 751],[8, 830],[9, 831],[10, 789],[11, 759],[12, 799],[13, 713],[14, 842],[15, 724],[16, 769],[17, 744],[18, 789],[19, 759], [20, 816],[21, 820],[22, 811],[23, 813],[24, 793],[25, 777],[26, 761],[27, 781],[28, 713],[29, 839],[30, 765]];
+$.plot("#placeholder", [ d2, d3 ]);
+$.plot("#placeholder2", [ d2, d3 ]);
+$.plot("#placeholder3", [ d2, d3 ]);
+// Add the Flot version string to the footer
+});
+</script>
+
+<h1>Fraser River Hydrograph at Hope, B.C</h1>
+<p>January 2013 to March 2013</p>
+<form id="daily_depth">
+  <div class="span-3">
+    <label for="date">Date:</label>
+    <input id="date" type="text" name="date" />
+
+    <label for="period">Period:</label>
+    <select id="period">
+      <option value="6 Months">3 Months</option>
+      <option value="6 Months">6 Months</option>
+      <option value="6 Months">9 Months</option>
+      <option value="6 Months">12 Months</option>
+    </select>
+
+    <label for="plot">Plot:</label>
+      <input id="actual" type="checkbox" name="actual" checked="checked" /> Actual<br />
+      <input id="predicted" type="checkbox" name="predicted" checked="checked" /> Predicted
+  </div>
+
+</form>
+
+<div class="clear"></div>
+ <div class="demo-container">
+  <div id="placeholder" class="demo-placeholder" style="width:200px;height:400px;float:left"></div>
+  <div id="placeholder2" class="demo-placeholder" style="width:200px;height:400px;float:left"></div>
+  <div id="placeholder3" class="demo-placeholder" style="width:200px;height:400px;float:left"></div>
+</div> 
+<div class="clear"></div>
+<table class="span-4">
+  <tr>
+    <td colspan="2" style="text-align:center">From</td>
+    <td colspan="2" style="text-align:center">To</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Date</td>
+    <td>Time (PST)</td>
+    <td>Date</td>
+    <td>Time (PST)</td>
+    <td>Maximum Depth (m)</td>
+  </tr>
+  <tr>
+    <td>Tue, 7-May-2013</td>
+    <td>02:30</td>
+    <td>Tue, 7-May-2013</td>
+    <td>04:30</td>
+    <td>11.91</td>
+  </tr>
+  <tr>
+    <td>Tue, 7-May-2013</td>
+    <td>16:00</td>
+    <td>Tue, 7-May-2013</td>
+    <td>18:00</td>
+    <td>11.75</td>
+  </tr>
+  <tr>
+    <td>Tue, 7-May-2013</td>
+    <td>23:45</td>
+    <td>Wed, 8-May-2013</td>
+    <td>01:45</td>
+    <td>11.07</td>
+  </tr>
+</table>
+
+<!--#include virtual="/footer.html" -->
