@@ -20,7 +20,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href='/available_depths.html'>Available Depths</a></li>
-<li><a href='#'>Transit Window</a></li>
+<li><a href='/tw-ft-eng.html'>Transit Window</a></li>
 <li><a href='#'>Predicted Water Levels & Velocities</a></li>
 </ul>
 </section>
@@ -29,7 +29,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href='#'>Animated Current & Velocities</a></li>
-<li><a href='hydrograph-hydrogramme-eng.html'>Fraser River Hydrograph</a></li>
+<li><a href='/hydrograph-hydrogramme-eng.html'>Fraser River Hydrograph</a></li>
 <li><a href='#'>CCG Weekly Report</a></li>
 </ul>
 </section>
