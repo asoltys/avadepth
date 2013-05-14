@@ -38,9 +38,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 </div></section></li>
 
 <li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
-<div class="span-2">
 <section>
-<h4>Current Channel Overview</h4>
 <ul>
 <li><a href='/cc-ca-eng.html'>Fraser - Main Arm</a></li>
 <li><a href='#'>Fraser - North Arm</a></li>
@@ -51,16 +49,6 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <li><a href='#'>Hay River, NWT</a></li>
 </ul>
 </section>
-</div>
-<div class="span-2">
-<section>
-<h4>Query Survey Database</h4>
-<ul>
-<li><a href='#'>by Location & Type</a></li>
-<li><a href='#'>by Map</a></li>
-</ul>
-</section>
-</div>
 <div class="clear"></div>
 </div></section></li>
 
