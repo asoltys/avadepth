@@ -28,9 +28,9 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='#'>Animated Current & Velocities</a></li>
+<li><a href='/acv-cva-eng.html'>Animated Current & Velocities</a></li>
 <li><a href='/hydrograph-hydrogramme-eng.html'>Fraser River Hydrograph</a></li>
-<li><a href='#'>CCG Weekly Report</a></li>
+<li><a href='/wr-rh-eng.html'>Weekly Report</a></li>
 </ul>
 </section>
 </div>
@@ -40,13 +40,13 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-eng.html'>Fraser - Main Arm</a></li>
-<li><a href='#'>Fraser - North Arm</a></li>
-<li><a href='#'>Fraser - South Arm</a></li>
-<li><a href='#'>Pitt River, BC</a></li>
-<li><a href='#'>Nanaimo Harbour, BC</a></li>
-<li><a href='#'>Vancouver Harbour, BC</a></li>
-<li><a href='#'>Hay River, NWT</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=fraser_main_arm'>Fraser - Main Arm</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=fraser_north_arm'>Fraser - North Arm</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=fraser_south_arm'>Fraser - South Arm</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=pitt_river'>Pitt River, BC</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=nanaimo_harbour'>Nanaimo Harbour, BC</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=vancouver_harbour'>Vancouver Harbour, BC</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=hay_river'>Hay River, NWT</a></li>
 </ul>
 </section>
 <div class="clear"></div>
@@ -56,9 +56,9 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='#'>Time series analysis</a></li>
-<li><a href='#'>Transit Window</a></li>
-<li><a href='#'>Riverbed X-sections</a></li>
+<li><a href='/tsa-ast-eng.html'>Time series analysis</a></li>
+<li><a href='/rcs-str-eng.html'>Riverbed Cross-sections</a></li>
+<li><a href='/ft-vt-eng.html'>Fly-through videos</a></li>
 </ul>
 </section>
 </div>
