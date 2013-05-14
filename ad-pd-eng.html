@@ -11,6 +11,23 @@ $.plot("#placeholder", [ d1 ]);
 });
 </script>
 
+<script>
+/*
+  $(function() {
+    $('#date').datepicker();
+    $('#date').val(moment().format('MM/DD/YYYY'));
+    $('#date').change(function () {
+        $.getJSON(
+          '/api/depths?date=' + $(this).val(), 
+          function (data) {
+            body.text(data);
+          }
+        );
+    });
+  });
+*/
+</script>
+
 
 <h1>Available Depths</h1>
 
@@ -93,8 +110,8 @@ $.plot("#placeholder", [ d1 ]);
 
 <div class="clear"></div>
 
-<div class="span-5">
-<table class="span-5">
+
+<table class="table-condensed span-4">
 <tbody>
 <tr>
 <th>Time (pst)</th>
@@ -211,9 +228,8 @@ $.plot("#placeholder", [ d1 ]);
 </tr>
 </tbody>
 </table>
-</div>
 
-<div class="span-3">
+<div class="span-4">
   <div id="placeholder" class="demo-placeholder" style="width:90%;height:500px;float:left"></div>
 </div>
 
