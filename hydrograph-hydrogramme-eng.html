@@ -1,5 +1,4 @@
 <!--#include virtual="/includes/header-eng.html" -->
- <script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.js"></script>
 <script type="text/javascript">
 $(function() {
 var d3 = [[0, 2774], [1, 2774],[2, 2770],[3, 2550],[4, 2378],[5, 2274],[6, 1981],[7, 1774],[8, 1674],[9, 1634],[10, 1624],[11, 1614],[12, 1600],[13, 1585],[14, 2278],[15, 1774],[16, 1885],[17, 1485],[18, 1985],[19, 1885], [20, 1785],[21, 2200],[22, 2100],[23, 2378],[24, 2370],[25, 2330],[26, 2290],[27, 2250],[28, 2210],[29, 2170],[30, 2130]];
@@ -12,32 +11,60 @@ $.plot("#placeholder3", [ d2, d3 ]);
 </script>
 
 <h1>Fraser River Hydrograph at Hope, B.C</h1>
-<p>January 2013 to March 2013</p>
-<form id="daily_depth">
-  <div class="span-3">
-    <label for="date">Date:</label>
-    <input id="date" type="text" name="date" />
 
-    <label for="period">Period:</label>
-    <select id="period">
-      <option value="6 Months">3 Months</option>
-      <option value="6 Months">6 Months</option>
-      <option value="6 Months">9 Months</option>
-      <option value="6 Months">12 Months</option>
-    </select>
+<div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+  <ul class="tabs">
+    <li class="default"><a href="#parameters">Parameters</a></li>
+    <li><a href="#help">Help</a></li>
+  </ul>
 
-    <label for="plot">Plot:</label>
-      <input id="actual" type="checkbox" name="actual" checked="checked" /> Actual<br />
-      <input id="predicted" type="checkbox" name="predicted" checked="checked" /> Predicted
+  <div class="summary tabs-panel" style="border: 2px solid #eee">
+    <div id="parameters">
+      <form id="daily_depth">
+        <div class="span-4">
+          <label for="date">Date:</label>
+          <input id="date" type="text" name="date" />
+
+          <label for="period">Period:</label>
+          <select id="period">
+            <option value="6 Months">3 Months</option>
+            <option value="6 Months">6 Months</option>
+            <option value="6 Months">9 Months</option>
+            <option value="6 Months">12 Months</option>
+          </select>
+        </div>
+
+        <div class="span-3">
+          <label for="plot">Plot:</label>
+          <input id="actual" type="checkbox" name="actual" checked="checked" /> Actual<br />
+          <input id="predicted" type="checkbox" name="predicted" checked="checked" /> Predicted
+        </div>
+      </form>
+    </div>
+
+    <div id="help" style="height: 150px">
+      <p>
+      Avadepth generates hydrographic charts to illustrate the seasonal variations of flow-rates. Each graph contains coloured lines representing actual and predicted flow rates, as well as lines for corresponding periods in two other years (designated flood year and drought year).
+      </p>
+
+      <p>
+      To create a hydrograph,
+      </p>
+
+      <ul>
+        <li>Enter a date.  Click on the date text to choose using a calendar.</li>
+        <li>Select the time-span for the plot</li>
+        <li>Click on any of the check boxes to disable the display of a hydrograph line.</li>
+      </ul>
+    </div>
   </div>
-
-</form>
+</div>
 
 <div class="clear"></div>
 <div class="span-12 demo-container">
-  <div id="placeholder" class="demo-placeholder" style="width:200px;height:400px;float:left"></div>
-  <div id="placeholder2" class="demo-placeholder" style="width:200px;height:400px;float:left"></div>
-  <div id="placeholder3" class="demo-placeholder" style="width:200px;height:400px;float:left"></div>
+  <div id="placeholder" class="demo-placeholder" style="width:390px;height:400px;float:left"></div>
+  <div id="placeholder2" class="demo-placeholder" style="width:390px;height:400px;float:left"></div>
+  <div id="placeholder3" class="demo-placeholder" style="width:390px;height:400px;float:left"></div>
 </div> 
 
 <div class="clear"></div>
