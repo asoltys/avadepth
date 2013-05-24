@@ -1,0 +1,20 @@
+.languages-examples li {
+	float: left;
+	width: 50%;
+}
+
+#cn-content h2 {
+  background:#555 url('/images/h-square.gif') no-repeat left top;
+  color:#FFF;
+  font-size:1em;
+  font-weight:700;
+  margin-bottom:5px;
+  margin-left:0;
+  margin-right:0;
+  padding:3px 3px 3px 25px
+}
+
+form#daily_depth label { font-weight: bold; }
+form#daily_depth div { margin-bottom: 15px; }
+
+.active { border: 0 }
