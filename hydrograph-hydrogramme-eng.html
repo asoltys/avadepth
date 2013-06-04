@@ -1,19 +1,101 @@
 <!--#include virtual="/includes/header-eng.html" -->
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/js/flot/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" src="scripts/flot/jquery.flot.time.js"></script>    
+<script type="text/javascript" src="scripts/flot/jshashtable-2.1.js"></script>    
+<script type="text/javascript" src="scripts/flot/jquery.numberformatter-1.2.3.min.js"></script>
+<script type="text/javascript" src="scripts/flot/jquery.flot.symbol.js"></script>
 <script type="text/javascript">
-$(function() {
-var d3 = [[0, 2774], [1, 2774],[2, 2770],[3, 2550],[4, 2378],[5, 2274],[6, 1981],[7, 1774],[8, 1674],[9, 1634],[10, 1624],[11, 1614],[12, 1600],[13, 1585],[14, 2278],[15, 1774],[16, 1885],[17, 1485],[18, 1985],[19, 1885], [20, 1785],[21, 2200],[22, 2100],[23, 2378],[24, 2370],[25, 2330],[26, 2290],[27, 2250],[28, 2210],[29, 2170],[30, 2130],[31, 2774], [32, 2774],[33, 2770],[34, 2550],[35, 2378],[36, 2274],[37, 1981],[38, 1774],[39, 1674],[40, 1634],[41, 1624],[41, 1614],[42, 1600],[43, 1585],[44, 2278],[45, 1774],[46, 1885],[47, 1485],[48, 1985],[49, 1885], [50, 1785],[51, 2200],[52, 2100],[53, 2378],[54, 2370],[55, 2330],[56, 2290],[57, 2250],[58, 2210],[59, 2170],[60, 2130],[61, 2774], [62, 2774],[63, 2770],[64, 2550],[65, 2378],[66, 2274],[67, 1981],[68, 1774],[69, 1674],[70, 1634],[71, 1624],[72, 1614],[73, 1600],[74, 1585],[75, 2278],[76, 1774],[77, 1885],[78, 1485],[79, 1985],[80, 1885], [81, 1785],[82, 2200],[83, 2100],[84, 2378],[85, 2370],[86, 2330],[87, 2290],[88, 2250],[90, 2210],[91, 2170],[92, 2130]];
-var d2 = [[0, 800], [1, 800],[2, 800],[3, 800],[4, 810],[5, 780],[6, 781],[7, 751],[8, 830],[9, 831],[10, 789],[11, 759],[12, 799],[13, 713],[14, 842],[15, 724],[16, 769],[17, 744],[18, 789],[19, 759], [20, 816],[21, 820],[22, 811],[23, 813],[24, 793],[25, 777],[26, 761],[27, 781],[28, 713],[29, 839],[30, 765]];
-$.plot("#placeholder", [ d2, d3 ], {
-  
-          xaxes: [{
-            axisLabel: 'Pacific Standard Time (date)'
-        }],
-        yaxes: [{
-            position: 'left',
-            axisLabel: 'Hope Discharge (m3s)'
-        }]
-});
-// Add the Flot version string to the footer
+var data = [];
+var dataset;
+var totalPoints = 100;
+var updateInterval = 1000;
+var now = new Date().getTime();
+
+
+function GetData() {
+    data.shift();
+
+    while (data.length < totalPoints) {     
+        var y = Math.random() * 100;
+        var temp = [now += updateInterval, y];
+
+        data.push(temp);
+    }
+}
+
+var options = {
+    series: {
+        lines: {
+            show: true,
+            lineWidth: 1.2,
+            fill: true
+        }
+    },
+    xaxis: {
+        mode: "time",
+        tickSize: [2, "second"],
+        tickFormatter: function (v, axis) {
+            var date = new Date(v);
+
+            if (date.getSeconds() % 20 == 0) {
+                var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+                return hours + ":" + minutes + ":" + seconds;
+            } else {
+                return "";
+            }
+        },
+        axisLabel: "Time",
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 12,
+        axisLabelFontFamily: 'Verdana, Arial',
+        axisLabelPadding: 10
+    },
+    yaxis: {
+        min: 0,
+        max: 100,        
+        tickSize: 5,
+        tickFormatter: function (v, axis) {
+            if (v % 10 == 0) {
+                return v + "%";
+            } else {
+                return "";
+            }
+        },
+        axisLabel: "CPU loading",
+        axisLabelUseCanvas: true,
+        axisLabelFontSizePixels: 12,
+        axisLabelFontFamily: 'Verdana, Arial',
+        axisLabelPadding: 6
+    },
+    legend: {        
+        labelBoxBorderColor: "#fff"
+    },
+    grid: {                
+        backgroundColor: "#000000",
+        tickColor: "#008040"
+    }
+};
+
+$(document).ready(function () {
+    GetData();
+
+    dataset = [
+        { label: "CPU", data: data, color: "#00FF00" }
+    ];
+
+    $.plot($("#flot-placeholder1"), dataset, options);
+
+    function update() {
+        GetData();
+
+        $.plot($("#flot-placeholder1"), dataset, options)
+        setTimeout(update, updateInterval);
+    }
+
+    update();
 });
 </script>
 
@@ -68,8 +150,6 @@ $.plot("#placeholder", [ d2, d3 ], {
 
 <div class="clear"></div>
 <div class="span-12 demo-container">
-  <div id="placeholder" class="demo-placeholder" style="width:390px;height:400px;float:left"></div>
-  <div id="placeholder2" class="demo-placeholder" style="width:390px;height:400px;float:left"></div>
-  <div id="placeholder3" class="demo-placeholder" style="width:390px;height:400px;float:left"></div>
+<div id="flot-placeholder1" style="width:550px;height:300px;margin:0 auto"></div>
 </div> 
 <!--#include virtual="/includes/footer-eng.html" -->
