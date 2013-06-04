@@ -18,3 +18,19 @@ form#daily_depth label { font-weight: bold; }
 form#daily_depth div { margin-bottom: 15px; }
 
 .active { border: 0 }
+
+.tabs-style-1 .tabs li a, .tabs-style-1 .tabs li a:hover, .tabs-style-1 .tabs li a:focus, .tabs-style-1 .tabs li {
+  background: #A00 url('/images/gradient.jpg');
+}
+
+.tabs-style-1 .tabs li a:hover {
+  color: white !important;
+  border-top-color: #A00;
+  border-top-width: 2px;
+  text-decoration: underline;
+}
+
+.tabs-style-1 .tabs li a.active {
+  font-weight: bold;
+  text-decoration: none;
+}
