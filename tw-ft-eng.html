@@ -1,4 +1,26 @@
 <!--#include virtual="/includes/header-eng.html" -->
+<script>
+  $(function() {
+    $('#date').change(function () {
+      $.getJSON(
+        '/api/depths?date=' + $(this).val(), 
+        function (data) {
+          body.text(data);
+        }
+      );
+      var selectedDate = $('#date').datepicker("getDate");
+      selectedDate.setHours(23);
+      var today = new Date();
+      today.setHours(0);
+      if (selectedDate < today){
+        $(".rd_actual").attr('disabled', false);
+      }
+      else{
+        $(".rd_actual").attr('disabled', true);
+      };
+    });
+  });
+</script>
 
 <div class="grid-12">
   <h1>Transit Window</h1>
@@ -11,23 +33,25 @@
     </ul>
 
     <div class="summary tabs-panel" style="border: 2px solid #eee">
-      <div id="parameters" style="height: 300px">
+      <div id="parameters" style="height:300px">
         <form id="daily_depth">
           <div class="span-4">
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
 
             <label for="discharge">River Discharge:</label>
-            <input id="discharge" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
-            <input type="radio" name="discharge" /> Actual (0m3/s)<br />
-            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s<br />
+            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
+            <input type="radio" name="discharge" class="rd_actual" disabled="false" /> Actual (0m3/s)<br />
             <input type="radio" name="discharge" /> Selected 
               <select id="discharge_select">
                 <option value="2000">2000</option>
                 <option value="5000">5000</option>
                 <option value="7500">7500</option>
               </select> m3/s<br />
+            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
+          </div>
 
+          <div class="span-4">
             <label for="chainage">Chainage:</label>
             <select id="chainage">
               <option value="6">6</option>
@@ -61,12 +85,10 @@
               <option value="34">34</option>
               <option value="35" selected="selected">35</option>
             </select>
-          </div>
-
-          <div class="span-4">
+            
             <div>
               <label for="condition">Channel Condition:</label>
-              <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;
+              <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;<br />
               <input type="radio" name="condition" /> Design Grade
             </div>
 
@@ -111,6 +133,7 @@
                 <option value="5hrs">5hrs</option>
               </select>
               </div>
+              <br />
               <input id="channel" type="radio" name="max_depth"/> Available Windows
               <div style="display: none">Available Windows Depth: <input type="text" /> m</div>
             </div>

@@ -22,15 +22,23 @@ $(".yaxislabel").css("color","black");
 
 <script>
   $(function() {
-    $('#date').datepicker();
-    $('#date').val(moment().format('MM/DD/YYYY'));
     $('#date').change(function () {
-        $.getJSON(
-          '/api/depths?date=' + $(this).val(), 
-          function (data) {
-            body.text(data);
-          }
-        );
+      $.getJSON(
+        '/api/depths?date=' + $(this).val(), 
+        function (data) {
+          body.text(data);
+        }
+      );
+      var selectedDate = $('#date').datepicker("getDate");
+      selectedDate.setHours(23);
+      var today = new Date();
+      today.setHours(0);
+      if (selectedDate < today){
+        $(".rd_actual").attr('disabled', false);
+      }
+      else{
+        $(".rd_actual").attr('disabled', true);
+      };
     });
   });
 </script>
@@ -40,142 +48,143 @@ $(".yaxislabel").css("color","black");
 .yaxislabel { color: black; }
 </style>
 
-<h1>Available Depths</h1>
+<div class="grid-12">
+  <h1>Available Depths</h1>
 
-<div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
-  <ul class="tabs">
-    <li class="default"><a href="#parameters">Parameters</a></li>
-    <li><a href="#help">Help</a></li>
-  </ul>
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+    <ul class="tabs">
+      <li class="default"><a href="#parameters">Parameters</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
 
-  <div class="summary tabs-panel" style="border: 2px solid #eee">
-    <div id="parameters">
-      <form id="daily_depth">
-        <div class="span-2">
-          <label for="date">Date:</label>
-          <input id="date" type="text" name="date" class="datepicker" />
+    <div class="summary tabs-panel" style="border: 2px solid #eee">
+      <div id="parameters" style="height:250px">
+        <form id="daily_depth">
+          <div class="span-4">
+            <label for="date">Date:</label>
+            <input id="date" type="text" name="date" class="datepicker" />
 
-          <label for="discharge">River Discharge:</label>
-          <input id="discharge" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
-          <input type="radio" name="discharge" /> Actual (0m3/s)<br />
-          <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s<br />
-          <input type="radio" name="discharge" /> Selected
-          <select>
-            <option>300</option>
-            <option>600</option>
-            <option>900</option>
-          </select> m3/s
-        </div>
-
-        <div class="span-3">
-          <div>
-            <label for="condition">Channel Condition:</label>
-            <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;
-            <input type="radio" name="condition" /> Design Grade
+            <label for="discharge">River Discharge:</label>
+            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
+            <input type="radio" name="discharge" class="rd_actual" disabled="true" /> Actual (0m3/s)<br />
+            <input type="radio" name="discharge" /> Selected
+            <select>
+              <option>300</option>
+              <option>600</option>
+              <option>900</option>
+            </select> m3/s<br />
+            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
           </div>
 
-          <div>
-            <label for="channel">Navigation Channel:</label>
-            <input id="channel" type="radio" name="channel" checked="checked" /> Inner Limit &nbsp;
-            <input type="radio" name="channel" /> Outer Limit
+          <div class="span-4">
+            <label for="chainage">Chainage:</label>
+            <select id="chainage">
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+              <option value="32">32</option>
+              <option value="33">33</option>
+              <option value="34">34</option>
+              <option value="35" selected="selected">35</option>
+            </select>
+            
+            <div>
+              <label for="condition">Channel Condition:</label>
+              <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;<br />
+              <input type="radio" name="condition" /> Design Grade
+            </div>
+
+            <div>
+              <label for="channel">Navigation Channel:</label>
+              <input id="channel" type="radio" name="channel" checked="checked" /> Inner Limit &nbsp;<br />
+              <input type="radio" name="channel" /> Outer Limit
+            </div>
           </div>
-        </div>
 
-        <div class="span-2">
-          <div>
-            <label for="width">Available Width:</label>
-            <select id="width">
-              <option value="100" selected="selected">100</option>
-              <option value="95">95</option>
-              <option value="90">90</option>
-              <option value="85">85</option>
-              <option value="80">80</option>
-              <option value="75">75</option>
-              <option value="70">70</option>
-              <option value="65">65</option>
-              <option value="60">60</option>
-            </select> %
+          <div class="span-3">
+            <div>
+              <label for="width">Available Width:</label>
+              <select id="width">
+                <option value="100" selected="selected">100</option>
+                <option value="95">95</option>
+                <option value="90">90</option>
+                <option value="85">85</option>
+                <option value="80">80</option>
+                <option value="75">75</option>
+                <option value="70">70</option>
+                <option value="65">65</option>
+                <option value="60">60</option>
+              </select> %
+            </div>
           </div>
+        </form>
+      </div>
 
-          <label for="chainage">Chainage:</label>
-          <select id="chainage">
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-            <option value="26">26</option>
-            <option value="27">27</option>
-            <option value="28">28</option>
-            <option value="29">29</option>
-            <option value="30">30</option>
-            <option value="31">31</option>
-            <option value="32">32</option>
-            <option value="33">33</option>
-            <option value="34">34</option>
-            <option value="35" selected="selected">35</option>
-          </select>
-        </div>
-      </form>
-    </div>
+      <div id="help" style="max-height: 200px; overflow-y: scroll;">
+        <p>
+          The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
+        </p>
 
-    <div id="help" style="max-height: 200px; overflow-y: scroll;">
-      <p>
-        The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
-      </p>
+        <p>To inspect the critical point locations over a one-day period,</p>
 
-      <p>To inspect the critical point locations over a one-day period,</p>
+        <ul>
+          <li>Enter a date.  Click on the date text to choose using a calendar.</li>
+          <li>Click on the Next button</li>
+        </ul>
 
-      <ul>
-        <li>Enter a date.  Click on the date text to choose using a calendar.</li>
-        <li>Click on the Next button</li>
-      </ul>
+        <p>
+          Avadepth displays the options to use a flow rate.   These are predicted, actual, user-defined or select from the list.
+        </p>
 
-      <p>
-        Avadepth displays the options to use a flow rate.   These are predicted, actual, user-defined or select from the list.
-      </p>
+        <ul>
+          <li>Select the flow rate to be used.</li>
+          <li>Click on the daily depth button to display the graph.</li>
+        </ul>
 
-      <ul>
-        <li>Select the flow rate to be used.</li>
-        <li>Click on the daily depth button to display the graph.</li>
-      </ul>
+        <p>
+          Avadepth plots the variation of maximum available depths for a single day.
+        </p>
 
-      <p>
-        Avadepth plots the variation of maximum available depths for a single day.
-      </p>
+        <p>
+          To print the graph to your printer:
+        </p>
 
-      <p>
-        To print the graph to your printer:
-      </p>
+        <p>
+          In your browser menu, you can select File|Print to print a hard-copy.
+          To display a tabulation of the least available depth and control point location for each two-hour period on the selected date.
+        </p>
 
-      <p>
-        In your browser menu, you can select File|Print to print a hard-copy.
-        To display a tabulation of the least available depth and control point location for each two-hour period on the selected date.
-      </p>
-
-      <ul>
-        <li>Click on the report tab.</li>
-        <li>To print a hard-copy, select click File|Print menu item.</li>
-      </ul>
+        <ul>
+          <li>Click on the report tab.</li>
+          <li>To print a hard-copy, select click File|Print menu item.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-
 <div class="clear"></div>
 
 

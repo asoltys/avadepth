@@ -1,72 +1,83 @@
 <!--#include virtual="/includes/header-eng.html" -->
 <script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.js"></script>
-<script type="text/javascript">
-$(function() {
-var points = [[0, 10.6], [2, 11.1],[4, 11.85],[6, 12.2],[8, 11.3],[10, 10.0],[12, 9.4],[14, 9.4],[16, 10.5],[18, 11.75],[20, 12.1],[22, 11.6]];
-var d1 = {color: "red",
-          lines: {lineWidth: 5},
-          data: points};
-$.plot("#placeholder", [ d1 ]);
-// Add the Flot version string to the footer
-});
+<script>
+  $(function() {
+    $('#date').change(function () {
+      $.getJSON(
+        '/api/depths?date=' + $(this).val(), 
+        function (data) {
+          body.text(data);
+        }
+      );
+      var selectedDate = $('#date').datepicker("getDate");
+      selectedDate.setHours(23);
+      var today = new Date();
+      today.setHours(0);
+      if (selectedDate < today){
+        $(".rd_actual").attr('disabled', false);
+      }
+      else{
+        $(".rd_actual").attr('disabled', true);
+      };
+    });
+  });
 </script>
 
+<div class="grid-12">
+  <h1>Predicted Water Levels</h1>
 
-<h1>Predicted Water Levels</h1>
+  <form id="daily_depth">
+    <div class="span-4">
+      <div>
+        <label for="date">Date:</label>
+        <input id="date" type="text" name="date" class="datepicker" />
+      </div>
 
-<form id="daily_depth">
-  <div class="span-2">
-    <div>
-      <label for="date">Date:</label>
-      <input id="date" type="date" name="date" />
+      <div>
+        <label for="fraser_river">Fraser River:</label>
+        <input id="fraser_river" type="radio" name="fraser_river" checked="checked" /> South Arm (km 0-40)<br />
+        <input type="radio" name="fraser_river" /> North Arm (km 0-30)<br />
+        <input type="radio" name="fraser_river" /> Main Arm (km 40-92)<br />
+      </div>
     </div>
 
-    <div>
-      <label for="fraser_river">Fraser River:</label>
-      <input id="fraser_river" type="radio" name="fraser_river" checked="checked" /> South Arm (km 0-40)<br />
-      <input type="radio" name="fraser_river" /> North Arm (km 0-30)<br />
-      <input type="radio" name="fraser_river" /> Main Arm (km 40-92)<br />
-    </div>
-  </div>
+    <div class="span-4">
 
-  <div class="span-2">
-
-    <div>
-      <label for="river_discharge">River Discharge @ Hope:</label>
-      <input id="river_discharge" type="radio" name="river_discharge" checked="checked" /> South Arm (km 0-40)<br />
-      <input type="radio" name="river_discharge" /> North Arm (km 0-30)<br />
-      <input type="radio" name="river_discharge" /> Main Arm (km 40-92)<br />
-      <input type="radio" name="river_discharge" /> User Defined
-      <input id="river_discharge" type="text" name="river_discharge_user_defined" /> m3/s<br />
-      <input type="radio" name="river_discharge" /> Selected
-      <select id="width">
-        <option value="2000" selected="selected">2000</option>
-        <option value="5000">5000</option>
-        <option value="7500">7500</option>
-      </select> m3/s
-    </div>
-  </div>
-
-  <div class="span-2">
-
-    <div>
-      <label for="interval">Interval:</label>
-      <select id="width">
-        <option value="15 minute">15 minute</option>
-        <option value="30 minute">30 minute</option>
-        <option value="1 hour" selected="selected">1 hour</option>
-        <option value="2 hour">2 hour</option>
-      </select> m3/s
+      <div>
+        <label for="river_discharge">River Discharge @ Hope:</label>
+        <input id="river_discharge" type="radio" name="river_discharge" class="rd_predicted" checked="checked" /> Predicted (0m&#179;s)<br />
+        <input type="radio" name="river_discharge" disabled="true" class="rd_actual" /> Actual (841m&#179;s)<br />
+        <input type="radio" name="river_discharge" /> Selected
+        <select id="width">
+          <option value="2000" selected="selected">2000</option>
+          <option value="5000">5000</option>
+          <option value="7500">7500</option>
+        </select> m3/s<br />
+        <input type="radio" name="river_discharge" /> User Defined
+        <input id="river_discharge" type="text" name="river_discharge_user_defined" /> m3/s
+      </div>
     </div>
 
-    <div>
-      <label for="report">Report:</label>
-      <input id="report" type="radio" name="report" checked="checked" /> Water Levels 
-      <input type="radio" name="report" /> Velocities<br />
-    </div>
-  </div>
-</form>
+    <div class="span-3">
 
+      <div>
+        <label for="interval">Interval:</label>
+        <select id="width">
+          <option value="15 minute">15 minute</option>
+          <option value="30 minute">30 minute</option>
+          <option value="1 hour" selected="selected">1 hour</option>
+          <option value="2 hour">2 hour</option>
+        </select> m3/s
+      </div>
+
+      <div>
+        <label for="report">Report:</label>
+        <input id="report" type="radio" name="report" checked="checked" /> Water Levels<br />
+        <input type="radio" name="report" /> Velocities<br />
+      </div>
+    </div>
+  </form>
+</div>
 <div class="clear"></div>
 
 <div>
@@ -77,30 +88,30 @@ $.plot("#placeholder", [ d1 ]);
     <th colspan="21">Location Sandheads Km 0 to Port Mann Km 40</th>
   </tr>
   <tr>
-    <th>0</th>
-    <th>2</th>
-    <th>4</th>
-    <th>6</th>
-    <th>8</th>
-    <th>10</th>
-    <th>12</th>
-    <th>14</th>
-    <th>16</th>
-    <th>18</th>
-    <th>20</th>
-    <th>22</th>
-    <th>24</th>
-    <th>26</th>
-    <th>28</th>
-    <th>30</th>
-    <th>32</th>
-    <th>34</th>
-    <th>36</th>
-    <th>38</th>
-    <th>40</th>
+    <th><a href="pwlk-nepk-eng.html">0</a></th>
+    <th><a href="pwlk-nepk-eng.html">2</a></th>
+    <th><a href="pwlk-nepk-eng.html">4</a></th>
+    <th><a href="pwlk-nepk-eng.html">6</a></th>
+    <th><a href="pwlk-nepk-eng.html">8</a></th>
+    <th><a href="pwlk-nepk-eng.html">10</a></th>
+    <th><a href="pwlk-nepk-eng.html">12</a></th>
+    <th><a href="pwlk-nepk-eng.html">14</a></th>
+    <th><a href="pwlk-nepk-eng.html">16</a></th>
+    <th><a href="pwlk-nepk-eng.html">18</a></th>
+    <th><a href="pwlk-nepk-eng.html">20</a></th>
+    <th><a href="pwlk-nepk-eng.html">22</a></th>
+    <th><a href="pwlk-nepk-eng.html">24</a></th>
+    <th><a href="pwlk-nepk-eng.html">26</a></th>
+    <th><a href="pwlk-nepk-eng.html">28</a></th>
+    <th><a href="pwlk-nepk-eng.html">30</a></th>
+    <th><a href="pwlk-nepk-eng.html">32</a></th>
+    <th><a href="pwlk-nepk-eng.html">34</a></th>
+    <th><a href="pwlk-nepk-eng.html">36</a></th>
+    <th><a href="pwlk-nepk-eng.html">38</a></th>
+    <th><a href="pwlk-nepk-eng.html">40</a></th>
   </tr>
   <tr>
-    <th>00:00</th>
+    <th><a href="pwlt-ptnd-eng.html">00:00</a></th>
     <td>3.5</td>
     <td>3.3</td>
     <td>3.1</td>
@@ -124,7 +135,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.7</td>
   </tr>
   <tr>
-    <th>01:00</th>
+    <th><a href="pwlt-ptnd-eng.html">01:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -148,7 +159,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>02:00</th>
+    <th><a href="pwlt-ptnd-eng.html">02:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -172,7 +183,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>03:00</th>
+    <th><a href="pwlt-ptnd-eng.html">03:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -196,7 +207,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>04:00</th>
+    <th><a href="pwlt-ptnd-eng.html">04:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -220,7 +231,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>05:00</th>
+    <th><a href="pwlt-ptnd-eng.html">05:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -244,7 +255,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>06:00</th>
+    <th><a href="pwlt-ptnd-eng.html">06:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -268,7 +279,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>07:00</th>
+    <th><a href="pwlt-ptnd-eng.html">07:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -292,7 +303,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>08:00</th>
+    <th><a href="pwlt-ptnd-eng.html">08:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -316,7 +327,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>09:00</th>
+    <th><a href="pwlt-ptnd-eng.html">09:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -340,7 +351,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>10:00</th>
+    <th><a href="pwlt-ptnd-eng.html">10:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -364,7 +375,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>11:00</th>
+    <th><a href="pwlt-ptnd-eng.html">11:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -388,7 +399,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>12:00</th>
+    <th><a href="pwlt-ptnd-eng.html">12:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -412,7 +423,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>13:00</th>
+    <th><a href="pwlt-ptnd-eng.html">13:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -436,7 +447,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>14:00</th>
+    <th><a href="pwlt-ptnd-eng.html">14:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -460,7 +471,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>15:00</th>
+    <th><a href="pwlt-ptnd-eng.html">15:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -484,7 +495,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>16:00</th>
+    <th><a href="pwlt-ptnd-eng.html">16:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -508,7 +519,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>17:00</th>
+    <th><a href="pwlt-ptnd-eng.html">17:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -532,7 +543,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>18:00</th>
+    <th><a href="pwlt-ptnd-eng.html">18:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -556,7 +567,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>19:00</th>
+    <th><a href="pwlt-ptnd-eng.html">19:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -580,7 +591,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>20:00</th>
+    <th><a href="pwlt-ptnd-eng.html">20:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -604,7 +615,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>21:00</th>
+    <th><a href="pwlt-ptnd-eng.html">21:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -628,7 +639,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>22:00</th>
+    <th><a href="pwlt-ptnd-eng.html">22:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -652,7 +663,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>23:00</th>
+    <th><a href="pwlt-ptnd-eng.html">23:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
@@ -676,7 +687,7 @@ $.plot("#placeholder", [ d1 ]);
     <td>2.5</td>
   </tr>
   <tr>
-    <th>24:00</th>
+    <th><a href="pwlt-ptnd-eng.html">24:00</a></th>
     <td>3.3</td>
     <td>3.1</td>
     <td>2.9</td>
