@@ -17,6 +17,17 @@
 form#daily_depth label { font-weight: bold; }
 form#daily_depth div { margin-bottom: 15px; }
 
+tr {
+  line-height: 10px;
+}
+
+table th {
+  line-height: 15px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+}
+
 .active { border: 0 }
 
 .tabs-style-1 .tabs li a, .tabs-style-1 .tabs li a:hover, .tabs-style-1 .tabs li a:focus, .tabs-style-1 .tabs li {

@@ -83,160 +83,162 @@
 
 <h1>Animated Currents and Velocities</h1>
 
-<div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
-  <ul class="tabs">
-    <li class="default"><a href="#parameters">Parameters</a></li>
-    <li><a href="#help">Help</a></li>
-  </ul>
+<div class="grid-12">
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+    <ul class="tabs">
+      <li class="default"><a href="#parameters">Parameters</a></li>
+      <li><a href="#help">Help</a></li>
+    </ul>
 
-  <div class="summary tabs-panel" style="border: 2px solid #eee">
-    <div id="parameters">
-      <form id="daily_depth">
-        <div class="span-2">
-          <label for="date">Date:</label>
-          <input id="date" type="text" name="date" class="datepicker" />
-        </div>
-        <div class="span-3">
-
-          <label for="discharge">River Discharge:</label>
-          <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
-          <input type="radio" name="discharge" class="rd_actual" disabled="true" /> Actual (0m3/s)<br />
-          <input type="radio" name="discharge" /> Selected
-          <select>
-            <option>300</option>
-            <option>600</option>
-            <option>900</option>
-          </select> m3/s<br />
-          <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
-        </div>
-
-        <div class="span-2">
-          <div class="float-left">
-            <label for="from">From:</label>
-            <select id="from" name="from">
-              <option>00:00</option>
-              <option>01:00</option>
-              <option>02:00</option>
-              <option>03:00</option>
-              <option>04:00</option>
-              <option>05:00</option>
-              <option>06:00</option>
-              <option>07:00</option>
-              <option>08:00</option>
-              <option>09:00</option>
-              <option>10:00</option>
-              <option>11:00</option>
-              <option>12:00</option>
-              <option>13:00</option>
-              <option>14:00</option>
-              <option>15:00</option>
-              <option>16:00</option>
-              <option>17:00</option>
-              <option>18:00</option>
-              <option>19:00</option>
-              <option>20:00</option>
-              <option>21:00</option>
-              <option>22:00</option>
-              <option>23:00</option>
-            </select>
+    <div class="summary tabs-panel" style="border: 2px solid #eee">
+      <div id="parameters" style="height:250px">
+        <form id="daily_depth">
+          <div class="span-3">
+            <label for="date">Date:</label>
+            <input id="date" type="text" name="date" class="datepicker" />
           </div>
-          <div>
-            <label for="to">To:</label>
-            <select id="to" name="to">
-              <option>00:00</option>
-              <option>01:00</option>
-              <option>02:00</option>
-              <option>03:00</option>
-              <option>04:00</option>
-              <option>05:00</option>
-              <option>06:00</option>
-              <option>07:00</option>
-              <option>08:00</option>
-              <option>09:00</option>
-              <option>10:00</option>
-              <option>11:00</option>
-              <option>12:00</option>
-              <option>13:00</option>
-              <option>14:00</option>
-              <option>15:00</option>
-              <option>16:00</option>
-              <option>17:00</option>
-              <option>18:00</option>
-              <option>19:00</option>
-              <option>20:00</option>
-              <option>21:00</option>
-              <option>22:00</option>
-              <option>23:00</option>
-            </select>
-          </div>
-          <div class="float-left">
-            <label for="zone">Zone:</label>
-            <select name="zone">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-            </select>
+          <div class="span-4">
+
+            <label for="discharge">River Discharge:</label>
+            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
+            <input type="radio" name="discharge" class="rd_actual" disabled="true" /> Actual (0m3/s)<br />
+            <input type="radio" name="discharge" /> Selected
+            <select>
+              <option>300</option>
+              <option>600</option>
+              <option>900</option>
+            </select> m3/s<br />
+            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
           </div>
 
-          <div>
-            <label for="interval">Interval:</label>
-            <select name="interval">
-              <option>2hr</option>
-              <option>4hr</option>
-              <option>6hr</option>
-              <option>8hr</option>
-            </select>
+          <div class="span-4">
+            <div class="float-left">
+              <label for="from">From:</label>
+              <select id="from" name="from">
+                <option>00:00</option>
+                <option>01:00</option>
+                <option>02:00</option>
+                <option>03:00</option>
+                <option>04:00</option>
+                <option>05:00</option>
+                <option>06:00</option>
+                <option>07:00</option>
+                <option>08:00</option>
+                <option>09:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+              </select>
+            </div>
+            <div>
+              <label for="to">To:</label>
+              <select id="to" name="to">
+                <option>00:00</option>
+                <option>01:00</option>
+                <option>02:00</option>
+                <option>03:00</option>
+                <option>04:00</option>
+                <option>05:00</option>
+                <option>06:00</option>
+                <option>07:00</option>
+                <option>08:00</option>
+                <option>09:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+              </select>
+            </div>
+            <div class="float-left">
+              <label for="zone">Zone:</label>
+              <select name="zone">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="interval">Interval:</label>
+              <select name="interval">
+                <option>2hr</option>
+                <option>4hr</option>
+                <option>6hr</option>
+                <option>8hr</option>
+              </select>
+            </div>
+            <div>
+              <label for="velocity_legend">Velocity Legend:</label>
+              <input type="radio" id="velocity_legend" name="velocity_legend" value="0-2"/> 0 to 2 m/s (Interval .25ms)<br />
+              <input type="radio" name="velocity_legend" value="0-4"/> 0 to 4 m/s (Interval .5ms)<br />
+            </div>
           </div>
-          <div>
-            <label for="velocity_legend">Velocity Legend:</label>
-            <input type="radio" id="velocity_legend" name="velocity_legend" value="0-2"/> 0 to 2 m/s (Interval .25ms)<br />
-            <input type="radio" name="velocity_legend" value="0-4"/> 0 to 4 m/s (Interval .5ms)<br />
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
 
-    <div id="help" style="max-height: 200px; overflow-y: scroll;">
-      <p>
-        The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
-      </p>
+      <div id="help" style="max-height: 200px; overflow-y: scroll;">
+        <p>
+          The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
+        </p>
 
-      <p>To inspect the critical point locations over a one-day period,</p>
+        <p>To inspect the critical point locations over a one-day period,</p>
 
-      <ul>
-        <li>Enter a date.  Click on the date text to choose using a calendar.</li>
-        <li>Click on the Next button</li>
-      </ul>
+        <ul>
+          <li>Enter a date.  Click on the date text to choose using a calendar.</li>
+          <li>Click on the Next button</li>
+        </ul>
 
-      <p>
-        Avadepth displays the options to use a flow rate.   These are predicted, actual, user-defined or select from the list.
-      </p>
+        <p>
+          Avadepth displays the options to use a flow rate.   These are predicted, actual, user-defined or select from the list.
+        </p>
 
-      <ul>
-        <li>Select the flow rate to be used.</li>
-        <li>Click on the daily depth button to display the graph.</li>
-      </ul>
+        <ul>
+          <li>Select the flow rate to be used.</li>
+          <li>Click on the daily depth button to display the graph.</li>
+        </ul>
 
-      <p>
-        Avadepth plots the variation of maximum available depths for a single day.
-      </p>
+        <p>
+          Avadepth plots the variation of maximum available depths for a single day.
+        </p>
 
-      <p>
-        To print the graph to your printer:
-      </p>
+        <p>
+          To print the graph to your printer:
+        </p>
 
-      <p>
-        In your browser menu, you can select File|Print to print a hard-copy.
-        To display a tabulation of the least available depth and control point location for each two-hour period on the selected date.
-      </p>
+        <p>
+          In your browser menu, you can select File|Print to print a hard-copy.
+          To display a tabulation of the least available depth and control point location for each two-hour period on the selected date.
+        </p>
 
-      <ul>
-        <li>Click on the report tab.</li>
-        <li>To print a hard-copy, select click File|Print menu item.</li>
-      </ul>
+        <ul>
+          <li>Click on the report tab.</li>
+          <li>To print a hard-copy, select click File|Print menu item.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

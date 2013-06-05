@@ -2,12 +2,13 @@
   display: inline;
 }
 
-.wet-boew-tabbedinterface, .tabs-panel {
+form, ul.tabs, .grid-12 {
   display: none;
 }
 
 div#placeholder {
   float: none;
-  margin: 5px 5px;
   position: relative;
+  top: 50px;
+  width: 200px;
 }

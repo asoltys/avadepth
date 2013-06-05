@@ -26,9 +26,8 @@
   });
 </script>
 
+<h1>Predicted Water Levels</h1>
 <div class="grid-12">
-  <h1>Predicted Water Levels</h1>
-
   <form id="daily_depth">
     <div class="span-4">
       <div>
@@ -45,7 +44,6 @@
     </div>
 
     <div class="span-4">
-
       <div>
         <label for="river_discharge">River Discharge @ Hope:</label>
         <input id="river_discharge" type="radio" name="river_discharge" class="rd_predicted" checked="checked" /> Predicted (0m&#179;s)<br />
@@ -62,7 +60,6 @@
     </div>
 
     <div class="span-3">
-
       <div>
         <label for="interval">Interval:</label>
         <select id="width">
@@ -70,650 +67,666 @@
           <option value="30 minute">30 minute</option>
           <option value="1 hour" selected="selected">1 hour</option>
           <option value="2 hour">2 hour</option>
-        </select> m3/s
-      </div>
-
-      <div>
-        <label for="report">Report:</label>
-        <input id="report" type="radio" name="report" checked="checked" /> Water Levels<br />
-        <input type="radio" name="report" /> Velocities<br />
+        </select>
       </div>
     </div>
   </form>
 </div>
+
 <div class="clear"></div>
 
 <div>
-<table class="zebra-striped">
-<tbody>
-  <tr>
-    <th rowspan="2">Time (PST)</th>
-    <th colspan="21">Location Sandheads Km 0 to Port Mann Km 40</th>
-  </tr>
-  <tr>
-    <th><a href="pwlk-nepk-eng.html">0</a></th>
-    <th><a href="pwlk-nepk-eng.html">2</a></th>
-    <th><a href="pwlk-nepk-eng.html">4</a></th>
-    <th><a href="pwlk-nepk-eng.html">6</a></th>
-    <th><a href="pwlk-nepk-eng.html">8</a></th>
-    <th><a href="pwlk-nepk-eng.html">10</a></th>
-    <th><a href="pwlk-nepk-eng.html">12</a></th>
-    <th><a href="pwlk-nepk-eng.html">14</a></th>
-    <th><a href="pwlk-nepk-eng.html">16</a></th>
-    <th><a href="pwlk-nepk-eng.html">18</a></th>
-    <th><a href="pwlk-nepk-eng.html">20</a></th>
-    <th><a href="pwlk-nepk-eng.html">22</a></th>
-    <th><a href="pwlk-nepk-eng.html">24</a></th>
-    <th><a href="pwlk-nepk-eng.html">26</a></th>
-    <th><a href="pwlk-nepk-eng.html">28</a></th>
-    <th><a href="pwlk-nepk-eng.html">30</a></th>
-    <th><a href="pwlk-nepk-eng.html">32</a></th>
-    <th><a href="pwlk-nepk-eng.html">34</a></th>
-    <th><a href="pwlk-nepk-eng.html">36</a></th>
-    <th><a href="pwlk-nepk-eng.html">38</a></th>
-    <th><a href="pwlk-nepk-eng.html">40</a></th>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">00:00</a></th>
-    <td>3.5</td>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.8</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.6</td>
-    <td>2.6</td>
-    <td>2.6</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.7</td>
-    <td>2.7</td>
-    <td>2.7</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">01:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">02:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">03:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">04:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">05:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">06:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">07:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">08:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">09:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">10:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">11:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">12:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">13:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">14:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">15:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">16:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">17:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">18:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">19:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">20:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">21:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">22:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">23:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-  <tr>
-    <th><a href="pwlt-ptnd-eng.html">24:00</a></th>
-    <td>3.3</td>
-    <td>3.1</td>
-    <td>2.9</td>
-    <td>2.7</td>
-    <td>2.6</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.4</td>
-    <td>2.5</td>
-    <td>2.5</td>
-    <td>2.5</td>
-  </tr>
-</tbody>
-</table>
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+    <ul class="tabs">
+      <li class="default"><a href="#water-levels">Water Levels</a></li>
+      <li><a href="#velocities">Velocities</a></li>
+    </ul>
+
+    <div class="summary tabs-panel" style="border: 2px solid #eee">
+      <div id="water-levels" style="height:250px">
+        <div class="print_show">
+          <p>Interval: 1 hour</p>
+          <p>Fraser River: South Arm (km 0-40)</p>
+          <p>River Discharge @ Hope: Predicted ()</p>
+          <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
+        </div>
+        
+        <table class="zebra-striped">
+        <tbody>
+          <tr>
+            <th rowspan="2">Time (PST)</th>
+            <th colspan="21">Location Sandheads Km 0 to Port Mann Km 40</th>
+          </tr>
+          <tr>
+            <th><a href="pwlk-nepk-eng.html">0</a></th>
+            <th><a href="pwlk-nepk-eng.html">2</a></th>
+            <th><a href="pwlk-nepk-eng.html">4</a></th>
+            <th><a href="pwlk-nepk-eng.html">6</a></th>
+            <th><a href="pwlk-nepk-eng.html">8</a></th>
+            <th><a href="pwlk-nepk-eng.html">10</a></th>
+            <th><a href="pwlk-nepk-eng.html">12</a></th>
+            <th><a href="pwlk-nepk-eng.html">14</a></th>
+            <th><a href="pwlk-nepk-eng.html">16</a></th>
+            <th><a href="pwlk-nepk-eng.html">18</a></th>
+            <th><a href="pwlk-nepk-eng.html">20</a></th>
+            <th><a href="pwlk-nepk-eng.html">22</a></th>
+            <th><a href="pwlk-nepk-eng.html">24</a></th>
+            <th><a href="pwlk-nepk-eng.html">26</a></th>
+            <th><a href="pwlk-nepk-eng.html">28</a></th>
+            <th><a href="pwlk-nepk-eng.html">30</a></th>
+            <th><a href="pwlk-nepk-eng.html">32</a></th>
+            <th><a href="pwlk-nepk-eng.html">34</a></th>
+            <th><a href="pwlk-nepk-eng.html">36</a></th>
+            <th><a href="pwlk-nepk-eng.html">38</a></th>
+            <th><a href="pwlk-nepk-eng.html">40</a></th>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">00:00</a></th>
+            <td>3.5</td>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.8</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.6</td>
+            <td>2.6</td>
+            <td>2.6</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.7</td>
+            <td>2.7</td>
+            <td>2.7</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">01:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">02:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">03:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">04:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">05:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">06:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">07:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">08:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">09:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">10:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">11:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">12:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">13:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">14:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">15:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">16:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">17:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">18:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">19:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">20:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">21:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">22:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">23:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+          <tr>
+            <th><a href="pwlt-ptnd-eng.html">24:00</a></th>
+            <td>3.3</td>
+            <td>3.1</td>
+            <td>2.9</td>
+            <td>2.7</td>
+            <td>2.6</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.4</td>
+            <td>2.5</td>
+            <td>2.5</td>
+            <td>2.5</td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+      
+      <div id="velocities" style="max-height: 200px; overflow-y: scroll;">
+      </div>
+    </div>
+  </div>
 </div>
 <!--#include virtual="/includes/footer-eng.html" -->
