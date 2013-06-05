@@ -40,8 +40,6 @@ $(->
     $('#flowRate').val(flowrate)
   )
 
-  $('#date').datepicker('option', 'dateFormat', 'yy-mm-dd')
-  $('#date').val(moment().format('YYYY-MM-DD'))
   $('#date').change(->
     $.getJSON("/api/Flow/Get?date=#{$('#date').val()}", (data) ->
       $('#predicted_discharge').text(data)
@@ -55,11 +53,7 @@ $(->
       )
     )
 
-    selectedDate = $('#date').datepicker("getDate")
-    selectedDate.setHours(23)
-    today = new Date()
-    today.setHours(0)
-    if (selectedDate < today)
+    if (moment().diff($('#date').val()) > 0)
       $("#actual").attr('disabled', false)
     else
       $("#actual").attr('disabled', true)

@@ -1,4 +1,4 @@
 $(function() {
-  $('.datepicker').datepicker();
-  $('.datepicker').val(moment().format('MM/DD/YYYY'));
+  $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
+  $('.datepicker').val(moment().format('YYYY-MM-DD'));
 });

@@ -1,29 +1,5 @@
 <!--#include virtual="/includes/header-eng.html" -->
-<script>
-  $(function() {
-    $('#date').change(function () {
-      $.getJSON(
-        '/api/depths?date=' + $(this).val(), 
-        function (data) {
-          body.text(data);
-        }
-      );
-      var selectedDate = $('#date').datepicker("getDate");
-      selectedDate.setHours(23);
-      var today = new Date();
-      today.setHours(0);
-      if (selectedDate < today){
-        $(".rd_actual").attr('disabled', false);
-      }
-      else{
-        $(".rd_actual").attr('disabled', true);
-      };
-    });
-    
-    // apply striping class
-    $('.zebra-striped tr:even').addClass('stripe');
-  });
-</script>
+<script src="scripts/tw-ft.js"></script>
 
 <h1>Transit Window</h1>
 <h2>Fraser River - Inner Channel Limit</h2>
@@ -41,9 +17,9 @@
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
 
-            <label for="discharge">River Discharge:</label>
-            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
-            <input type="radio" name="discharge" class="rd_actual" disabled="false" /> Actual (0m3/s)<br />
+            <label for="predicted">River Discharge:</label>
+            <input id="predicted" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
+            <input id="actual" type="radio" name="discharge" disabled="false" /> Actual (0m3/s)<br />
             <input type="radio" name="discharge" /> Selected 
               <select id="discharge_select">
                 <option value="2000">2000</option>
