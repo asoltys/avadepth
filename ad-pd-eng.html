@@ -1,50 +1,5 @@
 <!--#include virtual="/includes/header-eng.html" -->
-<script type="text/javascript">
-$(function() {
-var points = [[0, 10.6], [2, 11.1],[4, 11.85],[6, 12.2],[8, 11.3],[10, 10.0],[12, 9.4],[14, 9.4],[16, 10.5],[18, 11.75],[20, 12.1],[22, 11.6]];
-var d1 = {color: "red",
-          lines: {lineWidth: 3},
-          data: points};
-$.plot("#placeholder", [ d1 ], {
-          xaxes: [{
-            axisLabel: 'Pacific Standard Time (hrs)'
-        }],
-        yaxes: [{
-            position: 'left',
-            axisLabel: 'Available Depth (m)'
-        }]
-});
-
-// Add the Flot version string to the footer
-$(".yaxislabel").css("color","black");
-});
-</script>
-
-<script>
-  $(function() {
-    $('#date').change(function () {
-      $.getJSON(
-        '/api/depths?date=' + $(this).val(), 
-        function (data) {
-          body.text(data);
-        }
-      );
-      var selectedDate = $('#date').datepicker("getDate");
-      selectedDate.setHours(23);
-      var today = new Date();
-      today.setHours(0);
-      if (selectedDate < today){
-        $(".rd_actual").attr('disabled', false);
-      }
-      else{
-        $(".rd_actual").attr('disabled', true);
-      };
-    });
-    
-    // apply striping class
-    $('.zebra-striped tr:even').addClass('stripe');
-  });
-</script>
+<script src="scripts/ad-pd.js"></script>
 
 <style>
 .tabs-panel { border: 5px solid black; }
@@ -67,16 +22,22 @@ $(".yaxislabel").css("color","black");
             <input id="date" type="text" name="date" class="datepicker" />
 
             <label for="discharge">River Discharge:</label>
-            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
-            <input type="radio" name="discharge" class="rd_actual" disabled="true" /> Actual (0m3/s)<br />
-            <input type="radio" name="discharge" /> Selected
-            <select>
+            <input id="discharge" type="radio" name="discharge" checked="checked" value="predicted" /> Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
+            <input type="radio" name="discharge" value="actual" /> Actual (0m3/s)<br />
+
+            <input type="radio" name="discharge" value="defined" /> User-defined 
+            <input type="text" id="defined_discharge" /> m3/s<br />
+
+            <input type="radio" name="discharge" value="selected" /> Selected
+            <select id="selected_discharge">
               <option>300</option>
               <option>600</option>
               <option>900</option>
-            </select> m3/s<br />
-            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
+            </select> m3/s
+
+            <input type="hidden" name="flowRate" id="flowRate" value="0" />
           </div>
+
 
           <div class="span-4">
             <label for="chainage">Chainage:</label>
@@ -114,9 +75,9 @@ $(".yaxislabel").css("color","black");
             </select>
             
             <div>
-              <label for="condition">Channel Condition:</label>
-              <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;<br />
-              <input type="radio" name="condition" /> Design Grade
+              <label for="sounding">Channel Condition:</label>
+              <input id="sounding" type="radio" name="condition" checked="checked" value="0" /> Current Soundings &nbsp;
+              <input type="radio" name="sounding" value="1" /> Design Grade
             </div>
 
             <div>
@@ -196,124 +157,20 @@ $(".yaxislabel").css("color","black");
     <p>Current Soundings for Km 1 to 35 at 95% Available Width</p>
     <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
   </div>
-  <table class="table-condensed span-5 zebra-striped">
-  <tbody>
-  <tr>
-  <th width="10%">Time (pst)</th>
-  <th width="20%">Chainage (km)</th>
-  <th width="25%">Available Depth (m)</th>
-  <th>Location</th>
-  </tr>
-  <tr>
-  <td>
-  <a href="#">0000</a>
-  </td>
-  <td>29-30</td>
-  <td>10.7</td>
-  <td>St. Mungo Bend</td>
-  </tr>
 
-  <tr>
-  <td>
-  <a href="#">0200</a>
-  </td>
-  <td>29-30</td>
-  <td>11.1</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">0400</a>
-  </td>
-  <td>29-30</td>
-  <td>11.8</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a>0600</a>
-  </td>
-  <td>29-30</td>
-  <td>12.1</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">0800</a>
-  </td>
-  <td>21-22</td>
-  <td>11.3</td>
-  <td>Tilbury</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">1000</a>
-  </td>
-  <td>5-6</td>
-  <td>10.1</td>
-  <td>Steveston Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">1200</a>
-  </td>
-  <td>5-6</td>
-  <td>9.4</td>
-  <td>Steveston Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">1400</a>
-  </td>
-  <td>21-22</td>
-  <td>9.4</td>
-  <td>Tilbury</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">1600</a>
-  </td>
-  <td>29-30</td>
-  <td>10.4</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">1800</a>
-  </td>
-  <td>29-30</td>
-  <td>11.7</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">2000</a>
-  </td>
-  <td>29-30</td>
-  <td>12</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-
-  <tr>
-  <td>
-  <a href="#">2200</a>
-  </td>
-  <td>29-30</td>
-  <td>11.6</td>
-  <td>St. Mungo Bend</td>
-  </tr>
-  </tbody>
+  <table id="depths" class="table-condensed span-3 zebra-striped">
+    <thead>
+      <tr>
+        <th width="10%">Time (pst)</th>
+        <th width="20%">Chainage (km)</th>
+        <th width="25%">Available Depth (m)</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
   </table>
-
-  <div id="placeholder" class="demo-placeholder span-7" style="height:500px;float:left"></div>
 </div>
+
+<div id="placeholder" class="demo-placeholder span-5" style="height:500px;float:left"></div>
+
 <!--#include virtual="/includes/footer-eng.html" -->
