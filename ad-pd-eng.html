@@ -22,11 +22,8 @@
             <input id="date" type="text" name="date" class="datepicker" />
 
             <label for="discharge">River Discharge:</label>
-            <input id="discharge" type="radio" name="discharge" checked="checked" value="predicted" /> Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
-            <input type="radio" name="discharge" value="actual" /> Actual (0m3/s)<br />
-
-            <input type="radio" name="discharge" value="defined" /> User-defined 
-            <input type="text" id="defined_discharge" /> m3/s<br />
+            <input id="predicted" type="radio" name="discharge" checked="checked" value="predicted" /> Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
+            <input id="actual" type="radio" name="discharge" value="actual" /> Actual (0m3/s)<br />
 
             <input type="radio" name="discharge" value="selected" /> Selected
             <select id="selected_discharge">
@@ -34,6 +31,10 @@
               <option>600</option>
               <option>900</option>
             </select> m3/s
+            <br />
+            
+            <input type="radio" name="discharge" value="defined" /> User-defined 
+            <input type="text" id="defined_discharge" /> m3/s
 
             <input type="hidden" name="flowRate" id="flowRate" value="0" />
           </div>
@@ -158,7 +159,7 @@
     <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
   </div>
 
-  <table id="depths" class="table-condensed span-5 zebra-striped">
+  <table id="depths" class="table-condensed span-7 zebra-striped">
     <thead>
       <tr>
         <th width="10%">Time (pst)</th>
@@ -169,8 +170,8 @@
     </thead>
     <tbody></tbody>
   </table>
+  
+  <div id="placeholder" class="demo-placeholder span-5" style="height:500px;float:left"></div>
 </div>
-
-<div id="placeholder" class="demo-placeholder span-3" style="height:500px;float:left"></div>
 
 <!--#include virtual="/includes/footer-eng.html" -->

@@ -24,7 +24,7 @@ $(->
     s.substr(s.length-2)
 
   $.plot("#placeholder", [ d1 ], 
-    xaxes: [{ color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 2, tickFormatter: leadingZero }],
+    xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 2, tickFormatter: leadingZero],
     yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
   )
 
@@ -51,6 +51,7 @@ $(->
           $.each(data.items[0].items, ->
             $('#depths').append("<tr><td>#{this.period}</td><td>#{this.chainage}</td><td>#{this.depth}</td><td>#{this.location}</td>")
           )
+          $('.zebra-striped tr:even').addClass('stripe')
       )
     )
 
@@ -60,12 +61,8 @@ $(->
     today.setHours(0)
     if (selectedDate < today)
       $("#actual").attr('disabled', false)
-      $("#predicted").attr('disabled', true)
     else
       $("#actual").attr('disabled', true)
-      $("#predicted").attr('disabled', false)
   )
   $('#date').change()
-
-  $('.zebra-striped tr:even').addClass('stripe')
 )
