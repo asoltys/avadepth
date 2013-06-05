@@ -20,6 +20,9 @@
         $(".rd_actual").attr('disabled', true);
       };
     });
+    
+    // apply striping class
+    $('.zebra-striped tr:odd').addClass('stripe');
   });
 </script>
 
@@ -81,7 +84,7 @@
 <div class="clear"></div>
 
 <div>
-<table>
+<table class="zebra-striped">
 <tbody>
   <tr>
     <th rowspan="2">Time (PST)</th>

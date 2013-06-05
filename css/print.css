@@ -1,0 +1,13 @@
+.print_show {
+  display: inline;
+}
+
+.wet-boew-tabbedinterface, .tabs-panel {
+  display: none;
+}
+
+div#placeholder {
+  float: none;
+  margin: 5px 5px;
+  position: relative;
+}

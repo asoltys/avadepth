@@ -40,6 +40,9 @@ $(".yaxislabel").css("color","black");
         $(".rd_actual").attr('disabled', true);
       };
     });
+    
+    // apply striping class
+    $('.zebra-striped tr:even').addClass('stripe');
   });
 </script>
 
@@ -188,7 +191,7 @@ $(".yaxislabel").css("color","black");
 <div class="clear"></div>
 
 
-<table class="table-condensed span-3">
+<table class="table-condensed span-3 zebra-striped">
 <tbody>
 <tr>
 <th>Time (pst)</th>

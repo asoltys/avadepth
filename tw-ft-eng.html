@@ -19,6 +19,9 @@
         $(".rd_actual").attr('disabled', true);
       };
     });
+    
+    // apply striping class
+    $('.zebra-striped tr:even').addClass('stripe');
   });
 </script>
 
@@ -211,11 +214,14 @@ The Transit Window report shows the depth available for the entire channel for a
   </div>
 
   <div class="clear"></div>
-
-  <p>Transit Window: 2 hrs</p>
-  <p>Hope Discharge 5000m3/s (Selected)</p>
-  <p>Current Soundings for Km 1 to 35 at 95% Available Width</p>
-  <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
+  
+  <div class="print_show">
+    <p>Transit Window: 2 hrs</p>
+    <p>Hope Discharge 5000m3/s (Selected)</p>
+    <p>Current Soundings for Km 1 to 35 at 95% Available Width</p>
+    <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
+  </div>
+  
   <table class="table-accent span-4">
     <tr>
       <td>Average Depth of selected window:</td>
@@ -235,7 +241,8 @@ The Transit Window report shows the depth available for the entire channel for a
     </tr>
   </table>
   <div class="clear"></div>
-  <table class="table-accent span-4">
+  
+  <table class="table-accent span-12 zebra-striped">
     <tr>
       <th colspan="2">From</th>
       <th colspan="2">To</th>

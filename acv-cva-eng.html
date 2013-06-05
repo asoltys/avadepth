@@ -65,6 +65,20 @@
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
+  $(function() {
+    $('#date').change(function () {
+      var selectedDate = $('#date').datepicker("getDate");
+      selectedDate.setHours(23);
+      var today = new Date();
+      today.setHours(0);
+      if (selectedDate < today){
+        $(".rd_actual").attr('disabled', false);
+      }
+      else{
+        $(".rd_actual").attr('disabled', true);
+      };
+    });
+  });
 </script>
 
 <h1>Animated Currents and Velocities</h1>
@@ -85,15 +99,15 @@
         <div class="span-3">
 
           <label for="discharge">River Discharge:</label>
-          <input id="discharge" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
-          <input type="radio" name="discharge" /> Actual (0m3/s)<br />
-          <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s<br />
+          <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
+          <input type="radio" name="discharge" class="rd_actual" disabled="true" /> Actual (0m3/s)<br />
           <input type="radio" name="discharge" /> Selected
           <select>
             <option>300</option>
             <option>600</option>
             <option>900</option>
-          </select> m3/s
+          </select> m3/s<br />
+          <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
         </div>
 
         <div class="span-2">

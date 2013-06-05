@@ -34,3 +34,15 @@ form#daily_depth div { margin-bottom: 15px; }
   font-weight: bold;
   text-decoration: none;
 }
+
+.stripe {
+  background: #F3F3F3;
+}
+
+.required {
+  color: red;
+}
+
+.print_show {
+  display: none;
+}
