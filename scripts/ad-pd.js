@@ -1,6 +1,6 @@
 
   $(function() {
-    var d1, points;
+    var d1, leadingZero, points;
     points = [[0, 10.6], [2, 11.1], [4, 11.85], [6, 12.2], [8, 11.3], [10, 10.0], [12, 9.4], [14, 9.4], [16, 10.5], [18, 11.75], [20, 12.1], [22, 11.6]];
     d1 = {
       color: "red",
@@ -9,14 +9,25 @@
       },
       data: points
     };
+    leadingZero = function(num, axis) {
+      var s;
+      s = "0" + num;
+      return s.substr(s.length - 2);
+    };
     $.plot("#placeholder", [d1], {
       xaxes: [
         {
-          axisLabel: 'Pacific Standard Time (hrs)'
+          color: 'black',
+          tickColor: '#aaa',
+          axisLabel: 'Pacific Standard Time (hrs)',
+          tickSize: 2,
+          tickFormatter: leadingZero
         }
       ],
       yaxes: [
         {
+          color: 'black',
+          tickColor: '#aaa',
           position: 'left',
           axisLabel: 'Available Depth (m)'
         }

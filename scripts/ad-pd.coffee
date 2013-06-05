@@ -19,9 +19,13 @@ $(->
     lines: {lineWidth: 3}
     data: points
 
+  leadingZero = (num, axis) ->
+    s = "0" + num
+    s.substr(s.length-2)
+
   $.plot("#placeholder", [ d1 ], 
-    xaxes: [{ axisLabel: 'Pacific Standard Time (hrs)' }],
-    yaxes: [{ position: 'left', axisLabel: 'Available Depth (m)' }]
+    xaxes: [{ color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 2, tickFormatter: leadingZero }],
+    yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
   )
 
   $(".yaxislabel").css("color","black")
