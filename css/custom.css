@@ -19,6 +19,17 @@ form#daily_depth div { margin-bottom: 15px; }
 
 .active { border: 0 }
 
+ul.tabs {
+  background: white !important;
+  background-image: none;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+div.filled {
+  background: #F9F9F9;
+}
+
 .tabs-style-1 .tabs li a, .tabs-style-1 .tabs li a:hover, .tabs-style-1 .tabs li a:focus, .tabs-style-1 .tabs li {
   background: #A00 url('/images/gradient.jpg');
 }
