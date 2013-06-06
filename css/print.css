@@ -2,7 +2,11 @@
   display: inline;
 }
 
-form, ul.tabs, .grid-12 {
+#wb-main-in {
+  border: none;
+}
+
+.print_hide, form, ul.tabs, #gcwu-psnb{
   display: none;
 }
 
@@ -11,4 +15,23 @@ div#placeholder {
   position: relative;
   top: 50px;
   width: 200px;
+}
+
+.summary {
+  display: block;
+  position: fixed;
+}
+
+.tabs-panel {
+  border: none !important;
+  padding-bottom: 250px;
+}
+
+img#ccg-logo {
+  display: block;
+  float: right;
+}
+
+img#ccg-word {
+  display: block;
 }

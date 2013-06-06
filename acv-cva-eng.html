@@ -83,7 +83,7 @@
 
 <h1>Animated Currents and Velocities</h1>
 
-<div class="grid-12">
+<div class="grid-12 print_hide">
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
     <ul class="tabs">
       <li class="default"><a href="#parameters">Parameters</a></li>
@@ -245,7 +245,14 @@
 
 <div class="clear"></div>
 
-<div id="panel">
+<div class="print_show">
+  <p>Transit Window: 2 hrs</p>
+  <p>Hope Discharge 5000m3/s (Selected)</p>
+  <p>Current Soundings for Km 1 to 35 at 95% Available Width</p>
+  <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
+</div>
+
+<div id="panel" class="print_hide">
   <button onclick="toggleHeatmap()">Toggle Heatmap</button>
   <button onclick="changeGradient()">Change gradient</button>
   <button onclick="changeRadius()">Change radius</button>

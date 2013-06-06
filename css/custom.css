@@ -46,3 +46,7 @@ form#daily_depth div { margin-bottom: 15px; }
 .print_show {
   display: none;
 }
+
+img#ccg-logo, img#ccg-word {
+  display: none;
+}
