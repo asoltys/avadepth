@@ -4,22 +4,38 @@
 <script type="text/javascript" src="scripts/flot/jshashtable-2.1.js"></script>    
 <script type="text/javascript" src="scripts/flot/jquery.numberformatter-1.2.3.min.js"></script>
 <script type="text/javascript" src="scripts/flot/jquery.flot.symbol.js"></script>
+<script type="text/javascript" src="scripts/flot/jquery.flot.stack.js"></script>
 <script type="text/javascript">
 var data = [];
+var data2 = [];
+var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
 var dataset;
-var totalPoints = 100;
-var updateInterval = 1000;
-var now = new Date().getTime();
+var totalPoints = 60;
+var updateInterval = 500;
+var now = new Date();
+var now2 = new Date();
+var date_inc = 0;
 
 
 function GetData() {
     data.shift();
 
     while (data.length < totalPoints) {     
-        var y = Math.random() * 100;
-        var temp = [now += updateInterval, y];
+        var y = Math.random() * 1000 + 1250;
+        var temp = [new Date(now), y];
+        now.setDate(now.getDate()+1);
 
         data.push(temp);
+    }
+
+    data2.shift();
+
+    while (data2.length < totalPoints) {
+        var y = Math.random() * 800 + 500;
+        var temp = [new Date(now2), y];
+        now2.setDate(now2.getDate()+1);
+
+        data2.push(temp);
     }
 }
 
@@ -29,25 +45,30 @@ var options = {
             show: true,
             lineWidth: 1.2,
             fill: true
+        },
+        stack: true,
+        points: {
+          show:false
         }
     },
     xaxis: {
         mode: "time",
-        tickSize: [2, "second"],
+        tickSize: [1, "day"],
+        minTickSize: [2, "month"],
         tickFormatter: function (v, axis) {
-            var date = new Date(v);
+          var date = new Date(v);
 
-            if (date.getSeconds() % 20 == 0) {
-                var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-                var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-                var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+          if (date.getDate() % 10 == 0) {
+            //var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+            //var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            //var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
 
-                return hours + ":" + minutes + ":" + seconds;
-            } else {
-                return "";
-            }
+            return monthNames[date.getMonth()] + " " + date.getDate();
+          } else {
+            return "";
+          }
         },
-        axisLabel: "Time",
+        axisLabel: "Date",
         axisLabelUseCanvas: true,
         axisLabelFontSizePixels: 12,
         axisLabelFontFamily: 'Verdana, Arial',
@@ -55,27 +76,24 @@ var options = {
     },
     yaxis: {
         min: 0,
-        max: 100,        
+        max: 3170,
         tickSize: 5,
         tickFormatter: function (v, axis) {
-            if (v % 10 == 0) {
-                return v + "%";
+            if (v % 500 == 0) {
+                return v;
             } else {
                 return "";
             }
         },
-        axisLabel: "CPU loading",
+        axisLabel: "Hope Discharge (m3s)",
         axisLabelUseCanvas: true,
         axisLabelFontSizePixels: 12,
         axisLabelFontFamily: 'Verdana, Arial',
         axisLabelPadding: 6
     },
     legend: {        
-        labelBoxBorderColor: "#fff"
     },
     grid: {                
-        backgroundColor: "#000000",
-        tickColor: "#008040"
     }
 };
 
@@ -83,7 +101,9 @@ $(document).ready(function () {
     GetData();
 
     dataset = [
-        { label: "CPU", data: data, color: "#00FF00" }
+        { data: data2 },
+        { data: data }
+
     ];
 
     $.plot($("#flot-placeholder1"), dataset, options);
