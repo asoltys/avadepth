@@ -1,31 +1,9 @@
 <!--#include virtual="/includes/header-eng.html" -->
 <script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.js"></script>
-<script>
-  $(function() {
-    $('#date').change(function () {
-      $.getJSON(
-        '/api/depths?date=' + $(this).val(), 
-        function (data) {
-          body.text(data);
-        }
-      );
-      var selectedDate = $('#date').datepicker("getDate");
-      selectedDate.setHours(23);
-      var today = new Date();
-      today.setHours(0);
-      if (selectedDate < today){
-        $(".rd_actual").attr('disabled', false);
-      }
-      else{
-        $(".rd_actual").attr('disabled', true);
-      };
-    });
-    
-    // apply striping class
-    $('.zebra-striped tr:odd').addClass('stripe');
-  });
-</script>
+<script src="scripts/pwl-nep.js"></script>
+
 <h1>Predicted Water Levels</h1>
+
 <div class="grid-12">
   <div style="height:250px" class="summary tabs-panel filled">
   <form id="daily_depth">
@@ -33,36 +11,37 @@
       <div>
         <label for="date">Date:</label>
         <input id="date" type="text" name="date" class="datepicker" />
+        <input id="alt-date" type="hidden" />
       </div>
 
       <div>
         <label for="fraser_river">Fraser River:</label>
-        <input id="fraser_river" type="radio" name="fraser_river" checked="checked" /> South Arm (km 0-40)<br />
-        <input type="radio" name="fraser_river" /> North Arm (km 0-30)<br />
-        <input type="radio" name="fraser_river" /> Main Arm (km 40-92)<br />
+        <input id="fraser_river" type="radio" name="fraser_river" checked="checked" value="South Arm" /> South Arm (km 0-40)<br />
+        <input type="radio" name="fraser_river" value="North Arm" /> North Arm (km 0-30)<br />
+        <input type="radio" name="fraser_river" value="Main Arm" /> Main Arm (km 40-92)<br />
       </div>
     </div>
 
     <div class="span-4">
       <div>
         <label for="river_discharge">River Discharge @ Hope:</label>
-        <input id="river_discharge" type="radio" name="river_discharge" class="rd_predicted" checked="checked" /> Predicted (0m&#179;s)<br />
-        <input type="radio" name="river_discharge" disabled="true" class="rd_actual" /> Actual (841m&#179;s)<br />
-        <input type="radio" name="river_discharge" /> Selected
-        <select id="width">
+        <input id="predicted" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> Predicted (0m&#179;s)<br />
+        <input id="actual" type="radio" name="discharge" disabled="true" class="rd_actual" value="Actual" /> Actual (841m&#179;s)<br />
+        <input type="radio" name="discharge" value="Selected" /> Selected
+        <select id="selected_discharge">
           <option value="2000" selected="selected">2000</option>
           <option value="5000">5000</option>
           <option value="7500">7500</option>
         </select> m3/s<br />
-        <input type="radio" name="river_discharge" /> User Defined
-        <input id="river_discharge" type="text" name="river_discharge_user_defined" /> m3/s
+        <input type="radio" name="discharge" value="Defined" /> User Defined
+        <input id="defined_discharge" type="text" name="discharge" /> m3/s
       </div>
     </div>
 
     <div class="span-3">
       <div>
         <label for="interval">Interval:</label>
-        <select id="width">
+        <select id="interval">
           <option value="15 minute">15 minute</option>
           <option value="30 minute">30 minute</option>
           <option value="1 hour" selected="selected">1 hour</option>
@@ -74,8 +53,14 @@
   </div>
 </div>
 
+<div class="print_show" style="margin-left: 20px;">
+  <p><span id="static-date"></span> at <span id="static-interval">1 hour</span> intervals</p>
+  <p>Fraser River - <span id="static-arm">South Arm</span></p>
+  <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+</div>
+  
 <div class="clear"></div>
-
+        
 <div>
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
     <ul class="tabs">
@@ -85,13 +70,7 @@
 
     <div class="summary tabs-panel" style="border: 2px solid #eee">
       <div id="water-levels" style="">
-        <div class="print_show">
-          <p>Interval: 1 hour</p>
-          <p>Fraser River: South Arm (km 0-40)</p>
-          <p>River Discharge @ Hope: Predicted ()</p>
-          <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
-        </div>
-        
+
         <table class="zebra-striped table-condensed">
         <tbody>
           <tr>

@@ -16,17 +16,18 @@
           <div class="span-4">
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
+            <input id="alt-date" type="hidden" />
 
             <label for="predicted">River Discharge:</label>
-            <input id="predicted" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
-            <input id="actual" type="radio" name="discharge" disabled="false" /> Actual (0m3/s)<br />
-            <input type="radio" name="discharge" /> Selected 
-              <select id="discharge_select">
+            <input id="predicted" type="radio" name="discharge" checked="checked" value="Predicted" /> Predicted (1275m3/s)<br />
+            <input id="actual" type="radio" name="discharge" value="Actual" disabled="false" /> Actual (0m3/s)<br />
+            <input type="radio" name="discharge" value="Selected" /> Selected 
+              <select id="selected_discharge">
                 <option value="2000">2000</option>
                 <option value="5000">5000</option>
                 <option value="7500">7500</option>
               </select> m3/s<br />
-            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
+            <input type="radio" name="discharge" value="Defined" /> User-defined <input type="text" id="defined_discharge"/> m3/s
           </div>
 
           <div class="span-4">
@@ -66,14 +67,14 @@
             
             <div>
               <label for="condition">Channel Condition:</label>
-              <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;<br />
-              <input type="radio" name="condition" /> Design Grade
+              <input id="condition" type="radio" name="condition" checked="checked" /> <span>Current Soundings</span><br />
+              <input type="radio" name="condition" /> <span>Design Grade</span>
             </div>
 
             <div>
               <label for="channel">Navigation Channel:</label>
-              <input id="channel" type="radio" name="channel" checked="checked" /> Inner Limit<br />
-              <input type="radio" name="channel" /> Outer Limit<br />
+              <input id="channel" type="radio" name="channel" checked="checked" /> <span>Inner Limit</span><br />
+              <input type="radio" name="channel" /> <span>Outer Limit</span><br />
               Available Width <select id="width">
                 <option value="100" selected="selected">100</option>
                 <option value="95">95</option>
@@ -191,10 +192,10 @@ The Transit Window report shows the depth available for the entire channel for a
   <div class="clear"></div>
   
   <div class="print_show">
-    <p>Transit Window: 2 hrs</p>
-    <p>Hope Discharge 5000m3/s (Selected)</p>
-    <p>Current Soundings for Km 1 to 35 at 95% Available Width</p>
-    <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
+    <p><span id="static-date"></span></p>
+    <p>Fraser River - <span id="static-limit">Inner Limit</span></p>
+    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+    <p><span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
   </div>
   
   <table class="table-accent span-4 table-condensed">

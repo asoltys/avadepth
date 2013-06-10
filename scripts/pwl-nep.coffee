@@ -18,6 +18,10 @@ $(->
     $('#static-discharge-eval').text($(this).val())
   )
   
+  $('input[name="discharge"]').change(->
+    $('#static-discharge-eval').text($(this).val())
+  )
+  
   $('#defined_discharge').change(->
     if ($('input[name="discharge"].checked').val() == "Defined")
       $('#static-discharge').text($('#defined_discharge').val())
@@ -28,20 +32,16 @@ $(->
       $('#static-discharge').text($('#selected_discharge').val())
   )
   
-  $('input[name=discharge]').change(->
-    $('#static-discharge-eval').text($(this).val())
-  )
-  
-  $('input[name="condition"]').change(->
-    $('#static-type').text($(this).next().text())
+  $('input[name="fraser_river"]').change(->
+    $('#static-arm').text($(this).val())
   )
   
   $('input[name="channel"]').change(->
     $('#static-limit').text($(this).next().text())
   )
 
-  $('select#width').change(->
-    $('#static-width').text($(this).val())
+  $('select#interval').change(->
+    $('#static-interval').text($(this).val())
   )
   
   $('select#chainage').change(->

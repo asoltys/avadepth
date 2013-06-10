@@ -25,6 +25,9 @@
       }
       return $('#static-discharge-eval').text($(this).val());
     });
+    $('input[name="discharge"]').change(function() {
+      return $('#static-discharge-eval').text($(this).val());
+    });
     $('#defined_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Defined") {
         return $('#static-discharge').text($('#defined_discharge').val());
@@ -35,17 +38,14 @@
         return $('#static-discharge').text($('#selected_discharge').val());
       }
     });
-    $('input[name=discharge]').change(function() {
-      return $('#static-discharge-eval').text($(this).val());
-    });
-    $('input[name="condition"]').change(function() {
-      return $('#static-type').text($(this).next().text());
+    $('input[name="fraser_river"]').change(function() {
+      return $('#static-arm').text($(this).val());
     });
     $('input[name="channel"]').change(function() {
       return $('#static-limit').text($(this).next().text());
     });
-    $('select#width').change(function() {
-      return $('#static-width').text($(this).val());
+    $('select#interval').change(function() {
+      return $('#static-interval').text($(this).val());
     });
     $('select#chainage').change(function() {
       return $('#static-chainage').text($(this).val());

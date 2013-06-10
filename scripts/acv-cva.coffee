@@ -28,24 +28,24 @@ $(->
       $('#static-discharge').text($('#selected_discharge').val())
   )
   
-  $('input[name=discharge]').change(->
-    $('#static-discharge-eval').text($(this).val())
-  )
-  
-  $('input[name="condition"]').change(->
-    $('#static-type').text($(this).next().text())
-  )
-  
-  $('input[name="channel"]').change(->
-    $('#static-limit').text($(this).next().text())
+  $('select#zone').change(->
+    $('#static-zone').text($(this).val())
   )
 
-  $('select#width').change(->
-    $('#static-width').text($(this).val())
+  $('select#interval').change(->
+    $('#static-interval').text($(this).val())
   )
   
-  $('select#chainage').change(->
-    $('#static-chainage').text($(this).val())
+  $('select#from').change(->
+    $('#static-start').text($(this).val())
+  )  
+  
+  $('select#to').change(->
+    $('#static-end').text($(this).val())
+  )  
+  
+  $('input[name="velocity_legend"]').change(->
+    $('#static-legend').text($(this).next().text())
   )
   
   $('#date').change()
