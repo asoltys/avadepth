@@ -1,31 +1,18 @@
 $(->
-  points = [
-    [0, 10.6]
-    [2, 11.1]
-    [4, 11.85]
-    [6, 12.2]
-    [8, 11.3]
-    [10, 10.0]
-    [12, 9.4]
-    [14, 9.4]
-    [16, 10.5]
-    [18, 11.75]
-    [20, 12.1]
-    [22, 11.6]
-  ]
+  createGraph = (p) -> (
+    d1 = 
+      color: "red"
+      lines: {lineWidth: 3}
+      data: p
 
-  d1 = 
-    color: "red"
-    lines: {lineWidth: 3}
-    data: points
+    leadingZero = (num, axis) ->
+      s = "0" + num
+      s.substr(s.length-4)
 
-  leadingZero = (num, axis) ->
-    s = "0" + num
-    s.substr(s.length-2)
-
-  $.plot("#placeholder", [ d1 ], 
-    xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 2, tickFormatter: leadingZero],
-    yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
+    $.plot("#placeholder", [ d1 ], 
+      xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 200, tickFormatter: leadingZero],
+      yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
+    )
   )
 
   $(".yaxislabel").css("color","black")
@@ -74,9 +61,12 @@ $(->
       $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=0&width=#{$('#width').val()}&sounding=#{$('#sounding').val()}", 
         (data) ->
           $('#depths tbody tr').remove()
+          points = new Array()
           $.each(data.items[0].items, ->
             $('#depths').append("<tr><td>#{this.period}</td><td>#{this.chainage}</td><td>#{this.depth}</td><td>#{this.location}</td>")
+            points.push([this.period, this.depth])
           )
+          createGraph(points)
           $('.zebra-striped tr:even').addClass('stripe')
       )
     )

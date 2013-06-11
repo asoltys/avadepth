@@ -23,7 +23,7 @@ div#placeholder {
   width: 200px;
 }
 
-table {
+table, .grid-12 {
   float: none;
   position: static;
 }
