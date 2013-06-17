@@ -8,19 +8,23 @@
   var map, pointarray, heatmap;
 
   var taxiData = [
-    new google.maps.LatLng(52.518333,-118.316667)
+    new google.maps.LatLng(49.384775,-121.45189),
+    new google.maps.LatLng(49.381423,-121.450621),
+    new google.maps.LatLng(49.383001,-121.4512),
+    new google.maps.LatLng(49.383867,-121.45135),
+    new google.maps.LatLng(49.384775,-121.45199)
   ];
   function initialize() {
     var mapOptions = {
       zoom: 13,
-      center: new google.maps.LatLng(52.518333,-118.316667),
+      center: new google.maps.LatLng(49.384775,-121.45189),
       mapTypeId: google.maps.MapTypeId.SATELLITE
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
-    var pointArray = new google.maps.MVCArray(taxiData);
+    pointArray = new google.maps.MVCArray(taxiData);
 
     heatmap = new google.maps.visualization.HeatmapLayer({
       data: pointArray
@@ -29,38 +33,13 @@
     heatmap.setMap(map);
   }
 
-  function toggleHeatmap() {
-    heatmap.setMap(heatmap.getMap() ? null : map);
-  }
-
-  function changeGradient() {
-    var gradient = [
-      'rgba(0, 255, 255, 0)',
-      'rgba(0, 255, 255, 1)',
-      'rgba(0, 191, 255, 1)',
-      'rgba(0, 127, 255, 1)',
-      'rgba(0, 63, 255, 1)',
-      'rgba(0, 0, 255, 1)',
-      'rgba(0, 0, 223, 1)',
-      'rgba(0, 0, 191, 1)',
-      'rgba(0, 0, 159, 1)',
-      'rgba(0, 0, 127, 1)',
-      'rgba(63, 0, 91, 1)',
-      'rgba(127, 0, 63, 1)',
-      'rgba(191, 0, 31, 1)',
-      'rgba(255, 0, 0, 1)'
-    ]
-    heatmap.setOptions({
-      gradient: heatmap.get('gradient') ? null : gradient
-    });
+  function animateHeatmap() {
+    pointArray.push(  {location: new google.maps.LatLng(49.39039,-121.452252), weight: 3});
+    setTimeout(animateHeatmap, 500);
   }
 
   function changeRadius() {
     heatmap.setOptions({radius: heatmap.get('radius') ? null : 20});
-  }
-
-  function changeOpacity() {
-    heatmap.setOptions({opacity: heatmap.get('opacity') ? null : 0.2});
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
@@ -253,7 +232,7 @@
 </div>
 
 <div id="panel" class="print_hide">
-  <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+  <button onclick="animateHeatmap()">Animate Heatmap</button>
   <button onclick="changeGradient()">Change gradient</button>
   <button onclick="changeRadius()">Change radius</button>
   <button onclick="changeOpacity()">Change opacity</button>
