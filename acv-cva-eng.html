@@ -3,6 +3,7 @@
 .tabs-panel { border: 5px solid black; }
 </style>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization"></script>
+<script src="scripts/acv-cva.js"></script>
 <script>
   // Adding 500 Data Points
   var map, pointarray, heatmap;
@@ -75,19 +76,20 @@
           <div class="span-3">
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
+            <input id="alt-date" type="hidden" />
           </div>
           <div class="span-4">
 
             <label for="discharge">River Discharge:</label>
-            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" /> Predicted (1275m3/s)<br />
-            <input type="radio" name="discharge" class="rd_actual" disabled="true" /> Actual (0m3/s)<br />
-            <input type="radio" name="discharge" /> Selected
-            <select>
+            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" value="Predicted" /> Predicted (1275m3/s)<br />
+            <input type="radio" name="discharge" class="rd_actual" disabled="true" value="Actual" /> Actual (0m3/s)<br />
+            <input type="radio" name="discharge" value="Selected" /> Selected
+            <select id="selected_discharge">
               <option>300</option>
               <option>600</option>
               <option>900</option>
             </select> m3/s<br />
-            <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s
+            <input type="radio" name="discharge" value="Defined" /> User-defined <input type="text" id="defined_discharge"/> m3/s
           </div>
 
           <div class="span-4">
@@ -151,29 +153,29 @@
             </div>
             <div class="float-left">
               <label for="zone">Zone:</label>
-              <select name="zone">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
+              <select id="zone">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
               </select>
             </div>
 
             <div>
               <label for="interval">Interval:</label>
-              <select name="interval">
-                <option>2hr</option>
-                <option>4hr</option>
-                <option>6hr</option>
-                <option>8hr</option>
+              <select id="interval">
+                <option value="2hr">2hr</option>
+                <option value="4hr">4hr</option>
+                <option value="6hr">6hr</option>
+                <option value="8hr">8hr</option>
               </select>
             </div>
             <div>
               <label for="velocity_legend">Velocity Legend:</label>
-              <input type="radio" id="velocity_legend" name="velocity_legend" value="0-2"/> 0 to 2 m/s (Interval .25ms)<br />
-              <input type="radio" name="velocity_legend" value="0-4"/> 0 to 4 m/s (Interval .5ms)<br />
+              <input type="radio" id="velocity_legend" name="velocity_legend" value="0-2"/> <span>0 to 2 m/s (Interval .25ms)</span><br />
+              <input type="radio" name="velocity_legend" value="0-4"/> <span>0 to 4 m/s (Interval .5ms)</span><br />
             </div>
           </div>
         </form>
@@ -225,10 +227,10 @@
 <div class="clear"></div>
 
 <div class="print_show">
-  <p>Transit Window: 2 hrs</p>
-  <p>Hope Discharge 5000m3/s (Selected)</p>
-  <p>Current Soundings for Km 1 to 35 at 95% Available Width</p>
-  <p>From Tuesday, May 07, 2013 to Wednesday, May 08, 2013</p>
+  <p><span id="static-date"></span> from <span id="static-start"></span> to <span id="static-end"></span></p>
+  <p>Zone <span id="static-zone">1</span> at <span id="static-interval">2hr</span> intervals</p>
+  <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+  <p>Velocity legend: <span id="static-legend"></span></p>
 </div>
 
 <div id="panel" class="print_hide">

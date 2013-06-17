@@ -54,10 +54,11 @@ div.filled {
   color: red;
 }
 
-.print_show {
+.print_show, #ui-datepicker-div {
   display: none;
 }
 
 img#ccg-logo, img#ccg-word {
   display: none;
 }
+
