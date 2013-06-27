@@ -1,64 +1,65 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
+wet-boew.github.com/wet-boew/License-fra.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
 <!-- DataAjaxFragmentStart -->
 
-<li><section><h3><a href="#">About Avadepth</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">À propos d'Avadepth</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <ul>
-<li><a href="/theory-theorie-eng.html">Background &amp; Theory of Operation</a></li>
+<li><a href="/theory-theorie-fra.html">Contexte et théorie</a></li>
 </ul>
 </section>
 </div>
 <div class="clear"></div>
 </div></section></li>
 
-<li><section><h3><a href="#">Avadepth Reports</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Rapports Avadepth</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/ad-pd-eng.html'>Available Depths</a></li>
-<li><a href='/tw-ft-eng.html'>Transit Window</a></li>
-<li><a href='/pwl-nep-eng.html'>Predicted Water Levels & Velocities</a></li>
+<li><a href='/wr-rh-fra.html'>Rapport hebdomadaire</a></li>
+<li><a href='/ad-pd-fra.html'>Profondeurs disponibles</a></li>
+<li><a href='/tw-ft-fra.html'>Fenêtre de circulation</a></li>
 </ul>
 </section>
 </div>
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/acv-cva-eng.html'>Animated Current & Velocities</a></li>
-<li><a href='/hydrograph-hydrogramme-eng.html'>Fraser River Hydrograph</a></li>
-<li><a href='/wr-rh-eng.html'>Weekly Report</a></li>
+<li><a href='/pwl-nep-fra.html'>Niveaux et vélocités prévus de l'eau</a></li>
+<li><a href='/acv-cva-fra.html'>Animation et vélocités du courant</a></li>
+<li><a href='/hydrograph-hydrogramme-fra.html'>Hydrographie du fleuve Fraser</a></li>
 </ul>
 </section>
 </div>
 <div class="clear"></div>
 </div></section></li>
 
-<li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Conditions au fond du chenal</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-eng.html?ww-vn=fraser_main_arm'>Fraser - Main Arm</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=fraser_north_arm'>Fraser - North Arm</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=fraser_south_arm'>Fraser - South Arm</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=pitt_river'>Pitt River, BC</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=nanaimo_harbour'>Nanaimo Harbour, BC</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=vancouver_harbour'>Vancouver Harbour, BC</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=hay_river'>Hay River, NWT</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=fraser_main_arm'>Fraser – bras principal</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=fraser_north_arm'>Fraser – bras nord</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=fraser_south_arm'>Fraser – bras sud</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=pitt_river'>Pitt River (C.-B.)</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=nanaimo_harbour'>Port de Nanaimo (C.-B.)</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=vancouver_harbour'>Port de Vancouver (C.-B.)</a></li>
+<li><a href='/cc-ca-fra.html?ww-vn=hay_river'>Hay River (T.N. O.)</a></li>
 </ul>
 </section>
 <div class="clear"></div>
 </div></section></li>
 
-<li><section><h3><a href="#">Bathymetry Analysis</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Analyse bathymétrique</a></h3><div class="mb-sm">
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/tsa-ast-eng.html'>Time series analysis</a></li>
-<li><a href='/rcs-str-eng.html'>Riverbed Cross-sections</a></li>
-<li><a href='/ft-vt-eng.html'>Fly-through videos</a></li>
+<li><a href='/tsa-ast-fra.html'>Analyse chronologique</a></li>
+<li><a href='/rcs-str-fra.html'>Coupes transversales du lit du fleuve</a></li>
+<li><a href='/ft-vt-fra.html'>Vidéos de vues en survol</a></li>
+<li><a href='/adcp-adcp-fra.html'>ADCP (profileur de courant à effet Doppler)</a></li>
 </ul>
 </section>
 </div>

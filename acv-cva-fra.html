@@ -1,3 +1,251 @@
-<!--#include virtual="/includes/header-eng.html" -->
-<h1>Animated Currents &amp; Velocities</h1>
-<!--#include virtual="/includes/footer-eng.html" -->
+<!--#include virtual="/includes/header-fra.html" -->
+<style>
+.tabs-panel { border: 5px solid black; }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization"></script>
+<script src="scripts/acv-cva.js"></script>
+<script>
+  // Adding 500 Data Points
+  var map, pointarray, heatmap;
+
+  var taxiData = [
+    new google.maps.LatLng(49.384775,-121.45189),
+    new google.maps.LatLng(49.381423,-121.450621),
+    new google.maps.LatLng(49.383001,-121.4512),
+    new google.maps.LatLng(49.383867,-121.45135),
+    new google.maps.LatLng(49.384775,-121.45199)
+  ];
+  function initialize() {
+    var mapOptions = {
+      zoom: 13,
+      center: new google.maps.LatLng(49.384775,-121.45189),
+      mapTypeId: google.maps.MapTypeId.SATELLITE
+    };
+
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+
+    pointArray = new google.maps.MVCArray(taxiData);
+
+    heatmap = new google.maps.visualization.HeatmapLayer({
+      data: pointArray
+    });
+
+    heatmap.setMap(map);
+  }
+
+  function animateHeatmap() {
+    pointArray.push(  {location: new google.maps.LatLng(49.39039,-121.452252), weight: 3});
+    setTimeout(animateHeatmap, 500);
+  }
+
+  function changeRadius() {
+    heatmap.setOptions({radius: heatmap.get('radius') ? null : 20});
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+  $(function() {
+    $('#date').change(function () {
+      var selectedDate = $('#date').datepicker("getDate");
+      selectedDate.setHours(23);
+      var today = new Date();
+      today.setHours(0);
+      if (selectedDate < today){
+        $(".rd_actual").attr('disabled', false);
+      }
+      else{
+        $(".rd_actual").attr('disabled', true);
+      };
+    });
+  });
+</script>
+
+<h1>Animation et vélocités des courants</h1>
+
+<div class="grid-12 print_hide">
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+    <ul class="tabs">
+      <li class="default"><a href="#parameters">Paramètres</a></li>
+      <li><a href="#help">Aide</a></li>
+    </ul>
+
+    <div class="summary tabs-panel filled" style="border: 2px solid #eee">
+      <div id="parameters" style="height:250px">
+        <form id="daily_depth">
+          <div class="span-3">
+            <label for="date">Date :</label>
+            <input id="date" type="text" name="date" class="datepicker" />
+            <input id="alt-date" type="hidden" />
+          </div>
+          <div class="span-4">
+
+            <label for="discharge">Débit fluvial :</label>
+            <input id="discharge" type="radio" name="discharge" class="rd_predicted" checked="checked" value="Predicted" />  Prévu (1275m3/s)<br />
+            <input type="radio" name="discharge" class="rd_actual" disabled="true" value="Actual" /> Réel (0m3/s)<br />
+            <input type="radio" name="discharge" value="Selected" /> Sélectionné
+            <select id="selected_discharge">
+              <option>300</option>
+              <option>600</option>
+              <option>900</option>
+            </select> m3/s<br />
+            <input type="radio" name="discharge" value="Defined" /> Défini par l'utilisateur <input type="text" id="defined_discharge"/> m3/s
+          </div>
+
+          <div class="span-4">
+            <div class="float-left">
+              <label for="from">De :</label>
+              <select id="from" name="from">
+                <option>00:00</option>
+                <option>01:00</option>
+                <option>02:00</option>
+                <option>03:00</option>
+                <option>04:00</option>
+                <option>05:00</option>
+                <option>06:00</option>
+                <option>07:00</option>
+                <option>08:00</option>
+                <option>09:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+              </select>
+            </div>
+            <div>
+              <label for="to">À :</label>
+              <select id="to" name="to">
+                <option>00:00</option>
+                <option>01:00</option>
+                <option>02:00</option>
+                <option>03:00</option>
+                <option>04:00</option>
+                <option>05:00</option>
+                <option>06:00</option>
+                <option>07:00</option>
+                <option>08:00</option>
+                <option>09:00</option>
+                <option>10:00</option>
+                <option>11:00</option>
+                <option>12:00</option>
+                <option>13:00</option>
+                <option>14:00</option>
+                <option>15:00</option>
+                <option>16:00</option>
+                <option>17:00</option>
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+              </select>
+            </div>
+            <div class="float-left">
+              <label for="zone">Zone :</label>
+              <select id="zone">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="interval">Intervalle :</label>
+              <select id="interval">
+                <option value="2hr">2hr</option>
+                <option value="4hr">4hr</option>
+                <option value="6hr">6hr</option>
+                <option value="8hr">8hr</option>
+              </select>
+            </div>
+            <div>
+              <label for="velocity_legend">Légende de la vélocité : </label>
+              <input type="radio" id="velocity_legend" name="velocity_legend" value="0-2"/> <span>0 à 2 m/s (Intervalle .25ms)</span><br />
+              <input type="radio" name="velocity_legend" value="0-4"/> <span>0 à 4 m/s (Intervalle .5ms)</span><br />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="help" style="max-height: 200px; overflow-y: scroll;">
+        <p>
+          Les calculs de la profondeur disponible nous permettent de surveiller le comportement du « point de contrôle » – l'endroit du chenal fluvial où se trouve la profondeur disponible minimum à un moment donné. Le point de contrôle se déplace en fonction des marées, du débit et des profils de sondage.
+        </p>
+
+        <p>Pour vérifier les emplacements du point critique sur une période d'un jour :</p>
+
+        <ul>
+          <li>Introduire la date. Cliquer sur la date texte pour choisir au moyen d'un calendrier.</li>
+          <li>Cliquer sur le bouton Continuer</li>
+        </ul>
+
+        <p>
+          Avadepth montre les options de débit. À savoir : prévu, réel, défini par l'utilisateur ou à sélectionner dans la liste.
+        </p>
+
+        <ul>
+          <li>Sélectionner le débit à utiliser.</li>
+          <li>Cliquer sur le bouton de profondeur quotidienne pour afficher le graphique.</li>
+        </ul>
+
+        <p>
+          Avadepth calcule la variation des profondeurs disponibles maximums pour une journée.
+        </p>
+
+        <p>
+          Pour imprimer le graphique :
+        </p>
+
+        <p>
+          Dans le menu du navigateur, sélectionnez Fichier|Imprimer. Pour afficher un tableau de la profondeur disponible minimum et de l'emplacement du point de contrôle pour chaque période de deux heures à la date sélectionnée.
+        </p>
+
+        <ul>
+          <li>Cliquer sur l'onglet Rapport.</li>
+          <li>Pour imprimer, sélectionner Fichier|Imprimer dans le menu du navigateur.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="print_show">
+  <p><span id="static-date"></span> De : <span id="static-start"></span> A : <span id="static-end"></span></p>
+  <p>Zone <span id="static-zone">1</span> at <span id="static-interval">2hr</span> intervals</p>
+  <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+  <p>Légende de la vélocité : <span id="static-legend"></span></p>
+</div>
+
+<div id="panel" class="print_hide">
+  <button onclick="animateHeatmap()">Alterner le diagramme d'exposition au risque</button>
+  <button onclick="changeGradient()">Changer pente</button>
+  <button onclick="changeRadius()">Changer rayon</button>
+  <button onclick="changeOpacity()">Changer opacité</button>
+</div>
+<div id="map-canvas" style="width:100%;height:400px"></div>
+
+<div class="clear"></div>
+
+
+<div class="span-4">
+  <div id="placeholder" class="demo-placeholder" style="width:90%;height:500px;float:left"></div>
+</div>
+
+<!--#include virtual="/includes/footer-fra.html" -->
+

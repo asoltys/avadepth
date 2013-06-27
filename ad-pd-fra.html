@@ -1,236 +1,179 @@
-<!--#include virtual="/includes/header-eng.html" -->
-<script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.js"></script>
-<script type="text/javascript">
-$(function() {
-var points = [[0, 10.6], [2, 11.1],[4, 11.85],[6, 12.2],[8, 11.3],[10, 10.0],[12, 9.4],[14, 9.4],[16, 10.5],[18, 11.75],[20, 12.1],[22, 11.6]];
-var d1 = {color: "red",
-          lines: {lineWidth: 5},
-          data: points};
-$.plot("#placeholder", [ d1 ]);
-// Add the Flot version string to the footer
-});
-</script>
+<!--#include virtual="/includes/header-fra.html" -->
+<script src="scripts/ad-pd.js" defer></script>
 
-<script>
-/*
-  $(function() {
-    $('#date').datepicker();
-    $('#date').val(moment().format('MM/DD/YYYY'));
-    $('#date').change(function () {
-        $.getJSON(
-          '/api/depths?date=' + $(this).val(), 
-          function (data) {
-            body.text(data);
-          }
-        );
-    });
-  });
-*/
-</script>
+<style>
+.tabs-panel { border: 5px solid black; }
+.yaxislabel { color: black; }
+</style>
 
+<h1>Profondeurs disponibles</h1>
+<div class="grid-12">
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height print_hide">
+    <ul class="tabs">
+      <li class="default"><a href="#parameters">Paramètres</a></li>
+      <li><a href="#help">Aide</a></li>
+    </ul>
 
-<h1>Available Depths</h1>
+    <div class="summary tabs-panel filled" style="border: 2px solid #eee">
+      <div id="parameters" style="height:250px">
+        <form id="daily_depth">
+          <div class="span-4">
+            <label for="date">Date :</label>
+            <input id="date" type="text" name="date" class="datepicker" />
+            <input id="alt-date" type="hidden" />
 
-<form id="daily_depth">
-  <div class="span-2">
-    <label for="date">Date:</label>
-    <input id="date" type="text" name="date" />
+            <label for="discharge">Débit fluvial :</label>
+            <input id="predicted" type="radio" name="discharge" checked="checked" value="Predicted" /> Prévu (<span id="predicted_discharge">1275</span>m3/s)<br />
+            <input id="actual" type="radio" name="discharge" value="Actual" /> Réel (0m3/s)<br />
 
-    <label for="discharge">River Discharge:</label>
-    <input id="discharge" type="radio" name="discharge" checked="checked" /> Predicted (1275m3/s)<br />
-    <input type="radio" name="discharge" /> Actual (0m3/s)<br />
-    <input type="radio" name="discharge" /> User-defined <input type="text" /> m3/s<br />
-  </div>
+            <input type="radio" name="discharge" value="Selected" /> Choisi
+            <select id="selected_discharge">
+              <option>300</option>
+              <option>600</option>
+              <option>900</option>
+            </select> m3/s
+            <br />
+            
+            <input type="radio" name="discharge" value="Defined" />Défini par l'utilisateur 
+            <input type="text" id="defined_discharge" /> m3/s
 
-  <div class="span-3">
-    <div>
-      <label for="condition">Channel Condition:</label>
-      <input id="condition" type="radio" name="condition" checked="checked" /> Current Soundings &nbsp;
-      <input type="radio" name="condition" /> Design Grade
+            <input type="hidden" name="flowRate" id="flowRate" value="0" />
+          </div>
+
+          <div class="span-4">
+            <label for="chainage">Chaînage :</label>
+            <select id="chainage">
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+              <option value="32">32</option>
+              <option value="33">33</option>
+              <option value="34">34</option>
+              <option value="35" selected="selected">35</option>
+            </select>
+            
+            <div>
+              <label for="sounding">Condition du chenal :</label>
+              <input id="sounding" type="radio" name="condition" checked="checked" value="0" /> <span>Profondeur actuelle sondée</span><br />
+              <input type="radio" name="condition" value="1" /> <span>Pente d'origine</span>
+            </div>
+
+            <div>
+              <label for="channel">Chenal de navigation :</label>
+              <input id="channel" type="radio" name="channel" checked="checked" /> <span>Limite intérieure</span><br />
+              <input type="radio" name="channel" /> <span>Limite extérieure</span>
+            </div>
+          </div>
+
+          <div class="span-3">
+            <div>
+              <label for="width">Largeur disponible :</label>
+              <select id="width">
+                <option value="100" selected="selected">100</option>
+                <option value="95">95</option>
+                <option value="90">90</option>
+                <option value="85">85</option>
+                <option value="80">80</option>
+                <option value="75">75</option>
+                <option value="70">70</option>
+                <option value="65">65</option>
+                <option value="60">60</option>
+              </select> %
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="help" style="max-height: 200px; overflow-y: scroll;">
+        <p>
+          Les calculs de la profondeur disponible nous permettent de surveiller le comportement du « point de contrôle » – l'endroit du chenal fluvial où se trouve la profondeur disponible minimum à un moment donné. Le point de contrôle se déplace en fonction des marées, du débit et des profils de sondage.
+        </p>
+
+        <p>Pour vérifier les emplacements du point critique sur une période d'un jour :</p>
+
+        <ul>
+          <li>Introduire la date. Cliquer sur la date texte pour choisir au moyen d'un calendrier.</li>
+          <li>Cliquer sur le bouton Continuer</li>
+        </ul>
+
+        <p>
+          Avadepth montre les options de débit. À savoir : prévu, réel, défini par l'utilisateur ou à sélectionner dans la liste.
+        </p>
+
+        <ul>
+          <li>Sélectionner le débit à utiliser.</li>
+          <li>Cliquer sur le bouton de profondeur quotidienne pour afficher le graphique.</li>
+        </ul>
+
+        <p>
+          Avadepth calcule la variation des profondeurs disponibles maximums pour une journée.
+        </p>
+
+        <p>
+          Pour imprimer le graphique :
+        </p>
+
+        <p>
+          Dans le menu du navigateur, sélectionnez Fichier|Imprimer. Pour afficher un tableau de la profondeur disponible minimum et de l'emplacement du point de contrôle pour chaque période de deux heures à la date sélectionnée.
+        </p>
+
+        <ul>
+          <li>Cliquer sur l'onglet Rapport.</li>
+          <li>Pour imprimer, sélectionner Fichier|Imprimer dans le menu du navigateur.</li>
+        </ul>
+      </div>
     </div>
-
-    <div>
-      <label for="channel">Navigation Channel:</label>
-      <input id="channel" type="radio" name="channel" checked="checked" /> Inner Limit &nbsp;
-      <input type="radio" name="channel" /> Outer Limit
-    </div>
   </div>
-
-  <div class="span-2">
-    <div>
-      <label for="width">Available Width:</label>
-      <select id="width">
-        <option value="100" selected="selected">100</option>
-        <option value="95">95</option>
-        <option value="90">90</option>
-        <option value="85">85</option>
-        <option value="80">80</option>
-        <option value="75">75</option>
-        <option value="70">70</option>
-        <option value="65">65</option>
-        <option value="60">60</option>
-      </select> %
-    </div>
-
-    <label for="chainage">Chainage:</label>
-    <select id="chainage">
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="15">15</option>
-      <option value="16">16</option>
-      <option value="17">17</option>
-      <option value="18">18</option>
-      <option value="19">19</option>
-      <option value="20">20</option>
-      <option value="21">21</option>
-      <option value="22">22</option>
-      <option value="23">23</option>
-      <option value="24">24</option>
-      <option value="25">25</option>
-      <option value="26">26</option>
-      <option value="27">27</option>
-      <option value="28">28</option>
-      <option value="29">29</option>
-      <option value="30">30</option>
-      <option value="31">31</option>
-      <option value="32">32</option>
-      <option value="33">33</option>
-      <option value="34">34</option>
-      <option value="35" selected="selected">35</option>
-    </select>
-  </div>
-</form>
-
+</div>
 <div class="clear"></div>
 
-
-<table class="table-condensed span-4">
-<tbody>
-<tr>
-<th>Time (pst)</th>
-<th>Chainage (km)</th>
-<th>Available Depth (m)</th>
-<th>Location</th>
-</tr>
-<tr>
-<td>
-<a href="#">0000</a>
-</td>
-<td>29-30</td>
-<td>10.7</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">0200</a>
-</td>
-<td>29-30</td>
-<td>11.1</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">0400</a>
-</td>
-<td>29-30</td>
-<td>11.8</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a>0600</a>
-</td>
-<td>29-30</td>
-<td>12.1</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">0800</a>
-</td>
-<td>21-22</td>
-<td>11.3</td>
-<td>Tilbury</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">1000</a>
-</td>
-<td>5-6</td>
-<td>10.1</td>
-<td>Steveston Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">1200</a>
-</td>
-<td>5-6</td>
-<td>9.4</td>
-<td>Steveston Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">1400</a>
-</td>
-<td>21-22</td>
-<td>9.4</td>
-<td>Tilbury</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">1600</a>
-</td>
-<td>29-30</td>
-<td>10.4</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">1800</a>
-</td>
-<td>29-30</td>
-<td>11.7</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">2000</a>
-</td>
-<td>29-30</td>
-<td>12</td>
-<td>St. Mungo Bend</td>
-</tr>
-
-<tr>
-<td>
-<a href="#">2200</a>
-</td>
-<td>29-30</td>
-<td>11.6</td>
-<td>St. Mungo Bend</td>
-</tr>
-</tbody>
-</table>
-
-<div class="span-4">
-  <div id="placeholder" class="demo-placeholder" style="width:90%;height:500px;float:left"></div>
+<div class="grid-12">
+  <div class="print_show">
+    <p><span id="static-date"></span></p>
+    <p>Fraser River - <span id="static-limit">Inner Limit</span></p>
+    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+    <p><span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
+  </div>
+  
+  <div class="span-6">
+  <table id="depths" class="table-condensed zebra-striped">
+    <thead>
+      <tr>
+        <th width="10%">Heure (HNP)</th>
+        <th width="20%">Chaînage (km)</th>s
+        <th width="25%">Profondeur disponible (m)</th>
+        <th>Emplacement</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  </div>
+  
+  <div class="page-break"></div>
+  <div id="placeholder" class="demo-placeholder span-6" style="height:500px;float:left;"></div>
 </div>
 
-<!--#include virtual="/includes/footer-eng.html" -->
+<!--#include virtual="/includes/footer-fra.html" -->
