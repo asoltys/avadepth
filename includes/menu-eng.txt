@@ -40,13 +40,9 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-eng.html?ww-vn=fraser_main_arm'>Fraser - Main Arm</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=fraser_north_arm'>Fraser - North Arm</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=fraser_south_arm'>Fraser - South Arm</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=pitt_river'>Pitt River, BC</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=nanaimo_harbour'>Nanaimo Harbour, BC</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=vancouver_harbour'>Vancouver Harbour, BC</a></li>
-<li><a href='/cc-ca-eng.html?ww-vn=hay_river'>Hay River, NWT</a></li>
+<li><a href='/co-ac-eng.html'>Channel Overview</a></li>
+<li><a href='/cc-ca-eng.html?ww-vn=fraser_north_arm'>Current Channel Conditions</a></li>
+<li><a href='/sdb-bds-eng.html'>Survey Database</a></li>
 </ul>
 </section>
 <div class="clear"></div>
