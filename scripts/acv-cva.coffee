@@ -1,10 +1,22 @@
 $(->
+
+  s = ''
+  s += '<option value=' + i + '>' + i + '</option>' for i in [6..36]
+  $('#chainage').append(s)
+
   $('#date').change(->
-    if (moment().diff($('#date').val()) > 0)
-      $("#actual").attr('disabled', false)
-    else
-      $("#actual").attr('disabled', true)
-      
+    $.getJSON('/api/depths?date=' + $(this).val(), (data) ->
+      $('#flows option').remove()
+      s = ''
+      $.each(data.Flowrates, (idx, itm) ->
+        s += '<option value=' + itm + '>' + itm + '</option>'
+      )
+
+      $('#flows').append(s)
+      $('#flowPred').text(data.Predicted)
+      $('#flowAct').text(data.Actual)
+    )
+
     $('#static-date').text($('#alt-date').val())
   )
   
@@ -38,14 +50,34 @@ $(->
   
   $('select#from').change(->
     $('#static-start').text($(this).val())
-  )  
+  )
   
   $('select#to').change(->
     $('#static-end').text($(this).val())
-  )  
+  )
   
   $('input[name="velocity_legend"]').change(->
     $('#static-legend').text($(this).next().text())
+  )
+
+  $('#display').click(->
+    switch $("input:radio[name=discharge]:checked").val()
+      when '0' then flow = $('#flowPred').text()
+      when '1' then flow = $('#flowAct').text()
+      when '2' then
+      when '3' then flow = $('#flows').val()
+
+    hr = Math.floor(parseFloat($('#ddFrom').val()))
+    minute = (parseFloat($('#ddFrom').val()) - hr) * 60
+    $.getJSON('/api/animated?date=' + $('#date').val() +
+    '&legendScale=0' +
+    '&zone=' + $('#ddZone').val() +
+    '&flowRate=' + flow + '&flowType=0' +
+    '&hour=' + hr +
+    '&minute=' + minute, (data) ->
+      $('#animated').html(data)
+      $('tr', '#location tbody').remove()
+    )
   )
   
   $('#date').change()
