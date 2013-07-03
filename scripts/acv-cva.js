@@ -1,4 +1,3 @@
-(function() {
 
   $(function() {
     var i, s;
@@ -84,5 +83,3 @@
     });
     return $('#date').change();
   });
-
-}).call(this);

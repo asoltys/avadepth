@@ -198,11 +198,7 @@ The Transit Window report shows the depth available for the entire channel for a
     <p><span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
   </div>
   
-  <table class="table-accent span-4 table-condensed">
-    <tr>
-      <td>Average Depth of selected window:</td>
-      <td>11.57</td>
-    </tr>
+  <table class="span-6 table-condensed">
     <tr>
       <td>Minimum Depth:</td>
       <td>11.07</td>
@@ -211,48 +207,61 @@ The Transit Window report shows the depth available for the entire channel for a
       <td>Maximum Depth:</td>
       <td>11.91</td>
     </tr>
+  </table>
+
+  <table class="span-6 table-condensed">
+    <tr>
+      <td>Average Depth of selected window:</td>
+      <td>11.57</td>
+    </tr>
     <tr>
       <td>Number of Days with Selected Window:</td>
       <td>1</td>
     </tr>
   </table>
   <div class="clear"></div>
-  
-  <table class="table-accent span-12 zebra-striped table-condensed">
-    <tr>
-      <th colspan="2">From</th>
-      <th colspan="2">To</th>
-      <th>&nbsp;</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th>Time (PST)</th>
-      <th>Date</th>
-      <th>Time (PST)</th>
-      <th>Maximum Depth (m)</th>
-    </tr>
-    <tr>
-      <td>Tue, 7-May-2013</td>
-      <td>02:30</td>
-      <td>Tue, 7-May-2013</td>
-      <td>04:30</td>
-      <td>11.91</td>
-    </tr>
-    <tr>
-      <td>Tue, 7-May-2013</td>
-      <td>16:00</td>
-      <td>Tue, 7-May-2013</td>
-      <td>18:00</td>
-      <td>11.75</td>
-    </tr>
-    <tr>
-      <td>Tue, 7-May-2013</td>
-      <td>23:45</td>
-      <td>Wed, 8-May-2013</td>
-      <td>01:45</td>
-      <td>11.07</td>
-    </tr>
-  </table>
+
+  <section style="padding: 20px">
+    <table id="transit-window" class="zebra-striped">
+      <thead>
+      <tr>
+        <th colspan="2">From</th>
+        <th colspan="2">To</th>
+        <th>&nbsp;</th>
+      </tr>
+      <tr>
+        <th>Date</th>
+        <th>Time (PST)</th>
+        <th>Date</th>
+        <th>Time (PST)</th>
+        <th>Maximum Depth (m)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Tue, 7-May-2013</td>
+        <td>02:30</td>
+        <td>Tue, 7-May-2013</td>
+        <td>04:30</td>
+        <td>11.91</td>
+      </tr>
+      <tr>
+        <td>Tue, 7-May-2013</td>
+        <td>16:00</td>
+        <td>Tue, 7-May-2013</td>
+        <td>18:00</td>
+        <td>11.75</td>
+      </tr>
+      <tr>
+        <td>Tue, 7-May-2013</td>
+        <td>23:45</td>
+        <td>Wed, 8-May-2013</td>
+        <td>01:45</td>
+        <td>11.07</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
 </div>
 
 <!--#include virtual="/includes/footer-eng.html" -->

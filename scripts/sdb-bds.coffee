@@ -1,4 +1,6 @@
 $(->
+  $('#surveys').dataTable(iDisplayLength: 25)
+
   $('#waterway').change( ->
     $('#heading-waterway').text($(this).find('option:selected').text())
     $('.map-group').hide()

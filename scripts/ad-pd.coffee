@@ -54,7 +54,7 @@ $(->
     $('#static-chainage').text($(this).val())
   )
   
-  $('#date').change(->
+  $('#date, #width, #chainage').change(->
     $.getJSON("/api/Flow/Get?date=#{$('#date').val()}", (data) ->
       $('#predicted_discharge').text(data)
       $('#static-discharge').text(data)
@@ -67,7 +67,7 @@ $(->
             points.push([this.period, this.depth])
           )
           createGraph(points)
-          $('.zebra-striped tr:even').addClass('stripe')
+          $('#depths').dataTable(iDisplayLength: 25)
       )
     )
 
@@ -79,5 +79,6 @@ $(->
     $('#static-date').text($('#alt-date').val())
     
   )
+
   $('#date').change()
 )

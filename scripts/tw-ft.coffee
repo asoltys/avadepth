@@ -6,6 +6,7 @@ $(->
       $("#actual").attr('disabled', true)
       
     $('#static-date').text($('#alt-date').val())
+    $('#transit-window').dataTable()
   )
   
   $('input[name="discharge"]').change(->

@@ -6,7 +6,8 @@
       } else {
         $("#actual").attr('disabled', true);
       }
-      return $('#static-date').text($('#alt-date').val());
+      $('#static-date').text($('#alt-date').val());
+      return $('#transit-window').dataTable();
     });
     $('input[name="discharge"]').change(function() {
       switch ($(this).val()) {

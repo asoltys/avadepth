@@ -75,7 +75,7 @@
     $('select#chainage').change(function() {
       return $('#static-chainage').text($(this).val());
     });
-    $('#date').change(function() {
+    $('#date, #width, #chainage').change(function() {
       $.getJSON("/api/Flow/Get?date=" + ($('#date').val()), function(data) {
         $('#predicted_discharge').text(data);
         $('#static-discharge').text(data);
@@ -88,7 +88,9 @@
             return points.push([this.period, this.depth]);
           });
           createGraph(points);
-          return $('.zebra-striped tr:even').addClass('stripe');
+          return $('#depths').dataTable({
+            iDisplayLength: 25
+          });
         });
       });
       if (moment().diff($('#date').val()) > 0) {

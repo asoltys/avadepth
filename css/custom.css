@@ -80,3 +80,8 @@ img#ccg-logo, img#ccg-word {
   display: none;
 }
 
+.yaxislabel { color: black; }
+
+table.dataTable tr.odd, table.dataTable tr.odd td.sorting_1 { background: #F3F3F3; }
+table.dataTable tr.even, table.dataTable tr.even td.sorting_1 { background: #FFFFFF; }
+
