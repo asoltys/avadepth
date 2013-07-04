@@ -1,5 +1,17 @@
 $(->
   $('#date').change(->
+
+    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=60&flowRate=5417&flowType=0&waterway=0&displayType=0", (data) ->
+      $('#water-levels tbody tr').remove()
+      $.each(data.times, ->
+        row = $("<tr><td><a href='pwlt-ptnd-eng.html?time=#{this.predictTime}'>#{this.predictTime}</a></td></tr>")
+        $.each(this.waterLevels, ->
+          row.append("<td>#{parseInt(this).toFixed(1)}</td>")
+        )
+        $('#water-levels tbody').append(row)
+      )
+    )
+
     if (moment().diff($('#date').val()) > 0)
       $("#actual").attr('disabled', false)
     else

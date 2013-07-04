@@ -84,7 +84,7 @@
           $('#depths tbody tr').remove();
           points = new Array();
           $.each(data.items[0].items, function() {
-            $('#depths').append("<tr><td>" + this.period + "</td><td>" + this.chainage + "</td><td>" + this.depth + "</td><td>" + this.location + "</td>");
+            $('#depths').append("<tr><td>" + this.period + "</td><td>" + this.chainage + "</td><td>" + this.depth + "</td><td>" + this.location + "</td></tr>");
             return points.push([this.period, this.depth]);
           });
           createGraph(points);
