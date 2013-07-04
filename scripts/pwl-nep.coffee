@@ -1,10 +1,17 @@
 $(->
-  $('#date').change(->
-
-    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=60&flowRate=5417&flowType=0&waterway=0&displayType=0", (data) ->
+  $('#date, #interval, #chainage, input[name=waterway]').change(->
+    waterway = $('input:radio[name=waterway]:checked').val()
+    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#selected_discharge').val()}&flowType=0&waterway=#{waterway}&displayType=0", (data) ->
+      $('#water-levels thead tr:last th').remove()
       $('#water-levels tbody tr').remove()
+      $('#location').text(data.title)
+
+      $.each(data.locations, ->
+        $('#water-levels thead tr:last').append("<th><a href='pwlk-nepk-eng.html?waterway=#{waterway}&km=#{this}'>#{this}</a></th>")
+      )
+
       $.each(data.times, ->
-        row = $("<tr><td><a href='pwlt-ptnd-eng.html?time=#{this.predictTime}'>#{this.predictTime}</a></td></tr>")
+        row = $("<tr><td><a href='pwlt-ptnd-eng.html?waterway=#{waterway}&time=#{this.predictTime}'>#{this.predictTime}</a></td></tr>")
         $.each(this.waterLevels, ->
           row.append("<td>#{parseInt(this).toFixed(1)}</td>")
         )

@@ -18,79 +18,11 @@ $.plot("#placeholder", [ d2, d3 ], {
 });
 </script>
 
-<script>
-  $(function() {
-    $('#date').datepicker();
-    $('#date').val(moment().format('MM/DD/YYYY'));
-    $('#date').change(function () {
-        $.getJSON(
-          '/api/depths?date=' + $(this).val(), 
-          function (data) {
-            body.text(data);
-          }
-        );
-    });
-  });
-</script>
-
 <h1>Predicted Water Levels</h1>
-
-<form id="daily_depth">
-  <div class="span-2">
-    <div>
-      <label for="date">Date:</label>
-      <input id="date" type="text" name="date" class="datepicker" />
-    </div>
-
-    <div>
-      <label for="fraser_river">Fraser River:</label>
-      <input id="fraser_river" type="radio" name="fraser_river" checked="checked" /> South Arm (km 0-40)<br />
-      <input type="radio" name="fraser_river" /> North Arm (km 0-30)<br />
-      <input type="radio" name="fraser_river" /> Main Arm (km 40-92)<br />
-    </div>
-  </div>
-
-  <div class="span-2">
-
-    <div>
-      <label for="river_discharge">River Discharge @ Hope:</label>
-      <input id="river_discharge" type="radio" name="river_discharge" checked="checked" /> Predicted (0m&#179;s)<br />
-      <input type="radio" name="river_discharge" disabled="true" /> Actual (841m&#179;s)<br />
-      <input type="radio" name="river_discharge" /> User Defined
-      <input id="river_discharge" type="text" name="river_discharge_user_defined" /> m3/s<br />
-      <input type="radio" name="river_discharge" /> Selected
-      <select id="width">
-        <option value="2000" selected="selected">2000</option>
-        <option value="5000">5000</option>
-        <option value="7500">7500</option>
-      </select> m3/s
-    </div>
-  </div>
-
-  <div class="span-2">
-
-    <div>
-      <label for="interval">Interval:</label>
-      <select id="width">
-        <option value="15 minute">15 minute</option>
-        <option value="30 minute">30 minute</option>
-        <option value="1 hour" selected="selected">1 hour</option>
-        <option value="2 hour">2 hour</option>
-      </select> m3/s
-    </div>
-
-    <div>
-      <label for="report">Report:</label>
-      <input id="report" type="radio" name="report" checked="checked" /> Water Levels 
-      <input type="radio" name="report" /> Velocities<br />
-    </div>
-  </div>
-</form>
-
-<div class="clear"></div>
 
 <div style="width:550px">
   <h2 style="text-align:center;">Fraser River - South Arm At 00:00</h2>
   <div id="placeholder" class="demo-placeholder" style="width:500px;height:500px;"></div>
 </div>
+
 <!--#include virtual="/includes/footer-eng.html" -->
