@@ -65,42 +65,30 @@ $(->
     $('#static-chainage').text($(this).val())
   )
   
-  $.getJSON("api/depths?date=#{$('#date').val()}", (data) ->
-    $('#selected_discharge option').remove()
-    for flow in data.Flowrates
-      $('#selected_discharge').append("<option value=#{flow}>#{flow}</option>")
-    $('#predicted_discharge').text(data.Predicted)
-    $('#actual_discharge').text(data.Actual)
-    $('#static-discharge').text(data)
-    $.getJSON("api/transit?date=#{$('#date').val()}&lane=#{$('input[name=channel]:checked').val()}&window=#{$('#window').val()}&cmp=#{$('#cmp_box').val()}&flowType=#{$('#flowType').val()}&periodType=#{$('#period').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
-      $('#num_days').text(data2.statistics.numberOfDays)
-      $('#min_depth').text(data2.statistics.minimumDepth)
-      $('#max_depth').text(data2.statistics.maximumDepth)
-      $('#avg_depth').text(data2.statistics.totalWindow)
-      $('#transit-window tbody tr').remove()
-      for item in data2.items
-        $('#transit-window tbody').append("<tr><td>#{item.startTime}</td><td>#{item.windowStart}</td><td>#{item.endTime}</td><td>#{item.windowEnd}</td><td>#{item.depth}</td></tr>")
-    )
+  $.getJSON("api/depths?date=#{$('#date').val()}", display)
+
+  $('#date, input[name=discharge], #defined_discharge, #selected_discharge, #chainage, input[name="sounding"], input[name="channel"], #width, #period, #window, #compliance, #cmp_box').change(->
+    $.getJSON("api/depths?date=#{$('#date').val()}", display)
+  )
+)
+
+display = (data) ->
+  $('#selected_discharge option').remove()
+  for flow in data.Flowrates
+    $('#selected_discharge').append("<option value=#{flow}>#{flow}</option>")
+  $('#predicted_discharge').text(data.Predicted)
+  $('#actual_discharge').text(data.Actual)
+  $('#static-discharge').text(data)
+  
+  $.getJSON("api/transit?date=#{$('#date').val()}&lane=#{$('input[name=channel]:checked').val()}&window=#{$('#window').val()}&cmp=#{$('#cmp_box').val()}&flowType=#{$('#flowType').val()}&periodType=#{$('#period').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
+    $('#transit-window tbody tr').remove()
+    $('#num_days').text(data2.statistics.numberOfDays)
+    $('#min_depth').text(data2.statistics.minimumDepth)
+    $('#max_depth').text(data2.statistics.maximumDepth)
+    $('#avg_depth').text(data2.statistics.totalWindow)
+    for item in data2.items
+      $('#transit-window tbody').append("<tr><td>#{item.startTime}</td><td>#{item.windowStart}</td><td>#{item.endTime}</td><td>#{item.windowEnd}</td><td>#{item.depth}</td></tr>")
     $('#transit-window').dataTable()
   )
 
-  $('#date, input[name=discharge], #defined_discharge, #selected_discharge, #chainage, input[name="sounding"], input[name="channel"], #width, #period, #window, #compliance, #cmp_box').change(->
-    $.getJSON("api/depths?date=#{$('#date').val()}", (data) ->
-      $('#selected_discharge option').remove()
-      for flow in data.Flowrates
-        $('#selected_discharge').append("<option value=#{flow}>#{flow}</option>")
-      $('#predicted_discharge').text(data.Predicted)
-      $('#actual_discharge').text(data.Actual)
-      $('#static-discharge').text(data)
-      $('#transit-window tbody tr').remove()
-      $.getJSON("api/transit?date=#{$('#date').val()}&lane=#{$('input[name=channel]:checked').val()}&window=#{$('#window').val()}&cmp=#{$('#cmp_box').val()}&flowType=#{$('#flowType').val()}&periodType=#{$('#period').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
-        $('#num_days').text(data2.statistics.numberOfDays)
-        $('#min_depth').text(data2.statistics.minimumDepth)
-        $('#max_depth').text(data2.statistics.maximumDepth)
-        $('#avg_depth').text(data2.statistics.totalWindow)
-        for item in data2.items
-          $('#transit-window tbody').append("<tr><td>#{item.startTime}</td><td>#{item.windowStart}</td><td>#{item.endTime}</td><td>#{item.windowEnd}</td><td>#{item.depth}</td></tr>")
-      )
-    )
-  )
-)
+
