@@ -12,22 +12,27 @@
 
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
       <div id="parameters" style="height:300px">
-        <form id="daily_depth">
+        <form id="transit_window">
           <div class="span-4">
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
             <input id="alt-date" type="hidden" />
 
-            <label for="predicted">River Discharge:</label>
-            <input id="predicted" type="radio" name="discharge" checked="checked" value="Predicted" /> Predicted (1275m3/s)<br />
-            <input id="actual" type="radio" name="discharge" value="Actual" disabled="false" /> Actual (0m3/s)<br />
-            <input type="radio" name="discharge" value="Selected" /> Selected 
-              <select id="selected_discharge">
-                <option value="2000">2000</option>
-                <option value="5000">5000</option>
-                <option value="7500">7500</option>
-              </select> m3/s<br />
-            <input type="radio" name="discharge" value="Defined" /> User-defined <input type="text" id="defined_discharge"/> m3/s
+            <label for="discharge">River Discharge:</label>
+            <input id="predicted" type="radio" name="discharge" checked="checked" value="Predicted" /> Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
+            <input id="actual" type="radio" name="discharge" value="Actual" /> Actual (<span id="actual_discharge">0</span>m3/s)<br />
+
+            <input type="radio" name="discharge" value="Selected" /> Selected
+            <select id="selected_discharge">
+            </select> m3/s
+            <br />
+            
+            <input type="radio" name="discharge" value="Defined" /> User-defined 
+            <input type="text" id="defined_discharge" /> m3/s
+
+            <input type="hidden" name="flowRate" id="flowRate" value="0" />
+            <input type="hidden" name="flowType" id="flowType" value="0" />
+
           </div>
 
           <div class="span-4">
@@ -66,16 +71,19 @@
             </select>
             
             <div>
-              <label for="condition">Channel Condition:</label>
-              <input id="condition" type="radio" name="condition" checked="checked" /> <span>Current Soundings</span><br />
-              <input type="radio" name="condition" /> <span>Design Grade</span>
+              <label for="sounding">Channel Condition:</label>
+              <input type="radio" name="sounding" checked="checked" value="0" /> <span>Current Soundings</span><br />
+              <input type="radio" name="sounding" value="1" /> <span>Design Grade</span>
             </div>
 
             <div>
               <label for="channel">Navigation Channel:</label>
-              <input id="channel" type="radio" name="channel" checked="checked" /> <span>Inner Limit</span><br />
-              <input type="radio" name="channel" /> <span>Outer Limit</span><br />
-              Available Width <select id="width">
+              <input type="radio" name="channel" checked="checked" value="0" /> <span>Inner Limit</span><br />
+              <input type="radio" name="channel" value="1"/> <span>Outer Limit</span>
+            </div>
+            <div>
+              <label for="width">Available Width:</label>
+              <select id="width">
                 <option value="100" selected="selected">100</option>
                 <option value="95">95</option>
                 <option value="90">90</option>
@@ -92,29 +100,26 @@
           <div class="span-3">
             <div>
               <label for="channel">Transit Calculation:</label>
-              <div style="display: none">
-              Period:
-              <select id="transit_calculation_period">
-                <option value="day">Day</option>
-                <option value="Week">Week</option>
-                <option value="Month">Month</option>
+              <div >
+              <label for="period">Period:</label>
+              <select id="period">
+                <option value="0">Day</option>
+                <option value="1">Week</option>
+                <option value="2">Month</option>
               </select>
               </div>
-
-              <input type="radio" name="max_depth" checked="checked" /> Maximum Depth
-              <div style="display: none">
-              Min Window:
-              <select id="transit_calculation_min_window">
-                <option value="1hr">1hr</option>
-                <option value="2hrs">2hrs</option>
-                <option value="3hrs">3hrs</option>
-                <option value="4hrs">4hrs</option>
-                <option value="5hrs">5hrs</option>
+              Window
+              <div >
+              <label for="window">Min Window:</label>
+              <select id="window">
+                <option value="1">1hr</option>
+                <option value="2">2hrs</option>
+                <option value="3">3hrs</option>
+                <option value="4">4hrs</option>
               </select>
               </div>
-              <br />
-              <input id="channel" type="radio" name="max_depth"/> Available Windows
-              <div style="display: none">Available Windows Depth: <input type="text" /> m</div>
+              <input id="compliance" type="checkbox"/> Compliance
+              <div><input id="cmp_box" type="text" name="cmp_box" disabled="false" value="0" /> m</div>
             </div>
           </div>
         </form>
@@ -193,30 +198,31 @@ The Transit Window report shows the depth available for the entire channel for a
   
   <div class="print_show">
     <p><span id="static-date"></span></p>
-    <p>Fraser River - <span id="static-limit">Inner Limit</span></p>
+    <p>Fraser River - <span id="static-channel">Inner Limit</span></p>
+    <p>Transit Window: <span id="static-window">2 hrs</span></p>
     <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
-    <p><span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
+    <p><span id="static-sounding">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
   </div>
   
   <table class="span-6 table-condensed">
     <tr>
       <td>Minimum Depth:</td>
-      <td>11.07</td>
+      <td><span id="min_depth">-</span></td>
     </tr>
     <tr>
       <td>Maximum Depth:</td>
-      <td>11.91</td>
+      <td><span id="max_depth">-</span></td>
     </tr>
   </table>
 
   <table class="span-6 table-condensed">
     <tr>
-      <td>Average Depth of selected window:</td>
-      <td>11.57</td>
+      <td>Average Depth of Selected Window:</td>
+      <td><span id="avg_depth">-</span></td>
     </tr>
     <tr>
       <td>Number of Days with Selected Window:</td>
-      <td>1</td>
+      <td><span id="num_days">-</span></td>
     </tr>
   </table>
   <div class="clear"></div>
@@ -238,27 +244,13 @@ The Transit Window report shows the depth available for the entire channel for a
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Tue, 7-May-2013</td>
-        <td>02:30</td>
-        <td>Tue, 7-May-2013</td>
-        <td>04:30</td>
-        <td>11.91</td>
-      </tr>
-      <tr>
-        <td>Tue, 7-May-2013</td>
-        <td>16:00</td>
-        <td>Tue, 7-May-2013</td>
-        <td>18:00</td>
-        <td>11.75</td>
-      </tr>
-      <tr>
-        <td>Tue, 7-May-2013</td>
-        <td>23:45</td>
-        <td>Wed, 8-May-2013</td>
-        <td>01:45</td>
-        <td>11.07</td>
-      </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
       </tbody>
     </table>
   </section>
