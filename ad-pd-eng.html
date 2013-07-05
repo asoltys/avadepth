@@ -16,19 +16,20 @@
           <div class="span-4">
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
-            <input id="alt-date" type="hidden" />
 
             <label for="discharge">River Discharge:</label>
-            <input id="predicted" type="radio" name="discharge" checked="checked" value="Predicted" /> Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
-            <input id="actual" type="radio" name="discharge" value="Actual" /> Actual (0m3/s)<br />
 
-            <input type="radio" name="discharge" value="Selected" /> Selected
+            <input type="radio" name="discharge" id="discharge" checked="checked" /> 
+            Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
+
+            <input type="radio" name="discharge" /> 
+            Actual (<span id="actual_discharge">0</span>m3/s)<br />
+
+            <input type="radio" name="discharge" /> 
+            Selected
+
             <select id="selected_discharge">
-              <option>300</option>
-              <option>600</option>
-              <option>900</option>
-            </select> m3/s
-            <br />
+            </select> m3/s<br />
             
             <input type="radio" name="discharge" value="Defined" /> User-defined 
             <input type="text" id="defined_discharge" /> m3/s

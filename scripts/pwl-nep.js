@@ -1,9 +1,20 @@
 
   $(function() {
-    $('#date, #interval, #chainage, input[name=waterway]').change(function() {
+    $('#date').change(function() {
+      return $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
+        $('#predicted_discharge').text(data.Predicted);
+        $('#actual_discharge').text(data.Actual);
+        $('#selected_discharge option').remove();
+        $.each(data.Flowrates, function() {
+          return $('#selected_discharge').append("<option>" + (this.toString()) + "</option>");
+        });
+        return $('#discharge').change();
+      });
+    });
+    $('#date, #interval, #chainage, input[name=waterway], input[name=discharge]').change(function() {
       var waterway;
       waterway = $('input:radio[name=waterway]:checked').val();
-      $.getJSON("/api/waterlevel?date=" + ($('#date').val()) + "&intervalMin=" + ($('#interval').val()) + "&flowRate=" + ($('#selected_discharge').val()) + "&flowType=0&waterway=" + waterway + "&displayType=0", function(data) {
+      $.getJSON("/api/waterlevel?date=" + ($('#date').val()) + "&intervalMin=" + ($('#interval').val()) + "&flowRate=2000&flowType=0&waterway=" + waterway + "&displayType=0", function(data) {
         $('#water-levels thead tr:last th').remove();
         $('#water-levels tbody tr').remove();
         $('#location').text(data.title);
@@ -27,20 +38,21 @@
       return $('#static-date').text($('#alt-date').val());
     });
     $('input[name="discharge"]').change(function() {
-      switch ($(this).val()) {
-        case 'Actual':
-          0;
-          break;
-        case 'Predicted':
-          0;
-          break;
-        case 'Defined':
-          $('#static-discharge').text($('#defined_discharge').val());
-          break;
-        case 'Selected':
-          $('#static-discharge').text($('#selected_discharge').val());
-      }
-      return $('#static-discharge-eval').text($(this).val());
+      var discharge;
+      discharge = (function() {
+        switch ($(this).val()) {
+          case 'actual':
+            return $('#actual_discharge').text();
+          case 'predicted':
+            return $('#predicted_discharge').text();
+          case 'defined':
+            return $('#selected_discharge').val();
+          case 'selected':
+            return $('#defined_discharge').val();
+        }
+      }).call(this);
+      $('#static-discharge-eval').text(discharge);
+      return $('#flowRate').val(discharge);
     });
     $('input[name="discharge"]').change(function() {
       return $('#static-discharge-eval').text($(this).val());

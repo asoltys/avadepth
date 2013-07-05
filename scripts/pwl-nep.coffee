@@ -1,7 +1,22 @@
 $(->
-  $('#date, #interval, #chainage, input[name=waterway]').change(->
+  $('#date').change(->
+    $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
+      $('#predicted_discharge').text(data.Predicted)
+      $('#actual_discharge').text(data.Actual)
+
+      $('#selected_discharge option').remove()
+      $.each(data.Flowrates, ->
+        $('#selected_discharge').append("<option>#{this.toString()}</option>")
+      )
+
+      $('#discharge').change()
+    )
+  )
+      
+
+  $('#date, #interval, #chainage, input[name=waterway], input[name=discharge]').change(->
     waterway = $('input:radio[name=waterway]:checked').val()
-    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#selected_discharge').val()}&flowType=0&waterway=#{waterway}&displayType=0", (data) ->
+    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=2000&flowType=0&waterway=#{waterway}&displayType=0", (data) ->
       $('#water-levels thead tr:last th').remove()
       $('#water-levels tbody tr').remove()
       $('#location').text(data.title)
@@ -28,13 +43,14 @@ $(->
   )
   
   $('input[name="discharge"]').change(->
-    switch $(this).val()
-      when 'Actual' then 0
-      when 'Predicted' then 0
-      when 'Defined' then $('#static-discharge').text($('#defined_discharge').val())
-      when 'Selected' then $('#static-discharge').text($('#selected_discharge').val())
+    discharge = switch $(this).val()
+      when 'actual' then $('#actual_discharge').text()
+      when 'predicted' then $('#predicted_discharge').text()
+      when 'defined' then $('#selected_discharge').val()
+      when 'selected' then $('#defined_discharge').val()
       
-    $('#static-discharge-eval').text($(this).val())
+    $('#static-discharge-eval').text(discharge)
+    $('#flowRate').val(discharge)
   )
   
   $('input[name="discharge"]').change(->
