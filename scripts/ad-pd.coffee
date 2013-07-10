@@ -63,7 +63,7 @@ $(->
           $('#depths tbody tr').remove()
           points = new Array()
           $.each(data.items[0].items, ->
-            $('#depths').append("<tr><td>#{this.period}</td><td>#{this.chainage}</td><td>#{this.depth}</td><td>#{this.location}</td></tr>")
+            $('#depths').append("<tr><td><a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a></td><td>#{this.chainage}</td><td>#{this.depth}</td><td>#{this.location}</td></tr>")
             points.push([this.period, this.depth])
           )
           createGraph(points)
