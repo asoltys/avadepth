@@ -1,6 +1,7 @@
 
   $(function() {
-    var createGraph;
+    var createGraph, table;
+    table = null;
     createGraph = function(p) {
       var d1, leadingZero;
       d1 = {
@@ -81,18 +82,20 @@
         $('#static-discharge').text(data);
         return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=0&width=" + ($('#width').val()) + "&sounding=" + ($('#sounding').val()), function(data) {
           var points;
-          $('#depths tbody tr').remove();
-          points = new Array();
-          $.each(data.items[0].items, function() {
-            $('#depths').append("<tr><td><a href='advr-drvp-eng.html?lane=xxx&amp;period=" + this.period + "'>" + this.period + "</a></td><td class='center'>" + this.chainage + "</td><td class='center'>" + this.depth + "</td><td>" + this.location + "</td></tr>");
-            return points.push([this.period, this.depth]);
-          });
-          createGraph(points);
-          return $('#depths').dataTable({
+          table || (table = $('#depths').dataTable({
             bPaginate: false,
             bInfo: false,
             bFilter: false
+          }));
+          table.fnClearTable();
+          $('#depths tbody tr').remove();
+          points = new Array();
+          $.each(data.items[0].items, function() {
+            table.fnAddData(["<a href='advr-drvp-eng.html?lane=xxx&amp;period=" + this.period + "'>" + this.period + "</a>", this.chainage, this.depth, this.location]);
+            return points.push([this.period, this.depth]);
           });
+          table.fnAdjustColumnSizing();
+          return createGraph(points);
         });
       });
       if (moment().diff($('#date').val()) > 0) {

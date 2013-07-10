@@ -1,4 +1,6 @@
 $(->
+  table = null
+
   createGraph = (p) -> (
     d1 = 
       color: "red"
@@ -60,14 +62,23 @@ $(->
       $('#static-discharge').text(data)
       $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=0&width=#{$('#width').val()}&sounding=#{$('#sounding').val()}", 
         (data) ->
+          table ||= $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
+          table.fnClearTable()
+
           $('#depths tbody tr').remove()
           points = new Array()
           $.each(data.items[0].items, ->
-            $('#depths').append("<tr><td><a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a></td><td class='center'>#{this.chainage}</td><td class='center'>#{this.depth}</td><td>#{this.location}</td></tr>")
+            table.fnAddData([
+              "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>", 
+              this.chainage, 
+              this.depth, 
+              this.location])
             points.push([this.period, this.depth])
           )
+
+          table.fnAdjustColumnSizing()
           createGraph(points)
-          $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
+
       )
     )
 
