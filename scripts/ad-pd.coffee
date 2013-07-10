@@ -67,7 +67,7 @@ $(->
             points.push([this.period, this.depth])
           )
           createGraph(points)
-          $('#depths').dataTable(iDisplayLength: 25)
+          $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
       )
     )
 

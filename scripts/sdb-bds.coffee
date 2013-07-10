@@ -10,7 +10,7 @@ adjustHeight = (map) ->
     $('.tabs-panel').height("540px")
 
 $(->
-  $('#surveys').dataTable(iDisplayLength: 25)
+  $('#surveys').dataTable(bPaginate: false, bInfo: false)
 
   $('#waterway').change( ->
     $('#heading-waterway').text($(this).find('option:selected').text())

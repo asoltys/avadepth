@@ -89,7 +89,9 @@
           });
           createGraph(points);
           return $('#depths').dataTable({
-            iDisplayLength: 25
+            bPaginate: false,
+            bInfo: false,
+            bFilter: false
           });
         });
       });

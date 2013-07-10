@@ -87,8 +87,8 @@ display = (data) ->
     $('#max_depth').text(data2.statistics.maximumDepth)
     $('#avg_depth').text(data2.statistics.totalWindow)
     for item in data2.items
-      $('#transit-window tbody').append("<tr><td>#{item.startTime}</td><td>#{item.windowStart}</td><td>#{item.endTime}</td><td>#{item.windowEnd}</td><td>#{item.depth}</td></tr>")
-    $('#transit-window').dataTable()
+      $('#transit-window tbody').append("<tr><td class='center'>#{item.startTime}</td><td class='center'>#{item.windowStart}</td><td class='center'>#{item.endTime}</td><td class='center'>#{item.windowEnd}</td><td class='center'>#{item.depth}</td></tr>")
+    $('#transit-window').dataTable(bPaginate: false, bInfo: false)
   )
 
 
