@@ -1,10 +1,29 @@
-gotoKMGraph = ->
-  document.location = "pwlk-nepk-eng.html?date=#{$('#date').val()}&km=#{$(this).text()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}"
+querystring = (key) ->
+  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
+  r = []
+  m = []
+  while ((m=re.exec(document.location.search)) != null) 
+    r.push(m[1])
+  return r
 
-gotoTimeGraph = ->
-  document.location = "pwlt-ptnd-eng.html?date=#{$('#date').val()}&time=#{$(this).text()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}"
-  
 $(->
+  $("#date").val(querystring('date'))
+  $("#waterway").val(querystring('waterway'))
+  $("input[name=fraser_river]")[$("#waterway").val()].checked = true
+  $("#flowRate").val(querystring('flowRate'))
+  $("#flowType").val(querystring('flowType'))
+  check = switch querystring('flowType')[0]
+    when '0' then 0
+    when '1' then 1
+    when '2' 
+      $("#defined_discharge").val($('#flowRate').val())
+      3
+    when '3' then 2
+  $("input[name=discharge]")[check].checked = true
+  $("input[name=report]")[querystring('displayType')].checked = true
+  
+  $("#time").text(querystring('time'))
+  
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
       $('#selected_discharge').empty()
@@ -48,16 +67,11 @@ $(->
   
   $('input[name=fraser_river]').change(->
     waterway = switch $(this).val()
-      when 'South Arm'
-        $('#river-section').parent().attr('colspan', 21)
-        0
-      when 'North Arm'
-        $('#river-section').parent().attr('colspan', 16)
-        1
-      when 'Main Arm'
-        $('#river-section').parent().attr('colspan', 14)
-        2
+      when 'South Arm' then 0
+      when 'North Arm' then 1
+      when 'Main Arm' then 2
     $('#waterway').val(waterway)
+    $('#static-arm').text($(this).val())
     $('#river-section').text($(this).val())
   )
   $('input[name=fraser_river]:checked').change()
@@ -74,43 +88,25 @@ $(->
       $('#static-discharge').text($('#selected_discharge').val())
   )
   
-  $('input[name=fraser_river]').change(->
-    $('#static-arm').text($(this).val())
-  )
-  
-  $('input[name=channel]').change(->
-    $('#static-limit').text($(this).next().text())
-  )
-
-  $('select#interval').change(->
-    $('#static-interval').text($(this).val())
-  )
-  
-  $('select#chainage').change(->
-    $('#static-chainage').text($(this).val())
-  )
-  
   $('#date, input[name=discharge], input[name=fraser_river], input[name=report], #defined_discharge, #selected_discharge, #interval').change( ->
-    $('#water-levels tbody').empty()
-    $('#headerkm').empty()
-    step = 2
-    kmStart = switch $('#waterway').val()
-      when '2'
-        step = 4
-        40
-      else 0
-    for i in [kmStart..$('#river-section').parent().attr('colspan')*step-step+kmStart] by step
-      headerRow = $("<th><a href=\"javascript:void(0)\">#{i}</a></th>")
-      $('#headerkm').append(headerRow)
-      headerRow.click(gotoKMGraph)
-    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}", (data) ->
+    step = switch $("#waterway").val()
+      when '0' then 2
+      when '1' then 2
+      when '2' then 4
+    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{querystring('intervalMin')}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}", (data) ->
+      points = new Array()
       $.each(data.times, ->
-        row = $("<tr><td><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
-        $.each(this.waterLevels, ->
-          row.append("<td>#{parseFloat(this).toFixed(1)}</td>")
-        )
-        $('#water-levels tbody').append(row)
-        $(row).find('a').click(gotoTimeGraph)
+        if (this.predictTime == querystring('time')[0])
+          start = 0
+          if (step == 4)
+            start = 40
+          $.each(this.waterLevels, (i) ->
+            points.push([i*step+start, this])
+          )
+      )
+      $.plot("#placeholder", [ points ], 
+        xaxes: [ color: 'black', tickColor: '#ddd', tickSize: step, axisLabel: 'Location (km)' ],
+        yaxes: [ color: 'black', tickColor: '#ddd', position: 'left', axisLabel: 'Water Level (metres) relative to LWD' ]
       )
     )
   )

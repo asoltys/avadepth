@@ -15,33 +15,27 @@
       </div>
 
       <div>
-        <label for="waterway">Fraser River:</label>
-        <input id="waterway" type="radio" name="waterway" checked="checked" value="0" /> South Arm (km 0-40)<br />
-        <input type="radio" name="waterway" value="1" /> North Arm (km 0-30)<br />
-        <input type="radio" name="waterway" value="2" /> Main Arm (km 40-92)<br />
+        <label for="fraser_river">Fraser River:</label>
+        <input id="fraser_river" type="radio" name="fraser_river" checked="checked" value="South Arm" /> South Arm (km 0-40)<br />
+        <input type="radio" name="fraser_river" value="North Arm" /> North Arm (km 0-30)<br />
+        <input type="radio" name="fraser_river" value="Main Arm" /> Main Arm (km 40-92)<br />
+        <input type="hidden" name="waterway" id="waterway" value="0" />
       </div>
     </div>
 
     <div class="span-4">
       <div>
-        <label for="discharge">River Discharge:</label>
-
-        <input type="radio" name="discharge" id="discharge" checked="checked" value="predicted" /> 
-        Predicted (<span id="predicted_discharge"></span>m3/s)<br />
-
-        <input type="radio" name="discharge" value="actual" /> 
-        Actual (<span id="actual_discharge"></span>m3/s)<br />
-
-        <input type="radio" name="discharge" value="selected" /> 
-        Selected
-
+        <label for="river_discharge">River Discharge @ Hope:</label>
+        <input id="predicted" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> Predicted (<span id="predicted_discharge"></span>m&#179;s)<br />
+        <input id="actual" type="radio" name="discharge" disabled="true" class="rd_actual" value="Actual" /> Actual (<span id="actual_discharge"></span>m&#179;s)<br />
+        <input type="radio" name="discharge" value="Selected" /> Selected
         <select id="selected_discharge">
         </select> m3/s<br />
+        <input type="radio" name="discharge" value="Defined" /> User Defined
+        <input id="defined_discharge" type="text" name="discharge" /> m3/s
         
-        <input type="radio" name="discharge" value="defined" /> User-defined 
-        <input type="text" id="defined_discharge" /> m3/s
-
-        <input type="hidden" name="flowRate" id="flowRate" />
+        <input type="hidden" name="flowRate" id="flowRate" value="0" />
+        <input type="hidden" name="flowType" id="flowType" value="0" />
       </div>
     </div>
 
@@ -55,6 +49,11 @@
           <option value="120">2 hour</option>
         </select>
       </div>
+      <div>
+        <label for="report">Report:</label>
+        <input id="report" type="radio" name="report" checked="checked" value="0" /> Water Levels 
+        <input type="radio" name="report" value="1" /> Velocities<br />
+      </div>
     </div>
   </form>
   </div>
@@ -65,16 +64,16 @@
   <p>Fraser River - <span id="static-arm">South Arm</span></p>
   <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
 </div>
-  
+
 <div class="clear"></div>
-        
+
 <table id="water-levels" class="zebra-striped table-condensed">
   <thead>
     <tr>
       <th rowspan="2">Time (PST)</th>
-      <th id="location" colspan="21"></th>
+      <th colspan="21">Fraser River - <span id="river-section"></span></th>
     </tr>
-    <tr>
+    <tr id="headerkm">
     </tr>
   </thead>
   <tbody>
