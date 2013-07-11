@@ -1,5 +1,6 @@
 $(->
   table = null
+  flowrate = 0
 
   createGraph = (p) -> (
     d1 = 
@@ -19,17 +20,6 @@ $(->
 
   $(".yaxislabel").css("color","black")
 
-  $('input[name=discharge]').change(->
-    flowrate = switch $(this).val()
-      when 'Actual' then 0
-      when 'Predicted' then $('#predicted_discharge').text() and $('#static-discharge').text($('#predicted_discharge').val())
-      when 'Defined' then $('#defined_discharge').val() and $('#static-discharge').text($('#defined_discharge').val())
-      when 'Selected' then $('#selected_discharge').val() and $('#static-discharge').text($('#selected_discharge').val())
-
-    $('#flowRate').val(flowrate)
-    $('#static-discharge-eval').text($(this).val())
-  )
-  
   $('#defined_discharge').change(->
     if ($('input[name="discharge"].checked').val() == "Defined")
       $('#static-discharge').text($('#defined_discharge').val())
@@ -55,12 +45,51 @@ $(->
   $('select#chainage').change(->
     $('#static-chainage').text($(this).val())
   )
+
+  $('#date').change(->
+    $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
+      $('#selected_discharge').empty()
+      $.each(data.Flowrates, ->
+        $('#selected_discharge').append("<option value='#{this}'>#{this}</option>")
+      )
+      $('#predicted_discharge').text(data.Predicted)
+      $('#actual_discharge').text(data.Actual)
+      if (data.Actual)
+        $("#actual").attr('disabled', false)
+        $("#predicted").attr('disabled', true)
+        if ($('#predicted').is(':checked'))
+          $('input[name=discharge]')[1].checked = true;
+      else
+        $("#actual").attr('disabled', true)
+        $("#predicted").attr('disabled', false)
+        if ($('#actual').is(':checked'))
+          $('input[name=discharge]')[0].checked = true;
+      $('input[name=discharge]:checked').trigger('change')
+      $('#static-date').text($('#alt-date').val())
+    )
+  ).change()
+
+  $('input[name=discharge]').change(->
+    flowrate = switch $(this).val()
+      when 'Actual' then $('#actual_discharge').text()
+      when 'Predicted' then $('#predicted_discharge').text()
+      when 'Defined' then $('#defined_discharge').val()
+      when 'Selected' then $('#selected_discharge').val()
+    $('#flowRate').val(flowrate)
+    $('#static-discharge').text(flowrate)
+    $('#static-discharge-eval').text($(this).val())
+
+    flowtype = switch $(this).val()
+      when 'Actual' then 0
+      when 'Predicted' then 1
+      when 'Defined' then 2
+      when 'Selected' then 3
+    $('#flowType').val(flowtype)
+  )
   
-  $('#date, #width, #chainage').change(->
+  $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(->
     $.getJSON("/api/Flow/Get?date=#{$('#date').val()}", (data) ->
-      $('#predicted_discharge').text(data)
-      $('#static-discharge').text(data)
-      $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=0&width=#{$('#width').val()}&sounding=#{$('#sounding').val()}", 
+      $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('input[name=channel]:checked').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=condition]:checked').val()}", 
         (data) ->
           table ||= $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
           table.fnClearTable()
@@ -77,8 +106,9 @@ $(->
           )
 
           table.fnAdjustColumnSizing()
-          createGraph(points)
+          $('#depths td:nth-child(3)').css('text-align', 'center')
 
+          createGraph(points)
       )
     )
 

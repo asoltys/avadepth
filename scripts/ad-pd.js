@@ -1,7 +1,8 @@
 
   $(function() {
-    var createGraph, table;
+    var createGraph, flowrate, table;
     table = null;
+    flowrate = 0;
     createGraph = function(p) {
       var d1, leadingZero;
       d1 = {
@@ -37,23 +38,6 @@
       });
     };
     $(".yaxislabel").css("color", "black");
-    $('input[name=discharge]').change(function() {
-      var flowrate;
-      flowrate = (function() {
-        switch ($(this).val()) {
-          case 'Actual':
-            return 0;
-          case 'Predicted':
-            return $('#predicted_discharge').text() && $('#static-discharge').text($('#predicted_discharge').val());
-          case 'Defined':
-            return $('#defined_discharge').val() && $('#static-discharge').text($('#defined_discharge').val());
-          case 'Selected':
-            return $('#selected_discharge').val() && $('#static-discharge').text($('#selected_discharge').val());
-        }
-      }).call(this);
-      $('#flowRate').val(flowrate);
-      return $('#static-discharge-eval').text($(this).val());
-    });
     $('#defined_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Defined") {
         return $('#static-discharge').text($('#defined_discharge').val());
@@ -76,11 +60,65 @@
     $('select#chainage').change(function() {
       return $('#static-chainage').text($(this).val());
     });
-    $('#date, #width, #chainage').change(function() {
+    $('#date').change(function() {
+      return $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
+        $('#selected_discharge').empty();
+        $.each(data.Flowrates, function() {
+          return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
+        });
+        $('#predicted_discharge').text(data.Predicted);
+        $('#actual_discharge').text(data.Actual);
+        if (data.Actual) {
+          $("#actual").attr('disabled', false);
+          $("#predicted").attr('disabled', true);
+          if ($('#predicted').is(':checked')) {
+            $('input[name=discharge]')[1].checked = true;
+          }
+        } else {
+          $("#actual").attr('disabled', true);
+          $("#predicted").attr('disabled', false);
+          if ($('#actual').is(':checked')) {
+            $('input[name=discharge]')[0].checked = true;
+          }
+        }
+        $('input[name=discharge]:checked').trigger('change');
+        return $('#static-date').text($('#alt-date').val());
+      });
+    }).change();
+    $('input[name=discharge]').change(function() {
+      var flowtype;
+      flowrate = (function() {
+        switch ($(this).val()) {
+          case 'Actual':
+            return $('#actual_discharge').text();
+          case 'Predicted':
+            return $('#predicted_discharge').text();
+          case 'Defined':
+            return $('#defined_discharge').val();
+          case 'Selected':
+            return $('#selected_discharge').val();
+        }
+      }).call(this);
+      $('#flowRate').val(flowrate);
+      $('#static-discharge').text(flowrate);
+      $('#static-discharge-eval').text($(this).val());
+      flowtype = (function() {
+        switch ($(this).val()) {
+          case 'Actual':
+            return 0;
+          case 'Predicted':
+            return 1;
+          case 'Defined':
+            return 2;
+          case 'Selected':
+            return 3;
+        }
+      }).call(this);
+      return $('#flowType').val(flowtype);
+    });
+    $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(function() {
       $.getJSON("/api/Flow/Get?date=" + ($('#date').val()), function(data) {
-        $('#predicted_discharge').text(data);
-        $('#static-discharge').text(data);
-        return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=0&width=" + ($('#width').val()) + "&sounding=" + ($('#sounding').val()), function(data) {
+        return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('input[name=channel]:checked').val()) + "&width=" + ($('#width').val()) + "&sounding=" + ($('input[name=condition]:checked').val()), function(data) {
           var points;
           table || (table = $('#depths').dataTable({
             bPaginate: false,
@@ -95,6 +133,7 @@
             return points.push([this.period, this.depth]);
           });
           table.fnAdjustColumnSizing();
+          $('#depths td:nth-child(3)').css('text-align', 'center');
           return createGraph(points);
         });
       });

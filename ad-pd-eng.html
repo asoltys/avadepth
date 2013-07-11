@@ -17,24 +17,21 @@
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
 
-            <label for="discharge">River Discharge:</label>
-
-            <input type="radio" name="discharge" id="discharge" checked="checked" /> 
-            Predicted (<span id="predicted_discharge">1275</span>m3/s)<br />
-
-            <input type="radio" name="discharge" /> 
-            Actual (<span id="actual_discharge">0</span>m3/s)<br />
-
-            <input type="radio" name="discharge" /> 
-            Selected
-
-            <select id="selected_discharge">
-            </select> m3/s<br />
-            
-            <input type="radio" name="discharge" value="Defined" /> User-defined 
-            <input type="text" id="defined_discharge" /> m3/s
-
-            <input type="hidden" name="flowRate" id="flowRate" value="0" />
+           
+            <div>
+              <label for="river_discharge">River Discharge @ Hope:</label>
+              <input id="predicted" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> Predicted (<span id="predicted_discharge"></span>m&#179;s)<br />
+              <input id="actual" type="radio" name="discharge" disabled="true" class="rd_actual" value="Actual" /> Actual (<span id="actual_discharge"></span>m&#179;s)<br />
+              <input type="radio" name="discharge" value="Selected" /> Selected
+              <select id="selected_discharge">
+              </select> m3/s<br />
+              <input type="radio" name="discharge" value="Defined" /> User Defined
+              <input id="defined_discharge" type="text" name="discharge" /> m3/s
+              
+              <input type="hidden" name="flowRate" id="flowRate" value="0" />
+              <input type="hidden" name="flowType" id="flowType" value="0" />
+            </div>
+ 
           </div>
 
           <div class="span-4">
@@ -73,15 +70,15 @@
             </select>
             
             <div>
-              <label for="sounding">Channel Condition:</label>
-              <input id="sounding" type="radio" name="condition" checked="checked" value="0" /> <span>Current Soundings</span><br />
+              <label for="condition">Channel Condition:</label>
+              <input id="condition" type="radio" name="condition" checked="checked" value="0" /> <span>Current Soundings</span><br />
               <input type="radio" name="condition" value="1" /> <span>Design Grade</span>
             </div>
 
             <div>
               <label for="channel">Navigation Channel:</label>
-              <input id="channel" type="radio" name="channel" checked="checked" /> <span>Inner Limit</span><br />
-              <input type="radio" name="channel" /> <span>Outer Limit</span>
+              <input id="channel" type="radio" name="channel" checked="checked" value="0" /> <span>Inner Limit</span><br />
+              <input type="radio" name="channel" value="1" /> <span>Outer Limit</span>
             </div>
           </div>
 
@@ -148,7 +145,7 @@
 </div>
 
 <div class="grid-12">
-  <h2>Fraser River</h2>
+  <h2 class="print_hide">Fraser River</h2>
 
   <div class="print_show">
     <p><span id="static-date"></span></p>
@@ -172,7 +169,8 @@
   </div>
   
   <div class="page-break"></div>
-  <div id="placeholder" class="demo-placeholder span-6" style="height:500px;float:left;"></div>
+  <div id="placeholder" class="demo-placeholder span-6" style="height:500px"></div>
 </div>
+
 
 <!--#include virtual="/includes/footer-eng.html" -->
