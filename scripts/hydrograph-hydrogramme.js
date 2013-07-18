@@ -1,17 +1,11 @@
 (function() {
-  var GetData, data, data2, dataset, date_inc, monthNames, now, now2, options, totalPoints, updateInterval;
-
-  data = [];
-
-  data2 = [];
+  var GetData, dataset, date_inc, monthNames, now, now2, options, totalPoints;
 
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   dataset = [];
 
   totalPoints = 60;
-
-  updateInterval = 500;
 
   now = new Date();
 
@@ -40,6 +34,10 @@
   };
 
   options = {
+    grid: {
+      color: 'black',
+      backgroundColor: 'white'
+    },
     series: {
       lines: {
         show: true,
@@ -51,14 +49,17 @@
         show: false
       }
     },
+    colors: ['red', 'blue'],
     xaxis: {
       mode: "time",
+      color: 'white',
+      tickColor: 'white',
       tickSize: [1, "day"],
       minTickSize: [2, "month"],
       tickFormatter: function(v, axis) {
         var date;
         date = new Date(v);
-        if (date.getDate() % 10 === 0) {
+        if (date.getDate() % 7 === 0) {
           return monthNames[date.getMonth()] + " " + date.getDate();
         } else {
           return "";
@@ -71,11 +72,9 @@
       axisLabelPadding: 10
     },
     yaxis: {
-      min: 0,
-      max: 3170,
-      tickSize: 5,
+      tickSize: 8,
       tickFormatter: function(v, axis) {
-        if (v % 500 === 0) {
+        if (v % 1500 === 0) {
           return v;
         } else {
           return "";
@@ -90,22 +89,33 @@
   };
 
   $(function() {
-    var update;
-    GetData();
-    dataset = [
-      {
-        data: data2
-      }, {
-        data: data
-      }
-    ];
-    $.plot($("#flot-placeholder1"), dataset, options);
-    update = function() {
-      GetData();
-      $.plot($("#flot-placeholder1"), dataset, options);
-      return setTimeout(update, updateInterval);
-    };
-    update();
+    $('#date, #period').change(function() {
+      var data, data2, date, month, period, year;
+      data = [];
+      data2 = [];
+      date = moment($(this).val());
+      year = date.year();
+      month = date.month();
+      period = $('#period').val();
+      return $.getJSON("/api/hydrograph?year=" + year + "&month=" + month + "&period=" + period + "&actual=false&predicted=false", function(results) {
+        $.each(results, function(i, v) {
+          year = v.year;
+          month = v.month;
+          return $.each(v.minMax, function(i, v) {
+            data.push([moment(v.day, "MMM").year(year).month(month).date(v.day)._d, v.minValue]);
+            return data2.push([moment(v.day, "MMM").year(year).month(month).date(v.day)._d, v.maxValue]);
+          });
+        });
+        dataset = [
+          {
+            data: data2
+          }, {
+            data: data
+          }
+        ];
+        return $.plot($("#flot-placeholder1"), dataset, options);
+      });
+    });
     $('#date').change(function() {
       return $('#static-date').text($('#alt-date').val());
     });

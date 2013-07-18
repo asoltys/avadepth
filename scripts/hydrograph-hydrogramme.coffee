@@ -1,12 +1,11 @@
-data = []
-data2 = []
 monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
 dataset = []
 totalPoints = 60
-updateInterval = 500
 now = new Date()
 now2 = new Date()
 date_inc = 0
+
+
 
 GetData = () ->
   data.shift()
@@ -28,6 +27,9 @@ GetData = () ->
     data2.push(temp)
 
 options =
+  grid:
+    color: 'black'
+    backgroundColor: 'white'
   series:
     lines:
       show: true
@@ -36,14 +38,17 @@ options =
     stack: true
     points:
       show:false
+  colors: ['red', 'blue']
   xaxis:
     mode: "time",
+    color: 'white'
+    tickColor: 'white'
     tickSize: [1, "day"]
     minTickSize: [2, "month"]
     tickFormatter: (v, axis) ->
       date = new Date(v)
 
-      if (date.getDate() % 10 == 0)
+      if (date.getDate() % 7 == 0)
         monthNames[date.getMonth()] + " " + date.getDate()
       else
         ""
@@ -53,11 +58,9 @@ options =
     axisLabelFontFamily: 'Verdana, Arial'
     axisLabelPadding: 10
   yaxis:
-    min: 0
-    max: 3170
-    tickSize: 5
+    tickSize: 8
     tickFormatter: (v, axis) ->
-        if v % 500 == 0 then v else ""
+        if v % 1500 == 0 then v else ""
     axisLabel: "Hope Discharge (m3s)"
     axisLabelUseCanvas: true
     axisLabelFontSizePixels: 12
@@ -65,22 +68,37 @@ options =
     axisLabelPadding: 6
 
 $(->
-  GetData()
+  $('#date, #period').change(->
+    data = []
+    data2 = []
 
-  dataset = [
-    {data: data2}
-    {data: data}
-  ]
+    date = moment($(this).val())
+    year = date.year()
+    month = date.month()
+    period = $('#period').val()
 
-  $.plot($("#flot-placeholder1"), dataset, options)
+    $.getJSON("/api/hydrograph?year=#{year}&month=#{month}&period=#{period}&actual=false&predicted=false", 
+      (results) ->
+        # GetData()
 
-  update = () ->
-    GetData()
+        $.each(results, (i,v) ->
+          year = v.year
+          month = v.month
 
-    $.plot($("#flot-placeholder1"), dataset, options)
-    setTimeout(update, updateInterval)
+          $.each(v.minMax, (i,v) ->
+            data.push([moment(v.day, "MMM").year(year).month(month).date(v.day)._d, v.minValue])
+            data2.push([moment(v.day, "MMM").year(year).month(month).date(v.day)._d, v.maxValue])
+          )
+        )
 
-  update()
+        dataset = [
+          {data: data2}
+          {data: data}
+        ]
+
+        $.plot($("#flot-placeholder1"), dataset, options)
+    )
+  )
 
 
   $('#date').change(->
