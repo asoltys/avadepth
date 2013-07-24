@@ -38,27 +38,17 @@
         $('#predicted_discharge').text(data.Predicted);
         $('#actual_discharge').text(data.Actual);
         if (data.Actual) {
-          $("#actual").attr('disabled', false);
-          $("#predicted").attr('disabled', true);
-          if ($('#predicted').is(':checked')) {
-            $('input[name=discharge]')[1].checked = true;
-          }
+          $("#actual_radio").attr('disabled', false);
+          $("#predicted_radio").attr('disabled', true);
+          $('#actual_radio').prop('checked', true);
         } else {
-          $("#actual").attr('disabled', true);
-          $("#predicted").attr('disabled', false);
-          if ($('#actual').is(':checked')) {
-            $('input[name=discharge]')[0].checked = true;
-          }
+          $("#actual_radio").attr('disabled', true);
+          $("#predicted_radio").attr('disabled', false);
+          $("#predicted_radio").prop('checked', true);
         }
         $('input[name=discharge]:checked').change();
         return $('#static-date').text($('#alt-date').val());
       });
-      if (moment().diff($('#date').val()) > 0) {
-        $("#actual").attr('disabled', false);
-        $("#actual").attr('checked', 'checked');
-      } else {
-        $("#actual").attr('disabled', true);
-      }
       return $('#static-date').text($('#alt-date').val());
     }).change();
     $('#selected_discharge').change(function() {

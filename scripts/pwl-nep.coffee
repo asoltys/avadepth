@@ -13,21 +13,45 @@ $(->
       )
       $('#predicted_discharge').text(data.Predicted)
       $('#actual_discharge').text(data.Actual)
+
       if (data.Actual)
-        $("#actual").attr('disabled', false)
-        $("#predicted").attr('disabled', true)
-        if ($('#predicted').is(':checked'))
-          $('input[name=discharge]')[1].checked = true;
+        $("#actual_radio").attr('disabled', false)
+        $("#predicted_radio").attr('disabled', true)
+        $('#actual_radio').prop('checked', true)
       else
-        $("#actual").attr('disabled', true)
-        $("#predicted").attr('disabled', false)
-        if ($('#actual').is(':checked'))
-          $('input[name=discharge]')[0].checked = true;
-      $('input[name=discharge]:checked').trigger('change')
+        $("#actual_radio").attr('disabled', true)
+        $("#predicted_radio").attr('disabled', false)
+        $("#predicted_radio").prop('checked', true)
+
+      $('input[name=discharge]:checked').change()
       $('#static-date').text($('#alt-date').val())
     )
+
+    $('#static-date').text($('#alt-date').val())
   ).change()
-  
+
+  $('#selected_discharge').change(->
+    $('#discharge_radio').prop('checked', true).change()
+  )
+
+  $('input[name=discharge]').change(->
+    flowrate = switch $(this).val()
+      when 'Actual' then $('#actual_discharge').text()
+      when 'Predicted' then $('#predicted_discharge').text()
+      when 'Defined' then $('#defined_discharge').val()
+      when 'Selected' then $('#selected_discharge').val()
+    $('#flowRate').val(flowrate)
+    $('#static-discharge').text(flowrate)
+    $('#static-discharge-eval').text($(this).val())
+
+    flowtype = switch $(this).val()
+      when 'Actual' then 0
+      when 'Predicted' then 1
+      when 'Defined' then 2
+      when 'Selected' then 3
+    $('#flowType').val(flowtype)
+  )
+
   $('input[name=discharge]').change(->
     flowrate = switch $(this).val()
       when 'Actual' then $('#actual_discharge').text()
@@ -93,6 +117,7 @@ $(->
   $('#date, input[name=discharge], input[name=fraser_river], input[name=report], #defined_discharge, #selected_discharge, #interval').change( ->
     $('#water-levels tbody').empty()
     $('#headerkm').empty()
+    $('#location').text(data.title)
     step = 2
     kmStart = switch $('#waterway').val()
       when '2'
