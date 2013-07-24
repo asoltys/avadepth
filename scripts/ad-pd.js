@@ -1,42 +1,11 @@
+(function() {
+  var createGraph, flowrate, table, update;
+
+  table = null;
+
+  flowrate = 0;
 
   $(function() {
-    var createGraph, flowrate, table;
-    table = null;
-    flowrate = 0;
-    createGraph = function(p) {
-      var d1, leadingZero;
-      d1 = {
-        color: "red",
-        lines: {
-          lineWidth: 3
-        },
-        data: p
-      };
-      leadingZero = function(num, axis) {
-        var s;
-        s = "0" + num;
-        return s.substr(s.length - 4);
-      };
-      return $.plot("#placeholder", [d1], {
-        xaxes: [
-          {
-            color: 'black',
-            tickColor: '#aaa',
-            axisLabel: 'Pacific Standard Time (hrs)',
-            tickSize: 200,
-            tickFormatter: leadingZero
-          }
-        ],
-        yaxes: [
-          {
-            color: 'black',
-            tickColor: '#aaa',
-            position: 'left',
-            axisLabel: 'Available Depth (m)'
-          }
-        ]
-      });
-    };
     $(".yaxislabel").css("color", "black");
     $('#defined_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Defined") {
@@ -81,16 +50,20 @@
             $('input[name=discharge]')[0].checked = true;
           }
         }
-        $('input[name=discharge]:checked').trigger('change');
+        $('input[name=discharge]:checked').change();
         return $('#static-date').text($('#alt-date').val());
       });
       if (moment().diff($('#date').val()) > 0) {
         $("#actual").attr('disabled', false);
-        return $("#actual").attr('checked', 'checked');
+        $("#actual").attr('checked', 'checked');
       } else {
-        return $("#actual").attr('disabled', true);
+        $("#actual").attr('disabled', true);
       }
+      return $('#static-date').text($('#alt-date').val());
     }).change();
+    $('#selected_discharge').change(function() {
+      return $('#discharge_radio').prop('checked', true).change();
+    });
     $('input[name=discharge]').change(function() {
       var flowtype;
       flowrate = (function() {
@@ -122,27 +95,63 @@
       }).call(this);
       return $('#flowType').val(flowtype);
     });
-    return $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(function() {
-      $.getJSON("/api/Flow/Get?date=" + ($('#date').val()), function(data) {
-        return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('input[name=channel]:checked').val()) + "&width=" + ($('#width').val()) + "&sounding=" + ($('input[name=condition]:checked').val()), function(data) {
-          var points;
-          table || (table = $('#depths').dataTable({
-            bPaginate: false,
-            bInfo: false,
-            bFilter: false
-          }));
-          table.fnClearTable();
-          $('#depths tbody tr').remove();
-          points = new Array();
-          $.each(data.items[0].items, function() {
-            table.fnAddData(["<a href='advr-drvp-eng.html?lane=xxx&amp;period=" + this.period + "'>" + this.period + "</a>", this.chainage, this.depth, this.location]);
-            return points.push([this.period, this.depth]);
-          });
-          table.fnAdjustColumnSizing();
-          $('#depths td:nth-child(3)').css('text-align', 'center');
-          return createGraph(points);
-        });
-      });
-      return $('#static-date').text($('#alt-date').val());
-    });
+    return $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(update);
   });
+
+  update = function() {
+    return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('input[name=channel]:checked').val()) + "&width=" + ($('#width').val()) + "&sounding=" + ($('input[name=condition]:checked').val()), function(data) {
+      var points;
+      table || (table = $('#depths').dataTable({
+        bPaginate: false,
+        bInfo: false,
+        bFilter: false
+      }));
+      table.fnClearTable();
+      $('#depths tbody tr').remove();
+      points = new Array();
+      $.each(data.items[0].items, function() {
+        table.fnAddData(["<a href='advr-drvp-eng.html?lane=xxx&amp;period=" + this.period + "'>" + this.period + "</a>", this.chainage, this.depth, this.location]);
+        return points.push([this.period, this.depth]);
+      });
+      table.fnAdjustColumnSizing();
+      $('#depths td:nth-child(3)').css('text-align', 'center');
+      return createGraph(points);
+    });
+  };
+
+  createGraph = function(p) {
+    var d1, leadingZero;
+    d1 = {
+      color: "red",
+      lines: {
+        lineWidth: 3
+      },
+      data: p
+    };
+    leadingZero = function(num, axis) {
+      var s;
+      s = "0" + num;
+      return s.substr(s.length - 4);
+    };
+    return $.plot("#placeholder", [d1], {
+      xaxes: [
+        {
+          color: 'black',
+          tickColor: '#aaa',
+          axisLabel: 'Pacific Standard Time (hrs)',
+          tickSize: 200,
+          tickFormatter: leadingZero
+        }
+      ],
+      yaxes: [
+        {
+          color: 'black',
+          tickColor: '#aaa',
+          position: 'left',
+          axisLabel: 'Available Depth (m)'
+        }
+      ]
+    });
+  };
+
+}).call(this);

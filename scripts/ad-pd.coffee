@@ -1,23 +1,7 @@
+table = null
+flowrate = 0
+
 $(->
-  table = null
-  flowrate = 0
-
-  createGraph = (p) -> (
-    d1 = 
-      color: "red"
-      lines: {lineWidth: 3}
-      data: p
-
-    leadingZero = (num, axis) ->
-      s = "0" + num
-      s.substr(s.length-4)
-
-    $.plot("#placeholder", [ d1 ], 
-      xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 200, tickFormatter: leadingZero],
-      yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
-    )
-  )
-
   $(".yaxislabel").css("color","black")
 
   $('#defined_discharge').change(->
@@ -58,13 +42,13 @@ $(->
         $("#actual").attr('disabled', false)
         $("#predicted").attr('disabled', true)
         if ($('#predicted').is(':checked'))
-          $('input[name=discharge]')[1].checked = true;
+          $('input[name=discharge]')[1].checked = true
       else
         $("#actual").attr('disabled', true)
         $("#predicted").attr('disabled', false)
         if ($('#actual').is(':checked'))
-          $('input[name=discharge]')[0].checked = true;
-      $('input[name=discharge]:checked').trigger('change')
+          $('input[name=discharge]')[0].checked = true
+      $('input[name=discharge]:checked').change()
       $('#static-date').text($('#alt-date').val())
     )
 
@@ -73,7 +57,13 @@ $(->
       $("#actual").attr('checked', 'checked')
     else
       $("#actual").attr('disabled', true)
+
+    $('#static-date').text($('#alt-date').val())
   ).change()
+
+  $('#selected_discharge').change(->
+    $('#discharge_radio').prop('checked', true).change()
+  )
 
   $('input[name=discharge]').change(->
     flowrate = switch $(this).val()
@@ -93,32 +83,44 @@ $(->
     $('#flowType').val(flowtype)
   )
   
-  $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(->
-    $.getJSON("/api/Flow/Get?date=#{$('#date').val()}", (data) ->
-      $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('input[name=channel]:checked').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=condition]:checked').val()}", 
-        (data) ->
-          table ||= $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
-          table.fnClearTable()
-
-          $('#depths tbody tr').remove()
-          points = new Array()
-          $.each(data.items[0].items, ->
-            table.fnAddData([
-              "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>", 
-              this.chainage, 
-              this.depth, 
-              this.location])
-            points.push([this.period, this.depth])
-          )
-
-          table.fnAdjustColumnSizing()
-          $('#depths td:nth-child(3)').css('text-align', 'center')
-
-          createGraph(points)
-      )
-    )
-      
-    $('#static-date').text($('#alt-date').val())
-    
-  )
+  $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(update)
 )
+
+update = ->
+  $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('input[name=channel]:checked').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=condition]:checked').val()}", 
+  (data) ->
+    table ||= $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
+    table.fnClearTable()
+
+    $('#depths tbody tr').remove()
+    points = new Array()
+    $.each(data.items[0].items, ->
+      table.fnAddData([
+        "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>", 
+        this.chainage, 
+        this.depth, 
+        this.location])
+      points.push([this.period, this.depth])
+    )
+
+    table.fnAdjustColumnSizing()
+    $('#depths td:nth-child(3)').css('text-align', 'center')
+
+    createGraph(points))
+
+
+createGraph = (p) -> 
+  d1 = 
+    color: "red"
+    lines: {lineWidth: 3}
+    data: p
+
+  leadingZero = (num, axis) ->
+    s = "0" + num
+    s.substr(s.length-4)
+
+  $.plot("#placeholder", [ d1 ], 
+    xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 200, tickFormatter: leadingZero],
+    yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
+  )
+
