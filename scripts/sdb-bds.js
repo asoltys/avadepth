@@ -17,7 +17,8 @@
   $(function() {
     $('#surveys').dataTable({
       bPaginate: false,
-      bInfo: false
+      bInfo: false,
+      bFilter: false
     });
     $('#waterway').change(function() {
       $('#heading-waterway').text($(this).find('option:selected').text());
