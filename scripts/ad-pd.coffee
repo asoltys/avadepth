@@ -67,6 +67,12 @@ $(->
       $('input[name=discharge]:checked').trigger('change')
       $('#static-date').text($('#alt-date').val())
     )
+
+    if (moment().diff($('#date').val()) > 0)
+      $("#actual").attr('disabled', false)
+      $("#actual").attr('checked', 'checked')
+    else
+      $("#actual").attr('disabled', true)
   ).change()
 
   $('input[name=discharge]').change(->
@@ -111,15 +117,8 @@ $(->
           createGraph(points)
       )
     )
-
-    if (moment().diff($('#date').val()) > 0)
-      $("#actual").attr('disabled', false)
-    else
-      $("#actual").attr('disabled', true)
       
     $('#static-date').text($('#alt-date').val())
     
   )
-
-  $('#date').change()
 )

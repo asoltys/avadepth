@@ -61,7 +61,7 @@
       return $('#static-chainage').text($(this).val());
     });
     $('#date').change(function() {
-      return $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
+      $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
         $('#selected_discharge').empty();
         $.each(data.Flowrates, function() {
           return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
@@ -84,6 +84,12 @@
         $('input[name=discharge]:checked').trigger('change');
         return $('#static-date').text($('#alt-date').val());
       });
+      if (moment().diff($('#date').val()) > 0) {
+        $("#actual").attr('disabled', false);
+        return $("#actual").attr('checked', 'checked');
+      } else {
+        return $("#actual").attr('disabled', true);
+      }
     }).change();
     $('input[name=discharge]').change(function() {
       var flowtype;
@@ -116,7 +122,7 @@
       }).call(this);
       return $('#flowType').val(flowtype);
     });
-    $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(function() {
+    return $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(function() {
       $.getJSON("/api/Flow/Get?date=" + ($('#date').val()), function(data) {
         return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('input[name=channel]:checked').val()) + "&width=" + ($('#width').val()) + "&sounding=" + ($('input[name=condition]:checked').val()), function(data) {
           var points;
@@ -137,12 +143,6 @@
           return createGraph(points);
         });
       });
-      if (moment().diff($('#date').val()) > 0) {
-        $("#actual").attr('disabled', false);
-      } else {
-        $("#actual").attr('disabled', true);
-      }
       return $('#static-date').text($('#alt-date').val());
     });
-    return $('#date').change();
   });

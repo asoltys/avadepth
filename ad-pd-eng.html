@@ -19,13 +19,20 @@
 
            
             <div>
-              <label for="river_discharge">River Discharge @ Hope:</label>
-              <input id="predicted" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> Predicted (<span id="predicted_discharge"></span>m&#179;s)<br />
-              <input id="actual" type="radio" name="discharge" disabled="true" class="rd_actual" value="Actual" /> Actual (<span id="actual_discharge"></span>m&#179;s)<br />
-              <input type="radio" name="discharge" value="Selected" /> Selected
+              <strong>River Discharge @ Hope:</strong><br />
+              <input id="predicted_radio" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> 
+              <label for="predicted_radio" style="font-weight: normal">Predicted (<span id="predicted_discharge"></span>m&#179;s)</label><br />
+
+              <input id="actual_radio" type="radio" name="discharge" disabled="true" class="rd_actual" value="Actual" /> 
+              <label for="actual_radio" style="font-weight: normal">Actual (<span id="actual_discharge"></span>m&#179;s)</label><br />
+
+              <input id="discharge_radio" type="radio" name="discharge" value="Selected" /> 
+              <label for="discharge_radio" style="font-weight: normal">Selected</label>
               <select id="selected_discharge">
               </select> m3/s<br />
-              <input type="radio" name="discharge" value="Defined" /> User Defined
+
+              <input id="defined_radio" type="radio" name="discharge" value="Defined" /> 
+              <label for="defined_radio" style="font-weight: normal">User Defined</label>
               <input id="defined_discharge" type="text" name="discharge" /> m3/s
               
               <input type="hidden" name="flowRate" id="flowRate" value="0" />
