@@ -66,37 +66,6 @@
       }).call(this);
       return $('#flowType').val(flowtype);
     });
-    $('input[name=discharge]').change(function() {
-      var flowrate, flowtype;
-      flowrate = (function() {
-        switch ($(this).val()) {
-          case 'Actual':
-            return $('#actual_discharge').text();
-          case 'Predicted':
-            return $('#predicted_discharge').text();
-          case 'Defined':
-            return $('#defined_discharge').val();
-          case 'Selected':
-            return $('#selected_discharge').val();
-        }
-      }).call(this);
-      $('#flowRate').val(flowrate);
-      $('#static-discharge').text(flowrate);
-      $('#static-discharge-eval').text($(this).val());
-      flowtype = (function() {
-        switch ($(this).val()) {
-          case 'Actual':
-            return 0;
-          case 'Predicted':
-            return 1;
-          case 'Defined':
-            return 2;
-          case 'Selected':
-            return 3;
-        }
-      }).call(this);
-      return $('#flowType').val(flowtype);
-    });
     $('input[name=fraser_river]').change(function() {
       var waterway;
       waterway = (function() {

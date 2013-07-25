@@ -52,24 +52,6 @@ $(->
     $('#flowType').val(flowtype)
   )
 
-  $('input[name=discharge]').change(->
-    flowrate = switch $(this).val()
-      when 'Actual' then $('#actual_discharge').text()
-      when 'Predicted' then $('#predicted_discharge').text()
-      when 'Defined' then $('#defined_discharge').val()
-      when 'Selected' then $('#selected_discharge').val()
-    $('#flowRate').val(flowrate)
-    $('#static-discharge').text(flowrate)
-    $('#static-discharge-eval').text($(this).val())
-
-    flowtype = switch $(this).val()
-      when 'Actual' then 0
-      when 'Predicted' then 1
-      when 'Defined' then 2
-      when 'Selected' then 3
-    $('#flowType').val(flowtype)
-  )
-  
   $('input[name=fraser_river]').change(->
     waterway = switch $(this).val()
       when 'South Arm'
