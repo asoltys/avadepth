@@ -29,6 +29,13 @@ $(->
     $('#discharge_radio').prop('checked', true).change()
   )
 
+  $('#type').change(->
+    if $(this).val() == 1
+      $('#to').display()
+    else
+      $('#to').hide()
+  )
+
   $('input[name=discharge]').change(->
     flowrate = switch $(this).val()
       when 'Actual' then $('#actual_discharge').text()
@@ -79,13 +86,31 @@ $(->
     $('#static-legend').text($(this).next().text())
   )
 
-  $('#from, #zone').change(update)
+  $('#from, #to, #zone').change(update)
 )
 
 update = ->
-  hr = Math.floor(parseFloat($('#from').val()))
-  minute = (parseFloat($('#from').val()) - hr) * 60
-  $.getJSON("/api/animated?date=#{$('#date').val()}&legendScale=0&zone=#{$('#zone').val()}&flowRate=#{flowrate}&flowType=0&hour=#{hr}&minute=#{minute}", (data) ->
-    $('#animated').html("<img src='http://184.106.250.111#{data}' />")
-    $('tr', '#location tbody').remove()
-  )
+  hour = Math.floor(parseFloat($('#from').val()))
+  minute = (parseFloat($('#from').val()) - hour) * 60
+
+  end_hour = Math.floor(parseFloat($('#to').val()))
+  end_minute = (parseFloat($('#to').val()) - end_hour) * 60
+
+  handle = setInterval(->
+    $.getJSON("/api/animated?date=#{$('#date').val()}&legendScale=1&zone=#{$('#zone').val()}&flowRate=#{flowrate}&flowType=0&hour=#{hour}&minute=#{minute}", (data) ->
+      if data.toString() == '/images/'
+        $('#animated').attr("src", "/images/nodata.jpg")
+      else
+        $('#animated').attr("src", "http://184.106.250.111#{data}")
+    )
+
+    if hour >= end_hour && minute >= end_minute
+      clearInterval(handle)
+
+    minute += 15
+    if minute == 60
+      minute = 0
+      hour += 1
+  , 1000)
+
+

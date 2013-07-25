@@ -29,6 +29,13 @@
     $('#selected_discharge').change(function() {
       return $('#discharge_radio').prop('checked', true).change();
     });
+    $('#type').change(function() {
+      if ($(this).val() === 1) {
+        return $('#to').display();
+      } else {
+        return $('#to').hide();
+      }
+    });
     $('input[name=discharge]').change(function() {
       var flowtype;
       flowrate = (function() {
@@ -86,17 +93,30 @@
     $('input[name="velocity_legend"]').change(function() {
       return $('#static-legend').text($(this).next().text());
     });
-    return $('#from, #zone').change(update);
+    return $('#from, #to, #zone').change(update);
   });
 
   update = function() {
-    var hr, minute;
-    hr = Math.floor(parseFloat($('#from').val()));
-    minute = (parseFloat($('#from').val()) - hr) * 60;
-    return $.getJSON("/api/animated?date=" + ($('#date').val()) + "&legendScale=0&zone=" + ($('#zone').val()) + "&flowRate=" + flowrate + "&flowType=0&hour=" + hr + "&minute=" + minute, function(data) {
-      $('#animated').html("<img src='http://184.106.250.111" + data + "' />");
-      return $('tr', '#location tbody').remove();
-    });
+    var end_hour, end_minute, handle, hour, minute;
+    hour = Math.floor(parseFloat($('#from').val()));
+    minute = (parseFloat($('#from').val()) - hour) * 60;
+    end_hour = Math.floor(parseFloat($('#to').val()));
+    end_minute = (parseFloat($('#to').val()) - end_hour) * 60;
+    return handle = setInterval(function() {
+      $.getJSON("/api/animated?date=" + ($('#date').val()) + "&legendScale=1&zone=" + ($('#zone').val()) + "&flowRate=" + flowrate + "&flowType=0&hour=" + hour + "&minute=" + minute, function(data) {
+        if (data.toString() === '/images/') {
+          return $('#animated').attr("src", "/images/nodata.jpg");
+        } else {
+          return $('#animated').attr("src", "http://184.106.250.111" + data);
+        }
+      });
+      if (hour >= end_hour && minute >= end_minute) clearInterval(handle);
+      minute += 15;
+      if (minute === 60) {
+        minute = 0;
+        return hour += 1;
+      }
+    }, 1000);
   };
 
 }).call(this);
