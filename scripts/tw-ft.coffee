@@ -1,11 +1,60 @@
+table = null
+
 $(->
+  $('#period').change(->
+    period = switch $('#period').val()
+      when '0' then 'd'
+      when '1' then 'w'
+      when '2' then 'M'
+
+    $('#static-date-from').text(moment($('#date').val()).format("MMMM DD, YYYY"))
+    $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"))
+  )
+
   $('#date').change(->
-    if (moment().diff($('#date').val()) > 0)
-      $("#actual").attr('disabled', false)
-    else
-      $("#actual").attr('disabled', true)
-      
-    $('#static-date').text($('#alt-date').val())
+    $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
+      $('#selected_discharge').empty()
+      $.each(data.Flowrates, ->
+        $('#selected_discharge').append("<option value='#{this}'>#{this}</option>")
+      )
+      $('#predicted_discharge').text(data.Predicted)
+      $('#actual_discharge').text(data.Actual)
+
+      if (data.Actual)
+        $("#actual_radio").attr('disabled', false)
+        $("#predicted_radio").attr('disabled', true)
+        $('#actual_radio').prop('checked', true)
+      else
+        $("#actual_radio").attr('disabled', true)
+        $("#predicted_radio").attr('disabled', false)
+        $("#predicted_radio").prop('checked', true)
+
+      $('input[name=discharge]:checked').change()
+    )
+
+    $('#period').change()
+  ).change()
+
+  $('#selected_discharge').change(->
+    $('#discharge_radio').prop('checked', true).change()
+  )
+
+  $('input[name=discharge]').change(->
+    flowrate = switch $(this).val()
+      when 'Actual' then $('#actual_discharge').text()
+      when 'Predicted' then $('#predicted_discharge').text()
+      when 'Defined' then $('#defined_discharge').val()
+      when 'Selected' then $('#selected_discharge').val()
+    $('#flowRate').val(flowrate)
+    $('#static-discharge').text(flowrate)
+    $('#static-discharge-eval').text($(this).val())
+
+    flowtype = switch $(this).val()
+      when 'Actual' then 0
+      when 'Predicted' then 1
+      when 'Defined' then 2
+      when 'Selected' then 3
+    $('#flowType').val(flowtype)
   )
 
   $('#compliance').change(->
@@ -17,26 +66,6 @@ $(->
       $('input[name=cmp_box]').change(->
         $('#cmp_box').val()
       )
-  )
-  
-  $('input[name=discharge]').change(->
-    flowrate = switch $(this).val()
-      when 'Actual' then $('#actual_discharge').text()
-      when 'Predicted' then $('#predicted_discharge').text()
-      when 'Defined' then $('#defined_discharge').val()
-      when 'Selected' then $('#selected_discharge').val()
-    $('#flowRate').val(flowrate)
-    $('#static-discharge').text(flowrate)
-    $('#static-discharge-eval').text($(this).val())
-  )
-
-  $('input[name=discharge]').change(->
-    flowtype = switch $(this).val()
-      when 'Actual' then 0
-      when 'Predicted' then 1
-      when 'Defined' then 2
-      when 'Selected' then 3
-    $('#flowType').val(flowtype)
   )
   
   $('#defined_discharge').change(->
@@ -65,30 +94,23 @@ $(->
     $('#static-chainage').text($(this).val())
   )
   
-  $.getJSON("api/depths?date=#{$('#date').val()}", display)
-
-  $('#date, input[name=discharge], #defined_discharge, #selected_discharge, #chainage, input[name="sounding"], input[name="channel"], #width, #period, #window, #compliance, #cmp_box').change(->
-    $.getJSON("api/depths?date=#{$('#date').val()}", display)
-  )
+  $('#date, input[name=discharge], #defined_discharge, #selected_discharge, #chainage, input[name="sounding"], input[name="channel"], #width, #period, #window, #compliance, #cmp_box').change(update)
 )
 
-display = (data) ->
-  $('#selected_discharge option').remove()
-  for flow in data.Flowrates
-    $('#selected_discharge').append("<option value=#{flow}>#{flow}</option>")
-  $('#predicted_discharge').text(data.Predicted)
-  $('#actual_discharge').text(data.Actual)
-  $('#static-discharge').text(data)
-  
+update = (data) ->
   $.getJSON("api/transit?date=#{$('#date').val()}&lane=#{$('input[name=channel]:checked').val()}&window=#{$('#window').val()}&cmp=#{$('#cmp_box').val()}&flowType=#{$('#flowType').val()}&periodType=#{$('#period').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
-    $('#transit-window tbody tr').remove()
     $('#num_days').text(data2.statistics.numberOfDays)
     $('#min_depth').text(data2.statistics.minimumDepth)
     $('#max_depth').text(data2.statistics.maximumDepth)
     $('#avg_depth').text(data2.statistics.totalWindow)
+
+    table ||= $('#transit-window').dataTable(bPaginate: false, bInfo: false, bFilter: false)
+    table.fnClearTable()
+
     for item in data2.items
-      $('#transit-window tbody').append("<tr><td class='center'>#{item.startTime}</td><td class='center'>#{item.windowStart}</td><td class='center'>#{item.endTime}</td><td class='center'>#{item.windowEnd}</td><td class='center'>#{item.depth}</td></tr>")
-    $('#transit-window').dataTable(bPaginate: false, bInfo: false)
+      table.fnAddData([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth])
+      table.fnAdjustColumnSizing()
+      $('#transit-window tbody td').css('text-align', 'center')
   )
 
 
