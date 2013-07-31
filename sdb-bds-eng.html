@@ -21,39 +21,21 @@
           <form id="daily_depth">
             <label for="waterway">Waterway:</label>
             <select id="waterway">
-              <option value="main-arm">Fraser - Main Arm</option>
-              <option value="north-arm">Fraser - North Arm</option>
-              <option value="south-arm">Fraser - South Arm</option>
-              <option value="pitt-river">Pitt River, BC</option>
-              <option>Nanaimo Harbour, BC</option>
-              <option>Vancouver Harbour, BC</option>
-              <option>Hay River, NWT</option>
+              <option value="FRSA">Fraser - South Arm</option>
+              <option value="FRNA">Fraser - North Arm</option>
+              <option selected="selected" value="FRMA">Fraser - Main Arm</option>
+              <option value="FRUR">Fraser - Mission to Hope</option>
+              <option value="PR">Pitt River</option>
+              <option value="BR">Campbell River, BC</option>
+              <option value="CR">Courtenay River, BC</option>
+              <option value="SQ">Squamish, BC</option>
+              <option value="VFPA">Vancouver Harbour</option>
+              <option value="FPORT">Fraser Surrey Docks</option>
             </select>
 
-            <label for="channel">Location:</label>
-            <select id="channel">
-              <option selected="selected" value="Sand Heads">Sand Heads</option>
-              <option value="Sand Heads Reach">Sand Heads Reach</option>
-              <option value="Steveston Bend">Steveston Bend</option>
-              <option value="Steveston Cut">Steveston Cut</option>
-              <option value="Woodward Reach">Woodward Reach</option>
-              <option value="Gravesend Reach">Gravesend Reach</option>
-              <option value="City Reach">City Reach</option>
-              <option value="Annieville Channel">Annieville Channel</option>
+            <label for="location">Location:</label>
+            <select id="location">
             </select>
-
-            <label for="width">Available Width:</label>
-            <select id="width">
-              <option value="100" selected="selected">100</option>
-              <option value="95">95</option>
-              <option value="90">90</option>
-              <option value="85">85</option>
-              <option value="80">80</option>
-              <option value="75">75</option>
-              <option value="70">70</option>
-              <option value="65">65</option>
-              <option value="60">60</option>
-            </select> %
 
             <label for="channel">Channel:</label>
             <select id="channel">
@@ -63,16 +45,26 @@
             </select>
 
             <div>
-              <label for="channel">Navigation Channel:</label>
-              <input id="channel" type="radio" name="channel" checked="checked" /> <span>Inner Limit</span><br />
-              <input type="radio" name="channel" /> <span>Outer Limit</span>
+              <label for="type">Type:</label>
+              <select name="type" id="type">
+                  <option value=""></option>
+                  <option>Construction</option>
+                  <option>Annual</option>
+                  <option>Dredging</option>
+                  <option>Monitor</option>
+                  <option>Recon</option>
+                  <option>Investigation</option>
+                  <option>Structure</option>
+                  <option>Key Map</option>
+                  <option>Overview</option>
+                </select>
             </div>
           </form>
         </div>
         
         <div class="span-8">
           <h2><span id="heading-waterway"></span> <span id="tile"></span></h2>
-          <div id="main-arm-map" class="map-group" style="display: none">
+          <div id="FRMA-map" class="map-group" style="display: none">
             <div class="map0">
               <map name="MapMA0">
                 <area shape="polygon" coords="19, 25, 126, 25, 128, 108, 19, 113" onmouseover="therollover.src='/images/overview_FRMA_mid01.jpg'" onmouseout="therollover.src='/images/overview_FRMA_mid.jpg'" href="javascript:void(0)" title="1" alt="Km 33 to 41">
@@ -132,7 +124,7 @@
               <img src="/images/10MA002_bot.jpg" width="653" height="162" alt="Fraser River Main Arm (Km 40 to 48)" border="0">
             </div>
           </div>
-          <div id="north-arm-map" class="map-group" style="display: none">
+          <div id="FRNA-map" class="map-group" style="display: none">
             <div class="map0">
               <map name="MapNA0">
                 <area shape="RECT" coords="241, 75, 338, 158" title="3" href="javascript:void(0)">
@@ -203,7 +195,7 @@
               <img border="0" src="/images/10NA003.jpg" width="600" height="492" usemap="#MapNA4">
             </div>
           </div>
-          <div id="south-arm-map" class="map-group" style="display: none">
+          <div id="FRSA-map" class="map-group" style="display: none">
             <div class="map0">
               <map name="MapSA0">
                 <area shape="RECT" coords="179, 221, 293, 309" title="3" href="javascript:void(0)">
@@ -321,7 +313,7 @@
               <img border="0" src="/images/10SA006.jpg" width="600" height="492" usemap="#MapSA6">
             </div>
           </div>
-          <div id="pitt-river-map" class="map-group" style="display: none">
+          <div id="PR-map" class="map-group" style="display: none">
             <div class="map0">
               <map name="MapPR0">
                 <area shape="polygon" coords="11, 26, 79, 28, 75, 84, 4, 78" onmouseover="MapPR0.src='/images/overview_pr_mid01.jpg'" onmouseout="MapPR0.src='/images/overview_pr_mid.jpg'" title="PR4650" alt="Km 46 to 50">

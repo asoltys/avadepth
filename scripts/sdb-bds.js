@@ -1,5 +1,64 @@
 (function() {
-  var adjustHeight;
+  var adjustHeight, locations;
+
+  locations = {
+    'BR': {
+      'Main': ['Marina', 'Channel'],
+      'Secondary': [],
+      'Other': []
+    },
+    'CR': {
+      'Main': ['Channel'],
+      'Secondary': [],
+      'Other': []
+    },
+    'FRMA': {
+      'Main': ['Channel km35to61', 'Channel km60to85', 'Annieville Channel', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island', 'Gravel Reach'],
+      'Secondary': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel']
+    },
+    'FRSA': {
+      'Main': ['Channel', 'Sand Heads', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville Channel', 'Shoal Point - New  West'],
+      'Secondary': ['Ladner_SeaReach', 'Cannery Channel', 'Sea Reach', 'Canoe Pass', 'Ladner Reach', 'Ladner Harbour', 'Deas Slough', 'Burr Landing Channel', 'Gundersen Slough', 'Annacis Channel', 'Roberts Bank'],
+      'Other': []
+    },
+    'FRNA': {
+      'Main': ['Channel', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel', 'Swishwash Island South'],
+      'Secondary': ['Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Mitchell Island North', 'Tree Island'],
+      'Other': []
+    },
+    'FRUR': {
+      'Main': ['Big Eddy', 'Cattermole', 'Chilliwack Rock', 'Carey Point', 'CPR Tunnels', 'Cheam View'],
+      'Secondary': [],
+      'Other': []
+    },
+    'PR': {
+      'Main': ['Channel', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],
+      'Secondary': [],
+      'Other': []
+    },
+    'SQ': {
+      'Main': ['Mamquam Blind Channel'],
+      'Secondary': [],
+      'Other': []
+    },
+    'VFPA': {
+      'Main': [],
+      'Secondary': [],
+      'Other': []
+    },
+    'FPORT': {
+      'Main': [],
+      'Secondary': [],
+      'Other': []
+    }
+  };
+
+  $('#waterway, #channel').change(function() {
+    $('#location option').remove();
+    return $.each(locations[$('#waterway').val()][$('#channel').val()], function() {
+      return $('#location').append("<option>" + this + "</option>");
+    });
+  });
 
   adjustHeight = function(map) {
     if (map === 'north-arm-map' || map === 'south-arm-map') {
