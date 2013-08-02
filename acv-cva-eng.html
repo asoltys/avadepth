@@ -16,13 +16,13 @@
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
       <div id="parameters" style="height:250px">
         <form id="daily_depth">
-          <div class="span-3">
+          <div class="span-4">
             <label for="date">Date:</label>
             <input id="date" type="text" name="date" class="datepicker" />
             <input id="alt-date" type="hidden" />
-          </div>
 
-          <div class="span-4">
+            <br />
+
             <strong>River Discharge @ Hope:</strong><br />
             <input id="predicted_radio" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> 
             <label for="predicted_radio" style="font-weight: normal">Predicted (<span id="predicted_discharge"></span>m&#179;s)</label><br />
@@ -37,13 +37,20 @@
 
             <input id="defined_radio" type="radio" name="discharge" value="Defined" /> 
             <label for="defined_radio" style="font-weight: normal">User Defined</label>
-            <input id="defined_discharge" type="text" name="discharge" /> m3/s
+            <input id="defined_discharge" type="text" name="discharge" style="width: 60px" /> m3/s
             
             <input type="hidden" name="flowRate" id="flowRate" value="0" />
             <input type="hidden" name="flowType" id="flowType" value="0" />
           </div>
 
+
           <div class="span-4">
+            <label for="type">Display Type</label>
+            <select name="type" id="type">
+               <option value="0">Static Image</option>
+               <option value="1">Animated Series</option>
+            </select> 
+
             <label for="from">From</label>
             <select name="from" id="from">
                <option value="0">00:00</option>
@@ -86,7 +93,7 @@
                <option value="9.25">09:15</option>
                <option value="9.50">09:30</option>
                <option value="9.75">09:45</option>
-               <option selected="selected" value="10">10:00</option>
+               <option value="10">10:00</option>
                <option value="10.25">10:15</option>
                <option value="10.50">10:30</option>
                <option value="10.75">10:45</option>
@@ -114,7 +121,7 @@
                <option value="16.25">16:15</option>
                <option value="16.50">16:30</option>
                <option value="16.75">16:45</option>
-               <option value="17">17:00</option>
+               <option selected="selected" value="17">17:00</option>
                <option value="17.25">17:15</option>
                <option value="17.50">17:30</option>
                <option value="17.75">17:45</option>
@@ -245,7 +252,9 @@
                <option value="23.75">23:45</option>
                <option value="24">24:00</option>
              </select>
+            </div>
 
+            <div class="span-3">
              <label for="zone">Zone</label>
              <select name="zone" id="zone">
                <option selected="selected" value="1">01</option>
@@ -259,6 +268,17 @@
                <option value="9">09</option>
                <option value="10">10</option>
                <option value="11">11</option>
+             </select> 
+
+             <label for="interval">Interval</label>
+             <select name="interval" id="interval">
+               <option value="8">8 hr</option>
+               <option value="6">6 hr</option>
+               <option selected="selected" value="4">4 hr</option>
+               <option value="2">2 hr</option>
+               <option value="1">1 hr</option>
+               <option value=".5">30 min.</option>
+               <option value=".25">15 min.</option>
              </select> 
           </div>
         </form>
@@ -316,9 +336,19 @@
   <p>Velocity legend: <span id="static-legend"></span></p>
 </div>
 
+<div id="loading">
+  Loading...
+</div>
+
+<div id="nodata">
+  No images were found
+</div>
+
 <div style="width: 100%; margin-auto; text-align: center">
   <img id="animated" src="/images/nodata.jpg" />
 </div>
+
+<button id="replay">Replay</button>
 
 <!--#include virtual="/includes/footer-eng.html" -->
 

@@ -1,4 +1,6 @@
+images = []
 flowrate = 0
+
 $(->
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
@@ -27,13 +29,6 @@ $(->
 
   $('#selected_discharge').change(->
     $('#discharge_radio').prop('checked', true).change()
-  )
-
-  $('#type').change(->
-    if $(this).val() == 1
-      $('#to').display()
-    else
-      $('#to').hide()
   )
 
   $('input[name=discharge]').change(->
@@ -86,31 +81,49 @@ $(->
     $('#static-legend').text($(this).next().text())
   )
 
-  $('#from, #to, #zone').change(update)
+  $('#from, #to, #zone, #interval').change(update)
+  $('#replay').click(play)
 )
 
 update = ->
+  $('#loading').show()
+  $('#animated, #replay, #nodata').hide()
+
   hour = Math.floor(parseFloat($('#from').val()))
   minute = (parseFloat($('#from').val()) - hour) * 60
 
   end_hour = Math.floor(parseFloat($('#to').val()))
   end_minute = (parseFloat($('#to').val()) - end_hour) * 60
 
-  handle = setInterval(->
-    $.getJSON("/api/animated?date=#{$('#date').val()}&legendScale=1&zone=#{$('#zone').val()}&flowRate=#{flowrate}&flowType=0&hour=#{hour}&minute=#{minute}", (data) ->
-      if data.toString() == '/images/'
-        $('#animated').attr("src", "/images/nodata.jpg")
+  total = (end_hour - hour) * 4 + (end_minute - minute) / 15
+
+  do getImage = -> 
+    $.getJSON("/api/animated?date=#{$('#date').val()}&legendScale=#{$('#interval').val()}&zone=#{$('#zone').val()}&flowRate=#{flowrate}&flowType=0&hour=#{hour}&minute=#{minute}", (data) ->
+      result = data.toString()
+      images.push(result) unless result == '/images/'
+    ).then(->
+      if hour < end_hour || (hour == end_hour && minute <= end_minute)
+        getImage() 
+
+        minute += 15
+        if minute == 60
+          minute = 0
+          hour += 1
       else
-        $('#animated').attr("src", "http://184.106.250.111#{data}")
+        play()
     )
 
-    if hour >= end_hour && minute >= end_minute
-      clearInterval(handle)
+play = ->
+  $('#loading').hide()
+  $('#animated').show()
 
-    minute += 15
-    if minute == 60
-      minute = 0
-      hour += 1
-  , 1000)
-
-
+  if images.length > 0
+    $('#replay').show()
+    i = 0
+    handle = setInterval(->
+      $('#animated').attr("src", "http://184.106.250.111#{images[i]}")
+      i++
+      clearInterval(handle) if i >= images.length
+    , 1000)
+  else
+    $('#nodata').show()
