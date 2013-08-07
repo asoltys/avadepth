@@ -113,7 +113,6 @@
       var headerRow, i, kmStart, step, _ref;
       $('#water-levels tbody').empty();
       $('#headerkm').empty();
-      $('#location').text(data.title);
       step = 2;
       kmStart = (function() {
         switch ($('#waterway').val()) {
@@ -130,6 +129,7 @@
         headerRow.click(gotoKMGraph);
       }
       return $.getJSON("/api/waterlevel?date=" + ($('#date').val()) + "&intervalMin=" + ($('#interval').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('#flowType').val()) + "&waterway=" + ($('#waterway').val()) + "&displayType=" + ($('input[name=report]:checked').val()), function(data) {
+        $('#location').text(data.title);
         return $.each(data.times, function() {
           var row;
           row = $("<tr><td><a href=\"javascript:void(0)\">" + this.predictTime + "</a></td></tr>");

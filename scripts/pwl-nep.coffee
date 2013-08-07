@@ -99,7 +99,6 @@ $(->
   $('#date, input[name=discharge], input[name=fraser_river], input[name=report], #defined_discharge, #selected_discharge, #interval').change( ->
     $('#water-levels tbody').empty()
     $('#headerkm').empty()
-    $('#location').text(data.title)
     step = 2
     kmStart = switch $('#waterway').val()
       when '2'
@@ -111,6 +110,7 @@ $(->
       $('#headerkm').append(headerRow)
       headerRow.click(gotoKMGraph)
     $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}", (data) ->
+      $('#location').text(data.title)
       $.each(data.times, ->
         row = $("<tr><td><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
         $.each(this.waterLevels, ->
