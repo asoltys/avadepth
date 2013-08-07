@@ -1,8 +1,9 @@
+(function() {
 
   $(function() {
     var date;
     date = new Date();
-    return $.getJSON("/api/Soundings/" + (date.getFullYear()) + "-" + (date.getMonth() + 1) + "-" + (date.getDate()), function(data) {
+    return $.getJSON("/api/Soundings?id=" + (date.getFullYear()) + "-" + (date.getMonth() + 1) + "-" + (date.getDate()), function(data) {
       return $.each(data, function(index) {
         var row, rowhtml;
         row = "<tr><td><a href=\"soundings-sondages-eng.html?lane=1&chainage=" + (index + 1) + "\">" + this.Chainage + "</a></td><td>" + this.SoundingDate + "</td><td class=\"1\">" + this.Dredge + "</td><td class=\"1\">" + this.Sounding;
@@ -17,3 +18,5 @@
       });
     });
   });
+
+}).call(this);

@@ -1,6 +1,6 @@
 $(->
   date = new Date()
-  $.getJSON("/api/Soundings/#{date.getFullYear()}-#{date.getMonth()+1}-#{date.getDate()}", (data) ->
+  $.getJSON("/api/Soundings?id=#{date.getFullYear()}-#{date.getMonth()+1}-#{date.getDate()}", (data) ->
     $.each(data, (index) ->
       row = "<tr><td><a href=\"soundings-sondages-eng.html?lane=1&chainage=#{index+1}\">#{this.Chainage}</a></td><td>#{this.SoundingDate}</td><td class=\"1\">#{this.Dredge}</td><td class=\"1\">#{this.Sounding}"
       if (this.IsHigh)
