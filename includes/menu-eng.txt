@@ -40,9 +40,9 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
 <section>
 <ul>
+<li><a href='/cc-ca-eng.html'>Current Channel Conditions of the Fraser River South Arm</a></li>
+<li><a href='/co-ac-eng.html'>Channel Overview of the Fraser River South Arm</a></li>
 <li><a href='/sdb-bds-eng.html'>Survey Database</a></li>
-<li><a href='/cc-ca-eng.html'>Current Channel Conditions</a></li>
-<li><a href='/co-ac-eng.html'>Channel Overview</a></li>
 </ul>
 </section>
 <div class="clear"></div>
