@@ -2,11 +2,11 @@
   var gotoKMGraph, gotoTimeGraph;
 
   gotoKMGraph = function() {
-    return document.location = "pwlk-nepk-eng.html?date=" + ($('#date').val()) + "&km=" + ($(this).text()) + "&intervalMin=" + ($('#interval').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('#flowType').val()) + "&waterway=" + ($('#waterway').val()) + "&displayType=" + ($('input[name=report]:checked').val());
+    return document.location = ("pwlk-nepk-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
   };
 
   gotoTimeGraph = function() {
-    return document.location = "pwlt-ptnd-eng.html?date=" + ($('#date').val()) + "&time=" + ($(this).text()) + "&intervalMin=" + ($('#interval').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('#flowType').val()) + "&waterway=" + ($('#waterway').val()) + "&displayType=" + ($('input[name=report]:checked').val());
+    return document.location = ("pwlt-ptnd-eng.html?date=" + ($('#date').val()) + "&") + ("time=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
   };
 
   $(function() {
@@ -109,7 +109,7 @@
     $('select#chainage').change(function() {
       return $('#static-chainage').text($(this).val());
     });
-    return $('#date, input[name=discharge], input[name=fraser_river], input[name=report], #defined_discharge, #selected_discharge, #interval').change(function() {
+    return $('#date,' + 'input[name=discharge],' + 'input[name=fraser_river],' + 'input[name=report],' + '#defined_discharge,' + '#selected_discharge,' + '#interval').change(function() {
       var headerRow, i, kmStart, step, _ref;
       $('#water-levels tbody').empty();
       $('#headerkm').empty();
@@ -128,7 +128,7 @@
         $('#headerkm').append(headerRow);
         headerRow.click(gotoKMGraph);
       }
-      return $.getJSON("/api/waterlevel?date=" + ($('#date').val()) + "&intervalMin=" + ($('#interval').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('#flowType').val()) + "&waterway=" + ($('#waterway').val()) + "&displayType=" + ($('input[name=report]:checked').val()), function(data) {
+      return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
         $('#location').text(data.title);
         return $.each(data.times, function() {
           var row;

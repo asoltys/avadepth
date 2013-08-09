@@ -1,8 +1,20 @@
 gotoKMGraph = ->
-  document.location = "pwlk-nepk-eng.html?date=#{$('#date').val()}&km=#{$(this).text()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}"
+  document.location = "pwlk-nepk-eng.html?date=#{$('#date').val()}&" +
+      "km=#{$(this).text()}&" +
+      "intervalMin=#{$('#interval').val()}&" +
+      "flowRate=#{$('#flowRate').val()}&" +
+      "flowType=#{$('#flowType').val()}&" +
+      "waterway=#{$('#waterway').val()}&" +
+      "displayType=#{$('input[name=report]:checked').val()}"
 
 gotoTimeGraph = ->
-  document.location = "pwlt-ptnd-eng.html?date=#{$('#date').val()}&time=#{$(this).text()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}"
+  document.location = "pwlt-ptnd-eng.html?date=#{$('#date').val()}&" +
+      "time=#{$(this).text()}&" +
+      "intervalMin=#{$('#interval').val()}&" +
+      "flowRate=#{$('#flowRate').val()}&" +
+      "flowType=#{$('#flowType').val()}&" +
+      "waterway=#{$('#waterway').val()}&" +
+      "displayType=#{$('input[name=report]:checked').val()}"
   
 $(->
   $('#date').change(->
@@ -96,7 +108,13 @@ $(->
     $('#static-chainage').text($(this).val())
   )
   
-  $('#date, input[name=discharge], input[name=fraser_river], input[name=report], #defined_discharge, #selected_discharge, #interval').change( ->
+  $('#date,' +
+      'input[name=discharge],' +
+      'input[name=fraser_river],' +
+      'input[name=report],' +
+      '#defined_discharge,' +
+      '#selected_discharge,' +
+      '#interval').change( ->
     $('#water-levels tbody').empty()
     $('#headerkm').empty()
     step = 2
@@ -109,7 +127,12 @@ $(->
       headerRow = $("<th><a href=\"javascript:void(0)\">#{i}</a></th>")
       $('#headerkm').append(headerRow)
       headerRow.click(gotoKMGraph)
-    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}", (data) ->
+    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&" +
+        "intervalMin=#{$('#interval').val()}&" +
+        "flowRate=#{$('#flowRate').val()}&" +
+        "flowType=#{$('#flowType').val()}&" +
+        "waterway=#{$('#waterway').val()}&" +
+        "displayType=#{$('input[name=report]:checked').val()}", (data) ->
       $('#location').text(data.title)
       $.each(data.times, ->
         row = $("<tr><td><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
