@@ -1,5 +1,5 @@
-locations = 
-  'BR': 
+locations =
+  'BR':
     'Main': ['Marina', 'Channel']
     'Secondary': []
     'Other': []
@@ -9,7 +9,7 @@ locations =
     'Secondary': []
     'Other': []
 
-  'FRMA': 
+  'FRMA':
     'Main': [
       'Channel km35to61',
       'Channel km60to85',
@@ -168,6 +168,10 @@ $(->
     $('#tile').text('- Tile 00'+$(this).attr('title'))
     $('#map').css("min-height", "600px")
     $('.tabs-panel').height("620px")
+  )
+  
+  $('#channel').change( ->
+    alert('testing')
   )
   
   $('#waterway').change()

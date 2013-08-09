@@ -101,6 +101,9 @@
       $('#map').css("min-height", "600px");
       return $('.tabs-panel').height("620px");
     });
+    $('#channel').change(function() {
+      return alert('testing');
+    });
     $('#waterway').change();
     return $('#heading-waterway').parent().css('margin-top', '0');
   });

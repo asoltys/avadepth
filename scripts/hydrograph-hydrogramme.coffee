@@ -28,14 +28,12 @@ GetData = () ->
 
 options =
   grid:
-    color: 'black'
-    backgroundColor: 'white'
+    backgroundColor:
+      colors: ["#fff", "#e4f4f4"]
   series:
     lines:
       show: true
       lineWidth: 1.2
-      fill: true
-    stack: true
     points:
       show:false
   colors: ['red', 'blue']
@@ -43,24 +41,12 @@ options =
     mode: "time",
     color: 'white'
     tickColor: 'white'
-    tickSize: [1, "day"]
-    minTickSize: [2, "month"]
-    tickFormatter: (v, axis) ->
-      date = new Date(v)
-
-      if (date.getDate() % 7 == 0)
-        monthNames[date.getMonth()] + " " + date.getDate()
-      else
-        ""
     axisLabel: "Date"
     axisLabelUseCanvas: true
     axisLabelFontSizePixels: 12
     axisLabelFontFamily: 'Verdana, Arial'
     axisLabelPadding: 10
   yaxis:
-    tickSize: 8
-    tickFormatter: (v, axis) ->
-        if v % 1500 == 0 then v else ""
     axisLabel: "Hope Discharge (m3s)"
     axisLabelUseCanvas: true
     axisLabelFontSizePixels: 12
@@ -71,13 +57,17 @@ $(->
   $('#date, #period').change(->
     data = []
     data2 = []
+    data3 = []
 
     date = moment($(this).val())
     year = date.year()
     month = date.month()
     period = $('#period').val()
 
-    $.getJSON("/api/hydrograph?year=#{year}&month=#{month}&period=#{period}&actual=false&predicted=false", 
+    $.getJSON("/api/hydrograph?year=#{year}&" +
+        "month=#{month}&" +
+        "period=#{period}&actual=false&" +
+        "predicted=false",
       (results) ->
         # GetData()
 
@@ -94,6 +84,7 @@ $(->
         dataset = [
           {data: data2}
           {data: data}
+          {data: data3}
         ]
 
         $.plot($("#flot-placeholder1"), dataset, options)

@@ -35,16 +35,15 @@
 
   options = {
     grid: {
-      color: 'black',
-      backgroundColor: 'white'
+      backgroundColor: {
+        colors: ["#fff", "#e4f4f4"]
+      }
     },
     series: {
       lines: {
         show: true,
-        lineWidth: 1.2,
-        fill: true
+        lineWidth: 1.2
       },
-      stack: true,
       points: {
         show: false
       }
@@ -54,17 +53,6 @@
       mode: "time",
       color: 'white',
       tickColor: 'white',
-      tickSize: [1, "day"],
-      minTickSize: [2, "month"],
-      tickFormatter: function(v, axis) {
-        var date;
-        date = new Date(v);
-        if (date.getDate() % 7 === 0) {
-          return monthNames[date.getMonth()] + " " + date.getDate();
-        } else {
-          return "";
-        }
-      },
       axisLabel: "Date",
       axisLabelUseCanvas: true,
       axisLabelFontSizePixels: 12,
@@ -72,14 +60,6 @@
       axisLabelPadding: 10
     },
     yaxis: {
-      tickSize: 8,
-      tickFormatter: function(v, axis) {
-        if (v % 1500 === 0) {
-          return v;
-        } else {
-          return "";
-        }
-      },
       axisLabel: "Hope Discharge (m3s)",
       axisLabelUseCanvas: true,
       axisLabelFontSizePixels: 12,
@@ -90,14 +70,15 @@
 
   $(function() {
     $('#date, #period').change(function() {
-      var data, data2, date, month, period, year;
+      var data, data2, data3, date, month, period, year;
       data = [];
       data2 = [];
+      data3 = [];
       date = moment($(this).val());
       year = date.year();
       month = date.month();
       period = $('#period').val();
-      return $.getJSON("/api/hydrograph?year=" + year + "&month=" + month + "&period=" + period + "&actual=false&predicted=false", function(results) {
+      return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + month + "&") + ("period=" + period + "&actual=false&") + "predicted=false", function(results) {
         $.each(results, function(i, v) {
           year = v.year;
           month = v.month;
@@ -111,6 +92,8 @@
             data: data2
           }, {
             data: data
+          }, {
+            data: data3
           }
         ];
         return $.plot($("#flot-placeholder1"), dataset, options);
