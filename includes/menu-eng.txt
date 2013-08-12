@@ -19,7 +19,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/wr-rh-eng.html'>Weekly Report</a></li>
+<li><a href='/wr-rh-eng.html'>CCG Weekly Report</a></li>
 <li><a href='/ad-pd-eng.html'>Available Depths</a></li>
 <li><a href='/tw-ft-eng.html'>Transit Window</a></li>
 </ul>
@@ -40,8 +40,8 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-eng.html'>Current Channel Conditions of the Fraser River South Arm</a></li>
-<li><a href='/co-ac-eng.html'>Channel Overview of the Fraser River South Arm</a></li>
+<li><a href='/cc-ca-eng.html'>Current Channel Conditions for Fraser River South Arm</a></li>
+<li><a href='/co-ac-eng.html'>Channel Overview for Fraser River South Arm</a></li>
 <li><a href='/sdb-bds-eng.html'>Survey Database</a></li>
 </ul>
 </section>
