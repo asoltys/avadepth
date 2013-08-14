@@ -1,5 +1,5 @@
 (function() {
-  var gotoKMGraph, gotoTimeGraph;
+  var gotoKMGraph, gotoTimeGraph, querystring;
 
   gotoKMGraph = function() {
     return document.location = ("pwlk-nepk-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
@@ -9,7 +9,43 @@
     return document.location = ("pwlt-ptnd-eng.html?date=" + ($('#date').val()) + "&") + ("time=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
   };
 
+  querystring = function(key) {
+    var m, r, re;
+    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
+    r = [];
+    m = [];
+    while ((m = re.exec(document.location.search)) !== null) {
+      r.push(m[1]);
+    }
+    return r;
+  };
+
   $(function() {
+    var check;
+    if (querystring('date').length !== 0) {
+      $("#date").val(querystring('date'));
+      $("#waterway").val(querystring('waterway'));
+      $("#interval").val(querystring('intervalMin'));
+      $("input[name=fraser_river]")[$("#waterway").val()].checked = true;
+      $("#flowRate").val(querystring('flowRate'));
+      $("#flowType").val(querystring('flowType'));
+      check = (function() {
+        switch (querystring('flowType')[0]) {
+          case '0':
+            return 0;
+          case '1':
+            return 1;
+          case '2':
+            $("#defined_discharge").val($('#flowRate').val());
+            return 3;
+          case '3':
+            return 2;
+        }
+      })();
+      $("input[name=discharge]")[check].checked = true;
+      $("input[name=report]")[querystring('displayType')].checked = true;
+      $("#km").text(querystring('km'));
+    }
     $('#date').change(function() {
       $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
         $('#selected_discharge').empty();
@@ -129,10 +165,10 @@
         headerRow.click(gotoKMGraph);
       }
       return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
-        $('#location').text(data.title);
+        $('#river-section').text(data.title);
         return $.each(data.times, function() {
           var row;
-          row = $("<tr><td><a href=\"javascript:void(0)\">" + this.predictTime + "</a></td></tr>");
+          row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">" + this.predictTime + "</a></td></tr>");
           $.each(this.waterLevels, function() {
             return row.append("<td>" + (parseFloat(this).toFixed(1)) + "</td>");
           });

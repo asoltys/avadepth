@@ -16,7 +16,34 @@ gotoTimeGraph = ->
       "waterway=#{$('#waterway').val()}&" +
       "displayType=#{$('input[name=report]:checked').val()}"
   
+querystring = (key) ->
+  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
+  r = []
+  m = []
+  while ((m=re.exec(document.location.search)) != null)
+    r.push(m[1])
+  return r
+
 $(->
+  if(querystring('date').length != 0)
+    $("#date").val(querystring('date'))
+    $("#waterway").val(querystring('waterway'))
+    $("#interval").val(querystring('intervalMin'))
+    $("input[name=fraser_river]")[$("#waterway").val()].checked = true
+    $("#flowRate").val(querystring('flowRate'))
+    $("#flowType").val(querystring('flowType'))
+    check = switch querystring('flowType')[0]
+      when '0' then 0
+      when '1' then 1
+      when '2'
+        $("#defined_discharge").val($('#flowRate').val())
+        3
+      when '3' then 2
+    $("input[name=discharge]")[check].checked = true
+    $("input[name=report]")[querystring('displayType')].checked = true
+
+    $("#km").text(querystring('km'))
+
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
       $('#selected_discharge').empty()
@@ -133,9 +160,9 @@ $(->
         "flowType=#{$('#flowType').val()}&" +
         "waterway=#{$('#waterway').val()}&" +
         "displayType=#{$('input[name=report]:checked').val()}", (data) ->
-      $('#location').text(data.title)
+      $('#river-section').text(data.title)
       $.each(data.times, ->
-        row = $("<tr><td><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
+        row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
         $.each(this.waterLevels, ->
           row.append("<td>#{parseFloat(this).toFixed(1)}</td>")
         )
