@@ -89,7 +89,7 @@
   });
 
   update = function() {
-    return $.getJSON("/api/depths/calculate?date=" + ($('#date').val()) + "&chainage=" + ($('#chainage').val()) + "&flowRate=" + ($('#flowRate').val()) + "&flowType=" + ($('input[name=channel]:checked').val()) + "&width=" + ($('#width').val()) + "&sounding=" + ($('input[name=condition]:checked').val()), function(data) {
+    return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('input[name=channel]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
       var points;
       table || (table = $('#depths').dataTable({
         bPaginate: false,

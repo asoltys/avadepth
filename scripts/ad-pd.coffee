@@ -81,8 +81,12 @@ $(->
 )
 
 update = ->
-  $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('input[name=channel]:checked').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=condition]:checked').val()}", 
-  (data) ->
+  $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&" +
+      "chainage=#{$('#chainage').val()}&" +
+      "flowRate=#{$('#flowRate').val()}&" +
+      "flowType=#{$('input[name=channel]:checked').val()}&" +
+      "width=#{$('#width').val()}&" +
+      "sounding=#{$('input[name=condition]:checked').val()}", (data) ->
     table ||= $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
     table.fnClearTable()
 
@@ -90,9 +94,9 @@ update = ->
     points = new Array()
     $.each(data.items[0].items, ->
       table.fnAddData([
-        "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>", 
-        this.chainage, 
-        this.depth, 
+        "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>",
+        this.chainage,
+        this.depth,
         this.location])
       points.push([this.period, this.depth])
     )
@@ -103,8 +107,8 @@ update = ->
     createGraph(points))
 
 
-createGraph = (p) -> 
-  d1 = 
+createGraph = (p) ->
+  d1 =
     color: "red"
     lines: {lineWidth: 3}
     data: p
@@ -113,7 +117,7 @@ createGraph = (p) ->
     s = "0" + num
     s.substr(s.length-4)
 
-  $.plot("#placeholder", [ d1 ], 
+  $.plot("#placeholder", [ d1 ],
     xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 200, tickFormatter: leadingZero],
     yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
   )

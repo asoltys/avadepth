@@ -128,6 +128,7 @@ locations =
 
 $('#waterway, #channel').change(->
   $('#location option').remove()
+  $('#location').append('<option></option>')
   $.each(locations[$('#waterway').val()][$('#channel').val()], ->
     $('#location').append("<option>#{this}</option>")
   )
@@ -168,10 +169,6 @@ $(->
     $('#tile').text('- Tile 00'+$(this).attr('title'))
     $('#map').css("min-height", "600px")
     $('.tabs-panel').height("620px")
-  )
-  
-  $('#channel').change( ->
-    alert('testing')
   )
   
   $('#waterway').change()
