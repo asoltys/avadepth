@@ -38,7 +38,7 @@
 
       <input id="defined_radio" type="radio" name="discharge" value="Defined" /> 
       <label for="defined_radio" style="font-weight: normal">User Defined</label>
-      <input id="defined_discharge" type="text" name="discharge" /> m3/s
+      <input id="defined_discharge" type="text" name="discharge" style="width:5em" /> m3/s
       
       <input type="hidden" name="flowRate" id="flowRate" value="0" />
       <input type="hidden" name="flowType" id="flowType" value="0" />
@@ -70,7 +70,7 @@ Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-dischar
 
 <div class="clear"></div>
 
-<table id="water-levels" class="zebra-striped table-condensed">
+<table id="water-levels" class="table-condensed">
   <thead>
     <tr>
       <th rowspan="2">Time (PST)</th>
@@ -82,4 +82,8 @@ Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-dischar
   <tbody>
   </tbody>
 </table>
+<ul>
+  <li>Water level is referenced to Chart Datum which is relative to Local Low Water.<br />
+  Click on a time or location to display a graph.</li>
+</ul>
 <!--#include virtual="/includes/footer-eng.html" -->

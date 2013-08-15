@@ -37,12 +37,12 @@ $(->
         $("#actual").attr('disabled', false)
         $("#predicted").attr('disabled', true)
         if ($('#predicted').is(':checked'))
-          $('input[name=discharge]')[1].checked = true;
+          $('input[name=discharge]')[1].checked = true
       else
         $("#actual").attr('disabled', true)
         $("#predicted").attr('disabled', false)
         if ($('#actual').is(':checked'))
-          $('input[name=discharge]')[0].checked = true;
+          $('input[name=discharge]')[0].checked = true
       $('input[name=discharge]:checked').trigger('change')
       $('#static-date').text($('#alt-date').val())
     )

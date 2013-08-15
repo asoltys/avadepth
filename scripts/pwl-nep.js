@@ -165,10 +165,18 @@
         headerRow.click(gotoKMGraph);
       }
       return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
+        var count;
         $('#river-section').text(data.title);
+        count = 0;
         return $.each(data.times, function() {
           var row;
           row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">" + this.predictTime + "</a></td></tr>");
+          if (count % 2) {
+            row.addClass("even");
+          } else {
+            row.addClass("odd");
+          }
+          count++;
           $.each(this.waterLevels, function() {
             return row.append("<td>" + (parseFloat(this).toFixed(1)) + "</td>");
           });

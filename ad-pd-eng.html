@@ -1,7 +1,7 @@
 <!--#include virtual="/includes/header-eng.html" -->
 <script src="scripts/ad-pd.js" defer></script>
 
-<h1>Available Depths</h1>
+<h1>Available Depth Report</h2>
 
 <div class="grid-12" style="margin-bottom: 15px">
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height print_hide">
@@ -41,6 +41,7 @@
 
           <div class="span-4">
             <label for="chainage">Chainage:</label>
+            1 to
             <select id="chainage">
               <option value="6">6</option>
               <option value="7">7</option>
@@ -72,7 +73,7 @@
               <option value="33">33</option>
               <option value="34">34</option>
               <option value="35" selected="selected">35</option>
-            </select>
+            </select> km
             
             <div>
               <label for="condition">Channel Condition:</label>
@@ -82,7 +83,7 @@
 
             <div>
               <label for="channel">Navigation Channel:</label>
-              <input id="channel" type="radio" name="channel" checked="checked" value="0" /> <span>Inner Limit</span><br />
+              <input id="channel" type="radio" name="channel" checked="checked" value="0" /> <span>Inner Limit</span>
               <input type="radio" name="channel" value="1" /> <span>Outer Limit</span>
             </div>
           </div>
@@ -152,8 +153,8 @@
 <div class="grid-12">
   <div class="info">
     <h2>Fraser River - <span id="static-limit">Inner Limit</span></h2>
-    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
-    <p><span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
+    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)<br />
+    <span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
     <p><span id="static-date"></span></p>
   </div>
   

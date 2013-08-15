@@ -25,6 +25,7 @@ querystring = (key) ->
   return r
 
 $(->
+
   if(querystring('date').length != 0)
     $("#date").val(querystring('date'))
     $("#waterway").val(querystring('waterway'))
@@ -161,8 +162,14 @@ $(->
         "waterway=#{$('#waterway').val()}&" +
         "displayType=#{$('input[name=report]:checked').val()}", (data) ->
       $('#river-section').text(data.title)
+      count = 0
       $.each(data.times, ->
         row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
+        if (count % 2)
+          row.addClass("even")
+        else
+          row.addClass("odd")
+        count++
         $.each(this.waterLevels, ->
           row.append("<td>#{parseFloat(this).toFixed(1)}</td>")
         )

@@ -20,7 +20,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href='/wr-rh-eng.html'>CCG Weekly Report</a></li>
-<li><a href='/ad-pd-eng.html'>Available Depths</a></li>
+<li><a href='/ad-pd-eng.html'>Daily Depths</a></li>
 <li><a href='/tw-ft-eng.html'>Transit Window</a></li>
 </ul>
 </section>

@@ -86,7 +86,7 @@ img#ccg-logo, img#ccg-word {
 
 .yaxislabel { color: black; }
 
-table.dataTable tr.odd, table.dataTable tr.odd td.sorting_1 { background: #F3F3F3; }
-table.dataTable tr.even, table.dataTable tr.even td.sorting_1 { background: #FFFFFF; }
+table.dataTable tr.odd, table tr.odd, table.dataTable tr.odd td.sorting_1 { background: #F3F3F3; }
+table.dataTable tr.even, table tr.even, table.dataTable tr.even td.sorting_1 { background: #FFFFFF; }
 
 tr.controlling td { color: red; }
