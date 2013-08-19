@@ -21,19 +21,20 @@ $(->
         aoColumnDefs:[
           {sClass: "1", "aTargets": [2,3,4,5]}
           {sClass: "2", "aTargets": [6,7,8,9]}]
-        aaSorting:[])
+        aaSorting:[],
+        aoColumns: [{"bSortable": false}, null])
     table.fnClearTable()
     $.each(data, (index) ->
       table.fnAddData([
-          "<a href=\"soundings-sondages-eng.html?lane=1&chainage=#{index+1}\">#{this.Chainage}</a>",
-          this.SoundingDate,
-          this.Dredge,
-          this.Sounding,
-          this.Width,
-          this.WidthPerc,
-          this.Dredge2,
-          this.Sounding2,
-          this.Width2,
+          "<a href=\"soundings-sondages-eng.html?lane=1&chainage=#{index+1}\">#{this.Chainage}</a>"
+          this.SoundingDate
+          this.Dredge
+          this.Sounding
+          this.Width
+          this.WidthPerc
+          this.Dredge2
+          this.Sounding2
+          this.Width2
           this.WidthPerc2])
       if (this.IsHigh)
         $('#soundings tr:last').find('.1').addClass('red')

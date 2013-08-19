@@ -104,6 +104,7 @@
         return points.push([this.period, this.depth]);
       });
       table.fnAdjustColumnSizing();
+      $('#depths td:nth-child(2)').css('text-align', 'center');
       $('#depths td:nth-child(3)').css('text-align', 'center');
       return createGraph(points);
     });

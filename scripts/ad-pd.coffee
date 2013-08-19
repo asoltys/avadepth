@@ -94,14 +94,15 @@ update = ->
     points = new Array()
     $.each(data.items[0].items, ->
       table.fnAddData([
-        "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>",
-        this.chainage,
-        this.depth,
+        "<a href='advr-drvp-eng.html?lane=xxx&amp;period=#{this.period}'>#{this.period}</a>"
+        this.chainage
+        this.depth
         this.location])
       points.push([this.period, this.depth])
     )
 
     table.fnAdjustColumnSizing()
+    $('#depths td:nth-child(2)').css('text-align', 'center')
     $('#depths td:nth-child(3)').css('text-align', 'center')
 
     createGraph(points))

@@ -1,3 +1,4 @@
+table = null
 gotoKMGraph = ->
   document.location = "pwlk-nepk-eng.html?date=#{$('#date').val()}&" +
       "km=#{$(this).text()}&" +
@@ -162,6 +163,12 @@ $(->
         "waterway=#{$('#waterway').val()}&" +
         "displayType=#{$('input[name=report]:checked').val()}", (data) ->
       $('#river-section').text(data.title)
+      table ||= $('#water-levels').dataTable(
+          bPaginate: false
+          bInfo: false
+          bFilter: false
+          aoColumns: [{"bSortable": false}, null])
+      table.fnClearTable()
       count = 0
       $.each(data.times, ->
         row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
@@ -175,6 +182,7 @@ $(->
         )
         $('#water-levels tbody').append(row)
         $(row).find('a').click(gotoTimeGraph)
+        $('.dataTables_empty').parent().html('')
       )
     )
   )

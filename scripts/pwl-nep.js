@@ -1,5 +1,7 @@
 (function() {
-  var gotoKMGraph, gotoTimeGraph, querystring;
+  var gotoKMGraph, gotoTimeGraph, querystring, table;
+
+  table = null;
 
   gotoKMGraph = function() {
     return document.location = ("pwlk-nepk-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
@@ -167,6 +169,17 @@
       return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
         var count;
         $('#river-section').text(data.title);
+        table || (table = $('#water-levels').dataTable({
+          bPaginate: false,
+          bInfo: false,
+          bFilter: false,
+          aoColumns: [
+            {
+              "bSortable": false
+            }, null
+          ]
+        }));
+        table.fnClearTable();
         count = 0;
         return $.each(data.times, function() {
           var row;
@@ -181,7 +194,8 @@
             return row.append("<td>" + (parseFloat(this).toFixed(1)) + "</td>");
           });
           $('#water-levels tbody').append(row);
-          return $(row).find('a').click(gotoTimeGraph);
+          $(row).find('a').click(gotoTimeGraph);
+          return $('.dataTables_empty').parent().html('');
         });
       });
     });

@@ -23,7 +23,12 @@
             "aTargets": [6, 7, 8, 9]
           }
         ],
-        aaSorting: []
+        aaSorting: [],
+        aoColumns: [
+          {
+            "bSortable": false
+          }, null
+        ]
       }));
       table.fnClearTable();
       $.each(data, function(index) {

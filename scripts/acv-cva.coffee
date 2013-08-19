@@ -97,13 +97,20 @@ update = ->
 
   total = (end_hour - hour) * 4 + (end_minute - minute) / 15
 
-  do getImage = -> 
-    $.getJSON("/api/animated?date=#{$('#date').val()}&legendScale=#{$('#interval').val()}&zone=#{$('#zone').val()}&flowRate=#{flowrate}&flowType=0&hour=#{hour}&minute=#{minute}", (data) ->
+  images = []
+  do getImage = ->
+    $.getJSON("/api/animated?date=#{$('#date').val()}&" +
+        "legendScale=#{$('#interval').val()}&" +
+        "zone=#{$('#zone').val()}&" +
+        "flowRate=#{flowrate}&" +
+        "flowType=0&" +
+        "hour=#{hour}&" +
+        "minute=#{minute}", (data) ->
       result = data.toString()
       images.push(result) unless result == '/images/'
     ).then(->
       if hour < end_hour || (hour == end_hour && minute <= end_minute)
-        getImage() 
+        getImage()
 
         minute += 15
         if minute == 60
