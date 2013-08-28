@@ -94,11 +94,51 @@ $(->
     $('#static-chainage').text($(this).val())
   )
   
-  $('#date, input[name=discharge], #defined_discharge, #selected_discharge, #chainage, input[name="sounding"], input[name="channel"], #width, #period, #window, #compliance, #cmp_box').change(update)
+  $('#maximum_depth').change(->
+    $('#max_depth_radio').prop('checked','checked')
+    $('#window').val($(this).val())
+    $('#window').change()
+  )
+
+  $('#minimum_window').change(->
+    $('#min_win_radio').prop('checked','checked')
+    $('#window').val($(this).val())
+    $('#window').change()
+  )
+
+  $('input[name="window_radio"]').change(->
+    if ($(this).val() == 'Maximum Depth')
+      $('#window').val($('#maximum_depth').val())
+    else
+      $('#window').val($('#minimum_window').val())
+    $('#window').change()
+  )
+
+  $('#date, ' +
+      'input[name=discharge], ' +
+      '#defined_discharge,'  +
+      '#selected_discharge,' +
+      '#chainage,' +
+      'input[name="sounding"],' +
+      'input[name="channel"], ' +
+      '#width,'  +
+      '#period,' +
+      '#window,' +
+      '#compliance,'+
+      '#cmp_box').change(update)
 )
 
 update = (data) ->
-  $.getJSON("api/transit?date=#{$('#date').val()}&lane=#{$('input[name=channel]:checked').val()}&window=#{$('#window').val()}&cmp=#{$('#cmp_box').val()}&flowType=#{$('#flowType').val()}&periodType=#{$('#period').val()}&chainage=#{$('#chainage').val()}&flowRate=#{$('#flowRate').val()}&width=#{$('#width').val()}&sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
+  $.getJSON("api/transit?date=#{$('#date').val()}&" +
+      "lane=#{$('input[name=channel]:checked').val()}&" +
+      "window=#{$('#window').val()}&" +
+      "cmp=#{$('#cmp_box').val()}&" +
+      "flowType=#{$('#flowType').val()}&" +
+      "periodType=#{$('#period').val()}&" +
+      "chainage=#{$('#chainage').val()}&" +
+      "flowRate=#{$('#flowRate').val()}&" +
+      "width=#{$('#width').val()}&" +
+      "sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
     $('#num_days').text(data2.statistics.numberOfDays)
     $('#min_depth').text(data2.statistics.minimumDepth)
     $('#max_depth').text(data2.statistics.maximumDepth)
