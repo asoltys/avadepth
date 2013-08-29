@@ -5,27 +5,6 @@ now = new Date()
 now2 = new Date()
 date_inc = 0
 
-
-
-GetData = () ->
-  data.shift()
-
-  while (data.length < totalPoints)
-    y = Math.random() * 1000 + 1250
-    temp = [new Date(now), y]
-    now.setDate(now.getDate()+1)
-
-    data.push(temp)
-
-  data2.shift()
-
-  while (data2.length < totalPoints)
-    y = Math.random() * 800 + 500
-    temp = [new Date(now2), y]
-    now2.setDate(now2.getDate()+1)
-
-    data2.push(temp)
-
 options =
   grid:
     backgroundColor:
@@ -54,12 +33,15 @@ options =
     axisLabelPadding: 6
 
 $(->
+  now = new Date()
+  $('#date').val("#{now.getFullYear()}-02-01")
+
   $('#date, #period').change(->
     data = []
     data2 = []
     data3 = []
 
-    date = moment($(this).val())
+    date = moment($('#date').val())
     year = date.year()
     month = date.month()
     period = $('#period').val()

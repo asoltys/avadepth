@@ -1,5 +1,5 @@
 (function() {
-  var GetData, dataset, date_inc, monthNames, now, now2, options, totalPoints;
+  var dataset, date_inc, monthNames, now, now2, options, totalPoints;
 
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -12,26 +12,6 @@
   now2 = new Date();
 
   date_inc = 0;
-
-  GetData = function() {
-    var temp, y, _results;
-    data.shift();
-    while (data.length < totalPoints) {
-      y = Math.random() * 1000 + 1250;
-      temp = [new Date(now), y];
-      now.setDate(now.getDate() + 1);
-      data.push(temp);
-    }
-    data2.shift();
-    _results = [];
-    while (data2.length < totalPoints) {
-      y = Math.random() * 800 + 500;
-      temp = [new Date(now2), y];
-      now2.setDate(now2.getDate() + 1);
-      _results.push(data2.push(temp));
-    }
-    return _results;
-  };
 
   options = {
     grid: {
@@ -69,12 +49,14 @@
   };
 
   $(function() {
+    now = new Date();
+    $('#date').val("" + (now.getFullYear()) + "-02-01");
     $('#date, #period').change(function() {
       var data, data2, data3, date, month, period, year;
       data = [];
       data2 = [];
       data3 = [];
-      date = moment($(this).val());
+      date = moment($('#date').val());
       year = date.year();
       month = date.month();
       period = $('#period').val();
