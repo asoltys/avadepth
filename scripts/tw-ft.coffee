@@ -1,6 +1,13 @@
 table = null
 
 $(->
+  if $('#max_depth_radio').prop('checked')
+    $('#window').val($('#maximum_depth').val())
+    $('#static-window').text("#{$('#maximum_depth').val()} hrs")
+  else
+    $('#window').val($('#minimum_window').val())
+    $('#static-window').text("#{$('#minimum_window').val()} hrs")
+
   $('#period').change(->
     period = switch $('#period').val()
       when '0' then 'd'
@@ -9,6 +16,16 @@ $(->
 
     $('#static-date-from').text(moment($('#date').val()).format("MMMM DD, YYYY"))
     $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"))
+  )
+
+  $(document).ajaxStart(->
+   $('#loading').show()
+   $('#report_body').hide()
+  )
+
+  $(document).ajaxSuccess(->
+   $('#loading').hide()
+   $('#report_body').show()
   )
 
   $('#date').change(->
@@ -93,6 +110,10 @@ $(->
   $('select#chainage').change(->
     $('#static-chainage').text($(this).val())
   )
+
+  $('#window').change(->
+    $('#static-window').text("#{$(this).val()} hrs")
+  )
   
   $('#maximum_depth').change(->
     $('#max_depth_radio').prop('checked','checked')
@@ -107,10 +128,12 @@ $(->
   )
 
   $('input[name="window_radio"]').change(->
-    if ($(this).val() == 'Maximum Depth')
+    if $(this).val() == 'Maximum Depth'
       $('#window').val($('#maximum_depth').val())
+      $('#static-window').text("#{$('#maximum_depth').val()} hrs")
     else
       $('#window').val($('#minimum_window').val())
+      $('#static-window').text("#{$('#minimum_window').val()} hrs")
     $('#window').change()
   )
 

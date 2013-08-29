@@ -4,6 +4,13 @@
   table = null;
 
   $(function() {
+    if ($('#max_depth_radio').prop('checked')) {
+      $('#window').val($('#maximum_depth').val());
+      $('#static-window').text("" + ($('#maximum_depth').val()) + " hrs");
+    } else {
+      $('#window').val($('#minimum_window').val());
+      $('#static-window').text("" + ($('#minimum_window').val()) + " hrs");
+    }
     $('#period').change(function() {
       var period;
       period = (function() {
@@ -18,6 +25,14 @@
       })();
       $('#static-date-from').text(moment($('#date').val()).format("MMMM DD, YYYY"));
       return $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"));
+    });
+    $(document).ajaxStart(function() {
+      $('#loading').show();
+      return $('#report_body').hide();
+    });
+    $(document).ajaxSuccess(function() {
+      $('#loading').hide();
+      return $('#report_body').show();
     });
     $('#date').change(function() {
       $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
@@ -107,6 +122,9 @@
     $('select#chainage').change(function() {
       return $('#static-chainage').text($(this).val());
     });
+    $('#window').change(function() {
+      return $('#static-window').text("" + ($(this).val()) + " hrs");
+    });
     $('#maximum_depth').change(function() {
       $('#max_depth_radio').prop('checked', 'checked');
       $('#window').val($(this).val());
@@ -120,8 +138,10 @@
     $('input[name="window_radio"]').change(function() {
       if ($(this).val() === 'Maximum Depth') {
         $('#window').val($('#maximum_depth').val());
+        $('#static-window').text("" + ($('#maximum_depth').val()) + " hrs");
       } else {
         $('#window').val($('#minimum_window').val());
+        $('#static-window').text("" + ($('#minimum_window').val()) + " hrs");
       }
       return $('#window').change();
     });
