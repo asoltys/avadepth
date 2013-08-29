@@ -88,7 +88,7 @@
     $('input[name="velocity_legend"]').change(function() {
       return $('#static-legend').text($(this).next().text());
     });
-    $('#from, #to, #zone, #interval').change(update);
+    $('#from, #to, #zone, #interval, #type').change(update);
     return $('#replay').click(play);
   });
 
@@ -98,8 +98,15 @@
     $('#animated, #replay, #nodata').hide();
     hour = Math.floor(parseFloat($('#from').val()));
     minute = (parseFloat($('#from').val()) - hour) * 60;
-    end_hour = Math.floor(parseFloat($('#to').val()));
-    end_minute = (parseFloat($('#to').val()) - end_hour) * 60;
+    if ($('#type').val() !== '0') {
+      end_hour = Math.floor(parseFloat($('#to').val()));
+      end_minute = (parseFloat($('#to').val()) - end_hour) * 60;
+      $('#to').prop('disabled', '');
+    } else {
+      end_hour = hour;
+      end_minute = minute;
+      $('#to').prop('disabled', 'disabled');
+    }
     total = (end_hour - hour) * 4 + (end_minute - minute) / 15;
     images = [];
     return (getImage = function() {
@@ -129,14 +136,15 @@
     if (images.length > 0) {
       $('#replay').show();
       i = 0;
-      return handle = setInterval(function() {
+      handle = setInterval(function() {
         $('#animated').attr("src", "http://184.106.250.111" + images[i]);
         i++;
         if (i >= images.length) return clearInterval(handle);
       }, 1000);
     } else {
-      return $('#nodata').show();
+      $('#nodata').show();
     }
+    if ($('#type').val() === '0') return $('#replay').hide();
   };
 
 }).call(this);

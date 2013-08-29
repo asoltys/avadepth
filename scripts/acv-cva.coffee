@@ -81,7 +81,7 @@ $(->
     $('#static-legend').text($(this).next().text())
   )
 
-  $('#from, #to, #zone, #interval').change(update)
+  $('#from, #to, #zone, #interval, #type').change(update)
   $('#replay').click(play)
 )
 
@@ -92,8 +92,14 @@ update = ->
   hour = Math.floor(parseFloat($('#from').val()))
   minute = (parseFloat($('#from').val()) - hour) * 60
 
-  end_hour = Math.floor(parseFloat($('#to').val()))
-  end_minute = (parseFloat($('#to').val()) - end_hour) * 60
+  if $('#type').val() != '0'
+    end_hour = Math.floor(parseFloat($('#to').val()))
+    end_minute = (parseFloat($('#to').val()) - end_hour) * 60
+    $('#to').prop('disabled','')
+  else
+    end_hour = hour
+    end_minute = minute
+    $('#to').prop('disabled','disabled')
 
   total = (end_hour - hour) * 4 + (end_minute - minute) / 15
 
@@ -134,3 +140,6 @@ play = ->
     , 1000)
   else
     $('#nodata').show()
+
+  if $('#type').val() == '0'
+    $('#replay').hide()
