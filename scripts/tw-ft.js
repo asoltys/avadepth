@@ -138,10 +138,8 @@
     $('input[name="window_radio"]').change(function() {
       if ($(this).val() === 'Maximum Depth') {
         $('#window').val($('#maximum_depth').val());
-        $('#static-window').text("" + ($('#maximum_depth').val()) + " hrs");
       } else {
         $('#window').val($('#minimum_window').val());
-        $('#static-window').text("" + ($('#minimum_window').val()) + " hrs");
       }
       return $('#window').change();
     });
