@@ -135,7 +135,7 @@
     $('#animated').show();
     if (images.length > 0) {
       $('#replay').show();
-      i = 0;
+      i = 1;
       handle = setInterval(function() {
         $('#animated').attr("src", "http://184.106.250.111" + images[i]);
         i++;
