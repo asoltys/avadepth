@@ -173,6 +173,7 @@
           bPaginate: false,
           bInfo: false,
           bFilter: false,
+          bAutoWidth: false,
           aoColumns: [
             {
               "bSortable": false
@@ -191,7 +192,7 @@
           }
           count++;
           $.each(this.waterLevels, function() {
-            return row.append("<td>" + (parseFloat(this).toFixed(1)) + "</td>");
+            return row.append("<td>" + (parseFloat(this).toFixed(1).replace('-', String.fromCharCode(8209))) + "</td>");
           });
           $('#water-levels tbody').append(row);
           $(row).find('a').click(gotoTimeGraph);

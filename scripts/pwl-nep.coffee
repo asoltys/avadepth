@@ -167,6 +167,7 @@ $(->
           bPaginate: false
           bInfo: false
           bFilter: false
+          bAutoWidth: false
           aoColumns: [{"bSortable": false}, null])
       table.fnClearTable()
       count = 0
@@ -178,7 +179,7 @@ $(->
           row.addClass("odd")
         count++
         $.each(this.waterLevels, ->
-          row.append("<td>#{parseFloat(this).toFixed(1)}</td>")
+          row.append("<td>#{parseFloat(this).toFixed(1).replace('-',String.fromCharCode(8209))}</td>")
         )
         $('#water-levels tbody').append(row)
         $(row).find('a').click(gotoTimeGraph)
