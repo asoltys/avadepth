@@ -129,6 +129,7 @@ update = ->
 play = ->
   $('#loading').hide()
   $('#animated').show()
+  $('#replay').prop('disabled','disabled')
 
   if images.length > 0
     $('#replay').show()
@@ -136,7 +137,9 @@ play = ->
     handle = setInterval(->
       $('#animated').attr("src", "http://184.106.250.111#{images[i]}")
       i++
-      clearInterval(handle) if i >= images.length
+      if i >= images.length
+        clearInterval(handle)
+        $('#replay').prop('disabled','')
     , 1000)
   else
     $('#nodata').show()

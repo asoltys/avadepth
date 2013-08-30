@@ -133,13 +133,17 @@
     var handle, i;
     $('#loading').hide();
     $('#animated').show();
+    $('#replay').prop('disabled', 'disabled');
     if (images.length > 0) {
       $('#replay').show();
       i = 1;
       handle = setInterval(function() {
         $('#animated').attr("src", "http://184.106.250.111" + images[i]);
         i++;
-        if (i >= images.length) return clearInterval(handle);
+        if (i >= images.length) {
+          clearInterval(handle);
+          return $('#replay').prop('disabled', '');
+        }
       }, 1000);
     } else {
       $('#nodata').show();
