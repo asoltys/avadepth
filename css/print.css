@@ -2,28 +2,36 @@
   display: block;
 }
 
-.print_hide, form, ul.tabs, #gcwu-psnb{
+.print_hide, form, ul.tabs, #gcwu-psnb, #gcwu-date-mod, .tabs-panel{
   display: none;
 }
 
-.page-break	{ 
+#wb-main-in {
+  font-size: 9pt;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+}
+
+table {
+  max-width: 7in;
+  float: left;
+}
+
+/*.demo-placeholder {
+  float: right;
+  position: relative;
+  top: 50px;
+  width: 200px;
+}*/
+
+.page-break { 
   clear: both;
   display: block; 
   page-break-before: always; 
 }
 
-#wb-main-in {
-  border: none;
-}
 
-div#placeholder {
-  float: none;
-  position: relative;
-  top: 50px;
-  width: 200px;
-}
-
-table, .grid-12 {
+.grid-12 {
   float: none;
   position: static;
 }
@@ -38,14 +46,18 @@ table, .grid-12 {
   padding-bottom: 250px;
 }
 
-img#ccg-logo {
+
+
+/*img#ccg-word {
   display: block;
-  float: right;
 }
 
-img#ccg-word {
+img#ccg-logo {
   display: block;
-}
+  position: absolute;
+  left: 48%;
+  top: -5px;
+}*/
 
 .grid-12, .span-6 {
   float: none;
