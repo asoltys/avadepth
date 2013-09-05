@@ -26,6 +26,9 @@ querystring = (key) ->
   return r
 
 $(->
+  $("#print_predicted_water_levels").click(->
+    window.print()
+  )
 
   if(querystring('date').length != 0)
     $("#date").val(querystring('date'))

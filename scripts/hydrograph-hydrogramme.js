@@ -49,6 +49,9 @@
   };
 
   $(function() {
+    $("#print_hydrograph").click(function() {
+      return window.print();
+    });
     now = new Date();
     $('#date').val("" + (now.getFullYear()) + "-02-01");
     $('#date, #period').change(function() {

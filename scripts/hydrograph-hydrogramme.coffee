@@ -33,6 +33,10 @@ options =
     axisLabelPadding: 6
 
 $(->
+  $("#print_hydrograph").click(->
+    window.print()
+  )
+
   now = new Date()
   $('#date').val("#{now.getFullYear()}-02-01")
 

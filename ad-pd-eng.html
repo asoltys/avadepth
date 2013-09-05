@@ -3,8 +3,8 @@
 
 <h1>Available Depth Report</h1>
 
-<div class="grid-12" style="margin-bottom: 15px">
-  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height print_hide">
+<div class="grid-12 print_hide" style="margin-bottom: 15px">
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
     <ul class="tabs">
       <li class="default"><a href="#parameters">Parameters</a></li>
       <li><a href="#help">Help</a></li>
@@ -130,9 +130,10 @@
       </div>
 
       <div id="help" style="max-height: 200px; overflow-y: scroll;">
-        <p>
-          The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
-        </p>
+        <p>The available depth tabulations allow us to monitor the behaviour of
+        the "Control Point" - the location in the river channel which has the
+        minimum available depth at any specified time. The control point moves
+        under the influence of tides, flow rates and soundings profiles.</p>
 
         <p>To inspect the critical point locations over a one-day period,</p>
 
@@ -141,26 +142,22 @@
           <li>Click on the Next button</li>
         </ul>
 
-        <p>
-          Avadepth displays the options to use a flow rate.   These are predicted, actual, user-defined or select from the list.
-        </p>
+        <p>Avadepth displays the options to use a flow rate. These are
+        predicted, actual, user-defined or select from the list.</p>
 
         <ul>
           <li>Select the flow rate to be used.</li>
           <li>Click on the daily depth button to display the graph.</li>
         </ul>
 
-        <p>
-          Avadepth plots the variation of maximum available depths for a single day.
-        </p>
+        <p>Avadepth plots the variation of maximum available depths for a
+        single day.</p>
 
-        <p>
-          To print the graph to your printer:
-        </p>
+        <p>To print the graph to your printer:</p>
 
-        <p>
-          In your browser menu, you can select File|Print to print a hard-copy.
-          To display a tabulation of the least available depth and control point location for each two-hour period on the selected date.
+        <p>In your browser menu, you can select File|Print to print a
+        hard-copy. To display a tabulation of the least available depth and
+        control point location for each two-hour period on the selected date.
         </p>
 
         <ul>
@@ -173,20 +170,24 @@
 </div>
 
 <div class="grid-12">
-  <div class="info">
+  <div class="info span-6" style="text-align:center">
     <h2>Fraser River - <span id="static-limit">Inner Limit</span></h2>
-    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)<br />
-    <span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
+    <p>Hope Discharge <span id="static-discharge"></span>m3/s
+    (<span id="static-discharge-eval">Predicted</span>)<br />
+    <span id="static-type">Current Soundings</span> for Km 1 to
+    <span id="static-chainage">35</span> at
+    <span id="static-width">100</span>% Available Width</p>
     <p><span id="static-date"></span></p>
   </div>
+  <div class="clear"></div>
   
   <div class="span-6">
-    <table id="depths">
+    <table id="depths" style="text-align:center">
       <thead>
         <tr>
-          <th>Time (pst)</th>
-          <th>Chainage (km)</th>
-          <th>Available Depth (m)</th>
+          <th style="width:5em">Time (pst)</th>
+          <th style="width:5em">Chainage (km)</th>
+          <th style="width:5em">Available Depth (m)</th>
           <th>Location</th>
         </tr>
       </thead>
@@ -194,8 +195,9 @@
     </table>
   </div>
   <div class="page-break"></div>
-  <div id="placeholder" class="demo-placeholder span-6" style="height:500px"></div>
+  <div id="placeholder" class="demo-placeholder span-6" style="height:500px;"></div>
 </div>
+<button id="print_daily_depths" class="print_button button button-accent">Print</button>
 
 
 <!--#include virtual="/includes/footer-eng.html" -->

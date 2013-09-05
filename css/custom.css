@@ -80,6 +80,10 @@ div.filled {
   display: none;
 }
 
+.print_button {
+  float:right;
+  margin:2em 2em;
+}
 img#ccg-logo, img#ccg-word {
   display: none;
 }

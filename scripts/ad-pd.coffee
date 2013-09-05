@@ -2,6 +2,10 @@ table = null
 flowrate = 0
 
 $(->
+  $("#print_daily_depths").click(->
+    window.print()
+  )
+
   $(".yaxislabel").css("color","black")
 
   $('#defined_discharge').change(->
@@ -87,7 +91,11 @@ update = ->
       "flowType=#{$('input[name=channel]:checked').val()}&" +
       "width=#{$('#width').val()}&" +
       "sounding=#{$('input[name=condition]:checked').val()}", (data) ->
-    table ||= $('#depths').dataTable(bPaginate: false, bInfo: false, bFilter: false)
+    table ||= $('#depths').dataTable(
+      bPaginate: false
+      bInfo: false
+      bAutoWidth: false
+      bFilter: false)
     table.fnClearTable()
 
     $('#depths tbody tr').remove()
@@ -101,12 +109,8 @@ update = ->
       points.push([this.period, this.depth])
     )
 
-    table.fnAdjustColumnSizing()
-    $('#depths td:nth-child(2)').css('text-align', 'center')
-    $('#depths td:nth-child(3)').css('text-align', 'center')
-
-    createGraph(points))
-
+    createGraph(points)
+  )
 
 createGraph = (p) ->
   d1 =

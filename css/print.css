@@ -1,9 +1,9 @@
-.print_show {
-  display: block;
+.print_hide, form, ul.tabs, #gcwu-psnb, #gcwu-date-mod {
+  display: none;
 }
 
-.print_hide, form, ul.tabs, #gcwu-psnb, #gcwu-date-mod, .tabs-panel{
-  display: none;
+.print_show {
+  display: block;
 }
 
 #wb-main-in {
@@ -13,8 +13,8 @@
 }
 
 table {
-  max-width: 7in;
-  float: left;
+  max-width: 6in;
+  margin: 0 auto;
 }
 
 /*.demo-placeholder {
@@ -24,42 +24,26 @@ table {
   width: 200px;
 }*/
 
-.page-break { 
-  clear: both;
-  display: block; 
-  page-break-before: always; 
-}
-
-
 .grid-12 {
   float: none;
   position: static;
 }
 
-.summary {
-  display: block;
-  position: fixed;
-}
-
-.tabs-panel {
-  border: none !important;
-  padding-bottom: 250px;
-}
-
-
-
-/*img#ccg-word {
-  display: block;
-}
-
-img#ccg-logo {
-  display: block;
-  position: absolute;
-  left: 48%;
-  top: -5px;
-}*/
-
 .grid-12, .span-6 {
   float: none;
   position: relative;
+  margin: 0 auto;
+}
+
+.page-break { 
+  clear: both;
+  display: block;
+  page-break-before: always;
+}
+
+#flot-placeholder1 {
+  width:50%;
+  height:50%;
+  margin:0 0 0 0;
+  padding: 0 0 0 0;
 }

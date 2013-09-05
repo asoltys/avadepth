@@ -7,7 +7,7 @@
 
 <h1>Fraser River Hydrograph at Hope, B.C</h1>
 <div class="grid-12">
-  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 print_hide">
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1">
     <ul class="tabs">
       <li class="default"><a href="#graph">Graph</a></li>
       <li><a href="#help">Help</a></li>
@@ -15,7 +15,7 @@
 
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
       <div id="graph" style="height:500px">
-        <div class="span-2">
+        <div class="span-2 print_hide">
           <form id="daily_depth">
               <label for="date">Date:</label>
               <input id="date" type="text" name="date" class="datepicker" />
@@ -34,7 +34,7 @@
               <input id="predicted" type="checkbox" name="predicted" checked="checked" /> Predicted
           </form>
         </div>
-        <div class="span-9 demo-container">
+        <div class="span-9 demo-container print_show" style="display:block">
           <div class="print_show">
             <p><span id="static-date"></span> during a period of <span id="static-period">3 Months</span></p>
           </div>
@@ -62,4 +62,5 @@
 </div>
 
 <div class="clear"></div>
+<button id="print_hydrograph" class="print_button button button-accent">Print</button>
 <!--#include virtual="/includes/footer-eng.html" -->

@@ -4,6 +4,9 @@
   table = null;
 
   $(function() {
+    $("#print_transit_window").click(function() {
+      return window.print();
+    });
     if ($('#max_depth_radio').prop('checked')) {
       $('#window').val($('#maximum_depth').val());
       $('#static-window').text("" + ($('#maximum_depth').val()) + " hrs");

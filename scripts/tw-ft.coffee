@@ -1,6 +1,10 @@
 table = null
 
 $(->
+  $("#print_transit_window").click(->
+    window.print()
+  )
+
   if $('#max_depth_radio').prop('checked')
     $('#window').val($('#maximum_depth').val())
     $('#static-window').text("#{$('#maximum_depth').val()} hrs")

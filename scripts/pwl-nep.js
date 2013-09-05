@@ -24,6 +24,9 @@
 
   $(function() {
     var check;
+    $("#print_predicted_water_levels").click(function() {
+      return window.print();
+    });
     if (querystring('date').length !== 0) {
       $("#date").val(querystring('date'));
       $("#waterway").val(querystring('waterway'));

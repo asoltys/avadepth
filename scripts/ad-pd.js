@@ -6,6 +6,9 @@
   flowrate = 0;
 
   $(function() {
+    $("#print_daily_depths").click(function() {
+      return window.print();
+    });
     $(".yaxislabel").css("color", "black");
     $('#defined_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Defined") {
@@ -94,6 +97,7 @@
       table || (table = $('#depths').dataTable({
         bPaginate: false,
         bInfo: false,
+        bAutoWidth: false,
         bFilter: false
       }));
       table.fnClearTable();
@@ -103,9 +107,6 @@
         table.fnAddData(["<a href='advr-drvp-eng.html?lane=xxx&amp;period=" + this.period + "'>" + this.period + "</a>", this.chainage, this.depth, this.location]);
         return points.push([this.period, this.depth]);
       });
-      table.fnAdjustColumnSizing();
-      $('#depths td:nth-child(2)').css('text-align', 'center');
-      $('#depths td:nth-child(3)').css('text-align', 'center');
       return createGraph(points);
     });
   };
