@@ -146,8 +146,6 @@ adjustHeight = (map) ->
     $('.tabs-panel').height("540px")
 
 $(->
-  $('#surveys').dataTable(bPaginate: false, bInfo: false, bFilter: false)
-
   $('#waterway').change( ->
     $('#heading-waterway').text($(this).find('option:selected').text())
     $('#tile').text('')
@@ -171,6 +169,30 @@ $(->
     $('.tabs-panel').height("620px")
   )
   
+
+  $('#waterway, #channel, #location, #type').change( ->
+    $.getJSON("/api/surveys/getsurveys?river=#{$('#waterway').val()}&" +
+        "drawingType=&" +
+        "recent=&" +
+        "channel=#{$('#channel').val()}&" +
+        "location=#{$('#location').val()}&" +
+        "channelType=#{$('#type').val()}", (data) ->
+      $('#surveys tbody').html('')
+      $.each(data, ->
+        $('#surveys').append("<tr>" +
+            "<td>#{this.date}</td>" +
+            "<td><a href='../Data/dwf/#{this.fileNumber}'>#{this.fileNumber}</a></td>" +
+            "<td>#{this.location}</td>" +
+            "<td>#{this.drawType}</td>" +
+            "<td>#{this.kmStart}</td>" +
+            "<td>#{this.kmEnd}</td>" +
+            "</tr>")
+      )
+    ).done( ->
+      $('#surveys tr:nth-child(odd)').addClass('odd')
+      $('#surveys tr:nth-child(even)').addClass('even')
+    )
+  )
   $('#waterway').change()
   $('#heading-waterway').parent().css('margin-top', '0')
 )

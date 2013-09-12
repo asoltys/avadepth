@@ -75,11 +75,6 @@
   };
 
   $(function() {
-    $('#surveys').dataTable({
-      bPaginate: false,
-      bInfo: false,
-      bFilter: false
-    });
     $('#waterway').change(function() {
       $('#heading-waterway').text($(this).find('option:selected').text());
       $('#tile').text('');
@@ -101,6 +96,17 @@
       $('#tile').text('- Tile 00' + $(this).attr('title'));
       $('#map').css("min-height", "600px");
       return $('.tabs-panel').height("620px");
+    });
+    $('#waterway, #channel, #location, #type').change(function() {
+      return $.getJSON(("/api/surveys/getsurveys?river=" + ($('#waterway').val()) + "&") + "drawingType=&" + "recent=&" + ("channel=" + ($('#channel').val()) + "&") + ("location=" + ($('#location').val()) + "&") + ("channelType=" + ($('#type').val())), function(data) {
+        $('#surveys tbody').html('');
+        return $.each(data, function() {
+          return $('#surveys').append("<tr>" + ("<td>" + this.date + "</td>") + ("<td><a href='../Data/dwf/" + this.fileNumber + "'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>");
+        });
+      }).done(function() {
+        $('#surveys tr:nth-child(odd)').addClass('odd');
+        return $('#surveys tr:nth-child(even)').addClass('even');
+      });
     });
     $('#waterway').change();
     return $('#heading-waterway').parent().css('margin-top', '0');
