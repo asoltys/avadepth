@@ -35,15 +35,18 @@ table {
   margin: 0 auto;
 }
 
+#placeholder {
+  margin: 10px 100px;
+}
+
 .page-break { 
   clear: both;
   display: block;
+  height:1px;
   page-break-before: always;
 }
 
 #flot-placeholder1 {
-  width:50%;
-  height:50%;
   margin:0 0 0 0;
   padding: 0 0 0 0;
 }

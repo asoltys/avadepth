@@ -38,7 +38,7 @@ $(->
   )
 
   now = new Date()
-  $('#date').val("#{now.getFullYear()}-02-01")
+  $('#date').val("#{now.getFullYear()}-01-01")
 
   $('#date, #period').change(->
     data = []
@@ -51,11 +51,11 @@ $(->
     period = $('#period').val()
 
     $.getJSON("/api/hydrograph?year=#{year}&" +
-        "month=#{month}&" +
-        "period=#{period}&actual=false&" +
+        "month=#{month + 2}&" +
+        "period=#{period}&" +
+        "actual=false&" +
         "predicted=false",
       (results) ->
-        # GetData()
 
         $.each(results, (i,v) ->
           year = v.year
@@ -79,7 +79,7 @@ $(->
 
 
   $('#date').change(->
-    $('#static-date').text($('#alt-date').val())
+    $('#static-date').text($('#date').val())
   )
 
   $('select#period').change(->

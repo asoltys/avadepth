@@ -53,7 +53,7 @@
       return window.print();
     });
     now = new Date();
-    $('#date').val("" + (now.getFullYear()) + "-02-01");
+    $('#date').val("" + (now.getFullYear()) + "-01-01");
     $('#date, #period').change(function() {
       var data, data2, data3, date, month, period, year;
       data = [];
@@ -63,7 +63,7 @@
       year = date.year();
       month = date.month();
       period = $('#period').val();
-      return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + month + "&") + ("period=" + period + "&actual=false&") + "predicted=false", function(results) {
+      return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=false", function(results) {
         $.each(results, function(i, v) {
           year = v.year;
           month = v.month;
@@ -85,7 +85,7 @@
       });
     });
     $('#date').change(function() {
-      return $('#static-date').text($('#alt-date').val());
+      return $('#static-date').text($('#date').val());
     });
     $('select#period').change(function() {
       return $('#static-period').text($(this).val());
