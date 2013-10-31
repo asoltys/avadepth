@@ -66,10 +66,10 @@
       return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=false", function(results) {
         $.each(results, function(i, v) {
           year = v.year;
-          month = v.month;
+          month = v.month - 1;
           return $.each(v.minMax, function(i, v) {
-            data.push([moment(v.day, "MMM").year(year).month(month).date(v.day)._d, v.minValue]);
-            return data2.push([moment(v.day, "MMM").year(year).month(month).date(v.day)._d, v.maxValue]);
+            data.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue]);
+            return data2.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue]);
           });
         });
         dataset = [

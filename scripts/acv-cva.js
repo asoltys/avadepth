@@ -110,7 +110,7 @@
     total = (end_hour - hour) * 4 + (end_minute - minute) / 15;
     images = [];
     return (getImage = function() {
-      return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('#interval').val()) + "&") + ("zone=" + ($('#zone').val()) + "&") + ("flowRate=" + flowrate + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
+      return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + "legendScale=0&" + ("zone=" + ($('#zone').val()) + "&") + ("flowRate=" + flowrate + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
         var result;
         result = data.toString();
         if (result !== '/images/') return images.push(result);
