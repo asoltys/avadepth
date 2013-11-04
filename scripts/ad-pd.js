@@ -33,66 +33,32 @@
       return $('#static-chainage').text($(this).val());
     });
     $('#date').change(function() {
-      $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
-        $('#selected_discharge').empty();
-        $.each(data.Flowrates, function() {
-          return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
-        });
-        $('#predicted_discharge').text(data.Predicted);
-        $('#actual_discharge').text(data.Actual);
-        if (data.Actual) {
-          $("#actual_radio").attr('disabled', false);
-          $("#predicted_radio").attr('disabled', true);
-          $('#actual_radio').prop('checked', true);
-        } else {
-          $("#actual_radio").attr('disabled', true);
-          $("#predicted_radio").attr('disabled', false);
-          $("#predicted_radio").prop('checked', true);
-        }
-        $('input[name=discharge]:checked').change();
-        return $('#static-date').text($('#alt-date').val());
+      console.log($(this).val());
+      return avadepth.util.getFlow({
+        date: $(this).val(),
+        selected: $("#selected_discharge"),
+        predicted: $("#predicted_discharge"),
+        actual: $("#actual_discharge")
       });
-      return $('#static-date').text($('#alt-date').val());
     }).change();
     $('#selected_discharge').change(function() {
-      return $('#discharge_radio').prop('checked', true).change();
+      return $('#selected_radio').prop('checked', true).change();
     });
     $('input[name=discharge]').change(function() {
-      var flowtype;
-      flowrate = (function() {
-        switch ($(this).val()) {
-          case 'Actual':
-            return $('#actual_discharge').text();
-          case 'Predicted':
-            return $('#predicted_discharge').text();
-          case 'Defined':
-            return $('#defined_discharge').val();
-          case 'Selected':
-            return $('#selected_discharge').val();
-        }
-      }).call(this);
-      $('#flowRate').val(flowrate);
-      $('#static-discharge').text(flowrate);
+      var flow;
+      flow = avadepth.util.getSelectedFlow();
+      $('#flowRate').val(flow.flowRate);
+      console.log($('#flowRate').val());
+      $('#static-discharge').text(flow.flowRate);
       $('#static-discharge-eval').text($(this).val());
-      flowtype = (function() {
-        switch ($(this).val()) {
-          case 'Actual':
-            return 0;
-          case 'Predicted':
-            return 1;
-          case 'Defined':
-            return 2;
-          case 'Selected':
-            return 3;
-        }
-      }).call(this);
-      return $('#flowType').val(flowtype);
+      return $('#flowType').val(flow.flowType);
     });
-    return $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(update);
+    $("form#daily_depth").on("change", "input, select", update);
+    return update();
   });
 
   update = function() {
-    return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('input[name=channel]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
+    return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
       var points;
       table || (table = $('#depths').dataTable({
         bPaginate: false,

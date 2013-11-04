@@ -35,60 +35,38 @@ $(->
   )
 
   $('#date').change(->
-    $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
-      $('#selected_discharge').empty()
-      $.each(data.Flowrates, ->
-        $('#selected_discharge').append("<option value='#{this}'>#{this}</option>")
-      )
-      $('#predicted_discharge').text(data.Predicted)
-      $('#actual_discharge').text(data.Actual)
-
-      if (data.Actual)
-        $("#actual_radio").attr('disabled', false)
-        $("#predicted_radio").attr('disabled', true)
-        $('#actual_radio').prop('checked', true)
-      else
-        $("#actual_radio").attr('disabled', true)
-        $("#predicted_radio").attr('disabled', false)
-        $("#predicted_radio").prop('checked', true)
-
-      $('input[name=discharge]:checked').change()
-      $('#static-date').text($('#alt-date').val())
-    )
-
-    $('#static-date').text($('#alt-date').val())
+    console.log($(this).val())
+    avadepth.util.getFlow({
+      date:$(this).val(),
+      selected:$("#selected_discharge"),
+      predicted:$("#predicted_discharge"),
+      actual:$("#actual_discharge")
+    })
   ).change()
 
   $('#selected_discharge').change(->
-    $('#discharge_radio').prop('checked', true).change()
+    $('#selected_radio').prop('checked', true).change()
   )
 
   $('input[name=discharge]').change(->
-    flowrate = switch $(this).val()
-      when 'Actual' then $('#actual_discharge').text()
-      when 'Predicted' then $('#predicted_discharge').text()
-      when 'Defined' then $('#defined_discharge').val()
-      when 'Selected' then $('#selected_discharge').val()
-    $('#flowRate').val(flowrate)
-    $('#static-discharge').text(flowrate)
+    flow = avadepth.util.getSelectedFlow()
+    $('#flowRate').val(flow.flowRate)
+    console.log($('#flowRate').val())
+    $('#static-discharge').text(flow.flowRate)
     $('#static-discharge-eval').text($(this).val())
-
-    flowtype = switch $(this).val()
-      when 'Actual' then 0
-      when 'Predicted' then 1
-      when 'Defined' then 2
-      when 'Selected' then 3
-    $('#flowType').val(flowtype)
+    $('#flowType').val(flow.flowType)
   )
   
-  $('#date, #width, #chainage, input[name=discharge], input[name=condition], input[name=channel]').change(update)
+  $("form#daily_depth").on("change","input, select",update)
+
+  update()
 )
 
 update = ->
   $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&" +
       "chainage=#{$('#chainage').val()}&" +
       "flowRate=#{$('#flowRate').val()}&" +
-      "flowType=#{$('input[name=channel]:checked').val()}&" +
+      "flowType=#{$('#flowType').val()}&" +
       "width=#{$('#width').val()}&" +
       "sounding=#{$('input[name=condition]:checked').val()}", (data) ->
     table ||= $('#depths').dataTable(
@@ -123,7 +101,16 @@ createGraph = (p) ->
     s.substr(s.length-4)
 
   $.plot("#placeholder", [ d1 ],
-    xaxes: [color: 'black', tickColor: '#aaa', axisLabel: 'Pacific Standard Time (hrs)', tickSize: 200, tickFormatter: leadingZero],
-    yaxes: [{ color: 'black', tickColor: '#aaa', position: 'left', axisLabel: 'Available Depth (m)' }]
+    xaxes:[
+      color: 'black'
+      tickColor: '#aaa'
+      axisLabel: 'Pacific Standard Time (hrs)'
+      tickSize: 200
+      tickFormatter: leadingZero],
+    yaxes: [
+      color: 'black'
+      tickColor: '#aaa'
+      position: 'left'
+      axisLabel: 'Available Depth (m)']
   )
 

@@ -1,5 +1,6 @@
 <!--#include virtual="/includes/header-eng.html" -->
 <script src="scripts/ad-pd.js" defer></script>
+<script src="scripts/avadepth_util.js" defer></script>
 
 <h1>Available Depth Report</h1>
 
@@ -26,7 +27,7 @@
                   value="Predicted"
                   checked="checked" />
               <label for="predicted_radio"
-                  style="font-weight: normal">Predicted (<span id="predicted_discharge"></span>m&#179;s)</label><br />
+                  style="font-weight: normal">Predicted (<span id="predicted_discharge">0</span>m&#179;s)</label><br />
 
               <input id="actual_radio"
                   type="radio"
@@ -35,7 +36,7 @@
                   class="rd_actual"
                   value="Actual" />
               <label for="actual_radio"
-                  style="font-weight: normal">Actual (<span id="actual_discharge"></span>m&#179;s)</label><br />
+                  style="font-weight: normal">Actual (<span id="actual_discharge">0</span>m&#179;s)</label><br />
 
               <input id="selected_radio"
                   type="radio"
