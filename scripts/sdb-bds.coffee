@@ -1,3 +1,4 @@
+
 locations =
   'BR':
     'Main': ['Marina', 'Channel']
@@ -146,6 +147,18 @@ adjustHeight = (map) ->
     $('.tabs-panel').height("540px")
 
 $(->
+  $("div.span-8").on("click",".surveyDrawingTile area",(event)->
+    riverSection = tile_query_info[event.currentTarget.title]
+    getSurveyDrawings({
+      river:riverSection.river
+      drawingType:riverSection.drawingType
+      channel:riverSection.channel
+      location:riverSection.location
+      channelType:riverSection.channelType
+      kmStart:riverSection.kmStart
+      kmEnd:riverSection.kmEnd})
+    )
+
   $('#waterway').change( ->
     $('#heading-waterway').text($(this).find('option:selected').text())
     $('#tile').text('')
@@ -169,30 +182,45 @@ $(->
     $('.tabs-panel').height("620px")
   )
   
+  $('form#daily_depth').on("change","select", ->
+    getSurveyDrawings({
+      river:$('#waterway').val()
+      drawingType:$('#type').val()
+      channel:$('#waterway').val()
+      location:$('#location').val()
+      channelType:$('#channel').val()})
+  )
+  $('#waterway').change()
+  $('#heading-waterway').parent().css('margin-top', '0')
+)
 
-  $('#waterway, #channel, #location, #type').change( ->
-    $.getJSON("/api/surveys/getsurveys?river=#{$('#waterway').val()}&" +
-        "drawingType=&" +
-        "recent=&" +
-        "channel=#{$('#channel').val()}&" +
-        "location=#{$('#location').val()}&" +
-        "channelType=#{$('#type').val()}", (data) ->
-      $('#surveys tbody').html('')
-      $.each(data, ->
+getSurveyDrawings = ((jsonStuff) ->
+  $.getJSON("/api/surveys/getsurveys?river=#{jsonStuff.river}&" +
+      "drawingType=#{jsonStuff.drawingType}&" +
+      "recent=&" +
+      "channel=#{jsonStuff.channel}&" +
+      "location=#{jsonStuff.location}&" +
+      "channelType=#{jsonStuff.channelType}", (data) ->
+    $('#surveys tbody').html('')
+    $.each(data, ->
+      addRow = false
+      if jsonStuff.kmStart and jsonStuff.kmEnd
+        if jsonStuff.kmStart == this.kmStart and jsonStuff.kmEnd == this.kmEnd
+          addRow = true
+      else
+        addRow = true
+      if addRow
         $('#surveys').append("<tr>" +
-            "<td>#{this.date}</td>" +
+            "<td>#{this.date.split("T")[0]}</td>" +
             "<td><a href='../Data/dwf/#{this.fileNumber}'>#{this.fileNumber}</a></td>" +
             "<td>#{this.location}</td>" +
             "<td>#{this.drawType}</td>" +
             "<td>#{this.kmStart}</td>" +
             "<td>#{this.kmEnd}</td>" +
             "</tr>")
-      )
-    ).done( ->
-      $('#surveys tr:nth-child(odd)').addClass('odd')
-      $('#surveys tr:nth-child(even)').addClass('even')
     )
+  ).done( ->
+    $('#surveys tr:nth-child(odd)').addClass('odd')
+    $('#surveys tr:nth-child(even)').addClass('even')
   )
-  $('#waterway').change()
-  $('#heading-waterway').parent().css('margin-top', '0')
 )

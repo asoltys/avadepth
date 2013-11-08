@@ -181,6 +181,9 @@ $(->
         else
           row.addClass("odd")
         count++
+
+        #Maybe I should create one large string and append once the each loop is finished
+        #rather than calling append a bunch of times with is a heavy process
         $.each(this.waterLevels, ->
           row.append("<td>#{parseFloat(this).toFixed(1).replace('-',String.fromCharCode(8209))}</td>")
         )
