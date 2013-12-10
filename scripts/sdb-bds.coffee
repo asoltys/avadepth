@@ -195,6 +195,7 @@ $(->
 )
 
 getSurveyDrawings = ((jsonStuff) ->
+  drawingRows = ""
   $.getJSON("/api/surveys/getsurveys?river=#{jsonStuff.river}&" +
       "drawingType=#{jsonStuff.drawingType}&" +
       "recent=&" +
@@ -204,21 +205,19 @@ getSurveyDrawings = ((jsonStuff) ->
     $('#surveys tbody').html('')
     $.each(data, ->
       addRow = false
-      if jsonStuff.kmStart and jsonStuff.kmEnd
-        if jsonStuff.kmStart == this.kmStart and jsonStuff.kmEnd == this.kmEnd
-          addRow = true
-      else
-        addRow = true
-      if addRow
-        $('#surveys').append("<tr>" +
-            "<td>#{this.date.split("T")[0]}</td>" +
-            "<td><a href='../Data/dwf/#{this.fileNumber}'>#{this.fileNumber}</a></td>" +
-            "<td>#{this.location}</td>" +
-            "<td>#{this.drawType}</td>" +
-            "<td>#{this.kmStart}</td>" +
-            "<td>#{this.kmEnd}</td>" +
-            "</tr>")
+
+      addRow = true unless jsonStuff.kmStart? != this.kmStart or jsonstuff.kmEnd? != this.kmEnd
+
+      drawingRows += "<tr>" +
+          "<td>#{this.date.split("T")[0]}</td>" +
+          "<td><a href='../Data/dwf/#{this.fileNumber}'>#{this.fileNumber}</a></td>" +
+          "<td>#{this.location}</td>" +
+          "<td>#{this.drawType}</td>" +
+          "<td>#{this.kmStart}</td>" +
+          "<td>#{this.kmEnd}</td>" +
+          "</tr>" if addRow
     )
+    $('#surveys').append(drawingRows)
   ).done( ->
     $('#surveys tr:nth-child(odd)').addClass('odd')
     $('#surveys tr:nth-child(even)').addClass('even')

@@ -65,6 +65,10 @@ $(->
             data.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue])
             data2.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue])
           )
+          $.each(v.actual, (i,v) ->
+            day = moment(v.date).day(1)._a[2]
+            data3.push([moment(v.date).year(year).month(month).date(day)._d, v.value])
+          )
         )
 
         dataset = [

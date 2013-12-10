@@ -67,9 +67,14 @@
         $.each(results, function(i, v) {
           year = v.year;
           month = v.month - 1;
-          return $.each(v.minMax, function(i, v) {
+          $.each(v.minMax, function(i, v) {
             data.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue]);
             return data2.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue]);
+          });
+          return $.each(v.actual, function(i, v) {
+            var day;
+            day = moment(v.date).day(1)._a[2];
+            return data3.push([moment(v.date).year(year).month(month).date(day)._d, v.value]);
           });
         });
         dataset = [

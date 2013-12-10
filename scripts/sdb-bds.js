@@ -124,22 +124,21 @@
   });
 
   getSurveyDrawings = (function(jsonStuff) {
+    var drawingRows;
+    drawingRows = "";
     return $.getJSON(("/api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
       $('#surveys tbody').html('');
-      return $.each(data, function() {
+      $.each(data, function() {
         var addRow;
         addRow = false;
-        if (jsonStuff.kmStart && jsonStuff.kmEnd) {
-          if (jsonStuff.kmStart === this.kmStart && jsonStuff.kmEnd === this.kmEnd) {
-            addRow = true;
-          }
-        } else {
+        if (!((jsonStuff.kmStart != null) !== this.kmStart || (jsonstuff.kmEnd != null) !== this.kmEnd)) {
           addRow = true;
         }
         if (addRow) {
-          return $('#surveys').append("<tr>" + ("<td>" + (this.date.split("T")[0]) + "</td>") + ("<td><a href='../Data/dwf/" + this.fileNumber + "'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>");
+          return drawingRows += "<tr>" + ("<td>" + (this.date.split("T")[0]) + "</td>") + ("<td><a href='../Data/dwf/" + this.fileNumber + "'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>";
         }
       });
+      return $('#surveys').append(drawingRows);
     }).done(function() {
       $('#surveys tr:nth-child(odd)').addClass('odd');
       return $('#surveys tr:nth-child(even)').addClass('even');

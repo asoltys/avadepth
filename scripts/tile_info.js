@@ -82,4 +82,10 @@ tile_query_info = {
     }
   };
 
+avadepth.surveyDrawing = avadepth.surveyDrawing || {};
 
+avadepth.surveyDrawing = {
+  myTestCall: function(){
+    return console.log("this alert to console");
+  }
+}
