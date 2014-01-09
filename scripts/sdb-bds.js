@@ -131,7 +131,11 @@
       $.each(data, function() {
         var addRow;
         addRow = false;
-        if (!((jsonStuff.kmStart != null) !== this.kmStart || (jsonstuff.kmEnd != null) !== this.kmEnd)) {
+        if (jsonStuff.kmStart && jsonStuff.kmEnd) {
+          if (jsonStuff.kmStart === this.kmStart && jsonStuff.kmEnd === this.kmEnd) {
+            addRow = true;
+          }
+        } else {
           addRow = true;
         }
         if (addRow) {

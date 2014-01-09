@@ -205,17 +205,20 @@ getSurveyDrawings = ((jsonStuff) ->
     $('#surveys tbody').html('')
     $.each(data, ->
       addRow = false
-
-      addRow = true unless jsonStuff.kmStart? != this.kmStart or jsonstuff.kmEnd? != this.kmEnd
-
-      drawingRows += "<tr>" +
-          "<td>#{this.date.split("T")[0]}</td>" +
-          "<td><a href='../Data/dwf/#{this.fileNumber}'>#{this.fileNumber}</a></td>" +
-          "<td>#{this.location}</td>" +
-          "<td>#{this.drawType}</td>" +
-          "<td>#{this.kmStart}</td>" +
-          "<td>#{this.kmEnd}</td>" +
-          "</tr>" if addRow
+      if jsonStuff.kmStart and jsonStuff.kmEnd
+        if jsonStuff.kmStart == this.kmStart and jsonStuff.kmEnd == this.kmEnd
+          addRow = true
+      else
+        addRow = true
+      if addRow
+        drawingRows += "<tr>" +
+            "<td>#{this.date.split("T")[0]}</td>" +
+            "<td><a href='../Data/dwf/#{this.fileNumber}'>#{this.fileNumber}</a></td>" +
+            "<td>#{this.location}</td>" +
+            "<td>#{this.drawType}</td>" +
+            "<td>#{this.kmStart}</td>" +
+            "<td>#{this.kmEnd}</td>" +
+            "</tr>"
     )
     $('#surveys').append(drawingRows)
   ).done( ->
