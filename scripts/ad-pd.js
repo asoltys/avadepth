@@ -1,11 +1,48 @@
 (function() {
-  var createGraph, flowrate, table, update;
+  var createGraph, flowrate, querystring, table, update;
 
   table = null;
 
   flowrate = 0;
 
+  querystring = function(key) {
+    var m, r, re;
+    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
+    r = [];
+    m = [];
+    while ((m = re.exec(document.location.search)) !== null) {
+      r.push(m[1]);
+    }
+    return r;
+  };
+
   $(function() {
+    var check;
+    if (querystring('date').length !== 0) {
+      $("#date").val(querystring('date'));
+      $("#chainage").val(querystring('chainage'));
+      $("#flowtype").val(querystring('flowType'));
+      $("#sounding").val(querystring('sounding'));
+      $("#width").val(querystring('width'));
+      $("#period").val(querystring('period'));
+      $("#flowRate").val(querystring('flowRate'));
+      $("#flowType").val(querystring('flowType'));
+      check = (function() {
+        switch (querystring('flowType')[0]) {
+          case 'Predicted':
+            return 0;
+          case 'Actual':
+            return 1;
+          case 'Defined':
+            $("#defined_discharge").val($('#flowRate').val());
+            return 3;
+          case 'Selected':
+            return 2;
+        }
+      })();
+      $("input[name=discharge]")[check].checked = true;
+      update();
+    }
     $("#print_daily_depths").click(function() {
       return window.print();
     });
@@ -20,44 +57,31 @@
         return $('#static-discharge').text($('#selected_discharge').val());
       }
     });
-    $('input[name="condition"]').change(function() {
-      return $('#static-type').text($(this).next().text());
-    });
-    $('input[name="channel"]').change(function() {
-      return $('#static-limit').text($(this).next().text());
-    });
-    $('select#width').change(function() {
-      return $('#static-width').text($(this).val());
-    });
-    $('select#chainage').change(function() {
-      return $('#static-chainage').text($(this).val());
-    });
-    $('#date').change(function() {
-      console.log($(this).val());
-      return avadepth.util.getFlow({
+    $('body').on("change", "#date", function() {
+      avadepth.util.getFlow({
         date: $(this).val(),
         selected: $("#selected_discharge"),
         predicted: $("#predicted_discharge"),
         actual: $("#actual_discharge")
       });
-    }).change();
+      return $('input[name=discharge]').prop("checked", false);
+    });
     $('#selected_discharge').change(function() {
       return $('#selected_radio').prop('checked', true).change();
     });
-    $('input[name=discharge]').change(function() {
-      var flow;
-      flow = avadepth.util.getSelectedFlow();
-      $('#flowRate').val(flow.flowRate);
-      console.log($('#flowRate').val());
-      $('#static-discharge').text(flow.flowRate);
-      $('#static-discharge-eval').text($(this).val());
-      return $('#flowType').val(flow.flowType);
-    });
-    $("form#daily_depth").on("change", "input, select", update);
-    return update();
+    $('input[name=discharge]').change(function() {});
+    return $("#submit").click(update);
   });
 
   update = function() {
+    var flow;
+    flow = avadepth.util.getSelectedFlow();
+    $('#flowRate').val(flow.flowRate);
+    if (flow.flowType !== 0) {
+      $('#flowType').val(flow.flowType);
+    } else {
+      $('#flowType').val("Defined");
+    }
     return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
       var points;
       table || (table = $('#depths').dataTable({
@@ -70,10 +94,16 @@
       $('#depths tbody tr').remove();
       points = new Array();
       $.each(data.items[0].items, function() {
-        table.fnAddData(["<a href='advr-drvp-eng.html?lane=xxx&amp;period=" + this.period + "'>" + this.period + "</a>", this.chainage, this.depth, this.location]);
+        table.fnAddData([("<a href='advr-drvp-eng.html?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("period=" + this.period + "'>" + this.period + "</a>"), this.chainage, this.depth, this.location]);
         return points.push([this.period, this.depth]);
       });
-      return createGraph(points);
+      createGraph(points);
+      $('#static-width').text($('#width').val());
+      $('#static-chainage').text($('#chainage').val());
+      $('#static-type').text($('input[name="condition"]:checked').next().text());
+      $('#static-limit').text($('input[name="channel"]:checked').next().text());
+      $('#static-discharge').text($('#flowRate').val());
+      return $('#static-discharge-eval').text($('#flowType').val());
     });
   };
 

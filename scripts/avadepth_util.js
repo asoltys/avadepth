@@ -24,15 +24,15 @@ avadepth.util = {
             if (data.Actual) {
               $("#actual_radio").attr('disabled', false);
               $("#predicted_radio").attr('disabled', true);
-              $('#actual_radio').prop('checked', true);
+             // $('#actual_radio').prop('checked', true);
             } else {
               $("#actual_radio").attr('disabled', true);
               $("#predicted_radio").attr('disabled', false);
-              $("#predicted_radio").prop('checked', true);
+              //$("#predicted_radio").prop('checked', true);
             }
 
+            $('input[name=discharge]').prop("checked",false)
             if (thisCallback) { callback(data); };
-            console.log(data.Predicted)
             return data.Predicted;
         });
     },
@@ -58,7 +58,6 @@ avadepth.util = {
         if (flow.flowType == "Defined"){
           flow.flowType = "0"
         }
-        console.log(flow)
         return flow;
     }
 }

@@ -7,13 +7,6 @@
     $("#print_transit_window").click(function() {
       return window.print();
     });
-    if ($('#max_depth_radio').prop('checked')) {
-      $('#window').val($('#maximum_depth').val());
-      $('#static-window').text("" + ($('#maximum_depth').val()) + " hrs");
-    } else {
-      $('#window').val($('#minimum_window').val());
-      $('#static-window').text("" + ($('#minimum_window').val()) + " hrs");
-    }
     $('#period').change(function() {
       var period;
       period = (function() {
@@ -126,40 +119,57 @@
       return $('#static-chainage').text($(this).val());
     });
     $('#window').change(function() {
-      return $('#static-window').text("" + ($(this).val()) + " hrs");
-    });
-    $('#maximum_depth').change(function() {
-      $('#max_depth_radio').prop('checked', 'checked');
-      $('#window').val($(this).val());
-      return $('#window').change();
+      return $('#static-window').text("Transit Window: " + ($(this).val()) + " hrs");
     });
     $('#minimum_window').change(function() {
-      $('#min_win_radio').prop('checked', 'checked');
+      $('#max_depth_radio').prop('checked', 'checked');
       $('#window').val($(this).val());
-      return $('#window').change();
+      $('#cmp').val(0);
+      return $('#static-window').text("Transit Window: " + ($('#window').val()) + " hrs");
+    });
+    $('#depth').change(function() {
+      $('#min_win_radio').prop('checked', 'checked');
+      $('#cmp').val($(this).val());
+      return $('input[name="window_radio"]').change();
     });
     $('input[name="window_radio"]').change(function() {
       if ($(this).val() === 'Maximum Depth') {
-        $('#window').val($('#maximum_depth').val());
+        $('#cmp').val(0);
+        return $('#static-window').text("Transit Window: " + ($('#window').val()) + " hrs");
       } else {
-        $('#window').val($('#minimum_window').val());
+        $('#cmp').val($('#depth').val());
+        return $('#static-window').text("Available Transit Window for " + ($('#cmp').val()) + "m depth & Minimum " + ($('#minimum_window').val()) + " hr window");
       }
-      return $('#window').change();
     });
-    return $('#date, ' + 'input[name=discharge], ' + '#defined_discharge,' + '#selected_discharge,' + '#chainage,' + 'input[name="sounding"],' + 'input[name="channel"], ' + '#width,' + '#period,' + '#window,' + '#compliance,' + '#cmp_box').change(update);
+    /*
+      $('#date, ' +
+          'input[name=discharge], ' +
+          '#defined_discharge,'  +
+          '#selected_discharge,' +
+          '#chainage,' +
+          'input[name="sounding"],' +
+          'input[name="channel"], ' +
+          '#width,'  +
+          '#period,' +
+          '#window,' +
+          '#compliance,'+
+          '#cmp_box').change(update)
+    */
+    return $("#submit").click(update);
   });
 
   update = function(data) {
-    return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp_box').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
+    return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
       var item, _i, _len, _ref, _results;
       $('#num_days').text(data2.statistics.numberOfDays);
-      $('#min_depth').text(data2.statistics.minimumDepth);
-      $('#max_depth').text(data2.statistics.maximumDepth);
-      $('#avg_depth').text(data2.statistics.totalWindow);
+      $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));
+      $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2));
+      $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2));
       table || (table = $('#transit-window').dataTable({
         bPaginate: false,
         bInfo: false,
-        bFilter: false
+        bFilter: false,
+        aaSorting: []
       }));
       table.fnClearTable();
       _ref = data2.items;

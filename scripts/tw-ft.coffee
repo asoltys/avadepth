@@ -5,13 +5,6 @@ $(->
     window.print()
   )
 
-  if $('#max_depth_radio').prop('checked')
-    $('#window').val($('#maximum_depth').val())
-    $('#static-window').text("#{$('#maximum_depth').val()} hrs")
-  else
-    $('#window').val($('#minimum_window').val())
-    $('#static-window').text("#{$('#minimum_window').val()} hrs")
-
   $('#period').change(->
     period = switch $('#period').val()
       when '0' then 'd'
@@ -116,29 +109,35 @@ $(->
   )
 
   $('#window').change(->
-    $('#static-window').text("#{$(this).val()} hrs")
+    $('#static-window').text("Transit Window: #{$(this).val()} hrs")
   )
   
-  $('#maximum_depth').change(->
+  $('#minimum_window').change(->
     $('#max_depth_radio').prop('checked','checked')
     $('#window').val($(this).val())
-    $('#window').change()
+    $('#cmp').val(0)
+    $('#static-window').text("Transit Window: #{$('#window').val()} hrs")
   )
 
-  $('#minimum_window').change(->
+  $('#depth').change(->
     $('#min_win_radio').prop('checked','checked')
-    $('#window').val($(this).val())
-    $('#window').change()
+    $('#cmp').val($(this).val())
+    $('input[name="window_radio"]').change()
   )
 
   $('input[name="window_radio"]').change(->
     if $(this).val() == 'Maximum Depth'
-      $('#window').val($('#maximum_depth').val())
+      #$('#window').val($('#maximum_depth').val())
+      $('#cmp').val(0)
+      $('#static-window').text("Transit Window: #{$('#window').val()} hrs")
     else
-      $('#window').val($('#minimum_window').val())
-    $('#window').change()
+      #$('#window').val($('#minimum_window').val())
+      $('#cmp').val($('#depth').val())
+      $('#static-window').text("Available Transit Window for #{$('#cmp').val()}m depth & Minimum #{$('#minimum_window').val()} hr window")
+    #$('#window').change()
   )
 
+  ###
   $('#date, ' +
       'input[name=discharge], ' +
       '#defined_discharge,'  +
@@ -151,13 +150,15 @@ $(->
       '#window,' +
       '#compliance,'+
       '#cmp_box').change(update)
+  ###
+  $("#submit").click(update)
 )
 
 update = (data) ->
   $.getJSON("api/transit?date=#{$('#date').val()}&" +
       "lane=#{$('input[name=channel]:checked').val()}&" +
       "window=#{$('#window').val()}&" +
-      "cmp=#{$('#cmp_box').val()}&" +
+      "cmp=#{$('#cmp').val()}&" +
       "flowType=#{$('#flowType').val()}&" +
       "periodType=#{$('#period').val()}&" +
       "chainage=#{$('#chainage').val()}&" +
@@ -165,11 +166,15 @@ update = (data) ->
       "width=#{$('#width').val()}&" +
       "sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
     $('#num_days').text(data2.statistics.numberOfDays)
-    $('#min_depth').text(data2.statistics.minimumDepth)
-    $('#max_depth').text(data2.statistics.maximumDepth)
-    $('#avg_depth').text(data2.statistics.totalWindow)
+    $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2))
+    $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2))
+    $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2))
 
-    table ||= $('#transit-window').dataTable(bPaginate: false, bInfo: false, bFilter: false)
+    table ||= $('#transit-window').dataTable(
+        bPaginate: false
+        bInfo: false
+        bFilter: false
+        aaSorting: [])
     table.fnClearTable()
 
     for item in data2.items

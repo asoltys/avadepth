@@ -1,4 +1,7 @@
 <!--#include virtual="/includes/header-eng.html" -->
+<script src="scripts/advr-drvp.js" defer></script>
+<script src="scripts/avadepth_util.js" defer></script>
+
 <h1>Available Depths Verification Report</h1>
 
 <div class="module-info span-4">
@@ -9,9 +12,26 @@
   Current Soundings for Km 1 to 35 at 100% Available Width
   </p>
 </div>
+<input type="hidden"
+    id="date" />
+<input type="hidden"
+    id="chainage" />
+<input type="hidden"
+    id="flowRate" />
+<input type="hidden"
+    id="flowType" />
+<input type="hidden"
+    id="width" />
+<input type="hidden"
+    id="sounding" />
+<input type="hidden"
+    id="lane" />
+<input type="hidden"
+    id="period" />
 
 <div class="span-8">
-  <table id="depths" class="dataTable zebra-striped">
+  <a class="depths" href="javascript:void(0)">&lt; back</a><br />
+  <table id="verify" style="text-align:center" class="dataTable zebra-striped">
     <thead>
       <tr>
         <th>Location</th>
@@ -32,33 +52,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>0-1</td>
-        <td>9.5</td>
-        <td>8.0</td>
-        <td></td>
-        <td>0</td>
-        <td>3.2</td>
-        <td>11.2</td>
-      </tr>
-      <tr class="controlling">
-        <td>0-1</td>
-        <td>9.5</td>
-        <td>8.0</td>
-        <td></td>
-        <td>0</td>
-        <td>3.2</td>
-        <td>11.2</td>
-      </tr>
-      <tr>
-        <td>0-1</td>
-        <td>9.5</td>
-        <td>8.0</td>
-        <td></td>
-        <td>0</td>
-        <td>3.2</td>
-        <td>11.2</td>
-      </tr>
     </tbody>
   </table>
 </div>
