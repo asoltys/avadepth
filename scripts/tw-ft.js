@@ -23,12 +23,18 @@
       return $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"));
     });
     $(document).ajaxStart(function() {
-      $('#loading').show();
+      $('#ajax_message').html('Please wait while we fetch your results');
+      $('#ajax_message').show();
       return $('#report_body').hide();
     });
     $(document).ajaxSuccess(function() {
-      $('#loading').hide();
+      $('#ajax_message').hide();
       return $('#report_body').show();
+    });
+    $(document).ajaxError(function() {
+      $('#ajax_message').html('An error occured while retrieving your results');
+      $('#ajax_message').show();
+      return $('#report_body').hide();
     });
     $('#date').change(function() {
       $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {

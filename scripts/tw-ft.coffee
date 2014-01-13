@@ -16,13 +16,20 @@ $(->
   )
 
   $(document).ajaxStart(->
-   $('#loading').show()
+   $('#ajax_message').html('Please wait while we fetch your results')
+   $('#ajax_message').show()
    $('#report_body').hide()
   )
 
   $(document).ajaxSuccess(->
-   $('#loading').hide()
+   $('#ajax_message').hide()
    $('#report_body').show()
+  )
+
+  $(document).ajaxError(->
+   $('#ajax_message').html('An error occured while retrieving your results')
+   $('#ajax_message').show()
+   $('#report_body').hide()
   )
 
   $('#date').change(->
