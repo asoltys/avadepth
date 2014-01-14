@@ -70,7 +70,17 @@
       return $('#selected_radio').prop('checked', true).change();
     });
     $('input[name=discharge]').change(function() {});
-    return $("#submit").click(update);
+    return $("#submit").click(function() {
+      if (!$('input[name=discharge]').is(":checked")) {
+        $("#error_message").show();
+        $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"");
+        return $("#report_body").hide();
+      } else {
+        $("#error_message").hide();
+        $("#report_body").show();
+        return update();
+      }
+    });
   });
 
   update = function() {

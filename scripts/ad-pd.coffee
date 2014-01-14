@@ -63,7 +63,16 @@ $(->
   )
   
   #$("form#daily_depth").on("change","input, select",update)
-  $("#submit").click(update)
+  $("#submit").click(->
+    if !$('input[name=discharge]').is(":checked")
+      $("#error_message").show()
+      $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"")
+      $("#report_body").hide()
+    else
+      $("#error_message").hide()
+      $("#report_body").show()
+      update()
+  )
 
   #update()
 )
