@@ -1,5 +1,5 @@
 (function() {
-  var querystring;
+  var gotoPWL, querystring;
 
   querystring = function(key) {
     var m, r, re;
@@ -10,6 +10,10 @@
       r.push(m[1]);
     }
     return r;
+  };
+
+  gotoPWL = function() {
+    return document.location = ("pwl-nep-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($("#km").text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
   };
 
   $(function() {
@@ -36,6 +40,7 @@
     $("input[name=discharge]")[check].checked = true;
     $("input[name=report]")[querystring('displayType')].checked = true;
     $("#km").text(querystring('km'));
+    $("#pwl").click(gotoPWL);
     $('#date').change(function() {
       return $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
         $('#selected_discharge').empty();

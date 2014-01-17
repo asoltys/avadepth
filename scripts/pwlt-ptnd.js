@@ -1,5 +1,5 @@
 (function() {
-  var querystring;
+  var gotoPWL, querystring;
 
   querystring = function(key) {
     var m, r, re;
@@ -12,6 +12,10 @@
     return r;
   };
 
+  gotoPWL = function() {
+    return document.location = ("pwl-nep-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($("#km").text()) + "&") + ("intervalMin=" + ($('#intervalMin').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
+  };
+
   $(function() {
     var check;
     $("#date").val(querystring('date'));
@@ -19,6 +23,7 @@
     $("input[name=fraser_river]")[$("#waterway").val()].checked = true;
     $("#flowRate").val(querystring('flowRate'));
     $("#flowType").val(querystring('flowType'));
+    $("#intervalMin").val(querystring('intervalMin'));
     check = (function() {
       switch (querystring('flowType')[0]) {
         case '0':
@@ -35,6 +40,7 @@
     $("input[name=discharge]")[check].checked = true;
     $("input[name=report]")[querystring('displayType')].checked = true;
     $("#time").text(querystring('time'));
+    $("#pwl").click(gotoPWL);
     $('#date').change(function() {
       return $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
         $('#selected_discharge').empty();

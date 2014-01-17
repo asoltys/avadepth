@@ -2,29 +2,40 @@ querystring = (key) ->
   re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
   r = []
   m = []
-  while ((m=re.exec(document.location.search)) != null) 
+  while ((m=re.exec(document.location.search)) != null)
     r.push(m[1])
   return r
+
+gotoPWL = ->
+  document.location = "pwl-nep-eng.html?date=#{$('#date').val()}&" +
+      "km=#{$("#km").text()}&" +
+      "intervalMin=#{$('#intervalMin').val()}&" +
+      "flowRate=#{$('#flowRate').val()}&" +
+      "flowType=#{$('#flowType').val()}&" +
+      "waterway=#{$('#waterway').val()}&" +
+      "displayType=#{$('input[name=report]:checked').val()}"
 
 $(->
   $("#date").val(querystring('date'))
   $("#waterway").val(querystring('waterway'))
-  $("#interval").val(querystring('intervalMin'))
   $("input[name=fraser_river]")[$("#waterway").val()].checked = true
   $("#flowRate").val(querystring('flowRate'))
   $("#flowType").val(querystring('flowType'))
+  $("#intervalMin").val(querystring('intervalMin'))
   check = switch querystring('flowType')[0]
     when '0' then 0
     when '1' then 1
-    when '2' 
+    when '2'
       $("#defined_discharge").val($('#flowRate').val())
       3
     when '3' then 2
   $("input[name=discharge]")[check].checked = true
   $("input[name=report]")[querystring('displayType')].checked = true
   
-  $("#km").text(querystring('km'))
+  $("#time").text(querystring('time'))
   
+  $("#pwl").click( gotoPWL)
+
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
       $('#selected_discharge').empty()
@@ -42,7 +53,7 @@ $(->
         $("#actual").attr('disabled', true)
         $("#predicted").attr('disabled', false)
         if ($('#actual').is(':checked'))
-          $('input[name=discharge]')[0].checked = true
+          $('input[name=discharge]')[0].checked = true;
       $('input[name=discharge]:checked').trigger('change')
       $('#static-date').text($('#alt-date').val())
     )
@@ -90,23 +101,24 @@ $(->
   )
   
   $('#date, input[name=discharge], input[name=fraser_river], input[name=report], #defined_discharge, #selected_discharge, #interval').change( ->
-    index = querystring('km')
-    index = switch $("#waterway").val()
-      when '0' then index/2
-      when '1' then index/2
-      when '2' then (index-40)/4
-    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{$('#interval').val()}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}", (data) ->
+    step = switch $("#waterway").val()
+      when '0' then 2
+      when '1' then 2
+      when '2' then 4
+    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&intervalMin=#{querystring('intervalMin')}&flowRate=#{$('#flowRate').val()}&flowType=#{$('#flowType').val()}&waterway=#{$('#waterway').val()}&displayType=#{$('input[name=report]:checked').val()}", (data) ->
       points = new Array()
       $.each(data.times, ->
-        if (this.predictTime != '24:00')
-          date = new Date("January 1, 2000 #{this.predictTime}")
-        else
-          date = new Date("January 2, 2000 00:00")
-        points.push([date.getTime(), this.waterLevels[index]])
+        if (this.predictTime == querystring('time')[0])
+          start = 0
+          if (step == 4)
+            start = 40
+          $.each(this.waterLevels, (i) ->
+            points.push([i*step+start, this])
+          )
       )
-      $.plot("#placeholder", [ points ],
-        xaxes: [ color: 'black', tickColor: '#ddd', mode: 'time', tickSize: [ 4, "hour" ], timezone: "browser", axisLabel: 'Pacific Standard Time (date)' ],
-        yaxes: [ color: 'black', tickColor: '#ddd', position: 'left', axisLabel: 'Hope Discharge (m3s)' ]
+      $.plot("#placeholder", [ points ], 
+        xaxes: [ color: 'black', tickColor: '#ddd', tickSize: step, axisLabel: 'Location (km)' ],
+        yaxes: [ color: 'black', tickColor: '#ddd', position: 'left', axisLabel: 'Water Level (metres) relative to LWD' ]
       )
     )
   )

@@ -48,6 +48,7 @@ $(->
     $("input[name=report]")[querystring('displayType')].checked = true
 
     $("#km").text(querystring('km'))
+    update()
 
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
@@ -140,57 +141,61 @@ $(->
     $('#static-chainage').text($(this).val())
   )
   
-  $('#date,' +
-      'input[name=discharge],' +
-      'input[name=fraser_river],' +
-      'input[name=report],' +
-      '#defined_discharge,' +
-      '#selected_discharge,' +
-      '#interval').change( ->
-    $('#water-levels tbody').empty()
-    $('#headerkm').empty()
-    step = 2
-    kmStart = switch $('#waterway').val()
-      when '2'
-        step = 4
-        40
-      else 0
-    for i in [kmStart..$('#river-section').parent().attr('colspan')*step-step+kmStart] by step
-      headerRow = $("<th><a href=\"javascript:void(0)\">#{i}</a></th>")
-      $('#headerkm').append(headerRow)
-      headerRow.click(gotoKMGraph)
-    $.getJSON("/api/waterlevel?date=#{$('#date').val()}&" +
-        "intervalMin=#{$('#interval').val()}&" +
-        "flowRate=#{$('#flowRate').val()}&" +
-        "flowType=#{$('#flowType').val()}&" +
-        "waterway=#{$('#waterway').val()}&" +
-        "displayType=#{$('input[name=report]:checked').val()}", (data) ->
-      $('#river-section').text(data.title)
-      table ||= $('#water-levels').dataTable(
-          bPaginate: false
-          bInfo: false
-          bFilter: false
-          bAutoWidth: false
-          aoColumns: [{"bSortable": false}, null])
-      table.fnClearTable()
-      count = 0
-      $.each(data.times, ->
-        row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
-        if (count % 2)
-          row.addClass("even")
-        else
-          row.addClass("odd")
-        count++
+  $("#submit").click(update)
+)
 
-        #Maybe I should create one large string and append once the each loop is finished
-        #rather than calling append a bunch of times with is a heavy process
-        $.each(this.waterLevels, ->
-          row.append("<td>#{parseFloat(this).toFixed(1).replace('-',String.fromCharCode(8209))}</td>")
-        )
-        $('#water-levels tbody').append(row)
-        $(row).find('a').click(gotoTimeGraph)
-        $('.dataTables_empty').parent().html('')
+update = ->
+  report_type = $('input[name=report]:checked').val()
+  $('#water-levels tbody').empty()
+  $('#headerkm').empty()
+  step = 2
+  kmStart = switch $('#waterway').val()
+    when '2'
+      step = 4
+      40
+    else 0
+  for i in [kmStart..$('#river-section').parent().attr('colspan')*step-step+kmStart] by step
+    if report_type == "0"
+      headerRow = $("<th><a href=\"javascript:void(0)\">#{i}</a></th>")
+    else
+      headerRow = $("<th>#{i}</th>")
+    $('#headerkm').append(headerRow)
+    if report_type == "0"
+      headerRow.click(gotoKMGraph)
+  $.getJSON("/api/waterlevel?date=#{$('#date').val()}&" +
+      "intervalMin=#{$('#interval').val()}&" +
+      "flowRate=#{$('#flowRate').val()}&" +
+      "flowType=#{$('#flowType').val()}&" +
+      "waterway=#{$('#waterway').val()}&" +
+      "displayType=#{$('input[name=report]:checked').val()}", (data) ->
+    $('#river-section').text(data.title)
+    table ||= $('#water-levels').dataTable(
+        bPaginate: false
+        bInfo: false
+        bFilter: false
+        bAutoWidth: false
+        aoColumns: [{"bSortable": false}, null])
+    table.fnClearTable()
+    count = 0
+    $.each(data.times, ->
+      if report_type == "0"
+        row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">#{this.predictTime}</a></td></tr>")
+      else
+        row = $("<tr><td class='align-center'>#{this.predictTime}</td></tr>")
+      if (count % 2)
+        row.addClass("even")
+      else
+        row.addClass("odd")
+      count++
+
+      #Maybe I should create one large string and append once the each loop is finished
+      #rather than calling append a bunch of times with is a heavy process
+      $.each(this.waterLevels, ->
+        row.append("<td>#{parseFloat(this).toFixed(1).replace('-',String.fromCharCode(8209))}</td>")
       )
+      $('#water-levels tbody').append(row)
+      if report_type == "0"
+        $(row).find('a').click(gotoTimeGraph)
+      $('.dataTables_empty').parent().html('')
     )
   )
-)

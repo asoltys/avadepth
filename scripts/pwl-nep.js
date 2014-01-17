@@ -1,5 +1,5 @@
 (function() {
-  var gotoKMGraph, gotoTimeGraph, querystring, table;
+  var gotoKMGraph, gotoTimeGraph, querystring, table, update;
 
   table = null;
 
@@ -50,6 +50,7 @@
       $("input[name=discharge]")[check].checked = true;
       $("input[name=report]")[querystring('displayType')].checked = true;
       $("#km").text(querystring('km'));
+      update();
     }
     $('#date').change(function() {
       $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
@@ -150,59 +151,70 @@
     $('select#chainage').change(function() {
       return $('#static-chainage').text($(this).val());
     });
-    return $('#date,' + 'input[name=discharge],' + 'input[name=fraser_river],' + 'input[name=report],' + '#defined_discharge,' + '#selected_discharge,' + '#interval').change(function() {
-      var headerRow, i, kmStart, step, _ref;
-      $('#water-levels tbody').empty();
-      $('#headerkm').empty();
-      step = 2;
-      kmStart = (function() {
-        switch ($('#waterway').val()) {
-          case '2':
-            step = 4;
-            return 40;
-          default:
-            return 0;
-        }
-      })();
-      for (i = kmStart, _ref = $('#river-section').parent().attr('colspan') * step - step + kmStart; kmStart <= _ref ? i <= _ref : i >= _ref; i += step) {
-        headerRow = $("<th><a href=\"javascript:void(0)\">" + i + "</a></th>");
-        $('#headerkm').append(headerRow);
-        headerRow.click(gotoKMGraph);
+    return $("#submit").click(update);
+  });
+
+  update = function() {
+    var headerRow, i, kmStart, report_type, step, _ref;
+    report_type = $('input[name=report]:checked').val();
+    $('#water-levels tbody').empty();
+    $('#headerkm').empty();
+    step = 2;
+    kmStart = (function() {
+      switch ($('#waterway').val()) {
+        case '2':
+          step = 4;
+          return 40;
+        default:
+          return 0;
       }
-      return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
-        var count;
-        $('#river-section').text(data.title);
-        table || (table = $('#water-levels').dataTable({
-          bPaginate: false,
-          bInfo: false,
-          bFilter: false,
-          bAutoWidth: false,
-          aoColumns: [
-            {
-              "bSortable": false
-            }, null
-          ]
-        }));
-        table.fnClearTable();
-        count = 0;
-        return $.each(data.times, function() {
-          var row;
+    })();
+    for (i = kmStart, _ref = $('#river-section').parent().attr('colspan') * step - step + kmStart; kmStart <= _ref ? i <= _ref : i >= _ref; i += step) {
+      if (report_type === "0") {
+        headerRow = $("<th><a href=\"javascript:void(0)\">" + i + "</a></th>");
+      } else {
+        headerRow = $("<th>" + i + "</th>");
+      }
+      $('#headerkm').append(headerRow);
+      if (report_type === "0") headerRow.click(gotoKMGraph);
+    }
+    return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
+      var count;
+      $('#river-section').text(data.title);
+      table || (table = $('#water-levels').dataTable({
+        bPaginate: false,
+        bInfo: false,
+        bFilter: false,
+        bAutoWidth: false,
+        aoColumns: [
+          {
+            "bSortable": false
+          }, null
+        ]
+      }));
+      table.fnClearTable();
+      count = 0;
+      return $.each(data.times, function() {
+        var row;
+        if (report_type === "0") {
           row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">" + this.predictTime + "</a></td></tr>");
-          if (count % 2) {
-            row.addClass("even");
-          } else {
-            row.addClass("odd");
-          }
-          count++;
-          $.each(this.waterLevels, function() {
-            return row.append("<td>" + (parseFloat(this).toFixed(1).replace('-', String.fromCharCode(8209))) + "</td>");
-          });
-          $('#water-levels tbody').append(row);
-          $(row).find('a').click(gotoTimeGraph);
-          return $('.dataTables_empty').parent().html('');
+        } else {
+          row = $("<tr><td class='align-center'>" + this.predictTime + "</td></tr>");
+        }
+        if (count % 2) {
+          row.addClass("even");
+        } else {
+          row.addClass("odd");
+        }
+        count++;
+        $.each(this.waterLevels, function() {
+          return row.append("<td>" + (parseFloat(this).toFixed(1).replace('-', String.fromCharCode(8209))) + "</td>");
         });
+        $('#water-levels tbody').append(row);
+        if (report_type === "0") $(row).find('a').click(gotoTimeGraph);
+        return $('.dataTables_empty').parent().html('');
       });
     });
-  });
+  };
 
 }).call(this);
