@@ -286,7 +286,12 @@
                  <option value=".5">30 min.</option>
                  <option value=".25">15 min.</option>
                </select>
+              <button id="submit"
+                  type="button"
+                  class="button button-accent"
+                  name="submit">Submit</button>
              </div>
+
           </div>
           <div class="span-5">
           <img src="images/map_fraser_temp.jpg" style="width:600px;" />
@@ -347,11 +352,15 @@
   <p>Velocity legend: <span id="static-legend"></span></p>
 </div>
 
-<div id="loading" style="padding:1em 1em">
+<div id="loading" style="padding:1em 1em;display:none">
   Loading...
+  <span id="frame_count">
+    (Frames retrieved: <span id="frames_retrieved"></span> /
+        <span id="number_of_frames"></span>)
+  </span>
 </div>
 
-<div id="nodata" style="padding:1em 1em">
+<div id="nodata" style="padding:1em 1em;display:none">
   No images were found
 </div>
 

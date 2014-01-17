@@ -47,8 +47,6 @@ $(->
       when 'Defined' then 2
       when 'Selected' then 3
     $('#flowType').val(flowtype)
-
-    update()
   )
   
   $('#defined_discharge').change(->
@@ -81,7 +79,14 @@ $(->
     $('#static-legend').text($(this).next().text())
   )
 
-  $('#from, #to, #zone, #interval, #type').change(update)
+  $('#type').change(->
+    if $(this).val() != '0'
+      $('#to').prop('disabled','')
+    else
+      $('#to').prop('disabled','disabled')
+  )
+
+  $("#submit").click(update)
   $('#replay').click(play)
 )
 
@@ -91,15 +96,16 @@ update = ->
 
   hour = Math.floor(parseFloat($('#from').val()))
   minute = (parseFloat($('#from').val()) - hour) * 60
+  $('#number_of_frames').html(($('#to').val()-$('#from').val())*4+1)
 
   if $('#type').val() != '0'
     end_hour = Math.floor(parseFloat($('#to').val()))
     end_minute = (parseFloat($('#to').val()) - end_hour) * 60
-    $('#to').prop('disabled','')
+    $('#frame_count').show()
   else
     end_hour = hour
     end_minute = minute
-    $('#to').prop('disabled','disabled')
+    $('#frame_count').hide()
 
   total = (end_hour - hour) * 4 + (end_minute - minute) / 15
 
@@ -114,6 +120,7 @@ update = ->
         "minute=#{minute}", (data) ->
       result = data.toString()
       images.push(result) unless result == '/images/'
+      $('#frames_retrieved').html(images.length)
     ).then(->
       if hour < end_hour || (hour == end_hour && minute <= end_minute)
         getImage()

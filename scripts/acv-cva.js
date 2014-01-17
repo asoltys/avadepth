@@ -60,8 +60,7 @@
             return 3;
         }
       }).call(this);
-      $('#flowType').val(flowtype);
-      return update();
+      return $('#flowType').val(flowtype);
     });
     $('#defined_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Defined") {
@@ -88,7 +87,14 @@
     $('input[name="velocity_legend"]').change(function() {
       return $('#static-legend').text($(this).next().text());
     });
-    $('#from, #to, #zone, #interval, #type').change(update);
+    $('#type').change(function() {
+      if ($(this).val() !== '0') {
+        return $('#to').prop('disabled', '');
+      } else {
+        return $('#to').prop('disabled', 'disabled');
+      }
+    });
+    $("#submit").click(update);
     return $('#replay').click(play);
   });
 
@@ -98,14 +104,15 @@
     $('#animated, #replay, #nodata').hide();
     hour = Math.floor(parseFloat($('#from').val()));
     minute = (parseFloat($('#from').val()) - hour) * 60;
+    $('#number_of_frames').html(($('#to').val() - $('#from').val()) * 4 + 1);
     if ($('#type').val() !== '0') {
       end_hour = Math.floor(parseFloat($('#to').val()));
       end_minute = (parseFloat($('#to').val()) - end_hour) * 60;
-      $('#to').prop('disabled', '');
+      $('#frame_count').show();
     } else {
       end_hour = hour;
       end_minute = minute;
-      $('#to').prop('disabled', 'disabled');
+      $('#frame_count').hide();
     }
     total = (end_hour - hour) * 4 + (end_minute - minute) / 15;
     images = [];
@@ -113,7 +120,8 @@
       return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + "legendScale=0&" + ("zone=" + ($('#zone').val()) + "&") + ("flowRate=" + flowrate + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
         var result;
         result = data.toString();
-        if (result !== '/images/') return images.push(result);
+        if (result !== '/images/') images.push(result);
+        return $('#frames_retrieved').html(images.length);
       }).then(function() {
         if (hour < end_hour || (hour === end_hour && minute <= end_minute)) {
           getImage();
