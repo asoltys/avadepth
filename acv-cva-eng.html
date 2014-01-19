@@ -10,11 +10,12 @@
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
     <ul class="tabs">
       <li class="default"><a href="#parameters">Parameters</a></li>
+      <li><a href="#acv_map">Map</a></li>
       <li><a href="#help">Help</a></li>
     </ul>
 
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
-      <div id="parameters" style="height:250px">
+      <div id="parameters" style="height:620px">
         <form id="daily_depth">
           <div class="span-3">
             <label for="date">Date:</label>
@@ -41,10 +42,7 @@
             
             <input type="hidden" name="flowRate" id="flowRate" value="0" />
             <input type="hidden" name="flowType" id="flowType" value="0" />
-          </div>
 
-
-          <div class="span-3">
             <label for="type">Display Type:</label>
             <select name="type" id="type">
                <option value="0">Static Image</option>
@@ -286,21 +284,55 @@
                  <option value=".5">30 min.</option>
                  <option value=".25">15 min.</option>
                </select>
+             </div>
+            <p>
               <button id="submit"
                   type="button"
                   class="button button-accent"
                   name="submit">Submit</button>
-             </div>
-
+            </p>
           </div>
-          <div class="span-5">
-          <img src="images/map_fraser_temp.jpg" style="width:600px;" />
-          </div>
-
         </form>
-      </div>
 
-      <div id="help" style="max-height: 200px; overflow-y: scroll;">
+          <div class="span-8">
+            <div class="print_show">
+              <p><span id="static-date"></span> from <span id="static-start"></span> to <span id="static-end"></span></p>
+              <p>Zone <span id="static-zone">1</span> at <span id="static-interval">2hr</span> intervals</p>
+              <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+              <p>Velocity legend: <span id="static-legend"></span></p>
+            </div>
+
+            <div id="loading" style="padding:1em 1em;display:none">
+              Loading...
+              <span id="frame_count">
+                (Frames retrieved: <span id="frames_retrieved"></span> /
+                    <span id="number_of_frames"></span>)
+              </span>
+            </div>
+
+            <div id="nodata" style="padding:1em 1em;display:none">
+              No images were found
+            </div>
+
+            <div style="width: 100%; margin-auto; text-align: center">
+              <img id="animated"
+                  src="/images/nodata.jpg"
+                  style="width:550px;height:550px" />
+              <p id="legend_display">Legend 1</p>
+            </div>
+
+            <button id="replay"
+                type="button"
+                class="button button-accent"
+                style="display:none">Replay</button>
+          </div>
+
+      </div>
+      <div id="acv_map" style="max-height: 600px;">
+        <img src="images/acv_southarm.png"
+            style="margin-left:auto;margin-right:auto;display:block;vertical-align:middle"/>
+      </div>
+      <div id="help">
         <p>
           The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
         </p>
@@ -345,30 +377,6 @@
 
 <div class="clear"></div>
 
-<div class="print_show">
-  <p><span id="static-date"></span> from <span id="static-start"></span> to <span id="static-end"></span></p>
-  <p>Zone <span id="static-zone">1</span> at <span id="static-interval">2hr</span> intervals</p>
-  <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
-  <p>Velocity legend: <span id="static-legend"></span></p>
-</div>
-
-<div id="loading" style="padding:1em 1em;display:none">
-  Loading...
-  <span id="frame_count">
-    (Frames retrieved: <span id="frames_retrieved"></span> /
-        <span id="number_of_frames"></span>)
-  </span>
-</div>
-
-<div id="nodata" style="padding:1em 1em;display:none">
-  No images were found
-</div>
-
-<div style="width: 100%; margin-auto; text-align: center">
-  <img id="animated" src="/images/nodata.jpg" />
-</div>
-
-<button id="replay">Replay</button>
 
 <!--#include virtual="/includes/footer-eng.html" -->
 

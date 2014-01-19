@@ -104,6 +104,7 @@
     $('#animated, #replay, #nodata').hide();
     hour = Math.floor(parseFloat($('#from').val()));
     minute = (parseFloat($('#from').val()) - hour) * 60;
+    $('#frames_retrieved').html('0');
     $('#number_of_frames').html(($('#to').val() - $('#from').val()) * 4 + 1);
     if ($('#type').val() !== '0') {
       end_hour = Math.floor(parseFloat($('#to').val()));

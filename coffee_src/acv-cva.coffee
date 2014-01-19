@@ -96,6 +96,7 @@ update = ->
 
   hour = Math.floor(parseFloat($('#from').val()))
   minute = (parseFloat($('#from').val()) - hour) * 60
+  $('#frames_retrieved').html('0')
   $('#number_of_frames').html(($('#to').val()-$('#from').val())*4+1)
 
   if $('#type').val() != '0'

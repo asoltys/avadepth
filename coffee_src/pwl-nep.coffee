@@ -81,38 +81,22 @@ $(->
 
   $('input[name=discharge]').change(->
     flowrate = switch $(this).val()
-      when 'Actual' then $('#actual_discharge').text()
+      when 'Actual'    then $('#actual_discharge').text()
       when 'Predicted' then $('#predicted_discharge').text()
-      when 'Defined' then $('#defined_discharge').val()
-      when 'Selected' then $('#selected_discharge').val()
+      when 'Defined'   then $('#defined_discharge').val()
+      when 'Selected'  then $('#selected_discharge').val()
     $('#flowRate').val(flowrate)
     $('#static-discharge').text(flowrate)
     $('#static-discharge-eval').text($(this).val())
 
     flowtype = switch $(this).val()
-      when 'Actual' then 0
+      when 'Actual'    then 0
       when 'Predicted' then 1
-      when 'Defined' then 2
-      when 'Selected' then 3
+      when 'Defined'   then 2
+      when 'Selected'  then 3
     $('#flowType').val(flowtype)
   )
 
-  $('input[name=fraser_river]').change(->
-    waterway = switch $(this).val()
-      when 'South Arm'
-        $('#river-section').parent().attr('colspan', 21)
-        0
-      when 'North Arm'
-        $('#river-section').parent().attr('colspan', 16)
-        1
-      when 'Main Arm'
-        $('#river-section').parent().attr('colspan', 14)
-        2
-    $('#waterway').val(waterway)
-    $('#river-section').text($(this).val())
-  )
-  $('input[name=fraser_river]:checked').change()
-  
   $('#defined_discharge').change(->
     if ($('input[name=discharge]:checked').val() == "Defined")
       $('#flowRate').val($(this).val())
@@ -123,10 +107,6 @@ $(->
     if ($('input[name=discharge]:checked').val() == "Selected")
       $('#flowRate').val($(this).val())
       $('#static-discharge').text($('#selected_discharge').val())
-  )
-  
-  $('input[name=fraser_river]').change(->
-    $('#static-arm').text($(this).val())
   )
   
   $('input[name=channel]').change(->
@@ -146,6 +126,20 @@ $(->
 
 update = ->
   report_type = $('input[name=report]:checked').val()
+  waterway = switch $('input[name=fraser_river]:checked').val()
+    when 'South Arm'
+      $('#river-section').parent().attr('colspan', 21)
+      0
+    when 'North Arm'
+      $('#river-section').parent().attr('colspan', 16)
+      1
+    when 'Main Arm'
+      $('#river-section').parent().attr('colspan', 14)
+      2
+
+  $('#static-arm').text($('input[name=fraser_river]:checked').val())
+  $('#waterway').val(waterway)
+  $('#river-section').text($('input[name=fraser_river]:checked').val())
   $('#water-levels tbody').empty()
   $('#headerkm').empty()
   step = 2

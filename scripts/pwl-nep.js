@@ -108,25 +108,6 @@
       }).call(this);
       return $('#flowType').val(flowtype);
     });
-    $('input[name=fraser_river]').change(function() {
-      var waterway;
-      waterway = (function() {
-        switch ($(this).val()) {
-          case 'South Arm':
-            $('#river-section').parent().attr('colspan', 21);
-            return 0;
-          case 'North Arm':
-            $('#river-section').parent().attr('colspan', 16);
-            return 1;
-          case 'Main Arm':
-            $('#river-section').parent().attr('colspan', 14);
-            return 2;
-        }
-      }).call(this);
-      $('#waterway').val(waterway);
-      return $('#river-section').text($(this).val());
-    });
-    $('input[name=fraser_river]:checked').change();
     $('#defined_discharge').change(function() {
       if ($('input[name=discharge]:checked').val() === "Defined") {
         $('#flowRate').val($(this).val());
@@ -138,9 +119,6 @@
         $('#flowRate').val($(this).val());
         return $('#static-discharge').text($('#selected_discharge').val());
       }
-    });
-    $('input[name=fraser_river]').change(function() {
-      return $('#static-arm').text($(this).val());
     });
     $('input[name=channel]').change(function() {
       return $('#static-limit').text($(this).next().text());
@@ -155,8 +133,24 @@
   });
 
   update = function() {
-    var headerRow, i, kmStart, report_type, step, _ref;
+    var headerRow, i, kmStart, report_type, step, waterway, _ref;
     report_type = $('input[name=report]:checked').val();
+    waterway = (function() {
+      switch ($('input[name=fraser_river]:checked').val()) {
+        case 'South Arm':
+          $('#river-section').parent().attr('colspan', 21);
+          return 0;
+        case 'North Arm':
+          $('#river-section').parent().attr('colspan', 16);
+          return 1;
+        case 'Main Arm':
+          $('#river-section').parent().attr('colspan', 14);
+          return 2;
+      }
+    })();
+    $('#static-arm').text($('input[name=fraser_river]:checked').val());
+    $('#waterway').val(waterway);
+    $('#river-section').text($('input[name=fraser_river]:checked').val());
     $('#water-levels tbody').empty();
     $('#headerkm').empty();
     step = 2;
