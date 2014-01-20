@@ -15,7 +15,7 @@
     </ul>
 
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
-      <div id="parameters" style="height:620px">
+      <div id="parameters" style="height:680px">
         <form id="daily_depth">
           <div class="span-3">
             <label for="date">Date:</label>
@@ -285,6 +285,14 @@
                  <option value=".25">15 min.</option>
                </select>
              </div>
+            <div class="clear"></div>
+
+           <label for="legend_scale">Legend Scale:</label>
+           <select name="legend_scale" id="legend_scale">
+             <option value="0" selected="selected">0</option>
+             <option value="1">1</option>
+           </select>
+
             <p>
               <button id="submit"
                   type="button"
@@ -318,7 +326,9 @@
               <img id="animated"
                   src="/images/nodata.jpg"
                   style="width:550px;height:550px" />
-              <p id="legend_display">Legend 1</p>
+              <img id="animated_legend"
+                  src="/images/nodata.jpg"
+                  style="width:325px;" />
             </div>
 
             <button id="replay"

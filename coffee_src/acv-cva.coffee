@@ -1,6 +1,9 @@
 images = []
 flowrate = 0
 
+preload = (img) ->
+  $('<img/>')[0].src = "http://184.106.250.111#{img}"
+
 $(->
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
@@ -68,6 +71,18 @@ $(->
   )
   
   $('select#from').change(->
+    interval = 0.25
+    options = ""
+    $('select#to').html('')
+    for i in [parseFloat($(this).val()) + interval..24] by interval
+      hour = Math.floor(i)
+      hour = "0" + hour if hour < 10
+      minute = i%1*60
+      minute = "00" if minute == 0
+      options += "<option value=\"#{i}\">#{hour}:#{minute}</option>"
+    $('select#to').html(options)
+    if $('#type').val() == "0"
+      $('select#to').prop('disabled','disabled')
     $('#static-start').text($(this).val())
   )
   
@@ -92,7 +107,7 @@ $(->
 
 update = ->
   $('#loading').show()
-  $('#animated, #replay, #nodata').hide()
+  $('#animated, #animated_legend, #replay, #nodata').hide()
 
   hour = Math.floor(parseFloat($('#from').val()))
   minute = (parseFloat($('#from').val()) - hour) * 60
@@ -113,7 +128,7 @@ update = ->
   images = []
   do getImage = ->
     $.getJSON("/api/animated?date=#{$('#date').val()}&" +
-        "legendScale=0&" +
+        "legendScale=#{$('#legend_scale').val()}&" +
         "zone=#{$('#zone').val()}&" +
         "flowRate=#{flowrate}&" +
         "flowType=0&" +
@@ -121,6 +136,7 @@ update = ->
         "minute=#{minute}", (data) ->
       result = data.toString()
       images.push(result) unless result == '/images/'
+      preload(images[images.length-1])
       $('#frames_retrieved').html(images.length)
     ).then(->
       if hour < end_hour || (hour == end_hour && minute <= end_minute)
@@ -136,7 +152,9 @@ update = ->
 
 play = ->
   $('#loading').hide()
-  $('#animated').show()
+  $('#animated').attr("src", "/images/nodata.jpg")
+  $('#animated_legend').hide()
+  $('#animated_legend').attr("src", "/images/vectorscale#{$('#legend_scale').val()}.gif")
   $('#replay').prop('disabled','disabled')
 
   if images.length > 0
@@ -144,6 +162,10 @@ play = ->
     i = 1
     handle = setInterval(->
       $('#animated').attr("src", "http://184.106.250.111#{images[i]}")
+      $('#animated').on("load", ->
+        $('#animated').show()
+        $('#animated_legend').show()
+      )
       i++
       if i >= images.length
         clearInterval(handle)
