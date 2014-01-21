@@ -1,17 +1,56 @@
 (function() {
-  var dataset, date_inc, monthNames, now, now2, options, totalPoints;
+  var dataset, date_inc, monthNames, now, now2, options, update;
 
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   dataset = [];
-
-  totalPoints = 60;
 
   now = new Date();
 
   now2 = new Date();
 
   date_inc = 0;
+
+  update = function() {
+    var actual, date, maximum, minimum, month, period, year;
+    minimum = [];
+    maximum = [];
+    actual = [];
+    date = moment($('#date').val());
+    year = date.year();
+    month = date.month();
+    period = $('#period').val();
+    return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=false", function(results) {
+      $.each(results, function(i, v) {
+        year = v.year;
+        month = v.month - 1;
+        $.each(v.minMax, function(i, v) {
+          minimum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue]);
+          return maximum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue]);
+        });
+        if ($("#actual").prop("checked")) {
+          return $.each(v.actual, function(i, v) {
+            var day;
+            day = moment(v.date).day(1)._a[2];
+            return actual.push([moment(v.date).year(year).month(month).date(day)._d, v.value]);
+          });
+        }
+      });
+      dataset = [
+        {
+          data: maximum,
+          label: "Maximum"
+        }, {
+          data: actual,
+          label: "Actual"
+        }, {
+          data: minimum,
+          label: "Minimum"
+        }
+      ];
+      return $.plot($("#flot-placeholder1"), dataset, options);
+    });
+  };
 
   options = {
     grid: {
@@ -54,48 +93,15 @@
     });
     now = new Date();
     $('#date').val("" + (now.getFullYear()) + "-01-01");
-    $('#date, #period').change(function() {
-      var data, data2, data3, date, month, period, year;
-      data = [];
-      data2 = [];
-      data3 = [];
-      date = moment($('#date').val());
-      year = date.year();
-      month = date.month();
-      period = $('#period').val();
-      return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=false", function(results) {
-        $.each(results, function(i, v) {
-          year = v.year;
-          month = v.month - 1;
-          $.each(v.minMax, function(i, v) {
-            data.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue]);
-            return data2.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue]);
-          });
-          return $.each(v.actual, function(i, v) {
-            var day;
-            day = moment(v.date).day(1)._a[2];
-            return data3.push([moment(v.date).year(year).month(month).date(day)._d, v.value]);
-          });
-        });
-        dataset = [
-          {
-            data: data2
-          }, {
-            data: data
-          }, {
-            data: data3
-          }
-        ];
-        return $.plot($("#flot-placeholder1"), dataset, options);
-      });
-    });
+    $('#submit').click(update);
     $('#date').change(function() {
       return $('#static-date').text($('#date').val());
     });
     $('select#period').change(function() {
       return $('#static-period').text($(this).val());
     });
-    return $('#date').change();
+    $('#date').change();
+    return update();
   });
 
 }).call(this);
