@@ -1,13 +1,9 @@
 (function() {
-  var dataset, date_inc, monthNames, now, now2, options, update;
+  var dataset, date_inc, monthNames, options, update;
 
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   dataset = [];
-
-  now = new Date();
-
-  now2 = new Date();
 
   date_inc = 0;
 
@@ -88,6 +84,7 @@
   };
 
   $(function() {
+    var now;
     $("#print_hydrograph").click(function() {
       return window.print();
     });
@@ -101,6 +98,13 @@
       return $('#static-period').text($(this).val());
     });
     $('#date').change();
+    $(document).ajaxStart(function() {
+      $('#loading').show();
+      return $('#flot-placeholder1').html('');
+    });
+    $(document).ajaxSuccess(function() {
+      return $('#loading').hide();
+    });
     return update();
   });
 

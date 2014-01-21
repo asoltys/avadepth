@@ -1,17 +1,20 @@
-monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
-dataset = []
-now = new Date()
-now2 = new Date()
+monthNames = [
+  "Jan", "Feb", "Mar", "Apr"
+  "May", "Jun", "Jul", "Aug"
+  "Sep", "Oct", "Nov", "Dec"
+]
+
+dataset  = []
 date_inc = 0
 
 update = ->
   minimum = []
   maximum = []
-  actual = []
+  actual  = []
 
-  date = moment($('#date').val())
-  year = date.year()
-  month = date.month()
+  date   = moment($('#date').val())
+  year   = date.year()
+  month  = date.month()
   period = $('#period').val()
 
   $.getJSON("/api/hydrograph?year=#{year}&" +
@@ -28,6 +31,7 @@ update = ->
           minimum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue])
           maximum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue])
         )
+
         if $("#actual").prop("checked")
           $.each(v.actual, (i,v) ->
             day = moment(v.date).day(1)._a[2]
@@ -37,7 +41,7 @@ update = ->
 
       dataset = [
         {data: maximum, label: "Maximum"}
-        {data: actual, label: "Actual"}
+        {data: actual,  label: "Actual"}
         {data: minimum, label: "Minimum"}
       ]
 
@@ -90,6 +94,16 @@ $(->
   )
 
   $('#date').change()
+
+  $(document).ajaxStart(->
+    $('#loading').show()
+    $('#flot-placeholder1').html('')
+  )
+
+  $(document).ajaxSuccess(->
+    $('#loading').hide()
+  )
+
 
   update()
 )
