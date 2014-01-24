@@ -106,6 +106,7 @@ $(->
 )
 
 update = ->
+  $(this).prop('disabled','disabled')
   $('#loading').show()
   $('#animated, #animated_legend, #replay, #nodata').hide()
 
@@ -148,6 +149,7 @@ update = ->
           hour += 1
       else
         play()
+        $('#submit').prop('disabled','')
     )
 
 play = ->

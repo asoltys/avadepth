@@ -117,6 +117,7 @@
 
   update = function() {
     var end_hour, end_minute, getImage, hour, minute, total;
+    $(this).prop('disabled', 'disabled');
     $('#loading').show();
     $('#animated, #animated_legend, #replay, #nodata').hide();
     hour = Math.floor(parseFloat($('#from').val()));
@@ -150,7 +151,8 @@
             return hour += 1;
           }
         } else {
-          return play();
+          play();
+          return $('#submit').prop('disabled', '');
         }
       });
     })();
