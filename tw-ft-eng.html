@@ -21,18 +21,21 @@
               <input id="predicted_radio"
                   type="radio"
                   name="discharge"
+                  class="deselect-off"
                   checked="checked"
                   value="Predicted" />
               <label for="predicted_radio">Predicted (<span id="predicted_discharge"></span>m3/s)</label><br />
               <input id="actual_radio"
                   type="radio"
                   name="discharge"
+                  class="deselect-off"
                   value="Actual" />
               <label for="actual">Actual (<span id="actual_discharge"></span>m3/s)</label><br />
 
               <input id="selected_radio"
                   type="radio"
                   name="discharge"
+                  class="deselect-off"
                   value="Selected" />
               <label for="discharge_radio">Selected</label>
               <select id="selected_discharge">
@@ -42,6 +45,7 @@
               <input id="defined_radio"
                   type="radio"
                   name="discharge"
+                  class="deselect-off"
                   value="Defined" />
               <label for="defined_radio">User-defined</label>
               <input id="defined_discharge"
@@ -92,14 +96,28 @@
             
             <div>
               <label for="sounding"><strong>Channel Condition:</strong></label>
-              <input type="radio" name="sounding" checked="checked" value="0" /> <span>Current Soundings</span><br />
-              <input type="radio" name="sounding" value="1" /> <span>Design Grade</span>
+              <input type="radio"
+                  name="sounding"
+                  class="deselect-off"
+                  checked="checked"
+                  value="0" /> <span>Current Soundings</span><br />
+              <input type="radio"
+                  name="sounding"
+                  class="deselect-off"
+                  value="1" /> <span>Design Grade</span>
             </div>
 
             <div>
               <label for="channel"><strong>Navigation Channel:</strong></label>
-              <input type="radio" name="channel" checked="checked" value="1" /> <span style="margin-right:1em">Inner Limit</span>
-              <input type="radio" name="channel" value="0"/> <span>Outer Limit</span>
+              <input type="radio"
+                  name="channel"
+                  class="deselect-off"
+                  checked="checked"
+                  value="1" /> <span style="margin-right:1em">Inner Limit</span>
+              <input type="radio"
+                  name="channel"
+                  class="deselect-off"
+                  value="0"/> <span>Outer Limit</span>
             </div>
             <div>
               <label for="width"><strong>Available Width:</strong></label>
@@ -140,6 +158,7 @@
               <input id="max_depth_radio"
                   type="radio"
                   name="window_radio"
+                  class="deselect-off"
                   checked="checked"
                   value="Maximum Depth" />
               <label for="max_depth_radio">Maximum Depth:</label><br />
@@ -154,6 +173,7 @@
               <input id="min_win_radio"
                   type="radio"
                   name="window_radio"
+                  class="deselect-off"
                   value="Min. Window" />
               <label for="min_win_radio">Available Windows</label><br />
               <label style="display:inline;margin-left:2em;">Depth</label>

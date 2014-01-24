@@ -15,22 +15,51 @@
 
       <div>
         <label for="fraser_river">Fraser River:</label>
-        <input id="fraser_river" type="radio" name="fraser_river" checked="checked" value="South Arm" /> South Arm (km 0-40)<br />
-        <input type="radio" name="fraser_river" value="North Arm" /> North Arm (km 0-30)<br />
-        <input type="radio" name="fraser_river" value="Main Arm" /> Main Arm (km 40-92)<br />
-        <input type="hidden" name="waterway" id="waterway" value="0" />
+        <input id="fraser_river"
+            type="radio"
+            name="fraser_river"
+            class="deselect-off"
+            checked="checked"
+            value="South Arm" /> South Arm (km 0-40)<br />
+        <input type="radio"
+            name="fraser_river"
+            class="deselect-off"
+            value="North Arm" /> North Arm (km 0-30)<br />
+        <input type="radio"
+            name="fraser_river"
+            class="deselect-off"
+            value="Main Arm" /> Main Arm (km 40-92)<br />
+        <input type="hidden"
+            name="waterway"
+            id="waterway" value="0" />
       </div>
     </div>
 
     <div class="span-4">
       <div>
         <label for="river_discharge">River Discharge @ Hope:</label>
-        <input id="predicted" type="radio" name="discharge" class="rd_predicted" value="Predicted" checked="checked" /> Predicted (<span id="predicted_discharge"></span>m&#179;s)<br />
-        <input id="actual" type="radio" name="discharge" disabled="true" class="rd_actual" value="Actual" /> Actual (<span id="actual_discharge"></span>m&#179;s)<br />
-        <input type="radio" name="discharge" value="Selected" /> Selected
+        <input id="predicted"
+            type="radio"
+            name="discharge"
+            class="rd_predicted deselect-off"
+            value="Predicted"
+            checked="checked" /> Predicted (<span id="predicted_discharge"></span>m&#179;s)<br />
+        <input id="actual"
+            type="radio"
+            name="discharge"
+            disabled="true"
+            class="rd_actual deselect-off"
+            value="Actual" /> Actual (<span id="actual_discharge"></span>m&#179;s)<br />
+        <input type="radio"
+            name="discharge"
+            class="deselect-off"
+            value="Selected" /> Selected
         <select id="selected_discharge">
         </select> m3/s<br />
-        <input type="radio" name="discharge" value="Defined" /> User Defined
+        <input type="radio"
+            name="discharge"
+            class="deselect-off"
+            value="Defined" /> User Defined
         <input id="defined_discharge" type="text" name="discharge" style="width:5em" /> m3/s
         
         <input type="hidden" name="flowRate" id="flowRate" value="0" />
@@ -42,8 +71,16 @@
     <div class="span-3">
       <div>
         <label for="report">Report:</label>
-        <input id="report" type="radio" name="report" checked="checked" value="0" /> Water Levels 
-        <input type="radio" name="report" value="1" /> Velocities<br />
+        <input id="report"
+            type="radio"
+            name="report"
+            class="deselect-off"
+            checked="checked"
+            value="0" /> Water Levels 
+        <input type="radio"
+            name="report"
+            class="deselect-off"
+            value="1" /> Velocities<br />
       </div>
     </div>
   </form>
