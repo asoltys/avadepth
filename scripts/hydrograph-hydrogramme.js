@@ -8,15 +8,20 @@
   date_inc = 0;
 
   update = function() {
-    var actual, date, maximum, minimum, month, period, year;
+    var actual, date, maximum, minimum, month, period, predicted, year;
     minimum = [];
     maximum = [];
     actual = [];
+    predicted = [];
     date = moment($('#date').val());
     year = date.year();
     month = date.month();
+    if (month === 11) {
+      month = -1;
+      year += 1;
+    }
     period = $('#period').val();
-    return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=false", function(results) {
+    return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=true", function(results) {
       $.each(results, function(i, v) {
         year = v.year;
         month = v.month - 1;
@@ -25,10 +30,19 @@
           return maximum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue]);
         });
         if ($("#actual").prop("checked")) {
-          return $.each(v.actual, function(i, v) {
-            var day;
+          $.each(v.actual, function(i, v) {
+            var day, discharge;
             day = moment(v.date).day(1)._a[2];
-            return actual.push([moment(v.date).year(year).month(month).date(day)._d, v.value]);
+            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value];
+            if (discharge[1] !== 0) return actual.push(discharge);
+          });
+        }
+        if ($("#predicted").prop("checked")) {
+          return $.each(v.predicted, function(i, v) {
+            var day, discharge;
+            day = moment(v.date).day(1)._a[2];
+            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value];
+            if (discharge[1] !== 0) return predicted.push(discharge);
           });
         }
       });
@@ -42,6 +56,9 @@
         }, {
           data: minimum,
           label: "Minimum"
+        }, {
+          data: predicted,
+          label: "Predicted"
         }
       ];
       return $.plot($("#flot-placeholder1"), dataset, options);

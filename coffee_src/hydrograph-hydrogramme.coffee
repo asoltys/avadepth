@@ -8,20 +8,25 @@ dataset  = []
 date_inc = 0
 
 update = ->
-  minimum = []
-  maximum = []
-  actual  = []
+  minimum    = []
+  maximum    = []
+  actual     = []
+  predicted  = []
 
   date   = moment($('#date').val())
   year   = date.year()
   month  = date.month()
+#Hack because api uses december as month one
+  if month == 11
+    month = -1
+    year += 1
   period = $('#period').val()
 
   $.getJSON("/api/hydrograph?year=#{year}&" +
       "month=#{month + 2}&" +
       "period=#{period}&" +
       "actual=false&" +
-      "predicted=false",
+      "predicted=true",
     (results) ->
       $.each(results, (i,v) ->
         year = v.year
@@ -35,7 +40,15 @@ update = ->
         if $("#actual").prop("checked")
           $.each(v.actual, (i,v) ->
             day = moment(v.date).day(1)._a[2]
-            actual.push([moment(v.date).year(year).month(month).date(day)._d, v.value])
+            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value]
+            actual.push(discharge) unless discharge[1] == 0
+          )
+
+        if $("#predicted").prop("checked")
+          $.each(v.predicted, (i,v) ->
+            day = moment(v.date).day(1)._a[2]
+            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value]
+            predicted.push(discharge) unless discharge[1] == 0
           )
       )
 
@@ -43,6 +56,7 @@ update = ->
         {data: maximum, label: "Maximum"}
         {data: actual,  label: "Actual"}
         {data: minimum, label: "Minimum"}
+        {data: predicted,  label: "Predicted"}
       ]
 
       $.plot($("#flot-placeholder1"), dataset, options)
