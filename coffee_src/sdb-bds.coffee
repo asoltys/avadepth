@@ -182,7 +182,7 @@ $(->
     $('.tabs-panel').height("620px")
   )
   
-  $('form#daily_depth').on("change","select", ->
+  $('form#daily_depth').on("click","button", ->
     getSurveyDrawings({
       river:$('#waterway').val()
       drawingType:$('#type').val()

@@ -110,7 +110,7 @@
       $('#map').css("min-height", "600px");
       return $('.tabs-panel').height("620px");
     });
-    $('form#daily_depth').on("change", "select", function() {
+    $('form#daily_depth').on("click", "button", function() {
       return getSurveyDrawings({
         river: $('#waterway').val(),
         drawingType: $('#type').val(),
