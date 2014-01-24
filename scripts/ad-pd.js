@@ -47,25 +47,15 @@
       return window.print();
     });
     $(".yaxislabel").css("color", "black");
-    $('#defined_discharge').change(function() {
-      if ($('input[name="discharge"].checked').val() === "Defined") {
-        return $('#static-discharge').text($('#defined_discharge').val());
-      }
-    });
-    $('#selected_discharge').change(function() {
-      if ($('input[name="discharge"].checked').val() === "Selected") {
-        return $('#static-discharge').text($('#selected_discharge').val());
-      }
-    });
     $('body').on("change", "#date", function() {
-      avadepth.util.getFlow({
+      return avadepth.util.getFlow({
         date: $(this).val(),
         selected: $("#selected_discharge"),
         predicted: $("#predicted_discharge"),
         actual: $("#actual_discharge")
       });
-      return $('input[name=discharge]').prop("checked", false);
     });
+    $("#date").change();
     $('#selected_discharge').change(function() {
       return $('#selected_radio').prop('checked', true).change();
     });
@@ -87,10 +77,10 @@
     var flow;
     flow = avadepth.util.getSelectedFlow();
     $('#flowRate').val(flow.flowRate);
-    if (flow.flowType !== 0) {
+    if (flow.flowType !== "0") {
       $('#flowType').val(flow.flowType);
     } else {
-      $('#flowType').val("Defined");
+      $('#flowType').val("UserDefined");
     }
     return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
       var points;

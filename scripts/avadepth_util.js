@@ -31,7 +31,6 @@ avadepth.util = {
               //$("#predicted_radio").prop('checked', true);
             }
 
-            $('input[name=discharge]').prop("checked",false)
             if (thisCallback) { callback(data); };
             return data.Predicted;
         });

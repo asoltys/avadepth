@@ -35,16 +35,6 @@ $(->
 
   $(".yaxislabel").css("color","black")
 
-  $('#defined_discharge').change(->
-    if ($('input[name="discharge"].checked').val() == "Defined")
-      $('#static-discharge').text($('#defined_discharge').val())
-  )
-  
-  $('#selected_discharge').change(->
-    if ($('input[name="discharge"].checked').val() == "Selected")
-      $('#static-discharge').text($('#selected_discharge').val())
-  )
-  
   $('body').on("change","#date", ->
     avadepth.util.getFlow({
       date:$(this).val(),
@@ -52,8 +42,9 @@ $(->
       predicted:$("#predicted_discharge"),
       actual:$("#actual_discharge")
     })
-    $('input[name=discharge]').prop("checked",false)
   )
+
+  $("#date").change()
 
   $('#selected_discharge').change(->
     $('#selected_radio').prop('checked', true).change()
@@ -80,10 +71,10 @@ $(->
 update = ->
   flow = avadepth.util.getSelectedFlow()
   $('#flowRate').val(flow.flowRate)
-  if flow.flowType != 0
+  if flow.flowType != "0"
     $('#flowType').val(flow.flowType)
   else
-    $('#flowType').val("Defined")
+    $('#flowType').val("UserDefined")
   $.getJSON("/api/depths/calculate?date=#{$('#date').val()}&" +
       "chainage=#{$('#chainage').val()}&" +
       "flowRate=#{$('#flowRate').val()}&" +
