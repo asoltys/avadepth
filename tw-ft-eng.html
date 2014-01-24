@@ -3,13 +3,13 @@
 
 <h1>Transit Window</h1>
 <div class="grid-12">
-  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height print_hide">
-    <ul class="tabs">
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+    <ul class="tabs print_hide">
       <li class="default"><a href="#parameters">Parameters</a></li>
       <li><a href="#help">Help</a></li>
     </ul>
 
-    <div class="summary tabs-panel filled" style="border: 2px solid #eee">
+    <div class="summary tabs-panel filled print_hide" style="border: 2px solid #eee">
       <div id="parameters" style="height:300px">
         <form id="transit_window">
           <div class="span-4">
@@ -261,35 +261,38 @@
   <div class="clear"></div>
   
   <h2 id="ajax_message">Please wait while we fetch your results</h2>
-  <div id="report_body">
+  <div id="report_body" class="print-align-center">
     <h2>Maximum Depth and Transit Time Report</h2>
-    <p>Fraser River - <span id="static-channel">Inner Limit</span></p>
+    <h2>Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
     <p><span id="static-window">Transit Window: 2 hrs</span></p>
     <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
     <p><span id="static-sounding">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
     <p>From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
+		
+		<div class="print-width-90 print-margin-auto">
+			<table class="span-6 print-float-left print-width-50">
+				<tr>
+					<td>Minimum Depth:</td>
+					<td><span id="min_depth">-</span></td>
+				</tr>
+				<tr>
+					<td>Maximum Depth:</td>
+					<td><span id="max_depth">-</span></td>
+				</tr>
+			</table>
 
-    <table class="span-6 table-condensed">
-      <tr>
-        <td>Minimum Depth:</td>
-        <td><span id="min_depth">-</span></td>
-      </tr>
-      <tr>
-        <td>Maximum Depth:</td>
-        <td><span id="max_depth">-</span></td>
-      </tr>
-    </table>
-
-    <table class="span-6 table-condensed">
-      <tr>
-        <td>Average Depth of Selected Window:</td>
-        <td><span id="avg_depth">-</span></td>
-      </tr>
-      <tr>
-        <td>Number of Days with Selected Window:</td>
-        <td><span id="num_days">-</span></td>
-      </tr>
-    </table>
+			<table class="span-6 print-width-50">
+				<tr>
+					<td>Average Depth of Selected Window:</td>
+					<td><span id="avg_depth">-</span></td>
+				</tr>
+				<tr>
+					<td>Number of Days with Selected Window:</td>
+					<td><span id="num_days">-</span></td>
+				</tr>
+			</table>
+		</div>
+		
     <div class="clear"></div>
 
     <section style="padding: 20px">
@@ -320,6 +323,6 @@
       </table>
     </section>
   </div>
-  <button id="print_transit_window" class="print_button button button-accent">Print</button>
+  <button id="print_transit_window" class="print_button button button-accent print_hide">Print</button>
 
 <!--#include virtual="/includes/footer-eng.html" -->

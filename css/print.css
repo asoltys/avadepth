@@ -38,15 +38,67 @@ table {
 #placeholder {
   margin: 10px 100px;
 }
-
+/*
 .page-break { 
   clear: both;
   display: block;
   height:1px;
   page-break-before: always;
 }
-
+*/
 #flot-placeholder1 {
   margin:0 0 0 0;
   padding: 0 0 0 0;
 }
+
+.print-float-left{
+	float: left;
+}
+
+.print-align-center{
+	text-align: center;
+}
+
+.print-width-90{
+	width: 90%;
+}
+
+.print-width-50{
+	width: 50%;
+}
+
+.print-margin-auto{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.print-table-fixed{
+	table-layout: fixed;
+	max-width: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.print-table-fixed tr th:first-child, .print-table-fixed tr td:first-child{
+	width: 7%;
+}
+
+
+/* "Survey drawings" page. (sdb-bds-eng.html) */
+.print-gcwu-gcnb{
+	position: relative;
+	top: -30px;
+}
+
+.print-gcwu-bnr{
+	position: relative;
+	top: -20px;
+}
+
+.print-survey-drawing-title{
+	position: relative;
+	top: -30px;
+}
+
+
+

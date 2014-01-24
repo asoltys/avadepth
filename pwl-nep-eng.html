@@ -4,7 +4,7 @@
 
 <h1>Predicted Water Levels &amp; Velocities</h1>
 
-<div class="grid-12">
+<div class="grid-12 print_hide">
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
     <ul class="tabs">
       <li class="default"><a href="#parameters">Parameters</a></li>
@@ -133,8 +133,8 @@ Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-dischar
 <div class="clear"></div>
 <div class="span-8">
 <table id="water-levels"
-    class="table-condensed align-center"
-    style="width:50%">
+    class="table-condensed align-center print-table-fixed"
+    >
   <thead>
     <tr>
       <th rowspan="2">Time (PST)</th>
@@ -152,5 +152,5 @@ Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-dischar
 </ul>
 </div>
 
-<button id="print_predicted_water_levels" class="print_button button button-accent">Print</button>
+<button id="print_predicted_water_levels" class="print_button button button-accent print_hide">Print</button>
 <!--#include virtual="/includes/footer-eng.html" -->
