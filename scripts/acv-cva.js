@@ -80,14 +80,15 @@
       return $('#static-zone').text($(this).val());
     });
     $('select#interval').change(function() {
+      $("#from").change();
       return $('#static-interval').text($(this).val());
     });
     $('select#from').change(function() {
       var hour, i, interval, minute, options, _ref;
-      interval = 0.25;
+      interval = parseFloat($("#interval").val());
       options = "";
       $('select#to').html('');
-      for (i = _ref = parseFloat($(this).val()) + interval; _ref <= 24 ? i <= 24 : i >= 24; i += interval) {
+      for (i = _ref = parseFloat($(this).val()) + interval; _ref <= 24 ? i < 24 : i > 24; i += interval) {
         hour = Math.floor(i);
         if (hour < 10) hour = "0" + hour;
         minute = i % 1 * 60;
@@ -116,14 +117,16 @@
   });
 
   update = function() {
-    var end_hour, end_minute, getImage, hour, minute, total;
+    var base_minute, end_hour, end_minute, getImage, hour, interval, minute, total;
     $(this).prop('disabled', 'disabled');
     $('#loading').show();
     $('#animated, #animated_legend, #replay, #nodata').hide();
     hour = Math.floor(parseFloat($('#from').val()));
     minute = (parseFloat($('#from').val()) - hour) * 60;
+    base_minute = minute;
+    interval = parseFloat($("#interval").val());
     $('#frames_retrieved').html('0');
-    $('#number_of_frames').html(($('#to').val() - $('#from').val()) * 4 + 1);
+    $('#number_of_frames').html(($('#to').val() - $('#from').val()) / interval + 1);
     if ($('#type').val() !== '0') {
       end_hour = Math.floor(parseFloat($('#to').val()));
       end_minute = (parseFloat($('#to').val()) - end_hour) * 60;
@@ -136,7 +139,7 @@
     total = (end_hour - hour) * 4 + (end_minute - minute) / 15;
     images = [];
     return (getImage = function() {
-      return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('#legend_scale').val()) + "&") + ("zone=" + ($('#zone').val()) + "&") + ("flowRate=" + flowrate + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
+      return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + ($('#zone').val()) + "&") + ("flowRate=" + flowrate + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
         var result;
         result = data.toString();
         if (result !== '/images/') images.push(result);
@@ -145,10 +148,14 @@
       }).then(function() {
         if (hour < end_hour || (hour === end_hour && minute <= end_minute)) {
           getImage();
-          minute += 15;
-          if (minute === 60) {
-            minute = 0;
-            return hour += 1;
+          minute += interval * 60;
+          if (minute >= 60) {
+            minute = base_minute;
+            if (interval <= 1) {
+              return hour += 1;
+            } else {
+              return hour += interval;
+            }
           }
         } else {
           play();
@@ -163,7 +170,7 @@
     $('#loading').hide();
     $('#animated').attr("src", "/images/nodata.jpg");
     $('#animated_legend').hide();
-    $('#animated_legend').attr("src", "/images/vectorscale" + ($('#legend_scale').val()) + ".gif");
+    $('#animated_legend').attr("src", "/images/vectorscale" + ($('input[name=legend_scale]:checked').val()) + ".gif");
     $('#replay').prop('disabled', 'disabled');
     if (images.length > 0) {
       $('#replay').show();

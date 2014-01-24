@@ -67,14 +67,15 @@ $(->
   )
 
   $('select#interval').change(->
+    $("#from").change()
     $('#static-interval').text($(this).val())
   )
   
   $('select#from').change(->
-    interval = 0.25
+    interval = parseFloat($("#interval").val())
     options = ""
     $('select#to').html('')
-    for i in [parseFloat($(this).val()) + interval..24] by interval
+    for i in [parseFloat($(this).val()) + interval...24] by interval
       hour = Math.floor(i)
       hour = "0" + hour if hour < 10
       minute = i%1*60
@@ -112,8 +113,10 @@ update = ->
 
   hour = Math.floor(parseFloat($('#from').val()))
   minute = (parseFloat($('#from').val()) - hour) * 60
+  base_minute = minute
+  interval = parseFloat($("#interval").val())
   $('#frames_retrieved').html('0')
-  $('#number_of_frames').html(($('#to').val()-$('#from').val())*4+1)
+  $('#number_of_frames').html(($('#to').val()-$('#from').val())/interval+1)
 
   if $('#type').val() != '0'
     end_hour = Math.floor(parseFloat($('#to').val()))
@@ -129,7 +132,7 @@ update = ->
   images = []
   do getImage = ->
     $.getJSON("/api/animated?date=#{$('#date').val()}&" +
-        "legendScale=#{$('#legend_scale').val()}&" +
+        "legendScale=#{$('input[name=legend_scale]:checked').val()}&" +
         "zone=#{$('#zone').val()}&" +
         "flowRate=#{flowrate}&" +
         "flowType=0&" +
@@ -142,11 +145,14 @@ update = ->
     ).then(->
       if hour < end_hour || (hour == end_hour && minute <= end_minute)
         getImage()
-
-        minute += 15
-        if minute == 60
-          minute = 0
-          hour += 1
+        minute += interval*60
+        if minute >= 60
+          minute = base_minute
+          #hour = Math.floor(parseFloat($("#interval"))*60)
+          if interval <= 1
+            hour += 1
+          else
+            hour += interval
       else
         play()
         $('#submit').prop('disabled','')
@@ -156,7 +162,7 @@ play = ->
   $('#loading').hide()
   $('#animated').attr("src", "/images/nodata.jpg")
   $('#animated_legend').hide()
-  $('#animated_legend').attr("src", "/images/vectorscale#{$('#legend_scale').val()}.gif")
+  $('#animated_legend').attr("src", "/images/vectorscale#{$('input[name=legend_scale]:checked').val()}.gif")
   $('#replay').prop('disabled','disabled')
 
   if images.length > 0
