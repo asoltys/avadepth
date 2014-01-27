@@ -34,6 +34,7 @@ $(->
   $("#width").val(querystring('width'))
   $("#lane").val(querystring('lane'))
   $("#period").val(querystring('period'))
+  $("#period").val(parseInt($("#period").val().substring(0,2))/2+1)
   #$("input[name=fraser_river]")[$("#waterway").val()].checked = true
 
   $.getJSON("/api/depths/verify?date=#{$('#date').val()}&" +
@@ -43,7 +44,7 @@ $(->
       "sounding=#{$('#sounding').val()}&" +
       "width=#{$('#width').val()}&" +
       "lane=1&" +
-      "period=3", (data) ->
+      "period=#{$('#period').val()}", (data) ->
     table ||= $('#verify').dataTable(
         bPaginate: false
         bInfo: false
@@ -54,7 +55,15 @@ $(->
 
     $('#verify tbody tr').remove()
     points = new Array()
+    least_depth = 10000
     $.each(data.items, ->
+      fixed_depth = this.depth.toFixed(1)
+      if this.depth <= least_depth
+        least_depth = parseFloat(fixed_depth)
+        $('#verify td').find('.low_depth').removeClass('low_depth')
+        depth = "<span class=\"low_depth\">#{fixed_depth}</span>"
+      else
+        depth = fixed_depth
       table.fnAddData([
         this.location
         this.designGrade
@@ -62,7 +71,8 @@ $(->
         this.width
         this.percent
         this.tidalAid
-        this.depth.toFixed(2)])
+        depth])
     )
+    $('#verify td').find('.low_depth').closest('tr').addClass('least-depth')
   )
 )

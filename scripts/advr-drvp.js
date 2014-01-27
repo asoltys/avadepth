@@ -33,8 +33,9 @@
     $("#width").val(querystring('width'));
     $("#lane").val(querystring('lane'));
     $("#period").val(querystring('period'));
-    return $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + "flowType=1&" + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + "lane=1&" + "period=3", function(data) {
-      var points;
+    $("#period").val(parseInt($("#period").val().substring(0, 2)) / 2 + 1);
+    return $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + "flowType=1&" + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + "lane=1&" + ("period=" + ($('#period').val())), function(data) {
+      var least_depth, points;
       table || (table = $('#verify').dataTable({
         bPaginate: false,
         bInfo: false,
@@ -45,9 +46,20 @@
       table.fnClearTable();
       $('#verify tbody tr').remove();
       points = new Array();
-      return $.each(data.items, function() {
-        return table.fnAddData([this.location, this.designGrade, this.sounding, this.width, this.percent, this.tidalAid, this.depth.toFixed(2)]);
+      least_depth = 10000;
+      $.each(data.items, function() {
+        var depth, fixed_depth;
+        fixed_depth = this.depth.toFixed(1);
+        if (this.depth <= least_depth) {
+          least_depth = parseFloat(fixed_depth);
+          $('#verify td').find('.low_depth').removeClass('low_depth');
+          depth = "<span class=\"low_depth\">" + fixed_depth + "</span>";
+        } else {
+          depth = fixed_depth;
+        }
+        return table.fnAddData([this.location, this.designGrade, this.sounding, this.width, this.percent, this.tidalAid, depth]);
       });
+      return $('#verify td').find('.low_depth').closest('tr').addClass('least-depth');
     });
   });
 

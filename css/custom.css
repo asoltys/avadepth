@@ -58,6 +58,10 @@ div.filled {
   color: red;
 }
 
+.least-depth {
+  color:red;
+  font-weight: bold;
+}
 
 
 .map-group img {
