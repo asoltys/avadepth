@@ -147,6 +147,10 @@ adjustHeight = (map) ->
     $('.tabs-panel').height("540px")
 
 $(->
+  $("#print_survey_drawings").click(->
+    window.print()
+  )
+
   $("div.span-8").on("click",".surveyDrawingTile area",(event)->
     riverSection = tile_query_info[event.currentTarget.title]
     getSurveyDrawings({

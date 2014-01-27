@@ -144,14 +144,15 @@
                 <option value="60">60</option>
               </select> %
             </div>
-              <button id="submit"
-                  type="button"
-                  class="button button-accent"
-                  name="submit">Submit</button>
           </div>
         </form>
+				<div class="clear"></div>
+				<button id="submit"
+					type="button"
+					class="button button-accent"
+					name="submit">Submit
+				</button>
       </div>
-
       <div id="help" style="max-height: 200px; overflow-y: scroll;">
         <p>The available depth tabulations allow us to monitor the behaviour of
         the "Control Point" - the location in the river channel which has the
@@ -194,7 +195,11 @@
 
 <h2 id="error_message" style="display:none"></h2>
 <div id="report_body" class="grid-12">
-  <div class="info span-6" style="text-align:center">
+	<div class="print_hide">
+		<button id="print_daily_depths" class="print_button print_hide button button-accent float-left">Print</button>
+		<br/><br/>
+	</div>
+  <div class="info span-6" style="text-align:center">		
     <h2>Fraser River - <span id="static-limit">Inner Limit</span></h2>
     <p>Hope Discharge <span id="static-discharge"></span>m3/s
     (<span id="static-discharge-eval">Predicted</span>)<br />
@@ -221,7 +226,7 @@
   <div class="page-break"></div>
   <div id="placeholder" class="demo-placeholder span-6" style="height:400px;"></div>
 </div>
-<button id="print_daily_depths" class="print_button print_hide button button-accent">Print</button>
+
 
 
 <!--#include virtual="/includes/footer-eng.html" -->

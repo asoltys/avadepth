@@ -182,13 +182,15 @@
                   name="depth"
                   style="margin-top:0.5em;width:5em"
                   value="10" /> m</div>
-              <button id="submit"
-                  type="button"
-                  class="button button-accent"
-                  name="submit">Submit</button>
             </div>
           </div>
         </form>
+				<div class="clear"></div>
+				<button id="submit"
+					type="button"
+					class="button button-accent"
+					name="submit">Submit
+				</button>				
       </div>
 
       <div id="help">
@@ -262,6 +264,8 @@
   
   <h2 id="ajax_message">Please wait while we fetch your results</h2>
   <div id="report_body" class="print-align-center">
+			<button id="print_transit_window" class="print_button button button-accent print_hide float-left">Print</button>
+	<div class="clear"></div>
     <h2>Maximum Depth and Transit Time Report</h2>
     <h2>Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
     <p><span id="static-window">Transit Window: 2 hrs</span></p>
@@ -322,7 +326,6 @@
         </tbody>
       </table>
     </section>
-  </div>
-  <button id="print_transit_window" class="print_button button button-accent print_hide">Print</button>
+  </div>  
 
 <!--#include virtual="/includes/footer-eng.html" -->

@@ -103,14 +103,15 @@
                   class="deselect-off"
                   value="1"
                   style="margin-left:1em"/> Velocities<br />
-              <button id="submit"
-                  type="button"
-                  style="margin-top:1em"
-                  class="button button-accent"
-                  name="submit">Submit</button>
             </div>
           </div>
         </form>
+				<div class="clear"></div>
+				<button id="submit"
+					type="button"
+					class="button button-accent"
+					name="submit">Submit
+				</button>				
       </div>
       <div id="south_arm" style="max-height: 600px;">
         <img src="images/pwl_southarm.png"
@@ -124,6 +125,11 @@
   </div>
 </div>
 
+<div class="print_hide">
+	<button id="print_predicted_water_levels" class="print_button button button-accent print_hide float-left">Print</button>
+	<br/><br/>
+</div>	
+	
 <div style="text-align:center">
 <h2>Fraser River - <span id="static-arm">South Arm</span></h2>
 <p>For <span id="static-date"></span> at <span id="static-interval">1 hour</span> intervals<br />
@@ -152,5 +158,4 @@ Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-dischar
 </ul>
 </div>
 
-<button id="print_predicted_water_levels" class="print_button button button-accent print_hide">Print</button>
 <!--#include virtual="/includes/footer-eng.html" -->
