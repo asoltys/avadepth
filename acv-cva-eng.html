@@ -28,7 +28,6 @@
             <input id="predicted_radio"
                 type="radio"
                 name="discharge"
-                class="rd_predicted deselect-off"
                 value="Predicted"
                 checked="checked" />
             <label for="predicted_radio" style="font-weight: normal">Predicted (<span id="predicted_discharge"></span>m&#179;s)</label><br />
@@ -37,14 +36,12 @@
                 type="radio"
                 name="discharge"
                 disabled="true"
-                class="rd_actual deselect-off"
                 value="Actual" />
             <label for="actual_radio" style="font-weight: normal">Actual (<span id="actual_discharge"></span>m&#179;s)</label><br />
 
             <input id="discharge_radio"
                 type="radio"
                 name="discharge"
-                class="deselect-off"
                 value="Selected" />
             <label for="discharge_radio" style="font-weight: normal">Selected</label>
             <select id="selected_discharge">
@@ -53,7 +50,6 @@
             <input id="defined_radio"
                 type="radio"
                 name="discharge"
-                class="deselect-off"
                 value="Defined" />
             <label for="defined_radio" style="font-weight: normal">User Defined</label>
             <input id="defined_discharge"
@@ -222,7 +218,6 @@
            <input id="zero_to_two"
                type="radio"
                name="legend_scale"
-               class="deselect-off"
                value="0"
                checked="checked" />
            <label for="zero_to_two" style="font-weight: normal">0 to 2 m/s (Interval 0.25ms)</label><br />
@@ -230,7 +225,7 @@
            <input id="zero_to_four"
                type="radio"
                name="legend_scale"
-               class="rd_actual deselect-off"
+               class="rd_actual"
                value="1" />
            <label for="zero_to_four" style="font-weight: normal">0 to 4 m/s (Interval 0.5ms)</label><br />
 

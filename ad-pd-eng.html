@@ -23,7 +23,7 @@
               <input id="predicted_radio"
                   type="radio"
                   name="discharge"
-                  class="rd_predicted deselect-off"
+                  class="rd_predicted"
                   value="Predicted"
                   checked="checked" />
               <label for="predicted_radio"
@@ -33,7 +33,7 @@
                   type="radio"
                   name="discharge"
                   disabled="true"
-                  class="rd_actual deselect-off"
+                  class="rd_actual"
                   value="Actual" />
               <label for="actual_radio"
                   style="font-weight: normal">Actual (<span id="actual_discharge">0</span>m&#179;s)</label><br />
@@ -41,7 +41,6 @@
               <input id="selected_radio"
                   type="radio"
                   name="discharge"
-                  class="deselect-off"
                   value="Selected" />
               <label for="discharge_radio" style="font-weight: normal">Selected</label>
               <select id="selected_discharge">
@@ -50,7 +49,6 @@
               <input id="defined_radio"
                   type="radio"
                   name="discharge"
-                  class="deselect-off"
                   value="Defined" />
               <label for="defined_radio"
                   style="font-weight: normal">User-defined</label>
@@ -105,12 +103,10 @@
               <input id="condition"
                   type="radio"
                   name="condition"
-                  class="deselect-off"
                   checked="checked"
                   value="0" /> <span>Current Soundings</span><br />
               <input type="radio"
                   name="condition"
-                  class="deselect-off"
                   value="1" /> <span>Design Grade</span>
             </div>
 
@@ -119,12 +115,10 @@
               <input id="channel"
                   type="radio"
                   name="channel"
-                  class="deselect-off"
                   checked="checked"
                   value="0" /> <span>Inner Limit</span>
               <input type="radio"
                   name="channel"
-                  class="deselect-off"
                   value="1" /> <span>Outer Limit</span>
             </div>
           </div>
