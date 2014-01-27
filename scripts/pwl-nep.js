@@ -23,7 +23,7 @@
   };
 
   $(function() {
-    var check;
+    var check, river_section;
     $("#print_predicted_water_levels").click(function() {
       return window.print();
     });
@@ -31,7 +31,17 @@
       $("#date").val(querystring('date'));
       $("#waterway").val(querystring('waterway'));
       $("#interval").val(querystring('intervalMin'));
-      $("input[name=fraser_river]")[$("#waterway").val()].checked = true;
+      river_section = (function() {
+        switch ($("#waterway").val()) {
+          case "0":
+            return "South Arm";
+          case "1":
+            return "North Arm";
+          case "2":
+            return "Main Arm";
+        }
+      })();
+      $("#fraser_river").val(river_section);
       $("#flowRate").val(querystring('flowRate'));
       $("#flowType").val(querystring('flowType'));
       check = (function() {
@@ -136,7 +146,7 @@
     var headerRow, i, kmStart, report_type, step, waterway, _ref;
     report_type = $('input[name=report]:checked').val();
     waterway = (function() {
-      switch ($('input[name=fraser_river]:checked').val()) {
+      switch ($('#fraser_river').val()) {
         case 'South Arm':
           $('#river-section').parent().attr('colspan', 21);
           return 0;
@@ -148,9 +158,9 @@
           return 2;
       }
     })();
-    $('#static-arm').text($('input[name=fraser_river]:checked').val());
+    $('#static-arm').text($('#fraser_river').val());
     $('#waterway').val(waterway);
-    $('#river-section').text($('input[name=fraser_river]:checked').val());
+    $('#river-section').text($('#fraser_river').val());
     $('#water-levels tbody').empty();
     $('#headerkm').empty();
     step = 2;

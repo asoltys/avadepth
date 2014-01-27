@@ -23,17 +23,13 @@
 
             <div>
               <label for="fraser_river">Fraser River:</label>
-              <input id="fraser_river"
+              <select id="fraser_river"
                   type="radio"
-                  name="fraser_river"
-                  checked="checked"
-                  value="South Arm" /> South Arm (km 0-40)<br />
-              <input type="radio"
-                  name="fraser_river"
-                  value="North Arm" /> North Arm (km 0-30)<br />
-              <input type="radio"
-                  name="fraser_river"
-                  value="Main Arm" /> Main Arm (km 40-92)<br />
+                  name="fraser_river">
+                <option value="South Arm" selected="selected">South Arm (km 0-40)</option>
+                <option value="North Arm">North Arm (km 0-30)</option>
+                <option value="Main Arm">Main Arm (km 40-92)</option>
+              </select>
               <input type="hidden" name="waterway" id="waterway" value="0" />
             </div>
           </div>

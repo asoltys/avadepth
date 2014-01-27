@@ -34,7 +34,11 @@ $(->
     $("#date").val(querystring('date'))
     $("#waterway").val(querystring('waterway'))
     $("#interval").val(querystring('intervalMin'))
-    $("input[name=fraser_river]")[$("#waterway").val()].checked = true
+    river_section = switch $("#waterway").val()
+      when "0" then "South Arm"
+      when "1" then "North Arm"
+      when "2" then "Main Arm"
+    $("#fraser_river").val(river_section)
     $("#flowRate").val(querystring('flowRate'))
     $("#flowType").val(querystring('flowType'))
     check = switch querystring('flowType')[0]
@@ -126,7 +130,7 @@ $(->
 
 update = ->
   report_type = $('input[name=report]:checked').val()
-  waterway = switch $('input[name=fraser_river]:checked').val()
+  waterway = switch $('#fraser_river').val()
     when 'South Arm'
       $('#river-section').parent().attr('colspan', 21)
       0
@@ -137,9 +141,9 @@ update = ->
       $('#river-section').parent().attr('colspan', 14)
       2
 
-  $('#static-arm').text($('input[name=fraser_river]:checked').val())
+  $('#static-arm').text($('#fraser_river').val())
   $('#waterway').val(waterway)
-  $('#river-section').text($('input[name=fraser_river]:checked').val())
+  $('#river-section').text($('#fraser_river').val())
   $('#water-levels tbody').empty()
   $('#headerkm').empty()
   step = 2
