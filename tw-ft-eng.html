@@ -152,10 +152,11 @@
                   name="window_radio"
                   checked="checked"
                   value="Maximum Depth" />
-              <label for="max_depth_radio">Maximum Depth:</label><br />
-              <label style="display:inline;margin-left:2em">Min. Window:</label>
+              <label for="max_depth_radio">Maximum Depth:</label><br/>
+              <label style="display:inline;margin-left:2em; position: absolute; margin-top: -10px;">Min. Window:</label>
               <select id="minimum_window"
-                  name="minimum_window">
+                  name="minimum_window"
+									style="margin: -10px 0 0 120px;">
                 <option value="1">1hr</option>
                 <option value="2" selected="selected">2hrs</option>
                 <option value="3">3hrs</option>
@@ -166,12 +167,12 @@
                   name="window_radio"
                   value="Min. Window" />
               <label for="min_win_radio">Available Windows</label><br />
-              <label style="display:inline;margin-left:2em;">Depth</label>
+              <label style="display:inline;margin-left:2em; position: absolute; margin-top: -10px;">Depth</label>
               <input id="depth"
                   type="text"
                   name="depth"
-                  style="margin-top:0.5em;width:5em"
-                  value="10" /> m</div>
+                  style="margin-top:0.5em;width:5em; margin: -8px 0 0 70px; float: left;"
+                  value="10" /> <p class="float: left;" style="margin: -10px 0 0 0; padding: 0 0 0 0;">m</p></div>
             </div>
           </div>
         </form>
@@ -290,7 +291,7 @@
     <div class="clear"></div>
 
     <section style="padding: 20px">
-      <table id="transit-window" class="zebra-striped">
+      <table id="transit-window" class="zebra-striped" style="table-layout: fixed; width: 600px;">
         <thead>
         <tr>
           <th colspan="2">From</th>
