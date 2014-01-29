@@ -6,7 +6,7 @@
   flowrate = 0;
 
   preload = function(img) {
-    return $('<img/>')[0].src = "http://184.106.250.111" + img;
+    return $('<img/>')[0].src = "http://205.193.152.175" + img;
   };
 
   $(function() {
@@ -195,7 +195,7 @@
       $('#replay').show();
       i = 1;
       handle = setInterval(function() {
-        $('#animated').attr("src", "http://184.106.250.111" + images[i]);
+        $('#animated').attr("src", "http://205.193.152.175" + images[i]);
         $('#animated').on("load", function() {
           $('#animated').show();
           return $('#animated_legend').show();

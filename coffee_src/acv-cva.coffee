@@ -2,7 +2,7 @@ images = []
 flowrate = 0
 
 preload = (img) ->
-  $('<img/>')[0].src = "http://184.106.250.111#{img}"
+  $('<img/>')[0].src = "http://205.193.152.175#{img}"
 
 $(->
   $('#date').change(->
@@ -185,7 +185,7 @@ play = ->
     $('#replay').show()
     i = 1
     handle = setInterval(->
-      $('#animated').attr("src", "http://184.106.250.111#{images[i]}")
+      $('#animated').attr("src", "http://205.193.152.175#{images[i]}")
       $('#animated').on("load", ->
         $('#animated').show()
         $('#animated_legend').show()
