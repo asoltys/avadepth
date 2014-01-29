@@ -67,6 +67,23 @@ $(->
   )
 
   $('select#interval').change(->
+    interval = parseFloat($(this).val())
+    options = ""
+    start = $('#from').val()
+    interval_start = parseFloat(start)
+    while interval_start >= 0
+      interval_start -= interval
+    interval_start += interval
+    $('select#from').html('')
+    for i in [interval_start...24] by interval
+      hour = Math.floor(i)
+      hour = "0" + hour if hour < 10
+      minute = i%1*60
+      minute = "00" if minute == 0
+      options += "<option value=\"#{i}\">#{hour}:#{minute}</option>"
+    $('select#from').html(options)
+    #if $('#type').val() == "0"
+    $('#from').val(start)
     $("#from").change()
     $('#static-interval').text($(this).val())
   )
@@ -147,8 +164,7 @@ update = ->
         getImage()
         minute += interval*60
         if minute >= 60
-          minute = base_minute
-          #hour = Math.floor(parseFloat($("#interval"))*60)
+          minute = minute-60
           if interval <= 1
             hour += 1
           else

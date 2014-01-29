@@ -80,6 +80,25 @@
       return $('#static-zone').text($(this).val());
     });
     $('select#interval').change(function() {
+      var hour, i, interval, interval_start, minute, options, start;
+      interval = parseFloat($(this).val());
+      options = "";
+      start = $('#from').val();
+      interval_start = parseFloat(start);
+      while (interval_start >= 0) {
+        interval_start -= interval;
+      }
+      interval_start += interval;
+      $('select#from').html('');
+      for (i = interval_start; interval_start <= 24 ? i < 24 : i > 24; i += interval) {
+        hour = Math.floor(i);
+        if (hour < 10) hour = "0" + hour;
+        minute = i % 1 * 60;
+        if (minute === 0) minute = "00";
+        options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
+      }
+      $('select#from').html(options);
+      $('#from').val(start);
       $("#from").change();
       return $('#static-interval').text($(this).val());
     });
@@ -150,7 +169,7 @@
           getImage();
           minute += interval * 60;
           if (minute >= 60) {
-            minute = base_minute;
+            minute = minute - 60;
             if (interval <= 1) {
               return hour += 1;
             } else {
