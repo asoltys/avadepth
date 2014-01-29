@@ -152,11 +152,11 @@
                     name="window_radio"
                     checked="checked"
                     value="Maximum Depth" />
-                <label for="max_depth_radio">Maximum Depth:</label><br/>
-                <label style="display:inline;margin-left:2em; position: absolute; margin-top: -10px;">Min. Window:</label>
+                <label for="max_depth_radio" style="margin-bottom:0">Maximum Depth:</label><br/>
+                <label style="display:inline-block;margin-left:30px">Min. Window:</label>
                 <select id="minimum_window"
                     name="minimum_window"
-                    style="margin: -10px 0 0 120px;">
+                    style="display:inline-block">
                   <option value="1">1hr</option>
                   <option value="2" selected="selected">2hrs</option>
                   <option value="3">3hrs</option>
@@ -166,13 +166,13 @@
                     type="radio"
                     name="window_radio"
                     value="Min. Window" />
-                <label for="min_win_radio">Available Windows</label><br />
-                <label style="display:inline;margin-left:2em; position: absolute; margin-top: -10px;">Depth</label>
+                <label for="min_win_radio" style="margin-bottom:0">Available Windows</label><br />
+                <label style="display:inline-block;margin-left:30px">Depth:</label>
                 <input id="depth"
                     type="text"
                     name="depth"
-                    style="margin-top:0.5em;width:5em; margin: -8px 0 0 70px; float: left;"
-                    value="10" /> <p class="float: left;" style="margin: -10px 0 0 0; padding: 0 0 0 0;">m</p>
+                    style="width:3em;diplay:inline-block"
+                    value="10" /> <span style="margin: 0px 0 0 0; padding: 0 0 0 0;">m</span>
               </div>
             </div>
           </div>
@@ -258,12 +258,12 @@
   <div id="report_body" class="print-align-center">
 			<button id="print_transit_window" class="print_button button button-accent print_hide float-left">Print</button>
 	<div class="clear"></div>
-    <h2>Maximum Depth and Transit Time Report</h2>
-    <h2>Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
-    <p><span id="static-window">Transit Window: 2 hrs</span></p>
-    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
-    <p><span id="static-sounding">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
-    <p>From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
+    <h2>Maximum Depth and Transit Time Report<br />
+    Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
+    <p><span id="static-window">Transit Window: 2 hrs</span><br />
+    Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)<br />
+    <span id="static-sounding">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width<br />
+    From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
 		
 		<div class="print-width-90 print-margin-auto">
 			<table class="span-6 print-float-left print-width-50">
@@ -292,7 +292,7 @@
     <div class="clear"></div>
 
     <section style="padding: 20px">
-      <table id="transit-window" class="zebra-striped" style="table-layout: fixed; width: 600px;">
+      <table id="transit-window" class="zebra-striped" style="table-layout: fixed; width: 750px;">
         <thead>
         <tr>
           <th colspan="2">From</th>
