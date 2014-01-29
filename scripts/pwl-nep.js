@@ -133,6 +133,20 @@
     $('input[name=channel]').change(function() {
       return $('#static-limit').text($(this).next().text());
     });
+    $("select#fraser_river").change(function() {
+      var img_src;
+      img_src = (function() {
+        switch ($(this).val()) {
+          case "South Arm":
+            return "pwl_southarm.png";
+          case "North Arm":
+            return "pwl_northarm.png";
+          case "Main Arm":
+            return "pwl_mainarm.png";
+        }
+      }).call(this);
+      return $("#fraser_river_map").attr("src", "images/" + img_src);
+    });
     $('select#interval').change(function() {
       return $('#static-interval').text($(this).val());
     });

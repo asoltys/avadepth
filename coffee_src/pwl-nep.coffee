@@ -116,6 +116,14 @@ $(->
   $('input[name=channel]').change(->
     $('#static-limit').text($(this).next().text())
   )
+  
+  $("select#fraser_river").change(->
+    img_src = switch $(this).val()
+      when "South Arm" then "pwl_southarm.png"
+      when "North Arm" then "pwl_northarm.png"
+      when "Main Arm"  then "pwl_mainarm.png"
+    $("#fraser_river_map").attr("src","images/#{img_src}")
+  )
 
   $('select#interval').change(->
     $('#static-interval').text($(this).val())

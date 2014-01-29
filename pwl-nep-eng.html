@@ -8,13 +8,11 @@
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
     <ul class="tabs">
       <li class="default"><a href="#parameters">Parameters</a></li>
-      <li><a href="#south_arm">South Arm</a></li>
-      <li><a href="#main_arm">Main Arm</a></li>
     </ul>
     <div style="height:250px;border: 2px solid #eee" class="summary tabs-panel filled">
       <div id="parameters" style="height:250px">
         <form id="daily_depth">
-          <div class="span-4">
+          <div class="span-3">
             <div>
               <label for="date">Date:</label>
               <input id="date" type="text" name="date" class="datepicker" />
@@ -24,7 +22,6 @@
             <div>
               <label for="fraser_river">Fraser River:</label>
               <select id="fraser_river"
-                  type="radio"
                   name="fraser_river">
                 <option value="South Arm" selected="selected">South Arm (km 0-40)</option>
                 <option value="North Arm">North Arm (km 0-30)</option>
@@ -32,9 +29,6 @@
               </select>
               <input type="hidden" name="waterway" id="waterway" value="0" />
             </div>
-          </div>
-
-          <div class="span-4">
             <strong>River Discharge @ Hope:</strong><br />
             <input id="predicted_radio"
                 type="radio"
@@ -69,9 +63,7 @@
             
             <input type="hidden" name="flowRate" id="flowRate" value="0" />
             <input type="hidden" name="flowType" id="flowType" value="0" />
-          </div>
 
-          <div class="span-3">
             <div>
               <label for="interval">Interval:</label>
               <select id="interval">
@@ -94,6 +86,11 @@
                   style="margin-left:1em"/> Velocities<br />
             </div>
           </div>
+
+          <div class="span-8">
+            <img id="fraser_river_map"
+                src="images/pwl_southarm.png" />
+          </div>
         </form>
 				<div class="clear"></div>
 				<button id="submit"
@@ -101,14 +98,6 @@
 					class="button button-accent"
 					name="submit">Submit
 				</button>				
-      </div>
-      <div id="south_arm" style="max-height: 600px;">
-        <img src="images/pwl_southarm.png"
-            style="margin-left:auto;margin-right:auto;display:block;"/>
-      </div>
-      <div id="main_arm" style="max-height: 600px;">
-        <img src="images/pwl_mainarm.png"
-            style="margin-left:auto;margin-right:auto;display:block;vertical-align:middle"/>
       </div>
     </div>
   </div>
