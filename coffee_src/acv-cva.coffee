@@ -5,6 +5,7 @@ preload = (img) ->
   $('<img/>')[0].src = "http://205.193.152.175#{img}"
 
 $(->
+  $('input[name=type][value=0]').attr('checked', 'checked')
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
       $('#selected_discharge').empty()
@@ -99,7 +100,7 @@ $(->
       minute = "00" if minute == 0
       options += "<option value=\"#{i}\">#{hour}:#{minute}</option>"
     $('select#to').html(options)
-    if $('#type').val() == "0"
+    if $('input[name=type]:checked').val() == "0"
       $('select#to').prop('disabled','disabled')
     $('#static-start').text($(this).val())
   )
@@ -112,8 +113,8 @@ $(->
     $('#static-legend').text($(this).next().text())
   )
 
-  $('#type').change(->
-    if $(this).val() != '0'
+  $('input[name=type]').change(->
+    if $('input[name=type]:checked').val() != '0'
       $('#to').prop('disabled','')
     else
       $('#to').prop('disabled','disabled')
@@ -135,7 +136,7 @@ update = ->
   $('#frames_retrieved').html('0')
   $('#number_of_frames').html(($('#to').val()-$('#from').val())/interval+1)
 
-  if $('#type').val() != '0'
+  if $('input[name=type]:checked').val() != '0'
     end_hour = Math.floor(parseFloat($('#to').val()))
     end_minute = (parseFloat($('#to').val()) - end_hour) * 60
     $('#frame_count').show()
@@ -198,5 +199,5 @@ play = ->
   else
     $('#nodata').show()
 
-  if $('#type').val() == '0'
+  if $('input[name=type]:checked').val() == '0'
     $('#replay').hide()

@@ -199,6 +199,7 @@ $(->
 )
 
 getSurveyDrawings = ((jsonStuff) ->
+  $('.spinner').css('display', 'block')
   drawingRows = ""
   $.getJSON("/api/surveys/getsurveys?river=#{jsonStuff.river}&" +
       "drawingType=#{jsonStuff.drawingType}&" +
@@ -226,6 +227,7 @@ getSurveyDrawings = ((jsonStuff) ->
     )
     $('#surveys').append(drawingRows)
   ).done( ->
+    $('.spinner').css('display', 'none')
     $('#surveys tr:nth-child(odd)').addClass('odd')
     $('#surveys tr:nth-child(even)').addClass('even')
   )

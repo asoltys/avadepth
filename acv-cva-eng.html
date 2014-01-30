@@ -61,10 +61,16 @@
             <input type="hidden" name="flowType" id="flowType" value="0" />
 
             <label for="type">Display Type:</label>
-            <select name="type" id="type">
+            <!--
+						<select name="type" id="type">
                <option value="0">Static Image</option>
                <option value="1">Animated Series</option>
             </select> 
+						-->
+						
+						<input type="radio" name="type" value="0"/>Static Image<br/>
+						<input type="radio" name="type" value="1"/>Animated Series
+						
             <div class="clear"></div>
 
             <div class="inline-block">
@@ -186,7 +192,7 @@
              <div class="clear"></div>
 
              <div class="inline-block">
-               <label for="zone">Zone:</label>
+               <label for="zone">Zone: <abbr title="Please refer to reference map">?</abbr></label>
                <select name="zone" id="zone">
                  <option selected="selected" value="1">01</option>
                  <option value="2">02</option>
