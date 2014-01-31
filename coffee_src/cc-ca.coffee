@@ -1,5 +1,6 @@
 table = null
 $(->
+  $('#soundings').css('width', '500px')
   date = new Date()
   weekday = [ "Sunday", "Monday", "Tuesday", "Wednesday",
               "Thursday", "Friday", "Saturday"]
