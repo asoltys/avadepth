@@ -5,7 +5,7 @@
 <script type="text/javascript" src="scripts/flot/jquery.flot.stack.js"></script>
 <script type="text/javascript" src="scripts/hydrograph-hydrogramme.js"></script>
 
-<h1>Fraser River Hydrograph</h1>
+<h1 class="print_hide">Fraser River Hydrograph</h1>
 <div class="grid-12">
   <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1">
     <ul class="tabs">
@@ -14,11 +14,31 @@
     </ul>
 
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
-      <div id="graph" style="height:509px">
+      <div id="graph" style="height:521px">
         <div class="span-2 print_hide">
           <form id="daily_depth">
               <label for="date">Date:</label>
-              <input id="date" type="text" name="date" class="datepicker" />
+              <select id="month"
+                  class="date"
+                  name="month">
+                <option value="2">January</option>
+                <option value="3">February</option>
+                <option value="4">March</option>
+                <option value="5">April</option>
+                <option value="6">May</option>
+                <option value="7">June</option>
+                <option value="8">July</option>
+                <option value="9">August</option>
+                <option value="10">September</option>
+                <option value="11">October</option>
+                <option value="12">November</option>
+                <option value="1">December</option>
+              </select>
+
+              <select id="year"
+                  name="year"
+                  class="date">
+              </select>
               <input id="alt-date" type="hidden" />
 
               <label for="period">Period:</label>
@@ -45,12 +65,14 @@
           </form>
         </div>
         <div class="span-9 demo-container print_show" style="display:block">
-					<h2 class="print_hide" style="margin-left: 10px;">Fraser River Hydrograph at Hope</h2>
+					<h2 style="margin-left: 10px;">Fraser River Hydrograph at Hope</h2>
           <div class="print_show">
-            <p><span id="static-date"></span> during a period of <span id="static-period">3 Months</span></p>
+            <p style="margin-left:1em">From <span id="static-month"></span>
+            <span id="static-year"></span> to <span id="static-period"></span></p>
           </div>
           <div id="loading">Please wait while we fetch your results...</div>
-          <div id="flot-placeholder1" style="width: 880px; height:500px;margin:0"></div>
+          <div id="legend_container" style="margin-left:58px"></div>
+          <div id="hydrograph_chart" style="width: 870px; height:400px;margin:0"></div>
         </div>
       </div>
 

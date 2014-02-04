@@ -13,18 +13,20 @@ update = ->
   actual     = []
   predicted  = []
 
-  date   = moment($('#date').val())
-  year   = date.year()
-  month  = date.month()
-#Hack because api uses december as month one
-  if month == 11
-    month = -1
+#Hack because Alfred's API uses december as month one
+  year = parseInt($("#year").val())
+  month = 12
+  month = $("#month").val()-1 unless $("#month").val() == 1
+  if $("#month").val() == "1"
     year += 1
-  period = $('#period').val()
 
+  period_end = moment([year, month, 1]).add('months',$("#period option:selected").html().split(" ")[0]).subtract('month',1)
+  $('#static-month').text($('#month option:selected').html())
+  $('#static-year').text($('#year').val())
+  $("#static-period").text(period_end.format("MMMM YYYY"))
   $.getJSON("/api/hydrograph?year=#{year}&" +
-      "month=#{month + 2}&" +
-      "period=#{period}&" +
+      "month=#{$('#month').val()}&" +
+      "period=#{$('#period').val()}&" +
       "actual=false&" +
       "predicted=true",
     (results) ->
@@ -53,13 +55,13 @@ update = ->
       )
 
       dataset = [
-        {data: maximum, label: "Maximum"}
+        {data: maximum, label: "Max Range"}
         {data: actual,  label: "Actual"}
-        {data: minimum, label: "Minimum"}
+        {data: minimum, label: "Min Range"}
         {data: predicted,  label: "Predicted"}
       ]
 
-      $.plot($("#flot-placeholder1"), dataset, options)
+      $.plot($("#hydrograph_chart"), dataset, options)
   )
 
 options =
@@ -77,7 +79,6 @@ options =
     mode: "time",
     color: 'white'
     tickColor: 'white'
-    axisLabel: "Date"
     axisLabelUseCanvas: true
     axisLabelFontSizePixels: 12
     axisLabelFontFamily: 'Verdana, Arial'
@@ -88,36 +89,32 @@ options =
     axisLabelFontSizePixels: 12
     axisLabelFontFamily: 'Verdana, Arial'
     axisLabelPadding: 6
+  legend:
+    container: "#legend_container"
+    noColumns: 0
+    labelBoxBorderColor: "none"
 
 $(->
   $("#print_hydrograph").click(->
     window.print()
   )
 
-  now = new Date()
-  $('#date').val("#{now.getFullYear()}-01-01")
+  current_year = new Date().getFullYear()
+  s = "<option selected=\"selected\">#{current_year}</option>"
+  for year in [current_year-1..1994] by -1
+    s += "<option>#{year}</option>"
+  $("#year").html(s)
 
   $('#submit').click(update)
 
-  $('#date').change(->
-    $('#static-date').text($('#date').val())
-  )
-
-  $('select#period').change(->
-    $('#static-period').text($(this).val())
-  )
-
-  $('#date').change()
-
   $(document).ajaxStart(->
     $('#loading').show()
-    $('#flot-placeholder1').html('')
+    $('#hydrograph_chart').html('')
   )
 
   $(document).ajaxSuccess(->
     $('#loading').hide()
   )
-
 
   update()
 )

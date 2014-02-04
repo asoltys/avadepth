@@ -8,20 +8,20 @@
   date_inc = 0;
 
   update = function() {
-    var actual, date, maximum, minimum, month, period, predicted, year;
+    var actual, maximum, minimum, month, period_end, predicted, year;
     minimum = [];
     maximum = [];
     actual = [];
     predicted = [];
-    date = moment($('#date').val());
-    year = date.year();
-    month = date.month();
-    if (month === 11) {
-      month = -1;
-      year += 1;
-    }
-    period = $('#period').val();
-    return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month + 2) + "&") + ("period=" + period + "&") + "actual=false&" + "predicted=true", function(results) {
+    year = parseInt($("#year").val());
+    month = 12;
+    if ($("#month").val() !== 1) month = $("#month").val() - 1;
+    if ($("#month").val() === "1") year += 1;
+    period_end = moment([year, month, 1]).add('months', $("#period option:selected").html().split(" ")[0]).subtract('month', 1);
+    $('#static-month').text($('#month option:selected').html());
+    $('#static-year').text($('#year').val());
+    $("#static-period").text(period_end.format("MMMM YYYY"));
+    return $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + ($('#month').val()) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
       $.each(results, function(i, v) {
         year = v.year;
         month = v.month - 1;
@@ -49,19 +49,19 @@
       dataset = [
         {
           data: maximum,
-          label: "Maximum"
+          label: "Max Range"
         }, {
           data: actual,
           label: "Actual"
         }, {
           data: minimum,
-          label: "Minimum"
+          label: "Min Range"
         }, {
           data: predicted,
           label: "Predicted"
         }
       ];
-      return $.plot($("#flot-placeholder1"), dataset, options);
+      return $.plot($("#hydrograph_chart"), dataset, options);
     });
   };
 
@@ -85,7 +85,6 @@
       mode: "time",
       color: 'white',
       tickColor: 'white',
-      axisLabel: "Date",
       axisLabelUseCanvas: true,
       axisLabelFontSizePixels: 12,
       axisLabelFontFamily: 'Verdana, Arial',
@@ -97,27 +96,29 @@
       axisLabelFontSizePixels: 12,
       axisLabelFontFamily: 'Verdana, Arial',
       axisLabelPadding: 6
+    },
+    legend: {
+      container: "#legend_container",
+      noColumns: 0,
+      labelBoxBorderColor: "none"
     }
   };
 
   $(function() {
-    var now;
+    var current_year, s, year, _ref;
     $("#print_hydrograph").click(function() {
       return window.print();
     });
-    now = new Date();
-    $('#date').val("" + (now.getFullYear()) + "-01-01");
+    current_year = new Date().getFullYear();
+    s = "<option selected=\"selected\">" + current_year + "</option>";
+    for (year = _ref = current_year - 1; year >= 1994; year += -1) {
+      s += "<option>" + year + "</option>";
+    }
+    $("#year").html(s);
     $('#submit').click(update);
-    $('#date').change(function() {
-      return $('#static-date').text($('#date').val());
-    });
-    $('select#period').change(function() {
-      return $('#static-period').text($(this).val());
-    });
-    $('#date').change();
     $(document).ajaxStart(function() {
       $('#loading').show();
-      return $('#flot-placeholder1').html('');
+      return $('#hydrograph_chart').html('');
     });
     $(document).ajaxSuccess(function() {
       return $('#loading').hide();

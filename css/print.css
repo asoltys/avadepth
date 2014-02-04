@@ -46,9 +46,14 @@ table {
   page-break-before: always;
 }
 */
-#flot-placeholder1 {
+#hydrograph_chart, #legend_container {
   margin:0 0 0 0;
   padding: 0 0 0 0;
+}
+
+#legend_container {
+  width:450px;
+  margin-left:20px;
 }
 
 .print-float-left{
