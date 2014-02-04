@@ -140,7 +140,7 @@ $(->
     else
       #$('#window').val($('#minimum_window').val())
       $('#cmp').val($('#depth').val())
-      $('#static-window').text("Available Transit Window for #{$('#cmp').val()}m depth & Minimum #{$('#minimum_window').val()} hr window")
+      $('#static-window').text("Available Transit Window for #{$('#cmp').val()}m depth & #{$('#minimum_window').val()} hr window")
     #$('#window').change()
   )
 

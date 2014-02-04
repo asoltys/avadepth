@@ -69,6 +69,22 @@ $(->
 )
 
 update = ->
+  date_val_arr = $('#date').val().split("-");
+  date_val_month = switch
+    when date_val_arr[1] == '01' then 'January'
+    when date_val_arr[1] == '02' then 'February'
+    when date_val_arr[1] == '03' then 'March'
+    when date_val_arr[1] == '04' then 'April'
+    when date_val_arr[1] == '05' then 'May'
+    when date_val_arr[1] == '06' then 'June'
+    when date_val_arr[1] == '07' then 'July'
+    when date_val_arr[1] == '08' then 'August'
+    when date_val_arr[1] == '09' then 'September'
+    when date_val_arr[1] == '10' then 'October'
+    when date_val_arr[1] == '11' then 'November'
+    when date_val_arr[1] == '12' then 'December'
+  $('#date-display').text(date_val_month + " " + date_val_arr[0])
+
   flow = avadepth.util.getSelectedFlow()
   $('#flowRate').val(flow.flowRate)
   if flow.flowType != "0"
@@ -109,7 +125,11 @@ update = ->
     $('#static-width').text($('#width').val())
     $('#static-chainage').text($('#chainage').val())
     $('#static-type').text($('input[name="condition"]:checked').next().text())
-    $('#static-limit').text($('input[name="channel"]:checked').next().text())
+    limit_text = switch
+      when $('input[name="channel"]:checked').val() == '0' then 'Inner Channel Limit'
+      when $('input[name="channel"]:checked').val() == '1' then 'Outer Channel Limit'
+      else ''
+    $('#static-limit').text(limit_text)
     $('#static-discharge').text($('#flowRate').val())
     $('#static-discharge-eval').text($('#flowType').val())
   )
