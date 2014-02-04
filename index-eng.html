@@ -1,6 +1,13 @@
 <!--#include virtual="/includes/header-eng.html" -->
-
 <!-- MainContentStart -->
+<script>
+  $(function() {
+    console.log('hello world');
+    $.getJSON("db_last_modified.pl", function(data) {
+      $('#last_modified').html(data.last_updated)
+    });
+  });
+</script>
 <section>
   <div class="span-8">
     <div class="wet-boew-tabbedinterface tabs-style-2 cycle animate">
@@ -86,4 +93,5 @@
   </div>
 </section>
 
+<p style="float:right;margin-bottom:-10px">Database last modified: <span id="last_modified"></span></p>
 <!--#include virtual="/includes/footer-eng.html" -->
