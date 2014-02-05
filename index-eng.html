@@ -2,7 +2,6 @@
 <!-- MainContentStart -->
 <script>
   $(function() {
-    console.log('hello world');
     $.getJSON("db_last_modified.pl", function(data) {
       $('#last_modified').html(data.last_updated)
     });

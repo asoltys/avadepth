@@ -116,9 +116,7 @@
         options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
       }
       $('select#to').html(options);
-      if ($('input[name=type]:checked').val() === "0") {
-        $('select#to').prop('disabled', 'disabled');
-      }
+      if ($('input[name=type]:checked').val() === "0") $('#to_params').hide();
       return $('#static-start').text($(this).val());
     });
     $('select#to').change(function() {
@@ -129,9 +127,9 @@
     });
     $('input[name=type]').change(function() {
       if ($('input[name=type]:checked').val() !== '0') {
-        return $('#to').prop('disabled', '');
+        return $('#to_params').show();
       } else {
-        return $('#to').prop('disabled', 'disabled');
+        return $('#to_params').hide();
       }
     });
     $("#submit").click(update);

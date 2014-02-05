@@ -102,7 +102,7 @@ $(->
       options += "<option value=\"#{i}\">#{hour}:#{minute}</option>"
     $('select#to').html(options)
     if $('input[name=type]:checked').val() == "0"
-      $('select#to').prop('disabled','disabled')
+      $('#to_params').hide()
     $('#static-start').text($(this).val())
   )
   
@@ -116,9 +116,9 @@ $(->
 
   $('input[name=type]').change(->
     if $('input[name=type]:checked').val() != '0'
-      $('#to').prop('disabled','')
+      $('#to_params').show()
     else
-      $('#to').prop('disabled','disabled')
+      $('#to_params').hide()
   )
 
   $("#submit").click(update)
