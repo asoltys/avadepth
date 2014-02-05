@@ -10,6 +10,7 @@
   };
 
   $(function() {
+    $("#static_rd").attr('checked', 'checked');
     $('#date').change(function() {
       $.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
         $('#selected_discharge').empty();
@@ -115,7 +116,9 @@
         options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
       }
       $('select#to').html(options);
-      if ($('#type').val() === "0") $('select#to').prop('disabled', 'disabled');
+      if ($('input[name=type]:checked').val() === "0") {
+        $('select#to').prop('disabled', 'disabled');
+      }
       return $('#static-start').text($(this).val());
     });
     $('select#to').change(function() {
@@ -124,8 +127,8 @@
     $('input[name="velocity_legend"]').change(function() {
       return $('#static-legend').text($(this).next().text());
     });
-    $('#type').change(function() {
-      if ($(this).val() !== '0') {
+    $('input[name=type]').change(function() {
+      if ($('input[name=type]:checked').val() !== '0') {
         return $('#to').prop('disabled', '');
       } else {
         return $('#to').prop('disabled', 'disabled');
@@ -146,7 +149,7 @@
     interval = parseFloat($("#interval").val());
     $('#frames_retrieved').html('0');
     $('#number_of_frames').html(($('#to').val() - $('#from').val()) / interval + 1);
-    if ($('#type').val() !== '0') {
+    if ($('input[name=type]:checked').val() !== '0') {
       end_hour = Math.floor(parseFloat($('#to').val()));
       end_minute = (parseFloat($('#to').val()) - end_hour) * 60;
       $('#frame_count').show();
@@ -209,7 +212,7 @@
     } else {
       $('#nodata').show();
     }
-    if ($('#type').val() === '0') return $('#replay').hide();
+    if ($('input[name=type]:checked').val() === '0') return $('#replay').hide();
   };
 
 }).call(this);

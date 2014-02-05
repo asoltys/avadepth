@@ -5,7 +5,8 @@ preload = (img) ->
   $('<img/>')[0].src = "http://205.193.152.175#{img}"
 
 $(->
-  $('input[name=type][value=0]').attr('checked', 'checked')
+  $("#static_rd").attr('checked', 'checked')
+
   $('#date').change(->
     $.getJSON("/api/depths?date=#{$('#date').val()}", (data) ->
       $('#selected_discharge').empty()

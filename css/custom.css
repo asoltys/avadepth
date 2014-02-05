@@ -35,7 +35,7 @@ div.filled {
 }
 
 .tabs-style-1 .tabs li a, .tabs-style-1 .tabs li a:hover, .tabs-style-1 .tabs li a:focus, .tabs-style-1 .tabs li {
-  background: #A00 url('/images/gradient.jpg');
+  background: #105282;
 }
 
 .tabs-style-1 .tabs li a:hover {
@@ -48,6 +48,7 @@ div.filled {
 .tabs-style-1 .tabs li a.active {
   font-weight: bold;
   text-decoration: none;
+  background-color: #f9f9f9
 }
 
 .stripe {

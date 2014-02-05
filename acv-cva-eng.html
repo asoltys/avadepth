@@ -68,8 +68,14 @@
             </select> 
 						-->
 						
-						<input type="radio" name="type" value="0"/>Static Image<br/>
-						<input type="radio" name="type" value="1"/>Animated Series
+						<input type="radio"
+                name="type"
+                id="static_rd"
+                value="0"/>Static Image<br/>
+						<input type="radio"
+                name="type"
+                id="animated_rd"
+                value="1"/>Animated Series
 						
             <div class="clear"></div>
 
@@ -208,7 +214,7 @@
                </select>
              </div>
 
-             <div class="inline-block">
+             <div class="inline-block" style="margin-left:21px">
                <label for="interval">Interval:</label>
                <select name="interval" id="interval">
                  <option value="4">4 hr</option>
