@@ -15,22 +15,18 @@
   };
 
   $(function() {
-    var chainage, date, datestr;
+    var chainage;
     chainage = querystring('chainage');
     $('.heading').text("Kilometre " + (chainage - 1) + " to " + chainage);
-    date = new Date();
-    datestr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    return $.getJSON("/api/History?date=" + datestr + "&lane=" + (querystring('lane')) + "&chainage=" + chainage, function(data) {
+    return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (querystring('lane')) + "&") + ("chainage=" + chainage), function(data) {
       return $.each(data, function(index) {
-        var row, surveydate, surveydatestr;
+        var row, surveydate;
         if (index % 2 === 1) {
-          surveydate = new Date(this.date);
+          surveydate = moment(this.date).format("D-MMM-YYYY").toString();
         } else {
-          surveydate = new Date(this.update);
+          surveydate = moment(this.update).format("D-MMM-YYYY").toString();
         }
-        surveydate.setHours(24);
-        surveydatestr = surveydate.getDate() + "-" + monthNames[surveydate.getMonth()] + "-" + surveydate.getFullYear();
-        row = "<tr><td>" + surveydatestr + "</td><td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\">" + this.Plan + "</a></td><td>" + (this.grade.toFixed(1)) + "</td><td>" + (this.sounding.toFixed(1)) + "</td><td>" + this.width + "</td><td>" + this.widthperc + "</td></tr>";
+        row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\">" + this.Plan + "</a></td>") + ("<td>" + (this.grade.toFixed(1)) + "</td><td>" + (this.sounding.toFixed(1)) + "</td>") + ("<td>" + this.width + "</td><td>" + this.widthperc + "</td>") + "</tr>";
         return $("#surveys").append(row);
       });
     });
