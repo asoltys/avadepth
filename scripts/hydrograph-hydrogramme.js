@@ -8,7 +8,7 @@
   date_inc = 0;
 
   update = function() {
-    var actual, maximum, minimum, month, period_end, predicted, year;
+    var actual, maximum, minimum, month, period, period_end, predicted, year;
     minimum = [];
     maximum = [];
     actual = [];
@@ -17,7 +17,8 @@
     month = 12;
     if ($("#month").val() !== 1) month = $("#month").val() - 1;
     if ($("#month").val() === "1") year += 1;
-    period_end = moment([year, month, 1]).add('months', $("#period option:selected").html().split(" ")[0]).subtract('month', 1);
+    period = $("#period option:selected").html().split(" ")[0] - 1;
+    period_end = moment([year, month, 1]).add('months', period);
     $('#static-month').text($('#month option:selected').html());
     $('#static-year').text($('#year').val());
     $("#static-period").text(period_end.format("MMMM YYYY"));
@@ -26,22 +27,23 @@
         year = v.year;
         month = v.month - 1;
         $.each(v.minMax, function(i, v) {
-          minimum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue]);
-          return maximum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue]);
+          var date, day;
+          day = v.day + 1;
+          date = [year, month, day];
+          minimum.push([moment(date), v.minValue]);
+          return maximum.push([moment(date), v.maxValue]);
         });
         if ($("#actual").prop("checked")) {
           $.each(v.actual, function(i, v) {
-            var day, discharge;
-            day = moment(v.date).day(1)._a[2];
-            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value];
+            var discharge;
+            discharge = [moment(v.date), v.value];
             if (discharge[1] !== 0) return actual.push(discharge);
           });
         }
         if ($("#predicted").prop("checked")) {
           return $.each(v.predicted, function(i, v) {
-            var day, discharge;
-            day = moment(v.date).day(1)._a[2];
-            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value];
+            var discharge;
+            discharge = [moment(v.date), v.value];
             if (discharge[1] !== 0) return predicted.push(discharge);
           });
         }
@@ -51,11 +53,11 @@
           data: maximum,
           label: "Max Range"
         }, {
-          data: actual,
-          label: "Actual"
-        }, {
           data: minimum,
           label: "Min Range"
+        }, {
+          data: actual,
+          label: "Actual"
         }, {
           data: predicted,
           label: "Predicted"
@@ -105,13 +107,13 @@
   };
 
   $(function() {
-    var current_year, s, year, _ref;
+    var current_year, s, year;
     $("#print_hydrograph").click(function() {
       return window.print();
     });
-    current_year = new Date().getFullYear();
-    s = "<option selected=\"selected\">" + current_year + "</option>";
-    for (year = _ref = current_year - 1; year >= 1994; year += -1) {
+    current_year = moment().year();
+    s = "";
+    for (year = current_year; year >= 1994; year += -1) {
       s += "<option>" + year + "</option>";
     }
     $("#year").html(s);

@@ -19,11 +19,13 @@ update = ->
   month = $("#month").val()-1 unless $("#month").val() == 1
   if $("#month").val() == "1"
     year += 1
+  period = $("#period option:selected").html().split(" ")[0] - 1
 
-  period_end = moment([year, month, 1]).add('months',$("#period option:selected").html().split(" ")[0]).subtract('month',1)
+  period_end = moment([year, month, 1]).add('months', period)
   $('#static-month').text($('#month option:selected').html())
   $('#static-year').text($('#year').val())
   $("#static-period").text(period_end.format("MMMM YYYY"))
+
   $.getJSON("/api/hydrograph?year=#{year}&" +
       "month=#{$('#month').val()}&" +
       "period=#{$('#period').val()}&" +
@@ -35,30 +37,30 @@ update = ->
         month = v.month - 1
 
         $.each(v.minMax, (i,v) ->
-          minimum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.minValue])
-          maximum.push([moment(v.day + 1, "MMM").year(year).month(month).date(v.day + 1)._d, v.maxValue])
+          day = v.day + 1
+          date = [year, month, day]
+          minimum.push([moment(date), v.minValue])
+          maximum.push([moment(date), v.maxValue])
         )
 
         if $("#actual").prop("checked")
           $.each(v.actual, (i,v) ->
-            day = moment(v.date).day(1)._a[2]
-            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value]
+            discharge = [moment(v.date), v.value]
             actual.push(discharge) unless discharge[1] == 0
           )
 
         if $("#predicted").prop("checked")
           $.each(v.predicted, (i,v) ->
-            day = moment(v.date).day(1)._a[2]
-            discharge = [moment(v.date).year(year).month(month).date(day)._d, v.value]
+            discharge = [moment(v.date), v.value]
             predicted.push(discharge) unless discharge[1] == 0
           )
       )
 
       dataset = [
-        {data: maximum, label: "Max Range"}
-        {data: actual,  label: "Actual"}
-        {data: minimum, label: "Min Range"}
-        {data: predicted,  label: "Predicted"}
+        {data: maximum,   label: "Max Range"}
+        {data: minimum,   label: "Min Range"}
+        {data: actual,    label: "Actual"}
+        {data: predicted, label: "Predicted"}
       ]
 
       $.plot($("#hydrograph_chart"), dataset, options)
@@ -99,9 +101,9 @@ $(->
     window.print()
   )
 
-  current_year = new Date().getFullYear()
-  s = "<option selected=\"selected\">#{current_year}</option>"
-  for year in [current_year-1..1994] by -1
+  current_year = moment().year()
+  s = ""
+  for year in [current_year..1994] by -1
     s += "<option>#{year}</option>"
   $("#year").html(s)
 
