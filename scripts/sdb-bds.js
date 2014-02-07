@@ -75,6 +75,9 @@
   };
 
   $(function() {
+    $("#print_survey_drawings").click(function() {
+      return window.print();
+    });
     $("div.span-8").on("click", ".surveyDrawingTile area", function(event) {
       var riverSection;
       riverSection = tile_query_info[event.currentTarget.title];
@@ -125,6 +128,7 @@
 
   getSurveyDrawings = (function(jsonStuff) {
     var drawingRows;
+    $('.spinner').css('display', 'block');
     drawingRows = "";
     return $.getJSON(("/api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
       $('#surveys tbody').html('');
@@ -144,6 +148,7 @@
       });
       return $('#surveys').append(drawingRows);
     }).done(function() {
+      $('.spinner').css('display', 'none');
       $('#surveys tr:nth-child(odd)').addClass('odd');
       return $('#surveys tr:nth-child(even)').addClass('even');
     });

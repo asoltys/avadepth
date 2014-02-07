@@ -144,7 +144,7 @@
         return $('#static-window').text("Transit Window: " + ($('#window').val()) + " hrs");
       } else {
         $('#cmp').val($('#depth').val());
-        return $('#static-window').text("Available Transit Window for " + ($('#cmp').val()) + "m depth & Minimum " + ($('#minimum_window').val()) + " hr window");
+        return $('#static-window').text("Available Transit Window for " + ($('#cmp').val()) + "m depth & " + ($('#minimum_window').val()) + " hr window");
       }
     });
     /*

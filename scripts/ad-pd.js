@@ -74,7 +74,37 @@
   });
 
   update = function() {
-    var flow;
+    var date_val_arr, date_val_month, flow;
+    date_val_arr = $('#date').val().split("-");
+    date_val_month = (function() {
+      switch (false) {
+        case date_val_arr[1] !== '01':
+          return 'January';
+        case date_val_arr[1] !== '02':
+          return 'February';
+        case date_val_arr[1] !== '03':
+          return 'March';
+        case date_val_arr[1] !== '04':
+          return 'April';
+        case date_val_arr[1] !== '05':
+          return 'May';
+        case date_val_arr[1] !== '06':
+          return 'June';
+        case date_val_arr[1] !== '07':
+          return 'July';
+        case date_val_arr[1] !== '08':
+          return 'August';
+        case date_val_arr[1] !== '09':
+          return 'September';
+        case date_val_arr[1] !== '10':
+          return 'October';
+        case date_val_arr[1] !== '11':
+          return 'November';
+        case date_val_arr[1] !== '12':
+          return 'December';
+      }
+    })();
+    $('#date-display').text(date_val_month + " " + date_val_arr[0]);
     flow = avadepth.util.getSelectedFlow();
     $('#flowRate').val(flow.flowRate);
     if (flow.flowType !== "0") {
@@ -83,7 +113,7 @@
       $('#flowType').val("UserDefined");
     }
     return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
-      var points;
+      var limit_text, points;
       table || (table = $('#depths').dataTable({
         bPaginate: false,
         bInfo: false,
@@ -101,7 +131,17 @@
       $('#static-width').text($('#width').val());
       $('#static-chainage').text($('#chainage').val());
       $('#static-type').text($('input[name="condition"]:checked').next().text());
-      $('#static-limit').text($('input[name="channel"]:checked').next().text());
+      limit_text = (function() {
+        switch (false) {
+          case $('input[name="channel"]:checked').val() !== '0':
+            return 'Inner Channel Limit';
+          case $('input[name="channel"]:checked').val() !== '1':
+            return 'Outer Channel Limit';
+          default:
+            return '';
+        }
+      })();
+      $('#static-limit').text(limit_text);
       $('#static-discharge').text($('#flowRate').val());
       return $('#static-discharge-eval').text($('#flowType').val());
     });
