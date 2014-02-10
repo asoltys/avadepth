@@ -39,7 +39,7 @@ locations =
   'FRSA':
       'Main': [
         'Channel',
-        'Sand Heads',
+        'Sand Heads Entrance',
         'Sand Heads Reach',
         'Steveston Bend',
         'Steveston Cut',
