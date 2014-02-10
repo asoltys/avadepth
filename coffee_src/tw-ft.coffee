@@ -165,6 +165,7 @@ $(->
 )
 
 update = (data) ->
+  $('#transit-window').show()
   $.getJSON("api/transit?date=#{$('#date').val()}&" +
       "lane=#{$('input[name=channel]:checked').val()}&" +
       "window=#{$('#window').val()}&" +

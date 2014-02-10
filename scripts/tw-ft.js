@@ -23,15 +23,18 @@
       return $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"));
     });
     $(document).ajaxStart(function() {
-      $('#ajax_message').html('Please wait while we fetch your results');
+      $('.spinner').css('display', 'block');
+      $('#ajax_message').html('');
       $('#ajax_message').show();
       return $('#report_body').hide();
     });
     $(document).ajaxSuccess(function() {
+      $('.spinner').css('display', 'none');
       $('#ajax_message').hide();
       return $('#report_body').show();
     });
     $(document).ajaxError(function() {
+      $('.spinner').css('display', 'none');
       $('#ajax_message').html('An error occured while retrieving your results');
       $('#ajax_message').show();
       return $('#report_body').hide();
@@ -165,6 +168,7 @@
   });
 
   update = function(data) {
+    $('#transit-window').show();
     return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
       var item, _i, _len, _ref, _results;
       $('#num_days').text(data2.statistics.numberOfDays);
