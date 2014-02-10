@@ -77,6 +77,10 @@ table {
 	margin-right:auto;
 }
 
+.print-margin-0{
+	margin: 0 0 0 0;
+}
+
 .print-table-fixed{
 	table-layout: fixed;
 	max-width: 100%;
@@ -106,4 +110,16 @@ table {
 }
 
 
+/* tw-ft transit windows page - ie */
+.print-tw-ft-result-header > h2{
+	margin-left: -60px;
+}
+
+.print-tw-ft-result-header > p{
+	margin-left: -60px;
+}
+
+.print-tw-ft-table{
+	margin-left: 45px;
+}
 

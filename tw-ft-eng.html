@@ -261,7 +261,12 @@
   <div id="report_body">
 			<button id="print_transit_window" class="print_button button button-accent print_hide float-left">Print</button>
 	<div class="clear"></div>
-    <div style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
+		<!--[if IE]>
+    <div class="print-tw-ft-result-header" style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
+		<![endif]-->
+		<!--[if !IE]><!-->
+		<div style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
+		<!--<![endif]-->
       <h2>Maximum Depth and Transit Time Report<br />
       Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
       <p><span id="static-window">Transit Window: 2 hrs</span><br />
@@ -271,8 +276,12 @@
       <span id="static-chainage">35</span> at
       <span id="static-width">100</span>% Available Width<br />
       From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
-
-      <table class="print-width-70" style="table-layout: fixed; width: 750px;">
+			<!--[if IE]>
+      <table class="print-width-70 print-tw-ft-table" style="table-layout: fixed; width: 750px;">
+			<![endif]-->
+			<!--[if !IE]><!-->
+			<table class="print-width-70" style="table-layout: fixed; width: 750px;">
+			<!--<![endif]-->
         <tr>
           <td>Average Depth of Selected Window:</td>
           <td><span id="avg_depth">-</span></td>
