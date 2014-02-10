@@ -40,7 +40,7 @@ div.filled {
 
 .tabs-style-1 .tabs li a:hover {
   color: white !important;
-  border-top-color: #A00;
+  border-top-color: #105282;
   border-top-width: 2px;
   text-decoration: underline;
 }
@@ -48,7 +48,7 @@ div.filled {
 .tabs-style-1 .tabs li a.active {
   font-weight: bold;
   text-decoration: none;
-  background-color: #f9f9f9
+  background-color: #f9f9f9;
 }
 
 .stripe {
