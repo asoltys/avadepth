@@ -181,7 +181,7 @@ $(->
   $('.map0 area').click( ->
     $(this).closest('div').hide()
     $(this).closest('.map-group').find('.map'+$(this).attr('title')).show()
-    $('#tile').text('- Tile 00'+$(this).attr('title'))
+    #$('#tile').text('- Tile 00'+$(this).attr('title'))
     $('#map').css("min-height", "600px")
     $('.tabs-panel').height("620px")
   )
