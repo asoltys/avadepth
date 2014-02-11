@@ -71,8 +71,13 @@
             <span id="static-year"></span> to <span id="static-period"></span></p>
           </div>
           <div id="loading">Please wait while we fetch your results...</div>
-          <div id="legend_container" style="margin-left:58px"></div>
-          <div id="hydrograph_chart" style="width: 870px; height:400px;margin:0"></div>
+          <div id="legend_container" style="margin-left:58px"></div>					
+					<!--[if IE]>
+					<div id="hydrograph_chart" style="width: 783px; height:360px;margin:0"></div>
+					<![endif]-->
+					<!--[if !IE]><!-->
+					<div id="hydrograph_chart" style="width: 870px; height:400px;margin:0"></div>
+					<!--<![endif]-->
         </div>
       </div>
 
