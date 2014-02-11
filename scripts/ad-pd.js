@@ -41,7 +41,7 @@
         }
       })();
       $("input[name=discharge]")[check].checked = true;
-      update();
+      update(0);
     }
     $("#print_daily_depths").click(function() {
       return window.print();
@@ -68,45 +68,16 @@
       } else {
         $("#error_message").hide();
         $("#report_body").show();
-        return update();
+        return update(1);
       }
     });
   });
 
-  update = function() {
-    var date_val_arr, date_val_month, flow;
-    date_val_arr = $('#date').val().split("-");
-    date_val_month = (function() {
-      switch (false) {
-        case date_val_arr[1] !== '01':
-          return 'January';
-        case date_val_arr[1] !== '02':
-          return 'February';
-        case date_val_arr[1] !== '03':
-          return 'March';
-        case date_val_arr[1] !== '04':
-          return 'April';
-        case date_val_arr[1] !== '05':
-          return 'May';
-        case date_val_arr[1] !== '06':
-          return 'June';
-        case date_val_arr[1] !== '07':
-          return 'July';
-        case date_val_arr[1] !== '08':
-          return 'August';
-        case date_val_arr[1] !== '09':
-          return 'September';
-        case date_val_arr[1] !== '10':
-          return 'October';
-        case date_val_arr[1] !== '11':
-          return 'November';
-        case date_val_arr[1] !== '12':
-          return 'December';
-      }
-    })();
-    $('#date-display').text(date_val_month + " " + date_val_arr[0]);
+  update = function(flag) {
+    var flow;
+    $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"));
     flow = avadepth.util.getSelectedFlow();
-    $('#flowRate').val(flow.flowRate);
+    if (flag) $("#flowRate").val(flow.flowRate);
     if (flow.flowType !== "0") {
       $('#flowType').val(flow.flowType);
     } else {

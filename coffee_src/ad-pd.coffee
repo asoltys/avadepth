@@ -27,7 +27,7 @@ $(->
         3
       when 'Selected' then 2
     $("input[name=discharge]")[check].checked = true
-    update()
+    update(0)
 
   $("#print_daily_depths").click(->
     window.print()
@@ -53,7 +53,6 @@ $(->
   $('input[name=discharge]').change(->
   )
   
-  #$("form#daily_depth").on("change","input, select",update)
   $("#submit").click(->
     if !$('input[name=discharge]').is(":checked")
       $("#error_message").show()
@@ -62,31 +61,16 @@ $(->
     else
       $("#error_message").hide()
       $("#report_body").show()
-      update()
+      update(1)
   )
 
-  #update()
 )
 
-update = ->
-  date_val_arr = $('#date').val().split("-");
-  date_val_month = switch
-    when date_val_arr[1] == '01' then 'January'
-    when date_val_arr[1] == '02' then 'February'
-    when date_val_arr[1] == '03' then 'March'
-    when date_val_arr[1] == '04' then 'April'
-    when date_val_arr[1] == '05' then 'May'
-    when date_val_arr[1] == '06' then 'June'
-    when date_val_arr[1] == '07' then 'July'
-    when date_val_arr[1] == '08' then 'August'
-    when date_val_arr[1] == '09' then 'September'
-    when date_val_arr[1] == '10' then 'October'
-    when date_val_arr[1] == '11' then 'November'
-    when date_val_arr[1] == '12' then 'December'
-  $('#date-display').text(date_val_month + " " + date_val_arr[0])
+update = (flag)->
+  $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"))
 
   flow = avadepth.util.getSelectedFlow()
-  $('#flowRate').val(flow.flowRate)
+  $("#flowRate").val(flow.flowRate) if flag
   if flow.flowType != "0"
     $('#flowType').val(flow.flowType)
   else
