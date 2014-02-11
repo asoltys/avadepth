@@ -35,7 +35,13 @@ $(->
   $("#lane").val(querystring('lane'))
   $("#period").val(querystring('period'))
   $("#period").val(parseInt($("#period").val().substring(0,2))/2+1)
-  #$("input[name=fraser_river]")[$("#waterway").val()].checked = true
+
+  $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"))
+  $("#static-discharge").text($("#flowRate").val())
+  $("#static-discharge-eval").text($("#flowType").val())
+  $("#static-time").text(querystring('period'))
+  $("#static-chainage").text($("#chainage").val())
+  $("#static-width").text($("#width").val())
 
   $.getJSON("/api/depths/verify?date=#{$('#date').val()}&" +
       "chainage=#{$('#chainage').val()}&" +

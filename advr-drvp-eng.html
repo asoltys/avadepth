@@ -15,10 +15,13 @@
 <div class="align-center">
   <h2>Fraser River - Inner Channel Limit</h2>
   <p>
-  For Tuesday, July 09, 2013<br />
-  Km 1 to 35 at Hope Discharge 0m3 (Predicted) Time 00:00<br />
-  Current Soundings for Km 1 to 35 at 100% Available Width
+    For <span id="date-display">Tuesday, July 09, 2013</span><br />
+    Km 1 to 35 at Hope Discharge <span id="static-discharge"></span>m3/s
+    (<span id="static-discharge-eval"></span>) Time <span id="static-time">00</span><br />
+    Current Soundings for Km 1 to <span id="static-chainage">35</span>
+    at <span id="static-width">100</span>% Available Width
   </p>
+		<button class="depths button button-accent" href="javascript:void(0)">&lt; back</button><br />
 </div>
 <input type="hidden"
     id="date" />
@@ -38,9 +41,6 @@
     id="period" />
 
 <div class="span-8">
-	<div style="position: absolute;">
-		<button class="depths" href="javascript:void(0)">&lt; back</button><br />
-	</div>
   <table id="verify" style="text-align:center; table-layout: fixed; width: 600px;" class="dataTable zebra-striped">
     <thead>
       <tr>
