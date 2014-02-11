@@ -149,12 +149,12 @@ update = ->
       $('#river-section').parent().attr('colspan', 14)
       2
 
-  river_discharge_report_head = switch $('#daily_depth div:nth-child(2) input:radio:checked').val()
+  river_discharge_report_head = switch $('#daily_depth input[name=discharge]:radio:checked').val()
     when 'Actual'  then 'Actual'
     when 'Predicted' then 'Predicted'
     when 'Selected' then 'Selected'
     when 'Defined' then 'User Defined'
-  switch $('#daily_depth div:nth-child(3) input:radio:checked').val()
+  switch $('#daily_depth input[name=report]:radio:checked').val()
     when "0"  
       river_discharge_report_tail = ' Water Levels'
       $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.')
