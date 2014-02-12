@@ -21,6 +21,7 @@
   };
 
   $(function() {
+    var limit_text;
     $("#print_daily_depths").click(function() {
       return window.print();
     });
@@ -40,7 +41,18 @@
     $("#static-time").text(querystring('period'));
     $(".static-chainage").text($("#chainage").val());
     $("#static-width").text($("#width").val());
-    return $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + "flowType=1&" + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + "lane=1&" + ("period=" + ($('#period').val())), function(data) {
+    limit_text = (function() {
+      switch (false) {
+        case $("#lane").val() !== '0':
+          return 'Inner Channel Limit';
+        case $("#lane").val() !== '1':
+          return 'Outer Channel Limit';
+        default:
+          return '';
+      }
+    })();
+    $('#static-limit').text(limit_text);
+    return $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + "flowType=1&" + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($("#lane").val()) + 1) + "&") + ("period=" + ($('#period').val())), function(data) {
       var least_depth, points;
       table || (table = $('#verify').dataTable({
         bPaginate: false,

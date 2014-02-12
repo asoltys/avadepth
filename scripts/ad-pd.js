@@ -41,6 +41,7 @@
         }
       })();
       $("input[name=discharge]")[check].checked = true;
+      $("input[name=\"channel\"][value=\"" + (querystring('lane')) + "\"").prop("checked", "checked");
       update(0);
     }
     $("#print_daily_depths").click(function() {
@@ -74,8 +75,9 @@
   });
 
   update = function(flag) {
-    var flow;
+    var channel, flow;
     $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"));
+    channel = $('input[name="channel"]:checked').val();
     flow = avadepth.util.getSelectedFlow();
     if (flag) $("#flowRate").val(flow.flowRate);
     if (flow.flowType !== "0") {
@@ -94,8 +96,8 @@
       table.fnClearTable();
       $('#depths tbody tr').remove();
       points = new Array();
-      $.each(data.items[0].items, function() {
-        table.fnAddData([("<a href='advr-drvp-eng.html?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("period=" + this.period + "'>" + this.period + "</a>"), this.chainage, this.depth, this.location]);
+      $.each(data.items[channel].items, function() {
+        table.fnAddData([("<a href='advr-drvp-eng.html?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + channel + "&") + ("period=" + this.period + "'>" + this.period + "</a>"), this.chainage, this.depth, this.location]);
         return points.push([this.period, this.depth]);
       });
       createGraph(points);
@@ -104,9 +106,9 @@
       $('#static-type').text($('input[name="condition"]:checked').next().text());
       limit_text = (function() {
         switch (false) {
-          case $('input[name="channel"]:checked').val() !== '0':
+          case channel !== '0':
             return 'Inner Channel Limit';
-          case $('input[name="channel"]:checked').val() !== '1':
+          case channel !== '1':
             return 'Outer Channel Limit';
           default:
             return '';

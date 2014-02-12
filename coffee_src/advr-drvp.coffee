@@ -42,6 +42,11 @@ $(->
   $("#static-time").text(querystring('period'))
   $(".static-chainage").text($("#chainage").val())
   $("#static-width").text($("#width").val())
+  limit_text = switch
+    when $("#lane").val() == '0' then 'Inner Channel Limit'
+    when $("#lane").val() == '1' then 'Outer Channel Limit'
+    else ''
+  $('#static-limit').text(limit_text)
 
   $.getJSON("/api/depths/verify?date=#{$('#date').val()}&" +
       "chainage=#{$('#chainage').val()}&" +
@@ -49,7 +54,7 @@ $(->
       "flowType=1&" +
       "sounding=#{$('#sounding').val()}&" +
       "width=#{$('#width').val()}&" +
-      "lane=1&" +
+      "lane=#{parseInt($("#lane").val()) + 1}&" +
       "period=#{$('#period').val()}", (data) ->
     table ||= $('#verify').dataTable(
         bPaginate: false

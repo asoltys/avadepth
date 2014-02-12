@@ -27,6 +27,7 @@ $(->
         3
       when 'Selected' then 2
     $("input[name=discharge]")[check].checked = true
+    $("input[name=\"channel\"][value=\"#{querystring('lane')}\"").prop("checked","checked")
     update(0)
 
   $("#print_daily_depths").click(->
@@ -68,6 +69,7 @@ $(->
 
 update = (flag)->
   $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"))
+  channel = $('input[name="channel"]:checked').val()
 
   flow = avadepth.util.getSelectedFlow()
   $("#flowRate").val(flow.flowRate) if flag
@@ -90,7 +92,7 @@ update = (flag)->
 
     $('#depths tbody tr').remove()
     points = new Array()
-    $.each(data.items[0].items, ->
+    $.each(data.items[channel].items, ->
       table.fnAddData([
         "<a href='advr-drvp-eng.html?date=#{$('#date').val()}&" +
         "chainage=#{$('#chainage').val()}&" +
@@ -98,6 +100,7 @@ update = (flag)->
         "flowType=#{$('#flowType').val()}&" +
         "sounding=#{$('input[name=condition]:checked').val()}&" +
         "width=#{$('#width').val()}&" +
+        "lane=#{channel}&" +
         "period=#{this.period}'>#{this.period}</a>"
         this.chainage
         this.depth
@@ -110,8 +113,8 @@ update = (flag)->
     $('#static-chainage').text($('#chainage').val())
     $('#static-type').text($('input[name="condition"]:checked').next().text())
     limit_text = switch
-      when $('input[name="channel"]:checked').val() == '0' then 'Inner Channel Limit'
-      when $('input[name="channel"]:checked').val() == '1' then 'Outer Channel Limit'
+      when channel == '0' then 'Inner Channel Limit'
+      when channel == '1' then 'Outer Channel Limit'
       else ''
     $('#static-limit').text(limit_text)
     $('#static-discharge').text($('#flowRate').val())
