@@ -1,5 +1,5 @@
 (function() {
-  var createGraph, flowrate, querystring, table, update;
+  var createGraph, flowrate, initialize, process_report, querystring, table, update;
 
   table = null;
 
@@ -46,7 +46,7 @@
       } else {
         $("#outter_channel").prop("checked", "checked");
       }
-      update(0);
+      initialize();
     }
     $("#print_daily_depths").click(function() {
       return window.print();
@@ -73,12 +73,12 @@
       } else {
         $("#error_message").hide();
         $("#report_body").show();
-        return update(1);
+        return update();
       }
     });
   });
 
-  update = function(flag) {
+  process_report = function(flag) {
     var channel, flow;
     $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"));
     channel = $('input[name="channel"]:checked').val();
@@ -122,6 +122,14 @@
       $('#static-discharge').text($('#flowRate').val());
       return $('#static-discharge-eval').text($('#flowType').val());
     });
+  };
+
+  initialize = function() {
+    return process_report(0);
+  };
+
+  update = function() {
+    return process_report(1);
   };
 
   createGraph = function(p) {

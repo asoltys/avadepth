@@ -31,7 +31,7 @@ $(->
       $("#inner_channel").prop("checked","checked")
     else
       $("#outter_channel").prop("checked","checked")
-    update(0)
+    initialize()
 
   $("#print_daily_depths").click(->
     window.print()
@@ -65,12 +65,12 @@ $(->
     else
       $("#error_message").hide()
       $("#report_body").show()
-      update(1)
+      update()
   )
 
 )
 
-update = (flag)->
+process_report = (flag)->
   $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"))
   channel = $('input[name="channel"]:checked').val()
 
@@ -123,6 +123,12 @@ update = (flag)->
     $('#static-discharge').text($('#flowRate').val())
     $('#static-discharge-eval').text($('#flowType').val())
   )
+
+initialize = ->
+  process_report(0)
+
+update = ->
+  process_report(1)
 
 createGraph = (p) ->
   d1 =
