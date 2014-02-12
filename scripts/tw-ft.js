@@ -170,7 +170,7 @@
   update = function(data) {
     $('#transit-window').show();
     return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
-      var item, _i, _len, _ref, _results;
+      var item, limit_text, _i, _len, _ref;
       $('#num_days').text(data2.statistics.numberOfDays);
       $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));
       $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2));
@@ -183,14 +183,23 @@
       }));
       table.fnClearTable();
       _ref = data2.items;
-      _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
         table.fnAddData([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
         table.fnAdjustColumnSizing();
-        _results.push($('#transit-window tbody td').css('text-align', 'center'));
+        $('#transit-window tbody td').css('text-align', 'center');
       }
-      return _results;
+      limit_text = (function() {
+        switch (false) {
+          case $('input[name="channel"]:checked').val() !== '2':
+            return 'Outer Channel Limit';
+          case $('input[name="channel"]:checked').val() !== '1':
+            return 'Inner Channel Limit';
+          default:
+            return '';
+        }
+      })();
+      return $('#static-channel').text(limit_text);
     });
   };
 

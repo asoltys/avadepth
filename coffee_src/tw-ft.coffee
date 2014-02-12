@@ -192,6 +192,12 @@ update = (data) ->
       table.fnAddData([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth])
       table.fnAdjustColumnSizing()
       $('#transit-window tbody td').css('text-align', 'center')
+
+    limit_text = switch
+      when $('input[name="channel"]:checked').val() == '2' then 'Outer Channel Limit'
+      when $('input[name="channel"]:checked').val() == '1' then 'Inner Channel Limit'
+      else ''
+    $('#static-channel').text(limit_text)
   )
 
 
