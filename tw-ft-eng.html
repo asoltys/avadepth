@@ -1,5 +1,9 @@
 <!--#include virtual="/includes/header-eng.html" -->
 <script src="scripts/tw-ft.js"></script>
+<style>
+  table td { padding: 4px;}
+  table td:first-child { text-align:left}
+</style>
 
 <h1>Transit Window Report</h1>
 <div class="grid-12">
@@ -113,7 +117,7 @@
             </div>
             <div>
               <label for="width" style="display:inline-block;">Available Width:</label>
-              <select id="width">
+              <select id="width" style="margin-top:10px">
                 <option value="100" selected="selected">100</option>
                 <option value="95">95</option>
                 <option value="90">90</option>
@@ -185,7 +189,7 @@
 					class="button button-accent"
 					name="submit">Apply
 				</button>				
-				<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px; height: 30px; display: none;"/>
+				<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px;display: none;margin-top:0.5em"/>
       </div>
 
       <div id="help">
