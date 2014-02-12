@@ -38,7 +38,7 @@
     $("#static-discharge").text($("#flowRate").val());
     $("#static-discharge-eval").text($("#flowType").val());
     $("#static-time").text(querystring('period'));
-    $("#static-chainage").text($("#chainage").val());
+    $(".static-chainage").text($("#chainage").val());
     $("#static-width").text($("#width").val());
     return $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + "flowType=1&" + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + "lane=1&" + ("period=" + ($('#period').val())), function(data) {
       var least_depth, points;

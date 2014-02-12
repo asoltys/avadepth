@@ -40,7 +40,7 @@ $(->
   $("#static-discharge").text($("#flowRate").val())
   $("#static-discharge-eval").text($("#flowType").val())
   $("#static-time").text(querystring('period'))
-  $("#static-chainage").text($("#chainage").val())
+  $(".static-chainage").text($("#chainage").val())
   $("#static-width").text($("#width").val())
 
   $.getJSON("/api/depths/verify?date=#{$('#date').val()}&" +
