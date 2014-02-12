@@ -149,23 +149,16 @@ update = ->
       $('#river-section').parent().attr('colspan', 14)
       2
 
-  river_discharge_report_head = switch $('#daily_depth input[name=discharge]:radio:checked').val()
-    when 'Actual'  then 'Actual'
-    when 'Predicted' then 'Predicted'
-    when 'Selected' then 'Selected'
-    when 'Defined' then 'User Defined'
   switch $('#daily_depth input[name=report]:radio:checked').val()
-    when "0"  
-      river_discharge_report_tail = ' Water Levels'
+    when "0"
+      $('#river_discharge_report').text('Predicted Water Levels')
       $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.')
-    when "1"  
-      river_discharge_report_tail = ' Velocities'
-      $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.')			
-    else 
-      river_discharge_report_tail = ''
+    when "1"
+      $('#river_discharge_report').text('Predicted Velocities')
+      $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.')
+    else
+      $('#river_discharge_report').text('')
 			
-  river_discharge_report = river_discharge_report_head + river_discharge_report_tail
-  $('#river_discharge_report').text(river_discharge_report)			
 		
   $('#static-arm').text($('#fraser_river').val())
   $('#waterway').val(waterway)

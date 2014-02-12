@@ -157,7 +157,7 @@
   });
 
   update = function() {
-    var headerRow, i, kmStart, report_type, river_discharge_report, river_discharge_report_head, river_discharge_report_tail, step, waterway, _ref;
+    var headerRow, i, kmStart, report_type, step, waterway, _ref;
     report_type = $('input[name=report]:checked').val();
     waterway = (function() {
       switch ($('#fraser_river').val()) {
@@ -172,32 +172,18 @@
           return 2;
       }
     })();
-    river_discharge_report_head = (function() {
-      switch ($('#daily_depth div:nth-child(2) input:radio:checked').val()) {
-        case 'Actual':
-          return 'Actual';
-        case 'Predicted':
-          return 'Predicted';
-        case 'Selected':
-          return 'Selected';
-        case 'Defined':
-          return 'User Defined';
-      }
-    })();
-    switch ($('#daily_depth div:nth-child(3) input:radio:checked').val()) {
+    switch ($('#daily_depth input[name=report]:radio:checked').val()) {
       case "0":
-        river_discharge_report_tail = ' Water Levels';
+        $('#river_discharge_report').text('Predicted Water Levels');
         $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.');
         break;
       case "1":
-        river_discharge_report_tail = ' Velocities';
+        $('#river_discharge_report').text('Predicted Velocities');
         $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.');
         break;
       default:
-        river_discharge_report_tail = '';
+        $('#river_discharge_report').text('');
     }
-    river_discharge_report = river_discharge_report_head + river_discharge_report_tail;
-    $('#river_discharge_report').text(river_discharge_report);
     $('#static-arm').text($('#fraser_river').val());
     $('#waterway').val(waterway);
     $('#river-section').text($('#fraser_river').val());
