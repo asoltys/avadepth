@@ -41,7 +41,11 @@
         }
       })();
       $("input[name=discharge]")[check].checked = true;
-      $("input[name=\"channel\"][value=\"" + (querystring('lane')) + "\"").prop("checked", "checked");
+      if (querystring("lane")[0] === "0") {
+        $("#inner_channel").prop("checked", "checked");
+      } else {
+        $("#outter_channel").prop("checked", "checked");
+      }
       update(0);
     }
     $("#print_daily_depths").click(function() {
