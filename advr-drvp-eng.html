@@ -13,17 +13,24 @@
 <h1>Available Depths Verification Report</h1>
 
 <div class="align-center">
-  <h2>Fraser River - <span id="static-limit"></span></h2>
-  <p>
+  <h2 class="print-align-center">Fraser River - <span id="static-limit"></span></h2>
+  <p class="print-align-center">
     For <span id="date-display">Tuesday, July 09, 2013</span><br />
     Km 1 to <span class="static-chainage">35</span> at Hope Discharge <span id="static-discharge"></span>m3/s
     (<span id="static-discharge-eval"></span>) Time <span id="static-time">00</span><br />
     Current Soundings for Km 1 to <span class="static-chainage">35</span>
     at <span id="static-width">100</span>% Available Width
   </p>
-		<button class="depths button button-accent"
-        href="javascript:void(0)"
-        style="margin-bottom:0.5em">&lt; back</button><br />
+	
+	<button 
+		class="depths print_hide button button-accent"
+		href="javascript:void(0)"
+		style="margin-bottom:0.5em">&lt; back</button>
+	<button 
+			id="print_daily_depths" 
+			class="print_hide button button-accent"
+			style="margin-bottom:0.5em">Print</button><br />	
+			
 </div>
 <input type="hidden"
     id="date" />
