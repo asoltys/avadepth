@@ -65,12 +65,15 @@
           </form>
         </div>
         <div class="span-9 demo-container print_show" style="display:block">
-					<h2 style="margin-left: 10px;">Fraser River Hydrograph at Hope</h2>
-          <div>
-            <p style="margin-left:1em">From <span id="static-month"></span>
+					<h2 style="margin-left: 10px;">Fraser River Hydrograph at Hope - 08MF005</h2>
+          <div style="font-size: 15px; font-weight: bold;">
+            <p style="margin-left: 12px;">From <span id="static-month"></span>
             <span id="static-year"></span> to <span id="static-period"></span></p>
           </div>
-          <div id="loading">Please wait while we fetch your results...</div>
+          <div id="loading" style="margin-left: 10px;">
+						<span class="float:left;">Please wait while we fetch your results...</span>
+						<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px; margin: -3px 0 0 0; position: absolute;"/>
+					</div>
           <div id="legend_container" style="margin-left:58px"></div>					
 					<!--[if IE]>
 					<div id="hydrograph_chart" style="width: 783px; height:360px;margin:0"></div>
@@ -101,5 +104,5 @@
 </div>
 
 <div class="clear"></div>
-<button id="print_hydrograph" class="print_button print_hide button button-accent">Print</button>
+<button id="print_hydrograph" class="print_button print_hide button button-accent float-left">Print</button>
 <!--#include virtual="/includes/footer-eng.html" -->

@@ -137,6 +137,7 @@ $(->
 )
 
 update = ->
+  $('.spinner').css('display', 'block')
   report_type = $('input[name=report]:checked').val()
   waterway = switch $('#fraser_river').val()
     when 'South Arm'
@@ -215,4 +216,5 @@ update = ->
         $(row).find('a').click(gotoTimeGraph)
       $('.dataTables_empty').parent().html('')
     )
+    $('.spinner').css('display', 'none')
   )
