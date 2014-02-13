@@ -1,37 +1,66 @@
 <!--#include virtual="/includes/header-fra.html" -->
 <script src="scripts/tw-ft.js"></script>
+<style>
+  table td { padding: 4px;}
+  table td:first-child { text-align:left}
+</style>
 
-<h1>Fenêtre de circulation</h1>
-<h2>Fleuve Fraser – Limite interne du chenal</h2>
+<h1>Fen&ecirc;tre de circulation</h1>
 <div class="grid-12">
-  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height print_hide">
-    <ul class="tabs">
-      <li class="default"><a href="#parameters">Paramètres</a></li>
+  <div class="wet-boew-tabbedinterface animate slide-horz tabs-style-1 auto-height">
+    <ul class="tabs print_hide">
+      <li class="default"><a href="#parameters">Param&egrave;res</a></li>
       <li><a href="#help">Aide</a></li>
     </ul>
 
-    <div class="summary tabs-panel filled" style="border: 2px solid #eee">
+    <div class="summary tabs-panel filled print_hide" style="border: 2px solid #eee">
       <div id="parameters" style="height:300px">
-        <form id="daily_depth">
+        <form id="transit_window">
           <div class="span-4">
-            <label for="date">Date :</label>
+            <label for="date"><strong>Date:</strong></label>
             <input id="date" type="text" name="date" class="datepicker" />
-            <input id="alt-date" type="hidden" />
 
-            <label for="predicted">Débit fluvial :</label>
-            <input id="predicted" type="radio" name="discharge" checked="checked" value="Predicted" /> Prévu (1275m3/s)<br />
-            <input id="actual" type="radio" name="discharge" value="Actual" disabled="false" /> Réel (0m3/s)<br />
-            <input type="radio" name="discharge" value="Selected" />  Sélectionné 
+            <div>
+              <strong>D&eacute;bit fluvial :</strong><br />
+              <input id="predicted_radio"
+                  type="radio"
+                  name="discharge"
+                  checked="checked"
+                  value="Predicted" />
+              <label for="predicted_radio">Pr&eacute;vu (<span id="predicted_discharge"></span>m&#179;/s)</label><br />
+              <input id="actual_radio"
+                  type="radio"
+                  name="discharge"
+                  value="Actual" />
+              <label for="actual">R&eacute;el (<span id="actual_discharge"></span>m&#179;/s)</label><br />
+
+              <input id="selected_radio"
+                  type="radio"
+                  name="discharge"
+                  value="Selected" />
+              <label for="discharge_radio">S&eacute;lectionn&eacute;</label>
               <select id="selected_discharge">
-                <option value="2000">2000</option>
-                <option value="5000">5000</option>
-                <option value="7500">7500</option>
-              </select> m3/s<br />
-            <input type="radio" name="discharge" value="Defined" /> Défini par l'utilisateur <input type="text" id="defined_discharge"/> m3/s
+              </select> m3/s
+              <br />
+
+              <input id="defined_radio"
+                  type="radio"
+                  name="discharge"
+                  value="Defined" />
+              <label for="defined_radio">D&eacute;fini par l'utilisateur</label>
+              <input id="defined_discharge"
+                  type="text"
+                  style="width:5em"/> m&#179;/s
+
+              <input type="hidden" name="flowRate" id="flowRate" value="0" />
+              <input type="hidden" name="flowType" id="flowType" value="0" />
+            </div>
+
           </div>
 
-          <div class="span-4">
-            <label for="chainage">Chaînage :</label>
+          <div class="span-3">
+            <label for="chainage"><strong>Cha&icirc;nage :</strong></label>
+            1 to
             <select id="chainage">
               <option value="6">6</option>
               <option value="7">7</option>
@@ -66,16 +95,29 @@
             </select>
             
             <div>
-              <label for="condition">Condition du chenal :</label>
-              <input id="condition" type="radio" name="condition" checked="checked" /> <span>Profondeur actuelle sondée</span><br />
-              <input type="radio" name="condition" /> <span>Pente d'origine</span>
+              <label for="sounding"><strong>Condition du chenal:</strong></label>
+              <input type="radio"
+                  name="sounding"
+                  checked="checked"
+                  value="0" /> <span>Profondeur actuelle sond&eacute;e</span><br />
+              <input type="radio"
+                  name="sounding"
+                  value="1" /> <span>Pente d'origine</span>
             </div>
 
             <div>
-              <label for="channel">Chenal de navigation :</label>
-              <input id="channel" type="radio" name="channel" checked="checked" /> <span>Limite interne</span><br />
-              <input type="radio" name="channel" /> <span>Limite externe</span><br />
-              Largeur disponible <select id="width">
+              <label for="channel"><strong>Chenal de navigation :</strong></label>
+              <input type="radio"
+                  name="channel"
+                  checked="checked"
+                  value="1" /> <span style="margin-right:1em">Limite interne</span>
+              <input type="radio"
+                  name="channel"
+                  value="2"/> <span>Limte externe</span>
+            </div>
+            <div>
+              <label for="width" style="display:inline-block;">Largeur disponible :</label>
+              <select id="width" style="margin-top:10px">
                 <option value="100" selected="selected">100</option>
                 <option value="95">95</option>
                 <option value="90">90</option>
@@ -85,72 +127,101 @@
                 <option value="70">70</option>
                 <option value="65">65</option>
                 <option value="60">60</option>
+                <option value="55">55</option>
+                <option value="50">50</option>								
               </select> %
             </div>
           </div>
 
-          <div class="span-3">
+          <div class="span-4">
             <div>
-              <label for="channel">Calcul de la circulation :</label>
-              <div style="display: none">
-              Period:
-              <select id="transit_calculation_period">
-                <option value="day">Day</option>
-                <option value="Week">Week</option>
-                <option value="Month">Month</option>
+              <label for="channel"><strong>Calcul de la circulation :</strong></label>
+              <div >
+              <label for="period" style="display:inline">Period:</label>
+              <select id="period">
+                <option value="0">Day</option>
+                <option value="1">Week</option>
+                <option value="2">Month</option>
               </select>
               </div>
-
-              <input type="radio" name="max_depth" checked="checked" /> Profondeur maximum
-              <div style="display: none">
-              Min Window:
-              <select id="transit_calculation_min_window">
-                <option value="1hr">1hr</option>
-                <option value="2hrs">2hrs</option>
-                <option value="3hrs">3hrs</option>
-                <option value="4hrs">4hrs</option>
-                <option value="5hrs">5hrs</option>
-              </select>
+              <div >
+                <input id="window"
+                    type="hidden"
+                    name="window"
+                    value="2" />
+                <input id="cmp"
+                    type="hidden"
+                    name="cmp"
+                    value="0" /><br />
+                <input id="max_depth_radio"
+                    type="radio"
+                    name="window_radio"
+                    checked="checked"
+                    value="Maximum Depth" />
+                <label for="max_depth_radio" style="margin-bottom:0">Profondeur maximum :</label><br/>
+                <label style="display:inline-block;margin-left:30px">Fen&ecirc;tres minimum:</label>
+                <select id="minimum_window"
+                    name="minimum_window"
+                    style="display:inline-block">
+                  <option value="1">1hr</option>
+                  <option value="2" selected="selected">2hrs</option>
+                  <option value="3">3hrs</option>
+                  <option value="4">4hrs</option>
+                </select><br />
+                <input id="min_win_radio"
+                    type="radio"
+                    name="window_radio"
+                    value="Min. Window" />
+                <label for="min_win_radio" style="margin-bottom:0">Fen&ecirc;tres disponibles</label><br />
+                <label style="display:inline-block;margin-left:30px">Profondeur :</label>
+                <input id="depth"
+                    type="text"
+                    name="depth"
+                    style="width:3em;diplay:inline-block"
+                    value="10" /> <span style="margin: 0px 0 0 0; padding: 0 0 0 0;">m</span>
               </div>
-              <br />
-              <input id="channel" type="radio" name="max_depth"/> Fenêtres disponibles
-              <div style="display: none">Available Windows Depth: <input type="text" /> m</div>
             </div>
           </div>
         </form>
+				<div class="clear"></div>
+				<button id="submit"
+					type="button"
+					class="button button-accent"
+					name="submit">Apply
+				</button>				
+				<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px;display: none;margin-top:0.5em"/>
       </div>
 
       <div id="help">
-        <p>
-          Le rapport sur la fenêtre de circulation montre la profondeur disponible pour la totalité du chenal pour une « fenêtre » de durée précise au cours de chaque cycle de marée. Pour produire le rapport,
-        </p>
+        <p>The Transit Window report shows the depth available for the entire
+        channel for a window of specified length in each tide cycle. To
+        generate the report,</p>
 
         <ul>
-          <li>Introduire une date. Cliquer sur la date texte pour choisir dans un calendrier.</li>
-          <li>Cliquer sur le bouton Débits</li>
+          <li>Enter a date.  Click on the date text to choose using a calendar.</li>
+          <li>Click on the Flows button</li>
         </ul>
 
-        <p>
-          Avadepth montre les options de débit. À savoir : prévu, réel, défini par l'utilisateur ou à sélectionner dans la liste.
-        </p>
+        <p>Avadepth displays the options to use a flow rate. These are
+        predicted, actual, user-defined or select from the list.</p>
 
         <ul>
-          <li>Choisir un rapport pour 1 jour ou 1 semaine.</li>
-          <li>Préciser la durée de la fenêtre pour laquelle les profondeurs doivent être calculées.</li>
-          <li>Sélectionner la navigation à une voie ou la navigation à deux voies.</li>
-          <li>Sélectionner le débit.</li>
-          <li>Cliquer sur le bouton Rapport de circulation pour commencer.</li>
+          <li>Select to report on 1 day or 1 week.</li>
+          <li>Specify the Window Length for which depths are to be calculated.</li>
+          <li>Select one-lane or two-lane operation.</li>
+          <li>Select the flow rate to be used.</li>
+          <li>Click the Transit Report button to begin.</li>
         </ul>
 
-        <p>Avadepth montre le rapport de la fenêtre de circulation maritime. Pour imprimer le rapport :</p>
+        <p>Avadepth displays the navigation transit window report.   To print the report to your printer:</p>
 
         <ul>
-          <li>Dans le menu du navigateur, sélectionner <b>Fichier|Imprimer</b>.</li>
+          <li>In your browser menu, you can select <b>File|Print</b> to print a hard-copy.</li>
         </ul>
       </div>
       
       <div>
-        <label for="chainage">Chaînage :</label>
+        <label for="chainage">Chainage:</label>
         <select id="chainage">
           <option value="6">6</option>
           <option value="7">7</option>
@@ -187,72 +258,85 @@
     </div>
 
     <div style="background: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAIAAABi9+OQAAAAGklEQVQImWN49+4d0////3Hif//+kSVHQB4A+KRZpVz3z4IAAAAASUVORK5CYII=; width: 100%"></div>
-  </div>
 
   <div class="clear"></div>
   
-  <div class="print_show">
-    <p><span id="static-date"></span></p>
-    <p>Fraser River - <span id="static-limit">Inner Limit</span></p>
-    <p>Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
-    <p><span id="static-type">Current Soundings</span> for Km 1 to <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width</p>
-  </div>
-  
-  <table class="table-accent span-4 table-condensed">
-    <tr>
-      <td>Profondeur moyenne de la fenêtre sélectionnée :</td>
-      <td>11.57</td>
-    </tr>
-    <tr>
-      <td>Profondeur minimum :</td>
-      <td>11.07</td>
-    </tr>
-    <tr>
-      <td>Profondeur maximum :</td>
-      <td>11.91</td>
-    </tr>
-    <tr>
-      <td>Nombre de jours de la fenêtre sélectionnée :</td>
-      <td>1</td>
-    </tr>
-  </table>
-  <div class="clear"></div>
-  
-  <table class="table-accent span-12 zebra-striped table-condensed">
-    <tr>
-      <th colspan="2">Début</th>
-      <th colspan="2">Fin</th>
-      <th>&nbsp;</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th>Heure (HNP)</th>
-      <th>Date</th>
-      <th>Heure (HNP)</th>
-      <th>Profondeur maximum (m)</th>
-    </tr>
-    <tr>
-      <td>Tue, 7-May-2013</td>
-      <td>02:30</td>
-      <td>Tue, 7-May-2013</td>
-      <td>04:30</td>
-      <td>11.91</td>
-    </tr>
-    <tr>
-      <td>Tue, 7-May-2013</td>
-      <td>16:00</td>
-      <td>Tue, 7-May-2013</td>
-      <td>18:00</td>
-      <td>11.75</td>
-    </tr>
-    <tr>
-      <td>Tue, 7-May-2013</td>
-      <td>23:45</td>
-      <td>Wed, 8-May-2013</td>
-      <td>01:45</td>
-      <td>11.07</td>
-    </tr>
-  </table>
-</div>
+  <h2 id="ajax_message">Please wait while we fetch your results</h2>
+  <div id="report_body">
+			<button id="print_transit_window" class="print_button button button-accent print_hide float-left">Print</button>
+	<div class="clear"></div>
+		<!--[if IE]>
+    <div class="print-tw-ft-result-header" style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
+		<![endif]-->
+		<!--[if !IE]><!-->
+		<div style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
+		<!--<![endif]-->
+      <h2>Maximum Depth and Transit Time Report<br />
+      Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
+      <p><span id="static-window">Transit Window: 2 hrs</span><br />
+      Hope Discharge <span id="static-discharge"></span>m3/s
+      (<span id="static-discharge-eval">Predicted</span>)<br />
+      <span id="static-sounding">Profondeur actuelle sond&eacute;e</span> for Km 1 to
+      <span id="static-chainage">35</span> at
+      <span id="static-width">100</span>% Available Width<br />
+      From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
+			<!--[if IE]>
+      <table class="print-width-70 print-tw-ft-table" style="table-layout: fixed; width: 750px;">
+			<![endif]-->
+			<!--[if !IE]><!-->
+			<table class="print-width-70" style="table-layout: fixed; width: 750px;">
+			<!--<![endif]-->
+        <tr>
+          <td>Profondeur moyenne de la fen&ecirce;tre s&eacute;lectionn&eacute;e :</td>
+          <td><span id="avg_depth">-</span></td>
+        </tr>
+        <tr>
+          <td>Profondeur minimum :</td>
+          <td><span id="min_depth">-</span></td>
+        </tr>
+        <tr>
+          <td>Profondeur maximum :</td>
+          <td><span id="max_depth">-</span></td>
+        </tr>
+        <tr>
+          <td>Nombre de jours de la fen&ecirc;tre s&eacute;lectionn&eacute;e :</td>
+          <td><span id="num_days">-</span></td>
+        </tr>
+      </table>
+    </div>
+		
+    <div class="clear"></div>
 
-<!--#include virtual="/includes/footer-fra.html" -->
+    <section style="padding: 20px">
+      <table id="transit-window" class="zebra-striped" style="table-layout: fixed; width: 750px;display:none;">
+        <thead>
+        <tr>
+          <th colspan="2">D&eacute;but</th>
+          <th colspan="2">Fin</th>
+          <th>&nbsp;</th>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <th>Heure (HNP)</th>
+          <th>Date</th>
+          <th>Heure (HNP)</th>
+          <th>Profondeur maximum (m)</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+			<div style="float: left;">
+				<div style="float: left; color:red;">*</div>Depths are relative to local low water level
+			</div>
+    </section>
+  </div>  
+
+<!--#include virtual="/includes/footer-eng.html" -->
