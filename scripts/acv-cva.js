@@ -133,7 +133,8 @@
       }
     });
     $("#submit").click(update);
-    return $('#replay').click(play);
+    $('#replay').click(play);
+    return update();
   });
 
   update = function() {

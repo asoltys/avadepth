@@ -123,6 +123,7 @@ $(->
 
   $("#submit").click(update)
   $('#replay').click(play)
+  update()
 )
 
 update = ->
