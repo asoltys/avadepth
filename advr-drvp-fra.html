@@ -1,0 +1,76 @@
+<!--#include virtual="/includes/header-fra.html" -->
+<script src="scripts/advr-drvp.js" defer></script>
+<script src="scripts/avadepth_util.js" defer></script>
+
+
+<h1>Available Depths Verification Report</h1>
+
+<div class="align-center">
+  <h2 class="print-align-center">Fraser River - <span id="static-limit"></span></h2>
+  <p class="print-align-center">
+    For <span id="date-display">Tuesday, July 09, 2013</span><br />
+    Km 1 to <span class="static-chainage">35</span> at Hope Discharge <span id="static-discharge"></span>m3/s
+    (<span id="static-discharge-eval"></span>) Time <span id="static-time">00</span><br />
+    Current Soundings for Km 1 to <span class="static-chainage">35</span>
+    at <span id="static-width">100</span>% Available Width
+  </p>
+	
+	<button 
+		class="depths print_hide button button-accent"
+		href="javascript:void(0)"
+		style="margin-bottom:0.5em">&lt; back</button>
+	<button 
+			id="print_daily_depths" 
+			class="print_hide button button-accent"
+			style="margin-bottom:0.5em">Print</button><br />	
+			
+</div>
+<input type="hidden"
+    id="date" />
+<input type="hidden"
+    id="chainage" />
+<input type="hidden"
+    id="flowRate" />
+<input type="hidden"
+    id="flowType" />
+<input type="hidden"
+    id="width" />
+<input type="hidden"
+    id="sounding" />
+<input type="hidden"
+    id="lane" />
+<input type="hidden"
+    id="period" />
+
+<!--[if IE]>
+<div>
+<![endif]-->
+<!--[if !IE]><!-->
+<div class="span-8">
+<!--<![endif]-->
+  <table id="verify" style="text-align:center; table-layout: fixed; width: 600px;" class="dataTable zebra-striped">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Design Grade</th>
+        <th>Least Sounding</th>
+        <th colspan="2">Available Width</th>
+        <th>Tidal Aid</th>
+        <th>Depth</th>
+      </tr>
+      <tr style="background-color: #EEEEEE;">
+        <th>(km)</th>
+        <th>(m)</th>
+        <th>(m)</th>
+        <th>(m)</th>
+        <th>%</th>
+        <th>(m)</th>
+        <th>(m)</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<!--#include virtual="/includes/footer-fra.html" -->
