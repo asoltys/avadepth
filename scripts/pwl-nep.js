@@ -158,6 +158,7 @@
 
   update = function() {
     var headerRow, i, kmStart, report_type, step, waterway, _ref;
+    $('.spinner').css('display', 'block');
     report_type = $('input[name=report]:checked').val();
     waterway = (function() {
       switch ($('#fraser_river').val()) {
@@ -224,7 +225,7 @@
       }));
       table.fnClearTable();
       count = 0;
-      return $.each(data.times, function() {
+      $.each(data.times, function() {
         var row;
         if (report_type === "0") {
           row = $("<tr><td class='align-center'><a href=\"javascript:void(0)\">" + this.predictTime + "</a></td></tr>");
@@ -244,6 +245,7 @@
         if (report_type === "0") $(row).find('a').click(gotoTimeGraph);
         return $('.dataTables_empty').parent().html('');
       });
+      return $('.spinner').css('display', 'none');
     });
   };
 

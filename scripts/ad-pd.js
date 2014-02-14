@@ -71,6 +71,7 @@
         $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"");
         return $("#report_body").hide();
       } else {
+        $('.spinner').css('display', 'block');
         $("#error_message").hide();
         $("#report_body").show();
         return update();
@@ -120,7 +121,8 @@
       })();
       $('#static-limit').text(limit_text);
       $('#static-discharge').text($('#flowRate').val());
-      return $('#static-discharge-eval').text($('#flowType').val());
+      $('#static-discharge-eval').text($('#flowType').val());
+      return $('.spinner').css('display', 'none');
     });
   };
 
