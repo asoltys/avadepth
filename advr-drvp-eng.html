@@ -2,13 +2,6 @@
 <script src="scripts/advr-drvp.js" defer></script>
 <script src="scripts/avadepth_util.js" defer></script>
 
-<!--[if IE]>
-<style>
-	table#verify{
-		margin-left: 290px;
-	}
-</style>	
-<![endif]-->
 
 <h1>Available Depths Verification Report</h1>
 
@@ -49,7 +42,12 @@
 <input type="hidden"
     id="period" />
 
+<!--[if IE]>
+<div>
+<![endif]-->
+<!--[if !IE]><!-->
 <div class="span-8">
+<!--<![endif]-->
   <table id="verify" style="text-align:center; table-layout: fixed; width: 600px;" class="dataTable zebra-striped">
     <thead>
       <tr>
