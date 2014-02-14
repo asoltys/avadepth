@@ -1,5 +1,5 @@
 (function() {
-  var flowrate, gotoDepthsReport, querystring, table;
+  var flowrate, gotoDepthsReport, table;
 
   table = null;
 
@@ -7,17 +7,6 @@
 
   gotoDepthsReport = function() {
     return document.location = ("ad-pd-eng.html?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + ($('#lane').val()) + "&") + ("period=" + ($('#period').val()));
-  };
-
-  querystring = function(key) {
-    var m, r, re;
-    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
-    r = [];
-    m = [];
-    while ((m = re.exec(document.location.search)) !== null) {
-      r.push(m[1]);
-    }
-    return r;
   };
 
   $(function() {

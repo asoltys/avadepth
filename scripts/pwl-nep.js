@@ -1,5 +1,5 @@
 (function() {
-  var gotoKMGraph, gotoTimeGraph, querystring, table, update;
+  var gotoKMGraph, gotoTimeGraph, table, update;
 
   table = null;
 
@@ -9,17 +9,6 @@
 
   gotoTimeGraph = function() {
     return document.location = ("pwlt-ptnd-eng.html?date=" + ($('#date').val()) + "&") + ("time=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
-  };
-
-  querystring = function(key) {
-    var m, r, re;
-    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
-    r = [];
-    m = [];
-    while ((m = re.exec(document.location.search)) !== null) {
-      r.push(m[1]);
-    }
-    return r;
   };
 
   $(function() {

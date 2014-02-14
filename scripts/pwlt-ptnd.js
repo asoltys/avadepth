@@ -1,16 +1,5 @@
 (function() {
-  var gotoPWL, querystring;
-
-  querystring = function(key) {
-    var m, r, re;
-    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
-    r = [];
-    m = [];
-    while ((m = re.exec(document.location.search)) !== null) {
-      r.push(m[1]);
-    }
-    return r;
-  };
+  var gotoPWL;
 
   gotoPWL = function() {
     return document.location = ("pwl-nep-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($("#km").text()) + "&") + ("intervalMin=" + ($('#intervalMin').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));

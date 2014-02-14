@@ -1,11 +1,3 @@
-querystring = (key) ->
-  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
-  r = []
-  m = []
-  while ((m=re.exec(document.location.search)) != null)
-    r.push(m[1])
-  return r
-
 gotoPWL = ->
   document.location = "pwl-nep-eng.html?date=#{$('#date').val()}&" +
       "km=#{$("#km").text()}&" +

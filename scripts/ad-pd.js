@@ -1,20 +1,9 @@
 (function() {
-  var createGraph, flowrate, initialize, process_report, querystring, table, update;
+  var createGraph, flowrate, initialize, process_report, table, update;
 
   table = null;
 
   flowrate = 0;
-
-  querystring = function(key) {
-    var m, r, re;
-    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
-    r = [];
-    m = [];
-    while ((m = re.exec(document.location.search)) !== null) {
-      r.push(m[1]);
-    }
-    return r;
-  };
 
   $(function() {
     var check;

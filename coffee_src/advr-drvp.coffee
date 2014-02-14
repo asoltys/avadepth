@@ -11,14 +11,6 @@ gotoDepthsReport = ->
       "lane=#{$('#lane').val()}&" +
       "period=#{$('#period').val()}"
 
-querystring = (key) ->
-  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
-  r = []
-  m = []
-  while ((m=re.exec(document.location.search)) != null)
-    r.push(m[1])
-  return r
-
 $(->
   $("#print_daily_depths").click(->
     window.print()

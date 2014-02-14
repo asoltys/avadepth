@@ -1,13 +1,5 @@
 monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
     
-querystring = (key) ->
-  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
-  r = []
-  m = []
-  while ((m=re.exec(document.location.search)) != null)
-    r.push(m[1])
-  return r
-
 $(->
   chainage = querystring('chainage')
   $('.heading').text("Kilometre #{chainage-1} to #{chainage}")

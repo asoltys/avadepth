@@ -1,18 +1,7 @@
 (function() {
-  var monthNames, querystring;
+  var monthNames;
 
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-  querystring = function(key) {
-    var m, r, re;
-    re = new RegExp('(?:\\?|&)' + key + '=(.*?)(?=&|$)', 'gi');
-    r = [];
-    m = [];
-    while ((m = re.exec(document.location.search)) !== null) {
-      r.push(m[1]);
-    }
-    return r;
-  };
 
   $(function() {
     var chainage;

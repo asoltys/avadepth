@@ -1,14 +1,6 @@
 table = null
 flowrate = 0
 
-querystring = (key) ->
-  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
-  r = []
-  m = []
-  while ((m=re.exec(document.location.search)) != null)
-    r.push(m[1])
-  return r
-
 $(->
   if(querystring('date').length != 0)
     $("#date").val(querystring('date'))

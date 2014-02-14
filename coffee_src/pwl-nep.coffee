@@ -17,14 +17,6 @@ gotoTimeGraph = ->
       "waterway=#{$('#waterway').val()}&" +
       "displayType=#{$('input[name=report]:checked').val()}"
   
-querystring = (key) ->
-  re = new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi')
-  r = []
-  m = []
-  while ((m=re.exec(document.location.search)) != null)
-    r.push(m[1])
-  return r
-
 $(->
   $("#print_predicted_water_levels").click(->
     window.print()
