@@ -1,6 +1,6 @@
 table = null
 gotoKMGraph = ->
-  document.location = "pwlk-nepk-eng.html?date=#{$('#date').val()}&" +
+  document.location = "pwlk-nepk-#{$("#lang").val()}.html?date=#{$('#date').val()}&" +
       "km=#{$(this).text()}&" +
       "intervalMin=#{$('#interval').val()}&" +
       "flowRate=#{$('#flowRate').val()}&" +
@@ -9,7 +9,7 @@ gotoKMGraph = ->
       "displayType=#{$('input[name=report]:checked').val()}"
 
 gotoTimeGraph = ->
-  document.location = "pwlt-ptnd-eng.html?date=#{$('#date').val()}&" +
+  document.location = "pwlt-ptnd-#{$("#lang").val()}.html?date=#{$('#date').val()}&" +
       "time=#{$(this).text()}&" +
       "intervalMin=#{$('#interval').val()}&" +
       "flowRate=#{$('#flowRate').val()}&" +

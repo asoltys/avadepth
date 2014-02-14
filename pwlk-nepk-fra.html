@@ -1,96 +1,45 @@
 <!--#include virtual="/includes/header-eng.html" -->
-<script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.js"></script>
-<script type="text/javascript">
-$(function() {
-var d3 = [[0, 2774], [1, 2774],[2, 2770],[3, 2550],[4, 2378],[5, 2274],[6, 1981],[7, 1774],[8, 1674],[9, 1634],[10, 1624],[11, 1614],[12, 1600],[13, 1585],[14, 2278],[15, 1774],[16, 1885],[17, 1485],[18, 1985],[19, 1885], [20, 1785],[21, 2200],[22, 2100],[23, 2378],[24, 2370],[25, 2330],[26, 2290],[27, 2250],[28, 2210],[29, 2170],[30, 2130],[31, 2774], [32, 2774],[33, 2770],[34, 2550],[35, 2378],[36, 2274],[37, 1981],[38, 1774],[39, 1674],[40, 1634],[41, 1624],[41, 1614],[42, 1600],[43, 1585],[44, 2278],[45, 1774],[46, 1885],[47, 1485],[48, 1985],[49, 1885], [50, 1785],[51, 2200],[52, 2100],[53, 2378],[54, 2370],[55, 2330],[56, 2290],[57, 2250],[58, 2210],[59, 2170],[60, 2130],[61, 2774], [62, 2774],[63, 2770],[64, 2550],[65, 2378],[66, 2274],[67, 1981],[68, 1774],[69, 1674],[70, 1634],[71, 1624],[72, 1614],[73, 1600],[74, 1585],[75, 2278],[76, 1774],[77, 1885],[78, 1485],[79, 1985],[80, 1885], [81, 1785],[82, 2200],[83, 2100],[84, 2378],[85, 2370],[86, 2330],[87, 2290],[88, 2250],[90, 2210],[91, 2170],[92, 2130]];
-var d2 = [[0, 800], [1, 800],[2, 800],[3, 800],[4, 810],[5, 780],[6, 781],[7, 751],[8, 830],[9, 831],[10, 789],[11, 759],[12, 799],[13, 713],[14, 842],[15, 724],[16, 769],[17, 744],[18, 789],[19, 759], [20, 816],[21, 820],[22, 811],[23, 813],[24, 793],[25, 777],[26, 761],[27, 781],[28, 713],[29, 839],[30, 765]];
-$.plot("#placeholder", [ d2, d3 ], {
-  
-          xaxes: [{
-            axisLabel: 'Pacific Standard Time (date)'
-        }],
-        yaxes: [{
-            position: 'left',
-            axisLabel: 'Hope Discharge (m3s)'
-        }]
-});
-// Add the Flot version string to the footer
-});
-</script>
-
-<script>
-  $(function() {
-    $('#date').datepicker();
-    $('#date').val(moment().format('MM/DD/YYYY'));
-    $('#date').change(function () {
-        $.getJSON(
-          '/api/depths?date=' + $(this).val(), 
-          function (data) {
-            body.text(data);
-          }
-        );
-    });
-  });
-</script>
+<script language="javascript" type="text/javascript" src="scripts/flot/jquery.flot.time.js"></script>
+<script src="scripts/pwlk-nepk.js" defer></script>
 
 <h1>Predicted Water Levels</h1>
 
 <form id="daily_depth">
-  <div class="span-2">
-    <div>
-      <label for="date">Date:</label>
-      <input id="date" type="text" name="date" class="datepicker" />
-    </div>
-
-    <div>
-      <label for="fraser_river">Fraser River:</label>
-      <input id="fraser_river" type="radio" name="fraser_river" checked="checked" /> South Arm (km 0-40)<br />
-      <input type="radio" name="fraser_river" /> North Arm (km 0-30)<br />
-      <input type="radio" name="fraser_river" /> Main Arm (km 40-92)<br />
-    </div>
-  </div>
-
-  <div class="span-2">
-
-    <div>
-      <label for="river_discharge">River Discharge @ Hope:</label>
-      <input id="river_discharge" type="radio" name="river_discharge" checked="checked" /> Predicted (0m&#179;s)<br />
-      <input type="radio" name="river_discharge" disabled="true" /> Actual (841m&#179;s)<br />
-      <input type="radio" name="river_discharge" /> User Defined
-      <input id="river_discharge" type="text" name="river_discharge_user_defined" /> m3/s<br />
-      <input type="radio" name="river_discharge" /> Selected
-      <select id="width">
-        <option value="2000" selected="selected">2000</option>
-        <option value="5000">5000</option>
-        <option value="7500">7500</option>
-      </select> m3/s
-    </div>
-  </div>
-
-  <div class="span-2">
-
-    <div>
-      <label for="interval">Interval:</label>
-      <select id="width">
-        <option value="15 minute">15 minute</option>
-        <option value="30 minute">30 minute</option>
-        <option value="1 hour" selected="selected">1 hour</option>
-        <option value="2 hour">2 hour</option>
-      </select> m3/s
-    </div>
-
-    <div>
-      <label for="report">Report:</label>
-      <input id="report" type="radio" name="report" checked="checked" /> Water Levels 
-      <input type="radio" name="report" /> Velocities<br />
-    </div>
-  </div>
+  <input id="date"
+      type="hidden"
+      name="date"
+      class="datepicker" />
+  <input id="alt-date" type="hidden" />
+  <input type="hidden"
+      name="waterway"
+      id="waterway"
+      value="0" />
+  <input id="defined_discharge"
+      type="hidden"
+      name="discharge" />
+  <input type="hidden"
+      name="flowRate"
+      id="flowRate"
+      value="0" />
+  <input type="hidden"
+      name="flowType"
+      id="flowType"
+      value="0" />
+  <input type="hidden"
+      id="interval"
+      name="interval"
+      value="60">
 </form>
-
 <div class="clear"></div>
 
-<div>
-  <h2>Fraser River - South Arm At 0km</h2>
-  <div id="placeholder" class="demo-placeholder" style="width:500px;height:500px;float:left"></div>
+<div class="grid-12">
+  <div class="span-6 align-center">
+    <h2>Fraser River - <span id="river-section"></span> At <span id="km"></span>km</h2>
+    <p><span id="static-date"></span> at <span id="static-interval">1 hour</span> intervals<br />
+    Fraser River - <span id="static-arm">South Arm</span><br />
+    Hope Discharge <span id="static-discharge"></span>m3/s (<span id="static-discharge-eval">Predicted</span>)</p>
+    <a id="pwl" href="javascript:void(0)">&lt; back</a><br />
+    <div id="placeholder" class="demo-placeholder" style="width:500px;height:500px;margin-left:auto;margin-right:auto"></div>
+  </div>
 </div>
 <!--#include virtual="/includes/footer-eng.html" -->

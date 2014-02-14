@@ -4,11 +4,11 @@
   table = null;
 
   gotoKMGraph = function() {
-    return document.location = ("pwlk-nepk-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
+    return document.location = ("pwlk-nepk-" + ($("#lang").val()) + ".html?date=" + ($('#date').val()) + "&") + ("km=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
   };
 
   gotoTimeGraph = function() {
-    return document.location = ("pwlt-ptnd-eng.html?date=" + ($('#date').val()) + "&") + ("time=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
+    return document.location = ("pwlt-ptnd-" + ($("#lang").val()) + ".html?date=" + ($('#date').val()) + "&") + ("time=" + ($(this).text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val()));
   };
 
   $(function() {
