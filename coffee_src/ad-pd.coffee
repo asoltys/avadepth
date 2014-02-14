@@ -109,12 +109,20 @@ process_report = (flag)->
     $('#static-chainage').text($('#chainage').val())
     $('#static-type').text($('input[name="condition"]:checked').next().text())
     limit_text = switch
-      when channel == '0' then 'Inner Channel Limit'
-      when channel == '1' then 'Outer Channel Limit'
+      when channel == '0'
+        if $("#lang").val() == "eng"
+          "Inner Channel Limit"
+        else
+          "Limite intérieure"
+      when channel == '1'
+        if $("#lang").val() == "eng"
+          'Outer Channel Limit'
+        else
+          "Limite extérieure"
       else ''
     $('#static-limit').text(limit_text)
     $('#static-discharge').text($('#flowRate').val())
-    $('#static-discharge-eval').text($('#flowType').val())
+    $('#static-discharge-eval').text(translate_flow())
     $('.spinner').css('display', 'none')
   )
 

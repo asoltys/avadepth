@@ -101,16 +101,26 @@
       limit_text = (function() {
         switch (false) {
           case channel !== '0':
-            return 'Inner Channel Limit';
+            if ($("#lang").val() === "eng") {
+              return "Inner Channel Limit";
+            } else {
+              return "Limite intérieure";
+            }
+            break;
           case channel !== '1':
-            return 'Outer Channel Limit';
+            if ($("#lang").val() === "eng") {
+              return 'Outer Channel Limit';
+            } else {
+              return "Limite extérieure";
+            }
+            break;
           default:
             return '';
         }
       })();
       $('#static-limit').text(limit_text);
       $('#static-discharge').text($('#flowRate').val());
-      $('#static-discharge-eval').text($('#flowType').val());
+      $('#static-discharge-eval').text(translate_flow());
       return $('.spinner').css('display', 'none');
     });
   };
