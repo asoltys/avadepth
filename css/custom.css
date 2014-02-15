@@ -103,3 +103,10 @@ tr.controlling td { color: red; }
 div.inline-block {
   display:inline-block
 }
+
+table.styled th, table.styled td {
+  text-align: center;
+  padding: 3px 10px
+}
+  table.styled td:first-child { text-align: left }
+  table.styled th { border-bottom: 1px solid black }
