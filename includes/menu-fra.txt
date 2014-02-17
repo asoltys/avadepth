@@ -40,13 +40,9 @@ wet-boew.github.com/wet-boew/License-fra.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Conditions au fond du chenal</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-fra.html?ww-vn=fraser_main_arm'>Fraser – bras principal</a></li>
-<li><a href='/cc-ca-fra.html?ww-vn=fraser_north_arm'>Fraser – bras nord</a></li>
-<li><a href='/cc-ca-fra.html?ww-vn=fraser_south_arm'>Fraser – bras sud</a></li>
-<li><a href='/cc-ca-fra.html?ww-vn=pitt_river'>Pitt River (C.-B.)</a></li>
-<li><a href='/cc-ca-fra.html?ww-vn=nanaimo_harbour'>Port de Nanaimo (C.-B.)</a></li>
-<li><a href='/cc-ca-fra.html?ww-vn=vancouver_harbour'>Port de Vancouver (C.-B.)</a></li>
-<li><a href='/cc-ca-fra.html?ww-vn=hay_river'>Hay River (T.N. O.)</a></li>
+<li><a href='/cc-ca-eng.html'>Current Channel Conditions for Fraser River South Arm</a></li>
+<li><a href='/Data/overview/FR_Overview_S.dwf' target="_blank" style="background-image:none;">Channel Overview for Fraser River South Arm</a></li>
+<li><a href='/sdb-bds-eng.html'>Survey Drawings</a></li>
 </ul>
 </section>
 <div class="clear"></div>
