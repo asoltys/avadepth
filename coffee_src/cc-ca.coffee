@@ -45,5 +45,12 @@ $(->
         $('#soundings tr:last td:eq(7)').append('*')
     )
     table.fnAdjustColumnSizing()
+    
+		# CSS hardcode for table width (Client Request). Fixes the overflowing "km" column #
+    $('#soundings').css('table-layout', 'fixed')
+    $('.first-row th:nth-child(1)').css('width', '150px')
+    $('.first-row th:nth-child(2)').css('width', '200px')
+    $('.first-row th:nth-child(3)').css('width', '200px')
+    # end #
   )
 )
