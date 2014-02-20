@@ -825,8 +825,8 @@
             </div>
           </div>
           <div id="PR-map" class="map-group" style="display: none">
-            <div class="map0">
-              <map name="MapPR0">
+            <div class="map0" style="width: 652px;">
+              <map name="MapPR0" class="surveyDrawingTile">
                 <area shape="polygon"
                     coords="11, 26, 79, 28, 75, 84, 4, 78"
                     onmouseover="MapPR0.src='/images/overview_pr_mid01.jpg'"
@@ -902,7 +902,187 @@
                   alt="Pitt River">
             </div>
           </div>
-        </div>
+			
+          <div id="BR-map" class="map-group" style="display: none">
+            <div class="map0">
+              <map name="MapBR" class="surveyDrawingTile">
+                <area shape="polygon"
+                    coords="218, 6, 420, 6, 422, 189, 216, 190"
+                    onmouseover="mapBR.src='/images/overview_BR_mid02.jpg'"
+                    onmouseout="mapBR.src='/images/overview_BR_mid01.jpg'"
+                    title="BR4650"
+                    alt="Km 46 to 50">
+              </map>
+              <img border="0"
+                  src="/images/overview_BR_top.jpg"
+                  width="652"
+                  height="129"
+                  alt="Fraser Surrey Docks">
+              <img src="/images/overview_BR_mid01.jpg"
+                  style="float: left"
+                  alt="Fraser Surrey Docks"
+                  usemap="#MapBR"
+                  border="0"
+                  name="mapBR"
+                  width="469"
+                  height="110">
+              <img border="0"
+                  src="/images/overview_BR_bot.jpg"
+                  width="652"
+                  height="109"
+                  alt="Fraser Surrey Docks">
+            </div>
+          </div>					
+		
+          <div id="CR-map" class="map-group" >
+            <div class="map0" style="width: 654px; ">
+              <map name="mapCR" >
+								 <area shape="polygon" 
+									 coords="50, 45, 109, 45, 108, 96, 50, 94" 
+									 onmouseover="CR.src='/images/overview_cr_mid07.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'"  
+									 alt="Sheet 07">
+								 <area shape="polygon" 
+									 coords="110, 46, 167, 45, 169, 92, 110, 92" 
+									 onmouseover="CR.src='/images/overview_cr_mid06.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'" 
+									 alt="Sheet 06">
+								 <area shape="polygon" 
+									 coords="168, 27, 228, 26, 226, 71, 168, 72" 
+									 onmouseover="CR.src='/images/overview_cr_mid05.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'" 
+									 alt="Sheet 05">
+								 <area shape="polygon" 
+									 coords="229, 10, 285, 12, 286, 58, 228, 59" 
+									 onmouseover="CR.src='/images/overview_cr_mid04.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'" 
+									 alt="Sheet 04">         
+								 <area shape="polygon" 
+									 coords="288, 18, 345, 19, 344, 65, 288, 64" 
+									 onmouseover="CR.src='/images/overview_cr_mid03.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'" 
+									 alt="Sheet 03"> 
+								 <area shape="polygon" 
+									 coords="345, 35, 403, 37, 402, 86, 346, 85" 
+									 onmouseover="CR.src='/images/overview_cr_mid02.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'" 
+									 alt="Sheet 02">          
+								 <area shape="polygon" 
+									 coords="406, 50, 462, 51, 461, 100, 405, 99" 
+									 onmouseover="CR.src='/images/overview_cr_mid01.jpg'" 
+									 onmouseout="CR.src='/images/overview_cr_mid.jpg'" 
+									 alt="Sheet 01">							
+              </map>
+              <img border="0"
+                  src="/images/overview_cr_top.jpg"
+                  width="652"
+                  height="129"
+                  alt="Courtenay River, BC">
+              <img src="/images/overview_cr_mid.jpg"
+                  style="float: left"
+                  alt="Courtenay River, BC"
+                  usemap="#mapCR"
+                  border="0"
+                  name="CR"
+                  width="469"
+                  height="110">
+              <img src="/images/overview_cr_rht.jpg"
+                  style="float: left"
+                  alt="Courtenay River, BC"
+                  border="0"
+                  width="183"
+                  height="110">									
+              <img border="0"
+                  src="/images/overview_CR_bot.jpg"
+                  width="652"
+                  height="109"
+                  alt="Courtenay River, BC">
+            </div>
+          </div>
+
+          <div id="SQ-map" class="map-group" >
+            <div class="map0">
+              <map name="mapSQ" >
+								 <area shape="polygon" 
+									 coords="24, 28, 144, 26, 144, 116, 21, 117" 
+									 onmouseover="sq.src='/images/mamq_mid01.jpg'" 
+									 onmouseout="sq.src='/images/mamq_mid.jpg'" 
+									 alt="Km 01">
+								 <area shape="polygon" 
+									 coords="230, 28, 266, 28, 264, 118, 147, 117, 147, 68, 146, 24, 237, 26" 
+									 onmouseover="sq.src='/images/mamq_mid02.jpg'" 
+									 onmouseout="sq.src='/images/mamq_mid.jpg'" 
+									 alt="Km 02">
+								 <area shape="polygon" 
+									 coords="323, 29, 389, 30, 388, 119, 269, 121, 269, 63, 269, 28" 
+									 onmouseover="sq.src='/images/mamq_mid03.jpg'" 
+									 onmouseout="sq.src='/images/mamq_mid.jpg'" 
+									 alt="Km 03">
+								 <area shape="polygon" 
+									 coords="385, 14, 504, 13, 507, 103, 390, 105" 
+									 onmouseover="sq.src='/images/mamq_mid04.jpg'" 
+									 onmouseout="sq.src='/images/mamq_mid.jpg'" 
+									 alt="Km 04">
+								 <area shape="polygon" 
+									 coords="510, 16, 626, 21, 629, 111, 512, 108, 510, 64, 511, 43" 
+									 onmouseover="sq.src='/images/mamq_mid05.jpg'" 
+									 onmouseout="sq.src='/images/mamq_mid.jpg'" 
+									 alt="Km 05">						
+              </map>
+              <img border="0"
+                  src="/images/mamq_top.jpg"
+                  width="652"
+                  height="129"
+                  alt="Squamish, BC">
+              <img src="/images/mamq_mid.jpg"
+                  style="float: left"
+                  alt="Squamish, BC"
+                  usemap="#mapSQ"
+                  border="0"
+                  name="sq"
+                  width="469"
+                  height="110">								
+              <img border="0"
+                  src="/images/mamq_bot.jpg"
+                  width="652"
+                  height="109"
+                  alt="Squamish, BC">
+            </div>
+          </div>
+
+		
+          <div id="FPORT-map" class="map-group" >
+            <div class="mapAbsolute" style="width: 608px;">
+              <map name="FPORT" >
+								<area shape="polygon" 
+									coords="110, 5, 501, 7, 502, 128, 111, 124" 
+									onmouseover="mapFPORT.src='/images/frpa_ofsd1.png'" 
+									onmouseout="mapFPORT.src='/images/frpa_ofsd.png'" 
+									title="/data/fraserport/fsd_overview.pdf"
+									alt="Fraser Surrey Docks">
+              </map>
+              <img border="0"
+                  src="/images/frpa_otop.png"
+                  width="652"
+                  height="129"
+                  alt="Fraser Surrey Docks">
+              <img src="/images/frpa_ofsd.png"
+                  style="float: left"
+                  alt="Fraser Surrey Docks"
+                  usemap="#FPORT"
+                  border="0"
+                  name="mapFPORT"
+                  width="652"
+                  height="110">
+              <img border="0"
+                  src="/images/frpa_obot.png"
+                  width="652"
+                  height="109"
+                  alt="Fraser Surrey Docks">
+            </div>
+          </div>					
+				
+				</div>
       </div>
       
       <div id="help" style="max-height: 200px; overflow-y: scroll;">

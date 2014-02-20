@@ -170,6 +170,8 @@ $(->
     $('.map-group>div').hide()
     $('#'+$(this).val()+'-map').show()
     $('#'+$(this).val()+'-map').find('.map0').show()
+    #Map that has absolute url#
+    $('#'+$(this).val()+'-map').find('.mapAbsolute').show()
     adjustHeight($(this).val()+'-map')
   )
   $('.back').click( ->
@@ -185,7 +187,9 @@ $(->
     $('#map').css("min-height", "600px")
     $('.tabs-panel').height("620px")
   )
-  
+  $('.mapAbsolute area').click( ->
+    window.open($(this).attr('title'), '_blank')
+  )  
   $('form#daily_depth').on("click","button", ->
     getSurveyDrawings({
       river:$('#waterway').val()
