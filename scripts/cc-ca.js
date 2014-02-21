@@ -43,7 +43,11 @@
           return $('#soundings tr:last td:eq(7)').append('*');
         }
       });
-      return table.fnAdjustColumnSizing();
+      table.fnAdjustColumnSizing();
+      $('#soundings').css('table-layout', 'fixed');
+      $('.first-row th:nth-child(1)').css('width', '150px');
+      $('.first-row th:nth-child(2)').css('width', '200px');
+      return $('.first-row th:nth-child(3)').css('width', '200px');
     });
   });
 

@@ -98,6 +98,7 @@
       $('.map-group>div').hide();
       $('#' + $(this).val() + '-map').show();
       $('#' + $(this).val() + '-map').find('.map0').show();
+      $('#' + $(this).val() + '-map').find('.mapAbsolute').show();
       return adjustHeight($(this).val() + '-map');
     });
     $('.back').click(function() {
@@ -107,10 +108,15 @@
       return adjustHeight($(this).closest('.map-group').attr('id'));
     });
     $('.map0 area').click(function() {
-      $(this).closest('div').hide();
-      $(this).closest('.map-group').find('.map' + $(this).attr('title')).show();
-      $('#map').css("min-height", "600px");
-      return $('.tabs-panel').height("620px");
+      if (!$(this).closest('div.map0').hasClass("no_zoom")) {
+        $(this).closest('div').hide();
+        $(this).closest('.map-group').find('.map' + $(this).attr('title')).show();
+        $('#map').css("min-height", "600px");
+        return $('.tabs-panel').height("620px");
+      }
+    });
+    $('.mapAbsolute area').click(function() {
+      return window.open($(this).attr('title'), '_blank');
     });
     $('form#daily_depth').on("click", "button", function() {
       return getSurveyDrawings({

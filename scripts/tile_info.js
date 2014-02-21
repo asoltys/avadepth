@@ -295,6 +295,15 @@ tile_query_info = {
       channelType: "Secondary",
       kmStart: "40.0",
       kmEnd: "41.0"
+    },
+    BR4650: {
+      river: "BR",
+      drawingType: "",
+      channel: "BR",
+      location: "",
+      channelType: "Main",
+      kmStart: "",
+      kmEnd: ""
     }
   };
 

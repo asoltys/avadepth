@@ -181,15 +181,16 @@ $(->
     adjustHeight($(this).closest('.map-group').attr('id'))
   )
   $('.map0 area').click( ->
-    $(this).closest('div').hide()
-    $(this).closest('.map-group').find('.map'+$(this).attr('title')).show()
-    #$('#tile').text('- Tile 00'+$(this).attr('title'))
-    $('#map').css("min-height", "600px")
-    $('.tabs-panel').height("620px")
+    if !$(this).closest('div.map0').hasClass("no_zoom")
+      $(this).closest('div').hide()
+      $(this).closest('.map-group').find('.map'+$(this).attr('title')).show()
+      #$('#tile').text('- Tile 00'+$(this).attr('title'))
+      $('#map').css("min-height", "600px")
+      $('.tabs-panel').height("620px")
   )
   $('.mapAbsolute area').click( ->
     window.open($(this).attr('title'), '_blank')
-  )  
+  )
   $('form#daily_depth').on("click","button", ->
     getSurveyDrawings({
       river:$('#waterway').val()
