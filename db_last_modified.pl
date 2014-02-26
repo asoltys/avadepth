@@ -2,7 +2,7 @@
 use File::stat;
 use Time::localtime;
 print "Content-type: text/json\n\n";
-if (open ($fh,"../avarest/Data/AvadepthInternet.mdb")){
+if (open ($fh,"Data/AvadepthInternet.mdb")){
   my $timestamp = ctime(stat($fh)->mtime);
   print "{\"last_updated\" : \"$timestamp\"}"
 }

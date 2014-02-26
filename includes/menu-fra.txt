@@ -19,7 +19,7 @@ wet-boew.github.com/wet-boew/License-fra.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/weekly.pdf' target="_blank" style="background-image:none;">Rapport hebdomadaire</a></li>
+<li><a href='/Data/Weekly/weekly.pdf' target="_blank" style="background-image:none;">Rapport hebdomadaire</a></li>
 <li><a href='/ad-pd-fra.html'>Profondeurs disponibles</a></li>
 <li><a href='/tw-ft-fra.html'>Fenêtre de circulation</a></li>
 </ul>
