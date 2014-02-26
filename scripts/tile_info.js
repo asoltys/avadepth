@@ -304,6 +304,78 @@ tile_query_info = {
       channelType: "Main",
       kmStart: "",
       kmEnd: ""
+    },
+    PR4650: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Chatham Reach",
+      channelType: "Main",
+      kmStart: "46",
+      kmEnd: "50"
+    },
+    PR5055: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Chatham Reach",
+      channelType: "Main",
+      kmStart: "50",
+      kmEnd: "58"
+    },
+    PR5461: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Chatham Reach",
+      channelType: "Main",
+      kmStart: "54",
+      kmEnd: "61"
+    },
+    PR6165: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Fox Reach",
+      channelType: "Main",
+      kmStart: "60",
+      kmEnd: "65"
+    },
+    PR6570: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Grant Channel",
+      channelType: "Main",
+      kmStart: "65",
+      kmEnd: "70"
+    },
+    PR7074: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Grant Channel",
+      channelType: "Main",
+      kmStart: "69",
+      kmEnd: "74"
+    },
+    PR7476: {
+      river: "PR",
+      drawingType: "",
+      channel: "PR",
+      location: "Grant Channel",
+      channelType: "Main",
+      kmStart: "73",
+      kmEnd: "76"
+    },
+    CR1: {
+      river: "CR",
+      drawingType: "",
+      channel: "CR",
+      location: "Channel",
+      channelType: "Main",
+      kmStart: "3.6",
+      kmEnd: "5"
     }
   };
 

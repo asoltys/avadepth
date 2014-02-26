@@ -216,7 +216,7 @@ getSurveyDrawings = ((jsonStuff) ->
     $.each(data, ->
       addRow = false
       if jsonStuff.kmStart and jsonStuff.kmEnd
-        if jsonStuff.kmStart == this.kmStart and jsonStuff.kmEnd == this.kmEnd
+        if parseFloat(jsonStuff.kmStart) <= parseFloat(this.kmStart) and parseFloat(jsonStuff.kmEnd) >= parseFloat(this.kmEnd)
           addRow = true
       else
         addRow = true

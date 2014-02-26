@@ -141,7 +141,7 @@
         var addRow;
         addRow = false;
         if (jsonStuff.kmStart && jsonStuff.kmEnd) {
-          if (jsonStuff.kmStart === this.kmStart && jsonStuff.kmEnd === this.kmEnd) {
+          if (parseFloat(jsonStuff.kmStart) <= parseFloat(this.kmStart) && parseFloat(jsonStuff.kmEnd) >= parseFloat(this.kmEnd)) {
             addRow = true;
           }
         } else {
