@@ -123,3 +123,9 @@ table {
 	margin-left: 45px;
 }
 
+/* cc-ca Current Channel Conditions page - ie */
+.ie7 #soundings, .ie8 #soundings{
+	margin-left: 0px;
+}
+
+
