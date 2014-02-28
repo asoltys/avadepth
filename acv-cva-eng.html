@@ -11,7 +11,6 @@
     <ul class="tabs">
       <li class="default"><a href="#parameters">Parameters</a></li>
       <li><a href="#acv_zone">Zones</a></li>
-      <li><a href="#help">Help</a></li>
     </ul>
 
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
@@ -260,12 +259,15 @@
             </div>
 
             <div id="loading" style="padding:1em 1em;display:none">
-              Loading...
+		<div style="width: 35px;height: 30px; float: left; ">
+		    <img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px; position: absolute; margin-top: -5px;"/>
+		</div>
+	       Processing...
               <span id="frame_count">
                 (Frames retrieved: <span id="frames_retrieved"></span> /
                     <span id="number_of_frames"></span>)
               </span>
-							<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px; margin: -3px 0 0 0; position: absolute;"/>
+							
             </div>
 
             <div id="nodata" style="padding:1em 1em;display:none">
@@ -292,6 +294,7 @@
         <img src="images/acv_southarm.png"
             style="margin-left:auto;margin-right:auto;display:block;vertical-align:middle"/>
       </div>
+      <!-- not shown. TBD later. -->
       <div id="help">
         <p>
           The available depth tabulations allow us to monitor the behaviour of the "Control Point" - the location in the river channel which has the minimum available depth at any specified time. The control point moves under the influence of tides, flow rates and soundings profiles.
