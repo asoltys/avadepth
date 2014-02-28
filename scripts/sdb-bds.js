@@ -1,5 +1,5 @@
 (function() {
-  var adjustHeight, getSurveyDrawings, locations;
+  var adjustHeight, getSurveyDrawings, getSurveyDrawingsFromTiles, locations;
 
   locations = {
     'BR': {
@@ -78,10 +78,8 @@
     $("#print_survey_drawings").click(function() {
       return window.print();
     });
-    $("div.span-8").on("click", ".surveyDrawingTile area", function(event) {
-      var riverSection;
-      riverSection = tile_query_info[event.currentTarget.title];
-      return getSurveyDrawings({
+    $("div.span-8").on("click", ".surveyDrawingTile area, area.surveyDrawingTile", function(event) {
+      return getSurveyDrawingsFromTiles({
         tile: event.currentTarget.title
       });
     });
@@ -102,7 +100,7 @@
       return adjustHeight($(this).closest('.map-group').attr('id'));
     });
     $('.map0 area').click(function() {
-      if (!$(this).closest('div.map0').hasClass("no_zoom")) {
+      if ($(this).closest('div.map0').hasClass("no_zoom") || $(this).hasClass("no_zoom")) {} else {
         $(this).closest('div').hide();
         $(this).closest('.map-group').find('.map' + $(this).attr('title')).show();
         $('#map').css("min-height", "600px");
@@ -126,6 +124,34 @@
   });
 
   getSurveyDrawings = (function(jsonStuff) {
+    var drawingRows;
+    $('.spinner').css('display', 'block');
+    drawingRows = "";
+    return $.getJSON(("/api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
+      $('#surveys tbody').html('');
+      $.each(data, function() {
+        var addRow;
+        addRow = false;
+        if (jsonStuff.kmStart && jsonStuff.kmEnd) {
+          if (parseFloat(jsonStuff.kmStart) <= parseFloat(this.kmStart) && parseFloat(jsonStuff.kmEnd) >= parseFloat(this.kmEnd)) {
+            addRow = true;
+          }
+        } else {
+          addRow = true;
+        }
+        if (addRow) {
+          return drawingRows += "<tr>" + ("<td>" + (this.date.split("T")[0]) + "</td>") + ("<td><a href='/Data/dwf/" + this.fileNumber + ".dwf'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>";
+        }
+      });
+      return $('#surveys').append(drawingRows);
+    }).done(function() {
+      $('.spinner').css('display', 'none');
+      $('#surveys tr:nth-child(odd)').addClass('odd');
+      return $('#surveys tr:nth-child(even)').addClass('even');
+    });
+  });
+
+  getSurveyDrawingsFromTiles = (function(jsonStuff) {
     var drawingRows;
     $('.spinner').css('display', 'block');
     drawingRows = "";

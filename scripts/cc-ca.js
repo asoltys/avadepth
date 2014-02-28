@@ -5,7 +5,10 @@
 
   $(function() {
     var date, month, weekday;
-    $('#soundings').css('width', '500px');
+    $("#print_ccc").click(function() {
+      return window.print();
+    });
+    $('#soundings').css('width', '800px');
     date = new Date();
     weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -45,9 +48,9 @@
       });
       table.fnAdjustColumnSizing();
       $('#soundings').css('table-layout', 'fixed');
-      $('.first-row th:nth-child(1)').css('width', '150px');
-      $('.first-row th:nth-child(2)').css('width', '200px');
-      return $('.first-row th:nth-child(3)').css('width', '200px');
+      $('.first-row th:nth-child(1)').css('width', '123px');
+      $('.first-row th:nth-child(2)').css('width', '218px');
+      return $('.first-row th:nth-child(3)').css('width', '218px');
     });
   });
 

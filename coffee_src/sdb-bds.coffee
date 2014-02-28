@@ -151,10 +151,9 @@ $(->
     window.print()
   )
 
-  $("div.span-8").on("click",".surveyDrawingTile area",(event)->
-    riverSection = tile_query_info[event.currentTarget.title]
-    getSurveyDrawings({tile:event.currentTarget.title})
-    )
+  $("div.span-8").on("click",".surveyDrawingTile area, area.surveyDrawingTile",(event)->
+    getSurveyDrawingsFromTiles({tile:event.currentTarget.title})
+  )
 
   $('#waterway').change( ->
     $('#heading-waterway').text($(this).find('option:selected').text())
@@ -174,7 +173,10 @@ $(->
     adjustHeight($(this).closest('.map-group').attr('id'))
   )
   $('.map0 area').click( ->
-    if !$(this).closest('div.map0').hasClass("no_zoom")
+    if $(this).closest('div.map0').hasClass("no_zoom") ||
+        $(this).hasClass("no_zoom")
+      return
+    else
       $(this).closest('div').hide()
       $(this).closest('.map-group').find('.map'+$(this).attr('title')).show()
       #$('#tile').text('- Tile 00'+$(this).attr('title'))
@@ -197,6 +199,41 @@ $(->
 )
 
 getSurveyDrawings = ((jsonStuff) ->
+  $('.spinner').css('display', 'block')
+  drawingRows = ""
+  $.getJSON("/api/surveys/getsurveys?river=#{jsonStuff.river}&" +
+      "drawingType=#{jsonStuff.drawingType}&" +
+      "recent=&" +
+      "channel=#{jsonStuff.channel}&" +
+      "location=#{jsonStuff.location}&" +
+      "channelType=#{jsonStuff.channelType}", (data) ->
+    $('#surveys tbody').html('')
+    $.each(data, ->
+      addRow = false
+      if jsonStuff.kmStart and jsonStuff.kmEnd
+        if parseFloat(jsonStuff.kmStart) <= parseFloat(this.kmStart) and parseFloat(jsonStuff.kmEnd) >= parseFloat(this.kmEnd)
+          addRow = true
+      else
+        addRow = true
+      if addRow
+        drawingRows += "<tr>" +
+            "<td>#{this.date.split("T")[0]}</td>" +
+            "<td><a href='/Data/dwf/#{this.fileNumber}.dwf'>#{this.fileNumber}</a></td>" +
+            "<td>#{this.location}</td>" +
+            "<td>#{this.drawType}</td>" +
+            "<td>#{this.kmStart}</td>" +
+            "<td>#{this.kmEnd}</td>" +
+            "</tr>"
+    )
+    $('#surveys').append(drawingRows)
+  ).done( ->
+    $('.spinner').css('display', 'none')
+    $('#surveys tr:nth-child(odd)').addClass('odd')
+    $('#surveys tr:nth-child(even)').addClass('even')
+  )
+)
+
+getSurveyDrawingsFromTiles = ((jsonStuff) ->
   $('.spinner').css('display', 'block')
   drawingRows = ""
   $.getJSON("/api/get_tile.asp?tile=#{jsonStuff.tile}", (data) ->
