@@ -153,14 +153,7 @@ $(->
 
   $("div.span-8").on("click",".surveyDrawingTile area",(event)->
     riverSection = tile_query_info[event.currentTarget.title]
-    getSurveyDrawings({
-      river:riverSection.river
-      drawingType:riverSection.drawingType
-      channel:riverSection.channel
-      location:riverSection.location
-      channelType:riverSection.channelType
-      kmStart:riverSection.kmStart
-      kmEnd:riverSection.kmEnd})
+    getSurveyDrawings({tile:event.currentTarget.title})
     )
 
   $('#waterway').change( ->
@@ -206,29 +199,17 @@ $(->
 getSurveyDrawings = ((jsonStuff) ->
   $('.spinner').css('display', 'block')
   drawingRows = ""
-  $.getJSON("/api/surveys/getsurveys?river=#{jsonStuff.river}&" +
-      "drawingType=#{jsonStuff.drawingType}&" +
-      "recent=&" +
-      "channel=#{jsonStuff.channel}&" +
-      "location=#{jsonStuff.location}&" +
-      "channelType=#{jsonStuff.channelType}", (data) ->
+  $.getJSON("/api/get_tile.asp?tile=#{jsonStuff.tile}", (data) ->
     $('#surveys tbody').html('')
-    $.each(data, ->
-      addRow = false
-      if jsonStuff.kmStart and jsonStuff.kmEnd
-        if parseFloat(jsonStuff.kmStart) <= parseFloat(this.kmStart) and parseFloat(jsonStuff.kmEnd) >= parseFloat(this.kmEnd)
-          addRow = true
-      else
-        addRow = true
-      if addRow
-        drawingRows += "<tr>" +
-            "<td>#{this.date.split("T")[0]}</td>" +
-            "<td><a href='/Data/dwf/#{this.fileNumber}.dwf'>#{this.fileNumber}</a></td>" +
-            "<td>#{this.location}</td>" +
-            "<td>#{this.drawType}</td>" +
-            "<td>#{this.kmStart}</td>" +
-            "<td>#{this.kmEnd}</td>" +
-            "</tr>"
+    $.each(data.drawings, ->
+      drawingRows += "<tr>" +
+          "<td>#{moment(this.yyyy_mm_dd,"DD/MM/YYYY").format("YYYY-MM-DD")}</td>" +
+          "<td><a href='/Data/dwf/#{this.Svy_Filename}.dwf'>#{this.Svy_Filename}</a></td>" +
+          "<td>#{this.Location}</td>" +
+          "<td>#{this.Type}</td>" +
+          "<td>#{this.KMstart}</td>" +
+          "<td>#{this.KMend}</td>" +
+          "</tr>"
     )
     $('#surveys').append(drawingRows)
   ).done( ->
