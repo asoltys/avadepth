@@ -89,8 +89,12 @@ process_report = (flag)->
     $('#depths tbody tr').remove()
     points = new Array()
     $.each(data.items[channel].items, ->
+      if $('html').attr('lang') == "en"
+        detailLink = "<a href='advr-drvp-eng.html?date=#{$('#date').val()}&"
+      else
+        detailLink = "<a href='advr-drvp-fra.html?date=#{$('#date').val()}&"
       table.fnAddData([
-        "<a href='advr-drvp-eng.html?date=#{$('#date').val()}&" +
+        detailLink +
         "chainage=#{$('#chainage').val()}&" +
         "flowRate=#{$('#flowRate').val()}&" +
         "flowType=#{$('#flowType').val()}&" +

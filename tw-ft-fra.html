@@ -137,11 +137,11 @@
             <div>
               <label for="channel"><strong>Calcul de la circulation :</strong></label>
               <div >
-              <label for="period" style="display:inline">Period:</label>
+              <label for="period" style="display:inline">Période:</label>
               <select id="period">
-                <option value="0">Day</option>
-                <option value="1">Week</option>
-                <option value="2">Month</option>
+                <option value="0">jour</option>
+                <option value="1">semaine</option>
+                <option value="2">mois</option>
               </select>
               </div>
               <div >
@@ -187,7 +187,7 @@
 				<button id="submit"
 					type="button"
 					class="button button-accent"
-					name="submit">Apply
+					name="submit">Appliquer
 				</button>				
 				<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px;display: none;margin-top:0.5em"/>
       </div>
@@ -263,7 +263,7 @@
   
   <h2 id="ajax_message">Please wait while we fetch your results</h2>
   <div id="report_body">
-			<button id="print_transit_window" class="print_button button button-accent print_hide float-left">Print</button>
+			<button id="print_transit_window" class="print_button button button-accent print_hide float-left">Imprimer</button>
 	<div class="clear"></div>
 		<!--[if IE]>
     <div class="print-tw-ft-result-header" style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
@@ -271,15 +271,15 @@
 		<!--[if !IE]><!-->
 		<div style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
 		<!--<![endif]-->
-      <h2>Maximum Depth and Transit Time Report<br />
-      Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
-      <p><span id="static-window">Transit Window: 2 hrs</span><br />
-      Hope Discharge <span id="static-discharge"></span>m3/s
-      (<span id="static-discharge-eval">Predicted</span>)<br />
-      <span id="static-sounding">Profondeur actuelle sond&eacute;e</span> for Km 1 to
-      <span id="static-chainage">35</span> at
-      <span id="static-width">100</span>% Available Width<br />
-      From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
+      <h2>Rapport sur la profondeur maximale et le temps de transit<br />
+      Fleuve Fraser - <span id="static-channel">Limite du chenal interne</span></h2>
+      <p><span id="static-window">Fenêtre de transit: 2 hrs</span><br />
+      Débit à Hope <span id="static-discharge"></span>m3/s
+      (<span id="static-discharge-eval">prévu</span>)<br />
+      <span id="static-sounding">Profondeur actuelle sond&eacute;e</span> entre Km 1 et
+      <span id="static-chainage">35</span> à
+      <span id="static-width">100</span>% de la largeur disponible<br />
+      du <span id="static-date-from"></span> au <span id="static-date-to"></span></p>
 			<!--[if IE]>
       <table class="print-width-70 print-tw-ft-table" style="table-layout: fixed; width: 750px;">
 			<![endif]-->
@@ -334,7 +334,7 @@
         </tbody>
       </table>
 			<div style="float: left;">
-				<div style="float: left; color:red;">*</div>Depths are relative to local low water level
+				<div style="float: left; color:red;">*</div>Les profondeurs sont relatives au bas niveau local de l'eau.
 			</div>
     </section>
   </div>  

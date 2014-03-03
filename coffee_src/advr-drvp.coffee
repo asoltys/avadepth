@@ -30,13 +30,27 @@ $(->
 
   $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"))
   $("#static-discharge").text($("#flowRate").val())
+
   $("#static-discharge-eval").text($("#flowType").val())
+
+  if $('html').attr('lang') == 'fr'
+	  flowType_txt = switch $("#flowType").val()
+      when 'Predicted' then "prévu"
+      when 'Actual' then "réel"
+      when 'UserDefined' then "défini par l'utilisateur"
+      when 'Selected' then "choisi"	
+    $("#static-discharge-eval").text(flowType_txt)
+
   $("#static-time").text(querystring('period'))
   $(".static-chainage").text($("#chainage").val())
   $("#static-width").text($("#width").val())
   limit_text = switch
-    when $("#lane").val() == '0' then 'Inner Channel Limit'
-    when $("#lane").val() == '1' then 'Outer Channel Limit'
+    when $("#lane").val() == '0' 
+      if $("html").attr("lang") == "en"	then 'Inner Channel Limit'
+      else 'Limite intérieure'
+    when $("#lane").val() == '1'
+      if $("html").attr("lang") == "en"	then 'Outer Channel Limit'
+      else 'Limite extérieure'		
     else ''
   $('#static-limit').text(limit_text)
 

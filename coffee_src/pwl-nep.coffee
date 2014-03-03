@@ -85,6 +85,14 @@ $(->
     $('#static-discharge').text(flowrate)
     $('#static-discharge-eval').text($(this).val())
 
+    if $('html').attr('lang') == 'fr'
+	    flowRate_txt = switch $(this).val()
+        when 'Predicted' then "prévu"
+        when 'Actual' then "réel"
+        when 'Defined' then "défini par l'utilisateur"
+        when 'Selected' then "choisi"	
+      $("#static-discharge-eval").text(flowRate_txt)
+		
     flowtype = switch $(this).val()
       when 'Actual'    then 0
       when 'Predicted' then 1
@@ -144,16 +152,33 @@ update = ->
 
   switch $('#daily_depth input[name=report]:radio:checked').val()
     when "0"
-      $('#river_discharge_report').text('Predicted Water Levels')
-      $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.')
+      if $('html').attr('lang') == 'en'        
+        $('#river_discharge_report').text('Predicted Water Levels')
+        $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.')
+      else
+        $('#river_discharge_report').text("Niveaux d'eau prévus")
+        $('#note-at-bottom').text("Le niveau d'eau est reporté dans le zéro des cartes, qui est relatif au niveau d'eau bas local. Cliquez sur une heure ou un emplacement pour afficher un graphique.")
     when "1"
-      $('#river_discharge_report').text('Predicted Velocities')
-      $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.')
+      if $('html').attr('lang') == 'en'  
+        $('#river_discharge_report').text('Predicted Velocities')
+        $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.')
+      else
+        $('#river_discharge_report').text('Débit prévu')
+        $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.')
     else
       $('#river_discharge_report').text('')
 			
 		
   $('#static-arm').text($('#fraser_river').val())
+	
+  if $('html').attr('lang') == 'fr'
+	  fraser_river_arm_txt = switch $('#fraser_river').val()
+      when 'South Arm' then "Bras sud"
+      when 'North Arm' then "Bras nord"
+      when 'Main Arm' then "Bras principal"
+    $('#static-arm').text(fraser_river_arm_txt)
+	
+	
   $('#waterway').val(waterway)
   $('#river-section').text($('#fraser_river').val())
   $('#water-levels tbody').empty()

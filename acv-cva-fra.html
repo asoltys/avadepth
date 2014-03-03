@@ -60,7 +60,7 @@
             <input type="hidden" name="flowRate" id="flowRate" value="0" />
             <input type="hidden" name="flowType" id="flowType" value="0" />
 
-            <label for="type">Display Type:</label>
+            <label for="type">Type d'affichage:</label>
             <!--
 						<select name="type" id="type">
                <option value="0">Static Image</option>
@@ -71,11 +71,11 @@
 						<input type="radio"
                 name="type"
                 id="static_rd"
-                value="0"/>Static Image<br/>
+                value="0"/>image statique<br/>
 						<input type="radio"
                 name="type"
                 id="animated_rd"
-                value="1"/>Animated Series
+                value="1"/>séries animées
 						
             <div class="clear"></div>
 
@@ -233,20 +233,20 @@
                name="legend_scale"
                value="0"
                checked="checked" />
-           <label for="zero_to_two" style="font-weight: normal">0 to 2 m/s (Interval 0.25ms)</label><br />
+           <label for="zero_to_two" style="font-weight: normal">0 to 2 m/s (Intervalle 0.25ms)</label><br />
 
            <input id="zero_to_four"
                type="radio"
                name="legend_scale"
                class="rd_actual"
                value="1" />
-           <label for="zero_to_four" style="font-weight: normal">0 to 4 m/s (Interval 0.5ms)</label><br />
+           <label for="zero_to_four" style="font-weight: normal">0 to 4 m/s (Intervalle 0.5ms)</label><br />
 
             <p>
               <button id="submit"
                   type="button"
                   class="button button-accent"
-                  name="submit">Apply</button>
+                  name="submit">Appliquer</button>
             </p>
           </div>
         </form>
@@ -260,16 +260,16 @@
             </div>
 
             <div id="loading" style="padding:1em 1em;display:none">
-              Loading...
+              Chargement....
               <span id="frame_count">
-                (Frames retrieved: <span id="frames_retrieved"></span> /
+                (Cadres récupérés: <span id="frames_retrieved"></span> /
                     <span id="number_of_frames"></span>)
               </span>
 							<img class="spinner" src="images/spinner.gif" alt="" style="width: 30px;height: 30px; margin: -3px 0 0 0; position: absolute;"/>
             </div>
 
             <div id="nodata" style="padding:1em 1em;display:none">
-              No images were found
+              Aucune image trouvée
             </div>
 
             <div style="width: 100%; margin-auto; text-align: center">

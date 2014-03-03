@@ -73,6 +73,14 @@ $(->
     $('#static-discharge').text(flowrate)
     $('#static-discharge-eval').text($(this).val())
 
+    if $('html').attr('lang') == 'fr'
+	    flowRate_txt = switch $(this).val()
+        when 'Predicted' then "prévu"
+        when 'Actual' then "réel"
+        when 'Defined' then "défini par l'utilisateur"
+        when 'Selected' then "choisi"	
+      $("#static-discharge-eval").text(flowRate_txt)
+		
     flowtype = switch $(this).val()
       when 'Actual' then 0
       when 'Predicted' then 1
@@ -194,8 +202,12 @@ update = (data) ->
       $('#transit-window tbody td').css('text-align', 'center')
 
     limit_text = switch
-      when $('input[name="channel"]:checked').val() == '2' then 'Outer Channel Limit'
-      when $('input[name="channel"]:checked').val() == '1' then 'Inner Channel Limit'
+      when $('input[name="channel"]:checked').val() == '2' 
+        if $('html').attr('lang') == 'en'	then 'Outer Channel Limit'
+        else 'Limite extérieure'
+      when $('input[name="channel"]:checked').val() == '1' 
+        if $('html').attr('lang') == 'en'	then 'Inner Channel Limit'
+        else 'Limite intérieure'				
       else ''
     $('#static-channel').text(limit_text)
   )
