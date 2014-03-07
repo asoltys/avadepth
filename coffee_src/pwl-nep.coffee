@@ -22,6 +22,8 @@ $(->
     window.print()
   )
 
+  $("#report_body").hide()
+
   if(querystring('date').length != 0)
     $("#date").val(querystring('date'))
     $("#waterway").val(querystring('waterway'))
@@ -138,6 +140,7 @@ $(->
 
 update = ->
   $('.spinner').css('display', 'block')
+  $("#report_body").hide()
   report_type = $('input[name=report]:checked').val()
   waterway = switch $('#fraser_river').val()
     when 'South Arm'
@@ -152,14 +155,14 @@ update = ->
 
   switch $('#daily_depth input[name=report]:radio:checked').val()
     when "0"
-      if $('html').attr('lang') == 'en'        
+      if $('html').attr('lang') == 'en'
         $('#river_discharge_report').text('Predicted Water Levels')
         $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.')
       else
         $('#river_discharge_report').text("Niveaux d'eau prévus")
         $('#note-at-bottom').text("Le niveau d'eau est reporté dans le zéro des cartes, qui est relatif au niveau d'eau bas local. Cliquez sur une heure ou un emplacement pour afficher un graphique.")
     when "1"
-      if $('html').attr('lang') == 'en'  
+      if $('html').attr('lang') == 'en'
         $('#river_discharge_report').text('Predicted Velocities')
         $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.')
       else
@@ -234,4 +237,6 @@ update = ->
       $('.dataTables_empty').parent().html('')
     )
     $('.spinner').css('display', 'none')
+  ).success(->
+    $("#report_body").show()
   )

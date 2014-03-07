@@ -16,6 +16,7 @@
     $("#print_predicted_water_levels").click(function() {
       return window.print();
     });
+    $("#report_body").hide();
     if (querystring('date').length !== 0) {
       $("#date").val(querystring('date'));
       $("#waterway").val(querystring('waterway'));
@@ -163,6 +164,7 @@
   update = function() {
     var fraser_river_arm_txt, headerRow, i, kmStart, report_type, step, waterway, _ref;
     $('.spinner').css('display', 'block');
+    $("#report_body").hide();
     report_type = $('input[name=report]:checked').val();
     waterway = (function() {
       switch ($('#fraser_river').val()) {
@@ -273,6 +275,8 @@
         return $('.dataTables_empty').parent().html('');
       });
       return $('.spinner').css('display', 'none');
+    }).success(function() {
+      return $("#report_body").show();
     });
   };
 
