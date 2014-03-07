@@ -37,7 +37,6 @@
           });
         }
       });
-      console.log(points);
       return $.plot("#placeholder", [points], {
         xaxes: [
           {

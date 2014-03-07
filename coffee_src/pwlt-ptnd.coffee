@@ -37,7 +37,6 @@ $(->
           points.push([i*step+start, this])
         )
     )
-    console.log(points)
     $.plot("#placeholder",
         [ points ],
         xaxes: [
