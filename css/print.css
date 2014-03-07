@@ -38,6 +38,11 @@ table {
 #placeholder {
   margin: 10px 100px;
 }
+
+div#depth_chart {
+  margin: 0 auto;
+  width:5in;
+}
 /*
 .page-break { 
   clear: both;

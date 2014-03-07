@@ -146,7 +146,7 @@ createGraph = (p) ->
     s = "0" + num
     s.substr(s.length-4)
 
-  $.plot("#placeholder", [ d1 ],
+  $.plot("#depth_chart", [ d1 ],
     xaxes:[
       color: 'black'
       tickColor: '#aaa'

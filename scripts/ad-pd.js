@@ -91,7 +91,13 @@
       $('#depths tbody tr').remove();
       points = new Array();
       $.each(data.items[channel].items, function() {
-        table.fnAddData([("<a href='advr-drvp-eng.html?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + channel + "&") + ("period=" + this.period + "'>" + this.period + "</a>"), this.chainage, this.depth, this.location]);
+        var detailLink;
+        if ($('html').attr('lang') === "en") {
+          detailLink = "<a href='advr-drvp-eng.html?date=" + ($('#date').val()) + "&";
+        } else {
+          detailLink = "<a href='advr-drvp-fra.html?date=" + ($('#date').val()) + "&";
+        }
+        table.fnAddData([detailLink + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + channel + "&") + ("period=" + this.period + "'>" + this.period + "</a>"), this.chainage, this.depth, this.location]);
         return points.push([this.period, this.depth]);
       });
       createGraph(points);
@@ -147,7 +153,7 @@
       s = "0" + num;
       return s.substr(s.length - 4);
     };
-    return $.plot("#placeholder", [d1], {
+    return $.plot("#depth_chart", [d1], {
       xaxes: [
         {
           color: 'black',

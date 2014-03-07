@@ -108,5 +108,11 @@ table.styled th, table.styled td {
   text-align: center;
   padding: 3px 10px
 }
-  table.styled td:first-child { text-align: left }
-  table.styled th { border-bottom: 1px solid black }
+
+table.styled td:first-child { text-align: left }
+table.styled th { border-bottom: 1px solid black }
+
+div#depth_chart {
+  height:400px;
+  width:500px;
+}
