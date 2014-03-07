@@ -22,20 +22,10 @@
       $('#static-date-from').text(moment($('#date').val()).format("MMMM DD, YYYY"));
       return $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"));
     });
+    $('#report_body').hide();
     $(document).ajaxStart(function() {
       $('.spinner').css('display', 'block');
       $('#ajax_message').html('');
-      $('#ajax_message').show();
-      return $('#report_body').hide();
-    });
-    $(document).ajaxSuccess(function() {
-      $('.spinner').css('display', 'none');
-      $('#ajax_message').hide();
-      return $('#report_body').show();
-    });
-    $(document).ajaxError(function() {
-      $('.spinner').css('display', 'none');
-      $('#ajax_message').html('An error occured while retrieving your results');
       $('#ajax_message').show();
       return $('#report_body').hide();
     });
@@ -225,6 +215,14 @@
         }
       })();
       return $('#static-channel').text(limit_text);
+    }).success(function() {
+      $('.spinner').css('display', 'none');
+      return $('#report_body').show();
+    }).error(function() {
+      $('.spinner').css('display', 'none');
+      $('#ajax_message').html('An error occured while retrieving your results');
+      $('#ajax_message').show();
+      return $('#report_body').hide();
     });
   };
 

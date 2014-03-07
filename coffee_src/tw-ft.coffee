@@ -15,22 +15,11 @@ $(->
     $('#static-date-to').text(moment($('#date').val()).add(period, 1).format("MMMM DD, YYYY"))
   )
 
+  $('#report_body').hide()
+
   $(document).ajaxStart(->
    $('.spinner').css('display', 'block')
    $('#ajax_message').html('')
-   $('#ajax_message').show()
-   $('#report_body').hide()
-  )
-
-  $(document).ajaxSuccess(->
-   $('.spinner').css('display', 'none')
-   $('#ajax_message').hide()
-   $('#report_body').show()
-  )
-
-  $(document).ajaxError(->
-   $('.spinner').css('display', 'none')
-   $('#ajax_message').html('An error occured while retrieving your results')
    $('#ajax_message').show()
    $('#report_body').hide()
   )
@@ -202,14 +191,23 @@ update = (data) ->
       $('#transit-window tbody td').css('text-align', 'center')
 
     limit_text = switch
-      when $('input[name="channel"]:checked').val() == '2' 
+      when $('input[name="channel"]:checked').val() == '2'
         if $('html').attr('lang') == 'en'	then 'Outer Channel Limit'
         else 'Limite extérieure'
-      when $('input[name="channel"]:checked').val() == '1' 
+      when $('input[name="channel"]:checked').val() == '1'
         if $('html').attr('lang') == 'en'	then 'Inner Channel Limit'
-        else 'Limite intérieure'				
+        else 'Limite intérieure'
       else ''
     $('#static-channel').text(limit_text)
+  ).success(->
+    $('.spinner').css('display', 'none')
+    $('#report_body').show()
+  ).error(->
+   $('.spinner').css('display', 'none')
+   $('#ajax_message').html('An error occured while retrieving your results')
+   $('#ajax_message').show()
+   $('#report_body').hide()
   )
+
 
 
