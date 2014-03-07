@@ -199,7 +199,7 @@ $(->
 )
 
 getSurveyDrawings = ((jsonStuff) ->
-  $('.spinner').css('display', 'block')
+  $('.spinner').show()
   drawingRows = ""
   $.getJSON("/api/surveys/getsurveys?river=#{jsonStuff.river}&" +
       "drawingType=#{jsonStuff.drawingType}&" +
@@ -227,14 +227,15 @@ getSurveyDrawings = ((jsonStuff) ->
     )
     $('#surveys').append(drawingRows)
   ).done( ->
-    $('.spinner').css('display', 'none')
+    $('.spinner').hide()
+    $('#report_body').show()
     $('#surveys tr:nth-child(odd)').addClass('odd')
     $('#surveys tr:nth-child(even)').addClass('even')
   )
 )
 
 getSurveyDrawingsFromTiles = ((jsonStuff) ->
-  $('.spinner').css('display', 'block')
+  $('.spinner').show()
   drawingRows = ""
   $.getJSON("/api/get_tile.asp?tile=#{jsonStuff.tile}", (data) ->
     $('#surveys tbody').html('')
@@ -250,7 +251,8 @@ getSurveyDrawingsFromTiles = ((jsonStuff) ->
     )
     $('#surveys').append(drawingRows)
   ).done( ->
-    $('.spinner').css('display', 'none')
+    $('.spinner').hide()
+    $('#report_body').show()
     $('#surveys tr:nth-child(odd)').addClass('odd')
     $('#surveys tr:nth-child(even)').addClass('even')
   )

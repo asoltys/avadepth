@@ -125,7 +125,7 @@
 
   getSurveyDrawings = (function(jsonStuff) {
     var drawingRows;
-    $('.spinner').css('display', 'block');
+    $('.spinner').show();
     drawingRows = "";
     return $.getJSON(("/api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
       $('#surveys tbody').html('');
@@ -145,7 +145,8 @@
       });
       return $('#surveys').append(drawingRows);
     }).done(function() {
-      $('.spinner').css('display', 'none');
+      $('.spinner').hide();
+      $('#report_body').show();
       $('#surveys tr:nth-child(odd)').addClass('odd');
       return $('#surveys tr:nth-child(even)').addClass('even');
     });
@@ -153,7 +154,7 @@
 
   getSurveyDrawingsFromTiles = (function(jsonStuff) {
     var drawingRows;
-    $('.spinner').css('display', 'block');
+    $('.spinner').show();
     drawingRows = "";
     return $.getJSON("/api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
       $('#surveys tbody').html('');
@@ -162,7 +163,8 @@
       });
       return $('#surveys').append(drawingRows);
     }).done(function() {
-      $('.spinner').css('display', 'none');
+      $('.spinner').hide();
+      $('#report_body').show();
       $('#surveys tr:nth-child(odd)').addClass('odd');
       return $('#surveys tr:nth-child(even)').addClass('even');
     });
