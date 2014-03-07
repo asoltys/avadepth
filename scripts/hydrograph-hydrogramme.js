@@ -63,6 +63,23 @@
           label: "Predicted"
         }
       ];
+      if ($('html').attr('lang') === 'fr') {
+        dataset = [
+          {
+            data: maximum,
+            label: "Portée maximale"
+          }, {
+            data: minimum,
+            label: "Portée minimale"
+          }, {
+            data: actual,
+            label: "Données réelles"
+          }, {
+            data: predicted,
+            label: "Prévu"
+          }
+        ];
+      }
       return $.plot($("#hydrograph_chart"), dataset, options);
     });
   };

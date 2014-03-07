@@ -10,7 +10,7 @@
   };
 
   $(function() {
-    var limit_text;
+    var flowType_txt, limit_text;
     $("#print_daily_depths").click(function() {
       return window.print();
     });
@@ -27,15 +27,40 @@
     $("#date-display").text(moment($("#date").val()).format("MMMM D, YYYY"));
     $("#static-discharge").text($("#flowRate").val());
     $("#static-discharge-eval").text($("#flowType").val());
+    if ($('html').attr('lang') === 'fr') {
+      flowType_txt = (function() {
+        switch ($("#flowType").val()) {
+          case 'Predicted':
+            return "prévu";
+          case 'Actual':
+            return "réel";
+          case 'UserDefined':
+            return "défini par l'utilisateur";
+          case 'Selected':
+            return "choisi";
+        }
+      })();
+      $("#static-discharge-eval").text(flowType_txt);
+    }
     $("#static-time").text(querystring('period'));
     $(".static-chainage").text($("#chainage").val());
     $("#static-width").text($("#width").val());
     limit_text = (function() {
       switch (false) {
         case $("#lane").val() !== '0':
-          return 'Inner Channel Limit';
+          if ($("html").attr("lang") === "en") {
+            return 'Inner Channel Limit';
+          } else {
+            return 'Limite intérieure';
+          }
+          break;
         case $("#lane").val() !== '1':
-          return 'Outer Channel Limit';
+          if ($("html").attr("lang") === "en") {
+            return 'Outer Channel Limit';
+          } else {
+            return 'Limite extérieure';
+          }
+          break;
         default:
           return '';
       }

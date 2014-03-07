@@ -64,7 +64,7 @@
       return $('#discharge_radio').prop('checked', true).change();
     });
     $('input[name=discharge]').change(function() {
-      var flowrate, flowtype;
+      var flowRate_txt, flowrate, flowtype;
       flowrate = (function() {
         switch ($(this).val()) {
           case 'Actual':
@@ -80,6 +80,21 @@
       $('#flowRate').val(flowrate);
       $('#static-discharge').text(flowrate);
       $('#static-discharge-eval').text($(this).val());
+      if ($('html').attr('lang') === 'fr') {
+        flowRate_txt = (function() {
+          switch ($(this).val()) {
+            case 'Predicted':
+              return "prévu";
+            case 'Actual':
+              return "réel";
+            case 'Defined':
+              return "défini par l'utilisateur";
+            case 'Selected':
+              return "choisi";
+          }
+        }).call(this);
+        $("#static-discharge-eval").text(flowRate_txt);
+      }
       flowtype = (function() {
         switch ($(this).val()) {
           case 'Actual':
@@ -192,9 +207,19 @@
       limit_text = (function() {
         switch (false) {
           case $('input[name="channel"]:checked').val() !== '2':
-            return 'Outer Channel Limit';
+            if ($('html').attr('lang') === 'en') {
+              return 'Outer Channel Limit';
+            } else {
+              return 'Limite extérieure';
+            }
+            break;
           case $('input[name="channel"]:checked').val() !== '1':
-            return 'Inner Channel Limit';
+            if ($('html').attr('lang') === 'en') {
+              return 'Inner Channel Limit';
+            } else {
+              return 'Limite intérieure';
+            }
+            break;
           default:
             return '';
         }
