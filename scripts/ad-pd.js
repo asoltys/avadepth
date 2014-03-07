@@ -36,6 +36,7 @@
         $("#outter_channel").prop("checked", "checked");
       }
       initialize();
+      $("#report_body").show();
     }
     $("#print_daily_depths").click(function() {
       return window.print();
@@ -53,7 +54,6 @@
     $('#selected_discharge').change(function() {
       return $('#selected_radio').prop('checked', true).change();
     });
-    $('input[name=discharge]').change(function() {});
     return $("#submit").click(function() {
       if (!$('input[name=discharge]').is(":checked")) {
         $("#error_message").show();

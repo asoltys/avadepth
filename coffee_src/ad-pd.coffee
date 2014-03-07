@@ -25,6 +25,8 @@ $(->
       $("#outter_channel").prop("checked","checked")
     initialize()
 
+    $("#report_body").show()
+
   $("#print_daily_depths").click(->
     window.print()
   )
@@ -44,9 +46,6 @@ $(->
 
   $('#selected_discharge').change(->
     $('#selected_radio').prop('checked', true).change()
-  )
-
-  $('input[name=discharge]').change(->
   )
   
   $("#submit").click(->
