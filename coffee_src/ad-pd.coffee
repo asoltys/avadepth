@@ -54,7 +54,7 @@ $(->
       $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"")
       $("#report_body").hide()
     else
-      $('.spinner').css('display', 'block')
+      $('.spinner').show()
       $("#error_message").hide()
       $("#report_body").show()
       update()
@@ -126,7 +126,7 @@ process_report = (flag)->
     $('#static-limit').text(limit_text)
     $('#static-discharge').text($('#flowRate').val())
     $('#static-discharge-eval').text(translate_flow())
-    $('.spinner').css('display', 'none')
+    $('.spinner').hide()
   )
 
 initialize = ->

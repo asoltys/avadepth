@@ -163,7 +163,7 @@
 
   update = function() {
     var fraser_river_arm_txt, headerRow, i, kmStart, report_type, step, waterway, _ref;
-    $('.spinner').css('display', 'block');
+    $('.spinner').show();
     $("#report_body").hide();
     report_type = $('input[name=report]:checked').val();
     waterway = (function() {
@@ -274,7 +274,7 @@
         if (report_type === "0") $(row).find('a').click(gotoTimeGraph);
         return $('.dataTables_empty').parent().html('');
       });
-      return $('.spinner').css('display', 'none');
+      return $('.spinner').hide();
     }).success(function() {
       return $("#report_body").show();
     });

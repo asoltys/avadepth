@@ -141,6 +141,7 @@
     var base_minute, end_hour, end_minute, getImage, hour, interval, minute, total;
     $(this).prop('disabled', 'disabled');
     $('#loading').show();
+    $('.spinner').show();
     $('#animated, #animated_legend, #replay, #nodata').hide();
     hour = Math.floor(parseFloat($('#from').val()));
     minute = (parseFloat($('#from').val()) - hour) * 60;
@@ -188,6 +189,7 @@
 
   play = function() {
     var handle, i;
+    $('.spinner').hide();
     $('#loading').hide();
     $('#animated').attr("src", "/images/nodata.jpg");
     $('#animated_legend').hide();

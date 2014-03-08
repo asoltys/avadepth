@@ -129,6 +129,7 @@ $(->
 update = ->
   $(this).prop('disabled','disabled')
   $('#loading').show()
+  $('.spinner').show()
   $('#animated, #animated_legend, #replay, #nodata').hide()
 
   hour = Math.floor(parseFloat($('#from').val()))
@@ -178,6 +179,7 @@ update = ->
     )
 
 play = ->
+  $('.spinner').hide()
   $('#loading').hide()
   $('#animated').attr("src", "/images/nodata.jpg")
   $('#animated_legend').hide()

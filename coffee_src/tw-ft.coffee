@@ -18,7 +18,7 @@ $(->
   $('#report_body').hide()
 
   $(document).ajaxStart(->
-   $('.spinner').css('display', 'block')
+   $('.spinner').show()
    $('#ajax_message').html('')
    $('#ajax_message').show()
    $('#report_body').hide()
@@ -200,10 +200,10 @@ update = (data) ->
       else ''
     $('#static-channel').text(limit_text)
   ).success(->
-    $('.spinner').css('display', 'none')
+    $('.spinner').hide()
     $('#report_body').show()
   ).error(->
-   $('.spinner').css('display', 'none')
+   $('.spinner').hide()
    $('#ajax_message').html('An error occured while retrieving your results')
    $('#ajax_message').show()
    $('#report_body').hide()

@@ -139,7 +139,7 @@ $(->
 )
 
 update = ->
-  $('.spinner').css('display', 'block')
+  $('.spinner').show()
   $("#report_body").hide()
   report_type = $('input[name=report]:checked').val()
   waterway = switch $('#fraser_river').val()
@@ -236,7 +236,7 @@ update = ->
         $(row).find('a').click(gotoTimeGraph)
       $('.dataTables_empty').parent().html('')
     )
-    $('.spinner').css('display', 'none')
+    $('.spinner').hide()
   ).success(->
     $("#report_body").show()
   )
