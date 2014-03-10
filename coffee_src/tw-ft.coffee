@@ -43,6 +43,8 @@ $(->
         $("#predicted_radio").prop('checked', true)
 
       $('input[name=discharge]:checked').change()
+    ).success( ->
+      $('.spinner').hide()
     )
 
     $('#period').change()

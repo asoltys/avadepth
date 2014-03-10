@@ -47,6 +47,8 @@
           $("#predicted_radio").prop('checked', true);
         }
         return $('input[name=discharge]:checked').change();
+      }).success(function() {
+        return $('.spinner').hide();
       });
       return $('#period').change();
     }).change();
