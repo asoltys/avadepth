@@ -123,3 +123,14 @@ img.spinner {
   height:30px;
   margin: 0 0 -12px 10px
 }
+
+div.report_body {
+  text-align:center;
+  width: 750px;
+  margin:3em auto 0 auto;
+}
+
+table#transit-window {
+  margin:0 auto;
+  width:100% !important;
+}

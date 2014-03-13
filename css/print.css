@@ -140,3 +140,17 @@ div#depths_report_header h2 {
 .ie7 #soundings, .ie8 #soundings{
 	margin-left: 0px;
 }
+
+div.report_body{
+  text-align:center;
+  width: 6in;
+  margin:0 auto 0 auto;
+}
+
+div.report_body table#transit-window {
+  margin: 1em auto;
+}
+
+h2#ajax_message {
+  margin:0
+}

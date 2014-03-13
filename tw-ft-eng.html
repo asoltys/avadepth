@@ -263,15 +263,10 @@
   <div class="clear"></div>
   
   <h2 id="ajax_message"></h2>
-  <div id="report_body">
+  <div id="report_body" class="report_body">
 	<div class="clear"></div>
-		<!--[if IE]>
-    <div class="print-tw-ft-result-header" style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
-		<![endif]-->
-		<!--[if !IE]><!-->
-		<div style="margin-left:auto;margin-right:auto;width:750px;text-align:center;">
-		<!--<![endif]-->
-      <h2>Specified Depth and Transit Time Report<br />
+		<div style="">
+      <h2 style="margin-top:0">Specified Depth and Transit Time Report<br />
       Fraser River - <span id="static-channel">Inner Channel Limit</span></h2>
       <p><span id="static-window">Transit Window: 2 hrs</span><br />
       Hope Discharge <span id="static-discharge"></span>m3/s
@@ -280,12 +275,7 @@
       <span id="static-chainage">35</span> at
       <span id="static-width">100</span>% Available Width<br />
       From <span id="static-date-from"></span> to <span id="static-date-to"></span></p>
-			<!--[if IE]>
-      <table class="print-width-70 print-tw-ft-table" style="table-layout: fixed; width: 750px;">
-			<![endif]-->
-			<!--[if !IE]><!-->
-			<table class="print-width-70" style="table-layout: fixed; width: 750px;">
-			<!--<![endif]-->
+			<table class="print-width-70" style="width:100%;margin:0 auto">
         <tr>
           <td>Average Depth of Selected Window:</td>
           <td width="30%"><span id="avg_depth">-</span> m</td>
@@ -307,8 +297,8 @@
 		
     <div class="clear"></div>
 
-    <section style="padding: 20px">
-      <table id="transit-window" class="zebra-striped" style="table-layout: fixed; width: 750px;display:none;">
+    <section style="padding-top: 20px;margin:1em auto">
+      <table id="transit-window" class="zebra-striped" style="">
         <thead>
         <tr>
           <th colspan="2">From</th>
@@ -333,9 +323,7 @@
           </tr>
         </tbody>
       </table>
-			<div style="float: left;">
-				<div style="float: left; color:red;">*</div>Depths are relative to local low water level
-			</div>
+			<div style="text-align:left;margin-top:1em">* Depths are relative to local low water level</div>
     </section>
   </div>  
 
