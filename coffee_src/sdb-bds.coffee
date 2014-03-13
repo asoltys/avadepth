@@ -242,7 +242,7 @@ getSurveyDrawingsFromTiles = ((jsonStuff) ->
     $.each(data.drawings, ->
       drawingRows += "<tr>" +
           "<td>#{moment(this.yyyy_mm_dd,"DD/MM/YYYY").format("YYYY-MM-DD")}</td>" +
-          "<td><a href='/Data/dwf/#{this.Svy_Filename}.dwf'>#{this.Svy_Filename}</a></td>" +
+          "<td><a href='/Data/dwf/#{this.Svy_Filename}.dwf' target='_blank'>#{this.Svy_Filename}</a></td>" +
           "<td>#{this.Location}</td>" +
           "<td>#{this.Type}</td>" +
           "<td>#{this.KMstart}</td>" +
