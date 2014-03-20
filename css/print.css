@@ -1,3 +1,4 @@
+
 .print_hide, form, ul.tabs, #gcwu-psnb, #gcwu-date-mod {
   display: none;
 }
@@ -153,4 +154,14 @@ div.report_body table#transit-window {
 
 h2#ajax_message {
   margin:0
+}
+
+div#hydrograph_report div#legend_container{
+  margin: 10px -24px;
+}
+
+div#hydrograph_report div#hydrograph_chart{
+  margin:0
+  width: 100%;
+  height:100px;
 }
