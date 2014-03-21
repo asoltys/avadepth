@@ -118,14 +118,14 @@ $(->
   )
 
   $('#window').change(->
-    $('#static-window').text("Transit Window: #{$(this).val()} hrs")
+    $('#static-window').text("#{$(this).val()}")
   )
   
   $('#minimum_window').change(->
     $('#max_depth_radio').prop('checked','checked')
     $('#window').val($(this).val())
     $('#cmp').val(0)
-    $('#static-window').text("Transit Window: #{$('#window').val()} hrs")
+    $('#static-window').text("#{$('#window').val()}")
   )
 
   $('#depth').change(->
@@ -138,11 +138,16 @@ $(->
     if $(this).val() == 'Maximum Depth'
       #$('#window').val($('#maximum_depth').val())
       $('#cmp').val(0)
-      $('#static-window').text("Transit Window: #{$('#window').val()} hrs")
+      $('#static-window-pre-text').text('Maximum Depth for ')
+      $('#static-window-post-text').text('hr. Transit Window')
+      $('#static-window').text("#{$('#window').val()}")
     else
       #$('#window').val($('#minimum_window').val())
       $('#cmp').val($('#depth').val())
-      $('#static-window').text("Available Transit Window for #{$('#cmp').val()}m depth & #{$('#minimum_window').val()} hr window")
+      $('#static-window-pre-text').text('Available Transit Window for ')
+      #$('#static-window').text("#{$('#cmp').val()}m depth & #{$('#minimum_window').val()} hr window")
+      $('#static-window').text("#{$('#cmp').val()}m depth")
+      $('#static-window-post-text').text('')
     #$('#window').change()
   )
 
