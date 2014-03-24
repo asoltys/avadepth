@@ -142,6 +142,21 @@ div#depths_report_header h2 {
 	margin-left: 0px;
 }
 
+.ie7 #soundings-header, .ie8 #soundings-header{
+	margin-left: 0px;
+	width: 625px;
+}
+
+.ie7 #soundings-header table, .ie8 #soundings-header table, .ie7 #soundings-header table td, .ie8 #soundings-header table td{
+	width: 625px;
+}
+
+.ie7 #soundings-header-title, .ie8 #soundings-header-title{
+	width: 625px;
+}
+
+
+
 div.report_body{
   text-align:center;
   width: 6in;
