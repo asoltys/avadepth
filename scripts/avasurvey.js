@@ -28,7 +28,7 @@ avaSurvey={
 		avaSurvey.ENCStyle=new OpenLayers.StyleMap({'default': encstyle, 'select': encselect});
 		//avaSurvey.SelStyle={fillColor: '#0000cc', strokeColour: '#0000cc'};
 
-		var osmLayer = new OpenLayers.Layer.OSM({wrapDateLine:true,isBaseLayer:true});
+		var osmLayer = new OpenLayers.Layer.OSM("OpenStreetMap", {wrapDateLine:true,isBaseLayer:true});
         var gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, visibility: false});
         var wmsLayer = new OpenLayers.Layer.WMS(
             "Avadepth Bathy",
