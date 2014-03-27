@@ -30,6 +30,11 @@ avaSurvey={
 		//avaSurvey.SelStyle={fillColor: '#0000cc', strokeColour: '#0000cc'};
 
 		var osmLayer = new OpenLayers.Layer.OSM({wrapDateLine:true,isBaseLayer:true});
+        var wmsLayer = new OpenLayers.Layer.WMS(
+            "Avadepth Bathy",
+            "http://www2.pac.dfo-mpo.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
+            {layers: "Avadepth_surfaces",transparent:true,isBaseLayer:false}
+        );
 		avaSurvey.tiles = new OpenLayers.Layer.Vector("KML", {
 			strategies: [new OpenLayers.Strategy.Fixed()],
 			projection: avaSurvey.map.displayProjection,
@@ -43,7 +48,7 @@ avaSurvey={
 				})
 			})
 		});
-		avaSurvey.map.addLayers([osmLayer,avaSurvey.tiles]);
+		avaSurvey.map.addLayers([osmLayer,wmsLayer,avaSurvey.tiles]);
 		avaSurvey.HLFeat = new OpenLayers.Control.SelectFeature(avaSurvey.tiles, {
 			hover: true,
 			highlightOnly: true,
