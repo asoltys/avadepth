@@ -68,7 +68,6 @@ var sdbbds_functions = {
       $('#tile').text('');
       //WS
       var mp=$('#embed_map')[0].contentWindow;
-      if(mp.avaSurvey){console.log("Object Loaded")};
 	  try {
           mp.avaSurvey.setExtents($(this).val());
 	  } catch(err){}
