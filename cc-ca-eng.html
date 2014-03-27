@@ -10,47 +10,12 @@
       <li><a href="#help">Help</a></li>
     </ul>
 
-		
-		
-		
-		
     <div class="summary tabs-panel filled" style="border: 2px solid #eee">
       <div id="conditions">
-				
-				<div class="print_hide">
-						<button id="print_ccc" class="print_button button button-accent print_hide float-left" style="position: absolute; margin: 0 0 0 30px;">Print</button>
-				</div>
-
-				<div id="soundings-header-title" class="align-center print-align-center print-margin-0" style="">
-						<h3 style="margin: 0;">Fraser River Navigation Channel Condition Report</h3>
-						<span id="static-date"></span>				
-				</div>
-				
-				<!--[if IE]>
-					<div class="print_hide" style="float: left; width: 178px; height: 1px;"></div>
-				<![endif]-->				
-				<!--[if !IE]><!-->
-					<div id="soundings-header" style="width: 800px; margin: 0 auto;">
-				<!--<![endif]-->				
-				
-				<div id="soundings-header" style="width: 800px; float: left;">
-					<table class="align-center print-align-center print-margin-0" style="table-layout: fixed; margin: 0; width: 800px;">	
-						<tr>
-							<td class="align-left" style="">
-							Note:  All soundings / depths are relative to local low water level 
-							</td>
-						</tr>
-						<tr>
-							<td class="align-left">
-							Least soundings highlighted in <span style="color: red;">RED</span> and marked with * denote high spots and shoal areas within the navigation channel limits.
-							</td>
-						</tr>
-					</table>
-				</div>
-				
-				<div class="clear"></div>
-				<br/>
-	
+      	<span id="static-date"></span>
+	<div>
+      		<button id="print_ccc" class="print_button button button-accent print_hide float-left">Print</button>
+	</div>
         <table id="soundings" class="align-center print-align-center print-margin-0">
           <thead>
             <tr class="first-row">
@@ -83,7 +48,17 @@
           <tbody></tbody>
         </table>
         <div style="clear:both"></div>
+        <p>
+        Note: All soundings are relative to local low water level.
+        </p>
 
+        <p>
+					<div class="float-left">Least soundings highlighted in </div>
+					<div class="float-left" style="color: red;">RED</div>
+					<div class="float-left">, marked with </div>
+					<div class="float-left" style="color: red;">* </div>	
+					<div>denote highspots and shoal areas within the navigation channel limits.</div>
+        </p>
       </div>
 
       <div id="help">
