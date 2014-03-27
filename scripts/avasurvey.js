@@ -30,6 +30,7 @@ avaSurvey={
 		//avaSurvey.SelStyle={fillColor: '#0000cc', strokeColour: '#0000cc'};
 
 		var osmLayer = new OpenLayers.Layer.OSM({wrapDateLine:true,isBaseLayer:true});
+        var gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, visibility: false});
         var wmsLayer = new OpenLayers.Layer.WMS(
             "Avadepth Bathy",
             "http://www2.pac.dfo-mpo.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
@@ -48,7 +49,7 @@ avaSurvey={
 				})
 			})
 		});
-		avaSurvey.map.addLayers([osmLayer,wmsLayer,avaSurvey.tiles]);
+		avaSurvey.map.addLayers([gmap,wmsLayer,avaSurvey.tiles]);
 		avaSurvey.HLFeat = new OpenLayers.Control.SelectFeature(avaSurvey.tiles, {
 			hover: true,
 			highlightOnly: true,
