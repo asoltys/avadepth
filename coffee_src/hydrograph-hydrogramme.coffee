@@ -95,7 +95,7 @@ options =
     axisLabelFontFamily: 'Verdana, Arial'
     axisLabelPadding: 10
   yaxis:
-    axisLabel: "Hope Discharge (m\u00B3s)"
+    axisLabel: "Hope Discharge (m3s)"
     axisLabelUseCanvas: true
     axisLabelFontSizePixels: 12
     axisLabelFontFamily: 'Verdana, Arial'
