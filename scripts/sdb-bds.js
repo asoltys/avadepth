@@ -68,7 +68,7 @@ var sdbbds_functions = {
       $('#tile').text('');
       //WS
       var mp=$('#embed_map')[0].contentWindow;
-      if(mp.avaSurvey){console.log("Object Loaded")}
+      if(!mp.avaSurvey.map){ return; }
 	  try {
           mp.avaSurvey.setExtents($(this).val());
 	  } catch(err){}
@@ -125,10 +125,10 @@ var sdbbds_functions = {
     $('.spinner').show();
     drawingRows = "";
     //return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function(data) {
-    return $.getJSON("http://www2.pac.dfo-mpo.gc.ca/api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
+    return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
       $('#surveys tbody').html('');
       $.each(data.drawings, function() {
-        return drawingRows += "<tr>" + ("<td>" + (moment(this.yyyy_mm_dd, "DD/MM/YYYY").format("YYYY-MM-DD")) + "</td>") + ("<td><a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Svy_Filename + ".dwf' target='_blank'>" + this.Svy_Filename + "</a></td>") + ("<td>" + this.Location + "</td>") + ("<td>" + this.Type + "</td>") + ("<td>" + this.KMstart + "</td>") + ("<td>" + this.KMend + "</td>") + "</tr>";
+        return drawingRows += "<tr>" + ("<td>" + (moment(this.yyyy_mm_dd, "DD/MM/YYYY").format("YYYY-MM-DD")) + "</td>") + ("<td><a href='Data/dwf/" + this.Svy_Filename + ".dwf' target='_blank'>" + this.Svy_Filename + "</a></td>") + ("<td>" + this.Location + "</td>") + ("<td>" + this.Type + "</td>") + ("<td>" + this.KMstart + "</td>") + ("<td>" + this.KMend + "</td>") + "</tr>";
       });
       return $('#surveys').append(drawingRows);
     }).done(function() {
