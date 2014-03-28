@@ -1,4 +1,3 @@
-
 var map;
 var locationExtents={
 	'BR':{'Lat':{'min':6450273,'max':6458623},'Lon':{'min':-13948221,'max':-13941007}},
@@ -33,8 +32,9 @@ avaSurvey={
         var gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, visibility: false});
         var wmsLayer = new OpenLayers.Layer.WMS(
             "Avadepth Bathy",
-            "http://www2.pac.dfo-mpo.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
-            {layers: "Avadepth_surfaces",transparent:true,isBaseLayer:false}
+            "http://vapw-chintz.pwgsc.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
+            {layers: "Avadepth_surfaces",transparent:true,isBaseLayer:false},
+	          {alpha:true}
         );
 		avaSurvey.tiles = new OpenLayers.Layer.Vector("KML", {
 			strategies: [new OpenLayers.Strategy.Fixed()],
