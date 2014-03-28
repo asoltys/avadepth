@@ -76,13 +76,13 @@ var sdbbds_functions = {
     });
 	
     $('form#daily_depth').on("click", "button", function() {
-      var ww=$('#waterway').val();
-      return sdbbds_functions.getSurveyDrawings({
-        river: ww,
-        drawingType: $('#type').val(),
-        channel: ww,
-        location: $('#location').val(),
-        channelType: $('#channel').val()
+        var ww=$('#waterway').val();
+        return sdbbds_functions.getSurveyDrawings({
+            river: ww,
+            drawingType: $('#type').val(),
+            channel: ww,
+            location: $('#location').val(),
+            channelType: $('#channel').val()
       });
     });
 	$('#embed_map').load(function(){
