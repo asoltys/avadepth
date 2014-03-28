@@ -28,12 +28,12 @@ avaSurvey={
 		avaSurvey.ENCStyle=new OpenLayers.StyleMap({'default': encstyle, 'select': encselect});
 		//avaSurvey.SelStyle={fillColor: '#0000cc', strokeColour: '#0000cc'};
 
-		var osmLayer = new OpenLayers.Layer.OSM("OpenStreetMap", {wrapDateLine:true,isBaseLayer:true});
-        var gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, visibility: false});
+		var osmLayer = new OpenLayers.Layer.OSM("OpenStreetMap", {});
+        var gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE});
         var wmsLayer = new OpenLayers.Layer.WMS(
             "Bathymetry",
             "http://www2.pac.dfo-mpo.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
-            {layers: "Avadepth_surfaces",transparent:true,isBaseLayer:false,format:'image/gif'},
+            {layers: "Avadepth_surfaces",transparent:true,isBaseLayer:false,format:'image/png'},
 	        {alpha:true}
         );
 		avaSurvey.tiles = new OpenLayers.Layer.Vector("KML", {
@@ -49,7 +49,7 @@ avaSurvey={
 				})
 			})
 		});
-		avaSurvey.map.addLayers([osmLayer,wmsLayer,avaSurvey.tiles]);
+		avaSurvey.map.addLayers([gmap,wmsLayer,avaSurvey.tiles]);
 		avaSurvey.HLFeat = new OpenLayers.Control.SelectFeature(avaSurvey.tiles, {
 			hover: true,
 			highlightOnly: true,
