@@ -49,7 +49,7 @@ avaSurvey={
 				})
 			})
 		});
-		avaSurvey.map.addLayers([gmap,wmsLayer,avaSurvey.tiles]);
+		avaSurvey.map.addLayers([gmap,avaSurvey.tiles]);
 		avaSurvey.HLFeat = new OpenLayers.Control.SelectFeature(avaSurvey.tiles, {
 			hover: true,
 			highlightOnly: true,
