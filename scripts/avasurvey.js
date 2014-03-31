@@ -27,9 +27,12 @@ avaSurvey={
 		var encselect=new OpenLayers.Style({fillColor: '#00ffff',strokeColor: '#00ffff'});
 		avaSurvey.ENCStyle=new OpenLayers.StyleMap({'default': encstyle, 'select': encselect});
 		//avaSurvey.SelStyle={fillColor: '#0000cc', strokeColour: '#0000cc'};
-
-		var osmLayer = new OpenLayers.Layer.OSM("OpenStreetMap", {});
-        var gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE});
+        var gmap;
+        if ( document.addEventListener ){
+            gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE});
+        } else {
+            gmap = new OpenLayers.Layer.Google("Google", {});
+        }
         var wmsLayer = new OpenLayers.Layer.WMS(
             "Bathymetry",
             "http://www2.pac.dfo-mpo.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
