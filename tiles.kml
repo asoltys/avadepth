@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://earth.google.com/kml/2.0">
   <Document>
+      <name>Areas</name>
       <Placemark>
         <name>PR4650</name>
         <Polygon>
@@ -157,16 +158,6 @@
           <outerBoundaryIs>
             <LinearRing>
               <coordinates>-123.1667445,49.1157635 -123.1624035,49.1245888 -123.1468519,49.1191532 -123.1510371,49.1137304 -123.154588,49.113262 -123.1667445,49.1157635</coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </Placemark>
-      <Placemark>
-        <name>SA1213</name>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>-123.157728,49.1076771 -123.154588,49.113262 -123.1510371,49.1137304 -123.1424402,49.1132583 -123.1430604,49.1030794 -123.148756,49.103531 -123.157728,49.1076771</coordinates>
             </LinearRing>
           </outerBoundaryIs>
         </Polygon>
@@ -517,16 +508,6 @@
           <outerBoundaryIs>
             <LinearRing>
               <coordinates>-123.1104504,49.1963326 -123.1106226,49.2063793 -123.0945359,49.206368 -123.0987206,49.2029142 -123.0997781,49.1962336 -123.1104504,49.1963326</coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </Placemark>
-      <Placemark>
-        <name>/data/fraserport/fsd_overview.pdf</name>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>-122.9100328,49.1882406 -122.9031143,49.1940023 -122.8989118,49.1972367 -122.8896137,49.2038366 -122.8804455,49.2087796 -122.8734716,49.2034043 -122.9041207,49.1831767 -122.9100328,49.1882406</coordinates>
             </LinearRing>
           </outerBoundaryIs>
         </Polygon>
@@ -992,6 +973,16 @@
         </Polygon>
       </Placemark>
       <Placemark>
+        <name>/data/fraserport/fsd_overview.pdf</name>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>-122.9163172,49.1729258 -122.9151849,49.1756853 -122.911658,49.1842802 -122.9100328,49.1882406 -122.9031143,49.1940023 -122.9007478,49.1958237 -122.8950013,49.1944312 -122.909493,49.1711855 -122.9163172,49.1729258</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
         <name>LR1819</name>
         <Polygon>
           <outerBoundaryIs>
@@ -1332,16 +1323,6 @@
         </Polygon>
       </Placemark>
       <Placemark>
-        <name>SA3233</name>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>-122.9151849,49.1756853 -122.9290634,49.1790099 -122.9264928,49.1825483 -122.9252824,49.1842144 -122.9210618,49.1866422 -122.911658,49.1842802 -122.9151849,49.1756853</coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </Placemark>
-      <Placemark>
         <name>AC3233</name>
         <Polygon>
           <outerBoundaryIs>
@@ -1387,16 +1368,6 @@
           <outerBoundaryIs>
             <LinearRing>
               <coordinates>-122.7911295,49.2202725 -122.7912393,49.2284327 -122.7781025,49.2311254 -122.7776966,49.2231789 -122.7911295,49.2202725</coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </Placemark>
-      <Placemark>
-        <name>SA3435</name>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>-122.9160184,49.1962723 -122.9143857,49.2014311 -122.909878,49.2043247 -122.8989118,49.1972367 -122.9031143,49.1940023 -122.9160184,49.1962723</coordinates>
             </LinearRing>
           </outerBoundaryIs>
         </Polygon>
@@ -1467,16 +1438,6 @@
           <outerBoundaryIs>
             <LinearRing>
               <coordinates>-122.9493805,49.1885247 -122.958683,49.1962587 -122.9467733,49.2030815 -122.9407154,49.1931598 -122.9493805,49.1885247</coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </Placemark>
-      <Placemark>
-        <name>GS3132</name>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>-122.9218043,49.1654808 -122.9228289,49.1660421 -122.9276852,49.1686526 -122.9208266,49.177027 -122.9151849,49.1756853 -122.9182559,49.1682012 -122.9218043,49.1654808</coordinates>
             </LinearRing>
           </outerBoundaryIs>
         </Polygon>
@@ -1567,6 +1528,46 @@
           <outerBoundaryIs>
             <LinearRing>
               <coordinates>-123.1312316,49.1855751 -123.1453713,49.1897213 -123.1429635,49.1954419 -123.1376489,49.1989111 -123.1272468,49.1945768 -123.1312316,49.1855751</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <name>GS3132</name>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>-122.9218043,49.1654808 -122.9228289,49.1660421 -122.9276852,49.1686526 -122.9208266,49.177027 -122.9151849,49.1756853 -122.9163172,49.1729258 -122.9182559,49.1682012 -122.9218043,49.1654808</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <name>SA1213</name>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>-123.157728,49.1076771 -123.154588,49.113262 -123.1510371,49.1137304 -123.1424402,49.1132583 -123.1430604,49.1030794 -123.144011,49.1031548 -123.148756,49.103531 -123.157728,49.1076771</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <name>SA3233</name>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>-122.9151849,49.1756853 -122.9208266,49.177027 -122.9290634,49.1790099 -122.9264928,49.1825483 -122.9252824,49.1842144 -122.9210618,49.1866422 -122.911658,49.1842802 -122.9151849,49.1756853</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <name>SA3435</name>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>-122.9160184,49.1962723 -122.9143857,49.2014311 -122.909878,49.2043247 -122.8989118,49.1972367 -122.9007478,49.1958237 -122.9031143,49.1940023 -122.9160184,49.1962723</coordinates>
             </LinearRing>
           </outerBoundaryIs>
         </Polygon>

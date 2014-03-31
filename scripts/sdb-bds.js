@@ -124,7 +124,6 @@ var sdbbds_functions = {
     var drawingRows;
     $('.spinner').show();
     drawingRows = "";
-    //return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function(data) {
     return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
       $('#surveys tbody').html('');
       $.each(data.drawings, function() {
