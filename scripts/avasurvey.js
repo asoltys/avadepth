@@ -27,15 +27,24 @@ avaSurvey={
 				units:"m"
 			};
 		avaSurvey.map = new oscar.Map('avadepth_map',options);
+        avaSurvey.curWaterway="";
+        avaSurvey.curLocation="";
 
         // KML Feature Styles and KML Layer
-		var encstyle=new OpenLayers.Style({fillColor: '#dd0000',fillOpacity:0.2,strokeColor:'#dd0000',strokeWidth:2.0,title:'${name}'});
-		var encselect=new OpenLayers.Style({fillColor: '#00ffff',strokeColor: '#00ffff'});
-		avaSurvey.ENCStyle=new OpenLayers.StyleMap({'default': encstyle, 'select': encselect});
+        var colLookup={true:['#dd0000',0.2],false:['#aaaaaa',0.1]};
         avaSurvey.tiles = new OpenLayers.Layer.Vector("KML", {
             strategies: [new OpenLayers.Strategy.Fixed()],
             projection: avaSurvey.map.displayProjection,
-            styleMap: avaSurvey.ENCStyle,
+            styleMap: new OpenLayers.StyleMap({
+                'default': new OpenLayers.Style(
+                    {fillColor: "${getColor}",fillOpacity:"${getOpacity}",strokeColor:"${getColor}",strokeWidth:2.0,title:'${Name}'},
+                    {context:{
+                        getColor: function (feat) {return colLookup[avaSurvey.checkTileRefresh(feat)][0]},
+                        getOpacity: function (feat) {return colLookup[avaSurvey.checkTileRefresh(feat)][1]}
+                    }}
+                ),
+                'select': new OpenLayers.Style({fillColor: '#00ffff',strokeColor: '#00ffff',title:'${Name}'})
+            }),
             protocol: new OpenLayers.Protocol.HTTP({
                 url: "tiles.kml?",
                 format: new OpenLayers.Format.KML({
@@ -53,6 +62,7 @@ avaSurvey={
             gmap = new OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE});
         } else {
             gmap = new OpenLayers.Layer.Google("Google", {});
+            //gmap = new OpenLayers.Layer.OSM("Street Map", {});
         }
 
         // WMS Avadepth Bathymetry Layer
@@ -89,6 +99,7 @@ avaSurvey={
         try {
            avaSurvey.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
         } catch(err){}
+        avaSurvey.refreshTiles(waterway,"");
 	},
 
     // tileSelect: callBack function for tile selection from the map interface
@@ -96,5 +107,18 @@ avaSurvey={
 		var tileName=tile.feature.data.name;
         if(tileName.indexOf('/')>=0) {parent.window.open("http://www2.pac.dfo-mpo.gc.ca"+tileName,'_blank');}
         else {parent.sdbbds_functions.getSurveyDrawingsFromTiles({"tile": tileName});}
-	}
+	},
+
+    // refreshTiles: function to refresh the draw of the tile layer using the new selected form settings
+    refreshTiles: function(ww,lo){
+        if (!ww){ return }
+        avaSurvey.curWaterway=ww;
+        avaSurvey.curLocation=lo;
+        avaSurvey.tiles.redraw();
+    },
+
+    // checkTileRefresh: checks if the tile's attributes match the currently selected values
+    checkTileRefresh: function(feat){
+        return ((["","Channel"].indexOf(avaSurvey.curLocation)<0)?(feat.attributes.location.value==avaSurvey.curLocation):true)&&(feat.attributes.waterway.value == avaSurvey.curWaterway)
+    }
 };
