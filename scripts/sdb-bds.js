@@ -60,6 +60,10 @@ var sdbbds_functions = {
 		  return $('#location').append("<option>" + this + "</option>");
 		});
 	  });
+    $('#location').change(function() {
+       var mp=$('#embed_map')[0].contentWindow;
+       return mp.avaSurvey.refreshTiles($('#waterway').val(),$(this).val());
+    });
     $("#print_survey_drawings").click(function() {
       return window.print();
     });
