@@ -1,5 +1,10 @@
 gotoPWL = ->
-  document.location = "pwl-nep-eng.html?date=#{$('#date').val()}&" +
+  if($('html').attr('lang') == "fr")
+     prev_page = "pwl-nep-fra.html"
+  else
+     prev_page = "pwl-nep-eng.html"
+
+  document.location = prev_page + "?date=#{$('#date').val()}&" +
       "km=#{$("#km").text()}&" +
       "intervalMin=#{$('#intervalMin').val()}&" +
       "flowRate=#{$('#flowRate').val()}&" +

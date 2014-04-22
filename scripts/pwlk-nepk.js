@@ -3,7 +3,13 @@
   var gotoPWL;
 
   gotoPWL = function() {
-    return document.location = ("pwl-nep-eng.html?date=" + ($('#date').val()) + "&") + ("km=" + ($("#km").text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + "displayType=0";
+    var prev_page;
+    if ($('html').attr('lang') === "fr") {
+      prev_page = "pwl-nep-fra.html";
+    } else {
+      prev_page = "pwl-nep-eng.html";
+    }
+    return document.location = prev_page + ("?date=" + ($('#date').val()) + "&") + ("km=" + ($("#km").text()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + "displayType=0";
   };
 
   $(function() {

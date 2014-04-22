@@ -7,7 +7,13 @@
   flowrate = 0;
 
   gotoDepthsReport = function() {
-    return document.location = ("ad-pd-eng.html?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + ($('#lane').val()) + "&") + ("period=" + ($('#period').val()));
+    var prev_page;
+    if ($('html').attr('lang') === "fr") {
+      prev_page = "ad-pd-fra.html";
+    } else {
+      prev_page = "ad-pd-eng.html";
+    }
+    return document.location = prev_page + ("?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + ($('#lane').val()) + "&") + ("period=" + ($('#period').val()));
   };
 
   $(function() {
