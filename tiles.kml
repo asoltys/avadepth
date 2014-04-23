@@ -1,15 +1,136 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
-<Document><Folder><name>avatiles</name>
-<Schema name="avatiles" id="avatiles">
+<Document><Folder><name>tiles</name>
+<Schema name="tiles" id="tiles">
 	<SimpleField name="Name" type="string"></SimpleField>
 	<SimpleField name="Description" type="string"></SimpleField>
 	<SimpleField name="waterway" type="string"></SimpleField>
 	<SimpleField name="location" type="string"></SimpleField>
 </Schema>
   <Placemark>
+	<name>NA0913</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA0913</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Sea Island</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.18372709198157,49.208331070115747 -123.17753546210336,49.224069624173808 -123.13622561126394,49.206232782134336 -123.13617871480221,49.191956519348153 -123.14991847600017,49.191946182772057 -123.18372709198157,49.208331070115747</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA1307</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA1307</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Morey Channel</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.22004275594844,49.191382208333088 -123.1618531189457,49.180366177396522 -123.14991847600017,49.191946182772057 -123.12361630299539,49.191964539388508 -123.14815174700503,49.16621684257035 -123.16441224651466,49.165070329472243 -123.22534742986929,49.176381088236354 -123.22004275594844,49.191382208333088</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA2529</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA2529</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Big Bend - Queens</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.93445777087045,49.187720556259961 -122.93825739403613,49.186684319334468 -122.95108560000001,49.1832058 -122.9862803195968,49.173593728106752 -122.98665962677352,49.1903871902162 -122.94681773271962,49.201268927395866 -122.93445777087045,49.187720556259961</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA_103</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA_103</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Point Grey</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.24317333916916,49.248898466697753 -123.26008085963093,49.23706973968519 -123.3011484514561,49.260803927727878 -123.28477190174448,49.272947559620356 -123.24327713868689,49.248961796832596 -123.24317333916916,49.248898466697753</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA0307</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA0307</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Iona</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.20509663511763,49.228582912180407 -123.21142424110646,49.212501863186354 -123.26008085963093,49.23706973968519 -123.24317333916916,49.248898466697753 -123.20509663511763,49.228582912180407</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA0709</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA0709</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Musqueam</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.17753546210336,49.224069624173808 -123.18372709198157,49.208331070115747 -123.21142424110646,49.212501863186354 -123.20509663511763,49.228582912180407 -123.17753546210336,49.224069624173808</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA1314</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA1314</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Marpole Basin</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.12361630299539,49.191964539388508 -123.13617871480221,49.191956519348153 -123.13622561126394,49.206232782134336 -123.12355838449183,49.206230267067006 -123.12361630299539,49.191964539388508</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NAS141</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NAS141</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Mitchell Island North</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.05871105822177,49.203492654554587 -123.12356970942049,49.203441476666811 -123.12355838449183,49.206230267067006 -123.12357207729443,49.211724760432489 -123.05872072119539,49.211653005928994 -123.05871105822177,49.203492654554587</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA1921</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA1921</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Mac-Blo</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.02833393494227,49.208700399637557 -123.0361454287703,49.193736818089825 -123.05870202377102,49.19585974031888 -123.05872072119539,49.211653005928994 -123.02833393494227,49.208700399637557</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA2125</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA2125</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Byrne Road</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.98665962677352,49.1903871902162 -122.9862803195968,49.173593728106752 -123.0361454287703,49.193736818089825 -123.02833393494227,49.208700399637557 -122.98665962677352,49.1903871902162</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA2931</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA2931</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Poplar Island</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.94681773271962,49.201268927395866 -122.92828659810952,49.20908194921077 -122.91557642015455,49.195560130818677 -122.92754328424621,49.190538780952778 -122.93445777087045,49.187720556259961 -122.94681773271962,49.201268927395866</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
+	<name>NA1419</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">NA1419</SimpleData>
+		<SimpleData name="waterway">FRNA</SimpleData>
+		<SimpleData name="location">Mitchell Island</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.12356970942049,49.203441476666811 -123.05871105822177,49.203492654554587 -123.05870202377102,49.19585974031888 -123.12360044399438,49.195871438810428 -123.12356970942049,49.203441476666811</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+  <Placemark>
 	<name>PR4650</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR4650</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Chatham Reach</SimpleData>
@@ -18,7 +139,8 @@
   </Placemark>
   <Placemark>
 	<name>PR5055</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR5055</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Chatham Reach</SimpleData>
@@ -27,7 +149,8 @@
   </Placemark>
   <Placemark>
 	<name>PR5461</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR5461</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Chatham Reach</SimpleData>
@@ -36,7 +159,8 @@
   </Placemark>
   <Placemark>
 	<name>PR6165</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR6165</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Fox Reach</SimpleData>
@@ -45,7 +169,8 @@
   </Placemark>
   <Placemark>
 	<name>PR6570</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR6570</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Fox Reach</SimpleData>
@@ -54,7 +179,8 @@
   </Placemark>
   <Placemark>
 	<name>PR7074</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR7074</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Grant Channel</SimpleData>
@@ -63,7 +189,8 @@
   </Placemark>
   <Placemark>
 	<name>PR7476</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PR7476</SimpleData>
 		<SimpleData name="waterway">PR</SimpleData>
 		<SimpleData name="location">Grant Channel</SimpleData>
@@ -72,7 +199,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1415</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1415</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -81,7 +209,8 @@
   </Placemark>
   <Placemark>
 	<name>CR03</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR03</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -90,7 +219,8 @@
   </Placemark>
   <Placemark>
 	<name>SA0910</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0910</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -99,7 +229,8 @@
   </Placemark>
   <Placemark>
 	<name>CC0910</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CC0910</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -108,7 +239,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1011</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1011</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -117,7 +249,8 @@
   </Placemark>
   <Placemark>
 	<name>CC1011</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CC1011</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -126,7 +259,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1112</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1112</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -135,7 +269,8 @@
   </Placemark>
   <Placemark>
 	<name>BR4650</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">BR4650</SimpleData>
 		<SimpleData name="waterway">BR</SimpleData>
 		<SimpleData name="location">Marina</SimpleData>
@@ -144,7 +279,8 @@
   </Placemark>
   <Placemark>
 	<name>CC1112</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CC1112</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -152,35 +288,18 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1667445,49.1157635 -123.1624035,49.1245888 -123.1468519,49.1191532 -123.1510371,49.1137304 -123.154588,49.113262 -123.1667445,49.1157635</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0304</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0304</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2540989,49.240938 -123.24361930000001,49.248363 -123.2335847,49.2420753 -123.2443514,49.2346869 -123.2540989,49.240938</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA1314</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1314</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
-		<SimpleData name="location"></SimpleData>
 	</SchemaData></ExtendedData>
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1430604,49.1030794 -123.1424402,49.1132583 -123.1320306,49.1133499 -123.1266957,49.1032546 -123.1430604,49.1030794</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0405</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0405</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2443514,49.2346869 -123.2335847,49.2420753 -123.2229804,49.2354232 -123.2238275,49.234542 -123.2261944,49.2354314 -123.2355926,49.2292301 -123.2443514,49.2346869</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>CR02</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR02</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -189,7 +308,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1516</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1516</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -197,17 +317,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1129921,49.1059622 -123.1180586,49.1143328 -123.118451,49.1150041 -123.1080382,49.1174052 -123.100333,49.1105303 -123.0984188,49.1088223 -123.1129921,49.1059622</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0506</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0506</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2368275,49.2278227 -123.2355926,49.2292301 -123.2261944,49.2354314 -123.2157595,49.2317026 -123.22197490000001,49.222837 -123.2368275,49.2278227</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>CR04</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR04</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -216,7 +328,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1617</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1617</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -225,7 +338,8 @@
   </Placemark>
   <Placemark>
 	<name>SR1415</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SR1415</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -233,17 +347,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1440119,49.0895833 -123.1345371,49.0974082 -123.1276206,49.093563 -123.1315577,49.0884921 -123.1381379,49.0854145 -123.1440119,49.0895833</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0607</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0607</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.22197490000001,49.222837 -123.2157595,49.2317026 -123.2042565,49.2287525 -123.2096317,49.2194454 -123.22197490000001,49.222837</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>CR05</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR05</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -252,7 +358,8 @@
   </Placemark>
   <Placemark>
 	<name>CP1415</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CP1415</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -260,17 +367,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1402077,49.0824883 -123.1381379,49.0854145 -123.1315577,49.0884921 -123.1276412,49.0839459 -123.1166423,49.0825106 -123.1229955,49.0772346 -123.1402077,49.0824883</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0708</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0708</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2096317,49.2194454 -123.2042565,49.2287525 -123.1903541,49.2262084 -123.1965332,49.2171241 -123.2096317,49.2194454</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>PC5256</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PC5256</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -279,7 +378,8 @@
   </Placemark>
   <Placemark>
 	<name>LH1516</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LH1516</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -287,17 +387,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1276412,49.0839459 -123.1315577,49.0884921 -123.1276206,49.093563 -123.11850250000001,49.0914718 -123.1166423,49.0825106 -123.1276412,49.0839459</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0809</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0809</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1965332,49.2171241 -123.1903541,49.2262084 -123.1787994,49.2216775 -123.1864894,49.2131462 -123.1965332,49.2171241</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>PC5155</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">PC5155</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -306,7 +398,8 @@
   </Placemark>
   <Placemark>
 	<name>LH1617</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LH1617</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -314,17 +407,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1166423,49.0825106 -123.11850250000001,49.0914718 -123.110054,49.0867072 -123.10139340000001,49.0901732 -123.1006144,49.0823002 -123.1166423,49.0825106</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0910</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0910</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1864894,49.2131462 -123.1787994,49.2216775 -123.1650317,49.2185089 -123.173466,49.2097333 -123.1864894,49.2131462</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA4751</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4751</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -333,7 +418,8 @@
   </Placemark>
   <Placemark>
 	<name>LH1718</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LH1718</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -341,17 +427,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1006144,49.0823002 -123.10139340000001,49.0901732 -123.0876938,49.0953702 -123.0851045,49.0884206 -123.1006144,49.0823002</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1011</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1011</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.173466,49.2097333 -123.1650317,49.2185089 -123.1521819,49.2138613 -123.162303,49.2060601 -123.173466,49.2097333</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA5156</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA5156</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -359,17 +437,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.69389320000001,49.2202346 -122.635478,49.220065 -122.6357005,49.1897919 -122.6610338,49.1898245 -122.6752605,49.1990779 -122.6941106,49.2015221 -122.69389320000001,49.2202346</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1112</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1112</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.162303,49.2060601 -123.1521819,49.2138613 -123.1442339,49.2072694 -123.1535215,49.1994281 -123.162303,49.2060601</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA5661</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA5661</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -377,17 +447,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.635478,49.220065 -122.5853218,49.2172235 -122.6099404,49.1897041 -122.6357005,49.1897919 -122.635478,49.220065</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1213</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1213</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1535215,49.1994281 -123.1442339,49.2072694 -123.1355043,49.2048341 -123.1376489,49.1989111 -123.1429635,49.1954419 -123.1535215,49.1994281</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SQ3</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SQ3</SimpleData>
 		<SimpleData name="waterway">SQ</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -396,7 +458,8 @@
   </Placemark>
   <Placemark>
 	<name>MA6063</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA6063</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -404,26 +467,19 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.5853218,49.2172235 -122.5514227,49.1923329 -122.5765516,49.1669253 -122.6099404,49.1897041 -122.5853218,49.2172235</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1314</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1314</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1376489,49.1989111 -123.1355043,49.2048341 -123.1270236,49.2046813 -123.1216137,49.1966622 -123.1201605,49.1966193 -123.1202041,49.1945727 -123.1272468,49.1945768 -123.1376489,49.1989111</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SQ4</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SQ4</SimpleData>
 		<SimpleData name="waterway">SQ</SimpleData>
-		<SimpleData name="location">Mamquam Blind Channel</SimpleData>
+		<SimpleData name="location">Mamquam Blind Channe</SimpleData>
 	</SchemaData></ExtendedData>
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1508762,49.6918033 -123.1572962,49.6942006 -123.1529783,49.6996592 -123.1465362,49.697223 -123.1508762,49.6918033</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
 	<name>MA6367</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA6367</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -431,26 +487,19 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.5514227,49.1923329 -122.5100861,49.178393 -122.5213219,49.1510186 -122.5765516,49.1669253 -122.5514227,49.1923329</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1415</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1415</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1216137,49.1966622 -123.1270236,49.2046813 -123.1270281,49.2064217 -123.1106226,49.2063793 -123.1104504,49.1963326 -123.1216137,49.1966622</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SQ5</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SQ5</SimpleData>
 		<SimpleData name="waterway">SQ</SimpleData>
-		<SimpleData name="location">Mamquam Blind Channel</SimpleData>
+		<SimpleData name="location">Mamquam Blind Channe</SimpleData>
 	</SchemaData></ExtendedData>
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1465362,49.697223 -123.1529783,49.6996592 -123.1480042,49.7050336 -123.1415691,49.7026347 -123.1465362,49.697223</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
 	<name>MA6771</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA6771</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -458,26 +507,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.5100861,49.178393 -122.4569545,49.1839523 -122.4630873,49.1557155 -122.5213219,49.1510186 -122.5100861,49.178393</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1516</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1516</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1104504,49.1963326 -123.1106226,49.2063793 -123.0945359,49.206368 -123.0987206,49.2029142 -123.0997781,49.1962336 -123.1104504,49.1963326</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>NA1617</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1617</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0994296,49.1951328 -123.0997781,49.1962336 -123.0987206,49.2029142 -123.094944,49.2060312 -123.0873113,49.2069705 -123.0840095,49.1972344 -123.0994296,49.1951328</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA7579</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA7579</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -485,17 +517,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.4043595,49.1703181 -122.36518510000001,49.1453189 -122.3796597,49.1169426 -122.4229417,49.1422401 -122.4043595,49.1703181</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1718</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1718</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0840095,49.1972344 -123.0873113,49.2069705 -123.0748564,49.2093221 -123.0728839,49.2039135 -123.0689359,49.2000824 -123.0840095,49.1972344</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA7983</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA7983</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -503,17 +527,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.36518510000001,49.1453189 -122.3301967,49.135509 -122.3247727,49.1056873 -122.3796597,49.1169426 -122.36518510000001,49.1453189</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1819</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1819</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0728839,49.2039135 -123.0748564,49.2093221 -123.0748577,49.2101537 -123.0558282,49.2101645 -123.06150820000001,49.2001675 -123.0689359,49.2000824 -123.0728839,49.2039135</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA8385</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA8385</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -521,17 +537,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.3301967,49.135509 -122.2747263,49.1423733 -122.2671536,49.112511 -122.3247727,49.1056873 -122.3301967,49.135509</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA1920</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA1920</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0615067,49.1989262 -123.06150820000001,49.2001675 -123.0564352,49.2090961 -123.0439809,49.2090433 -123.0465115,49.1989866 -123.0615067,49.1989262</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA_100</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA_100</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -539,17 +547,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.3115495,49.0938457 -123.3198829,49.1023048 -123.30566810000001,49.1079686 -123.2978443,49.0992499 -123.3115495,49.0938457</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2021</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2021</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0465115,49.1989866 -123.0439809,49.2090433 -123.0299155,49.2061128 -123.0351869,49.1966306 -123.0465115,49.1989866</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA0001</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0001</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -557,17 +557,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2978443,49.0992499 -123.30566810000001,49.1079686 -123.2934952,49.1127032 -123.2853753,49.1041527 -123.2978443,49.0992499</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2122</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2122</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0351869,49.1966306 -123.0299155,49.2061128 -123.01633390000001,49.2028213 -123.0227836,49.1934739 -123.0351869,49.1966306</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA0102</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0102</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -575,17 +567,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2853753,49.1041527 -123.2934952,49.1127032 -123.28219660000001,49.1175811 -123.27372680000001,49.1092881 -123.2853753,49.1041527</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2223</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2223</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0227836,49.1934739 -123.01633390000001,49.2028213 -123.0023519,49.1985254 -123.0113443,49.1903288 -123.0227836,49.1934739</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA0203</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0203</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -593,17 +577,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.27372680000001,49.1092881 -123.28219660000001,49.1175811 -123.2704967,49.122575 -123.2621704,49.1140473 -123.27372680000001,49.1092881</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2324</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2324</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0113443,49.1903288 -123.0023519,49.1985254 -122.99173020000001,49.1916995 -123.0021979,49.1844463 -123.0113443,49.1903288</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA0304</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0304</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -611,17 +587,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2621704,49.1140473 -123.2704967,49.122575 -123.2590122,49.1271445 -123.250973,49.1187589 -123.2621704,49.1140473</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2425</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2425</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.0021979,49.1844463 -122.99173020000001,49.1916995 -122.9833173,49.1865202 -122.9900521,49.1772088 -123.0021979,49.1844463</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA0405</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0405</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -629,17 +597,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.250973,49.1187589 -123.2590122,49.1271445 -123.2466663,49.1324201 -123.2410371,49.1228136 -123.250973,49.1187589</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2526</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2526</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9900521,49.1772088 -122.9833173,49.1865202 -122.9753401,49.1854627 -122.97186240000001,49.1767551 -122.9725632,49.1746716 -122.9900521,49.1772088</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>SA0506</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0506</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -648,7 +608,8 @@
   </Placemark>
   <Placemark>
 	<name>SA0607</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0607</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -657,7 +618,8 @@
   </Placemark>
   <Placemark>
 	<name>SA0708</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0708</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -666,7 +628,8 @@
   </Placemark>
   <Placemark>
 	<name>SA0809</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA0809</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -675,7 +638,8 @@
   </Placemark>
   <Placemark>
 	<name>SR1314</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SR1314</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -683,44 +647,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1570101,49.0950382 -123.1561073,49.0961282 -123.1449697,49.1021621 -123.1345371,49.0974082 -123.1440119,49.0895833 -123.1570101,49.0950382</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0102</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0102</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2722175,49.2525687 -123.26538050000001,49.260166 -123.2643756,49.2613874 -123.25338120000001,49.2547532 -123.26384880000001,49.247196 -123.2722175,49.2525687</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>NA2930</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2930</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9407154,49.1931598 -122.9467733,49.2030815 -122.9300693,49.2032239 -122.93037940000001,49.1932668 -122.9407154,49.1931598</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>NA0203</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0203</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.26384880000001,49.247196 -123.25338120000001,49.2547532 -123.24361930000001,49.248363 -123.2540989,49.240938 -123.26384880000001,49.247196</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>NA3031</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA3031</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.93037940000001,49.1932668 -122.9300693,49.2032239 -122.913771,49.2033732 -122.9143857,49.2014311 -122.9160184,49.1962723 -122.9212439,49.196786 -122.927254,49.1932728 -122.93037940000001,49.1932668</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>CR01</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR01</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -729,7 +658,8 @@
   </Placemark>
   <Placemark>
 	<name>SR1112</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SR1112</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -738,7 +668,8 @@
   </Placemark>
   <Placemark>
 	<name>SR1213</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SR1213</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -747,7 +678,8 @@
   </Placemark>
   <Placemark>
 	<name>CR06</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR06</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -756,7 +688,8 @@
   </Placemark>
   <Placemark>
 	<name>CR07</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">CR07</SimpleData>
 		<SimpleData name="waterway">CR</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -765,7 +698,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1718</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1718</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -774,7 +708,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1819</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1819</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -783,7 +718,8 @@
   </Placemark>
   <Placemark>
 	<name>MA3637</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA3637</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -792,7 +728,8 @@
   </Placemark>
   <Placemark>
 	<name>SQ1</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SQ1</SimpleData>
 		<SimpleData name="waterway">SQ</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -801,7 +738,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1920</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1920</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -810,7 +748,8 @@
   </Placemark>
   <Placemark>
 	<name>LR1617</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LR1617</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -819,7 +758,8 @@
   </Placemark>
   <Placemark>
 	<name>MA3738</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA3738</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -828,7 +768,8 @@
   </Placemark>
   <Placemark>
 	<name>SQ2</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SQ2</SimpleData>
 		<SimpleData name="waterway">SQ</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -837,7 +778,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2021</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2021</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -846,7 +788,8 @@
   </Placemark>
   <Placemark>
 	<name>MA3839</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA3839</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -855,7 +798,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2122</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2122</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -864,7 +808,8 @@
   </Placemark>
   <Placemark>
 	<name>LR1718</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LR1718</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -873,7 +818,8 @@
   </Placemark>
   <Placemark>
 	<name>MA3940</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA3940</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -881,9 +827,10 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.8595164,49.2120934 -122.8603293,49.2214834 -122.85733860000001,49.2216739 -122.8478794,49.2205761 -122.8482354,49.2153352 -122.8483706,49.2124656 -122.8595164,49.2120934</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>/data/fraserport/fsd_overview.pdf</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">/data/fraserport/fsd_overview.pdf</SimpleData>
+	<name>/data/</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
+		<SimpleData name="Name">/data/</SimpleData>
 		<SimpleData name="waterway">FPORT</SimpleData>
 		<SimpleData name="location"></SimpleData>
 	</SchemaData></ExtendedData>
@@ -891,7 +838,8 @@
   </Placemark>
   <Placemark>
 	<name>LR1819</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LR1819</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -900,7 +848,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4041</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4041</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -909,7 +858,8 @@
   </Placemark>
   <Placemark>
 	<name>LR1920</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">LR1920</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -918,7 +868,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4142</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4142</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -927,7 +878,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2223</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2223</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -936,7 +888,8 @@
   </Placemark>
   <Placemark>
 	<name>DS1719</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">DS1719</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -945,7 +898,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2324</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2324</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -954,7 +908,8 @@
   </Placemark>
   <Placemark>
 	<name>DS1819</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">DS1819</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -963,7 +918,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4243</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4243</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -972,7 +928,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2425</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2425</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -981,7 +938,8 @@
   </Placemark>
   <Placemark>
 	<name>BL2021</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">BL2021</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -990,7 +948,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4344</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4344</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -999,7 +958,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2526</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2526</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1008,7 +968,8 @@
   </Placemark>
   <Placemark>
 	<name>AC2526</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC2526</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1017,7 +978,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4445</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4445</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1026,7 +988,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2627</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2627</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1035,7 +998,8 @@
   </Placemark>
   <Placemark>
 	<name>AC2627</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC2627</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1044,7 +1008,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4546</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4546</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1053,7 +1018,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2728</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2728</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1062,7 +1028,8 @@
   </Placemark>
   <Placemark>
 	<name>AC2728</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC2728</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1071,7 +1038,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4647</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4647</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1080,7 +1048,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2829</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2829</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1089,7 +1058,8 @@
   </Placemark>
   <Placemark>
 	<name>AC2829</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC2829</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1098,7 +1068,8 @@
   </Placemark>
   <Placemark>
 	<name>MA4748</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA4748</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1107,7 +1078,8 @@
   </Placemark>
   <Placemark>
 	<name>SA2930</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA2930</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1116,7 +1088,8 @@
   </Placemark>
   <Placemark>
 	<name>AC2930</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC2930</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1125,7 +1098,8 @@
   </Placemark>
   <Placemark>
 	<name>SC3738</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SC3738</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1134,7 +1108,8 @@
   </Placemark>
   <Placemark>
 	<name>SA3031</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA3031</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1143,16 +1118,18 @@
   </Placemark>
   <Placemark>
 	<name>AC3031</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC3031</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
 	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.94283110000001,49.1747827 -122.9510856,49.1832058 -122.9398307,49.1879202 -122.9307867,49.1799214 -122.94283110000001,49.1747827</coordinates></LinearRing></outerBoundaryIs></Polygon>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.94283110000001,49.1747827 -122.9510856,49.1832058 -122.93825739403613,49.186684319334482 -122.9307867,49.1799214 -122.94283110000001,49.1747827</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
 	<name>SC3839</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SC3839</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1161,7 +1138,8 @@
   </Placemark>
   <Placemark>
 	<name>SA3132</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA3132</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1170,16 +1148,18 @@
   </Placemark>
   <Placemark>
 	<name>AC3132</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC3132</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
 	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9307867,49.1799214 -122.9398307,49.1879202 -122.9313117,49.1927018 -122.9210618,49.1866422 -122.9252824,49.1842144 -122.92649280000001,49.1825483 -122.9307867,49.1799214</coordinates></LinearRing></outerBoundaryIs></Polygon>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9307867,49.1799214 -122.93825739403613,49.186684319334489 -122.93445777087045,49.187720556259947 -122.92754328424621,49.190538780952785 -122.9210618,49.1866422 -122.9252824,49.1842144 -122.92649280000001,49.1825483 -122.9307867,49.1799214</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
 	<name>SC3940</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SC3940</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1188,7 +1168,8 @@
   </Placemark>
   <Placemark>
 	<name>SC4041</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SC4041</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1197,16 +1178,18 @@
   </Placemark>
   <Placemark>
 	<name>AC3233</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">AC3233</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
 	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9210618,49.1866422 -122.9313117,49.1927018 -122.93037940000001,49.1932668 -122.927254,49.1932728 -122.9212439,49.196786 -122.9160184,49.1962723 -122.9210618,49.1866422</coordinates></LinearRing></outerBoundaryIs></Polygon>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9210618,49.1866422 -122.92754328424621,49.190538780952792 -122.9160184,49.1962723 -122.9210618,49.1866422</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
 	<name>DN4344</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">DN4344</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1215,7 +1198,8 @@
   </Placemark>
   <Placemark>
 	<name>SA3334</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA3334</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1223,17 +1207,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.911658,49.1842802 -122.9210618,49.1866422 -122.9160184,49.1962723 -122.9031143,49.1940023 -122.9100328,49.1882406 -122.911658,49.1842802</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA2627</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2627</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.97000970000001,49.1754344 -122.97186240000001,49.1767551 -122.9753401,49.1854627 -122.9694354,49.1900678 -122.9594582,49.1829163 -122.97000970000001,49.1754344</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>DN4445</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">DN4445</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1242,7 +1218,8 @@
   </Placemark>
   <Placemark>
 	<name>DN4546</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">DN4546</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1251,7 +1228,8 @@
   </Placemark>
   <Placemark>
 	<name>SA3536</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA3536</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1259,26 +1237,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.8989118,49.1972367 -122.909878,49.2043247 -122.9006388,49.2108345 -122.8896137,49.2038366 -122.8989118,49.1972367</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA_100</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA_100</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.29804470000001,49.2653916 -123.287999,49.273026 -123.2753457,49.266038 -123.285634,49.2586 -123.29804470000001,49.2653916</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>NA2728</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2728</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9594582,49.1829163 -122.9694354,49.1900678 -122.958683,49.1962587 -122.9493805,49.1885247 -122.9594582,49.1829163</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>DN4647</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">DN4647</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1286,26 +1247,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.7691552,49.2240959 -122.7619477,49.2248696 -122.7588013,49.2278551 -122.7484413,49.2206409 -122.7495508,49.2180275 -122.7584835,49.2166871 -122.7643771,49.2207787 -122.7691552,49.2240959</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>NA0001</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA0001</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.285634,49.2586 -123.2753457,49.266038 -123.26538050000001,49.260166 -123.2722175,49.2525687 -123.273804,49.2514663 -123.285634,49.2586</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>NA2829</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">NA2829</SimpleData>
-		<SimpleData name="waterway">FRNA</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.9493805,49.1885247 -122.958683,49.1962587 -122.9467733,49.2030815 -122.9407154,49.1931598 -122.9493805,49.1885247</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>MA7175</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">MA7175</SimpleData>
 		<SimpleData name="waterway">FRMA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1313,80 +1257,9 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>-122.4630873,49.1557155 -122.4569545,49.1839523 -122.4043595,49.1703181 -122.4229417,49.1422401 -122.4630873,49.1557155</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
   <Placemark>
-	<name>MC0506</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC0506</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2252025,49.1833057 -123.2221983,49.193186 -123.2049339,49.1910086 -123.2077619,49.1811548 -123.2252025,49.1833057</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC0607</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC0607</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.2077619,49.1811548 -123.2049339,49.1910086 -123.1875203,49.1891598 -123.188912,49.1845467 -123.1991323,49.1802553 -123.2077619,49.1811548</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC0708</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC0708</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.20045260000001,49.1757395 -123.1991323,49.1802553 -123.188912,49.1845467 -123.1825999,49.1831195 -123.1845637,49.1731177 -123.20045260000001,49.1757395</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC0809</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC0809</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1845637,49.1731177 -123.1825999,49.1831195 -123.1698741,49.1823226 -123.1707175,49.172337 -123.1845637,49.1731177</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC0910</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC0910</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1707175,49.172337 -123.1698741,49.1823226 -123.1587002,49.1818681 -123.1546109,49.1716283 -123.1707175,49.172337</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC1011</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC1011</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.1484108,49.1867878 -123.141448,49.1776839 -123.1546109,49.1716283 -123.1587002,49.1818681 -123.1484108,49.1867878</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC1112</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC1112</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.141448,49.1776839 -123.1484108,49.1867878 -123.1453713,49.1897213 -123.13123160000001,49.1855751 -123.1374568,49.1766458 -123.141448,49.1776839</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
-	<name>MC1213</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
-		<SimpleData name="Name">MC1213</SimpleData>
-		<SimpleData name="waterway">FRUR</SimpleData>
-		<SimpleData name="location"></SimpleData>
-	</SchemaData></ExtendedData>
-      <Polygon><outerBoundaryIs><LinearRing><coordinates>-123.13123160000001,49.1855751 -123.1453713,49.1897213 -123.1429635,49.1954419 -123.1376489,49.1989111 -123.1272468,49.1945768 -123.13123160000001,49.1855751</coordinates></LinearRing></outerBoundaryIs></Polygon>
-  </Placemark>
-  <Placemark>
 	<name>GS3132</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">GS3132</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1395,7 +1268,8 @@
   </Placemark>
   <Placemark>
 	<name>SA1213</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA1213</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1404,7 +1278,8 @@
   </Placemark>
   <Placemark>
 	<name>SA3233</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA3233</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
@@ -1413,7 +1288,8 @@
   </Placemark>
   <Placemark>
 	<name>SA3435</name>
-	<ExtendedData><SchemaData schemaUrl="#avatiles">
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#tiles">
 		<SimpleData name="Name">SA3435</SimpleData>
 		<SimpleData name="waterway">FRSA</SimpleData>
 		<SimpleData name="location"></SimpleData>
