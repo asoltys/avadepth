@@ -60,6 +60,10 @@ var sdbbds_functions = {
 		  return $('#location').append("<option>" + this + "</option>");
 		});
 	  });
+    $('#location').change(function() {
+       var mp=$('#embed_map')[0].contentWindow;
+       return mp.avaSurvey.refreshTiles($('#waterway').val(),$(this).val());
+    });
     $("#print_survey_drawings").click(function() {
       return window.print();
     });
@@ -68,6 +72,7 @@ var sdbbds_functions = {
       $('#tile').text('');
       //WS
       var mp=$('#embed_map')[0].contentWindow;
+      if(!mp.avaSurvey.map){ return; }
 	  try {
           mp.avaSurvey.setExtents($(this).val());
 	  } catch(err){}
@@ -75,12 +80,13 @@ var sdbbds_functions = {
     });
 	
     $('form#daily_depth').on("click", "button", function() {
-      return sdbbds_functions.getSurveyDrawings({
-        river: $('#waterway').val(),
-        drawingType: $('#type').val(),
-        channel: $('#waterway').val(),
-        location: $('#location').val(),
-        channelType: $('#channel').val()
+        var ww=$('#waterway').val();
+        return sdbbds_functions.getSurveyDrawings({
+            river: ww,
+            drawingType: $('#type').val(),
+            channel: ww,
+            location: $('#location').val(),
+            channelType: $('#channel').val()
       });
     });
 	$('#embed_map').load(function(){
@@ -93,7 +99,7 @@ var sdbbds_functions = {
     var drawingRows;
     $('.spinner').show();
     drawingRows = "";
-    return $.getJSON(("http://www2.pac.dfo-mpo.gc.ca/api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
+    return $.getJSON(("includes/test.json"), function(data) {
       $('#surveys tbody').html('');
       $.each(data, function() {
         var addRow;
@@ -106,7 +112,7 @@ var sdbbds_functions = {
           addRow = true;
         }
         if (addRow) {
-          return drawingRows += "<tr>" + ("<td>" + (this.date.split("T")[0]) + "</td>") + ("<td><a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.fileNumber + ".dwf'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>";
+          return drawingRows += "<tr>" + ("<td>" + (this.date.split("T")[0]) + "</td>") + ("<td><a href='/Data/dwf/" + this.fileNumber + ".dwf'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>";
         }
       });
       return $('#surveys').append(drawingRows);
@@ -123,10 +129,10 @@ var sdbbds_functions = {
     $('.spinner').show();
     drawingRows = "";
     return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function(data) {
-    //return $.getJSON("http://www2.pac.dfo-mpo.gc.ca/api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
+    //return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
       $('#surveys tbody').html('');
       $.each(data.drawings, function() {
-        return drawingRows += "<tr>" + ("<td>" + (moment(this.yyyy_mm_dd, "DD/MM/YYYY").format("YYYY-MM-DD")) + "</td>") + ("<td><a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Svy_Filename + ".dwf' target='_blank'>" + this.Svy_Filename + "</a></td>") + ("<td>" + this.Location + "</td>") + ("<td>" + this.Type + "</td>") + ("<td>" + this.KMstart + "</td>") + ("<td>" + this.KMend + "</td>") + "</tr>";
+        return drawingRows += "<tr>" + ("<td>" + (moment(this.yyyy_mm_dd, "DD/MM/YYYY").format("YYYY-MM-DD")) + "</td>") + ("<td><a href='/Data/dwf/" + this.Svy_Filename + ".dwf' target='_blank'>" + this.Svy_Filename + "</a></td>") + ("<td>" + this.Location + "</td>") + ("<td>" + this.Type + "</td>") + ("<td>" + this.KMstart + "</td>") + ("<td>" + this.KMend + "</td>") + "</tr>";
       });
       return $('#surveys').append(drawingRows);
     }).done(function() {

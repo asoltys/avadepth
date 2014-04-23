@@ -4,7 +4,6 @@
 <Schema name="tiles" id="tiles">
 	<SimpleField name="Name" type="string"></SimpleField>
 	<SimpleField name="Description" type="string"></SimpleField>
-	<SimpleField name="Name" type="string"></SimpleField>
 	<SimpleField name="waterway" type="string"></SimpleField>
 	<SimpleField name="location" type="string"></SimpleField>
 </Schema>
