@@ -31,7 +31,6 @@ avaSurvey={
         avaSurvey.curLocation="";
 
         // KML Feature Styles and KML Layer
-        var colLookup={true:['#dd0000',0.2],false:['#aaaaaa',0.1]};
         avaSurvey.tiles = new OpenLayers.Layer.Vector("KML", {
             strategies: [new OpenLayers.Strategy.Fixed()],
             projection: avaSurvey.map.displayProjection,
@@ -39,9 +38,20 @@ avaSurvey={
                 'default': new OpenLayers.Style(
                     {fillColor: "${getColor}",fillOpacity:"${getOpacity}",strokeColor:"${getColor}",strokeWidth:2.0,title:'${Name}'},
                     {context:{
-                        getColor: function (feat) {return colLookup[avaSurvey.checkTileRefresh(feat)][0]},
-                        getOpacity: function (feat) {return colLookup[avaSurvey.checkTileRefresh(feat)][1]}
-                    }}
+                        getColor: function (feat) {
+                          if (avaSurvey.checkTileRefresh(feat) == true)
+                            return '#dd0000';
+                          else
+                            return '#aaaaaa';
+                        },
+                        getOpacity: function (feat) {
+                          if (avaSurvey.checkTileRefresh(feat) == true)
+                            return 0.2;
+                          else
+                            return 0.1;
+                        }
+                      }
+                    }
                 ),
                 'select': new OpenLayers.Style({fillColor: '#00ffff',strokeColor: '#00ffff',title:'${Name}'})
             }),
@@ -119,6 +129,13 @@ avaSurvey={
 
     // checkTileRefresh: checks if the tile's attributes match the currently selected values
     checkTileRefresh: function(feat){
-        return ((["","Channel"].indexOf(avaSurvey.curLocation)<0)?(feat.attributes.location.value==avaSurvey.curLocation):true)&&(feat.attributes.waterway.value == avaSurvey.curWaterway)
+        var temp;
+        if(avaSurvey.curLocation != "" || avaSurvey.curLocation != "Channel"){
+          temp = feat.attributes.location.value==avaSurvey.curLocation;
+        } else {
+          temp = true;
+        }
+
+        return temp && (feat.attributes.waterway.value == avaSurvey.curWaterway)
     }
 };

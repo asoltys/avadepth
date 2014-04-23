@@ -2,7 +2,12 @@ table = null
 flowrate = 0
 
 gotoDepthsReport = ->
-  document.location = "ad-pd-eng.html?date=#{$('#date').val()}&" +
+  if($('html').attr('lang') == "fr")
+     prev_page = "ad-pd-fra.html"
+  else
+     prev_page = "ad-pd-eng.html"
+
+  document.location = prev_page+"?date=#{$('#date').val()}&" +
       "chainage=#{$('#chainage').val()}&" +
       "flowRate=#{$('#flowRate').val()}&" +
       "flowType=#{$('#flowType').val()}&" +
