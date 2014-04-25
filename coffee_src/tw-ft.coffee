@@ -61,8 +61,8 @@ $(->
       when 'Defined' then $('#defined_discharge').val()
       when 'Selected' then $('#selected_discharge').val()
     $('#flowRate').val(flowrate)
-    $('#static-discharge').text(flowrate)
-    $('#static-discharge-eval').text($(this).val())
+    $('.static-discharge').text(flowrate)
+    $('.static-discharge-eval').text($(this).val())
 
     if $('html').attr('lang') == 'fr'
 	    flowRate_txt = switch $(this).val()
@@ -70,7 +70,7 @@ $(->
         when 'Actual' then "réel"
         when 'Defined' then "défini par l'utilisateur"
         when 'Selected' then "choisi"	
-      $("#static-discharge-eval").text(flowRate_txt)
+      $(".static-discharge-eval").text(flowRate_txt)
 		
     flowtype = switch $(this).val()
       when 'Actual' then 0
@@ -93,28 +93,28 @@ $(->
   
   $('#defined_discharge').change(->
     if ($('input[name="discharge"].checked').val() == "Defined")
-      $('#static-discharge').text($('#defined_discharge').val())
+      $('.static-discharge').text($('#defined_discharge').val())
   )
   
   $('#selected_discharge').change(->
     if ($('input[name="discharge"].checked').val() == "Selected")
-      $('#static-discharge').text($('#selected_discharge').val())
+      $('.static-discharge').text($('#selected_discharge').val())
   )
   
   $('input[name="channel"]').change(->
-    $('#static-channel').text($(this).next().text())
+    $('.static-channel').text($(this).next().text())
   )
 
   $('input[name="sounding"]').change(->
-    $('#static-sounding').text($(this).next().text())
+    $('.static-sounding').text($(this).next().text())
   )
   
   $('select#width').change(->
-    $('#static-width').text($(this).val())
+    $('.static-width').text($(this).val())
   )
   
   $('select#chainage').change(->
-    $('#static-chainage').text($(this).val())
+    $('.static-chainage').text($(this).val())
   )
 
   $('#window').change(->
@@ -141,6 +141,9 @@ $(->
       $('#static-window-pre-text').text('Maximum Depth for ')
       $('#static-window-post-text').text('hr. Transit Window')
       $('#static-window').text("#{$('#window').val()}")
+      $('#available_windows_table').css('display','none');			
+      $('#maximum_depth_table').css('display','block');
+      $('#transit-window-last-col').text('Maximum Depth (m)');
     else
       #$('#window').val($('#minimum_window').val())
       $('#cmp').val($('#depth').val())
@@ -148,6 +151,9 @@ $(->
       #$('#static-window').text("#{$('#cmp').val()}m depth & #{$('#minimum_window').val()} hr window")
       $('#static-window').text("#{$('#cmp').val()}m depth")
       $('#static-window-post-text').text('')
+      $('#maximum_depth_table').css('display','none');			
+      $('#available_windows_table').css('display','block');		
+      $('#transit-window-last-col').text('Hours');
     #$('#window').change()
   )
 
@@ -180,10 +186,10 @@ update = (data) ->
       "flowRate=#{$('#flowRate').val()}&" +
       "width=#{$('#width').val()}&" +
       "sounding=#{$('input[name=sounding]:checked').val()}", (data2) ->
-    $('#num_days').text(data2.statistics.numberOfDays)
-    $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2))
-    $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2))
-    $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2))
+    $('.num_days').text(data2.statistics.numberOfDays)
+    $('.min_depth').text(data2.statistics.minimumDepth.toFixed(2))
+    $('.max_depth').text(data2.statistics.maximumDepth.toFixed(2))
+    $('.avg_depth').text(data2.statistics.totalWindow.toFixed(2))
 
     table ||= $('#transit-window').dataTable(
         bPaginate: false
@@ -205,7 +211,20 @@ update = (data) ->
         if $('html').attr('lang') == 'en'	then 'Inner Channel Limit'
         else 'Limite intérieure'
       else ''
-    $('#static-channel').text(limit_text)
+    $('.static-channel').text(limit_text)
+		
+		
+    total_hr = 0
+    num_days_meeting_standard = $('#transit-window tbody tr').length
+    $('#transit-window tbody tr td:last-child').each(->
+      my_val = $(this).text()
+      total_hr += parseFloat(my_val)
+    )
+
+    $('.total_hr').text(total_hr)
+    $('.avg_hr').text( total_hr / num_days_meeting_standard )
+    $('.num_days_meeting_standard').text( num_days_meeting_standard )
+
   ).success(->
     $('.spinner').hide()
     $('#report_body').show()

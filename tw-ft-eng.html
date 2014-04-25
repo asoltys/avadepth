@@ -277,27 +277,28 @@
 				to <span id="static-date-to"></span>
 			</h4>		
 
-			<table class="print-width-70" style="width:100%;margin:0 auto">
+			<table id="maximum_depth_table" class="print-width-70" style="width:100%;margin:0 auto;">
 				<tr>
-					<td colspan="2">
-						Navigation Channel: Fraser River - <span id="static-channel">Inner Channel Limit</span>
+					<td colspan="4">
+						Navigation Channel: Fraser River - <span class="static-channel">Inner Channel Limit</span>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						Channel Condition: <span id="static-sounding">Current Soundings</span> for Km 1 to Km <span id="static-chainage">35</span> at <span id="static-width">100</span>% Available Width
+					<td colspan="4">
+						Channel Condition: <span class="static-sounding">Current Soundings</span> for Km 1 to Km <span class="static-chainage">35</span> at <span class="static-width">100</span>% Available Width
 					</td>
 				</tr>				
 				<tr>
-					<td colspan="2">
-						Hope DIscharge: <span id="static-discharge"></span> m3/s (<span id="static-discharge-eval">Predicted</span>)
+					<td colspan="4">
+						Hope DIscharge: <span class="static-discharge"></span> m3/s (<span class="static-discharge-eval">Predicted</span>)
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
+					<td colspan="4">
 						&nbsp;
 					</td>
 				</tr>				
+				<!---
         <tr>
           <td>Average Depth of Selected Window:</td>
           <td width="30%"><span id="avg_depth">-</span> m</td>
@@ -314,7 +315,62 @@
           <td>Number of Days with Selected Window:</td>
           <td><span id="num_days">-</span> days</td>
         </tr>
+				--->
+				
+				<tr>
+					<td width="40%">Number of Days with Selected Window:</td>
+					<td><span class="num_days"></span></td>
+					<td>Maximum Depth (m):</td>
+					<td><span class="max_depth"></span></td>
+				</tr>
+				<tr>
+					<td>Average Depth of Selected Window:</td>
+					<td><span class="avg_depth"></span></td>
+					<td>Minimum Depth (m):</td>
+					<td><span class="min_depth">-</span></td>
+				</tr>				
+				
       </table>
+			
+			<table id="available_windows_table" class="print-width-70" style="width:100%;margin:0 auto; display: none; ">
+				<tr>
+					<td colspan="2">
+						Navigation Channel: Fraser River - <span class="static-channel">Inner Channel Limit</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						Channel Condition: <span class="static-sounding">Current Soundings</span> for Km 1 to Km <span class="static-chainage">35</span> at <span class="static-width">100</span>% Available Width
+					</td>
+				</tr>				
+				<tr>
+					<td colspan="2">
+						Hope DIscharge: <span class="static-discharge"></span> m3/s (<span class="static-discharge-eval">Predicted</span>)
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						&nbsp;
+					</td>
+				</tr>				
+
+				<tr>
+					<td width="90%">Total hours meeting standard</td>
+					<td><span class="total_hr"></span></td>
+				</tr>
+				<tr>
+					<td>Average hours per day meeting standard</td>
+					<td><span class="avg_hr"></span></td>
+				</tr>				
+				<tr>
+					<td>Number of days meeting standard</td>
+					<td><span class="num_days_meeting_standard"></span></td>
+				</tr>
+				
+      </table>			
+			
+			
+			
     </div>
 		
     <div class="clear"></div>
@@ -332,7 +388,7 @@
           <th>Time (PST)</th>
           <th>Date</th>
           <th>Time (PST)</th>
-          <th>Maximum Depth (m)</th>
+          <th id="transit-window-last-col">Maximum Depth (m)</th>
         </tr>
         </thead>
         <tbody>

@@ -71,8 +71,8 @@
         }
       }).call(this);
       $('#flowRate').val(flowrate);
-      $('#static-discharge').text(flowrate);
-      $('#static-discharge-eval').text($(this).val());
+      $('.static-discharge').text(flowrate);
+      $('.static-discharge-eval').text($(this).val());
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
           switch ($(this).val()) {
@@ -86,7 +86,7 @@
               return "choisi";
           }
         }).call(this);
-        $("#static-discharge-eval").text(flowRate_txt);
+        $(".static-discharge-eval").text(flowRate_txt);
       }
       flowtype = (function() {
         switch ($(this).val()) {
@@ -115,25 +115,25 @@
     });
     $('#defined_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Defined") {
-        return $('#static-discharge').text($('#defined_discharge').val());
+        return $('.static-discharge').text($('#defined_discharge').val());
       }
     });
     $('#selected_discharge').change(function() {
       if ($('input[name="discharge"].checked').val() === "Selected") {
-        return $('#static-discharge').text($('#selected_discharge').val());
+        return $('.static-discharge').text($('#selected_discharge').val());
       }
     });
     $('input[name="channel"]').change(function() {
-      return $('#static-channel').text($(this).next().text());
+      return $('.static-channel').text($(this).next().text());
     });
     $('input[name="sounding"]').change(function() {
-      return $('#static-sounding').text($(this).next().text());
+      return $('.static-sounding').text($(this).next().text());
     });
     $('select#width').change(function() {
-      return $('#static-width').text($(this).val());
+      return $('.static-width').text($(this).val());
     });
     $('select#chainage').change(function() {
-      return $('#static-chainage').text($(this).val());
+      return $('.static-chainage').text($(this).val());
     });
     $('#window').change(function() {
       return $('#static-window').text("" + ($(this).val()));
@@ -154,12 +154,18 @@
         $('#cmp').val(0);
         $('#static-window-pre-text').text('Maximum Depth for ');
         $('#static-window-post-text').text('hr. Transit Window');
-        return $('#static-window').text("" + ($('#window').val()));
+        $('#static-window').text("" + ($('#window').val()));
+        $('#available_windows_table').css('display', 'none');
+        $('#maximum_depth_table').css('display', 'block');
+        return $('#transit-window-last-col').text('Maximum Depth (m)');
       } else {
         $('#cmp').val($('#depth').val());
         $('#static-window-pre-text').text('Available Transit Window for ');
         $('#static-window').text("" + ($('#cmp').val()) + "m depth");
-        return $('#static-window-post-text').text('');
+        $('#static-window-post-text').text('');
+        $('#maximum_depth_table').css('display', 'none');
+        $('#available_windows_table').css('display', 'block');
+        return $('#transit-window-last-col').text('Hours');
       }
     });
 
@@ -183,11 +189,11 @@
   update = function(data) {
     $('#transit-window').show();
     return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
-      var item, limit_text, _i, _len, _ref;
-      $('#num_days').text(data2.statistics.numberOfDays);
-      $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));
-      $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2));
-      $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2));
+      var item, limit_text, num_days_meeting_standard, total_hr, _i, _len, _ref;
+      $('.num_days').text(data2.statistics.numberOfDays);
+      $('.min_depth').text(data2.statistics.minimumDepth.toFixed(2));
+      $('.max_depth').text(data2.statistics.maximumDepth.toFixed(2));
+      $('.avg_depth').text(data2.statistics.totalWindow.toFixed(2));
       table || (table = $('#transit-window').dataTable({
         bPaginate: false,
         bInfo: false,
@@ -222,7 +228,17 @@
             return '';
         }
       })();
-      return $('#static-channel').text(limit_text);
+      $('.static-channel').text(limit_text);
+      total_hr = 0;
+      num_days_meeting_standard = $('#transit-window tbody tr').length;
+      $('#transit-window tbody tr td:last-child').each(function() {
+        var my_val;
+        my_val = $(this).text();
+        return total_hr += parseFloat(my_val);
+      });
+      $('.total_hr').text(total_hr);
+      $('.avg_hr').text(total_hr / num_days_meeting_standard);
+      return $('.num_days_meeting_standard').text(num_days_meeting_standard);
     }).success(function() {
       $('.spinner').hide();
       return $('#report_body').show();
