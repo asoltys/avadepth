@@ -145,17 +145,24 @@ createGraph = (p) ->
     s = "0" + num
     s.substr(s.length-4)
 
+  if $("#lang").val() == "eng"
+    xLabel = "Pacific Standard Time (hrs)"
+    yLabel = "Available Depth (m)"
+  else
+    xLabel = "Heure Normale du Pacifique (hrs)"
+    yLabel = "Profondeurs disponibles (m)"
+		
   $.plot("#depth_chart", [ d1 ],
     xaxes:[
       color: 'black'
       tickColor: '#aaa'
-      axisLabel: 'Pacific Standard Time (hrs)'
+      axisLabel: xLabel
       tickSize: 200
       tickFormatter: leadingZero],
     yaxes: [
       color: 'black'
       tickColor: '#aaa'
       position: 'left'
-      axisLabel: 'Available Depth (m)']
+      axisLabel: yLabel]
   )
 

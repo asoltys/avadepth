@@ -143,7 +143,7 @@
   };
 
   createGraph = function(p) {
-    var d1, leadingZero;
+    var d1, leadingZero, xLabel, yLabel;
     d1 = {
       color: "red",
       lines: {
@@ -156,12 +156,19 @@
       s = "0" + num;
       return s.substr(s.length - 4);
     };
+    if ($("#lang").val() === "eng") {
+      xLabel = "Pacific Standard Time (hrs)";
+      yLabel = "Available Depth (m)";
+    } else {
+      xLabel = "Heure Normale du Pacifique (hrs)";
+      yLabel = "Profondeurs disponibles (m)";
+    }
     return $.plot("#depth_chart", [d1], {
       xaxes: [
         {
           color: 'black',
           tickColor: '#aaa',
-          axisLabel: 'Pacific Standard Time (hrs)',
+          axisLabel: xLabel,
           tickSize: 200,
           tickFormatter: leadingZero
         }
@@ -171,7 +178,7 @@
           color: 'black',
           tickColor: '#aaa',
           position: 'left',
-          axisLabel: 'Available Depth (m)'
+          axisLabel: yLabel
         }
       ]
     });
