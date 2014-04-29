@@ -237,7 +237,7 @@
         return total_hr += parseFloat(my_val);
       });
       $('.total_hr').text(total_hr);
-      $('.avg_hr').text(total_hr / num_days_meeting_standard);
+      $('.avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
       return $('.num_days_meeting_standard').text(num_days_meeting_standard);
     }).success(function() {
       $('.spinner').hide();
