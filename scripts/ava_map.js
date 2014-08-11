@@ -74,11 +74,8 @@ avaMapJS={
   },
 
   /*** Functions for each page type ***/
-  dd_func:{
-    init: function(){
-
-    }
-  },
+  dd_func:{init: function(){}},
+  tw_func:{init: function(){}},
   pwl_func: {
     init: function(){
       avaMapJS.pwl_func.curRiver="";

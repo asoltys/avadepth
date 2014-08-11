@@ -212,3 +212,11 @@ a#toggleLink,summary#ref_map_link{
 #report_detail {
     display:none;
 }
+
+/* Error Message */
+#errorContent{
+    color:red;
+    font-size:14px;
+    font-weight:bold;
+    display:none;
+}

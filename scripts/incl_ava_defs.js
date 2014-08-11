@@ -238,7 +238,181 @@ incl_ava_defs={
       ]
     },
     'tw':{
-      'title_e':"Transit Window Report"
+      'title_e':"Transit Window Report",
+      'mapInitState':0,
+      'formParam':[
+        {tag:'div',child:[
+          {tag:'div',attr:{className:'span-4'},child:[
+            {tag:'label',attr:{htmlFor:'date'},child:[
+              {tag:'strong',child:["Date:"]}
+            ]},
+            {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+            {tag:'div',child:[
+              {tag:'strong',child:["River Discharge:"]},
+              {tag:'br'},
+              {tag:'input',attr:{id:"predicted_radio",type:'radio',name:'discharge',checked:'checked',value:'Predicted'}},
+              {tag:'label',attr:{htmlFor:'predicted_radio'},child:[
+                "Predicted (",
+                {tag:'span',attr:{id:'predicted_discharge'}},
+                "m\u00B3/s)"
+              ]},
+              {tag:'br'},
+              {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',value:'Actual'}},
+              {tag:'label',attr:{htmlFor:'actual_radio'},child:[
+                "Actual (",
+                {tag:'span',attr:{id:'actual_discharge'}},
+                "m\u00B3/s)"
+              ]},
+              {tag:'br'},
+              {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
+              {tag:'label',attr:{htmlFor:'selected_radio'},child:['Selected']},
+              {tag:'select',attr:{id:'selected_discharge'}},
+              " m\u00B3/s",
+              {tag:'br'},
+              {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
+              {tag:'label',attr:{htmlFor:'defined_radio'},child:['User-Defined']},
+              {tag:'input',attr:{id:'defined_discharge',type:'text',style:'width:5em'}},
+              " m\u00B3/s",
+              {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
+              {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
+            ]}
+          ]},
+          {tag:'div',attr:{className:'span-3'},child:[
+            {tag:'label',attr:{htmlFor:'chainage'},child:[
+              {tag:'strong',child:["Chainage:"]}
+            ]},
+            "1 to ",
+            {tag:'select',attr:{id:'chainage'},ref:{tag:'option',values:function(){
+              var s=[];
+              for(var i=6;i<35;i++){
+                s.push({key:i,value:i});
+              }
+              s.push({key:35,value:35,select:true});
+              return s
+            }}},
+            {tag:'div',child:[
+              {tag:'label',attr:{htmlFor:"sounding"},child:[{tag:'strong',child:["Channel Condition:"]}]},
+              {tag:'input',attr:{type:'radio',name:'sounding',checked:'checked',value:'0'}},
+              " ",
+              {tag:'span',child:["Current Sounding"]},
+              {tag:'br'},
+              {tag:'input',attr:{type:'radio',name:'sounding',value:'1'}},
+              " ",
+              {tag:'span',child:["Design Grade"]}
+            ]},
+            {tag:'div',child:[
+              {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
+              {tag:'input',attr:{type:'radio',id:'channel',name:'channel',checked:'checked',value:'1'}},
+              " ",
+              {tag:'span',attr:{style:'margin-right:1em'},child:["Inner Limit"]},
+              {tag:'input',attr:{type:'radio',name:'channel',value:'2'}},
+              " ",
+              {tag:'span',child:["Outer Limit"]}
+            ]},
+            {tag:'div',child:[
+              {tag:'label',attr:{htmlFor:'width',style:"display:inline-block;"},child:["Available Width:"]},
+              {tag:'select',attr:{id:'width',style:'margin-top:10px'},ref:{tag:'option',values:function(){
+                var s=[],c=true;
+                for(var i=100;i>45;i=i-5){
+                  var t={key:i,value:i};
+                  if(c){t.select=true;c=false;}
+                  s.push(t);
+                }
+                return s;
+              }}},
+              " %"
+            ]}
+          ]},
+          {tag:'div',attr:{className:'span-4'},child:[
+            {tag:'div',child:[
+              {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Transit Calculation:"]}]},
+              {tag:'div',child:[
+                {tag:'label',attr:{htmlFor:'period',style:'display:inline'},child:["Period:"]},
+                {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:0,value:"Day"},{key:1,value:'Week'},{key:2,value:'Month'}]}}
+              ]},
+              {tag:'div',child:[
+                {tag:'input',attr:{id:'window',type:'hidden',name:'window',value:2}},
+                {tag:'input',attr:{id:'cmp',type:'hidden',name:'cmp',value:0}},
+                {tag:'br'},
+                {tag:'input',attr:{id:'max_depth_radio',type:'radio',name:'window_radio',checked:'checked',value:'Maximum Depth'}},
+                {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-bottom:0'},child:['Maximum Depth:']},
+                {tag:'br'},
+                {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
+                {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1hr'},{key:2,value:'2hrs',select:true},{key:3,value:'3hrs'},{key:4,value:'4hrs'}]}},
+                {tag:'br'},
+                {tag:'input',attr:{id:'min_win_radio',type:'radio',name:'window_radio',value:'Min Window'}},
+                {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-bottom:0'},child:["Available Windows:"]},
+                {tag:'br'},
+                {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Depth:"]},
+                {tag:'input',attr:{id:'depth',type:'text',name:'depth',value:10,style:"width:3em;diplay:inline-block"}},
+                " ",
+                {tag:'span',attr:{style:'margin: 0px 0 0 0; padding: 0 0 0 0;'},child:["m"]}
+              ]}
+            ]}
+          ]}
+        ]}
+      ],
+      'reportBody':[
+        {tag:'div',child:[
+          {tag:'div',child:[
+            {tag:'table',attr:{id:'maximum_depth_table',className:'print-width-70',style:'width:75%;margin:0 auto;'},child:[
+              {tag:'tr',child:[
+                {tag:'td',child:[
+                  "Navigation Channel: Fraser River - ",
+                  {tag:'span',attr:{id:'static-channel'},child:['Inner Channel Limit']}
+                ]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'td',child:[
+                  "Channel Condition: ",
+                  {tag:'span',attr:{id:'static-sounding'},child:["Current Soundings"]},
+                  " for Km 1 to Km ",
+                  {tag:'span',attr:{id:'static-chainage'},child:["35"]},
+                  " at ",
+                  {tag:'span',attr:{id:'static-width'},child:["100"]},
+                  "% Available Width"
+                ]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'td',child:[
+                  "Hope Discharge: ",
+                  {tag:'span',attr:{id:'static-discharge'}},
+                  " m\u00B3/s (",
+                  {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                  ")"
+                ]}
+              ]}
+            ]},
+            {tag:'table',attr:{id:'header_table',style:'width:50%;margin:5px auto'}}
+          ]},
+          {tag:'div',attr:{className:'clear'}},
+          {tag:'section',attr:{style:'padding-top: 20px;margin:1em auto'},child:[
+            {tag:'table',attr:{id:'transit-window',className:'zebra-striped'},child:[
+              {tag:'thead',child:[
+                {tag:'tr',child:[
+                  {tag:'th',attr:{colspan:2},child:["From"]},
+                  {tag:'th',attr:{colspan:2},child:["To"]},
+                  {tag:'th',child:["&nbsp;"]}
+                ]},
+                {tag:'tr',child:[
+                  {tag:'th',child:["Date"]},
+                  {tag:'th',child:["Time (PST)"]},
+                  {tag:'th',child:["Date"]},
+                  {tag:'th',child:["Time (PST)"]},
+                  {tag:'th',attr:{id:'transit-window-last-col'},child:["Maximum Depth (m)"]}
+                ]}
+              ]},
+              {tag:'tbody',child:[
+                {tag:'tr',child:[{tag:'td',child:[0]},{tag:'td',child:[0]},{tag:'td',child:[0]},{tag:'td',child:[0]},{tag:'td',child:[0]}]}
+              ]}
+            ]},
+            {tag:'div',attr:{style:'text-align:left;margin-top:1em'},child:["* Depths are relative to local low water level"]}
+          ]}
+        ]}
+      ],
+      'reportDetail':[
+
+      ]
     },
     'pwl':{
       'title_e':"Predicted Water Levels & Velocities",
