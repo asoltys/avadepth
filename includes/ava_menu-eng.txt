@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
+<!-- DataAjaxFragmentStart -->
+
+<li><section><h3><a href="#">About Avadepth</a></h3><div class="mb-sm">
+<div class="span-2">
+<section>
+<ul>
+<li><a href="/theory-theorie-eng.html">Background &amp; Theory of Operation</a></li>
+</ul>
+</section>
+</div>
+<div class="clear"></div>
+</div></section></li>
+
+<li><section><h3><a href="#">Avadepth Reports</a></h3><div class="mb-sm">
+<div class="span-2">
+<section>
+<ul>
+<li><a href='/Data/weekly/weekly.pdf' target="_blank" style="background-image:none;">CCG Weekly Report</a></li>
+<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('dd')">Daily Depths</a></li>
+<li><a href='/tw-ft-eng.html'>Transit Window</a></li>
+</ul>
+</section>
+</div>
+<div class="span-2">
+<section>
+<ul>
+<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('pwl')">Predicted Water Levels & Velocities</a></li>
+<li><a href='/acv-cva-eng.html'>Animated Current & Velocities</a></li>
+<li><a href='/hydrograph-hydrogramme-eng.html'>Fraser River Hydrograph</a></li>
+</ul>
+</section>
+</div>
+<div class="clear"></div>
+</div></section></li>
+
+<li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
+<section>
+<ul>
+<li><a href='/cc-ca-eng.html'>Current Channel Conditions for Fraser River South Arm</a></li>
+<li><a href='/Data/overview/FR_Overview_S.dwf' target="_blank" style="background-image:none;">Channel Overview for Fraser River South Arm</a></li>
+<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('sdb')">Survey Drawings</a></li>
+</ul>
+</section>
+<div class="clear"></div>
+</div></section></li>
+
+<!--
+<li><section><h3><a href="ba-ab-eng.html">Bathymetry Analysis</a></h3></section></li>
+-->
+
+<!-- DataAjaxFragmentEnd -->
+</html>

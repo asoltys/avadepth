@@ -4,29 +4,12 @@
 <Document>
 <name>tiles</name>
 <visibility>1</visibility>
-<Schema name="tiles" id="tiles">
-<SimpleField type="xsd:string" name="Name">
-<displayName>Name</displayName>
-</SimpleField>
-<SimpleField type="xsd:string" name="waterway">
-<displayName>waterway</displayName>
-</SimpleField>
-<SimpleField type="xsd:string" name="location">
-<displayName>location</displayName>
-</SimpleField>
-</Schema>
-<Folder id="tiles">
 <name>tiles</name>
 <Placemark id="kml_1">
 <name>BR4650</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">BR4650</SimpleData>
-<SimpleData name="waterway">BR</SimpleData>
-<SimpleData name="location">Campbell River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>BR</waterway>
+<location>Campbell River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -38,13 +21,8 @@
 <Placemark id="kml_2">
 <name>CR01</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR01</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -56,13 +34,8 @@
 <Placemark id="kml_3">
 <name>CR02</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR02</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -74,13 +47,8 @@
 <Placemark id="kml_4">
 <name>CR03</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR03</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -92,13 +60,8 @@
 <Placemark id="kml_5">
 <name>CR04</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR04</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -110,13 +73,8 @@
 <Placemark id="kml_6">
 <name>CR05</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR05</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -128,13 +86,8 @@
 <Placemark id="kml_7">
 <name>CR06</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR06</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -146,13 +99,8 @@
 <Placemark id="kml_8">
 <name>CR07</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">CR07</SimpleData>
-<SimpleData name="waterway">CR</SimpleData>
-<SimpleData name="location">Courtenay River</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>CR</waterway>
+<location>Courtenay River</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -164,13 +112,8 @@
 <Placemark id="kml_9">
 <name>MA3644</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MA3644</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Queens Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Queens Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -182,13 +125,8 @@
 <Placemark id="kml_10">
 <name>NA4447</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA4447</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Douglas Island</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Douglas Island</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -200,13 +138,8 @@
 <Placemark id="kml_11">
 <name>MA4754</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MA4754</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Bishops Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Bishops Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -218,13 +151,8 @@
 <Placemark id="kml_12">
 <name>NA6069</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA6069</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Russel Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Russel Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -236,13 +164,8 @@
 <Placemark id="kml_13">
 <name>NA5460</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA5460</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Derby Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Derby Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -254,13 +177,8 @@
 <Placemark id="kml_14">
 <name>MA6978</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MA6978</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Plumper Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Plumper Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -272,13 +190,8 @@
 <Placemark id="kml_15">
 <name>MA7884</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MA7884</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Matsqui Island</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Matsqui Island</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -290,13 +203,8 @@
 <Placemark id="kml_16">
 <name>MAS</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MAS</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Sapperton Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Sapperton Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -308,13 +216,8 @@
 <Placemark id="kml_17">
 <name>MAS</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MAS</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Essondale Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Essondale Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -326,13 +229,8 @@
 <Placemark id="kml_18">
 <name>MAS</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MAS</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Douglas Island North</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Douglas Island North</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -344,13 +242,8 @@
 <Placemark id="kml_19">
 <name>MAS</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MAS</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Parsons Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Parsons Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -362,13 +255,8 @@
 <Placemark id="kml_20">
 <name>MAS</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MAS</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Bedford Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Bedford Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -380,13 +268,8 @@
 <Placemark id="kml_21">
 <name>MAS</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">MAS</SimpleData>
-<SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Enterprise Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRMA</waterway>
+<location>Enterprise Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -398,13 +281,8 @@
 <Placemark id="kml_22">
 <name>UR001</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">UR001</SimpleData>
-<SimpleData name="waterway">FRUR</SimpleData>
-<SimpleData name="location">Mission to Hope</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRUR</waterway>
+<location>Mission to Hope</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -416,13 +294,8 @@
 <Placemark id="kml_23">
 <name>NA0913</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA0913</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Sea Island</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Sea Island</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -434,13 +307,8 @@
 <Placemark id="kml_24">
 <name>NA1307</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA1307</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Morey Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Morey Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -452,13 +320,8 @@
 <Placemark id="kml_25">
 <name>NA2529</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA2529</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Big Bend - Queens</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Big Bend - Queens</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -470,13 +333,8 @@
 <Placemark id="kml_26">
 <name>NA_103</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA_103</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Point Grey</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Point Grey</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -488,13 +346,8 @@
 <Placemark id="kml_27">
 <name>NA0307</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA0307</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Iona</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Iona</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -506,13 +359,8 @@
 <Placemark id="kml_28">
 <name>NA0709</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA0709</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Musqueam</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Musqueam</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -524,13 +372,8 @@
 <Placemark id="kml_29">
 <name>NA1314</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA1314</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Marpole Basin</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Marpole Basin</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -542,13 +385,8 @@
 <Placemark id="kml_30">
 <name>NAS1419</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NAS1419</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Mitchell Island North</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Mitchell Island North</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -560,13 +398,8 @@
 <Placemark id="kml_31">
 <name>NA1921</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA1921</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Mac-Blo</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Mac-Blo</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -578,13 +411,8 @@
 <Placemark id="kml_32">
 <name>NA2125</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA2125</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Byrne Road</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Byrne Road</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -596,13 +424,8 @@
 <Placemark id="kml_33">
 <name>NA2931</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA2931</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Poplar Island</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Poplar Island</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -614,13 +437,8 @@
 <Placemark id="kml_34">
 <name>NA1419</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NA1419</SimpleData>
-<SimpleData name="waterway">FRNA</SimpleData>
-<SimpleData name="location">Mitchell Island</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRNA</waterway>
+<location>Mitchell Island</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -632,13 +450,8 @@
 <Placemark id="kml_35">
 <name>NAN01</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">NAN01</SimpleData>
-<SimpleData name="waterway">NAN</SimpleData>
-<SimpleData name="location">Nanaimo Harbour</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>NAN</waterway>
+<location>Nanaimo Harbour</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -650,13 +463,8 @@
 <Placemark id="kml_36">
 <name>PR4657</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PR4657</SimpleData>
-<SimpleData name="waterway">PR</SimpleData>
-<SimpleData name="location">Chatham Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PR</waterway>
+<location>Chatham Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -668,13 +476,8 @@
 <Placemark id="kml_37">
 <name>PR5767</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PR5767</SimpleData>
-<SimpleData name="waterway">PR</SimpleData>
-<SimpleData name="location">Fox Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PR</waterway>
+<location>Fox Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -686,13 +489,8 @@
 <Placemark id="kml_38">
 <name>PR6776</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PR6776</SimpleData>
-<SimpleData name="waterway">PR</SimpleData>
-<SimpleData name="location">Grant Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PR</waterway>
+<location>Grant Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -704,13 +502,8 @@
 <Placemark id="kml_39">
 <name>SA0105</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA0105</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Sand Heads Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Sand Heads Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -722,13 +515,8 @@
 <Placemark id="kml_40">
 <name>SA_101</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA_101</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Sand Heads Entrance</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Sand Heads Entrance</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -740,13 +528,8 @@
 <Placemark id="kml_41">
 <name>SA0711</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA0711</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Steveston Cut</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Steveston Cut</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -758,13 +541,8 @@
 <Placemark id="kml_42">
 <name>SA0507</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA0507</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Steveston Bend</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Steveston Bend</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -776,13 +554,8 @@
 <Placemark id="kml_43">
 <name>SA1119</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA1119</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Woodward Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Woodward Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -794,13 +567,8 @@
 <Placemark id="kml_44">
 <name>SA1927</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA1927</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Gravesend Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Gravesend Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -812,13 +580,8 @@
 <Placemark id="kml_45">
 <name>SA2731</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA2731</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">City Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>City Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -830,13 +593,8 @@
 <Placemark id="kml_46">
 <name>SA3136</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SA3136</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Annieville Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Annieville Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -848,13 +606,8 @@
 <Placemark id="kml_47">
 <name>SAS00</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SAS00</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Ladner Sea Reach</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Ladner Sea Reach</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -866,13 +619,8 @@
 <Placemark id="kml_48">
 <name>SAS0912</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SAS0912</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Cannery Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Cannery Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -884,13 +632,8 @@
 <Placemark id="kml_49">
 <name>SAS2636</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SAS2636</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
-<SimpleData name="location">Annacis Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>FRSA</waterway>
+<location>Annacis Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -902,13 +645,8 @@
 <Placemark id="kml_50">
 <name>SQ05</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SQ05</SimpleData>
-<SimpleData name="waterway">SQ</SimpleData>
-<SimpleData name="location">Mamquam Blind Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>SQ</waterway>
+<location>Mamquam Blind Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -920,13 +658,8 @@
 <Placemark id="kml_51">
 <name>SQ01</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SQ01</SimpleData>
-<SimpleData name="waterway">SQ</SimpleData>
-<SimpleData name="location">Mamquam Blind Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>SQ</waterway>
+<location>Mamquam Blind Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -938,13 +671,8 @@
 <Placemark id="kml_52">
 <name>SQ02</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SQ02</SimpleData>
-<SimpleData name="waterway">SQ</SimpleData>
-<SimpleData name="location">Mamquam Blind Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>SQ</waterway>
+<location>Mamquam Blind Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -956,13 +684,8 @@
 <Placemark id="kml_53">
 <name>SQ03</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SQ03</SimpleData>
-<SimpleData name="waterway">SQ</SimpleData>
-<SimpleData name="location">Mamquam Blind Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>SQ</waterway>
+<location>Mamquam Blind Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -974,13 +697,8 @@
 <Placemark id="kml_54">
 <name>SQ04</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">SQ04</SimpleData>
-<SimpleData name="waterway">SQ</SimpleData>
-<SimpleData name="location">Mamquam Blind Channel</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>SQ</waterway>
+<location>Mamquam Blind Channel</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -992,13 +710,8 @@
 <Placemark id="kml_55">
 <name>PMV01</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PMV01</SimpleData>
-<SimpleData name="waterway">PMV</SimpleData>
-<SimpleData name="location">Burrard Inlet - First Narrows</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PMV</waterway>
+<location>Burrard Inlet - First Narrows</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -1009,14 +722,8 @@
 </Placemark>
 <Placemark id="kml_56">
 <name>PMV02</name>
-<description>\</description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PMV02</SimpleData>
-<SimpleData name="waterway">PMV</SimpleData>
-<SimpleData name="location">Burrard Inlet - Second Narrows</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PMV</waterway>
+<location>Burrard Inlet - Second Narrows</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -1027,14 +734,8 @@
 </Placemark>
 <Placemark id="kml_57">
 <name>PMV03</name>
-<description>\</description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PMV03</SimpleData>
-<SimpleData name="waterway">PMV</SimpleData>
-<SimpleData name="location">Burrard Inlet - Port Moody</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PMV</waterway>
+<location>Burrard Inlet - Port Moody</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -1045,14 +746,8 @@
 </Placemark>
 <Placemark id="kml_58">
 <name>PMV21</name>
-<description>\</description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PMV21</SimpleData>
-<SimpleData name="waterway">PMV</SimpleData>
-<SimpleData name="location">Fraser Surrey Docks</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PMV</waterway>
+<location>Fraser Surrey Docks</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -1064,13 +759,8 @@
 <Placemark id="kml_59">
 <name>PMV20</name>
 <description></description>
-<ExtendedData>
-<SchemaData schemaUrl="tiles">
-<SimpleData name="Name">PMV20</SimpleData>
-<SimpleData name="waterway">PMV</SimpleData>
-<SimpleData name="location">Delta Port</SimpleData>
-</SchemaData>
-</ExtendedData>
+<waterway>PMV</waterway>
+<location>Delta Port</location>
 <Polygon>
 <outerBoundaryIs>
 <LinearRing>
@@ -1079,5 +769,4 @@
 </outerBoundaryIs>
 </Polygon>
 </Placemark>
-</Folder>
 </Document></kml>

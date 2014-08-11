@@ -145,3 +145,70 @@ div#hydrograph_report div#hydrograph_chart{
   width: 100%;
   height:300px;
 }
+
+/* Floating Div */
+div#report_detail {
+    position:absolute;
+    top:50px;
+    padding:5px;
+    z-index:1000;
+    background-color:white;
+    text-align: center;
+}
+div#report_det_cover{
+    position:absolute;
+    top:0;
+    left:0;
+    background:url('../images/transpBlack50.png') repeat center;
+    width:100%;
+    height:100%;
+    z-index:999;
+    display:none;
+}
+div#rep_detail_map{
+    float:left;
+    height:auto;
+    vertical-align:middle;
+    display:none;
+}
+
+/* Resize Text size for Parameter and Reference Map Link */
+a#toggleLink,summary#ref_map_link{
+    font-size:16px;
+}
+
+/* Floating Div */
+div#report_detail {
+    position:absolute;
+    top:-50px;
+    padding:5px;
+    z-index:1000;
+    background-color:white;
+    text-align: center;
+}
+div#report_det_cover{
+    position:absolute;
+    top:0;
+    left:0;
+    background:url('../images/transpBlack50.png') repeat center;
+    width:100%;
+    height:100%;
+    z-index:999;
+    display:none;
+}
+div#rep_detail_map{
+    float:left;
+    height:auto;
+    vertical-align:middle;
+    display:none;
+}
+
+/* Resize Text size for Parameter and Reference Map Link */
+a#toggleLink,summary#ref_map_link{
+    font-size:16px;
+}
+
+/* Floating Div */
+#report_detail {
+    display:none;
+}

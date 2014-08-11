@@ -40,7 +40,7 @@ var sdbbds_functions = {
       'Secondary': [],
       'Other': []
     },
-    'VFPA': {
+    'PMV': {
       'Main': [],
       'Secondary': [],
       'Other': []
@@ -62,7 +62,7 @@ var sdbbds_functions = {
 	  });
     $('#location').change(function() {
        var mp=$('#embed_map')[0].contentWindow;
-       return mp.avaSurvey.refreshTiles($('#waterway').val(),$(this).val());
+       return mp.avaMapJS.refreshTiles($('#waterway').val(),$(this).val());
     });
     $("#print_survey_drawings").click(function() {
       return window.print();
@@ -72,9 +72,9 @@ var sdbbds_functions = {
       $('#tile').text('');
       //WS
       var mp=$('#embed_map')[0].contentWindow;
-      if(!mp.avaSurvey.map){ return; }
+      if(!mp.avaMapJS.map){ return; }
 	  try {
-          mp.avaSurvey.setExtents($(this).val());
+          mp.avaMapJS.setExtents($(this).val());
 	  } catch(err){}
       return $('#map').css("min-height", "400px");
     });
