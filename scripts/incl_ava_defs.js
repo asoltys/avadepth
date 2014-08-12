@@ -543,7 +543,37 @@ incl_ava_defs={
       'title_e':"Animated Currents and Velocities"
     },
     'frh':{
-      'title_e':"Fraser River Hydrograph"
+      'title_e':"Fraser River Hydrograph",
+      'mapInitState':0,
+      'hasParameters':true,
+      'formParam':[
+        {tag:'div',child:[
+          {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
+          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+          {tag:'input',attr:{id:'alt-date',type:'hidden'}},
+          {tag:'label',attr:{htmlFor:'period'},child:["Period:"]},
+          {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:3,value:"12 Months"},{key:2,value:'6 Months'},{key:1,value:'2 Months'},{key:0,value:'1 Month'}]}},
+          {tag:'label',attr:{htmlFor:'plot'},child:["Plot:"]},
+          {tag:'input',attr:{id:'actual',type:'checkbox',name:'actual',checked:'checked'}},
+          " Actual",
+          {tag:'br'},
+          {tag:'input',attr:{id:'predicted',type:'checkbox',name:'predicted',checked:'checked'}},
+          " Predicted",
+          {tag:'br'}
+        ]}
+      ],
+      'reportBody':[
+        {tag:'div',attr:{id:'hydrograph_report',style:'margin:0 auto'},child:[
+          {tag:'div',attr:{id:'loading',style:'margin-left: 10px;'},child:[
+            {tag:'span',attr:{className:'float:left;'},child:['Please wait while we fetch your results...']}
+          ]},
+          {tag:'div',attr:{id:'legend_container'}},
+          {tag:'div',attr:{id:'hydrograph_chart',style:'width:100%;text-align:center;'}}
+        ]}
+      ],
+      'reportDetail':[
+
+      ]
     },
     'ccc':{
       'title_e':"Current Channel Conditions - Fraser River - South Arm",
@@ -631,7 +661,7 @@ incl_ava_defs={
                 {tag:'th',attr:{rowspan:2},child:["Reference Plan"]},
                 {tag:'th',attr:{style:"width:55px"},child:["Design Grade"]},
                 {tag:'th',attr:{style:"width:55px"},child:["Least Soundings"]},
-                {tag:'th',attr:{colspan:2},child:["Available Width"]},
+                {tag:'th',attr:{colspan:2},child:["Available Width"]}
               ]},
               {tag:'tr',child:[
                 {tag:'th',child:["(m)"]},
