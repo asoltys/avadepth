@@ -3,6 +3,7 @@ Survey Drawings: sdb-bds.js
 Predicted Water Levels: pwl-nep.js, pwlk-nepk.js, pwlt-ptnd.js
 Daily Depths: ad-pd.js, advr-drvp.js
 Transit Window: tw-ft.js
+Current Conditions: cc-ca.js, soundings-sondages.js
 */
 
 // Load def JS File
@@ -28,10 +29,15 @@ avaIFaceJS = {
       avaIFaceJS.detailWindow.detailContent = avaIFaceJS.getElements(content);
     },
 
+    // Load Detail layout with empty template
+    loadLayout: function(){
+      $('#rep_detail_info').html('').append(avaIFaceJS.detailWindow.detailContent[0][0]).show();
+
+    },
+
     // Displays Detail Window
     show: function () {
       var repDet = $('#report_detail');
-      $('#rep_detail_info').html('').append(avaIFaceJS.detailWindow.detailContent[0][0]).show();
       if (avaIFaceJS.detailWindow.useMap) {
         $('#rep_detail_map').show().css('width',repDet.width());
         $('#report_map').css('width',repDet.width());
@@ -215,10 +221,10 @@ avaIFaceJS = {
     frmWrap.appendChild(v[0][0]);
 
     // Add Content layout for Detail Window
-    avaIFaceJS.detailWindow.addContent(pg_entry.reportDetail);
+    avaIFaceJS.detailWindow.addContent($.extend([],pg_entry.reportDetail));
 
     // Add Content layout for Report Window
-    avaIFaceJS.reportWindow.addContent(pg_entry.reportBody);
+    avaIFaceJS.reportWindow.addContent($.extend([],pg_entry.reportBody));
     avaIFaceJS.reportWindow.loadReport();
 
     // Retrieve Page Elements and initiate Page code
@@ -227,10 +233,15 @@ avaIFaceJS = {
     window['avaIFaceJS'][page_name + "_func"].init();
 
     // Open Parameters Tab, Map Window
-    $('#map_param_wrap').show();
-    $('#map').trigger('resize');
-    if ($('#slideoutWrapper')[0].innerText == "Parameters") {
-      $('#toggleLink')[0].click();
+    if(pg_entry.hasParameters) {
+      $('#slideoutWrapper').show();
+      $('#map_param_wrap').show();
+      $('#map').trigger('resize');
+      if ($('#slideoutWrapper')[0].innerText == "Parameters") {
+        $('#toggleLink')[0].click();
+      }
+    } else {
+      $('#slideoutWrapper').hide();
     }
     avaIFaceJS.setMapOpen(pg_entry.mapInitState);
 
@@ -295,6 +306,89 @@ avaIFaceJS = {
   },
 
   /*** Page-specific Functions ***/
+  // Current Channel Conditions Objects
+  ccc_func: {
+    init: function(){
+      avaIFaceJS.reportWindow.title1="Fraser River Navigation Channel Condition Report";
+      var date, month, weekday,table;
+      $('#soundings').css('width', '800px');
+      date = new Date();
+      weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      avaIFaceJS.reportWindow.title2="For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
+      //$('#static-date').text("For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()));
+      //TODO: Replace next line for production
+      //return $.getJSON(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), function(data) {
+      return $.getJSON("api/depths/soundings.json", function(data) {
+        table || (table = $('#soundings').dataTable({
+          bPaginate: false,
+          bInfo: false,
+          bFilter: false,
+          aoColumnDefs: [
+            {
+              sClass: "1",
+              "aTargets": [2, 3, 4, 5]
+            }, {
+              sClass: "2",
+              "aTargets": [6, 7, 8, 9]
+            }
+          ],
+          aaSorting: [],
+          aoColumns: [
+            {
+              "bSortable": false
+            }, null
+          ]
+        }));
+        table.fnClearTable();
+        $.each(data, function(index) {
+          //table.fnAddData(["<a href=\"soundings-sondages-eng.html?lane=1&chainage=" + (index + 1) + "\">" + this.Chainage + "</a>", this.SoundingDate, this.Dredge, this.Sounding, this.Width, this.WidthPerc, this.Dredge2, this.Sounding2, this.Width2, this.WidthPerc2]);
+          table.fnAddData(["<a href='javascript:void(0)' id='"+(index+1)+"'>" + this.Chainage + "</a>", this.SoundingDate, this.Dredge, this.Sounding, this.Width, this.WidthPerc, this.Dredge2, this.Sounding2, this.Width2, this.WidthPerc2]);
+          if (this.IsHigh) {
+            $('#soundings tr:last').find('.1').addClass('red');
+            $('#soundings tr:last td:eq(3)').append('*');
+          }
+          if (this.IsHigh2) {
+            $('#soundings tr:last').find('.2').addClass('red');
+            return $('#soundings tr:last td:eq(7)').append('*');
+          }
+        });
+        table.fnAdjustColumnSizing();
+        $('#soundings').css('table-layout', 'fixed');
+        $('.first-row th:nth-child(1)').css('width', '123px');
+        $('.first-row th:nth-child(2)').css('width', '218px');
+        return $('.first-row th:nth-child(3)').css('width', '218px');
+      }).success(function(){
+        $('#soundings tbody tr a').click(avaIFaceJS.ccc_func.showDetail);
+        avaIFaceJS.reportWindow.setTitle();
+        avaIFaceJS.reportWindow.show();
+      });
+
+    },
+    showDetail:function(){
+      avaIFaceJS.detailWindow.loadLayout();
+      $('#surveys').html('');
+      //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      var chainage=this.id;
+      $('#heading').text("Kilometre "+(chainage-1)+" to " + (chainage));
+      //TODO: Replace following line for production
+      //return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (querystring('lane')) + "&") + ("chainage=" + chainage), function(data) {
+      return $.getJSON(("api/depths/History.json"), function(data) {
+        $.each(data, function(index) {
+          var row, surveydate;
+          if (index % 2 === 1) {
+            surveydate = moment(this.date).format("D-MMM-YYYY").toString();
+          } else {
+            surveydate = moment(this.update).format("D-MMM-YYYY").toString();
+          }
+          row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td>" + (this.grade.toFixed(1)) + "</td><td>" + (this.sounding.toFixed(1)) + "</td>") + ("<td>" + this.width + "</td><td>" + this.widthperc + "</td>") + "</tr>";
+          return $("#surveys").append(row);
+        });
+        avaIFaceJS.detailWindow.show();
+      });
+    }
+  },
+
   // Daily Depths Object
   dd_func: {
     flowrate: 0,
@@ -596,61 +690,10 @@ avaIFaceJS = {
               return 'M';
           }
         })();
-        var dt=$('#date').val();
-        //$('#static-date-from').text(moment(dt.val()).format("MMMM DD, YYYY"));
-        //return $('#static-date-to').text(moment(dt.val()).format("MMMM DD, YYYY"));
       });
       $('#selected_discharge').change(function() {
         return $('#discharge_radio').prop('checked', true).change();
       });
-      /* TODO: May not be needed
-      $('input[name=discharge]').change(function() {
-        var flowRate_txt, flowrate, flowtype;
-        flowrate = (function() {
-          switch ($(this).val()) {
-            case 'Actual':
-              return $('#actual_discharge').text();
-            case 'Predicted':
-              return $('#predicted_discharge').text();
-            case 'Defined':
-              return $('#defined_discharge').val();
-            case 'Selected':
-              return $('#selected_discharge').val();
-          }
-        }).call(this);
-        $('#flowRate').val(flowrate);
-        $('#static-discharge').text(flowrate);
-        $('#static-discharge-eval').text($(this).val());
-        if ($('html').attr('lang') === 'fr') {
-          flowRate_txt = (function() {
-            switch ($(this).val()) {
-              case 'Predicted':
-                return "prévu";
-              case 'Actual':
-                return "réel";
-              case 'Defined':
-                return "défini par l'utilisateur";
-              case 'Selected':
-                return "choisi";
-            }
-          }).call(this);
-          $("#static-discharge-eval").text(flowRate_txt);
-        }
-        flowtype = (function() {
-          switch ($(this).val()) {
-            case 'Actual':
-              return 0;
-            case 'Predicted':
-              return 1;
-            case 'Defined':
-              return 2;
-            case 'Selected':
-              return 3;
-          }
-        }).call(this);
-        return $('#flowType').val(flowtype);
-      });
-      */
       $('#compliance').change(function() {
         $('#cmp_box').val(0);
         if ($('#compliance').is(':checked')) {
@@ -662,33 +705,6 @@ avaIFaceJS = {
           });
         }
       });
-      /*
-      $('#defined_discharge').change(function() {
-        if ($('input[name="discharge"].checked').val() === "Defined") {
-          return $('#static-discharge').text($('#defined_discharge').val());
-        }
-      });
-      $('#selected_discharge').change(function() {
-        if ($('input[name="discharge"].checked').val() === "Selected") {
-          return $('#static-discharge').text($('#selected_discharge').val());
-        }
-      });
-      $('input[name="channel"]').change(function() {
-        return $('#static-channel').text($(this).next().text());
-      });
-      $('input[name="sounding"]').change(function() {
-        return $('#static-sounding').text($(this).next().text());
-      });
-      $('select#width').change(function() {
-        return $('#static-width').text($(this).val());
-      });
-      $('select#chainage').change(function() {
-        return $('#static-chainage').text($(this).val());
-      });
-      $('#window').change(function() {
-        return $('#static-window').text("" + ($(this).val()));
-      });
-      */
       $('#minimum_window').change(function() {
         $('#max_depth_radio').prop('checked', 'checked');
         $('#window').val($(this).val());
@@ -700,27 +716,6 @@ avaIFaceJS = {
         $('#cmp').val($(this).val());
         return $('input[name="window_radio"]').change();
       });
-      /* TODO: May not be needed
-      $('input[name="window_radio"]').change(function() {
-        if ($(this).val() === 'Maximum Depth') {
-          $('#cmp').val(0);
-          $('#static-window-pre-text').text('Maximum Depth for ');
-          $('#static-window-post-text').text('hr. Transit Window');
-          $('#static-window').text("" + ($('#window').val()));
-          $('#available_windows_table').css('display', 'none');
-          $('#maximum_depth_table').css('display', 'block');
-          return $('#transit-window-last-col').text('Maximum Depth (m)');
-        } else {
-          $('#cmp').val($('#depth').val());
-          $('#static-window-pre-text').text('Available Transit Window for ');
-          $('#static-window').text("" + ($('#cmp').val()) + "m depth");
-          $('#static-window-post-text').text('');
-          $('#maximum_depth_table').css('display', 'none');
-          $('#available_windows_table').css('display', 'block');
-          return $('#transit-window-last-col').text('Hours');
-        }
-      });
-      */
       $('#submit').click(avaIFaceJS.tw_func.update);
     },
 
@@ -756,37 +751,17 @@ avaIFaceJS = {
         ]
       };
       var dt=$('#date').val();
-      $('#')
       avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 1).format("MMMM DD, YYYY");
-      console.log($('input[name="window_radio"]').val());
 
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.maxDepth));
         $('#cmp').val(0);
         avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
-        /*
-        $('#static-window-post-text').text('hr. Transit Window');
-        $('#static-window').text("" + ($('#window').val()));
-        */
       } else {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
         $('#cmp').val($('#depth').val());
         avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-        /*
-        $('#static-window-pre-text').text('Available Transit Window for ');
-        $('#static-window').text("" + ($('#cmp').val()) + "m depth");
-        $('#static-window-post-text').text('');
-        */
       }
-
-      /* TODO: May not be needed
-      // Set names for Discharge label
-      if ($('input[name="discharge"].checked').val() === "Defined") {
-        return $('#static-discharge').text($('#defined_discharge').val());
-      } else if ($('input[name="discharge"].checked').val() === "Selected") {
-        return $('#static-discharge').text($('#selected_discharge').val());
-      }
-      */
 
       // Parse Values for FlowRate and FlowType
       var flowRate_txt, flowrate, flowtype;
@@ -833,7 +808,6 @@ avaIFaceJS = {
         }
       }).call(this);
       $('#flowType').val(flowtype);
-      //$('#static-channel').text($('input[name="channel"]').next().text());
       $('#static-sounding').text($('input[name="sounding"]:checked').next().text());
       $('#static-width').text($('select#width').val());
       $('#static-chainage').text($('select#chainage').val());

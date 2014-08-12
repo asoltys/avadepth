@@ -79,6 +79,7 @@ avaMapDetJS={
   },
 
   /*** Functions for each page type ***/
+  ccc_func:{init: function(){}},
   dd_func: {init: function(){}},
   tw_func: {init: function(){}},
   pwl_func: {

@@ -63,6 +63,7 @@ incl_ava_defs={
     'dd': {
       'title_e': "Available Depth Report",
       'mapInitState':0,
+      'hasParameters':true,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
@@ -240,6 +241,7 @@ incl_ava_defs={
     'tw':{
       'title_e':"Transit Window Report",
       'mapInitState':0,
+      'hasParameters':true,
       'formParam':[
         {tag:'div',child:[
           {tag:'div',attr:{className:'span-4'},child:[
@@ -417,6 +419,7 @@ incl_ava_defs={
     'pwl':{
       'title_e':"Predicted Water Levels & Velocities",
       'mapInitState':1,
+      'hasParameters':true,
       'formParam':
         [
           {tag:'div',child:[
@@ -543,11 +546,109 @@ incl_ava_defs={
       'title_e':"Fraser River Hydrograph"
     },
     'ccc':{
-      'title_e':"Current Channel Conditions - Fraser River - South Arm"
+      'title_e':"Current Channel Conditions - Fraser River - South Arm",
+      'mapInitState':0,
+      'hasParameters':false,
+      'formParam':[
+
+      ],
+      reportBody:[
+        {tag:'div',attr:{id:'conditions'},child:[
+          {tag:'div',attr:{id:'soundings-header'},child:[
+            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'table-layout: fixed; margin: 0 auto; width: 800px;'},child:[
+              {tag:'tr',child:[
+                {tag:'td',attr:{className:'align-left'},child:["Note:  All soundings / depths are relative to local low water level"]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'td',attr:{className:'align-left'},child:[
+                  "Least soundings highlighted in ",
+                  {tag:'span',attr:{style:'color: red;'},child:["RED"]},
+                  " and marked with * denote high spots and shoal areas within the navigation channel limits."
+                ]}
+              ]}
+            ]}
+          ]},
+          {tag:'div',attr:{className:'clear'}},
+          {tag:'br'},
+          {tag:'table',attr:{id:'soundings',className:'align-center print-align-center print-margin-0'},child:[
+            {tag:'thead',child:[
+              {tag:'tr',attr:{className:'first-row'},child:[
+                {tag:'th',attr:{colspan:2,style:'background-color: white;'}},
+                {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Inner Channel Limit"]},
+                {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Outer Channel Limit"]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'th',child:["Km"]},
+                {tag:'th',child:["Date of Survey"]},
+                {tag:'th',child:["Design Grade"]},
+                {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
+                {tag:'th',attr:{colspan:2},child:["Available Width"]},
+                {tag:'th',child:["Design Grade"]},
+                {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
+                {tag:'th',attr:{colspan:2},child:["Available Width"]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'th',attr:{colspan:2}},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(%)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(%)"]}
+              ]}
+            ]},
+            {tag:'tbody'}
+          ]},
+          {tag:'div',attr:{style:'clear:both'}}
+        ]}
+      ],
+      reportDetail:[
+        {tag:'div',child:[
+          {tag:'div',attr:{className:'grid-12'},child:[
+            {tag:'div',attr:{className:'align-center print-align-center print-margin-0'},child:[
+              {tag:'h3',attr:{style:'margin:0'},child:["Fraser River Least Soundings & Available Widths"]},
+              {tag:'h3',attr:{id:'heading',style:"margin:0"}}
+            ]},
+            {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'table-layout: fixed; margin-left: auto; margin-right: auto; width: 550px;'},child:[
+              {tag:'tr',child:[
+                {tag:'td',child:["Note:  All soundings / depths are relative to local low water level"]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'td',child:[
+                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan. ",
+                  {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/'},child:['Download Autodesk viewer']}
+                ]}
+              ]}
+            ]},
+            {tag:'br'}
+          ]},
+          {tag:'div',attr:{className:'grid-12'},child:[
+            {tag:'table',attr:{id:'surveys',className:'styled align-center',style:'margin-left: auto; margin-right: auto; width: 550px'},child:[
+              {tag:'tr',child:[
+                {tag:'th',attr:{rowspan:2},child:["Date of Survey"]},
+                {tag:'th',attr:{rowspan:2},child:["Reference Plan"]},
+                {tag:'th',attr:{style:"width:55px"},child:["Design Grade"]},
+                {tag:'th',attr:{style:"width:55px"},child:["Least Soundings"]},
+                {tag:'th',attr:{colspan:2},child:["Available Width"]},
+              ]},
+              {tag:'tr',child:[
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(m)"]},
+                {tag:'th',child:["(%)"]}
+              ]}
+            ]}
+          ]}
+        ]}
+      ]
+
     },
     'sdb':{
       'title_e':"Survey Drawings",
       'mapInitState':1,
+      'hasParameters':true,
       'formParam':
         [
           {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},
