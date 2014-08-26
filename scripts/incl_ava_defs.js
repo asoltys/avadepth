@@ -1,6 +1,12 @@
 /**
  * Created by wsiddall on 14/07/2014.
  */
+
+var padZero = function(num){
+  var s = "000" + num;
+  return s.substr(s.length-2);
+};
+
 incl_ava_defs={
 
   locDefs: {
@@ -60,10 +66,151 @@ incl_ava_defs={
   },
 
   avaPages:{
+    'acv':{
+      'title_e': "Animated Currents and Velocities",
+      'mapInitState':true,
+      'hasParameters':true,
+      'hasAnimate':true,
+      'formParam':[
+        {tag:'div',attr:{className:'span-3'},child:[
+          {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
+          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+          {tag:'input',attr:{id:'alt-date',type:'hidden'}},
+          {tag:'br'},
+          {tag:'strong',child:["River Discharge @ Hope:"]},
+          {tag:'br'},
+          {tag:'input',attr:{id:'predicted_radio',type:'radio',name:'discharge',value:'Predicted',checked:'checked'}},
+          {tag:'label',attr:{htmlFor:'predicted_radio',style:'font-weight: normal'},child:[
+            "Predicted (",
+            {tag:'span',attr:{id:'predicted_discharge'}},
+            "m\u00B3/s)"
+          ]},
+          {tag:'br'},
+          {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',value:'Actual'}},
+          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+            "Actual (",
+            {tag:'span',attr:{id:'actual_discharge'}},
+            "m\u00B3/s)"
+          ]},
+          {tag:'br'},
+          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
+          {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+          {tag:'select',attr:{id:'selected_discharge'}},
+          " m\u00B3/s",
+          {tag:'br'},
+          {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
+          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User Defined"]},
+          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:60px'}},
+          " m\u00B3/s",
+          {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
+          {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
+          {tag:'label',attr:{htmlFor:'static_rd'},child:["Display Type:"]},
+          {tag:'input',attr:{type:'radio',name:'type',id:'static_rd',value:0}},
+          "Static Image",
+          {tag:'br'},
+          {tag:'input',attr:{type:'radio',name:'type',id:'animated_rd',value:1}},
+          "Animated Series",
+          {tag:'div',attr:{className:'clear'}},
+          {tag:'div',attr:{className:'inline-block'},child:[
+            {tag:'label',attr:{htmlFor:'from'},child:["From:"]},
+            {tag:'select',attr:{name:'from',id:'from'},ref:{tag:'option',values:function(){
+              var res=[];
+              for(var i=0.00;i<24;i=i+0.25){
+                var hr=parseInt(i);
+                res.push({key:i,value:(hr)+":"+padZero((i-hr)*60)});
+                if (i==17){
+                  res[res.length-1].select="selected";
+                }
+              }
+              return res;
+            }}}
+          ]},
+          {tag:'div',attr:{id:'to_params',className:'inline-block',style:'display:none'},child:[
+            {tag:'label',attr:{htmlFor:'to'},child:["To:"]},
+            {tag:'select',attr:{name:'to',id:'to'},ref:{tag:'option',values:[
+              {key:18,select:'selected',value:'18:00'},
+              {key:19,value:'19:00'},
+              {key:20,value:'20:00'},
+              {key:21,value:'21:00'},
+              {key:22,value:'22:00'},
+              {key:23,value:'23:00'},
+              {key:24,value:'24:00'}
+            ]}}
+          ]},
+          {tag:'div',child:[
+            {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
+              {tag:'label',attr:{htmlFor:'interval'},child:["Interval:"]},
+              {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
+                {key:4,value:'4 hr'},
+                {key:2,value:'2 hr'},
+                {key:1,value:'1 hr',select:'selected'},
+                {key:0.5,value:'30 min.'},
+                {key:0.25,value:'15 min.'}
+              ]}}
+            ]}
+          ]},
+          {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
+          {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Interval 0.25ms)"]},
+          {tag:'br'},
+          {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
+          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Interval 0.5ms)"]}
+        ]}
+      ],
+      'reportBody':[
+        {tag:'div',child:[
+          {tag:'div',attr:{className:'print_show'},child:[
+            {tag:'p',child:[
+              {tag:'span',attr:{id:'static-date'}},
+              " from ",
+              {tag:'span',attr:{id:'static-start'}},
+              " to ",
+              {tag:'span',attr:{id:'static-end'}}
+            ]},
+            {tag:'p',child:[
+              "Zone ",
+              {tag:'span',attr:{id:'static-zone'},child:["1"]},
+              " at ",
+              {tag:'span',attr:{id:'static-interval'},child:["2hr"]},
+              " intervals"
+            ]},
+            {tag:'p',child:[
+              "Hope Discharge ",
+              {tag:'span',attr:{id:'static-discharge'}},
+              "m\u00B3/s (",
+              {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+              ")"
+            ]},
+            {tag:'p',child:[
+              "Velocity legend: ",
+              {tag:'span',attr:{id:'static-legend'}}
+            ]}
+          ]},
+          {tag:'div',attr:{id:'loading',style:'padding:1em 1em;display:none'},child:[
+            {tag:'div',attr:{style:'width: 35px;height: 30px; float: left;'}},
+            "Processing... ",
+            {tag:'span',attr:{id:'frame_count'},child:[
+              "(Frames retrieved: ",
+              {tag:'span',attr:{id:'frames_retrieved'}},
+              " / ",
+              {tag:'span',attr:{id:'number_of_frames'}},
+              ")"
+            ]}
+          ]},
+          {tag:'div',attr:{id:'nodata',style:'padding:1em 1em;display:none'},child:["No images were found"]},
+          {tag:'div',attr:{style:'width: 100%; margin-auto; text-align: center'},child:[
+            {tag:'img',attr:{id:'animated',src:'images/nodata.jpg',style:'width:550px;height:550px;display:block'}},
+            {tag:'img',attr:{id:'animated_legend',src:'images/nodata.jpg',style:'width: 325px; height: 67px; display: block;'}}
+          ]}
+        ]}
+      ],
+      'reportDetail':[]
+    },
     'dd': {
       'title_e': "Available Depth Report",
-      'mapInitState':0,
+      'mapInitState':false,
       'hasParameters':true,
+      'hasAnimate':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
@@ -240,8 +387,9 @@ incl_ava_defs={
     },
     'tw':{
       'title_e':"Transit Window Report",
-      'mapInitState':0,
+      'mapInitState':false,
       'hasParameters':true,
+      'hasAnimate':false,
       'formParam':[
         {tag:'div',child:[
           {tag:'div',attr:{className:'span-4'},child:[
@@ -385,10 +533,10 @@ incl_ava_defs={
                 ]}
               ]}
             ]},
-            {tag:'table',attr:{id:'header_table',style:'width:50%;margin:5px auto'}}
+            {tag:'table',attr:{id:'header_table',style:'width:75%;margin:5px auto'}}
           ]},
           {tag:'div',attr:{className:'clear'}},
-          {tag:'section',attr:{style:'padding-top: 20px;margin:1em auto'},child:[
+          {tag:'section',attr:{style:'padding-top: 20px;margin:1em auto;width:75%'},child:[
             {tag:'table',attr:{id:'transit-window',className:'zebra-striped'},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[
@@ -418,8 +566,9 @@ incl_ava_defs={
     },
     'pwl':{
       'title_e':"Predicted Water Levels & Velocities",
-      'mapInitState':1,
+      'mapInitState':true,
       'hasParameters':true,
+      'hasAnimate':false,
       'formParam':
         [
           {tag:'div',child:[
@@ -539,13 +688,11 @@ incl_ava_defs={
           ]}
         ]
     },
-    'acv':{
-      'title_e':"Animated Currents and Velocities"
-    },
     'frh':{
       'title_e':"Fraser River Hydrograph",
-      'mapInitState':0,
+      'mapInitState':false,
       'hasParameters':true,
+      'hasAnimate':false,
       'formParam':[
         {tag:'div',child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
@@ -577,8 +724,9 @@ incl_ava_defs={
     },
     'ccc':{
       'title_e':"Current Channel Conditions - Fraser River - South Arm",
-      'mapInitState':0,
+      'mapInitState':false,
       'hasParameters':false,
+      'hasAnimate':false,
       'formParam':[
 
       ],
@@ -652,22 +800,33 @@ incl_ava_defs={
                 ]}
               ]}
             ]},
+            {tag:'strong',child:['Channel Select']},
+            {tag:'br'},
+            {tag:'input',attr:{id:'inner_select',type:'radio',name:'channel_select',style:'display:inline',checked:'checked',value:'1'}},
+            {tag:'label',attr:{htmlFor:'inner_select',style:'display:inline'},child:["Inner Channel  "]},
+            {tag:'input',attr:{id:'outer_select',type:'radio',name:'channel_select',style:'display:inline',value:'0'}},
+            {tag:'label',attr:{htmlFor:'outer_select',style:'display:inline'},child:["Outer Channel"]},
             {tag:'br'}
           ]},
           {tag:'div',attr:{className:'grid-12'},child:[
             {tag:'table',attr:{id:'surveys',className:'styled align-center',style:'margin-left: auto; margin-right: auto; width: 550px'},child:[
-              {tag:'tr',child:[
-                {tag:'th',attr:{rowspan:2},child:["Date of Survey"]},
-                {tag:'th',attr:{rowspan:2},child:["Reference Plan"]},
-                {tag:'th',attr:{style:"width:55px"},child:["Design Grade"]},
-                {tag:'th',attr:{style:"width:55px"},child:["Least Soundings"]},
-                {tag:'th',attr:{colspan:2},child:["Available Width"]}
+              {tag:'thead',child:[
+                {tag:'tr',child:[
+                  {tag:'th',attr:{rowspan:2},child:["Date of Survey"]},
+                  {tag:'th',attr:{rowspan:2},child:["Reference Plan"]},
+                  {tag:'th',attr:{style:"width:55px"},child:["Design Grade"]},
+                  {tag:'th',attr:{style:"width:55px"},child:["Least Soundings"]},
+                  {tag:'th',attr:{colspan:2},child:["Available Width"]}
+                ]},
+                {tag:'tr',child:[
+                  {tag:'th',child:["(m)"]},
+                  {tag:'th',child:["(m)"]},
+                  {tag:'th',child:["(m)"]},
+                  {tag:'th',child:["(%)"]}
+                ]}
               ]},
-              {tag:'tr',child:[
-                {tag:'th',child:["(m)"]},
-                {tag:'th',child:["(m)"]},
-                {tag:'th',child:["(m)"]},
-                {tag:'th',child:["(%)"]}
+              {tag:'tbody',child:[
+
               ]}
             ]}
           ]}
@@ -677,8 +836,9 @@ incl_ava_defs={
     },
     'sdb':{
       'title_e':"Survey Drawings",
-      'mapInitState':1,
+      'mapInitState':true,
       'hasParameters':true,
+      'hasAnimate':false,
       'formParam':
         [
           {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},
@@ -712,7 +872,7 @@ incl_ava_defs={
         ],
       'reportBody':
         [
-          {tag:'section',attr:{'style':'padding:20px'},child:[
+          {tag:'section',attr:{'style':'padding:20px;'},child:[
             {tag:'table',attr:{id:'report_tbl',className:"styled width-80"},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[
