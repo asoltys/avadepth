@@ -30,8 +30,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         // Changing date value in Parameters window
       $('#pwl_date').on('change', function () {
         //TODO: Replace for Production
-        //$.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
-        $.getJSON("api/depths/date.json", function (data) {
+        $.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
+        //$.getJSON("api/depths/date.json", function (data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function () {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
@@ -47,7 +47,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
           $('input[name=discharge]:checked').change();
           avaIFaceJS.pwl_func.static_date = $('pwl_date').val();
-          //TODO: Delete -> return $('#static-date').text($('#pwl_date').val());
           return avaIFaceJS.pwl_func.updateReportTitle();
         });
       }).datepicker().datepicker('setDate', new Date()).change();
@@ -77,10 +76,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#flowRate').val(flowrate);
         avaIFaceJS.pwl_func.static_discharge = flowrate;
         avaIFaceJS.pwl_func.static_discharge_eval = $(this).val();
-        /*TODO: Delete ->
-         $('#static-discharge').text(flowrate);
-         $('#static-discharge-eval').text($(this).val());
-         */
         if ($('html').attr('lang') === 'fr') {
           flowRate_txt = (function () {
             switch ($(this).val()) {
@@ -294,8 +289,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#det_km_time-suff').text('km');
 
         //TODO: Replace following line for production
-        //return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + "displayType=0", function(data) {
-        $.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
+        return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + "displayType=0", function(data) {
+        //$.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
           var points = [];
           $.each(data.times, function () {
             var date;
@@ -327,8 +322,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#det_km_time-suff').text('');
 
         //TODO: Replace following line for production
-        //return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + (querystring('intervalMin')) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + "displayType=0", function(data) {
-        $.getJSON("api/depths/waterlevel_timeplot.json", function (data) {
+        return $.getJSON(("/api/waterlevel?date=" + ($('#date').val()) + "&") + ("intervalMin=" + (querystring('intervalMin')) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#waterway').val()) + "&") + "displayType=0", function(data) {
+        //$.getJSON("api/depths/waterlevel_timeplot.json", function (data) {
           var points = [];
           $.each(data.times, function () {
             var start;

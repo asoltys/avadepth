@@ -52,7 +52,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#sdb_waterway').change();
       });
       return avaIFaceJS.sdb_func.fillLocation();
-      //TODO: Delete -> return $('#heading-waterway').parent().css('margin-top', '0');
     },
 
     fillLocation: function () {
@@ -68,8 +67,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('.spinner').show();
       drawingRows = "";
       //TODO: Replace following line for Production
-      //return $.getJSON(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
-      return $.getJSON(("includes/test.json"), function (data) {
+      return $.getJSON(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
+      //return $.getJSON(("includes/test.json"), function (data) {
         avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
         $('#report_tbl tbody').html('');
         $.each(data, function () {
@@ -100,9 +99,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var drawingRows;
       $('.spinner').show();
       drawingRows = "";
-      return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function (data) {
-        //TODO: Replace following line for previous in production
-        //return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
+      //TODO: Replace following line for previous in production
+      return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
+      //return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function (data) {
         avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
         $('#report_tbl tbody').html('');
         $.each(data.drawings, function () {

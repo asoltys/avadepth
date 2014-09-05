@@ -14,8 +14,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.reportWindow.title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
       //$('#static-date').text("For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()));
       //TODO: Replace next line for production
-      //return $.getJSON(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), function(data) {
-      return $.getJSON("api/depths/soundings.json", function (data) {
+      return $.getJSON(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), function(data) {
+      //return $.getJSON("api/depths/soundings.json", function (data) {
         table || (table = $('#soundings').dataTable({
           bPaginate: false,
           bInfo: false,
@@ -71,8 +71,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var chainage = this.id;
       $('#heading').text("Kilometre " + (chainage - 1) + " to " + (chainage));
       //TODO: Replace following line for production
-      //return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
-      return $.getJSON(("api/depths/History.json"), function (data) {
+      return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
+      //return $.getJSON(("api/depths/History.json"), function (data) {
         $.each(data, function (index) {
           var row, surveydate, ishigh="", ishighast="";
           if (index % 2 === 1) {
