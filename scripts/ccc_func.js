@@ -8,7 +8,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     init: function () {
       avaIFaceJS.reportWindow.title1 = "Fraser River Navigation Channel Condition Report";
       var date, month, weekday, table;
-      $('#soundings').css('width', '800px');
       date = new Date();
       weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -59,6 +58,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('.first-row th:nth-child(3)').css('width', '218px');
       }).success(function () {
         $('#soundings tbody tr a').click(avaIFaceJS.ccc_func.showDetail);
+        $('#soundings').css('width', '800px');
         avaIFaceJS.reportWindow.setTitle();
         avaIFaceJS.reportWindow.show();
       });
@@ -74,22 +74,26 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
       return $.getJSON(("api/depths/History.json"), function (data) {
         $.each(data, function (index) {
-          var row, surveydate;
+          var row, surveydate, ishigh="", ishighast="";
           if (index % 2 === 1) {
             surveydate = moment(this.date).format("D-MMM-YYYY").toString();
           } else {
             surveydate = moment(this.update).format("D-MMM-YYYY").toString();
           }
-          row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td>" + (this.grade.toFixed(1)) + "</td><td>" + (this.sounding.toFixed(1)) + "</td>") + ("<td>" + this.width + "</td><td>" + this.widthperc + "</td>") + "</tr>";
+          if(this.grade>this.sounding){
+            ishigh=" class=\"red\"";
+            ishighast="*";
+          }
+          row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
           return $("#surveys tbody").append(row);
         });
         avaIFaceJS.detailWindow.show();
-        $('input[name=channel_select]').click(avaIFaceJS.ccc_func.setChannel);
+        $('input[name=channel_select]').click(avaIFaceJS.ccc_func.setChannel).val(1);
       });
     },
     setChannel:function(){
       avaIFaceJS.ccc_func.detailIsInnerChannel=($(this).val()==="1");
-      console.log(avaIFaceJS.ccc_func.detailIsInnerChannel);
+      $('#segment').text($(this).next().text());
     }
   };
 } else if(!(typeof avaMapJS === 'undefined')) {

@@ -358,6 +358,7 @@ avaIFaceJS = {
     }
     $('#map').trigger('resize');
     $('#embed_map').height($('#embed_map').width()*8.5/15);
+    (this.isMapOpen()?$('#map_wrapper').className="print_show":$('#map_wrapper').className="print_hide");
   },
 
   isMapOpen: function(){

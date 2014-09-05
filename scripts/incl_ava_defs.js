@@ -159,33 +159,6 @@ incl_ava_defs={
       ],
       'reportBody':[
         {tag:'div',child:[
-          {tag:'div',attr:{className:'print_show'},child:[
-            {tag:'p',child:[
-              {tag:'span',attr:{id:'static-date'}},
-              " from ",
-              {tag:'span',attr:{id:'static-start'}},
-              " to ",
-              {tag:'span',attr:{id:'static-end'}}
-            ]},
-            {tag:'p',child:[
-              "Zone ",
-              {tag:'span',attr:{id:'static-zone'},child:["1"]},
-              " at ",
-              {tag:'span',attr:{id:'static-interval'},child:["2hr"]},
-              " intervals"
-            ]},
-            {tag:'p',child:[
-              "Hope Discharge ",
-              {tag:'span',attr:{id:'static-discharge'}},
-              "m\u00B3/s (",
-              {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
-              ")"
-            ]},
-            {tag:'p',child:[
-              "Velocity legend: ",
-              {tag:'span',attr:{id:'static-legend'}}
-            ]}
-          ]},
           {tag:'div',attr:{id:'loading',style:'padding:1em 1em;display:none'},child:[
             {tag:'div',attr:{style:'width: 35px;height: 30px; float: left;'}},
             "Processing... ",
@@ -787,7 +760,11 @@ incl_ava_defs={
           {tag:'div',attr:{className:'grid-12'},child:[
             {tag:'div',attr:{className:'align-center print-align-center print-margin-0'},child:[
               {tag:'h3',attr:{style:'margin:0'},child:["Fraser River Least Soundings & Available Widths"]},
-              {tag:'h3',attr:{id:'heading',style:"margin:0"}}
+              {tag:'h3',attr:{id:'heading-chainage',style:"margin:0"},child:[
+                {tag:'span',attr:{id:'heading'}},
+                {tag:'span',attr:{className:'print_show_inline'},child:[" - "]},
+                {tag:'span',attr:{id:'segment',className:'print_show_inline'},child:["Inner Channel"]}
+              ]}
             ]},
             {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'table-layout: fixed; margin-left: auto; margin-right: auto; width: 550px;'},child:[
               {tag:'tr',child:[
@@ -800,13 +777,16 @@ incl_ava_defs={
                 ]}
               ]}
             ]},
-            {tag:'strong',child:['Channel Select']},
-            {tag:'br'},
-            {tag:'input',attr:{id:'inner_select',type:'radio',name:'channel_select',style:'display:inline',checked:'checked',value:'1'}},
-            {tag:'label',attr:{htmlFor:'inner_select',style:'display:inline'},child:["Inner Channel  "]},
-            {tag:'input',attr:{id:'outer_select',type:'radio',name:'channel_select',style:'display:inline',value:'0'}},
-            {tag:'label',attr:{htmlFor:'outer_select',style:'display:inline'},child:["Outer Channel"]},
-            {tag:'br'}
+            {tag:'div',attr:{className:'print_hide'},child:[
+              {tag:'strong',child:['Channel Select']},
+              {tag:'br'},
+              {tag:'input',attr:{id:'inner_select',type:'radio',name:'channel_select',style:'display:inline',checked:'checked',value:'1'}},
+              {tag:'label',attr:{htmlFor:'inner_select',style:'display:inline'},child:["Inner Channel"]},
+              "  ",
+              {tag:'input',attr:{id:'outer_select',type:'radio',name:'channel_select',style:'display:inline',value:'0'}},
+              {tag:'label',attr:{htmlFor:'outer_select',style:'display:inline'},child:["Outer Channel"]},
+              {tag:'br'}
+            ]}
           ]},
           {tag:'div',attr:{className:'grid-12'},child:[
             {tag:'table',attr:{id:'surveys',className:'styled align-center',style:'margin-left: auto; margin-right: auto; width: 550px'},child:[

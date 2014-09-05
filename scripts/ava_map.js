@@ -120,6 +120,8 @@ avaMapJS={
       "Bathymetry",
       "http://www2.pac.dfo-mpo.gc.ca/spatialfusionserver/services/ows/wms/avadepth",
       {layers: "Avadepth_surfaces",transparent:true,isBaseLayer:false,format:'image/png'},
+      //"http://localhost:8080/spatialfusionserver/services/ows/wms/bdb",
+      //{layers: "sample_depth",transparent:true,isBaseLayer:false,format:'image/png'},
 	    {alpha:true}
     );
 

@@ -231,7 +231,7 @@ a#toggleLink,summary#ref_map_link{
   color: red;
 }
 
-.print_show {
+.print_show, .print_show_inline {
   display: none;
 }
 

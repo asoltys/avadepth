@@ -7,6 +7,10 @@
   display: block;
 }
 
+.print_show_inline {
+  display: inline;
+}
+
 #gcwu-title {
  text-align:center;
 }

@@ -64,7 +64,7 @@ for(H in C){E.setAttribute(H,C[H])
 }
 })(this,document);
 var $_oscarcssdependencies=["../jquery/jquery/css/smoothness/jquery-ui-1.10.0.custom.min.css","theme/default/style.css","../yui/build/fonts/fonts-min.css","../yui/build/button/assets/skins/sam/button.css","../yui/build/autocomplete/assets/skins/sam/autocomplete.css","../yui/build/container/assets/skins/sam/container.css","../yui/build/paginator/assets/skins/sam/paginator.css","../yui/build/datatable/assets/skins/sam/datatable.css","../yui/build/datatable/assets/skins/sam/datatable-skin.css","../yui/build/layout/assets/skins/sam/layout.css","../yui/build/resize/assets/skins/sam/resize.css","../yui/build/tabview/assets/skins/sam/tabview.css"];
-var $_oscarscripts=["../jquery/jquery/js/jquery-1.9.0.js","../jquery/jquery/js/jquery-ui-1.10.0.custom.min.js","../jquery/plugins/stalker/jquery.stalker.js","../jquery/plugins/layout/js/jquery.layout-latest.min.js","../proj4js/lib/proj4js.js","../openlayers/OpenLayers.js"];
+var $_oscarscripts=["../../../wet-boew/dist/js/jquery.min.js","../jquery/jquery/js/jquery-ui-1.10.0.custom.min.js","../jquery/plugins/stalker/jquery.stalker.js","../jquery/plugins/layout/js/jquery.layout-latest.min.js","../proj4js/lib/proj4js.js","../openlayers/OpenLayers.js"];
 var $_oscaryuiscripts=["../yui/build/yahoo-dom-event/yahoo-dom-event.js","../yui/build/element/element-min.js","../yui/build/button/button-min.js","../yui/build/container/container-min.js","../yui/build/datasource/datasource.js","../yui/build/json/json.js","../yui/build/dragdrop/dragdrop.js","../yui/build/treeview/treeview.js","../yui/build/animation/animation.js","../yui/build/autocomplete/autocomplete.js","../yui/build/connection/connection.js","../yui/build/datatable/datatable.js","../yui/build/paginator/paginator-min.js","../yui/build/resize/resize.js","../yui/build/layout/layout-min.js","../yui/build/connection/connection.js","../yui/build/resize/resize-min.js","../yui/build/tabview/tabview-min.js"];
 $_oscarscriptdependencies=$_oscarscripts.concat($_oscaryuiscripts);
 $_oscarscriptdependencies.push("oscar.js");
@@ -84,9 +84,9 @@ var h=document.getElementsByTagName("script");
 for(var l=0,i=h.length;
 l<i;
 l++){var j=h[l].getAttribute("src");
-if(j){var n=j.indexOf("Loader.js");
+if(j){var n=j.indexOf("Loader.js");if(n>0){
 k.host=oscar._scriptLocation=j.substring(0,n);
-break
+break}
 }}k.loadScript=function(){var c=$_oscarscriptdependencies.shift();
 var a=this;
 if(c!=null){var b=c;

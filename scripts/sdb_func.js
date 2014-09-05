@@ -3,9 +3,9 @@
  */
 
 
+/*** Interface functions ***/
 if(!(typeof avaIFaceJS === 'undefined')) {
 
-/*** Interface functions ***/
   avaIFaceJS.sdb_func= {
     /*** Local variables ***/
     heading_waterway: "Fraser - South Arm",
@@ -20,7 +20,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // Colour Tiles when location field changes
       $('#location').change(function () {
         avaIFaceJS.sdb_func.tile = " at " + $(this).val();
-        return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#sdb_waterway').val(), $(this).val());
+        return avaMapJS.sdb_func.refreshTiles($('#sdb_waterway').val(), $(this).val());
       });
 
       // Colour and resize map extents when waterway field changes
@@ -28,7 +28,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
         avaIFaceJS.sdb_func.tile = "";
         avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
-        avaIFaceJS.mapJS.sdb_func.setExtents($(this).val());
+        avaMapJS.sdb_func.setExtents($(this).val());
         return $('#map').css("min-height", "400px");
       });
 
@@ -117,9 +117,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
     })
 
-  }
+  };
 } else if(!(typeof avaMapJS === 'undefined')) {
-
   /*** Map Interaction functions ***/
   avaMapJS.sdb_func = {
     // init function for loading custom tile file and other events
@@ -240,5 +239,5 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
       return temp && (feat.data.waterway == avaMapJS.sdb_func.curWaterway)
     }
-  }
+  };
 }

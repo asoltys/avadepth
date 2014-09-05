@@ -186,13 +186,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       })();
     },
     setTitle:function(){
-      avaIFaceJS.reportWindow.addTitle(
-        "",
-        moment($('#date').val()).format("MMM D, YYYY") + " from " + ($('select#from').find(':selected').text()) + " to " + ($('select#to').find(':selected').text()),
-        "Zone " + (avaIFaceJS.acv_func.selected_zone) + " at " + $('select#interval').find(':selected').text() + " intervals",
-        "Hope Discharge " + (avaIFaceJS.acv_func.discharge) + "m\u00B3/s (" + (avaIFaceJS.acv_func.discharge_eval) + ")"
-      );
       // Set Report Title Info
+      avaIFaceJS.reportWindow.addTitle(
+        "Fraser River - South Arm",
+        "Zone " + (avaIFaceJS.acv_func.selected_zone) + " at " + $('select#interval').find(':selected').text() + " intervals",
+        "Hope Discharge " + (avaIFaceJS.acv_func.discharge) + "m\u00B3/s (" + (avaIFaceJS.acv_func.discharge_eval) + ") - " + moment($('#date').val()).format("MMM D, YYYY") + " from " + ($('select#from').find(':selected').text()) + " to " + ($('select#to').find(':selected').text()),
+        "Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
+      );
       /*
       $('#static-date').text(moment($('#date').val()).format("YYYY-MM-DD"));
       $('#static-start').text($('select#from').val());
@@ -202,7 +202,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static-discharge').text(avaIFaceJS.acv_func.discharge);
       $('#static-discharge-eval').text(avaIFaceJS.acv_func.discharge_eval);
       */
-      $('#static-legend').text($('input[name="legend_scale"]').next().text());
+      //$('#static-legend').text($('input[name="legend_scale"]:checked').next().text());
     },
     preload:function(img){
       return ($('<img/>')[0].src="http://205.193.152.175"+img);
@@ -250,7 +250,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.acv_func.kml=new OpenLayers.Layer.Vector("KML", {
         strategies: [new OpenLayers.Strategy.Fixed()],
         projection: avaMapJS.map.displayProjection,
-        styleMap: avaMapJS.style.area_no_label(),
+        styleMap: avaMapJS.style.area_with_label("${Zone}"),
         protocol: new OpenLayers.Protocol.HTTP({
           url: "acv_zones.kml?",
           format: new OpenLayers.Format.KML({

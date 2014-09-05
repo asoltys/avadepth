@@ -266,7 +266,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     gotoGraph: function (typCode, typValue, useMap) {
-      avaIFaceJS.detailWindow.loadLayout();
+      avaIFaceJS.detailWindow.loadLayout
       avaIFaceJS.detailWindow.show();
       $('#det_river-section').text($('#river-section').text());
       $('#det_km_time').text(typValue);
