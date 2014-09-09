@@ -43,7 +43,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             $("#predicted_radio").attr('disabled', true);
           } else {
             $("#actual_radio").attr('disabled', true);
-            $("#predicted_radio").attr('disabled', false).prop('checked', true);
+            if(data.Predicted>0){
+              $("#predicted_radio").attr('disabled', false).prop('checked', true);
+            }
           }
           $('input[name=discharge]:checked').change();
           avaIFaceJS.pwl_func.static_date = $('pwl_date').val();
