@@ -114,11 +114,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     // Update values and apply to Detail Window
-    showDetail: function (date) {
+    showDetail: function (period) {
       avaIFaceJS.detailWindow.loadLayout();
       avaIFaceJS.detailWindow.show();
 
-      $('#static-time').text(date);
+      $('#static-time').text(period);
       $('#date-display').text(moment($('#date').val()).format("MMMM D, YYYY"));
       $('#static-limit').text(avaIFaceJS.dd_func.limit_text);
       $('#static-type').text($('input[name="condition"]:checked').next().text());
@@ -128,7 +128,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static-discharge-eval').text($('#flowType').val());
 
       //TODO: Replace line for production:
-      $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + "flowType=1&" + ("sounding=" + ($('#sounding').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($("#lane").val()) + 1) + "&") + ("period=" + ($('#period').val())), function(data) {
+      $.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") +
+	  ("chainage=" + ($('#chainage').val()) + "&") +
+	  ("flowRate=" + ($('#flowRate').val()) + "&") +
+	  ("flowType=1&") +
+	  ("sounding=" + $('input[name="condition"]:checked').val() + "&") +
+	  ("width=" + ($('#width').val()) + "&") +
+	  ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") +
+	  ("period=" + (parseInt(period.substring(0,2))/2 + 1)), function(data) {
       //$.getJSON("api/depths/verify.json", function (data) {
         var least_depth;
         avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').dataTable({

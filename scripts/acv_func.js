@@ -5,7 +5,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 /*** Interface functions ***/
   avaIFaceJS.acv_func = {
     images:[],
-    flowrate:0,
     flowtype:0,
     discharge:"",
     discharge_eval:"Predicted",
@@ -157,7 +156,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       return (getImage = function() {
         //TODO: Replace following line for production
-        return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + ($('#zone').val()) + "&") + ("flowRate=" + avaIFaceJS.acv_func.flowrate + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
+        return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") +
+	    ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") +
+	    ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") +
+	    ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") +
+	    "flowType=0&" +
+	    ("hour=" + hour + "&") +
+	    ("minute=" + minute), function(data) {
         //return $.getJSON(("api/depths/animated.json"), function(data) {
           var result;
           result = data.toString();
@@ -205,7 +210,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //$('#static-legend').text($('input[name="legend_scale"]:checked').next().text());
     },
     preload:function(img){
-      return ($('<img/>')[0].src="http://205.193.152.175"+img);
+      return ($('<img/>')[0].src=img);
     },
     play: function(){
       var handle, i;
@@ -222,7 +227,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#animated').on("load", function() {
             $('#animated').show();
             return $('#animated_legend').show();
-          }).attr("src", "http://205.193.152.175" + avaIFaceJS.acv_func.images[i]);
+          }).attr("src",  avaIFaceJS.acv_func.images[i]);
           i++;
           if (i >= avaIFaceJS.acv_func.images.length) {
             clearInterval(handle);

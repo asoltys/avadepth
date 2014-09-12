@@ -120,7 +120,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // Parse Values for FlowRate and FlowType
       var flowRate_txt, flowrate, flowtype;
       flowrate = (function() {
-        switch ($('input[name=discharge]').val()) {
+        switch ($('input[name=discharge]:checked').val()) {
           case 'Actual':
             return $('#actual_discharge').text();
           case 'Predicted':
@@ -150,7 +150,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $("#static-discharge-eval").text(flowRate_txt);
       }
       flowtype = (function() {
-        switch ($(this).val()) {
+        switch ($('input[name=discharge]:checked').val()) {
           case 'Actual':
             return 0;
           case 'Predicted':
@@ -168,7 +168,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static-window').text($('#window').val());
 
       //TODO: Change to following line for production
-      return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
+      return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") +
+	  ("lane=" + ($('input[name=channel]:checked').val()) + "&") +
+	  ("window=" + ($('#window').val()) + "&") +
+	  ("cmp=" + ($('#cmp').val()) + "&") +
+	  ("flowType=" + ($('#flowType').val()) + "&") +
+	  ("periodType=" + ($('#period').val()) + "&") +
+	  ("chainage=" + ($('#chainage').val()) + "&") +
+	  ("flowRate=" + ($('#flowRate').val()) + "&") +
+	  ("width=" + ($('#width').val()) + "&") +
+	  ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
       //return $.getJSON("api/depths/transit.json", function(data2) {
         var item, limit_text, num_days_meeting_standard, total_hr, _i, _len, _ref;
         $('#num_days').text(data2.statistics.numberOfDays);

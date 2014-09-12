@@ -65,6 +65,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       curDate=$('#date').datepicker('getDate');
       month=curDate.getMonth();
       year=curDate.getFullYear();
+
+      //mattys hax
+      month += 2;
+      if (month ===13) month = 1;
+      if (month ===1) year += 1;
       period=$('#period option:selected').html().split(" ")[0] - 1;
       period_end=moment([year,month,1]).add('months',period);
       avaIFaceJS.reportWindow.title1="Fraser River Hydrograph at Hope - 08MF005";
@@ -75,7 +80,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#hydrograph_chart').html('');
 
       //TODO: Replace with following line for production
-      $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + ($('#month').val()) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
+      $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
       //$.getJSON("api/depths/hydrograph.json", function(results) {
         $.each(results, function(i,v){
           year= v.year;

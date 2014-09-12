@@ -20,7 +20,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // Colour Tiles when location field changes
       $('#location').change(function () {
         avaIFaceJS.sdb_func.tile = " at " + $(this).val();
-        return avaMapJS.sdb_func.refreshTiles($('#sdb_waterway').val(), $(this).val());
+        return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#sdb_waterway').val(), $(this).val());
       });
 
       // Colour and resize map extents when waterway field changes
@@ -28,7 +28,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
         avaIFaceJS.sdb_func.tile = "";
         avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
-        avaMapJS.sdb_func.setExtents($(this).val());
+        avaIFaceJS.mapJS.sdb_func.setExtents($(this).val());
         return $('#map').css("min-height", "400px");
       });
 
