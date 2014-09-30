@@ -13,6 +13,9 @@ var loadJS = function(name,callback) {
 };
 loadJS('incl_ava_defs', function(){});
 
+// Create global variables
+var page_lang = $('html').attr('lang');
+
 // Create avaIFace
 var avaIFaceJS;
 avaIFaceJS = {

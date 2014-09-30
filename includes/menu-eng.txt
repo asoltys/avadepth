@@ -20,17 +20,17 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href='/Data/weekly/weekly.pdf' target="_blank" style="background-image:none;">CCG Weekly Report</a></li>
-<li><a href='/ad-pd-eng.html'>Daily Depths</a></li>
-<li><a href='/tw-ft-eng.html'>Transit Window</a></li>
+<li><a href='/avdpth_srch.html?page=dd'>Daily Depths</a></li>
+<li><a href='/avdpth_srch.html?page=tw'>Transit Window</a></li>
 </ul>
 </section>
 </div>
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/pwl-nep-eng.html'>Predicted Water Levels & Velocities</a></li>
-<li><a href='/acv-cva-eng.html'>Animated Current & Velocities</a></li>
-<li><a href='/hydrograph-hydrogramme-eng.html'>Fraser River Hydrograph</a></li>
+<li><a href='/avdpth_srch.html?page=pwl'>Predicted Water Levels & Velocities</a></li>
+<li><a href='/avdpth_srch.html?page=acv'>Animated Current & Velocities</a></li>
+<li><a href='/avdpth_srch.html?page=frh'>Fraser River Hydrograph</a></li>
 </ul>
 </section>
 </div>
@@ -40,9 +40,9 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Channel Bottom Conditions</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-eng.html'>Current Channel Conditions for Fraser River South Arm</a></li>
+<li><a href='/avdpth_srch.html?page=ccc'>Current Channel Conditions for Fraser River South Arm</a></li>
 <li><a href='/Data/overview/FR_Overview_S.dwf' target="_blank" style="background-image:none;">Channel Overview for Fraser River South Arm</a></li>
-<li><a href='/sdb-bds-eng.html'>Survey Drawings</a></li>
+<li><a href='/avdpth_srch.html?page=sdb'>Survey Drawings</a></li>
 </ul>
 </section>
 <div class="clear"></div>
