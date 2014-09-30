@@ -67,8 +67,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     showDetail: function () {
       avaIFaceJS.detailWindow.loadLayout();
       //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      var chainage = this.id;
-      $('input[id="inner_select"').attr('checked','checked');
+      avaIFaceJS.ccc_func.chainage = this.id;
+      $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
       $('#heading').text("Kilometre " + (chainage - 1) + " to " + (chainage));
       $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel).change();
@@ -79,7 +79,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#segment').text($(this).next().text());
       $('#surveys tbody').html('');
       //TODO: Replace following line for production
-      return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
+      return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + avaIFaceJS.ccc_func.chainage), function(data) {
       //return $.getJSON(("api/depths/History.json"), function (data) {
         $.each(data, function (index) {
           var row, surveydate, ishigh="", ishighast="";

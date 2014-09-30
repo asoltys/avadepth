@@ -56,8 +56,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var thisCallback = callback;
 
       //TODO: Replace below line for production
-      //$.getJSON('/api/depths?date=' + options.date, function (data) {
-      $.getJSON('api/depths/depths.json', function (data) {
+      $.getJSON('/api/depths?date=' + options.date, function (data) {
+      //$.getJSON('api/depths/depths.json', function (data) {
         selectList = $(options.selected);
 
         // Add values to Selected Value list

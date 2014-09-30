@@ -13,8 +13,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static_rd').attr('checked','checked');
       $('#date').change(function(){
         //TODO: Replace following line for production
-        //$.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
-        $.getJSON("api/depths/depths.json", function(data) {
+        $.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
+        //$.getJSON("api/depths/depths.json", function(data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function() {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");

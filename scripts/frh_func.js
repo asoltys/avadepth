@@ -33,20 +33,20 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             show: false
           }
         },
-        colors: ['red', 'blue'],
+        colors: ['red', 'blue', '#000', '#777'],
         xaxis: {
           mode: "time",
           color: 'white',
           tickColor: 'white',
           axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 12,
+          axisLabelFontSizePixels: 15,
           axisLabelFontFamily: 'Verdana, Arial',
           axisLabelPadding: 10
         },
         yaxis: {
-          axisLabel: "Hope Discharge (m3s)",
+          axisLabel: "Hope Discharge (m\u00B3/s)",
           axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 12,
+          axisLabelFontSizePixels: 15,
           axisLabelFontFamily: 'Verdana, Arial',
           axisLabelPadding: 6
         },
@@ -71,7 +71,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if (month ===13) month = 1;
       if (month ===1) year += 1;
       period=$('#period option:selected').html().split(" ")[0];
-      period_end=moment([year,month,1]).add('months',period);
+      period_end=moment([year,month,1]).add('months',period-2);
       avaIFaceJS.reportWindow.title1="Fraser River Hydrograph at Hope - 08MF005";
       avaIFaceJS.reportWindow.title2="From "+moment(curDate).format("MMMM YYYY")+" to "+period_end.format("MMMM YYYY");
       avaIFaceJS.reportWindow.setTitle();
