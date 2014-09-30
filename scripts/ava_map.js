@@ -95,16 +95,23 @@ avaMapJS={
     avaMapJS.curControls=[];
 
     // Map Options and constructor
+    var opNav = new OpenLayers.Control.Navigation({'zoomWheelEnabled':false});
 	  var options = {
       maxExtent: new OpenLayers.Bounds(-13625920,6283000,-13941007,6458623),//-125,49,-121,50),
-		  controls:[new oscar.Control.PanZoomBar,  new OpenLayers.Control.MousePosition, new OpenLayers.Control.ScaleLine],
+		  controls:[new oscar.Control.PanZoomBar,  new OpenLayers.Control.MousePosition, new OpenLayers.Control.ScaleLine, opNav],
 			projection: new OpenLayers.Projection("EPSG:3857"),
 			displayProjection: new OpenLayers.Projection("EPSG:4326"),
 			units:"m",
       maxZoomLevel:20,
       minZoomLevel:5
 		};
+
+    // allow testing of specific renderers via "?renderer=Canvas", etc
+    avaMapJS.renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+    avaMapJS.renderer = (avaMapJS.renderer) ? [avaMapJS.renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+
 		avaMapJS.map = new oscar.Map('ava_map_ref',options);
+    avaMapJS.map.getControlsByClass("OpenLayers.Control.SelectFeature")[0].handlers.feature.stopDown=false;
     // Google Maps layer
     // Loads Google Satellite map, or Google Street map for <IE9
     var gmap;
@@ -113,6 +120,11 @@ avaMapJS={
     } else {
       gmap = new OpenLayers.Layer.Google("Google", {});
       //gmap = new OpenLayers.Layer.OSM("Street Map", {});
+    }
+
+    var navControl = avaMapJS.map.getControlsByClass('OpenLayers.Control.Navigation');
+    for (var i = 0; i < navControl.length; i++){
+      navControl[i].disableZoomWheel();
     }
 
     // WMS Avadepth Bathymetry Layer
@@ -126,8 +138,8 @@ avaMapJS={
     );
 
     // Add layers
-   	avaMapJS.map.addLayers([gmap,wmsLayer]);
-   	//avaMapJS.map.addLayers([gmap]);
+   	//avaMapJS.map.addLayers([gmap,wmsLayer]);
+   	avaMapJS.map.addLayers([gmap]);
     //avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(-13625920,6283000,-13941007,6458623));
     avaMapJS.map.setCenter(new OpenLayers.LonLat(-13682000,6306500),5);
 
@@ -142,20 +154,22 @@ avaMapJS={
   },
 
   getPageActivity: function(){
+    if(!(avaMapJS.curLayer==="")){
+      avaMapJS.map.removeLayer(avaMapJS.curLayer);
+      avaMapJS.curLayer = "";
+    }
+    avaMapJS.setExtents("FRSA");
     window['avaMapJS'][avaMapJS.currentPage+'_func'].init();
   },
 
   setMapLayer: function(newLayer){
-    if(!avaMapJS.curLayer==""){
-      avaMapJS.map.removeLayer(avaMapJS.curLayer);
-    }
     avaMapJS.curLayer=newLayer;
     // Add layer
    	avaMapJS.map.addLayer(avaMapJS.curLayer);
   },
 
   setMapControls: function(newControls){
-    if(!avaMapJS.curControls.length==0){
+    if(!(avaMapJS.curControls.length==0)){
       for(var c in avaMapJS.curControls){
         avaMapJS.map.removeControl(avaMapJS.curControls[c]);
       }
@@ -163,7 +177,7 @@ avaMapJS={
     avaMapJS.curControls=newControls;
     for(var c in newControls){
       avaMapJS.map.addControl(newControls[c]);
-      newControls[c].activate();
+      //newControls[c].activate();
     }
     //avaMapJS.map.addControls(avaMapJS.curControls);
   },
@@ -176,6 +190,9 @@ avaMapJS={
     try{
       avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
     } catch (ex){}
+  },
+  proxySelect: function(evt){
+    console.log(evt);
   }
   /*** Functions for each page type ***/
 

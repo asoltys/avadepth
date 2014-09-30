@@ -135,7 +135,6 @@ div#report_body table tr td{
 }
 
 div#report_content  {
-    width:100%;
     margin:0 auto;
 }
 
@@ -238,4 +237,8 @@ a#toggleLink,summary#ref_map_link{
 .print_holder {
     width:100%;
     text-align:left;
+}
+
+.page-break {
+    clear: both;
 }

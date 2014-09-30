@@ -66,13 +66,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     showDetail: function () {
       avaIFaceJS.detailWindow.loadLayout();
-      $('#surveys tbody').html('');
       //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var chainage = this.id;
+      $('input[id="inner_select"').attr('checked','checked');
+      avaIFaceJS.detailWindow.show();
       $('#heading').text("Kilometre " + (chainage - 1) + " to " + (chainage));
+      $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel).change();
+    },
+    setChannel:function(){
+      if(!($(this).is(':checked'))){return;}
+      avaIFaceJS.ccc_func.detailIsInnerChannel=($(this).val()==="1");
+      $('#segment').text($(this).next().text());
+      $('#surveys tbody').html('');
       //TODO: Replace following line for production
-      return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
-      //return $.getJSON(("api/depths/History.json"), function (data) {
+      //return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
+      return $.getJSON(("api/depths/History.json"), function (data) {
         $.each(data, function (index) {
           var row, surveydate, ishigh="", ishighast="";
           if (index % 2 === 1) {
@@ -87,13 +95,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
           return $("#surveys tbody").append(row);
         });
-        avaIFaceJS.detailWindow.show();
-        $('input[name=channel_select]').click(avaIFaceJS.ccc_func.setChannel).val(1);
       });
-    },
-    setChannel:function(){
-      avaIFaceJS.ccc_func.detailIsInnerChannel=($(this).val()==="1");
-      $('#segment').text($(this).next().text());
     }
   };
 } else if(!(typeof avaMapJS === 'undefined')) {

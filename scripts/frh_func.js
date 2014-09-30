@@ -70,7 +70,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       month += 2;
       if (month ===13) month = 1;
       if (month ===1) year += 1;
-      period=$('#period option:selected').html().split(" ")[0] - 1;
+      period=$('#period option:selected').html().split(" ")[0];
       period_end=moment([year,month,1]).add('months',period);
       avaIFaceJS.reportWindow.title1="Fraser River Hydrograph at Hope - 08MF005";
       avaIFaceJS.reportWindow.title2="From "+moment(curDate).format("MMMM YYYY")+" to "+period_end.format("MMMM YYYY");
@@ -80,8 +80,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#hydrograph_chart').html('');
 
       //TODO: Replace with following line for production
-      $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
-      //$.getJSON("api/depths/hydrograph.json", function(results) {
+      //$.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
+      $.getJSON("api/depths/hydrograph.json", function(results) {
         $.each(results, function(i,v){
           year= v.year;
           month= v.month-1;
@@ -144,8 +144,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           ];
         }
         avaIFaceJS.reportWindow.show();
-        $.plot($("#hydrograph_chart"), dataset, options);
+        var h = $.plot($('#hydrograph_chart'), dataset, options);
         avaIFaceJS.reportWindow.show();
+        h.getData()[2].lines.lineWidth=2.5;
+        h.getData()[3].lines.lineWidth=2.5;
+        h.draw();
         $('#loading').hide();
       });
     }
