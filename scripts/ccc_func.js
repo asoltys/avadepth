@@ -70,7 +70,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.ccc_func.chainage = this.id;
       $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
-      $('#heading').text("Kilometre " + (chainage - 1) + " to " + (chainage));
+      $('#heading').text("Kilometre " + (avaIFaceJS.ccc_func.chainage - 1) + " to " + (avaIFaceJS.ccc_func.chainage));
       $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel).change();
     },
     setChannel:function(){
