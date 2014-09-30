@@ -183,7 +183,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //TODO: Replace bottom line for production
       return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
       //return $.getJSON("api/depths/calculate.json", function (data) {
-        var points = [], table = $('#depths'), rows = "";
+        var points = [];
         avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').dataTable({
           bPaginate: false,
           bInfo: false,
@@ -197,20 +197,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           return points.push([this.period, this.depth]);
         });
 
+        avaIFaceJS.dd_func.tableReport.fnDraw();
         $('#depths tbody tr td:first-child a').click(function () {
           avaIFaceJS.dd_func.showDetail(this.innerText);
         });
         avaIFaceJS.dd_func.limit_text = (function () {
           switch (false) {
             case channel !== '0':
-              if ($("#lang").val() === "eng") {
+              if (page_lang === "eng") {
                 return "Inner Channel Limit";
               } else {
                 return "Limite intérieure";
               }
               break;
             case channel !== '1':
-              if ($("#lang").val() === "eng") {
+              if (page_lang === "eng") {
                 return 'Outer Channel Limit';
               } else {
                 return "Limite extérieure";
@@ -251,7 +252,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         s = "0" + num;
         return s.substr(s.length - 4);
       };
-      if ($("#lang").val() === "eng") {
+      if (page_lang === "eng") {
         xLabel = "Pacific Standard Time (hrs)";
         yLabel = "Available Depth (m)";
       } else {

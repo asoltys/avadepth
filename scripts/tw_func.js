@@ -195,9 +195,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
           avaIFaceJS.tw_func.table.fnAddData([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
-          avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
-          $('#transit-window tbody td').css('text-align', 'center');
         }
+        $('#transit-window tbody td').css('text-align', 'center');
+        avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
+        avaIFaceJS.tw_func.table.fnDraw();
         limit_text = (function() {
           switch (false) {
             case $('input[name="channel"]:checked').val() !== '2':
