@@ -2,7 +2,6 @@
  * Created by wsiddall on 26/08/2014.
  */
 
-
 if(!(typeof avaIFaceJS === 'undefined')) {
 
 /*** Interface functions ***/
@@ -134,23 +133,25 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
       $('.spinner').show();
       report_type = $('input[name=report]:checked').val();
+      var fraser_val = $('#fraser_river').val();
       waterway = (function () {
-        switch ($('#fraser_river').val()) {
+        var riv_parent = $('#river-section').parent();
+        switch (fraser_val) {
           case 'South Arm':
-            $('#river-section').parent().attr('colspan', 21);
+            riv_parent.attr('colspan', 21);
             return 0;
           case 'North Arm':
-            $('#river-section').parent().attr('colspan', 16);
+            riv_parent.attr('colspan', 16);
             return 1;
           case 'Main Arm':
-            $('#river-section').parent().attr('colspan', 14);
+            riv_parent.attr('colspan', 14);
             return 2;
         }
       })();
-      avaIFaceJS.detailWindow.mapColorKey = $('#fraser_river').val();
+      avaIFaceJS.detailWindow.mapColorKey = fraser_val;
       switch ($('#frm_map_parameters input[name=report]:radio:checked').val()) {
         case "0":
-          if ($('html').attr('lang') === 'en') {
+          if (page_lang === 'en') {
             avaIFaceJS.pwl_func.report_title1 = 'Predicted Water Levels';
             $('#note-at-bottom').text('Water level is referenced to Chart Datum which is relative to Local Low Water. Click on a time or location to display a graph.');
           } else {
@@ -159,7 +160,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
           break;
         case "1":
-          if ($('html').attr('lang') === 'en') {
+          if (page_lang === 'en') {
             avaIFaceJS.pwl_func.report_title1 = "Predicted Velocities";
             $('#note-at-bottom').text('Velocities are in metres per second. Negative values indicate a flow in an upstream direction as a result of tides.');
           } else {
@@ -170,10 +171,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         default:
           avaIFaceJS.pwl_func.report_title1 = "";
       }
-      avaIFaceJS.pwl_func.report_title2 = $('#fraser_river').val();
-      if ($('html').attr('lang') === 'fr') {
+      avaIFaceJS.pwl_func.report_title2 = fraser_val;
+      if (page_lang === 'fr') {
         avaIFaceJS.pwl_func.report_title2 = (function () {
-          switch ($('#fraser_river').val()) {
+          switch (fraser_val) {
             case 'South Arm':
               return "Bras sud";
             case 'North Arm':
@@ -184,7 +185,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         })();
       }
       $('#pwl_waterway').val(waterway);
-      $('#river-section').text($('#fraser_river').val());
+      $('#river-section').text(fraser_val);
       $('#water-levels tbody').empty();
       $('#headerkm').empty();
       step = 2;
