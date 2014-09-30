@@ -71,6 +71,7 @@ incl_ava_defs={
       'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':true,
+      'longReport':false,
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
@@ -184,6 +185,7 @@ incl_ava_defs={
       'mapInitState':false,
       'hasParameters':true,
       'hasAnimate':false,
+      'longReport':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
@@ -267,21 +269,20 @@ incl_ava_defs={
       ]}
       ],
       'reportBody':[
-        {tag:'div',child:[
-          {tag:'div',attr:{className:'span-6'},child:[
+        {tag:'div',attr:{style:'width:60%;margin:0 auto;'},child:[
+          {tag:'div',attr:{className:'span-7'},child:[
             {tag:'table',attr:{id:'depths',style:"text-align:center"},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[
-                  {tag:'th',attr:{style:'width:5em',className:'verify'},child:["Time (pst)"]},
-                  {tag:'th',attr:{style:'width:5em'},child:["Chainage (km)"]},
-                  {tag:'th',attr:{style:'width:6em'},child:["Available Depth (m)"]},
+                  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
+                  {tag:'th',child:["Chainage (km)"]},
+                  {tag:'th',child:["Available Depth (m)"]},
                   {tag:'th',child:["Location of Control Point"]}
                 ]}
               ]},
               {tag:'tbody'}
             ]}
           ]},
-          {tag:'div',attr:{className:'page-break'}},
           {tag:'div',attr:{id:'depth_chart',className:'demo-placeholder span-6'}}
         ]}
       ],
@@ -363,6 +364,7 @@ incl_ava_defs={
       'mapInitState':false,
       'hasParameters':true,
       'hasAnimate':false,
+      'longReport':false,
       'formParam':[
         {tag:'div',child:[
           {tag:'div',attr:{className:'span-4'},child:[
@@ -542,6 +544,7 @@ incl_ava_defs={
       'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
+      'longReport':true,
       'formParam':
         [
           {tag:'div',child:[
@@ -666,6 +669,7 @@ incl_ava_defs={
       'mapInitState':false,
       'hasParameters':true,
       'hasAnimate':false,
+      'longReport':false,
       'formParam':[
         {tag:'div',child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
@@ -700,6 +704,7 @@ incl_ava_defs={
       'mapInitState':false,
       'hasParameters':false,
       'hasAnimate':false,
+      'longReport':true,
       'formParam':[
 
       ],
@@ -819,6 +824,7 @@ incl_ava_defs={
       'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
+      'longReport':true,
       'formParam':
         [
           {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},

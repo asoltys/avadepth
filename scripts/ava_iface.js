@@ -34,6 +34,7 @@ avaIFaceJS = {
               {tag: 'button', attr: {name: 'print', className: 'button button-accent print_button print_hide'}, child: ['Print']}
             ]},
             {tag:'div',child:[$.extend({}, content[0])]},
+            {tag:'div',attr:{className:'page-break'}},
             {tag: 'div', attr: {className: 'print_holder'}, child: [
               {tag: 'button', attr: {name: 'print', className: 'button button-accent print_button print_hide'}, child: ['Print']}
             ]}
@@ -85,6 +86,7 @@ avaIFaceJS = {
     repWrapper: $('#report_panels'),
     repContent: "",
     errorMessage: "",
+    isLong: true,
 
     // Initiate Report Window
     init: function () {
@@ -134,7 +136,10 @@ avaIFaceJS = {
         ]}
       ];
       repResultsTemp.push({tag:'div',attr:{id:'report_content'},child:[avaIFaceJS.reportWindow.repContent[0]]});
-      repResultsTemp.push({tag:'div',attr:{className:'print_holder'},child:[{tag: 'button', attr: {name: 'print', className: 'button button-accent print_button print_hide'}, child: ['Print']}]});
+      repResultsTemp.push({tag:'div',attr:{className:'page-break'}});
+      if (avaIFaceJS.reportWindow.isLong){
+        repResultsTemp.push({tag:'div',attr:{className:'print_holder'},child:[{tag: 'button', attr: {name: 'print', className: 'button button-accent print_button print_hide'}, child: ['Print']}]});
+      }
       repResultsTemp = [
         {'tag': 'div', 'child': repResultsTemp}
       ];
@@ -328,6 +333,7 @@ avaIFaceJS = {
 
     // Add Content layout for Report Window
     avaIFaceJS.reportWindow.reset();
+    avaIFaceJS.reportWindow.isLong = pg_entry.longReport;
     avaIFaceJS.reportWindow.addContent(pg_entry.reportBody);
     avaIFaceJS.reportWindow.loadReport();
 

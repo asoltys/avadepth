@@ -130,6 +130,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.sdb_func.kml = new OpenLayers.Layer.Vector("KML", {
         strategies: [new OpenLayers.Strategy.Fixed()],
         projection: avaMapJS.map.displayProjection,
+        renderers: avaMapJS.renderer,
         styleMap: new OpenLayers.StyleMap({
           'default': new OpenLayers.Style(
             {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", strokeWidth: 2.0}, {
@@ -181,13 +182,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       // Map Interaction parameters
       avaMapJS.sdb_func.HLFeat = new OpenLayers.Control.SelectFeature(avaMapJS.sdb_func.kml, {
-        hover: true,
-        highlightOnly: true,
-        renderIntent: "hover"
+        hover: false,
+        toggle: false,
+        clickout: true,
+        multiple: false,
+        //renderIntent: "select",
+        toggleKey:"ctrlKey",
+        multipleKey:"shiftKey"
       });
       avaMapJS.setMapControls([avaMapJS.sdb_func.HLFeat]);
       avaMapJS.sdb_func.HLFeat.activate();
-      avaMapJS.sdb_func.kml.events.on({'featureselected': avaMapJS.sdb_func.tileSelect});
+      avaMapJS.sdb_func.HLFeat.handlers.feature.stopDown = false;
+      avaMapJS.sdb_func.kml.events.on({
+        'featureselected': avaMapJS.sdb_func.tileSelect,
+        'featureunselected': avaMapJS.sdb_func.tileUnselect
+      });
 
       // Sets extents of map
       avaMapJS.sdb_func.setExtents("FRSA");
@@ -205,6 +214,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       } catch (err) {
       }
       avaMapJS.sdb_func.refreshTiles(waterway, "");
+    },
+
+    tileUnselect: function(tile){
+      if(tile.feature.data.location==avaMapJS.sdb_func.curLocation) {
+        avaMapJS.sdb_func.curLocation = "";
+        avaMapJS.sdb_func.curWaterway = "";
+      }
     },
 
     // tileSelect: callBack function for tile selection from the map interface

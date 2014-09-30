@@ -30,8 +30,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         // Changing date value in Parameters window
       $('#pwl_date').on('change', function () {
         //TODO: Replace for Production
-        $.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
-        //$.getJSON("api/depths/date.json", function (data) {
+        //$.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
+        $.getJSON("api/depths/date.json", function (data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function () {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
