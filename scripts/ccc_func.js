@@ -79,8 +79,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#segment').text($(this).next().text());
       $('#surveys tbody').html('');
       //TODO: Replace following line for production
-      //return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
-      return $.getJSON(("api/depths/History.json"), function (data) {
+      return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "0")) + "&" + ("chainage=" + chainage), function(data) {
+      //return $.getJSON(("api/depths/History.json"), function (data) {
         $.each(data, function (index) {
           var row, surveydate, ishigh="", ishighast="";
           if (index % 2 === 1) {

@@ -207,8 +207,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#headerkm').append(headerRow);
       }
       //TODO: Replace next line for production
-      //return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
-      return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
+      return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
+      //return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
         var count;
         $('#river-section').text(data.title);
         avaIFaceJS.pwl_func.table || (avaIFaceJS.pwl_func.table = $('#water-levels').dataTable({
