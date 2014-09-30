@@ -6,13 +6,14 @@
 if(!(typeof avaIFaceJS === 'undefined')) {
 
 /*** Interface functions ***/
+  var curDate = new Date();
   avaIFaceJS.frh_func= {
     init: function(){
       $('#date').datepicker({
         changeMonth: true,
         changeYear: true,
         minDate: new Date(1994,1,1)
-      }).datepicker('setDate', new Date());
+      }).datepicker('setDate', new Date(curDate.getFullYear(),0,1));
       $('#submit').click(avaIFaceJS.frh_func.update);
       avaIFaceJS.frh_func.update();
     },
