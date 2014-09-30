@@ -788,7 +788,7 @@ incl_ava_defs={
               {tag:'input',attr:{id:'inner_select',type:'radio',name:'channel_select',style:'display:inline',checked:'checked',value:'1'}},
               {tag:'label',attr:{htmlFor:'inner_select',style:'display:inline'},child:["Inner Channel"]},
               "  ",
-              {tag:'input',attr:{id:'outer_select',type:'radio',name:'channel_select',style:'display:inline',value:'0'}},
+              {tag:'input',attr:{id:'outer_select',type:'radio',name:'channel_select',style:'display:inline',value:'2'}},
               {tag:'label',attr:{htmlFor:'outer_select',style:'display:inline'},child:["Outer Channel"]},
               {tag:'br'}
             ]}
