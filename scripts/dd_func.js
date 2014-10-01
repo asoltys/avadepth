@@ -93,9 +93,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
 
       var getFlowRate = {
-//        Predicted: function () {
-//          return $('#predicted_discharge').text();
-//        },
+        Predicted: function () {
+          return $('#predicted_discharge').text();
+        },
         Actual: function () {
           return $('#actual_discharge').text();
         },
