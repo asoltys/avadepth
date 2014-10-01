@@ -1,3 +1,9 @@
+@page {
+    size: portrait;
+}
+@page rotated {
+    size: landscape;
+}
 
 .print_hide, form, ul.tabs, #gcwu-psnb, #gcwu-date-mod {
   display: none;
@@ -187,4 +193,8 @@ div#hydrograph_report div#hydrograph_chart{
 
 div#reportTitle2 {
     padding:0 0 3px 0;
+}
+
+div.landscape {
+    page:rotated;
 }

@@ -72,6 +72,7 @@ incl_ava_defs={
       'hasParameters':true,
       'hasAnimate':true,
       'longReport':false,
+      'landscapeReport':false,
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
@@ -179,6 +180,7 @@ incl_ava_defs={
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
+      'landscapeReport':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
@@ -351,6 +353,7 @@ incl_ava_defs={
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
+      'landscapeReport':false,
       'formParam':[
         {tag:'div',child:[
           {tag:'div',attr:{className:'span-4'},child:[
@@ -642,6 +645,7 @@ incl_ava_defs={
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
+      'landscapeReport':true,
       'formParam':[
         {tag:'div',child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
@@ -677,6 +681,7 @@ incl_ava_defs={
       'hasParameters':false,
       'hasAnimate':false,
       'longReport':true,
+      'landscapeReport':false,
       'formParam':[
 
       ],
@@ -797,6 +802,7 @@ incl_ava_defs={
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':true,
+      'landscapeReport':false,
       'formParam':
         [
           {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},

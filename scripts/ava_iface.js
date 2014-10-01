@@ -92,6 +92,7 @@ avaIFaceJS = {
     repContent: "",
     errorMessage: "",
     isLong: true,
+    isLandscape: false,
 
     // Initiate Report Window
     init: function () {
@@ -146,7 +147,7 @@ avaIFaceJS = {
         repResultsTemp.push({tag:'div',attr:{className:'print_holder'},child:[{tag: 'button', attr: {name: 'print', className: 'button button-accent print_button print_hide'}, child: ['Print']}]});
       }
       repResultsTemp = [
-        {'tag': 'div', 'child': repResultsTemp}
+        {'tag': 'div',attr:{className:(avaIFaceJS.reportWindow.isLandscape ? 'landscape':'portrait')}, 'child': repResultsTemp}
       ];
       avaIFaceJS.reportWindow.repBodyElem.html(avaIFaceJS.getElements(repResultsTemp));
       avaIFaceJS.reportWindow.setTitle();
