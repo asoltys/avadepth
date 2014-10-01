@@ -42,7 +42,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 //            $("#predicted_radio").attr('disabled', true);
           } else {
             $("#actual_radio").attr('disabled', true);
-            $('#selected_radio').prop('checked', true);
+            $('#discharge_radio').prop('checked', true);
 //            if(data.Predicted>0){
 //              $("#predicted_radio").attr('disabled', false).prop('checked', true);
 //            }

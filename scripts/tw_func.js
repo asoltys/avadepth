@@ -113,7 +113,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           case 1:
             return 7;
           case 2:
-            return new Date(dt.getFullYear(),dt.getMonth(),0).getDate();
+            var cd = $('#date').datepicker('getDate');
+            return new Date(cd.getFullYear(),cd.getMonth(),0).getDate();
         }
 
       }();
