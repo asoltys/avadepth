@@ -59,9 +59,11 @@ avaIFaceJS = {
       var repDet = $('#report_detail');
       if (avaIFaceJS.detailWindow.useMap) {
         $('#rep_detail_map').show().css('width',repDet.width());
-        $('#report_map').css('width',repDet.width());
         avaIFaceJS.detailWindow.mapJS.renderMap();
+      } else {
+        $('#rep_detail_map').hide();
       }
+      $('#report_map').css('width',repDet.width());
       repDet.show().css('left', ($('#wb-core-in').width() - repDet.width()) / 2);
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
 

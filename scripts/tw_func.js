@@ -18,14 +18,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $.each(data.Flowrates, function() {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
           });
-          $('#predicted_discharge').text(data.Predicted);
+//          $('#predicted_discharge').text(data.Predicted);
           $('#actual_discharge').text(data.Actual);
           if (data.Actual) {
             $("#actual_radio").attr('disabled', false).prop('checked', true);
-            $("#predicted_radio").attr('disabled', true);
+//            $("#predicted_radio").attr('disabled', true);
           } else {
             $("#actual_radio").attr('disabled', true);
-            $("#predicted_radio").attr('disabled', false).prop('checked', true);
+            $('#selected_radio').prop('checked', true);
+//            $("#predicted_radio").attr('disabled', false).prop('checked', true);
           }
           return $('input[name=discharge]:checked').change();
         }).success(function() {
@@ -105,6 +106,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         ]
       };
       var dt=$('#date').val();
+      var period = function(){
+        switch ($('#period').val()){
+          case 0:
+            return 1;
+          case 1:
+            return 7;
+          case 2:
+            return new Date(dt.getFullYear(),dt.getMonth(),0).getDate();
+        }
+
+      }();
       avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 1).format("MMMM DD, YYYY");
 
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
@@ -123,8 +135,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         switch ($('input[name=discharge]:checked').val()) {
           case 'Actual':
             return $('#actual_discharge').text();
-          case 'Predicted':
-            return $('#predicted_discharge').text();
+//          case 'Predicted':
+//            return $('#predicted_discharge').text();
           case 'Defined':
             return $('#defined_discharge').val();
           case 'Selected':
@@ -137,8 +149,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
           switch ($(this).val()) {
-            case 'Predicted':
-              return "prévu";
+//            case 'Predicted':
+//              return "prévu";
             case 'Actual':
               return "réel";
             case 'Defined':
@@ -153,8 +165,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         switch ($('input[name=discharge]:checked').val()) {
           case 'Actual':
             return 0;
-          case 'Predicted':
-            return 1;
+//          case 'Predicted':
+//            return 1;
           case 'Defined':
             return 2;
           case 'Selected':

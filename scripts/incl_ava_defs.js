@@ -80,13 +80,6 @@ incl_ava_defs={
           {tag:'br'},
           {tag:'strong',child:["River Discharge @ Hope:"]},
           {tag:'br'},
-          {tag:'input',attr:{id:'predicted_radio',type:'radio',name:'discharge',value:'Predicted',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'predicted_radio',style:'font-weight: normal'},child:[
-            "Predicted (",
-            {tag:'span',attr:{id:'predicted_discharge'}},
-            "m\u00B3/s)"
-          ]},
-          {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',value:'Actual'}},
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
             "Actual (",
@@ -192,13 +185,6 @@ incl_ava_defs={
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'div',child:[
             {tag:'strong',child:['River Discharge @ Hope:']},
-            {tag:'br'},
-            {tag:'input',attr:{id:'predicted_radio',type:'radio',name:'discharge',className:'rd_predicted',value:'Predicted',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'predicted_radio',style:'font-weight:normal'},child:[
-              "Predicted (",
-              {tag:'span',attr:{id:'predicted_discharge'},child:["0"]},
-              "m\u00B3/s)"
-            ]},
             {tag:'br'},
             {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',className:'rd_actual',value:'Actual'}},
             {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
@@ -374,13 +360,6 @@ incl_ava_defs={
             {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
             {tag:'div',child:[
               {tag:'strong',child:["River Discharge:"]},
-              {tag:'br'},
-              {tag:'input',attr:{id:"predicted_radio",type:'radio',name:'discharge',checked:'checked',value:'Predicted'}},
-              {tag:'label',attr:{htmlFor:'predicted_radio'},child:[
-                "Predicted (",
-                {tag:'span',attr:{id:'predicted_discharge'}},
-                "m\u00B3/s)"
-              ]},
               {tag:'br'},
               {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',value:'Actual'}},
               {tag:'label',attr:{htmlFor:'actual_radio'},child:[
@@ -566,13 +545,6 @@ incl_ava_defs={
           ]},
           {tag:'strong',child:['River Discharge @ Hope:']},
           {tag:'br'},
-          {tag:'input',attr:{id:'predicted_radio',type:'radio',name:'discharge',className:'rd_predicted',value:'Predicted',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'predicted_radio',style:'font-weight:normal'},child:[
-            "Predicted (",
-            {tag:'span',attr:{id:'predicted_discharge'}},
-            "m\u00B3/s)"
-          ]},
-          {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',className:'rd_actual',value:'Actual',disabled:'true'}},
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
             "Actual (",
@@ -692,7 +664,7 @@ incl_ava_defs={
             {tag:'span',attr:{className:'float:left;'},child:['Please wait while we fetch your results...']}
           ]},
           {tag:'div',attr:{id:'legend_container'}},
-          {tag:'div',attr:{id:'hydrograph_chart',style:'width:100%;text-align:center;'}}
+          {tag:'div',attr:{id:'hydrograph_chart',style:'width:100%;height:500px;text-align:center;'}}
         ]}
       ],
       'reportDetail':[

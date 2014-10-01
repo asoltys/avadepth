@@ -23,10 +23,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       /** Event Handlers **/
       // Retrieve content on Date change
       $('#date').change(function () {
-        return avaIFaceJS.dd_func.getFlow({
+        avaIFaceJS.dd_func.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
-          predicted: $("#predicted_discharge"),
+//          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
       }).datepicker().datepicker('setDate', new Date()).change();
@@ -69,21 +69,22 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         selectList.append(s);
 
         // Update values for "Predicted" and "Actual" values
-        $(options.predicted).text(data.Predicted);
+//        $(options.predicted).text(data.Predicted);
         $(options.actual).text(data.Actual);
         if (data.Actual) {
-          $("#predicted_radio").attr('disabled', true);
+//          $("#predicted_radio").attr('disabled', true);
           $('#actual_radio').attr('disabled', false).prop('checked', true);
         } else {
           $("#actual_radio").attr('disabled', true);
-          $("#predicted_radio").attr('disabled', false).prop('checked', true);
+          $('#selected_radio').prop('checked', true);
+//          $("#predicted_radio").attr('disabled', false).prop('checked', true);
         }
 
         // Run callback if needed
         if (thisCallback) {
           callback(data);
         }
-        return data.Predicted;
+//        return data.Predicted;
       });
     },
 
@@ -92,9 +93,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
 
       var getFlowRate = {
-        Predicted: function () {
-          return $('#predicted_discharge').text();
-        },
+//        Predicted: function () {
+//          return $('#predicted_discharge').text();
+//        },
         Actual: function () {
           return $('#actual_discharge').text();
         },
