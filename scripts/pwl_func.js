@@ -35,15 +35,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $.each(data.Flowrates, function () {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
           });
-          $('#predicted_discharge').text(data.Predicted);
+//          $('#predicted_discharge').text(data.Predicted);
           $('#actual_discharge').text(data.Actual);
           if (data.Actual) {
             $('#actual_radio').attr('disabled', false).prop('checked', true);
-            $("#predicted_radio").attr('disabled', true);
+//            $("#predicted_radio").attr('disabled', true);
           } else {
             $("#actual_radio").attr('disabled', true);
             if(data.Predicted>0){
-              $("#predicted_radio").attr('disabled', false).prop('checked', true);
+//              $("#predicted_radio").attr('disabled', false).prop('checked', true);
             }
           }
           $('input[name=discharge]:checked').change();
@@ -65,8 +65,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           switch ($(this).val()) {
             case 'Actual':
               return $('#actual_discharge').text();
-            case 'Predicted':
-              return $('#predicted_discharge').text();
+//            case 'Predicted':
+//              return $('#predicted_discharge').text();
             case 'Defined':
               return $('#defined_discharge').val();
             case 'Selected':
@@ -79,8 +79,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         if ($('html').attr('lang') === 'fr') {
           flowRate_txt = (function () {
             switch ($(this).val()) {
-              case 'Predicted':
-                return "prévu";
+//              case 'Predicted':
+//                return "prévu";
               case 'Actual':
                 return "réel";
               case 'Defined':
@@ -95,8 +95,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           switch ($(this).val()) {
             case 'Actual':
               return 0;
-            case 'Predicted':
-              return 1;
+//            case 'Predicted':
+//              return 1;
             case 'Defined':
               return 2;
             case 'Selected':

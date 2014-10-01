@@ -19,6 +19,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         table || (table = $('#soundings').dataTable({
           bPaginate: false,
           bInfo: false,
+          bSort: false,
           bFilter: false,
           aoColumnDefs: [
             {
@@ -29,13 +30,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
               sClass: "2",
               "aTargets": [6, 7, 8, 9]
             }
-          ],
-          aaSorting: [],
-          aoColumns: [
-            {
-              "bSortable": false
-            },
-            null
           ]
         }));
         table.fnClearTable();
