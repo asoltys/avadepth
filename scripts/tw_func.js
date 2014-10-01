@@ -108,17 +108,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var dt=$('#date').val();
       var period = function(){
         switch ($('#period').val()){
-          case 0:
+          case "0":
             return 1;
-          case 1:
+          case "1":
             return 7;
-          case 2:
+          case "2":
             var cd = $('#date').datepicker('getDate');
             return new Date(cd.getFullYear(),cd.getMonth(),0).getDate();
         }
 
       }();
-      avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 1).format("MMMM DD, YYYY");
+      avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
 
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.maxDepth));
