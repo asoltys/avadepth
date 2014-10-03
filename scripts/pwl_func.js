@@ -17,6 +17,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     static_discharge: "",
     static_discharge_eval: "Prediected",
     cur_waterway: null,
+    isParamProcessed: false,
+    detailValue: "",
+    detailIsKM: true,
 
     init: function () {
       // Colour Markers when river changes
@@ -29,8 +32,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         // Changing date value in Parameters window
       $('#pwl_date').on('change', function () {
         //TODO: Replace for Production
-        $.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
-        //$.getJSON("api/depths/date.json", function (data) {
+        //$.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
+        $.getJSON("api/depths/date.json", function (data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function () {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
@@ -131,6 +134,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     //
     update: function () {
+      avaIFaceJS.pwl_func.isParamProcessed=true;
       var headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
       $('.spinner').show();
       report_type = $('input[name=report]:checked').val();
@@ -209,8 +213,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#headerkm').append(headerRow);
       }
       //TODO: Replace next line for production
-      return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
-      //return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
+      //return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
+      return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
         var count;
         $('#river-section').text(data.title);
         avaIFaceJS.pwl_func.table || (avaIFaceJS.pwl_func.table = $('#water-levels').dataTable({
@@ -252,6 +256,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
         return $('.spinner').hide();
       }).success(function () {
+        if (!(avaIFaceJS.pwl_func.detailValue == "")){
+          if (avaIFaceJS.pwl_func.detailIsKM){
+            avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent(avaIFaceJS.pwl_func.detailValue, avaIFaceJS.detailWindow.mapColorKey);
+            avaIFaceJS.pwl_func.gotoGraph(0, avaIFaceJS.pwl_func.detailValue, true);
+          } else {
+            avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
+          }
+        }
       });
     },
 
@@ -266,6 +278,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     gotoGraph: function (typCode, typValue, useMap) {
       avaIFaceJS.detailWindow.loadLayout();
       avaIFaceJS.detailWindow.show();
+      var detkmtime = $('#det_km_time');
       $('#det_river-section').text($('#river-section').text());
       $('#det_km_time').text(typValue);
       $('#det_static-date').text(avaIFaceJS.pwl_func.static_date);
@@ -288,12 +301,18 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
         return t[typCode];
       })();
+
+      // if using IE, make tweaks
+      if (isIE){
+        $('#det_placeholder').css('font-size','inherit');
+      }
+
       if (typCode == 0) {
         $('#det_km_time-suff').text('km');
 
         //TODO: Replace following line for production
-        $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
-        //$.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
+        // $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
+        $.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
           var points = [];
           $.each(data.times, function () {
             var date;
@@ -304,6 +323,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             }
             return points.push([date.getTime(), this.waterLevels[step]]);
           });
+
           return $.plot("#det_placeholder", [points], {
             xaxis: {
               color: 'black',
@@ -325,8 +345,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#det_km_time-suff').text('');
 
         //TODO: Replace following line for production
-        $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
-        //$.getJSON("api/depths/waterlevel_timeplot.json", function (data) {
+        // $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
+        $.getJSON("api/depths/waterlevel_timeplot.json", function (data) {
           var points = [];
           $.each(data.times, function () {
             var start;
@@ -340,6 +360,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
               });
             }
           });
+
           return $.plot("#det_placeholder", [points], {
             xaxis: {
               color: 'black',
@@ -376,11 +397,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.pwl_func.curRiver="";
 
       // KML Feature Styles and KML Layer
-      avaMapJS.style.callback_function=avaMapJS.pwl_func.checkMarker;
+      mapStyle.callback_function=avaMapJS.pwl_func.checkMarker;
       avaMapJS.pwl_func.kml = new OpenLayers.Layer.Vector("KML", {
         strategies: [new OpenLayers.Strategy.Fixed()],
         projection: avaMapJS.map.displayProjection,
-        styleMap: avaMapJS.style.point_with_label("${KM}"),
+        styleMap: mapStyle.point_with_label("${KM}"),
         protocol: new OpenLayers.Protocol.HTTP({
           url: "pwl_markers.kml?",
           format: new OpenLayers.Format.KML({
@@ -398,8 +419,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         highlightOnly: true,
         renderIntent: "temporary"
       });
-      avaMapJS.map.addControl(avaMapJS.pwl_func.HLFeat);
+      avaMapJS.setMapControls([avaMapJS.pwl_func.HLFeat]);
       avaMapJS.pwl_func.HLFeat.activate();
+      avaMapJS.pwl_func.HLFeat.handlers.feature.stopDown = false;
       avaMapJS.pwl_func.kml.events.on({'featureselected': avaMapJS.pwl_func.selectMarker});
 
       // Sets extents of map
@@ -428,6 +450,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     selectMarker: function(feat){
       avaMapJS.map.zoomToExtent(feat.feature.geometry.getBounds(), closest=true);
       avaMapJS.map.zoomToScale(100000);
+
+      // Select new graph and return graph
+      parent.avaIFaceJS.pwl_func.detailValue = feat.feature.attributes.KM;
+      parent.avaIFaceJS.pwl_func.update();
+      //parent.avaIFaceJS.pwl_func.gotoGraph(0, feat.feature.attributes.KM, true);
     },
 
     setMarkerExtent: function(mrkKM,mrkRiver){
@@ -452,4 +479,92 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       } catch(err){}
     }
   }
+} else if (!(typeof avaMapDetJS === 'undefined')){
+  avaMapDetJS.pwl_func= {
+    init: function(){
+      avaMapDetJS.pwl_func.curRiver="";
+
+      // KML Feature Styles and KML Layer
+      mapStyle.callback_function=avaMapDetJS.pwl_func.checkMarker;
+      avaMapDetJS.pwl_func.kml = new OpenLayers.Layer.Vector("KML", {
+        strategies: [new OpenLayers.Strategy.Fixed()],
+        projection: avaMapDetJS.map.displayProjection,
+        styleMap: mapStyle.point_with_label("${KM}"),
+        protocol: new OpenLayers.Protocol.HTTP({
+          url: "pwl_markers.kml?",
+          format: new OpenLayers.Format.KML({
+            extractStyles: false,
+            extractAttributes: true,
+            maxDepth: 2
+          })
+        })
+      });
+      avaMapDetJS.setMapLayer(avaMapDetJS.pwl_func.kml);
+
+      // Map Interaction parameters
+      avaMapDetJS.pwl_func.HLFeat = new OpenLayers.Control.SelectFeature(avaMapDetJS.pwl_func.kml, {
+        hover: true,
+        highlightOnly: true,
+        renderIntent: "temporary"
+      });
+      avaMapDetJS.map.addControl(avaMapDetJS.pwl_func.HLFeat);
+      avaMapDetJS.pwl_func.HLFeat.activate();
+      avaMapDetJS.pwl_func.kml.events.on({'featureselected': avaMapDetJS.pwl_func.selectMarker});
+
+      // Sets extents of map
+      avaMapDetJS.pwl_func.setExtents("South Arm");
+    },
+
+    // checkTileRefresh: checks if the tile's attributes match the currently selected values
+    checkMarker: function(feat){
+      return feat.attributes.waterway == avaMapDetJS.pwl_func.curRiver;
+    },
+
+    lookupRiver: function(riverName){
+      for(var r in incl_ava_defs.locDefs){
+        var rivObj=incl_ava_defs.locDefs[r];
+        try{
+          if(rivObj.pwl.key==riverName){return r}
+        } catch(err){}
+      }
+    },
+
+    refreshMarkers: function(riverName){
+      avaMapDetJS.pwl_func.curRiver=avaMapDetJS.pwl_func.lookupRiver(riverName);
+      avaMapDetJS.pwl_func.kml.redraw();
+    },
+
+    selectMarker: function(feat){
+      avaMapDetJS.map.zoomToExtent(feat.feature.geometry.getBounds(), closest=true);
+      avaMapDetJS.map.zoomToScale(100000);
+
+      // Select new graph and return graph
+      parent.avaIFaceJS.pwl_func.gotoGraph(0, feat.feature.attributes.KM, true);
+    },
+
+    setMarkerExtent: function(mrkKM,mrkRiver){
+      avaMapDetJS.pwl_func.HLFeat.unselectAll();
+      var lRiver = avaMapDetJS.pwl_func.lookupRiver(mrkRiver);
+      for(var f= 0;f<avaMapDetJS.pwl_func.kml.features.length;f++){
+        if(lRiver==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway && avaMapDetJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
+          avaMapDetJS.pwl_func.HLFeat.select(avaMapDetJS.pwl_func.kml.features[f]);
+          avaMapDetJS.pwl_func.kml.redraw();
+          break;
+        }
+      }
+    },
+
+    // setExtents: Using the name of provided Waterways selector, draw extents from 'locationExtents' dict.
+    setExtents: function(river) {
+      if (!river) {
+        return;
+      }
+      avaMapDetJS.pwl_func.refreshMarkers(river);
+      var obj = incl_ava_defs.locDefs[avaMapDetJS.pwl_func.curRiver].Coords;
+      try {
+        avaMapDetJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
+      } catch(err){}
+    }
+  }
+
 }

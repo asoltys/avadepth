@@ -13,8 +13,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static_rd').attr('checked','checked');
       $('#date').change(function(){
         //TODO: Replace following line for production
-        $.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
-        //$.getJSON("api/depths/depths.json", function(data) {
+        //$.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
+        $.getJSON("api/depths/depths.json", function(data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function() {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
@@ -31,7 +31,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 //            $("#predicted_radio").attr('disabled', false).prop('checked', true);
           }
           $('input[name=discharge]:checked').change();
-          avaIFaceJS.acv_func.update();
+          //avaIFaceJS.acv_func.update();
         });
       }).datepicker().datepicker("setDate",new Date()).change();
       $('#selected_discharge').change(function() {
@@ -128,10 +128,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
       $("#submit").click(avaIFaceJS.acv_func.update);
       $('#replay').click(avaIFaceJS.acv_func.play);
+
     },
     update: function(){
-      avaIFaceJS.acv_func.setTitle();
       var end_hour, end_minute, getImage, hour, interval, minute;
+      avaIFaceJS.acv_func.setTitle();
       $(this).prop('disabled', 'disabled');
       $('#loading').show();
       $('.spinner').show();
@@ -158,14 +159,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       return (getImage = function() {
         //TODO: Replace following line for production
-        return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") +
-	      ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") +
-	      ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") +
-	      ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") +
-	      "flowType=0&" +
-	      ("hour=" + hour + "&") +
-	      ("minute=" + minute), function(data) {
-        //return $.getJSON(("api/depths/animated.json"), function(data) {
+        //return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") + ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
+        return $.getJSON(("api/depths/animated.json"), function(data) {
           var result;
           result = data.toString();
           if (result !== '/images/') {
@@ -216,12 +211,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     play: function(){
       var handle, i;
+      avaIFaceJS.reportWindow.loadReport();
       $('.spinner').hide();
       $('#loading').hide();
       $('#animated').attr("src", "images/nodata.jpg");
       $('#animated_legend').hide().attr("src", "images/vectorscale" + ($('input[name=legend_scale]:checked').val()) + ".gif");
       $('#replay').prop('disabled', 'disabled');
       avaIFaceJS.reportWindow.show();
+
       if (avaIFaceJS.acv_func.images.length > 0) {
         $('#replay').show();
         i = 1;
@@ -253,11 +250,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
   avaMapJS.acv_func = {
     currentZone:1,
     init: function () {
-      avaMapJS.style.callback_function=function(feat){return true};
+      mapStyle.callback_function=function(feat){return true};
       avaMapJS.acv_func.kml=new OpenLayers.Layer.Vector("KML", {
         strategies: [new OpenLayers.Strategy.Fixed()],
         projection: avaMapJS.map.displayProjection,
-        styleMap: avaMapJS.style.area_with_label("${Zone}"),
+        styleMap: mapStyle.area_with_label("${Zone}"),
         protocol: new OpenLayers.Protocol.HTTP({
           url: "acv_zones.kml?",
           format: new OpenLayers.Format.KML({
@@ -302,4 +299,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
     }
   };
-}
+} else if (!(typeof avaMapDetJS === 'undefined')){
+  avaMapDetJS.acv_func = {init: function(){}}
+};

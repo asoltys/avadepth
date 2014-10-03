@@ -2,95 +2,14 @@
 var loadJS=function(scriptName,callback) {
   jQuery.getScript('scripts/'+scriptName+'.js', callback);
 };
-loadJS('incl_ava_defs',function(){});
 
 // avaMapJS map object
 // Loads and provides interactive capabilities to Avadepth embedded maps.
 avaMapJS={
 
-  // Default Styles and map constants
-  style: {
-    col1: '#dd0000',
-    col2: '#aaaaaa',
-    sel1: '#00ffff',
-    black: '#000000',
-    white: '#ffffff',
-    op1: 0.2,
-    op2: 0.1,
-    op_sel: 0.5,
-    callback_function:undefined,
-    cl:function (feat, c1, c2) {return (avaMapJS.style.callback_function(feat) ? c1 : c2)},
-    context:{
-      getColor: function (feat) {
-        return avaMapJS.style.cl(feat, avaMapJS.style.col1, avaMapJS.style.col2)
-      },
-      getOpacity: function (feat) {
-        return avaMapJS.style.cl(feat, avaMapJS.style.op1, avaMapJS.style.op2)
-      }
-    },
-    pt_hover_lbl: function(lbl) {
-      return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", pointRadius: 4,
-        label: lbl, fontSize: 15, fontWeight: "bold", labelYOffset: 15,
-        strokeColor: "${getColor}", labelOutlineOpacity: 0, fontColor: avaMapJS.style.col1}
-    },
-    pt_select_lbl: function(lbl){
-      return {fillColor: avaMapJS.style.sel1,fillOpacity: avaMapJS.style.op_sel,pointRadius: 4,
-          label: lbl, fontSize: 15, fontWeight: "bold", labelYOffset: 15,
-          strokeColor: avaMapJS.style.sel1, labelOutlineOpacity: 0, fontColor: avaMapJS.style.sel1}
-    },
-    pt_default_lbl: function(lbl){
-      return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", pointRadius: 2.5,
-            label:lbl, fontColor: "${getColor}", fontSize: 15, fontWeight: "bold", labelYOffset: 15}
-    },
-    area_default: function(){
-      return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", strokeWidth: 2.0}
-    },
-    area_select:function(){
-      return {fillColor: avaMapJS.style.sel1, strokeColor: avaMapJS.style.sel1}
-    },
-    area_hover:function(){
-      return {fillColor: '${getColor}', strokeColor: '${getColor}', fillOpacity: avaMapJS.style.op_sel}
-    },
-    area_default_lbl: function(lbl){
-      return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", strokeWidth: 2.0,
-          label:lbl, fontColor: avaMapJS.style.black, fontSize: 15, fontWeight: "bold", labelYOffset: 15}
-    },
-    area_select_lbl: function(lbl){
-      return {fillColor: avaMapJS.style.sel1, strokeColor: avaMapJS.style.sel1,
-          label: lbl, fontSize: 15, fontWeight: "bold", fontColor: "black",
-          labelOutlineColor: avaMapJS.style.sel1, labelOutlineWidth: 2
-        }
-    },
-    area_hover_lbl: function(lbl){
-      return {fillColor: '${getColor}', strokeColor: '${getColor}',
-            label: lbl, fontSize: 15, fontWeight: "bold", fontColor: "black",
-            labelOutlineColor: "${getColor}", labelOutlineWidth: 2, fillOpacity: avaMapJS.style.op_sel
-          }
-    },
-    point_with_label: function (label_value) {
-      return new OpenLayers.StyleMap({
-        'default': new OpenLayers.Style(avaMapJS.style.pt_default_lbl(label_value),{context:avaMapJS.style.context}),
-        'temporary': new OpenLayers.Style(avaMapJS.style.pt_hover_lbl(label_value),{context:avaMapJS.style.context}),
-        'select': new OpenLayers.Style(avaMapJS.style.pt_select_lbl(label_value))
-      })
-    },
-    area_no_label: function () {
-      return new OpenLayers.StyleMap({
-        'default': new OpenLayers.Style(avaMapJS.style.area_default(),{context:avaMapJS.style.context}),
-        'select': new OpenLayers.Style(avaMapJS.style.area_select()),
-        'temporary': new OpenLayers.Style(avaMapJS.style.area_hover(),{context:avaMapJS.style.context})
-      })
-    },
-    area_with_label: function (lbl) {
-      return new OpenLayers.StyleMap({
-        'default':new OpenLayers.Style(avaMapJS.style.area_default(),{context:avaMapJS.style.context}),
-        'select': new OpenLayers.Style(avaMapJS.style.area_select_lbl(lbl)),
-        'temporary': new OpenLayers.Style(avaMapJS.style.area_hover_lbl(lbl),{context:avaMapJS.style.context})
-      })
-    }
-  },
       // Initializes the map interface. Loads layers and map components.
   initMap:function() {
+    loadJS('incl_ava_defs',function(){});
     avaMapJS.curLayer="";
     avaMapJS.curControls=[];
 

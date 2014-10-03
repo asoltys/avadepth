@@ -67,8 +67,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('.spinner').show();
       drawingRows = "";
       //TODO: Replace following line for Production
-      return $.getJSON(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
-      //return $.getJSON(("includes/test.json"), function (data) {
+      //return $.getJSON(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
+      return $.getJSON(("includes/test.json"), function (data) {
         avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
         $('#report_tbl tbody').html('');
         $.each(data, function () {
@@ -100,8 +100,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('.spinner').show();
       drawingRows = "";
       //TODO: Replace following line for previous in production
-      return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
-      //return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function (data) {
+      //return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
+      return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function (data) {
         avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
         $('#report_tbl tbody').html('');
         $.each(data.drawings, function () {
@@ -127,48 +127,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.sdb_func.curLocation = "";
 
       // KML Feature Styles and KML Layer
+      mapStyle.callback_function=avaMapJS.sdb_func.checkTileRefresh;
       avaMapJS.sdb_func.kml = new OpenLayers.Layer.Vector("KML", {
         strategies: [new OpenLayers.Strategy.Fixed()],
         projection: avaMapJS.map.displayProjection,
         renderers: avaMapJS.renderer,
-        styleMap: new OpenLayers.StyleMap({
-          'default': new OpenLayers.Style(
-            {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", strokeWidth: 2.0}, {
-              context: {
-                getColor: function (feat) {
-                  if (avaMapJS.sdb_func.checkTileRefresh(feat) == true)
-                    return '#dd0000';
-                  else
-                    return '#aaaaaa';
-                },
-                getOpacity: function (feat) {
-                  if (avaMapJS.sdb_func.checkTileRefresh(feat) == true)
-                    return 0.2;
-                  else
-                    return 0.1;
-                }
-              }
-            }
-          ),
-          'select': new OpenLayers.Style({fillColor: '#00ffff', strokeColor: '#00ffff',
-            label: '${name}', fontSize: 15, fontWeight: "bold", fontColor: "black",
-            labelOutlineColor: "#00ffff", labelOutlineWidth: 2
-          }),
-          'hover': new OpenLayers.Style({fillColor: '${getColor}', strokeColor: '${getColor}',
-              label: '${name}', fontSize: 15, fontWeight: "bold", fontColor: "black",
-              labelOutlineColor: "${getColor}", labelOutlineWidth: 2, fillOpacity: 1
-            }, {
-              context: {
-                getColor: function (feat) {
-                  if (avaMapJS.sdb_func.checkTileRefresh(feat) == true)
-                    return '#dd0000';
-                  else
-                    return '#aaaaaa';
-                }
-              }
-            }
-          )
-        }),
+        styleMap: mapStyle.area_with_label("${name}"),
         protocol: new OpenLayers.Protocol.HTTP({
           url: "sdb_tiles.kml?",
           format: new OpenLayers.Format.KML({
@@ -255,4 +219,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       return temp && (feat.data.waterway == avaMapJS.sdb_func.curWaterway)
     }
   };
-}
+} else if (!(typeof avaMapDetJS === 'undefined')) {
+  avaMapDetJS.sdb_func = {init: function () {}};
+};

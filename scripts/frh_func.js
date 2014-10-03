@@ -81,8 +81,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#hydrograph_chart').html('');
 
       //TODO: Replace with following line for production
-      $.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
-      //$.getJSON("api/depths/hydrograph.json", function(results) {
+      //$.getJSON(("/api/hydrograph?year=" + year + "&") + ("month=" + (month) + "&") + ("period=" + ($('#period').val()) + "&") + "actual=false&" + "predicted=true", function(results) {
+      $.getJSON("api/depths/hydrograph.json", function(results) {
         $.each(results, function(i,v){
           year= v.year;
           month= v.month-1;
@@ -159,4 +159,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
   /*** Map Interaction functions ***/
 
   avaMapJS.frh_func={init: function(){}}
+} else if (!(typeof avaMapDetJS === 'undefined')) {
+  avaMapDetJS.frh_func = {init: function () {}};
 }

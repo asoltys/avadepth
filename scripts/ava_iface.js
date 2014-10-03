@@ -11,7 +11,6 @@ console.log('');
 var loadJS = function(name,callback) {
   $.getScript('scripts/'+name+'.js', callback);
 };
-loadJS('incl_ava_defs', function(){});
 
 // Create global variables
 var page_lang = $('html').attr('lang');
@@ -58,12 +57,12 @@ avaIFaceJS = {
     show: function () {
       var repDet = $('#report_detail');
       if (avaIFaceJS.detailWindow.useMap) {
-        $('#rep_detail_map').show().css('width',repDet.width());
+        $('#rep_detail_map').show().css('width','100%');
         avaIFaceJS.detailWindow.mapJS.renderMap();
       } else {
         $('#rep_detail_map').hide();
       }
-      $('#report_map').css('width',repDet.width());
+      $('#report_map').css('width','100%');
       repDet.show().css('left', ($('#wb-core-in').width() - repDet.width()) / 2);
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
 
@@ -225,26 +224,29 @@ avaIFaceJS = {
     init: function(){
       avaIFaceJS.paramWindow.linkBtn=$('#toggleLink');
       avaIFaceJS.paramWindow.paramForm=$('#map_parameters');
+      avaIFaceJS.paramWindow.slideWrap=$('#map_param_wrap');
       avaIFaceJS.paramWindow.isInit=true;
     },
 
     useParam: function(state){
       if(!avaIFaceJS.paramWindow.isInit){avaIFaceJS.paramWindow.init()}
       if(state) {
-        this.show();
+        avaIFaceJS.paramWindow.show();
       } else {
-        this.hide();
-        this.toggle(false);
+        avaIFaceJS.paramWindow.hide();
       }
+      avaIFaceJS.paramWindow.toggle(state);
     },
 
     toggle: function(state){
       if(state){
         avaIFaceJS.paramWindow.linkBtn.show();
-        $('#map_param_wrap').show();
+        //avaIFaceJS.paramWindow.slideWrap.show();
+        avaIFaceJS.paramWindow.slideWrap.css('display','block');
       } else {
         avaIFaceJS.paramWindow.linkBtn.hide();
-        $('#map_param_wrap').hide();
+        avaIFaceJS.paramWindow.slideWrap.css('display','none');
+        //avaIFaceJS.paramWindow.slideWrap.hide();
       }
     },
 
@@ -256,8 +258,8 @@ avaIFaceJS = {
     },
 
     hide: function(){
-      if(this.isOpen()){
-        this.linkBtn.click();
+      if(avaIFaceJS.paramWindow.isOpen()){
+        avaIFaceJS.paramWindow.linkBtn.click();
       }
     },
 
@@ -301,6 +303,7 @@ avaIFaceJS = {
         $('#embed_map').height($('#wb-core').width()*8.5/15);
       })
     }
+    avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Open);
 
     // Check request for start page
     if(querystring('page').length>0){
@@ -369,7 +372,11 @@ avaIFaceJS = {
       });
     }
     $('#map').trigger('resize');
-    $('#embed_map').height($('#embed_map').width()*8.5/15);
+    var embedMap = $('#embed_map');
+    embedMap.height(embedMap.width()*8.5/15);
+    var ifr = $('iframe');
+    var mp = $('#ava_map_ref',ifr.contents());
+    mp.height(embedMap.width()*8.5/15);
     (this.isMapOpen()?$('#map_wrapper').className="print_show":$('#map_wrapper').className="print_hide");
   },
 
@@ -422,3 +429,4 @@ avaIFaceJS = {
     return res;
   }
 };
+loadJS('incl_ava_defs', function(){});

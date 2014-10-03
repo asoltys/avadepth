@@ -859,3 +859,86 @@ incl_ava_defs={
 
 
 };
+
+var mapStyle = {
+
+  // Default Styles and map constants
+  col1: '#dd0000',
+  col2: '#aaaaaa',
+  sel1: '#00ffff',
+  black: '#000000',
+  white: '#ffffff',
+  op1: 0.2,
+  op2: 0.1,
+  op_sel: 0.5,
+  callback_function:undefined,
+  cl:function (feat, c1, c2) {return (mapStyle.callback_function(feat) ? c1 : c2)},
+  context:{
+    getColor: function (feat) {
+      return mapStyle.cl(feat, mapStyle.col1, mapStyle.col2)
+    },
+    getOpacity: function (feat) {
+      return mapStyle.cl(feat, mapStyle.op1, mapStyle.op2)
+    }
+  },
+  pt_hover_lbl: function(lbl) {
+    return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", pointRadius: 4,
+      label: lbl, fontSize: 15, fontWeight: "bold", labelYOffset: 15,
+      strokeColor: "${getColor}", labelOutlineOpacity: 0, fontColor: mapStyle.col1}
+  },
+  pt_select_lbl: function(lbl){
+    return {fillColor: mapStyle.sel1,fillOpacity: mapStyle.op_sel,pointRadius: 4,
+        label: lbl, fontSize: 15, fontWeight: "bold", labelYOffset: 15,
+        strokeColor: mapStyle.sel1, labelOutlineOpacity: 0, fontColor: mapStyle.sel1}
+  },
+  pt_default_lbl: function(lbl){
+    return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", pointRadius: 2.5,
+          label:lbl, fontColor: "${getColor}", fontSize: 15, fontWeight: "bold", labelYOffset: 15}
+  },
+  area_default: function(){
+    return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", strokeWidth: 2.0}
+  },
+  area_select:function(){
+    return {fillColor: mapStyle.sel1, strokeColor: mapStyle.sel1}
+  },
+  area_hover:function(){
+    return {fillColor: '${getColor}', strokeColor: '${getColor}', fillOpacity: mapStyle.op_sel}
+  },
+  area_default_lbl: function(lbl){
+    return {fillColor: "${getColor}", fillOpacity: "${getOpacity}", strokeColor: "${getColor}", strokeWidth: 2.0,
+        label:lbl, fontColor: mapStyle.black, fontSize: 15, fontWeight: "bold", labelYOffset: 15}
+  },
+  area_select_lbl: function(lbl){
+    return {fillColor: mapStyle.sel1, strokeColor: mapStyle.sel1,
+        label: lbl, fontSize: 15, fontWeight: "bold", fontColor: "black",
+        labelOutlineColor: mapStyle.sel1, labelOutlineWidth: 2
+      }
+  },
+  area_hover_lbl: function(lbl){
+    return {fillColor: '${getColor}', strokeColor: '${getColor}',
+          label: lbl, fontSize: 15, fontWeight: "bold", fontColor: "black",
+          labelOutlineColor: "${getColor}", labelOutlineWidth: 2, fillOpacity: mapStyle.op_sel
+        }
+  },
+  point_with_label: function (label_value) {
+    return new OpenLayers.StyleMap({
+      'default': new OpenLayers.Style(mapStyle.pt_default_lbl(label_value),{context:mapStyle.context}),
+      'temporary': new OpenLayers.Style(mapStyle.pt_hover_lbl(label_value),{context:mapStyle.context}),
+      'select': new OpenLayers.Style(mapStyle.pt_select_lbl(label_value))
+    })
+  },
+  area_no_label: function () {
+    return new OpenLayers.StyleMap({
+      'default': new OpenLayers.Style(mapStyle.area_default(),{context:mapStyle.context}),
+      'select': new OpenLayers.Style(mapStyle.area_select()),
+      'temporary': new OpenLayers.Style(mapStyle.area_hover(),{context:mapStyle.context})
+    })
+  },
+  area_with_label: function (lbl) {
+    return new OpenLayers.StyleMap({
+      'default':new OpenLayers.Style(mapStyle.area_default(),{context:mapStyle.context}),
+      'select': new OpenLayers.Style(mapStyle.area_select_lbl(lbl)),
+      'temporary': new OpenLayers.Style(mapStyle.area_hover_lbl(lbl),{context:mapStyle.context})
+    })
+  }
+};
