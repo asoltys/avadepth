@@ -32,8 +32,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         // Changing date value in Parameters window
       $('#pwl_date').on('change', function () {
         //TODO: Replace for Production
-        //$.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
-        $.getJSON("api/depths/date.json", function (data) {
+        $.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
+        //$.getJSON("api/depths/date.json", function (data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function () {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
@@ -213,8 +213,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#headerkm').append(headerRow);
       }
       //TODO: Replace next line for production
-      //return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
-      return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
+      return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
+      //return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
         var count;
         $('#river-section').text(data.title);
         avaIFaceJS.pwl_func.table || (avaIFaceJS.pwl_func.table = $('#water-levels').dataTable({
@@ -311,8 +311,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#det_km_time-suff').text('km');
 
         //TODO: Replace following line for production
-        // $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
-        $.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
+         $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
+        //$.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
           var points = [];
           $.each(data.times, function () {
             var date;
@@ -345,8 +345,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#det_km_time-suff').text('');
 
         //TODO: Replace following line for production
-        // $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
-        $.getJSON("api/depths/waterlevel_timeplot.json", function (data) {
+        $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
+        //$.getJSON("api/depths/waterlevel_timeplot.json", function (data) {
           var points = [];
           $.each(data.times, function () {
             var start;
