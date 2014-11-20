@@ -297,10 +297,14 @@ avaIFaceJS = {
 
       // create trigger on window resize
       $(window).unbind('resize').resize(function(){
-        $('#embed_map').height($('#wb-core').width()*8.5/15);
+        var hgt=$('#wb-core').width()*8.5/15;
+        if (hgt<200){hgt=200}
+        $('#embed_map').height(hgt);
       });
       $('#ref_map_link').click(function(){
-        $('#embed_map').height($('#wb-core').width()*8.5/15);
+        var hgt=$('#wb-core').width()*8.5/15;
+        if (hgt<200){hgt=200}
+        $('#embed_map').height(hgt);
       })
     }
     avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Open);
@@ -376,7 +380,9 @@ avaIFaceJS = {
     embedMap.height(embedMap.width()*8.5/15);
     var ifr = $('iframe');
     var mp = $('#ava_map_ref',ifr.contents());
-    mp.height(embedMap.width()*8.5/15);
+    var hgt=embedMap.width()*8.5/15;
+    if (hgt<200){hgt=200}
+    mp.height(hgt);
     (this.isMapOpen()?$('#map_wrapper').className="print_show":$('#map_wrapper').className="print_hide");
   },
 
