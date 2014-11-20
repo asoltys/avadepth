@@ -373,10 +373,10 @@ avaIFaceJS = {
     }
     $('#map').trigger('resize');
     var embedMap = $('#embed_map');
-    embedMap.height(embedMap.width()*8.5/15);
+    embedMap.height(embedMap.width()*8.5);
     var ifr = $('iframe');
     var mp = $('#ava_map_ref',ifr.contents());
-    mp.height(embedMap.width()*8.5/15);
+    mp.height(embedMap.width()*8.5);
     (this.isMapOpen()?$('#map_wrapper').className="print_show":$('#map_wrapper').className="print_hide");
   },
 
