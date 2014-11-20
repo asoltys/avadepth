@@ -13,8 +13,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static_rd').attr('checked','checked');
       $('#date').change(function(){
         //TODO: Replace following line for production
-        //$.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
-        $.getJSON("api/depths/depths.json", function(data) {
+        $.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
+        //$.getJSON("api/depths/depths.json", function(data) {
           $('#selected_discharge').empty();
           $.each(data.Flowrates, function() {
             return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
@@ -159,8 +159,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       return (getImage = function() {
         //TODO: Replace following line for production
-        //return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") + ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
-        return $.getJSON(("api/depths/animated.json"), function(data) {
+        return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") + ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
+        //return $.getJSON(("api/depths/animated.json"), function(data) {
           var result;
           result = data.toString();
           if (result !== '/images/') {
