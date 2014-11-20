@@ -10,59 +10,47 @@ var padZero = function(num){
 incl_ava_defs={
 
   locDefs: {
-    'BR': {
-      'Form':{'Title': "Campbell River, BC",'Order':5},
-      'Names': {'Main': ['Marina', 'Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6450273,'max':6458623},'Lon':{'min':-13948221,'max':-13941007}}
-    },
-    'CR': {
-      'Form':{'Title': "Courtenay River, BC",'Order':6},
-      'Names': {'Main': ['Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6386978,'max':6394557},'Lon':{'min':-13918640,'max':-13904727}}
-    },
-    'FRMA': {
-      'Form':{'Title': "Fraser - Main Arm",'Order':2},
-      'Names': {'Main': ['Channel km35to61', 'Channel km60to85', 'Annieville Channel', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island', 'Gravel Reach'], 'Secondary': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'],'Other': []},
-      'Coords': {'Lat': {'min':6290650,'max':6315727},'Lon':{'min':-13685417,'max':-13610377}},
-      'pwl':{'key':'Main Arm'}
-    },
-    'FRSA': {
-      'Form':{'Title': "Fraser - South Arm",'Order':0},
-      'Names': {'Main': ['Channel', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville Channel', 'Shoal Point - New  West'],'Secondary': ['Ladner_SeaReach', 'Cannery Channel', 'Sea Reach', 'Canoe Pass', 'Ladner Reach', 'Ladner Harbour', 'Deas Slough', 'Burr Landing Channel', 'Gundersen Slough', 'Annacis Channel', 'Roberts Bank'],'Other': []},
-      'Coords':{'Lat': {'min':6287000,'max':6317590},'Lon':{'min':-13730400,'max':-13669354}},
-      'pwl':{'key':"South Arm"}
-    },
-    'FRNA': {
-      'Form':{'Title': "Fraser - North Arm",'Order':1},
-      'Names': {'Main': ['Channel', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel', 'Swishwash Island South'],'Secondary': ['Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Mitchell Island North', 'Tree Island'],'Other': []},
-      'Coords':{'Lat':{'min':6302401,'max':6318147},'Lon':{'min':-13724567,'max':-13679776}},
-      'pwl':{'key':"North Arm"}
-    },
-    'FRUR': {
-      'Form':{'Title': "Fraser - Mission to Hope",'Order':3},
-      'Names': {'Main': ['Big Eddy', 'Cattermole', 'Chilliwack Rock', 'Carey Point', 'CPR Tunnels', 'Cheam View'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6293247,'max':6349886},'Lon':{'min':-13625920,'max':-13510906}}
-    },
-    'PR': {
-      'Form':{'Title': "Pitt River",'Order':4},
-      'Names': {'Main': ['Channel', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
-    },
-    'SQ': {
-      'Form':{'Title': "Squamish, BC",'Order':7},
-      'Names': {'Main': ['Mamquam Blind Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
-    },
-    'PMV': {
-      'Form':{'Title': "Port of Metro Vancouver",'Order':8},
-      'Names': {'Main': [],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-    },
-    'FPORT': {
-      'Form':{'Title': "Fraser Surrey Docks",'Order':9},
-      'Names': {'Main': [],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6305047,'max':6308238},'Lon':{'min':-13684111,'max':-13680844}}
-    }
+	
+	  'Fraser River, BC': {	
+		'FRSA': {
+		  'Form':{'Title': "Fraser - South Arm",'Order':0},
+		  'Locations': ['FRSA Overview (km -1 to 36)', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West'],
+		  'Coords':{'Lat': {'min':6287000,'max':6317590},'Lon':{'min':-13730400,'max':-13669354}},
+		  'pwl':{'key':"South Arm"}
+		},
+		'FRNA': {
+		  'Form':{'Title': "Fraser - North Arm",'Order':1},
+		  'Names': ['FRNA Overview (km -1 to 31)', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island & Mitchell Island North', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
+		  'Coords':{'Lat':{'min':6302401,'max':6318147},'Lon':{'min':-13724567,'max':-13679776}},
+		  'pwl':{'key':"North Arm"}
+		},
+		'FRMA': {
+		  'Form':{'Title': "Fraser - Main Arm",'Order':2},
+		  'Names': ['FRMA Overview (km 35 to 61)', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'FRMA Overview (km 60 to 85)', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island', 'Gravel Reach'],
+		  'Coords': {'Lat': {'min':6290650,'max':6315727},'Lon':{'min':-13685417,'max':-13610377}},
+		  'pwl':{'key':'Main Arm'}
+		},
+		'FRUR': {
+		  'Form':{'Title': "Fraser - Mission to Hope",'Order':3},
+		  'Names': ['All Locations (km 85 to km 105)'],
+		  'Coords':{'Lat':{'min':6293247,'max':6349886},'Lon':{'min':-13625920,'max':-13510906}}
+		},
+		'PR': {
+		  'Form':{'Title': "Fraser - Pitt River",'Order':4},
+		  'Names': ['PR Overview (km 46 to 76)', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],
+		  'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+		}
+	  },
+		
+	  'Vancouver Harbour, BC': {	
+		'PMV': {
+		  'Form':{'Title': "Port of Metro Vancouver",'Order':8},
+		  'Names': ['1st Narrows', '2nd Narrows', 'Port Moody', 'Burrard Inlet - Terminals'],
+		  'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
+		}
+	  }	
+	    
+
   },
 
   avaPages:{
@@ -805,19 +793,21 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':
         [
-          {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},
-          {tag:'select',attr:{id:'sdb_waterway'},ref:{tag:'option',values:
+		  {tag:'label',attr:{htmlFor:'sdb_section'},child:['Section:']},
+          {tag:'select',attr:{id:'sdb_section'},ref:{tag:'option',values:
             function(){
               var oArr=[];
               for(var k in incl_ava_defs.locDefs){
-                var v=incl_ava_defs.locDefs[k].Form;
-                oArr[v.Order]={key:k, value:v.Title};
+                var v=incl_ava_defs.locDefs[k];
+                oArr[k]={key:k, value:v};
               }
               return oArr;
             }
           }},
-          {tag:'label',attr:{htmlFor:'channel'},child:['Channel:']},
-          {tag:'select',attr:{id:'channel'},ref:{tag:'option',values:[{value:"Main",'select':true},{value:'Secondary'},{value:'Other'}]}},
+          {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},
+          {tag:'select',attr:{id:'sdb_waterway'}},
+          /*{tag:'label',attr:{htmlFor:'channel'},child:['Channel:']},
+          {tag:'select',attr:{id:'channel'},ref:{tag:'option',values:[{value:"Main",'select':true},{value:'Secondary'},{value:'Other'}]}},*/
           {tag:'label',attr:{htmlFor:'location'},child:['Location:']},
           {tag:'select',attr:{id:'location'}},
           {tag:'label',attr:{htmlFor:'type'},child:['Type:']},

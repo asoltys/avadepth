@@ -16,6 +16,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       // Load and fill location drop down
       $('#sdb_waterway, #channel').change(avaIFaceJS.sdb_func.fillLocation);
+	  
+	  $('#sdb_section').change(avaIFaceJS.sdb_func.fillWaterway);
 
       // Colour Tiles when location field changes
       $('#location').change(function () {
@@ -57,8 +59,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     fillLocation: function () {
       $('#location option').remove();
       $('#location').append('<option></option>');
-      return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Names'][$('#channel').val()], function () {
+      return $.each(incl_ava_defs.locDefs[$('#sdb_section').val()][$('#sdb_waterway').val()]['Names']/*[$('#channel').val()]*/, function () {
         return $('#location').append("<option>" + this + "</option>");
+      });
+    },
+	
+	fillWaterway: function () {
+      $('#sdb_waterway option').remove();
+      $('#sdb_waterway').append('<option></option>');
+      return $.each(incl_ava_defs.locDefs[$('#sdb_section').val()]/*[$('#channel').val()]*/, function () {
+        return $('#sdb_waterway').append("<option>" + this + "</option>");
       });
     },
 
