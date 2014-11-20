@@ -7,6 +7,14 @@ var padZero = function(num){
   return s.substr(s.length-2);
 };
 
+function getAPI(intURL, extURL){
+  if(document.URL.split("/")[2].split(":")[1] == 'localhost') {
+    return extURL;
+  } else {
+    return intURL;
+  }
+}
+
 incl_ava_defs={
 
   locDefs: {

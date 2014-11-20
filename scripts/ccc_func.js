@@ -14,7 +14,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.reportWindow.title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
       //$('#static-date').text("For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()));
       //TODO: Replace next line for production
-      return $.getJSON(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), function(data) {
+      return $.getJSON(getAPI(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), "api/depths/soundings.json"), function(data) {
+      //return $.getJSON(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), function(data) {
       //return $.getJSON("api/depths/soundings.json", function (data) {
         table || (table = $('#soundings').dataTable({
           bPaginate: false,
