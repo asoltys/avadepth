@@ -15,10 +15,12 @@ function getAPI(intURL, extURL){
   }
 }
 
+var currentDate = new Date();
+
 incl_ava_defs={
 
   locDefs: {
-    'BR': {
+    /*'BR': {
       'Form':{'Title': "Campbell River, BC",'Order':5},
       'Names': {'Main': ['Marina', 'Channel'],'Secondary': [],'Other': []},
       'Coords':{'Lat':{'min':6450273,'max':6458623},'Lon':{'min':-13948221,'max':-13941007}}
@@ -27,56 +29,116 @@ incl_ava_defs={
       'Form':{'Title': "Courtenay River, BC",'Order':6},
       'Names': {'Main': ['Channel'],'Secondary': [],'Other': []},
       'Coords':{'Lat':{'min':6386978,'max':6394557},'Lon':{'min':-13918640,'max':-13904727}}
-    },
+    },*/
+	
   "FR": {
-    'Form':{Title:'Fraser River, BC', Order:0},
-    Coords:{Lat:{min:0,max:0},Lon:{min:0,max:0}},
-    Sections:{
+    'Form':{'Title':'Fraser River, BC', 'Order':0},
+    'Coords':{'Lat':{'min':6287000,'max':6352933},'Lon':{'min':-13730400,'max':-13510906}},
+    'Sections':{
       'FRMA': {
-        'Form': {'Title': "Fraser - Main Arm", 'Order': 2},
-        'Names': {'Main': ['Channel km35to61', 'Channel km60to85', 'Annieville Channel', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island', 'Gravel Reach'], 'Secondary': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'], 'Other': []},
+        'Form': {'Title': "Fraser - Main Arm", 'Order': 2, 'Key': "FRMA"},
+        'Names': ['FRMA Overview (km 35 to 61)', 'FRMA Overview (km 60 to 85)', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
         'pwl': {'key': 'Main Arm'}
       },
       'FRSA': {
-        'Form': {'Title': "Fraser - South Arm", 'Order': 0},
-        'Names': {'Main': ['Channel', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville Channel', 'Shoal Point - New  West'], 'Secondary': ['Ladner_SeaReach', 'Cannery Channel', 'Sea Reach', 'Canoe Pass', 'Ladner Reach', 'Ladner Harbour', 'Deas Slough', 'Burr Landing Channel', 'Gundersen Slough', 'Annacis Channel', 'Roberts Bank'], 'Other': []},
+        'Form': {'Title': "Fraser - South Arm", 'Order': 0, 'Key': "FRSA"},
+        'Names': ['FRSA Overview (km -1 to 36)', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
         'pwl': {'key': "South Arm"}
       },
       'FRNA': {
-        'Form': {'Title': "Fraser - North Arm", 'Order': 1},
-        'Names': {'Main': ['Channel', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel', 'Swishwash Island South'], 'Secondary': ['Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Mitchell Island North', 'Tree Island'], 'Other': []},
+        'Form': {'Title': "Fraser - North Arm", 'Order': 1, 'Key': "FRNA"},
+        'Names': ['FRNA Overview (km -1 to 31)', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island & Mitchell Island North', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
         'pwl': {'key': "North Arm"}
       },
       'FRUR': {
-        'Form': {'Title': "Fraser - Mission to Hope", 'Order': 3},
-        'Names': {'Main': ['Big Eddy', 'Cattermole', 'Chilliwack Rock', 'Carey Point', 'CPR Tunnels', 'Cheam View'], 'Secondary': [], 'Other': []},
+        'Form': {'Title': "Fraser - Mission to Hope", 'Order': 3, 'Key': "FRUR"},
+        'Names': ['All Locations (km 85 to km 105)'],
         'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
+      },
+	  'PR': {
+      'Form':{'Title': "Fraser - Pitt River",'Order':4, 'Key': "PR"},
+      'Names': ['PR Overview (km 46 to 76)', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],
+      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  }
+    }
+  },
+  
+  
+  "VH": {
+    'Form':{'Title':'Vancouver Harbour, BC', 'Order':1},
+    'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}},
+    'Sections':{ 
+      'PMV': {
+      'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
+      'Names': ['1st Narrows', '2nd Narrows', 'Port Moody', 'Burrard Inlet - Terminals'],
+      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
+      } 
+    }
+  },
+  
+  "CWC": {
+    'Form':{'Title':'Coastal Waterways, BC', 'Order':2},
+    'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}},
+    'Sections':{ 
+      'SQ': {
+      'Form':{'Title': "Squamish, BC",'Order':7, 'Key': "SQ"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
       }
     }
   },
-    'PR': {
-      'Form':{'Title': "Pitt River",'Order':4},
-      'Names': {'Main': ['Channel', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],'Secondary': [],'Other': []},
+  
+  "WCS": {
+    'Form':{'Title':'Waterway Control Structures', 'Order':3},
+    'Coords':{'Lat':{'min':6287000,'max':6352933},'Lon':{'min':-13730400,'max':-13510906}},
+    'Sections':{
+      'FRMA': {
+        'Form': {'Title': "Fraser - Main Arm", 'Order': 2, 'Key': "FRMA"},
+        'Names': ['Sapperton Wingdams 2 & 3', 'Sapperton V-Dyke'],
+        'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
+        'pwl': {'key': 'Main Arm'}
+      },
+      'FRSA': {
+        'Form': {'Title': "Fraser - South Arm", 'Order': 1, 'Key': "FRSA"},
+        'Names': ['Steveston North Jetty', 'Steveston South Jetty No. 2', 'Albion Dyke No. 2', 'Steveston Island Wingdams  No. 2 & 3', 'Steveston Island Shearboom', 'Woodward Island Training Wall', 'Deas & Kirkland Island Bank Protection', 'Trifurcation Phase I Training Wall', 'Trifurcation Phase II Training Wall', 'Trifurcation Phase III Training Wall'],
+        'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
+        'pwl': {'key': "South Arm"}
+      },
+      'FRNA': {
+        'Form': {'Title': "Fraser - North Arm", 'Order': 0, 'Key': "FRNA"},
+        'Names': ['North Arm', 'North Arm Jetty'],
+        'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
+        'pwl': {'key': "North Arm"}
+      },
+      'FRUR': {
+        'Form': {'Title': "Fraser - Mission to Hope", 'Order': 3, 'Key': "FRUR"},
+        'Names': ['Big & Middle Eddy Groyne'],
+        'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
+      },
+	  'HR': {
+      'Form':{'Title': "Harrison River, BC",'Order':4, 'Key': "HR"},
+      'Names': ['Harrison Mills (CPR Bridge) Shearboom', 'Harrison River Dykes V, R, W, P', 'Harrison Hwy No.7 Bridge Shearboom', 'Harrison Rapids Shearboom'],
       'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
-    },
+	  }
+    }
+  }  
+  
+  /*,
+    
     'SQ': {
       'Form':{'Title': "Squamish, BC",'Order':7},
       'Names': {'Main': ['Mamquam Blind Channel'],'Secondary': [],'Other': []},
       'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
     },
-    'PMV': {
-      'Form':{'Title': "Port of Metro Vancouver",'Order':8},
-      'Names': {'Main': [],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-    },
+    
     'FPORT': {
       'Form':{'Title': "Fraser Surrey Docks",'Order':9},
       'Names': {'Main': [],'Secondary': [],'Other': []},
       'Coords':{'Lat':{'min':6305047,'max':6308238},'Lon':{'min':-13684111,'max':-13680844}}
-    }
+    }*/
   },
 
   avaPages:{
@@ -198,7 +260,11 @@ incl_ava_defs={
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
-          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+          {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker',value:function(){
+			var now = new Date();
+			var strDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
+            return strDate;
+          }}},
           {tag:'div',child:[
             {tag:'strong',child:['River Discharge @ Hope:']},
             {tag:'br'},
@@ -831,7 +897,7 @@ incl_ava_defs={
             }
           }},
           {tag:'label',attr:{htmlFor:'channel'},child:['Channel:']},
-          {tag:'select',attr:{id:'channel'},ref:{tag:'option',values:[{value:"Main",'select':true},{value:'Secondary'},{value:'Other'}]}},
+          {tag:'select',attr:{id:'channel'}},
           {tag:'label',attr:{htmlFor:'location'},child:['Location:']},
           {tag:'select',attr:{id:'location'}},
           {tag:'label',attr:{htmlFor:'type'},child:['Type:']},

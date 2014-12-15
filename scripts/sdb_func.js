@@ -15,12 +15,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // Fill Form Parameters
 
       // Load and fill location drop down
-      $('#sdb_waterway, #channel').change(avaIFaceJS.sdb_func.fillLocation);
+      $('#channel').change(avaIFaceJS.sdb_func.fillLocation);
+	  
+	  $('#sdb_waterway').change(avaIFaceJS.sdb_func.fillChannel);
 
       // Colour Tiles when location field changes
       $('#location').change(function () {
         avaIFaceJS.sdb_func.tile = " at " + $(this).val();
-        return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#sdb_waterway').val(), $(this).val());
+        return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#channel').val(), $(this).val()); //originally $('#sdb_waterway').val()
       });
 
       // Colour and resize map extents when waterway field changes
@@ -31,18 +33,27 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.mapJS.sdb_func.setExtents($(this).val());
         return $('#map').css("min-height", "400px");
       });
+	  
+	  $('#channel').change(function () {
+        avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
+        avaIFaceJS.sdb_func.tile = "";
+        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
+        avaIFaceJS.mapJS.sdb_func.setChannelExtents( $('#sdb_waterway').val() , $(this).val() ); // Broken?
+        return $('#map').css("min-height", "400px");
+      });
 
       // Submit form
       $("#submit").click(function () {
-        var ww = $('#sdb_waterway').val();
+        var ww = $('#channel').val();
         return avaIFaceJS.sdb_func.getSurveyDrawings({
           river: ww,
           drawingType: $('#type').val(),
           channel: ww,
           location: avaIFaceJS.sdb_func.tile,
-          channelType: $('#channel').val()
+          channelType: "Main"
         });
       });
+	  
       // Print page to printer
       $("#print").click(function () {
         return window.print();
@@ -51,14 +62,24 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       mapElem.load(function () {
         $('#sdb_waterway').change();
       });
-      return avaIFaceJS.sdb_func.fillLocation();
+	  
+	  return avaIFaceJS.sdb_func.fillChannel();
     },
 
     fillLocation: function () {
       $('#location option').remove();
       $('#location').append('<option></option>');
-      return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Names'][$('#channel').val()], function () {
+      return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function () {
         return $('#location').append("<option>" + this + "</option>");
+      });
+    },
+	
+	fillChannel: function () {
+	  $('#location option').remove();
+      $('#channel option').remove();
+      $('#channel').append('<option></option>');
+      return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'], function () {
+        return $('#channel').append("<option value='" + this.Form.Key + "'>" + this.Form.Title + "</option>");
       });
     },
 
@@ -165,7 +186,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
 
       // Sets extents of map
-      avaMapJS.sdb_func.setExtents("FRSA");
+      avaMapJS.sdb_func.setExtents("FR");
     },
 
     /*** Page-specific functions ***/
@@ -181,6 +202,19 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
       avaMapJS.sdb_func.refreshTiles(waterway, "");
     },
+	
+	setChannelExtents: function (waterway, channel) {
+      if (!channel || !waterway) {
+        return;
+      }  
+      var obj = incl_ava_defs.locDefs[waterway]['Sections'][channel].Coords;
+      try {
+        avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
+      } catch (err) {
+      }
+      avaMapJS.sdb_func.refreshTiles(channel, "");
+    },
+	
 
     tileUnselect: function(tile){
       if(tile.feature.data.location==avaMapJS.sdb_func.curLocation) {

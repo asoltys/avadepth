@@ -242,3 +242,11 @@ a#toggleLink,summary#ref_map_link{
 .page-break {
     clear: both;
 }
+
+.cal-header {
+	margin-bottom:0px !important;
+}
+
+.cal-cnt {
+	margin-bottom:0px !important;
+}

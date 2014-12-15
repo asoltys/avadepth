@@ -298,12 +298,12 @@ avaIFaceJS = {
       // create trigger on window resize
       $(window).unbind('resize').resize(function(){
         var hgt=$('#wb-core').width()*8.5/15;
-        if (hgt<200){hgt=200}
+        if (hgt<680){hgt=680}
         $('#embed_map').height(hgt);
       });
       $('#ref_map_link').click(function(){
         var hgt=$('#wb-core').width()*8.5/15;
-        if (hgt<200){hgt=200}
+        if (hgt<680){hgt=680}
         $('#embed_map').height(hgt);
       })
     }
@@ -377,11 +377,11 @@ avaIFaceJS = {
     }
     $('#map').trigger('resize');
     var embedMap = $('#embed_map');
-    embedMap.height(embedMap.width()*8.5/15);
+	var hgt=$('#wb-core').width()*8.5/15;
+    if (hgt<680){hgt=680}
+    embedMap.height(hgt);
     var ifr = $('iframe');
     var mp = $('#ava_map_ref',ifr.contents());
-    var hgt=embedMap.width()*8.5/15;
-    if (hgt<200){hgt=200}
     mp.height(hgt);
     (this.isMapOpen()?$('#map_wrapper').className="print_show":$('#map_wrapper').className="print_hide");
   },

@@ -77,7 +77,7 @@ avaMapJS={
       avaMapJS.map.removeLayer(avaMapJS.curLayer);
       avaMapJS.curLayer = "";
     }
-    avaMapJS.setExtents("FRSA");
+    avaMapJS.setExtents("FR");
     window['avaMapJS'][avaMapJS.currentPage+'_func'].init();
   },
 

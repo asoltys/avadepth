@@ -19,7 +19,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       // Style Elements
       $(".yaxislabel").css("color", "black");
-
+	  
       /** Event Handlers **/
       // Retrieve content on Date change
       $('#date').change(function () {
@@ -29,7 +29,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 //          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
-      }).datepicker().datepicker('setDate', new Date()).change();
+      })/*.datepicker().datepicker('setDate', new Date()).change()*/;
 
       // Check "Selected" radio on "Selected" value combo selection
       $('#selected_discharge').change(function () {

@@ -1079,5 +1079,29 @@
 </outerBoundaryIs>
 </Polygon>
 </Placemark>
+
+
+
+<Placemark id="kml_60">
+<name>TEST60</name>
+<description></description>
+<ExtendedData>
+<SchemaData schemaUrl="tiles">
+<SimpleData name="Name">TEST60</SimpleData>
+<SimpleData name="waterway">FRSA</SimpleData>
+<SimpleData name="location">Annieville - New West</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Polygon>
+<outerBoundaryIs>
+<LinearRing>
+<coordinates>-123.302551146325,49.0781703155849,0 -123.238849655583,49.078264543987,0 -123.238769189369,49.0593227434121,0 -123.302433764312,49.0592286104652,0 -123.302551146325,49.0781703155849,0 </coordinates>
+</LinearRing>
+</outerBoundaryIs>
+</Polygon>
+</Placemark>
+
+
+
 </Folder>
 </Document></kml>
