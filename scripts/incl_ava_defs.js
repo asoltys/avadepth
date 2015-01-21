@@ -36,30 +36,45 @@ incl_ava_defs={
     'Coords':{'Lat':{'min':6287000,'max':6352933},'Lon':{'min':-13730400,'max':-13510906}},
     'Sections':{
       'FRMA': {
-        'Form': {'Title': "Fraser - Main Arm", 'Order': 2, 'Key': "FRMA"},
+        'Form': {'Title': "Main Arm", 'Order': 4, 'Key': "FRMA"},
         'Names': ['FRMA Overview (km 35 to 61)', 'FRMA Overview (km 60 to 85)', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
         'pwl': {'key': 'Main Arm'}
       },
+	  'FRMA-SC': {
+        'Form': {'Title': "Main Arm - Side Channels", 'Order': 5, 'Key': "FRMA-SA"},
+        'Names': ['FRMA Overview (km 35 to 61)', 'FRMA Overview (km 60 to 85)', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island'],
+        'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}}
+      },
       'FRSA': {
-        'Form': {'Title': "Fraser - South Arm", 'Order': 0, 'Key': "FRSA"},
-        'Names': ['FRSA Overview (km -1 to 36)', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West'],
+        'Form': {'Title': "South Arm", 'Order': 0, 'Key': "FRSA"},
+        'Names': ['Channel Overview', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
         'pwl': {'key': "South Arm"}
       },
+      'FRSA-SC': {
+        'Form': {'Title': "South Arm - Side Channels", 'Order': 1, 'Key': "FRSA-SC"},
+        'Names': ['LadnerSeaReach','Cannery Channel','Burr Landing Channel','Annacis Channel','Gundersen Slough'],
+        'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
+      },
       'FRNA': {
-        'Form': {'Title': "Fraser - North Arm", 'Order': 1, 'Key': "FRNA"},
+        'Form': {'Title': "North Arm", 'Order': 2, 'Key': "FRNA"},
         'Names': ['FRNA Overview (km -1 to 31)', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island & Mitchell Island North', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
         'pwl': {'key': "North Arm"}
       },
+      'FRNA-SC': {
+        'Form': {'Title': "North Arm - Side Channels", 'Order': 3, 'Key': "FRNA-SC"},
+        'Names': ['FRNA Overview (km -1 to 31)', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island & Mitchell Island North', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
+        'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}}
+      },
       'FRUR': {
-        'Form': {'Title': "Fraser - Mission to Hope", 'Order': 3, 'Key': "FRUR"},
+        'Form': {'Title': "Mission to Hope", 'Order': 6, 'Key': "FRUR"},
         'Names': ['All Locations (km 85 to km 105)'],
         'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
       },
 	  'PR': {
-      'Form':{'Title': "Fraser - Pitt River",'Order':4, 'Key': "PR"},
+      'Form':{'Title': "Pitt River",'Order': 7, 'Key': "PR"},
       'Names': ['PR Overview (km 46 to 76)', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],
       'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
 	  }
