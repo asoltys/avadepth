@@ -37,13 +37,13 @@ incl_ava_defs={
     'Sections':{
       'FRMA': {
         'Form': {'Title': "Main Arm", 'Order': 4, 'Key': "FRMA"},
-        'Names': ['FRMA Overview (km 35 to 61)', 'FRMA Overview (km 60 to 85)', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island'],
+        'Names': ['Channel Overview', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach (includes Langley Bar)', 'Plumper Reach', 'Matsqui Island'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
         'pwl': {'key': 'Main Arm'}
       },
 	  'FRMA-SC': {
         'Form': {'Title': "Main Arm - Side Channels", 'Order': 5, 'Key': "FRMA-SA"},
-        'Names': ['FRMA Overview (km 35 to 61)', 'FRMA Overview (km 60 to 85)', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Langley Bar', 'Plumper Reach', 'Matsqui Island'],
+        'Names': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}}
       },
       'FRSA': {
@@ -54,18 +54,18 @@ incl_ava_defs={
       },
       'FRSA-SC': {
         'Form': {'Title': "South Arm - Side Channels", 'Order': 1, 'Key': "FRSA-SC"},
-        'Names': ['LadnerSeaReach','Cannery Channel','Burr Landing Channel','Annacis Channel','Gundersen Slough'],
+        'Names': ['Ladner Sea Reach','Cannery Channel','Burr Landing Channel','Annacis Channel','Gundersen Slough'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
       },
       'FRNA': {
         'Form': {'Title': "North Arm", 'Order': 2, 'Key': "FRNA"},
-        'Names': ['FRNA Overview (km -1 to 31)', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island & Mitchell Island North', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
+        'Names': ['Channel Overview', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
         'pwl': {'key': "North Arm"}
       },
       'FRNA-SC': {
         'Form': {'Title': "North Arm - Side Channels", 'Order': 3, 'Key': "FRNA-SC"},
-        'Names': ['FRNA Overview (km -1 to 31)', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island & Mitchell Island North', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
+        'Names': ['Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}}
       },
       'FRUR': {
@@ -75,7 +75,7 @@ incl_ava_defs={
       },
 	  'PR': {
       'Form':{'Title': "Pitt River",'Order': 7, 'Key': "PR"},
-      'Names': ['PR Overview (km 46 to 76)', 'Chatham Reach', 'Fox Reach', 'Grant Channel'],
+      'Names': ['Channel Overview'],
       'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
 	  }
     }

@@ -851,7 +851,7 @@
 <ExtendedData>
 <SchemaData schemaUrl="tiles">
 <SimpleData name="Name">SAS00</SimpleData>
-<SimpleData name="waterway">FRSA</SimpleData>
+<SimpleData name="waterway">FRSA-SC</SimpleData>
 <SimpleData name="location">Ladner Sea Reach</SimpleData>
 </SchemaData>
 </ExtendedData>
