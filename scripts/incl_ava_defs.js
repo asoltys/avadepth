@@ -42,30 +42,30 @@ incl_ava_defs={
         'pwl': {'key': 'Main Arm'}
       },
 	  'FRMA-SC': {
-        'Form': {'Title': "Main Arm - Side Channels", 'Order': 5, 'Key': "FRMA-SA"},
+        'Form': {'Title': "Main Arm - Side Channels", 'Order': 5, 'Key': "FRMA-SC"},
         'Names': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}}
       },
       'FRSA': {
         'Form': {'Title': "South Arm", 'Order': 0, 'Key': "FRSA"},
-        'Names': ['Channel Overview', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West'],
+        'Names': ['Channel Overview', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West, Fraser Surrey Docks'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
         'pwl': {'key': "South Arm"}
       },
       'FRSA-SC': {
         'Form': {'Title': "South Arm - Side Channels", 'Order': 1, 'Key': "FRSA-SC"},
-        'Names': ['Ladner Sea Reach','Cannery Channel','Burr Landing Channel','Annacis Channel','Gundersen Slough'],
+        'Names': ['LadnerSeaReach','Cannery Channel','Burr Landing Channel','Gundersen Slough','Annacis Channel','Shoal Point - New West'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
       },
       'FRNA': {
         'Form': {'Title': "North Arm", 'Order': 2, 'Key': "FRNA"},
-        'Names': ['Channel Overview', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island', 'Morey Channel'],
+        'Names': ['Channel Overview', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
         'pwl': {'key': "North Arm"}
       },
       'FRNA-SC': {
         'Form': {'Title': "North Arm - Side Channels", 'Order': 3, 'Key': "FRNA-SC"},
-        'Names': ['Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
+        'Names': ['Morey Channe','Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}}
       },
       'FRUR': {
@@ -88,9 +88,29 @@ incl_ava_defs={
     'Sections':{ 
       'PMV': {
       'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
-      'Names': ['1st Narrows', '2nd Narrows', 'Port Moody', 'Burrard Inlet - Terminals'],
+      'Names': ['1st Narrows', '2nd Narrows', 'Port Moody'],
       'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-      } 
+      },
+	  'PMV-FC': {
+      'Form':{'Title': "False Creek",'Order': 1, 'Key': "PMV-FC"},
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  },
+	  'PMV-BI': {
+      'Form':{'Title': "Burrard Inlet - Terminals",'Order': 2, 'Key': "PMV-BI"},
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  },
+	  'PMV-DP': {
+      'Form':{'Title': "Delta Port",'Order': 3, 'Key': "PMV-DP"},
+      'Names': ['Approach Channel & Berths'],
+      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  },
+	  'PMV-FSD': {
+      'Form':{'Title': "Fraser Surrey Docks",'Order': 4, 'Key': "PMV-FSD"},
+      'Names': ['Approach Channel & Berths'],
+      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  }
     }
   },
   
@@ -98,15 +118,52 @@ incl_ava_defs={
     'Form':{'Title':'Coastal Waterways, BC', 'Order':2},
     'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}},
     'Sections':{ 
-      'SQ': {
-      'Form':{'Title': "Squamish, BC",'Order':7, 'Key': "SQ"},
+      'CWC1': {
+      'Form':{'Title': "Campbell River",'Order':0, 'Key': "CWC1"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC2': {
+      'Form':{'Title': "Courtenay River",'Order':1, 'Key': "CWC2"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC3': {
+      'Form':{'Title': "Squamish",'Order':2, 'Key': "CWC3"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC4': {
+      'Form':{'Title': "Nanaimo",'Order':3, 'Key': "CWC4"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC5': {
+      'Form':{'Title': "Prince Rupert",'Order':4, 'Key': "CWC5"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC6': {
+      'Form':{'Title': "Tofino Harbour",'Order':5, 'Key': "CWC6"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC7': {
+      'Form':{'Title': "French Creek",'Order':6, 'Key': "CWC7"},
+      'Names': ['Mamquam Blind Channel'],
+      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      },
+	   'CWC8': {
+      'Form':{'Title': "Queen Charlotte Islands",'Order':7, 'Key': "CWC8"},
       'Names': ['Mamquam Blind Channel'],
       'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
       }
     }
-  },
+  }
+  /*
   
-  "WCS": {
+  ,
+    "WCS": {
     'Form':{'Title':'Waterway Control Structures', 'Order':3},
     'Coords':{'Lat':{'min':6287000,'max':6352933},'Lon':{'min':-13730400,'max':-13510906}},
     'Sections':{
@@ -140,8 +197,7 @@ incl_ava_defs={
 	  }
     }
   }  
-  
-  /*,
+  ,
     
     'SQ': {
       'Form':{'Title': "Squamish, BC",'Order':7},
