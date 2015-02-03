@@ -222,7 +222,7 @@
 <SchemaData schemaUrl="tiles">
 <SimpleData name="Name">MA6069</SimpleData>
 <SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Russel Reach</SimpleData>
+<SimpleData name="location">Russel ReachX</SimpleData>
 </SchemaData>
 </ExtendedData>
 <Polygon>
@@ -1101,7 +1101,24 @@
 </Polygon>
 </Placemark>
 
-
+<Placemark id="kml_61">
+<name>CWC8</name>
+<description></description>
+<ExtendedData>
+<SchemaData schemaUrl="tiles">
+<SimpleData name="Name">CWC8</SimpleData>
+<SimpleData name="waterway">CWC</SimpleData>
+<SimpleData name="location">Mamquam Blind Channel</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Polygon>
+<outerBoundaryIs>
+<LinearRing>
+<coordinates>-132.382866281,53.078797310,0 -131.961596228,53.111539398,0 -131.987694609,53.235579585,0 -132.410148172,53.202690455,0 </coordinates>
+</LinearRing>
+</outerBoundaryIs>
+</Polygon>
+</Placemark>
 
 </Folder>
 </Document></kml>
