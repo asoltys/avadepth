@@ -949,6 +949,7 @@ incl_ava_defs={
     },
     'sdb':{
       'title_e':"Survey Drawings",
+      'title_f':"Dessins d'arpentage",
       'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,

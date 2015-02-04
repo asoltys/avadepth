@@ -335,7 +335,11 @@ avaIFaceJS = {
     var pg_entry = incl_ava_defs.avaPages[avaIFaceJS.currentPage];
 
     // Set Title
-    $('#ava_map_ttl').text(pg_entry.title_e);
+	if(window.location.href.indexOf("fra") > -1) {
+		$('#ava_map_ttl').text(pg_entry.title_f);
+		} else {
+		$('#ava_map_ttl').text(pg_entry.title_f);
+    }
 
     // Page Form Parameters
     avaIFaceJS.paramWindow.hasAnimate=pg_entry.hasAnimate;
