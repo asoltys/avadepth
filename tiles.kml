@@ -222,7 +222,7 @@
 <SchemaData schemaUrl="tiles">
 <SimpleData name="Name">MA6069</SimpleData>
 <SimpleData name="waterway">FRMA</SimpleData>
-<SimpleData name="location">Russel ReachX</SimpleData>
+<SimpleData name="location">Russel Reach Test</SimpleData>
 </SchemaData>
 </ExtendedData>
 <Polygon>

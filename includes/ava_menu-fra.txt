@@ -8,7 +8,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="span-2">
 <section>
 <ul>
-<li><a href="/theory-theorie-eng.html">Contexte et théorie d'utilisation</a></li>
+<li><a href="/theory-theorie-fra.html">Contexte et théorie d'utilisation</a></li>
 </ul>
 </section>
 </div>

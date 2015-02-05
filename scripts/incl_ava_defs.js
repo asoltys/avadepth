@@ -37,7 +37,7 @@ incl_ava_defs={
     'Sections':{
       'FRMA': {
         'Form': {'Title': "Main Arm", 'Order': 4, 'Key': "FRMA"},
-        'Names': ['Channel Overview', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel ReachX', 'Plumper Reach', 'Matsqui Island'],
+        'Names': ['Channel Overview', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach Test', 'Plumper Reach', 'Matsqui Island'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
         'pwl': {'key': 'Main Arm'}
       },
@@ -215,6 +215,7 @@ incl_ava_defs={
   avaPages:{
     'acv':{
       'title_e': "Animated Currents and Velocities",
+      'title_f': "Animation et vélocités du courant",
       'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':true,
@@ -323,6 +324,7 @@ incl_ava_defs={
     },
     'dd': {
       'title_e': "Available Depth Report",
+      'title_f': "Rapport sur les profondeurs disponibles",
       'mapInitState':false,
       'hasParameters':true,
       'hasAnimate':false,
@@ -500,6 +502,7 @@ incl_ava_defs={
     },
     'tw':{
       'title_e':"Transit Window Report",
+      'title_f':"Fenêtre de circulation",
       'mapInitState':false,
       'hasParameters':true,
       'hasAnimate':false,
@@ -674,6 +677,7 @@ incl_ava_defs={
     },
     'pwl':{
       'title_e':"Predicted Water Levels & Velocities",
+      'title_f':"Vélocités et niveaux prévus de l’eau",
       'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
@@ -792,6 +796,7 @@ incl_ava_defs={
     },
     'frh':{
       'title_e':"Fraser River Hydrograph",
+      'title_f':"Hydrographie du fleuve Fraser",
       'mapInitState':false,
       'hasParameters':true,
       'hasAnimate':false,
@@ -827,7 +832,8 @@ incl_ava_defs={
       ]
     },
     'ccc':{
-      'title_e':"Current Channel Conditions - Fraser River - South Arm",
+      'title_e':"Current Channel Conditions for Fraser River South Arm",
+      'title_f':"Conditions actuelles du chenal – bras sud du fleuve Fraser",
       'mapInitState':false,
       'hasParameters':false,
       'hasAnimate':false,

@@ -336,9 +336,11 @@ avaIFaceJS = {
 
     // Set Title
 	if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	show the French title
 		$('#ava_map_ttl').text(pg_entry.title_f);
 		} else {
-		$('#ava_map_ttl').text(pg_entry.title_f);
+		//If url does not contain 'fra' show the English title
+		$('#ava_map_ttl').text(pg_entry.title_e);
     }
 
     // Page Form Parameters
