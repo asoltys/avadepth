@@ -248,9 +248,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     checkTileRefresh: function (feat) {
       var temp;
       if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != "Channel") {
-	    console.log(feat.data.location + " -- " + avaMapJS.sdb_func.curLocation) 
         temp = feat.data.location == avaMapJS.sdb_func.curLocation;
-		console.log("temp = " + temp)
+		console.log(temp + " " + feat.data.location + " - " + avaMapJS.sdb_func.curLocation) 
       } else {
         temp = true;
       }

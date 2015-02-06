@@ -155,7 +155,7 @@
         <name>NA6069</name>
         <description/>
         <waterway>FRMA</waterway>
-        <location>Russel Reach</location>
+        <location>Russel Reach Test</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
