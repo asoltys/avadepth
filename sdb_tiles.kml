@@ -285,7 +285,7 @@
         <name>UR001</name>
         <description/>
         <waterway>FRUR</waterway>
-        <location>Mission to Hope</location>
+        <location>All Locations (km 85 to km 105)</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -310,7 +310,7 @@
     <Placemark id="kml_24">
         <name>NA1307</name>
         <description/>
-        <waterway>FRNA</waterway>
+        <waterway>FRNA-SC</waterway>
         <location>Morey Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -802,7 +802,87 @@
         </Polygon>
     </Placemark>
 	
+	<Placemark id="kml_62">
+        <name>NA_103</name>
+        <description/>
+        <waterway>FRNA-SC</waterway>
+        <location>Cowards Cove</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
 	
+	<Placemark id="kml_63">
+        <name>NA0709</name>
+        <description/>
+        <waterway>FRNA-SC</waterway>
+        <location>MacDonald Slough</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.177535462103,49.2240696241809,0 -123.183727091982,49.2083310701228,0 -123.211424241106,49.2125018631934,0 -123.205096635118,49.2285829121875,0 -123.177535462103,49.2240696241809,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+    <Placemark id="kml_64">
+        <name>NA0913</name>
+        <description/>
+        <waterway>FRNA-SC</waterway>
+        <location>Deering Channel</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.183727091982,49.2083310701228,0 -123.177535462103,49.2240696241809,0 -123.136225611264,49.2062327821414,0 -123.136178714802,49.1919565193552,0 -123.149918476,49.1919461827791,0 -123.183727091982,49.2083310701228,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_65">
+        <name>NA2529</name>
+        <description/>
+        <waterway>FRNA-SC</waterway>
+        <location>Tree Island</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.93445777087,49.187720556267,0 -122.986280319597,49.1735937281137,0 -122.986659626774,49.1903871902232,0 -122.94681773272,49.2012689274029,0 -122.93445777087,49.187720556267,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>	
+	<Placemark id="kml_66">
+        <name>NA_103</name>
+        <description/>
+        <waterway>FRNA-SC</waterway>
+        <location>Point Grey Scow Moorage</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+	<Placemark id="kml_37">
+        <name>FRPR00</name>
+        <description/>
+        <waterway>PR</waterway>
+        <location>Channel Overview</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.67624001935,49.2936488209371,0 -122.695957415681,49.3214599267925,0 -122.639200401364,49.3561055441857,0 -122.613794810752,49.3571704611141,0 -122.611970702022,49.341223481414,0 -122.628436839924,49.3405910733686,0 -122.666283358677,49.3176312273252,0 -122.649679166027,49.2941876161944,0 -122.649429248598,49.2888784758333,0 -122.67624001935,49.2936488209371,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
 </Document>
 </kml>
 

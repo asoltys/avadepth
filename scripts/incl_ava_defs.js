@@ -65,7 +65,7 @@ incl_ava_defs={
       },
       'FRNA-SC': {
         'Form': {'Title': "North Arm - Side Channels", 'Order': 3, 'Key': "FRNA-SC"},
-        'Names': ['Morey Channe','Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
+        'Names': ['Morey Channel', 'Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}}
       },
       'FRUR': {
