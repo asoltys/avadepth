@@ -249,7 +249,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var temp;
       if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != "Channel") {
         temp = feat.data.location == avaMapJS.sdb_func.curLocation;
-		console.log(temp + " " + feat.data.location + " - " + avaMapJS.sdb_func.curLocation) 
+		//console.log(temp + " " + feat.data.location + " - " + avaMapJS.sdb_func.curLocation) 
       } else {
         temp = true;
       }

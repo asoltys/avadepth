@@ -37,7 +37,7 @@ incl_ava_defs={
     'Sections':{
       'FRMA': {
         'Form': {'Title': "Main Arm", 'Order': 4, 'Key': "FRMA"},
-        'Names': ['Channel Overview', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach Test', 'Plumper Reach', 'Matsqui Island'],
+        'Names': ['Channel Overview', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Plumper Reach', 'Matsqui Island'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
         'pwl': {'key': 'Main Arm'}
       },
@@ -48,13 +48,13 @@ incl_ava_defs={
       },
       'FRSA': {
         'Form': {'Title': "South Arm", 'Order': 0, 'Key': "FRSA"},
-        'Names': ['Channel Overview', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New  West, Fraser Surrey Docks'],
+        'Names': ['Channel Overview', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New West', 'Fraser Surrey Docks'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
         'pwl': {'key': "South Arm"}
       },
       'FRSA-SC': {
         'Form': {'Title': "South Arm - Side Channels", 'Order': 1, 'Key': "FRSA-SC"},
-        'Names': ['LadnerSeaReach','Cannery Channel','Burr Landing Channel','Gundersen Slough','Annacis Channel','Shoal Point - New West'],
+        'Names': ['Ladner Sea Reach','Cannery Channel','Burr Landing Channel','Gundersen Slough','Annacis Channel','Shoal Point - New West'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
       },
       'FRNA': {
