@@ -94,69 +94,69 @@ incl_ava_defs={
 	  'PMV-FC': {
       'Form':{'Title': "False Creek",'Order': 1, 'Key': "PMV-FC"},
       'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
 	  },
 	  'PMV-BI': {
       'Form':{'Title': "Burrard Inlet - Terminals",'Order': 2, 'Key': "PMV-BI"},
       'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
 	  },
 	  'PMV-DP': {
       'Form':{'Title': "Delta Port",'Order': 3, 'Key': "PMV-DP"},
       'Names': ['Approach Channel & Berths'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
 	  },
 	  'PMV-FSD': {
       'Form':{'Title': "Fraser Surrey Docks",'Order': 4, 'Key': "PMV-FSD"},
       'Names': ['Approach Channel & Berths'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+	  'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
 	  }
     }
   },
   
   "CWC": {
     'Form':{'Title':'Coastal Waterways, BC', 'Order':2},
-    'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}},
+    'Coords':{'Lat':{'min':6197437,'max':7470050},'Lon':{'min':-15055722,'max':-12980383}},
     'Sections':{ 
       'CWC1': {
       'Form':{'Title': "Campbell River",'Order':0, 'Key': "CWC1"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6448024,'max':6457036},'Lon':{'min':-13948839,'max':-13939513}}
       },
 	   'CWC2': {
       'Form':{'Title': "Courtenay River",'Order':1, 'Key': "CWC2"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6386746,'max':6394750},'Lon':{'min':-13918066,'max':-13902404}}
       },
 	   'CWC3': {
       'Form':{'Title': "Squamish",'Order':2, 'Key': "CWC3"},
-      'Names': ['Mamquam Blind Channel'],
+      'Names': ['All Locations'],
       'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
       },
 	   'CWC4': {
       'Form':{'Title': "Nanaimo",'Order':3, 'Key': "CWC4"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6303897,'max':6311533},'Lon':{'min':-13802610,'max':-13791932}}
       },
 	   'CWC5': {
       'Form':{'Title': "Prince Rupert",'Order':4, 'Key': "CWC5"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':7194359,'max':7240989},'Lon':{'min':-14539724,'max':-14494798}}
       },
 	   'CWC6': {
       'Form':{'Title': "Tofino Harbour",'Order':5, 'Key': "CWC6"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6266871,'max':6304123},'Lon':{'min':-14019334,'max':-13963303}}
       },
 	   'CWC7': {
       'Form':{'Title': "French Creek",'Order':6, 'Key': "CWC7"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6329755,'max':6341821},'Lon':{'min':-13856419,'max':-13835752}}
       },
 	   'CWC8': {
       'Form':{'Title': "Queen Charlotte Islands",'Order':7, 'Key': "CWC8"},
-      'Names': ['Mamquam Blind Channel'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+      'Names': ['All Locations'],
+      'Coords':{'Lat':{'min':6978612,'max':7082344},'Lon':{'min':-14760436,'max':-14677682}}
       }
     }
   }

@@ -11,12 +11,12 @@
     <Placemark id="kml_1">
         <name>BR4650</name>
         <description/>
-        <waterway>BR</waterway>
-        <location>Campbell River</location>
+        <waterway>CWC1</waterway>
+        <location>All Locations</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
-                    <coordinates>-125.27531638558,50.0582768104985,0 -125.243700340586,50.0588925450269,0 -125.242551674539,50.0342581560501,0 -125.274151567433,50.0336429555742,0 -125.27531638558,50.0582768104985,0 </coordinates>
+                    <coordinates>-125.274167555,50.033648340,0 -125.242567658,50.034263545,0 -125.243716331,50.058897934,0 -125.275332380,50.058282196,0 </coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
@@ -24,12 +24,12 @@
     <Placemark id="kml_2">
         <name>CR01</name>
         <description/>
-        <waterway>CR</waterway>
-        <location>Courtenay River</location>
+        <waterway>CWC2</waterway>
+        <location>All Locations</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
-                    <coordinates>-124.979305099358,49.6843346601236,0 -124.983411046304,49.6805981627152,0 -124.983808993899,49.680233692183,0 -124.991358365629,49.6837256946744,0 -124.986853132011,49.687826178195,0 -124.979305099358,49.6843346601236,0 </coordinates>
+                    <coordinates>-124.986868978,49.687831585,0 -124.991374211,49.683731101,0 -124.974198938,49.678641687,0 -124.957799764,49.672846964,0 -124.944726662,49.663654840,0 -124.938521733,49.658945289,0 -124.934014226,49.663043759,0 -124.940219260,49.667753547,0 -124.953291097,49.676947736,0 -124.969692697,49.682741518,0 </coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
@@ -463,45 +463,6 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-    <Placemark id="kml_36">
-        <name>PR4657</name>
-        <description/>
-        <waterway>PR</waterway>
-        <location>Chatham Reach</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.791023512993,49.2287154203121,0 -122.726239590037,49.2629450762621,0 -122.711607116132,49.2858156854744,0 -122.67624001935,49.2936488209371,0 -122.649429248598,49.2888784758333,0 -122.649223338817,49.2845034240788,0 -122.696035264874,49.2743981731859,0 -122.706070251611,49.2530526975481,0 -122.752367855358,49.2285424557534,0 -122.791023512993,49.2287154203121,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_37">
-        <name>PR5767</name>
-        <description/>
-        <waterway>PR</waterway>
-        <location>Fox Reach</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.67624001935,49.2936488209371,0 -122.695957415681,49.3214599267925,0 -122.639200401364,49.3561055441857,0 -122.613794810752,49.3571704611141,0 -122.611970702022,49.341223481414,0 -122.628436839924,49.3405910733686,0 -122.666283358677,49.3176312273252,0 -122.649679166027,49.2941876161944,0 -122.649429248598,49.2888784758333,0 -122.67624001935,49.2936488209371,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_38">
-        <name>PR6776</name>
-        <description/>
-        <waterway>PR</waterway>
-        <location>Grant Channel</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.613794810752,49.3571704611141,0 -122.592977729532,49.3579666468092,0 -122.567544048987,49.4124974428011,0 -122.544120520227,49.4078005536278,0 -122.574937290403,49.3426371785181,0 -122.611970702022,49.341223481414,0 -122.613794810752,49.3571704611141,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
     <Placemark id="kml_39">
         <name>SA0105</name>
         <description/>
@@ -714,7 +675,7 @@
         <name>PMV01</name>
         <description/>
         <waterway>PMV</waterway>
-        <location>Burrard Inlet - First Narrows</location>
+        <location>1st Narrows</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -726,7 +687,7 @@
     <Placemark id="kml_56">
         <name>PMV02</name>
         <waterway>PMV</waterway>
-        <location>Burrard Inlet - Second Narrows</location>
+        <location>2nd Narrows</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -738,7 +699,7 @@
     <Placemark id="kml_57">
         <name>PMV03</name>
         <waterway>PMV</waterway>
-        <location>Burrard Inlet - Port Moody</location>
+        <location>Port Moody</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -762,7 +723,7 @@
     <Placemark id="kml_59">
         <name>PMV20</name>
         <description/>
-        <waterway>PMV</waterway>
+        <waterway>PMV-DP</waterway>
         <location>Delta Port</location>
         <Polygon>
             <outerBoundaryIs>
@@ -870,7 +831,7 @@
         </Polygon>
     </Placemark>
 	
-	<Placemark id="kml_37">
+	<Placemark id="kml_67">
         <name>FRPR00</name>
         <description/>
         <waterway>PR</waterway>
@@ -883,6 +844,142 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
+	
+	 <Placemark id="kml_68">
+        <name>PMV</name>
+        <description/>
+        <waterway>PMV-FC</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.150253191526,49.2981654009088,0 -123.150323038606,49.3211272402878,0 -123.106458311658,49.32117596839,0 -123.106408846058,49.2982140897837,0 -123.150253191526,49.2981654009088,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+	 <Placemark id="kml_69">
+        <name>PMV</name>
+        <description/>
+        <waterway>PMV-BI</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.150253191526,49.2981654009088,0 -123.150323038606,49.3211272402878,0 -123.106458311658,49.32117596839,0 -123.106408846058,49.2982140897837,0 -123.150253191526,49.2981654009088,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	<Placemark id="kml_70">
+        <name>PMV21</name>
+        <waterway>PMV-FSD</waterway>
+        <location>Fraser Surrey Docks</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.912917034887,49.1938864772615,0 -122.907646635544,49.1923995648227,0 -122.919176946265,49.1748391193361,0 -122.924445827617,49.1763255085264,0 -122.912917034887,49.1938864772615,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	 <Placemark id="kml_71">
+        <name>SA1927</name>
+        <description/>
+        <waterway>FRSA</waterway>
+        <location>Gravesend Reach</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.05980777372,49.1196887232751,0 -123.076876181497,49.1321581472958,0 -123.041720186938,49.15784484856,0 -122.976810970774,49.1625443441036,0 -122.973144515895,49.1461508857745,0 -123.029902545395,49.1422365598809,0 -123.05980777372,49.1196887232751,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>	 
+	<Placemark id="kml_72">
+        <name>SA1927</name>
+        <description/>
+        <waterway>CWC3</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.141584716,49.702640375,0 -123.148019882,49.705039291,0 -123.157961325,49.694263160,0 -123.171293042,49.678100701,0 -123.164860293,49.675703064,0 -123.151527097,49.691864791,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>	
+	<Placemark id="kml_73">
+        <name>SA1927</name>
+        <description/>
+        <waterway>CWC4</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.935315915,49.159434737,0 -123.905924977,49.159669070,0 -123.906146430,49.171805685,0 -123.917523252,49.171715849,0 -123.921366717,49.178401437,0 -123.935724690,49.178227252,0 -123.946523831,49.195505869,0 -123.955359255,49.189688387,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	<Placemark id="kml_74">
+        <name>SA1927</name>
+        <description/>
+        <waterway>CWC5</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-130.480687763,54.177566841,0 -130.164882718,54.196868646,0 -130.191677793,54.350246140,0 -130.508637352,54.330835739,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+	<Placemark id="kml_75">
+        <name>SA1927</name>
+        <description/>
+        <waterway>CWC6</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-125.988503972,49.088300726,0 -125.797184539,49.093099308,0 -125.802894207,49.194358652,0 -125.994602790,49.189543015,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+	<Placemark id="kml_76">
+        <name>SA1927</name>
+        <description/>
+        <waterway>CWC7</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-124.408226898,49.345727407,0 -124.345408823,49.346475776,0 -124.346009404,49.368484206,0 -124.408855499,49.367735260 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+	<Placemark id="kml_77">
+        <name>SA1927</name>
+        <description/>
+        <waterway>CWC8</waterway>
+        <location>All Locations</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-132.382866281,53.078797310,0 -131.961596228,53.111539398,0 -131.987694609,53.235579585,0 -132.410148172,53.202690455,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+	
+	
 </Document>
 </kml>
 
