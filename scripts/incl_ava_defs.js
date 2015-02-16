@@ -136,7 +136,7 @@ incl_ava_defs={
 	   'CWC4': {
       'Form':{'Title': "Nanaimo",'Order':3, 'Key': "CWC4"},
       'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6303897,'max':6311533},'Lon':{'min':-13802610,'max':-13791932}}
+      'Coords':{'Lat':{'min':6300184,'max':6310614},'Lon':{'min':-13801517,'max':-13790703}}
       },
 	   'CWC5': {
       'Form':{'Title': "Prince Rupert",'Order':4, 'Key': "CWC5"},
@@ -146,7 +146,7 @@ incl_ava_defs={
 	   'CWC6': {
       'Form':{'Title': "Tofino Harbour",'Order':5, 'Key': "CWC6"},
       'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6266871,'max':6304123},'Lon':{'min':-14019334,'max':-13963303}}
+      'Coords':{'Lat':{'min':6264828,'max':6309876},'Lon':{'min':-14040703,'max':-13969259}}
       },
 	   'CWC7': {
       'Form':{'Title': "French Creek",'Order':6, 'Key': "CWC7"},
