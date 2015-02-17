@@ -74,7 +74,7 @@ incl_ava_defs={
         'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
       },
 	  'FRPR': {
-      'Form':{'Title': "Pitt River",'Order': 7, 'Key': "PR"},
+      'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
       'Names': ['Channel Overview'],
       'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
 	  }
@@ -103,12 +103,12 @@ incl_ava_defs={
 	  },
 	  'PMV-DP': {
       'Form':{'Title': "Delta Port",'Order': 3, 'Key': "PMV-DP"},
-      'Names': ['Approach Channel & Berths'],
+      'Names': ['Approach Channel and Berths'],
 	  'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
 	  },
 	  'PMV-FSD': {
       'Form':{'Title': "Fraser Surrey Docks",'Order': 4, 'Key': "PMV-FSD"},
-      'Names': ['Approach Channel & Berths'],
+      'Names': ['Approach Channel and Berths'],
 	  'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
 	  }
     }

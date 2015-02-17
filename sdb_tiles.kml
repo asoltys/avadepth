@@ -555,7 +555,7 @@
         <name>PMV20</name>
         <description/>
         <waterway>PMV-DP</waterway>
-        <location>Approach Channel & Berths</location>
+        <location>Approach Channel and Berths</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -706,7 +706,7 @@
 	<Placemark id="kml_70">
         <name>PMV21duplicate</name>
         <waterway>PMV-FSD</waterway>
-        <location>Approach Channel & Berths</location>
+        <location>Approach Channel and Berths</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -727,7 +727,7 @@
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
-    </Placemark>	 
+    </Placemark>	
 	<Placemark id="kml_72">
         <name>SQ0105</name>
         <description/>
@@ -740,7 +740,7 @@
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
-    </Placemark>	
+    </Placemark>		
 	<Placemark id="kml_73">
         <name>NAN01</name>
         <description/>
