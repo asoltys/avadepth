@@ -22,7 +22,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_2">
-        <name>CR01</name>
+        <name>CR0107</name>
         <description/>
         <waterway>CWC2</waterway>
         <location>All Locations</location>
@@ -126,7 +126,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_16">
-        <name>MAS</name>
+        <name>MAS00</name>
         <description/>
         <waterway>FRMA-SC</waterway>
         <location>Sapperton Channel</location>
@@ -139,7 +139,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_17">
-        <name>MAS</name>
+        <name>MAS00duplicate1</name>
         <description/>
         <waterway>FRMA-SC</waterway>
         <location>Essondale Channel</location>
@@ -152,7 +152,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_18">
-        <name>MAS</name>
+        <name>MA4447duplicate</name>
         <description/>
         <waterway>FRMA-SC</waterway>
         <location>Douglas Island North</location>
@@ -165,7 +165,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_19">
-        <name>MAS</name>
+        <name>MAS00duplicate2</name>
         <description/>
         <waterway>FRMA-SC</waterway>
         <location>Parsons Channel</location>
@@ -178,7 +178,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_20">
-        <name>MAS</name>
+        <name>MAS00duplicate3</name>
         <description/>
         <waterway>FRMA-SC</waterway>
         <location>Bedford Channel</location>
@@ -191,7 +191,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_21">
-        <name>MAS</name>
+        <name>MAS00duplicate4</name>
         <description/>
         <waterway>FRMA-SC</waterway>
         <location>Enterprise Channel</location>
@@ -204,7 +204,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_22">
-        <name>UR001</name>
+        <name>UR000</name>
         <description/>
         <waterway>FRUR</waterway>
         <location>All Locations (km 85 to km 105)</location>
@@ -307,19 +307,6 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-    <Placemark id="kml_30">
-        <name>NAS1419</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Mitchell Island North</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.058711058222,49.2034926545616,0 -123.123569709421,49.2034414766738,0 -123.123558384492,49.206230267074,0 -123.123572077294,49.2117247604395,0 -123.058720721195,49.211653005936,0 -123.058711058222,49.2034926545616,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
     <Placemark id="kml_31">
         <name>NA1921</name>
         <description/>
@@ -368,19 +355,6 @@
             <outerBoundaryIs>
                 <LinearRing>
                     <coordinates>-123.123569709421,49.2034414766738,0 -123.058711058222,49.2034926545616,0 -123.058702023771,49.1958597403259,0 -123.123600443994,49.1958714388174,0 -123.123569709421,49.2034414766738,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_35">
-        <name>NAN01</name>
-        <description/>
-        <waterway>NAN</waterway>
-        <location>Nanaimo Harbour</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.955343702209,49.1896828787416,0 -123.946508278901,49.1955003597134,0 -123.935709143568,49.1782217425434,0 -123.92135117259,49.1783959253034,0 -123.917507710511,49.1717103377823,0 -123.906130889998,49.1718001720523,0 -123.905909440522,49.1596635574301,0 -123.93530037411,49.1594292276618,0 -123.955343702209,49.1896828787416,0 </coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
@@ -451,7 +425,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_44">
-        <name>SA1927</name>
+        <name>SA1927duplicate</name>
         <description/>
         <waterway>FRSA-SC</waterway>
         <location>Burr Landing Channel</location>
@@ -516,7 +490,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_49">
-        <name>SAS2636</name>
+        <name>SAS2636duplicate2</name>
         <description/>
         <waterway>FRSA-SC</waterway>
         <location>Annacis Channel</location>
@@ -581,7 +555,7 @@
         <name>PMV20</name>
         <description/>
         <waterway>PMV-DP</waterway>
-        <location>Delta Port</location>
+        <location>Approach Channel & Berths</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -607,7 +581,7 @@
     </Placemark>
 	
 	<Placemark id="kml_61">
-        <name>SAS2636</name>
+        <name>SAS2636duplicate1</name>
         <description/>
         <waterway>FRSA-SC</waterway>
         <location>Shoal Point - New West</location>
@@ -621,7 +595,7 @@
     </Placemark>
 	
 	<Placemark id="kml_62">
-        <name>NA_103</name>
+        <name>NA_103duplicate1</name>
         <description/>
         <waterway>FRNA-SC</waterway>
         <location>Cowards Cove</location>
@@ -635,7 +609,7 @@
     </Placemark>
 	
 	<Placemark id="kml_63">
-        <name>NA0709</name>
+        <name>NA0709duplicate</name>
         <description/>
         <waterway>FRNA-SC</waterway>
         <location>MacDonald Slough</location>
@@ -649,7 +623,7 @@
     </Placemark>
 	
     <Placemark id="kml_64">
-        <name>NA0913</name>
+        <name>NA0913duplicate</name>
         <description/>
         <waterway>FRNA-SC</waterway>
         <location>Deering Channel</location>
@@ -662,7 +636,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_65">
-        <name>NA2529</name>
+        <name>NA2529duplicate</name>
         <description/>
         <waterway>FRNA-SC</waterway>
         <location>Tree Island</location>
@@ -675,7 +649,7 @@
         </Polygon>
     </Placemark>	
 	<Placemark id="kml_66">
-        <name>NA_103</name>
+        <name>NA_103duplicate2</name>
         <description/>
         <waterway>FRNA-SC</waterway>
         <location>Point Grey Scow Moorage</location>
@@ -691,7 +665,7 @@
 	<Placemark id="kml_67">
         <name>FRPR00</name>
         <description/>
-        <waterway>PR</waterway>
+        <waterway>FRPR</waterway>
         <location>Channel Overview</location>
         <Polygon>
             <outerBoundaryIs>
@@ -703,7 +677,7 @@
     </Placemark>
 	
 	 <Placemark id="kml_68">
-        <name>PMV</name>
+        <name>PMV04</name>
         <description/>
         <waterway>PMV-FC</waterway>
         <location>All Locations</location>
@@ -717,7 +691,7 @@
     </Placemark>
 	
 	 <Placemark id="kml_69">
-        <name>PMV</name>
+        <name>PMV05</name>
         <description/>
         <waterway>PMV-BI</waterway>
         <location>All Locations</location>
@@ -730,9 +704,9 @@
         </Polygon>
     </Placemark>
 	<Placemark id="kml_70">
-        <name>PMV21</name>
+        <name>PMV21duplicate</name>
         <waterway>PMV-FSD</waterway>
-        <location>Fraser Surrey Docks</location>
+        <location>Approach Channel & Berths</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -755,7 +729,7 @@
         </Polygon>
     </Placemark>	 
 	<Placemark id="kml_72">
-        <name>SA1927</name>
+        <name>SQ0105</name>
         <description/>
         <waterway>CWC3</waterway>
         <location>All Locations</location>
@@ -768,7 +742,7 @@
         </Polygon>
     </Placemark>	
 	<Placemark id="kml_73">
-        <name>SA1927</name>
+        <name>NAN01</name>
         <description/>
         <waterway>CWC4</waterway>
         <location>All Locations</location>
@@ -781,7 +755,7 @@
         </Polygon>
     </Placemark>
 	<Placemark id="kml_74">
-        <name>SA1927</name>
+        <name>PR001</name>
         <description/>
         <waterway>CWC5</waterway>
         <location>All Locations</location>
@@ -795,7 +769,7 @@
     </Placemark>
 	
 	<Placemark id="kml_75">
-        <name>SA1927</name>
+        <name>TOF01</name>
         <description/>
         <waterway>CWC6</waterway>
         <location>All Locations</location>
@@ -809,7 +783,7 @@
     </Placemark>
 	
 	<Placemark id="kml_76">
-        <name>SA1927</name>
+        <name>FCR01</name>
         <description/>
         <waterway>CWC7</waterway>
         <location>All Locations</location>
@@ -823,7 +797,7 @@
     </Placemark>
 	
 	<Placemark id="kml_77">
-        <name>SA1927</name>
+        <name>QCI001</name>
         <description/>
         <waterway>CWC8</waterway>
         <location>All Locations</location>

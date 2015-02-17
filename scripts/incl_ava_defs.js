@@ -73,7 +73,7 @@ incl_ava_defs={
         'Names': ['All Locations (km 85 to km 105)'],
         'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
       },
-	  'PR': {
+	  'FRPR': {
       'Form':{'Title': "Pitt River",'Order': 7, 'Key': "PR"},
       'Names': ['Channel Overview'],
       'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
