@@ -21,7 +21,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       // Colour Tiles when location field changes
       $('#location').change(function () {
-        avaIFaceJS.sdb_func.tile = " at " + $(this).val();
+        avaIFaceJS.sdb_func.tile = $(this).val();
+		avaIFaceJS.sdb_func.loc_title = " at "+avaIFaceJS.sdb_func.tile;
         return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#channel').val(), $(this).val()); //originally $('#sdb_waterway').val()
       });
 
@@ -29,7 +30,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#sdb_waterway').change(function () {
         avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
         avaIFaceJS.sdb_func.tile = "";
-        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
+        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
         avaIFaceJS.mapJS.sdb_func.setExtents($(this).val());
         return $('#map').css("min-height", "400px");
       });
@@ -37,7 +38,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  $('#channel').change(function () {
         avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
         avaIFaceJS.sdb_func.tile = "";
-        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
+        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
         avaIFaceJS.mapJS.sdb_func.setChannelExtents( $('#sdb_waterway').val() , $(this).val() ); // Broken?
         return $('#map').css("min-height", "400px");
       });
@@ -50,7 +51,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           drawingType: $('#type').val(),
           channel: ww,
           location: avaIFaceJS.sdb_func.tile,
-          channelType: "Main"
+          channelType: ""
         });
       });
 	  
@@ -247,7 +248,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     // checkTileRefresh: checks if the tile's attributes match the currently selected values
     checkTileRefresh: function (feat) {
       var temp;
-      if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != "Channel") {
+      if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != "Channel Overview") {
         temp = feat.data.location == avaMapJS.sdb_func.curLocation;
 		//console.log(temp + " " + feat.data.location + " - " + avaMapJS.sdb_func.curLocation) 
       } else {
