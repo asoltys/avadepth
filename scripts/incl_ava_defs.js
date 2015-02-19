@@ -75,7 +75,7 @@ incl_ava_defs={
       },
 	  'FRPR': {
       'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
-      'Names': ['Channel Overview'],
+      'Names': ['All Locations'],
       'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
 	  }
     }
