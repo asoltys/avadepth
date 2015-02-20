@@ -250,3 +250,7 @@ a#toggleLink,summary#ref_map_link{
 .cal-cnt {
 	margin-bottom:0px !important;
 }
+
+#report_tbl td {
+	text-align:left;
+}
