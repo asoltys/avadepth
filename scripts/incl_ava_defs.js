@@ -995,11 +995,11 @@ incl_ava_defs={
       'reportBody':
         [
           {tag:'section',attr:{'style':'padding:20px;'},child:[
-            {tag:'table',attr:{id:'report_tbl',className:"styled width-80 align-left"},child:[
+            {tag:'table',attr:{id:'report_tbl',className:"styled width-80"},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[
                   {tag:'th',child:['Date']},
-                  {tag:'th',attr:{style:'text-align:left'},child:['Drawing']},
+                  {tag:'th',child:['Drawing']},
                   {tag:'th',child:['Location (km)']},
                   {tag:'th',child:['Type']},
                   {tag:'th',child:['Km Start']},
