@@ -30,7 +30,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#sdb_waterway').change(function () {
         avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
         avaIFaceJS.sdb_func.tile = "";
-        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
+        if(window.location.href.indexOf("fra") > -1) {
+//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
+		}
         avaIFaceJS.mapJS.sdb_func.setExtents($(this).val());
         return $('#map').css("min-height", "400px");
       });
@@ -38,7 +44,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  $('#channel').change(function () {
         avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
         avaIFaceJS.sdb_func.tile = "";
-        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
+        if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
+		}
         avaIFaceJS.mapJS.sdb_func.setChannelExtents( $('#sdb_waterway').val() , $(this).val() ); // Broken?
         return $('#map').css("min-height", "400px");
       });
@@ -92,7 +104,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType),"includes/test.json"), function (data) {
       //return $.getJSON(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
       //return $.getJSON(("includes/test.json"), function (data) {
-        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
+        if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
+		}
         $('#report_tbl tbody').html('');
         $.each(data, function () {
           var addRow;
@@ -126,7 +144,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       return $.getJSON(getAPI("api/get_tile.asp?tile=" + jsonStuff.tile, "api/get_tile/" + jsonStuff.tile + ".json"), function (data) {
       //return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
       //return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function (data) {
-        avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
+        if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
+}
         $('#report_tbl tbody').html('');
         $.each(data.drawings, function () {
           return drawingRows += "<tr>" + ("<td>" + (moment(this.yyyy_mm_dd, "DD/MM/YYYY").format("YYYY-MM-DD")) + "</td>") + ("<td><a href='/Data/dwf/" + this.Svy_Filename + ".dwf' target='_blank'>" + this.Svy_Filename + "</a></td>") + ("<td>" + this.Location + "</td>") + ("<td>" + this.Type + "</td>") + ("<td>" + this.KMstart + "</td>") + ("<td>" + this.KMend + "</td>") + "</tr>";
@@ -248,12 +272,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     // checkTileRefresh: checks if the tile's attributes match the currently selected values
     checkTileRefresh: function (feat) {
       var temp;
-      if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != "Channel Overview") {
-        temp = feat.data.location == avaMapJS.sdb_func.curLocation;
-		//console.log(temp + " " + feat.data.location + " - " + avaMapJS.sdb_func.curLocation) 
-      } else {
-        temp = true;
-      }
+	  if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != " - Aperçu du chenal") {
+			temp = feat.data.location == avaMapJS.sdb_func.curLocation;
+			} else {
+			temp = true;
+			}
+		} else {
+		//If url does not contain 'fra' use
+		if (avaMapJS.sdb_func.curLocation.length > 0 && avaMapJS.sdb_func.curLocation != "Channel Overview") {
+			temp = feat.data.location == avaMapJS.sdb_func.curLocation;
+			} else {
+			temp = true;
+			}
+	  }
       return temp && (feat.data.waterway == avaMapJS.sdb_func.curWaterway)
     }
   };

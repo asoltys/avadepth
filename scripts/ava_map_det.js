@@ -8,7 +8,13 @@ var loadJS=function(scriptName,callback) {
 avaMapDetJS={
   // Initializes the map interface. Loads layers and map components.
   initMap:function() {
-    loadJS('incl_ava_defs',function(){});
+	if(window.location.href.indexOf("fra") > -1) {
+	//If url contains 'fra'	use 
+		loadJS('incl_ava_defs-fra',function(){});
+	} else {
+	//If url does not contain 'fra' use
+		loadJS('incl_ava_defs-eng',function(){});
+	}
     avaMapDetJS.curLayer="";
     avaMapDetJS.curControls=[];
 

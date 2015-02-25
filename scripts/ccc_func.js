@@ -6,12 +6,27 @@ if(!(typeof avaIFaceJS === 'undefined')) {
   avaIFaceJS.ccc_func = {
     detailIsInnerChannel:true,
     init: function () {
-      avaIFaceJS.reportWindow.title1 = "Fraser River Navigation Channel Condition Report";
+		if(window.location.href.indexOf("fra") > -1) {
+			//If url contains 'fra'	use 
+			avaIFaceJS.reportWindow.title1 = "Conditions actuelles du chenal – bras sud du fleuve Fraser";
+		} else {
+		//If url does not contain 'fra' use
+			avaIFaceJS.reportWindow.title1 = "Fraser River Navigation Channel Condition Report";
+		}
       var date, month, weekday, table;
       date = new Date();
-      weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      avaIFaceJS.reportWindow.title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
+	  if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		weekday = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+		month = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+		avaIFaceJS.reportWindow.title2 = weekday[date.getDay()] + " " + (date.getDate()) + " " + month[date.getMonth()] + " " + (date.getFullYear());
+		} else {
+		//If url does not contain 'fra' use
+		weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		avaIFaceJS.reportWindow.title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
+
+		}
       //$('#static-date').text("For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()));
       //TODO: Replace next line for production
       return $.getJSON(getAPI(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), "api/depths/soundings.json"), function(data) {

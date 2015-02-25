@@ -266,7 +266,13 @@ avaIFaceJS = {
     addForm: function(content){
       if(!avaIFaceJS.paramWindow.isInit){avaIFaceJS.paramWindow.init()}
       var pgParam = $.extend([], content);
-      pgParam.push({tag: 'button', attr: {id: 'submit', type: 'button', className: 'button button-accent', name: 'submit'}, 'child': ['Apply']});
+	  if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		pgParam.push({tag: 'button', attr: {id: 'submit', type: 'button', className: 'button button-accent', name: 'submit'}, 'child': ['Appliquer']});
+		} else {
+		//If url does not contain 'fra' use
+		pgParam.push({tag: 'button', attr: {id: 'submit', type: 'button', className: 'button button-accent', name: 'submit'}, 'child': ['Apply']});
+	  }
       if(avaIFaceJS.paramWindow.hasAnimate) {
         pgParam.push({tag:'button',attr:{id:'replay',className: "button button-accent",style:'display:none',name:'replay'},child:['Replay']});
       }
@@ -441,4 +447,10 @@ avaIFaceJS = {
     return res;
   }
 };
-loadJS('incl_ava_defs', function(){});
+if(window.location.href.indexOf("fra") > -1) {
+	//If url contains 'fra'	use 
+	loadJS('incl_ava_defs-fra', function(){});
+	} else {
+	//If url does not contain 'fra' use
+		loadJS('incl_ava_defs-eng', function(){});
+}
