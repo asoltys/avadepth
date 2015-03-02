@@ -224,7 +224,7 @@ incl_ava_defs={
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
-          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+          {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
           {tag:'br'},
           {tag:'strong',child:["River Discharge @ Hope:"]},
@@ -514,7 +514,7 @@ incl_ava_defs={
             {tag:'label',attr:{htmlFor:'date'},child:[
               {tag:'strong',child:["Date:"]}
             ]},
-            {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+            {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker'}},
             {tag:'div',child:[
               {tag:'strong',child:["River Discharge:"]},
               {tag:'br'},
@@ -805,7 +805,7 @@ incl_ava_defs={
       'formParam':[
         {tag:'div',child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
-          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
+          {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
           {tag:'label',attr:{htmlFor:'period'},child:["Period:"]},
           {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:3,value:"12 Months"},{key:2,value:'6 Months'},{key:1,value:'2 Months'},{key:0,value:'1 Month'}]}},
