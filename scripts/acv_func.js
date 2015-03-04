@@ -34,7 +34,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('input[name=discharge]:checked').change();
           //avaIFaceJS.acv_func.update();
         });
-      }).datepicker().datepicker("setDate",new Date()).change();
+      })/*.datepicker().datepicker("setDate",new Date()).change()*/;
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
         if ($('input[name="discharge"].checked').val() === "Selected") {
