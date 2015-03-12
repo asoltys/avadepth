@@ -231,31 +231,31 @@ incl_ava_defs={
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',value:'Actual'}},
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
-            "Actual (",
+            "Réel (",
             {tag:'span',attr:{id:'actual_discharge'}},
             "m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+          {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Choisi"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User Defined"]},
+          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["Défini par l’utilisateur"]},
           {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:60px'}},
           " m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
-          {tag:'label',attr:{htmlFor:'static_rd'},child:["Display Type:"]},
+          {tag:'label',attr:{htmlFor:'static_rd'},child:["Type d’affichage :"]},
           {tag:'input',attr:{type:'radio',name:'type',id:'static_rd',value:0}},
-          "Static Image",
+          "Image statique",
           {tag:'br'},
           {tag:'input',attr:{type:'radio',name:'type',id:'animated_rd',value:1}},
-          "Animated Series",
+          "Séries animées",
           {tag:'div',attr:{className:'clear'}},
           {tag:'div',attr:{className:'inline-block'},child:[
-            {tag:'label',attr:{htmlFor:'from'},child:["From:"]},
+            {tag:'label',attr:{htmlFor:'from'},child:["De :"]},
             {tag:'select',attr:{name:'from',id:'from'},ref:{tag:'option',values:function(){
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
@@ -282,7 +282,7 @@ incl_ava_defs={
           ]},
           {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'interval'},child:["Interval:"]},
+              {tag:'label',attr:{htmlFor:'interval'},child:["Intervalle :"]},
               {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
                 {key:4,value:'4 hr'},
                 {key:2,value:'2 hr'},
@@ -292,12 +292,12 @@ incl_ava_defs={
               ]}}
             ]}
           ]},
-          {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
+          {tag:'label',attr:{htmlFor:'legend_scale'},child:["Légende de la vélocité"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Interval 0.25ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 à 2 m/s (Intervalle 0,25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
-          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Interval 0.5ms)"]}
+          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 à 4 m/s (Intervalle 0,5 ms)"]}
         ]}
       ],
       'reportBody':[
@@ -332,14 +332,14 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
-          {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
+          {tag:'label',attr:{htmlFor:'date'},child:['Date :']},
           {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker',value:function(){
 			var now = new Date();
 			var strDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
             return strDate;
           }}},
           {tag:'div',child:[
-            {tag:'strong',child:['River Discharge @ Hope:']},
+            {tag:'strong',child:['Débit fluvial à Hope :']},
             {tag:'br'},
             {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',className:'rd_actual',value:'Actual'}},
             {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
@@ -363,7 +363,7 @@ incl_ava_defs={
         ]},
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'chainage'},child:[{tag:'strong',child:['Chaînage :']}]},
-          "1 to ",
+          "1 à ",
           {tag:'select',attr:{id:'chainage'},ref:{tag:'option',values:function(){
             var ref=[];
             for(var c=6;c<35;c++){
@@ -685,12 +685,12 @@ incl_ava_defs={
       'formParam':
         [
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'pwl_date'},child:['Date:']},
+            {tag:'label',attr:{htmlFor:'pwl_date'},child:['Date :']},
             {tag:'input',attr:{id:'pwl_date',type:'date',name:'pwl_date',className:'datepicker'}},
             {tag:'input',attr:{id:'alt-date',type:'hidden'}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'fraser_river'},child:['Fraser River:']},
+            {tag:'label',attr:{htmlFor:'fraser_river'},child:['Fleuve Fraser :']},
             {tag:'select',attr:{id:'fraser_river',name:'fraser_river'},
               ref:{
                 tag:'option',values:[
@@ -701,27 +701,27 @@ incl_ava_defs={
             },
             {tag:'input',attr:{type:'hidden',name:'pwl_waterway',id:'pwl_waterway',value:"0"}}
           ]},
-          {tag:'strong',child:['River Discharge @ Hope:']},
+          {tag:'strong',child:['Débit fluvial à Hope :']},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',className:'rd_actual',value:'Actual',disabled:'true'}},
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
-            "Actual (",
+            "Réel (",
             {tag:'span',attr:{id:'actual_discharge'}},
             "m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio','style':'font-weight:normal'},child:["Selected"]},
+          {tag:'label',attr:{htmlFor:'discharge_radio','style':'font-weight:normal'},child:["Choisi "]},
           {tag:'select',attr:{id:'selected_discharge'}},
           "m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User Defined']},
+          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['Défini par l’utilisateur ']},
           {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:5em'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'interval'},child:['Interval:']},
+            {tag:'label',attr:{htmlFor:'interval'},child:['Intervalle :']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
               {key:'15',value:'15 Minute'},
               {key:'30',value:'30 Minute'},
@@ -732,9 +732,9 @@ incl_ava_defs={
           {tag:'div',child:[
             {tag:'label',attr:{htmlFor:'report'},child:['Report:']},
             {tag:'input',attr:{id:'report',type:'radio',name:'report',checked:'checked',value:'0'}},
-            " Water Levels",
+            " Niveaux d’eau",
             {tag:'input',attr:{id:'report',type:'radio',name:'report',value:'1'}},
-            " Velocities"
+            " Vélocités"
           ]}
         ],
       'reportBody':
