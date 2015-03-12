@@ -983,7 +983,7 @@ incl_ava_defs={
             {tag:'select',attr:{id:'type',name:'type'},ref:{tag:'option',values:
               function() {
                 var res = [];
-                var oArr = ["", "Construction", "Annual", "Dredging", "Monitor", "Recon", "Investigation", "Structure", "Key Map", "Overview"];
+                var oArr = ["", "Composite", "Annual", "Monitor", "Recon", "Investigation", "Dredging", "Structure", "Photograph"];
                 for (var k in oArr) {
                   res.push({key: oArr[k], value: oArr[k]});
                 }
