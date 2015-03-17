@@ -14,7 +14,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     init: function () {
       // Set Report Title Header
-      avaIFaceJS.reportWindow.title1 = "Available Depth Report";
+      if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.title1 = "Rapport sur les profondeurs disponibles";
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.title1 = "Available Depth Report";
+	  }
       avaIFaceJS.reportWindow.title2 = "";
 
       // Style Elements
@@ -219,9 +225,19 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         })();
 
-        avaIFaceJS.reportWindow.title2 = "Fraser River - " + avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
-        avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-        avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+		if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.title2 = "Fleuve Fraser - " + avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
+		avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
+		avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.title2 = "Fraser River - " + avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
+		avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
+		avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+	  }
+        
+        
         avaIFaceJS.reportWindow.setTitle();
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.dd_func.createGraph(points);

@@ -415,10 +415,10 @@ incl_ava_defs={
             {tag:'table',attr:{id:'depths',style:"text-align:center"},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[
-                  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
-                  {tag:'th',child:["Chainage (km)"]},
-                  {tag:'th',child:["Available Depth (m)"]},
-                  {tag:'th',child:["Location of Control Point"]}
+                  {tag:'th',attr:{className:'verify'},child:["Heure (HNP)"]},
+                  {tag:'th',child:["Chaînage (km)"]},
+                  {tag:'th',child:["Profondeur disponible (m)"]},
+                  {tag:'th',child:["Emplacement"]}
                 ]}
               ]},
               {tag:'tbody'}
@@ -477,12 +477,12 @@ incl_ava_defs={
             {tag:'table',attr:{id:'verify',style:'text-align:center; table-layout: fixed; width: 600px;',className:'dataTable zebra-striped'},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[
-                  {tag:'th',child:['Location']},
-                  {tag:'th',child:['Design Grade']},
-                  {tag:'th',child:['Least Sounding']},
-                  {tag:'th',attr:{colspan:'2'},child:['Available Width']},
+                  {tag:'th',child:['Emplacement']},
+                  {tag:'th',child:['Pente d’origine']},
+                  {tag:'th',child:['Profondeur minimum sondée']},
+                  {tag:'th',attr:{colspan:'2'},child:['Largeur disponible']},
                   {tag:'th',child:['Tidal Aid']},
-                  {tag:'th',child:['Depth']}
+                  {tag:'th',child:['Profondeur']}
                 ]},
                 {tag:'tr',attr:{style:'background-color: #EEEEEE;'},child:[
                   {tag:'th',child:['(km)']},
