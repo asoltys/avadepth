@@ -292,6 +292,12 @@ incl_ava_defs={
               ]}}
             ]}
           ]},
+		   {tag:'div',child:[
+            {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
+              {tag:'label',attr:{htmlFor:'zone'},child:["Zone:"]},
+			  {tag:'input',attr:{type:'text',name:'zone',id:'zone',value:'',readonly:'readonly',style:'width:60px'}}
+            ]}
+          ]},
           {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
           {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Interval 0.25ms)"]},

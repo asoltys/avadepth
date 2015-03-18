@@ -244,6 +244,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     setZone:function(zone){
       avaIFaceJS.acv_func.selected_zone=zone;
+	  $("#zone").val(zone);
     }
   }
 } else if(!(typeof avaMapJS === 'undefined')) {
