@@ -124,11 +124,23 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.maxDepth));
         $('#cmp').val(0);
-        avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
+		if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.title1='Profondeur maximum pour la fenêtre de '+$('#window').val()+' heures';
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
+		}
       } else {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
         $('#cmp').val($('#depth').val());
-        avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+		if(window.location.href.indexOf("fra") > -1) {
+		//If url contains 'fra'	use 
+		avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+		} else {
+		//If url does not contain 'fra' use
+		avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+		}
       }
 
       // Parse Values for FlowRate and FlowType
