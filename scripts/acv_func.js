@@ -282,7 +282,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.acv_func.kml.events.on({'loadend':avaMapJS.acv_func.layerLoad,'featureselected':avaMapJS.acv_func.newZoneSelect});
 
       // Set Map Extents
-      avaMapJS.setExtents("FRSA");
+      avaMapJS.setExtents("VH");
     },
     newZoneSelect: function(feat){
       parent.avaIFaceJS.acv_func.setZone(parseInt(feat.feature.data.Zone));
