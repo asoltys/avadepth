@@ -554,7 +554,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapDetJS.pwl_func.HLFeat.unselectAll();
       var lRiver = avaMapDetJS.pwl_func.lookupRiver(mrkRiver);
       for(var f= 0;f<avaMapDetJS.pwl_func.kml.features.length;f++){
-        if(lRiver==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway && avaMapDetJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
+        if((lRiver.river==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway || lRiver.section==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway) && avaMapDetJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
           avaMapDetJS.pwl_func.HLFeat.select(avaMapDetJS.pwl_func.kml.features[f]);
           avaMapDetJS.pwl_func.kml.redraw();
           break;
