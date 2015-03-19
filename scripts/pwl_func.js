@@ -525,11 +525,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     lookupRiver: function(riverName){
-      for(var r in incl_ava_defs.locDefs){
-        var rivObj=incl_ava_defs.locDefs[r];
-        try{
-          if(rivObj.pwl.key==riverName){return r}
-        } catch(err){}
+      for(var r in incl_ava_defs.locDefs) {
+        for (var s in incl_ava_defs.locDefs[r].Sections) {
+          var rivObj = incl_ava_defs.locDefs[r][s];
+          try {
+            if (rivObj.pwl.key == riverName) {
+              return {river:r, section:s}
+            }
+          } catch (err) {}
+        }
       }
     },
 
@@ -564,7 +568,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return;
       }
       avaMapDetJS.pwl_func.refreshMarkers(river);
-      var obj = incl_ava_defs.locDefs[avaMapDetJS.pwl_func.curRiver].Coords;
+      var obj = incl_ava_defs.locDefs[avaMapDetJS.pwl_func.curRiver.river].Sections[avaMapDetJS.pwl_func.curRiver.section].Coords;
       try {
         avaMapDetJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
       } catch(err){}

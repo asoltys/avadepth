@@ -7,11 +7,11 @@ var padZero = function(num){
   return s.substr(s.length-2);
 };
 
-function getAPI(intURL, extURL){
-  if(document.URL.split("/")[2].split(":")[1] == 'localhost') {
-    return extURL;
-  } else {
+function getAPI(extURL, intURL){
+  if(document.URL.split("/")[2].split(":")[0] === "localhost") {
     return intURL;
+  } else {
+    return extURL;
   }
 }
 
@@ -41,7 +41,7 @@ incl_ava_defs={
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
         'pwl': {'key': 'Main Arm'}
       },
-	  'FRMA-SC': {
+	    'FRMA-SC': {
         'Form': {'Title': "Main Arm - Side Channels", 'Order': 5, 'Key': "FRMA-SC"},
         'Names': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}}
@@ -73,11 +73,11 @@ incl_ava_defs={
         'Names': ['All Locations (km 85 to km 105)'],
         'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
       },
-	  'FRPR': {
-      'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
-	  }
+      'FRPR': {
+        'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+      }
     }
   },
   
@@ -87,30 +87,30 @@ incl_ava_defs={
     'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}},
     'Sections':{ 
       'PMV': {
-      'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
-      'Names': ['1st Narrows', '2nd Narrows', 'Port Moody'],
+        'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
+        'Names': ['1st Narrows', '2nd Narrows', 'Port Moody'],
+        'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
+        },
+      'PMV-FC': {
+        'Form':{'Title': "False Creek",'Order': 1, 'Key': "PMV-FC"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
+      },
+      'PMV-BI': {
+        'Form':{'Title': "Burrard Inlet - Terminals",'Order': 2, 'Key': "PMV-BI"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
+      },
+      'PMV-DP': {
+        'Form':{'Title': "Delta Port",'Order': 3, 'Key': "PMV-DP"},
+        'Names': ['Approach Channel and Berths'],
       'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
       },
-	  'PMV-FC': {
-      'Form':{'Title': "False Creek",'Order': 1, 'Key': "PMV-FC"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-	  },
-	  'PMV-BI': {
-      'Form':{'Title': "Burrard Inlet - Terminals",'Order': 2, 'Key': "PMV-BI"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-	  },
-	  'PMV-DP': {
-      'Form':{'Title': "Delta Port",'Order': 3, 'Key': "PMV-DP"},
-      'Names': ['Approach Channel and Berths'],
-	  'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-	  },
-	  'PMV-FSD': {
-      'Form':{'Title': "Fraser Surrey Docks",'Order': 4, 'Key': "PMV-FSD"},
-      'Names': ['Approach Channel and Berths'],
-	  'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
-	  }
+      'PMV-FSD': {
+        'Form':{'Title': "Fraser Surrey Docks",'Order': 4, 'Key': "PMV-FSD"},
+        'Names': ['Approach Channel and Berths'],
+      'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
+      }
     }
   },
   
@@ -123,40 +123,40 @@ incl_ava_defs={
       'Names': ['All Locations'],
       'Coords':{'Lat':{'min':6448024,'max':6457036},'Lon':{'min':-13948839,'max':-13939513}}
       },
-	   'CWC2': {
-      'Form':{'Title': "Courtenay River",'Order':1, 'Key': "CWC2"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6386746,'max':6394750},'Lon':{'min':-13918066,'max':-13902404}}
-      },
-	   'CWC3': {
-      'Form':{'Title': "Squamish",'Order':2, 'Key': "CWC3"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
-      },
-	   'CWC4': {
-      'Form':{'Title': "Nanaimo",'Order':3, 'Key': "CWC4"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6300184,'max':6310614},'Lon':{'min':-13801517,'max':-13790703}}
-      },
-	   'CWC5': {
-      'Form':{'Title': "Prince Rupert",'Order':4, 'Key': "CWC5"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':7194359,'max':7240989},'Lon':{'min':-14539724,'max':-14494798}}
-      },
-	   'CWC6': {
-      'Form':{'Title': "Tofino Harbour",'Order':5, 'Key': "CWC6"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6264828,'max':6309876},'Lon':{'min':-14040703,'max':-13969259}}
-      },
-	   'CWC7': {
-      'Form':{'Title': "French Creek",'Order':6, 'Key': "CWC7"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6329755,'max':6341821},'Lon':{'min':-13856419,'max':-13835752}}
-      },
-	   'CWC8': {
-      'Form':{'Title': "Queen Charlotte Islands",'Order':7, 'Key': "CWC8"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6978612,'max':7082344},'Lon':{'min':-14760436,'max':-14677682}}
+       'CWC2': {
+        'Form':{'Title': "Courtenay River",'Order':1, 'Key': "CWC2"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6386746,'max':6394750},'Lon':{'min':-13918066,'max':-13902404}}
+        },
+       'CWC3': {
+        'Form':{'Title': "Squamish",'Order':2, 'Key': "CWC3"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
+        },
+       'CWC4': {
+        'Form':{'Title': "Nanaimo",'Order':3, 'Key': "CWC4"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6300184,'max':6310614},'Lon':{'min':-13801517,'max':-13790703}}
+        },
+       'CWC5': {
+        'Form':{'Title': "Prince Rupert",'Order':4, 'Key': "CWC5"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':7194359,'max':7240989},'Lon':{'min':-14539724,'max':-14494798}}
+        },
+       'CWC6': {
+        'Form':{'Title': "Tofino Harbour",'Order':5, 'Key': "CWC6"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6264828,'max':6309876},'Lon':{'min':-14040703,'max':-13969259}}
+        },
+       'CWC7': {
+        'Form':{'Title': "French Creek",'Order':6, 'Key': "CWC7"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6329755,'max':6341821},'Lon':{'min':-13856419,'max':-13835752}}
+        },
+       'CWC8': {
+        'Form':{'Title': "Queen Charlotte Islands",'Order':7, 'Key': "CWC8"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6978612,'max':7082344},'Lon':{'min':-14760436,'max':-14677682}}
       }
     }
   }
