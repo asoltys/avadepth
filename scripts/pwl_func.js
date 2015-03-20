@@ -398,7 +398,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
   avaMapJS.pwl_func= {
     init: function(){
-      avaMapJS.pwl_func.curRiver="";
+      avaMapJS.pwl_func.curRiver={obj:undefined,key:""};
 
       // KML Feature Styles and KML Layer
       mapStyle.callback_function=avaMapJS.pwl_func.checkMarker;
@@ -434,15 +434,36 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     // checkTileRefresh: checks if the tile's attributes match the currently selected values
     checkMarker: function(feat){
-      return feat.attributes.waterway == avaMapJS.pwl_func.curRiver;
+      return feat.attributes.waterway == avaMapJS.pwl_func.curRiver.key;
+    },
+
+    _hasRiver: function(rivObj, riverName){
+      try{
+        if (rivObj.pwl.key == riverName){
+          return True
+        } else {
+          return False
+        }
+      } catch (err){}
+      return False
     },
 
     lookupRiver: function(riverName){
-      for(var r in incl_ava_defs.locDefs){
-        var rivObj=incl_ava_defs.locDefs[r];
-        try{
-          if(rivObj.pwl.key==riverName){return r}
-        } catch(err){}
+      var sect="";
+      for(var r in incl_ava_defs.locDefs) {
+        if ('Sections' in incl_ava_defs[r]) {
+          for (var s in incl_ava_defs.locDefs[r].Sections) {
+            var rivObj = incl_ava_defs.locDefs[r].Sections[s];
+            if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
+              return {obj:rivObj,key:s}
+            }
+          }
+        } else {
+          var rivObj = incl_ava_defs.locDefs[r];
+          if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
+            return {obj:rivObj,key:r}
+          }
+        }
       }
     },
 
@@ -464,7 +485,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     setMarkerExtent: function(mrkKM,mrkRiver){
       avaMapJS.pwl_func.HLFeat.unselectAll();
       for(var f= 0;f<avaMapJS.pwl_func.kml.features.length;f++){
-        if(avaMapJS.pwl_func.lookupRiver(mrkRiver)==avaMapJS.pwl_func.kml.features[f].attributes.waterway && avaMapJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
+        if((lRiver.key==avaMapJS.pwl_func.kml.features[f].attributes.waterway || lRiver.key==avaMapJS.pwl_func.kml.features[f].attributes.waterway) && avaMapJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
           avaMapJS.pwl_func.HLFeat.select(avaMapJS.pwl_func.kml.features[f]);
           break;
         }
@@ -477,7 +498,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return;
       }
       avaMapJS.pwl_func.refreshMarkers(river);
-      var obj = incl_ava_defs.locDefs[avaMapJS.pwl_func.curRiver].Coords;
+      var obj = avaMapJS.pwl_func.curRiver.obj.Coords;
       try {
         avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
       } catch(err){}
@@ -486,7 +507,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 } else if (!(typeof avaMapDetJS === 'undefined')){
   avaMapDetJS.pwl_func= {
     init: function(){
-      avaMapDetJS.pwl_func.curRiver="";
+      avaMapDetJS.pwl_func.curRiver={obj:undefined,key:""};
 
       // KML Feature Styles and KML Layer
       mapStyle.callback_function=avaMapDetJS.pwl_func.checkMarker;
@@ -521,18 +542,35 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     // checkTileRefresh: checks if the tile's attributes match the currently selected values
     checkMarker: function(feat){
-      return feat.attributes.waterway == avaMapDetJS.pwl_func.curRiver;
+      return feat.attributes.waterway == avaMapDetJS.pwl_func.curRiver.key;
+    },
+
+    _hasRiver: function(rivObj, riverName){
+      try{
+        if (rivObj.pwl.key == riverName){
+          return True
+        } else {
+          return False
+        }
+      } catch (err){}
+      return False
     },
 
     lookupRiver: function(riverName){
+      var sect="";
       for(var r in incl_ava_defs.locDefs) {
-        for (var s in incl_ava_defs.locDefs[r].Sections) {
-          var rivObj = incl_ava_defs.locDefs[r][s];
-          try {
-            if (rivObj.pwl.key == riverName) {
-              return {river:r, section:s}
+        if ('Sections' in incl_ava_defs[r]) {
+          for (var s in incl_ava_defs.locDefs[r].Sections) {
+            var rivObj = incl_ava_defs.locDefs[r].Sections[s];
+            if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
+              return {obj:rivObj,key:s}
             }
-          } catch (err) {}
+          }
+        } else {
+          var rivObj = incl_ava_defs.locDefs[r];
+          if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
+            return {obj:rivObj,key:r}
+          }
         }
       }
     },
@@ -554,7 +592,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapDetJS.pwl_func.HLFeat.unselectAll();
       var lRiver = avaMapDetJS.pwl_func.lookupRiver(mrkRiver);
       for(var f= 0;f<avaMapDetJS.pwl_func.kml.features.length;f++){
-        if((lRiver.river==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway || lRiver.section==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway) && avaMapDetJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
+        if((lRiver.key==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway || lRiver.key==avaMapDetJS.pwl_func.kml.features[f].attributes.waterway) && avaMapDetJS.pwl_func.kml.features[f].attributes.KM==mrkKM){
           avaMapDetJS.pwl_func.HLFeat.select(avaMapDetJS.pwl_func.kml.features[f]);
           avaMapDetJS.pwl_func.kml.redraw();
           break;
@@ -568,7 +606,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return;
       }
       avaMapDetJS.pwl_func.refreshMarkers(river);
-      var obj = incl_ava_defs.locDefs[avaMapDetJS.pwl_func.curRiver.river].Sections[avaMapDetJS.pwl_func.curRiver.section].Coords;
+      var obj = avaMapDetJS.pwl_func.curRiver.obj.Coords;
       try {
         avaMapDetJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
       } catch(err){}
