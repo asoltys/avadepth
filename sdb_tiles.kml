@@ -128,7 +128,7 @@
     <Placemark id="kml_16">
         <name>MAS00</name>
         <description/>
-        <waterway>FRMA-SC</waterway>
+        <waterway>FRMA_SC</waterway>
         <location>Sapperton Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -141,7 +141,7 @@
     <Placemark id="kml_17">
         <name>MAS00</name>
         <description/>
-        <waterway>FRMA-SC</waterway>
+        <waterway>FRMA_SC</waterway>
         <location>Essondale Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -154,7 +154,7 @@
     <Placemark id="kml_18">
         <name>MA4447</name>
         <description/>
-        <waterway>FRMA-SC</waterway>
+        <waterway>FRMA_SC</waterway>
         <location>Douglas Island North</location>
         <Polygon>
             <outerBoundaryIs>
@@ -167,7 +167,7 @@
     <Placemark id="kml_19">
         <name>MAS00</name>
         <description/>
-        <waterway>FRMA-SC</waterway>
+        <waterway>FRMA_SC</waterway>
         <location>Parsons Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -180,7 +180,7 @@
     <Placemark id="kml_20">
         <name>MAS00</name>
         <description/>
-        <waterway>FRMA-SC</waterway>
+        <waterway>FRMA_SC</waterway>
         <location>Bedford Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -193,7 +193,7 @@
     <Placemark id="kml_21">
         <name>MAS00</name>
         <description/>
-        <waterway>FRMA-SC</waterway>
+        <waterway>FRMA_SC</waterway>
         <location>Enterprise Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -232,7 +232,7 @@
     <Placemark id="kml_24">
         <name>NA1307</name>
         <description/>
-        <waterway>FRNA-SC</waterway>
+        <waterway>FRNA_SC</waterway>
         <location>Morey Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -427,7 +427,7 @@
     <Placemark id="kml_44">
         <name>SA1927</name>
         <description/>
-        <waterway>FRSA-SC</waterway>
+        <waterway>FRSA_SC</waterway>
         <location>Burr Landing Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -466,7 +466,7 @@
     <Placemark id="kml_47">
         <name>SAS00</name>
         <description/>
-        <waterway>FRSA-SC</waterway>
+        <waterway>FRSA_SC</waterway>
         <location>Ladner Sea Reach</location>
         <Polygon>
             <outerBoundaryIs>
@@ -479,7 +479,7 @@
     <Placemark id="kml_48">
         <name>SAS0912</name>
         <description/>
-        <waterway>FRSA-SC</waterway>
+        <waterway>FRSA_SC</waterway>
         <location>Cannery Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -492,7 +492,7 @@
     <Placemark id="kml_49">
         <name>SAS2636</name>
         <description/>
-        <waterway>FRSA-SC</waterway>
+        <waterway>FRSA_SC</waterway>
         <location>Annacis Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -569,7 +569,7 @@
 	<Placemark id="kml_60">
         <name>SAS2636</name>
         <description/>
-        <waterway>FRSA-SC</waterway>
+        <waterway>FRSA_SC</waterway>
         <location>Gundersen Slough</location>
         <Polygon>
             <outerBoundaryIs>
@@ -583,7 +583,7 @@
 	<Placemark id="kml_61">
         <name>SAS2636</name>
         <description/>
-        <waterway>FRSA-SC</waterway>
+        <waterway>FRSA_SC</waterway>
         <location>Shoal Point - New West</location>
         <Polygon>
             <outerBoundaryIs>
@@ -597,7 +597,7 @@
 	<Placemark id="kml_62">
         <name>NA_103</name>
         <description/>
-        <waterway>FRNA-SC</waterway>
+        <waterway>FRNA_SC</waterway>
         <location>Cowards Cove</location>
         <Polygon>
             <outerBoundaryIs>
@@ -611,7 +611,7 @@
 	<Placemark id="kml_63">
         <name>NA0709</name>
         <description/>
-        <waterway>FRNA-SC</waterway>
+        <waterway>FRNA_SC</waterway>
         <location>MacDonald Slough</location>
         <Polygon>
             <outerBoundaryIs>
@@ -625,7 +625,7 @@
     <Placemark id="kml_64">
         <name>NA0913</name>
         <description/>
-        <waterway>FRNA-SC</waterway>
+        <waterway>FRNA_SC</waterway>
         <location>Deering Channel</location>
         <Polygon>
             <outerBoundaryIs>
@@ -638,7 +638,7 @@
     <Placemark id="kml_65">
         <name>NA2529</name>
         <description/>
-        <waterway>FRNA-SC</waterway>
+        <waterway>FRNA_SC</waterway>
         <location>Tree Island</location>
         <Polygon>
             <outerBoundaryIs>
@@ -651,7 +651,7 @@
 	<Placemark id="kml_66">
         <name>NA_103</name>
         <description/>
-        <waterway>FRNA-SC</waterway>
+        <waterway>FRNA_SC</waterway>
         <location>Point Grey Scow Moorage</location>
         <Polygon>
             <outerBoundaryIs>
