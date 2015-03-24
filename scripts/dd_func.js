@@ -19,7 +19,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		avaIFaceJS.reportWindow.title1 = "Rapport sur les profondeurs disponibles";
 		} else {
 		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.title1 = "Available Depth Report";
+		avaIFaceJS.reportWindow.title1 = "Available Depth Report for Fraser South Arm";
 	  }
       avaIFaceJS.reportWindow.title2 = "";
 

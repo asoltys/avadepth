@@ -328,7 +328,7 @@ incl_ava_defs={
       'reportDetail':[]
     },
     'dd': {
-      'title_e': "Available Depth Report",
+      'title_e': "Available Depth Report for Fraser South Arm",
       'title_f': "Rapport sur les profondeurs disponibles",
       'mapInitState':false,
       'hasParameters':true,
