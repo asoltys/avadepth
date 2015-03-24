@@ -7,11 +7,11 @@ var padZero = function(num){
   return s.substr(s.length-2);
 };
 
-function getAPI(intURL, extURL){
-  if(document.URL.split("/")[2].split(":")[1] == 'localhost') {
-    return extURL;
-  } else {
+function getAPI(extURL, intURL){
+  if(document.URL.split("/")[2].split(":")[0] === "localhost") {
     return intURL;
+  } else {
+    return extURL;
   }
 }
 
@@ -73,15 +73,14 @@ incl_ava_defs={
         'Names': ['All Locations (km 85 to km 105)'],
         'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
       },
-	  'FRPR': {
-      'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
-      'Names': ['All Locations'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
-	  }
+      'FRPR': {
+        'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
+        'Names': ['All Locations'],
+        'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
+      }
     }
   },
-  
-  
+
   "VH": {
     'Form':{'Title':'Vancouver Harbour, BC', 'Order':1},
     'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}},
