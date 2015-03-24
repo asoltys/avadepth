@@ -440,7 +440,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     _hasRiver: function(rivObj, riverName){
       try{
         if (rivObj.pwl.key == riverName){
-          return True
+          return true
         } else {
           return false
         }
@@ -465,6 +465,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         }
       }
+      return {obj:undefined, key:""}
     },
 
     refreshMarkers: function(riverName){
@@ -548,7 +549,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     _hasRiver: function(rivObj, riverName){
       try{
         if (rivObj.pwl.key == riverName){
-          return True
+          return true
         } else {
           return false
         }
@@ -557,17 +558,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     lookupRiver: function(riverName){
-      var sect="";
+      var rivObj;
       for(var r in incl_ava_defs.locDefs) {
         if ('Sections' in incl_ava_defs.locDefs[r]) {
           for (var s in incl_ava_defs.locDefs[r].Sections) {
-            var rivObj = incl_ava_defs.locDefs[r].Sections[s];
+            rivObj = incl_ava_defs.locDefs[r].Sections[s];
             if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
               return {obj:rivObj,key:s}
             }
           }
         } else {
-          var rivObj = incl_ava_defs.locDefs[r];
+          rivObj = incl_ava_defs.locDefs[r];
           if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
             return {obj:rivObj,key:r}
           }
