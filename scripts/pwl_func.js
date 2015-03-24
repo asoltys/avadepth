@@ -449,18 +449,18 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     lookupRiver: function(riverName){
-      var sect="";
+      var rivObj;
       for(var r in incl_ava_defs.locDefs) {
         if ('Sections' in incl_ava_defs.locDefs[r]) {
           for (var s in incl_ava_defs.locDefs[r].Sections) {
-            var rivObj = incl_ava_defs.locDefs[r].Sections[s];
-            if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
+            rivObj = incl_ava_defs.locDefs[r].Sections[s];
+            if (avaMapJS.pwl_func._hasRiver(rivObj, riverName)) {
               return {obj:rivObj,key:s}
             }
           }
         } else {
-          var rivObj = incl_ava_defs.locDefs[r];
-          if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
+          rivObj = incl_ava_defs.locDefs[r];
+          if (avaMapJS.pwl_func._hasRiver(rivObj, riverName)) {
             return {obj:rivObj,key:r}
           }
         }
