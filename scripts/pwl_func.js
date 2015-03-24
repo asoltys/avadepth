@@ -442,16 +442,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         if (rivObj.pwl.key == riverName){
           return True
         } else {
-          return False
+          return false
         }
       } catch (err){}
-      return False
+      return false
     },
 
     lookupRiver: function(riverName){
       var sect="";
       for(var r in incl_ava_defs.locDefs) {
-        if ('Sections' in incl_ava_defs[r]) {
+        if ('Sections' in incl_ava_defs.locDefs[r]) {
           for (var s in incl_ava_defs.locDefs[r].Sections) {
             var rivObj = incl_ava_defs.locDefs[r].Sections[s];
             if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
@@ -550,16 +550,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         if (rivObj.pwl.key == riverName){
           return True
         } else {
-          return False
+          return false
         }
       } catch (err){}
-      return False
+      return false
     },
 
     lookupRiver: function(riverName){
       var sect="";
       for(var r in incl_ava_defs.locDefs) {
-        if ('Sections' in incl_ava_defs[r]) {
+        if ('Sections' in incl_ava_defs.locDefs[r]) {
           for (var s in incl_ava_defs.locDefs[r].Sections) {
             var rivObj = incl_ava_defs.locDefs[r].Sections[s];
             if (avaMapDetJS.pwl_func._hasRiver(rivObj, riverName)) {
