@@ -110,14 +110,14 @@
       limit_text = (function() {
         switch (false) {
           case channel !== '0':
-            if ($("#lang").val() === "eng") {
+            if(window.location.href.indexOf("eng") > -1) {
               return "Inner Channel Limit";
             } else {
               return "Limite intérieure";
             }
             break;
           case channel !== '1':
-            if ($("#lang").val() === "eng") {
+            if(window.location.href.indexOf("eng") > -1) {
               return 'Outer Channel Limit';
             } else {
               return "Limite extérieure";

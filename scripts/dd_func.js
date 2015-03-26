@@ -207,14 +207,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.dd_func.limit_text = (function () {
           switch (false) {
             case channel !== '0':
-              if (page_lang === "eng") {
+              if(window.location.href.indexOf("eng") > -1) {
                 return "Inner Channel Limit";
               } else {
                 return "Limite intérieure";
               }
               break;
             case channel !== '1':
-              if (page_lang === "eng") {
+              if(window.location.href.indexOf("eng") > -1) {
                 return 'Outer Channel Limit';
               } else {
                 return "Limite extérieure";

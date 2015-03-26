@@ -218,7 +218,7 @@
             }
             break;
           case $('input[name="channel"]:checked').val() !== '1':
-            if ($('html').attr('lang') === 'en') {
+            if(window.location.href.indexOf("eng") > -1) {
               return 'Inner Channel Limit';
             } else {
               return 'Limite intérieure';

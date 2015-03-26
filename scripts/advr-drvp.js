@@ -55,14 +55,14 @@
     limit_text = (function() {
       switch (false) {
         case $("#lane").val() !== '0':
-          if ($("html").attr("lang") === "en") {
+          if(window.location.href.indexOf("eng") > -1) {
             return 'Inner Channel Limit';
           } else {
             return 'Limite intérieure';
           }
           break;
         case $("#lane").val() !== '1':
-          if ($("html").attr("lang") === "en") {
+          if(window.location.href.indexOf("eng") > -1) {
             return 'Outer Channel Limit';
           } else {
             return 'Limite extérieure';
