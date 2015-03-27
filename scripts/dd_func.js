@@ -265,12 +265,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         s = "0" + num;
         return s.substr(s.length - 4);
       };
-      if (page_lang === "eng") {
-        xLabel = "Pacific Standard Time (hrs)";
-        yLabel = "Available Depth (m)";
-      } else {
+      if(window.location.href.indexOf("fra") > -1) {
         xLabel = "Heure Normale du Pacifique (hrs)";
         yLabel = "Profondeurs disponibles (m)";
+      } else {
+        xLabel = "Pacific Standard Time (hrs)";
+        yLabel = "Available Depth (m)";
       }
       return $.plot("#depth_chart", [d1], {
         xaxis: {
