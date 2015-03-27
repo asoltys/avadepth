@@ -328,7 +328,7 @@ incl_ava_defs={
       'reportDetail':[]
     },
     'dd': {
-      'title_e': "Available Depth Report for Fraser South Arm",
+      'title_e': "Available Depth Report for Fraser River South Arm",
       'title_f': "Rapport sur les profondeurs disponibles",
       'mapInitState':false,
       'hasParameters':true,
@@ -429,7 +429,7 @@ incl_ava_defs={
               {tag:'tbody'}
             ]}
           ]},
-          {tag:'div',attr:{id:'depth_chart',className:'demo-placeholder span-6'}}
+          {tag:'div',attr:{style:'margin-top:15px;',id:'depth_chart',className:'demo-placeholder span-6'}}
         ]}
       ],
       'reportDetail':[

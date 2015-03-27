@@ -254,3 +254,7 @@ a#toggleLink,summary#ref_map_link{
 #report_tbl td {
 	text-align:left;
 }
+
+.axisLabels {
+	font-size:16px;
+}
