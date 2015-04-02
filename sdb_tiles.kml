@@ -48,7 +48,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_10">
-        <name>NA4447</name>
+        <name>MA4447</name>
         <description/>
         <waterway>FRMA</waterway>
         <location>Douglas Island</location>
@@ -74,7 +74,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_12">
-        <name>NA6069</name>
+        <name>MA6069</name>
         <description/>
         <waterway>FRMA</waterway>
         <location>Russel Reach</location>
@@ -87,7 +87,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_13">
-        <name>NA5460</name>
+        <name>MA5460</name>
         <description/>
         <waterway>FRMA</waterway>
         <location>Derby Reach</location>
