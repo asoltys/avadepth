@@ -42,7 +42,7 @@ incl_ava_defs={
         'pwl': {'key': 'Main Arm'}
       },
 	  'FRMA_SC': {
-        'Form': {'Title': "Main Arm - Side Channels", 'Order': 5, 'Key': "FRMA_SC"},
+        'Form': {'Title': "Main Arm - Side Channel", 'Order': 5, 'Key': "FRMA_SC"},
         'Names': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'],
         'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}}
       },
@@ -53,7 +53,7 @@ incl_ava_defs={
         'pwl': {'key': "South Arm"}
       },
       'FRSA_SC': {
-        'Form': {'Title': "South Arm - Side Channels", 'Order': 1, 'Key': "FRSA_SC"},
+        'Form': {'Title': "South Arm - Side Channel", 'Order': 1, 'Key': "FRSA_SC"},
         'Names': ['Ladner Sea Reach','Cannery Channel','Burr Landing Channel','Gundersen Slough','Annacis Channel','Shoal Point - New West'],
         'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
       },
@@ -64,7 +64,7 @@ incl_ava_defs={
         'pwl': {'key': "North Arm"}
       },
       'FRNA_SC': {
-        'Form': {'Title': "North Arm - Side Channels", 'Order': 3, 'Key': "FRNA_SC"},
+        'Form': {'Title': "North Arm - Side Channel", 'Order': 3, 'Key': "FRNA_SC"},
         'Names': ['Morey Channel', 'Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
         'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}}
       },
@@ -114,7 +114,7 @@ incl_ava_defs={
   },
   
   "CWC": {
-    'Form':{'Title':'Coastal Waterways, BC', 'Order':2},
+    'Form':{'Title':'Coastal Waterway, BC', 'Order':2},
     'Coords':{'Lat':{'min':6197437,'max':7470050},'Lon':{'min':-15055722,'max':-12980383}},
     'Sections':{ 
       'CWC1': {
