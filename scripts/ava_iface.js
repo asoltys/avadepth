@@ -5,7 +5,7 @@ Daily Depths: ad-pd.js, advr-drvp.js
 Transit Window: tw-ft.js
 Current Conditions: cc-ca.js, soundings-sondages.js
 */
-console.log('');
+// console.log('');
 
 // Load def JS File
 var loadJS = function(name,callback) {
@@ -292,7 +292,7 @@ avaIFaceJS = {
 
   // Initiate avaIFaceJS Object/add Event Triggers and load page elements
   init: function () {
-    console.clear();
+    // console.clear();
     // Clear and nullify objects
     avaIFaceJS.mapJS = null;
     avaIFaceJS.detailWindow.map = null;
