@@ -55,7 +55,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           avaIFaceJS.pwl_func.static_date = $('pwl_date').val();
           return avaIFaceJS.pwl_func.updateReportTitle();
         });
-      })/*.datepicker().datepicker('setDate', new Date()).change()*/;
+      }).datepicker().datepicker('setDate', new Date()).change();
 
       $('#selected_discharge').change(function () {
         $('#discharge_radio').prop('checked', true).change();

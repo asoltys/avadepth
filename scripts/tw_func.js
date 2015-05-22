@@ -34,7 +34,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           return $('.spinner').hide();
         });
         return $('#period').change();
-      })/*.datepicker().datepicker('setDate', new Date()).change()*/;
+      }).datepicker().datepicker('setDate', new Date()).change();
       $('#period').change(function(){
         var period = (function(){
           switch ($('#period').val()) {

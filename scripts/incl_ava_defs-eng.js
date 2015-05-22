@@ -223,7 +223,7 @@ incl_ava_defs={
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
-          {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker'}},
+          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
           {tag:'br'},
           {tag:'strong',child:["River Discharge @ Hope:"]},
@@ -338,7 +338,7 @@ incl_ava_defs={
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
           {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
-          {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker',value:function(){
+          {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker',value:function(){
 			var now = new Date();
 			var strDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
             return strDate;
@@ -519,7 +519,7 @@ incl_ava_defs={
             {tag:'label',attr:{htmlFor:'date'},child:[
               {tag:'strong',child:["Date:"]}
             ]},
-            {tag:'input',attr:{id:'date',type:'date',name:'date',className:'datepicker'}},
+            {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
             {tag:'div',child:[
               {tag:'strong',child:["River Discharge:"]},
               {tag:'br'},
@@ -691,7 +691,7 @@ incl_ava_defs={
         [
           {tag:'div',child:[
             {tag:'label',attr:{htmlFor:'pwl_date'},child:['Date:']},
-            {tag:'input',attr:{id:'pwl_date',type:'date',name:'pwl_date',className:'datepicker'}},
+            {tag:'input',attr:{id:'pwl_date',type:'text',name:'pwl_date',className:'datepicker'}},
             {tag:'input',attr:{id:'alt-date',type:'hidden'}}
           ]},
           {tag:'div',child:[
