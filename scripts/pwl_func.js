@@ -52,7 +52,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 //            }
           }
           $('input[name=discharge]:checked').change();
-          avaIFaceJS.pwl_func.static_date = $('pwl_date').val();
+          avaIFaceJS.pwl_func.static_date = $('#pwl_date').val();
           return avaIFaceJS.pwl_func.updateReportTitle();
         });
       }).datepicker().datepicker('setDate', new Date()).change();
