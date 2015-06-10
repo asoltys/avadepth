@@ -20,17 +20,17 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href='/Data/weekly/weekly.pdf' target="_blank" style="background-image:none;">CCG Weekly Report</a></li>
-<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('dd')">Daily Depths</a></li>
-<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('tw')">Transit Window</a></li>
+<li><a href='/avdpth_srch-eng.html?page=dd'>Daily Depths</a></li>
+<li><a href='/avdpth_srch-eng.html?page=tw'>Transit Window</a></li>
 </ul>
 </section>
 </div>
 <div class="span-2">
 <section>
 <ul>
-<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('pwl')">Predicted Water Levels & Velocities</a></li>
-<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('acv')">Animated Current & Velocities</a></li>
-<li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('frh')">Fraser River Hydrograph</a></li>
+<li><a href='/avdpth_srch-eng.html?page=pwl'>Predicted Water Levels & Velocities</a></li>
+<li><a href='/avdpth_srch-eng.html?page=acv'>Animated Current & Velocities</a></li>
+<li><a href='/avdpth_srch-eng.html?page=frh'>Fraser River Hydrograph</a></li>
 </ul>
 </section>
 </div>
