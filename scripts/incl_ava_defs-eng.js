@@ -744,7 +744,7 @@ incl_ava_defs={
         ],
       'reportBody':
         [{tag:"div",child:[
-          {tag:'div',attr:{className:'span-8'},child:[
+          {tag:'div',attr:{className:'span-12'},child:[
             {tag:'section',attr:{'style':'padding:20px'},child:[
               {tag:'table',attr:{id:'water-levels',className:'table-condensed align-center print-table-fixed'},child:[
                 {tag:'thead',child:[
