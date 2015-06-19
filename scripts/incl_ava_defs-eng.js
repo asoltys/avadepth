@@ -310,7 +310,7 @@ incl_ava_defs={
           {tag:'div',attr:{id:'loading',style:'padding:1em 1em;display:none'},child:[
             {tag:'div',attr:{style:'width: 35px;height: 30px; float: left;'}},
             "Processing... ",
-            {tag:'span',attr:{id:'frame_count'},child:[
+            {tag:'span',attr:{style:'font-weight:bold;',id:'frame_count'},child:[
               "(Frames retrieved: ",
               {tag:'span',attr:{id:'frames_retrieved'}},
               " / ",
