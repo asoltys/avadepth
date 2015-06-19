@@ -299,10 +299,10 @@ incl_ava_defs={
           ]},
           {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Interval 0.25ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Animated Interval 0.25ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
-          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Interval 0.5ms)"]}
+          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5ms)"]}
         ]}
       ],
       'reportBody':[
@@ -917,7 +917,7 @@ incl_ava_defs={
               {tag:'tr',child:[
                 {tag:'td',child:[
                   "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan. ",
-                  {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/'},child:['Download Autodesk viewer']}
+                  {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/',target:'_blank'},child:['Download Autodesk viewer']}
                 ]}
               ]}
             ]},
