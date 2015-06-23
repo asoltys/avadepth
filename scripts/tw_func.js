@@ -124,24 +124,26 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.maxDepth));
         $('#cmp').val(0);
-		if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.title1='Profondeur maximum pour la fenêtre de '+$('#window').val()+' heures';
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
-		}
+        if(window.location.href.indexOf("fra") > -1) {
+          //If url contains 'fra'	use 
+          avaIFaceJS.reportWindow.title1='Profondeur maximum pour la fenêtre de '+$('#window').val()+' heures';
+        } else {
+          //If url does not contain 'fra' use
+          avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
+        }
       } else {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
         $('#cmp').val($('#depth').val());
-		if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-		}
-      }
+        if(window.location.href.indexOf("fra") > -1) {
+          //If url contains 'fra'	use 
+          avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+          $('#transit-window-last-col').text('Heures');
+        } else {
+          //If url does not contain 'fra' use
+          avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+          $('#transit-window-last-col').text('Hours');
+          }
+        }
 
       // Parse Values for FlowRate and FlowType
       var flowRate_txt, flowrate, flowtype;
@@ -187,6 +189,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             return 3;
         }
       }).call(this);
+      $('.spinner').show();
       $('#flowType').val(flowtype);
       $('#static-sounding').text($('input[name="sounding"]:checked').next().text());
       $('#static-width').text($('select#width').val());
@@ -249,11 +252,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
         return $('#num_days_meeting_standard').text(num_days_meeting_standard);
       }).success(function() {
-        $('#spinner').hide();
+        $('.spinner').hide();
         avaIFaceJS.reportWindow.setTitle();
         return avaIFaceJS.reportWindow.show();
       }).error(function() {
-        $('#spinner').hide();
+        $('.spinner').hide();
         avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
       });
     }
