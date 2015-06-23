@@ -161,7 +161,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }).call(this);
       $('#flowRate').val(flowrate);
       $('#static-discharge').text(flowrate);
-      $('#static-discharge-eval').text($('input[name=discharge]').val());
+      $('#static-discharge-eval').text($('input[name=discharge]:checked').val());
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
           switch ($(this).val()) {
