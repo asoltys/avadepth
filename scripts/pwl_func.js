@@ -204,12 +204,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             return 0;
         }
       })();
+	  // report type 0 is water levels, else velocities
       for (i = _i = kmStart, _ref = $('#river-section').parent().attr('colspan') * step - step + kmStart; step > 0 ? _i <= _ref : _i >= _ref; i = _i += step) {
         if (report_type === "0") {
           headerRow = $("<th><a href=\"javascript:void(0)\">" + i + "</a></th>");
           headerRow.click(avaIFaceJS.pwl_func.gotoKMGraph);
         } else {
-          headerRow = $("<th>" + i + "</th>");
+          headerRow = $('<td style="background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;">' + i + '</td>');
         }
         $('#headerkm').append(headerRow);
       }
