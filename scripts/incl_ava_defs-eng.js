@@ -749,8 +749,8 @@ incl_ava_defs={
               {tag:'table',attr:{id:'water-levels',className:'table-condensed align-center print-table-fixed'},child:[
                 {tag:'thead',child:[
                   {tag:'tr',child:[
-                    {tag:'th',attr:{rowspan:'2'},child:["Time (PST)"]},
-                    {tag:'th',attr:{colspan:'21',id:'location'},child:[
+                    {tag:'td',attr:{style:'background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;',rowspan:'2'},child:["Time (PST)"]},
+                    {tag:'td',attr:{style:'background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;',colspan:'21',id:'location'},child:[
                       {tag:'span',attr:{id:'river-section'}}
                     ]}
                   ]},
@@ -759,7 +759,7 @@ incl_ava_defs={
                 {tag:'tbody'}
               ]}
             ]},
-            {tag:'ul',child:[
+            {tag:'ul',attr:{style:'text-align:left'},child:[
               {tag:'li',attr:{id:'note-at-bottom'},child:[
                 "Water level is referenced to Chart Datum which is relative to Local Low Water.",
                 {tag:'br'},
