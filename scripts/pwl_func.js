@@ -281,7 +281,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.detailWindow.loadLayout();
       avaIFaceJS.detailWindow.show();
       var detkmtime = $('#det_km_time');
-      $('#det_river-section').text($('#river-section').text());
+      switch ($("#pwl_waterway").val()) {
+        case '0':
+          $('#det_river-section').text("South Arm");
+          break;
+        case '1':
+          $('#det_river-section').text("North Arm");
+          break;
+        case '2':
+          $('#det_river-section').text("Main Arm");
+          break;
+      }
       $('#det_km_time').text(typValue);
       $('#det_static-date').text(avaIFaceJS.pwl_func.static_date);
       $('#det_static-interval').text(avaIFaceJS.pwl_func.static_interval);
