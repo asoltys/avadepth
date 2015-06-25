@@ -93,11 +93,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //return $.getJSON(("api/depths/History.json"), function (data) {
         $.each(data, function (index) {
           var row, surveydate, ishigh="", ishighast="";
-          if (index % 2 === 1) {
-            surveydate = moment(this.date).format("D-MMM-YYYY").toString();
-          } else {
-            surveydate = moment(this.update).format("D-MMM-YYYY").toString();
-          }
+          surveydate = moment(this.date).format("D-MMM-YYYY").toString();
           if(this.grade>this.sounding){
             ishigh=" class=\"red\"";
             ishighast="*";
