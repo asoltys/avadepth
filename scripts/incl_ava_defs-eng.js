@@ -358,7 +358,7 @@ incl_ava_defs={
             {tag:'select',attr:{id:'selected_discharge'}},
             " m\u00B3/s",
             {tag:'br'},
-            {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Discharge'}},
+            {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
             {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User-defined"]},
             {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:5em'}},
             " m\u00B3/s",
