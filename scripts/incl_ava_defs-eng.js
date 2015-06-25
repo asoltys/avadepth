@@ -235,7 +235,7 @@ incl_ava_defs={
             "m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
+          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
           {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           " m\u00B3/s",

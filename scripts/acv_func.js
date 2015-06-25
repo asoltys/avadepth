@@ -140,8 +140,32 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#replay').click(avaIFaceJS.acv_func.play);
 
     },
+    getSelectedFlow: function () {
+      var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
+
+      var getFlowRate = {
+        Predicted: function () {
+          return $('#predicted_discharge').text();
+        },
+        Actual: function () {
+          return $('#actual_discharge').text();
+        },
+        Defined: function () {
+          return $('#defined_discharge').val();
+        },
+        Selected: function () {
+          return $('#selected_discharge').val();
+        }
+      };
+
+      flow.flowRate = getFlowRate[flow.flowType]();
+      if (flow.flowType == "Defined") {
+        flow.flowType = "0"
+      }
+      return flow;
+    },
     update: function(){
-      var end_hour, end_minute, getImage, hour, interval, minute;
+      var flow, end_hour, end_minute, getImage, hour, interval, minute;
       avaIFaceJS.acv_func.setTitle();
       $(this).prop('disabled', 'disabled');
       $('#loading').show();
@@ -167,9 +191,24 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.acv_func.images = [];
       avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
 
+      flow = avaIFaceJS.acv_func.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+
+      if (flow.flowType !== "0") {
+        $('#flowType').val(flow.flowType);
+      } else {
+        $('#flowType').val("UserDefined");
+      }
+
       return (getImage = function() {
         //TODO: Replace following line for production
-        return $.getJSON(getAPI(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") + ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute),"api/depths/animated.json"), function(data) {
+        return $.getJSON(getAPI(("/api/animated?date=" + ($('#date').val()) + "&")
+            + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&")
+            + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&")
+            + ("flowRate=" + ($('#flowRate').val()) + "&")
+            + ("flowType=" + ($('#flowType').val()) + "&")
+            + ("hour=" + hour + "&")
+            + ("minute=" + minute),"api/depths/animated.json"), function(data) {
         //return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") + ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
         //return $.getJSON(("api/depths/animated.json"), function(data) {
           var result;
