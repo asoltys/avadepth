@@ -11,6 +11,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     selected_zone:1,
     init: function() {
       $('#static_rd').attr('checked','checked');
+      $('#interval').prev().hide();
+      $('#interval').hide();
+      $('#from').prev().text('Time Period:');
       $('#date').change(function(){
         //TODO: Replace following line for production
         $.getJSON(getAPI("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')),"api/depths/depths.json"),function(data){
@@ -122,8 +125,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
       $('input[name=type]').change(function() {
         if ($('input[name=type]:checked').val() !== '0') {
+          $('#interval').prev().show();
+          $('#interval').show();
+          $('#from').prev().text('From:');
           return $('#to_params').show();
         } else {
+          $('#interval').prev().hide();
+          $('#interval').hide();
+          $('#from').prev().text('Time Period:');
           return $('#to_params').hide();
         }
       });
