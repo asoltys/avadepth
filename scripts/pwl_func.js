@@ -133,10 +133,35 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $("#submit").click(avaIFaceJS.pwl_func.update);
     },
 
+    getSelectedFlow: function () {
+      var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
+
+      var getFlowRate = {
+        Predicted: function () {
+          return $('#predicted_discharge').text();
+        },
+        Actual: function () {
+          return $('#actual_discharge').text();
+        },
+        Defined: function () {
+          return $('#defined_discharge').val();
+        },
+        Selected: function () {
+          return $('#selected_discharge').val();
+        }
+      };
+
+      flow.flowRate = getFlowRate[flow.flowType]();
+      if (flow.flowType == "Defined") {
+        flow.flowType = "0"
+      }
+      return flow;
+    },
+
     //
     update: function () {
       avaIFaceJS.pwl_func.isParamProcessed=true;
-      var headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
+      var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
       $('.spinner').show();
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
@@ -214,8 +239,22 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
         $('#headerkm').append(headerRow);
       }
+
+      flow = avaIFaceJS.pwl_func.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+
+      if (flow.flowType !== "0") {
+        $('#flowType').val(flow.flowType);
+      } else {
+        $('#flowType').val("UserDefined");
+      }
       //TODO: Replace next line for production
-      return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())),"api/depths/pwl_waterdepths.json"), function (data) {
+      return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
+          + ("intervalMin=" + ($('#interval').val()) + "&")
+          + ("flowRate=" + ($('#flowRate').val()) + "&")
+          + ("flowType=" + ($('#flowType').val()) + "&")
+          + ("waterway=" + ($('#pwl_waterway').val()) + "&")
+          + ("displayType=" + ($('input[name=report]:checked').val())),"api/depths/pwl_waterdepths.json"), function (data) {
       //return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
       //return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
         var count;
@@ -324,7 +363,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#det_km_time-suff').text('km');
 
         //TODO: Replace following line for production
-        $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0","api/depths/waterlevel_kmplot.json"), function (data) {
+        $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
+            + ("intervalMin=" + ($('#interval').val()) + "&")
+            + ("flowRate=" + ($('#flowRate').val()) + "&")
+            + ("flowType=" + ($('#flowType').val()) + "&")
+            + ("waterway=" + ($('#pwl_waterway').val()) + "&")
+            + "displayType=0","api/depths/waterlevel_kmplot.json"), function (data) {
         //$.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
         //$.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
           var points = [];
