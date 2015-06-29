@@ -10,31 +10,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     table: null,
 
     init: function(){
-      $('#date').change(function(){
-        //TODO: Change to following line for production
-        $.getJSON(getAPI("/api/depths?date=" + ($('#date').val()),"api/depths/depths.json"), function(data) {
-        //$.getJSON("/api/depths?date=" + ($('#date').val()), function(data) {
-        //$.getJSON("api/depths/depths.json", function(data) {
-          $('#selected_discharge').empty();
-          $.each(data.Flowrates, function() {
-            return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
-          });
-//          $('#predicted_discharge').text(data.Predicted);
-          $('#actual_discharge').text(data.Actual);
-          if (data.Actual) {
-            $("#actual_radio").attr('disabled', false).prop('checked', true);
-//            $("#predicted_radio").attr('disabled', true);
-          } else {
-            $("#actual_radio").attr('disabled', true);
-            $('#selected_radio').prop('checked', true);
-//            $("#predicted_radio").attr('disabled', false).prop('checked', true);
-          }
-          return $('input[name=discharge]:checked').change();
-        }).success(function() {
-          return $('.spinner').hide();
+      $('#date').change(function () {
+        avadepth.util.getFlow({
+          date: $(this).val(),
+          selected: $("#selected_discharge"),
+//          predicted: $("#predicted_discharge"),
+          actual: $("#actual_discharge")
         });
-        return $('#period').change();
       }).datepicker().datepicker('setDate', new Date()).change();
+      $('#selected_radio').prop('checked', true);
+
       $('#period').change(function(){
         var period = (function(){
           switch ($('#period').val()) {
@@ -145,22 +130,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         }
 
-      // Parse Values for FlowRate and FlowType
-      var flowRate_txt, flowrate, flowtype;
-      flowrate = (function() {
-        switch ($('input[name=discharge]:checked').val()) {
-          case 'Actual':
-            return $('#actual_discharge').text();
-//          case 'Predicted':
-//            return $('#predicted_discharge').text();
-          case 'Defined':
-            return $('#defined_discharge').val();
-          case 'Selected':
-            return $('#selected_discharge').val();
-        }
-      }).call(this);
-      $('#flowRate').val(flowrate);
-      $('#static-discharge').text(flowrate);
+      var flow;
+      flow = avadepth.util.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+      if (flow.flowType !== "0") {
+        $('#flowType').val(flow.flowType);
+      } else {
+        $('#flowType').val("UserDefined");
+      }
+      $('#static-discharge').text(flow.flowrate);
       $('#static-discharge-eval').text($('input[name=discharge]:checked').val());
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
@@ -177,20 +155,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }).call(this);
         $("#static-discharge-eval").text(flowRate_txt);
       }
-      flowtype = (function() {
-        switch ($('input[name=discharge]:checked').val()) {
-          case 'Actual':
-            return 0;
-//          case 'Predicted':
-//            return 1;
-          case 'Defined':
-            return 2;
-          case 'Selected':
-            return 3;
-        }
-      }).call(this);
       $('.spinner').show();
-      $('#flowType').val(flowtype);
       $('#static-sounding').text($('input[name="sounding"]:checked').next().text());
       $('#static-width').text($('select#width').val());
       $('#static-chainage').text($('select#chainage').val());
@@ -198,8 +163,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       //TODO: Change to following line for production
       return $.getJSON(getAPI(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())),"api/depths/transit.json"), function(data2) {
-      //return $.getJSON(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), function(data2) {
-      //return $.getJSON("api/depths/transit.json", function(data2) {
         var item, limit_text, num_days_meeting_standard, total_hr, _i, _len, _ref;
         $('#num_days').text(data2.statistics.numberOfDays);
         $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));

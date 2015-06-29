@@ -31,39 +31,26 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
         // Changing date value in Parameters window
       $('#pwl_date').on('change', function () {
-        //TODO: Replace for Production
-        $.getJSON(getAPI("/api/depths?date="+($('#pwl_date').val()),"api/depths/date.json"), function (data) {
-        //$.getJSON("/api/depths?date="+($('#pwl_date').val()), function(data){
-        //$.getJSON("api/depths/date.json", function (data) {
-          $('#selected_discharge').empty();
-          $.each(data.Flowrates, function () {
-            return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
-          });
-//          $('#predicted_discharge').text(data.Predicted);
-          $('#actual_discharge').text(data.Actual);
-          if (data.Actual) {
-            $('#actual_radio').attr('disabled', false).prop('checked', true);
-//            $("#predicted_radio").attr('disabled', true);
-          } else {
-            $("#actual_radio").attr('disabled', true);
-            $('#discharge_radio').prop('checked', true);
-//            if(data.Predicted>0){
-//              $("#predicted_radio").attr('disabled', false).prop('checked', true);
-//            }
-          }
-          $('input[name=discharge]:checked').change();
-          avaIFaceJS.pwl_func.static_date = $('#pwl_date').val();
-          return avaIFaceJS.pwl_func.updateReportTitle();
+        avadepth.util.getFlow({
+          date: $(this).val(),
+          selected: $("#selected_discharge"),
+//          predicted: $("#predicted_discharge"),
+          actual: $("#actual_discharge")
         });
       }).datepicker().datepicker('setDate', new Date()).change();
 
-      $('#selected_discharge').change(function () {
+      // Check "Selected" radio on "Selected" value combo selection
+      $('#discharge_radio').change(function () {
+        return $('#discharge_radio').prop('checked', true);
+      }).change();
+
+      $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
-        if ($('input[name=discharge]:checked').val() === "Defined") {
-          $('#flowRate').val($(this).val());
-          avaIFaceJS.pwl_func.static_discharge = $('#defined_discharge').val();
+        if ($('input[name="discharge"].checked').val() === "Selected") {
+          avaIFaceJS.pwl_func.discharge=$('#selected_discharge').val();
         }
       });
+
       $('input[name=discharge]').change(function () {
         var flowRate_txt, flowrate, flowtype;
         flowrate = (function () {
@@ -131,31 +118,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.mapJS.map.updateSize();
       });
       $("#submit").click(avaIFaceJS.pwl_func.update);
-    },
-
-    getSelectedFlow: function () {
-      var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
-
-      var getFlowRate = {
-        Predicted: function () {
-          return $('#predicted_discharge').text();
-        },
-        Actual: function () {
-          return $('#actual_discharge').text();
-        },
-        Defined: function () {
-          return $('#defined_discharge').val();
-        },
-        Selected: function () {
-          return $('#selected_discharge').val();
-        }
-      };
-
-      flow.flowRate = getFlowRate[flow.flowType]();
-      if (flow.flowType == "Defined") {
-        flow.flowType = "0"
-      }
-      return flow;
     },
 
     //
@@ -240,7 +202,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#headerkm').append(headerRow);
       }
 
-      flow = avaIFaceJS.pwl_func.getSelectedFlow();
+      flow = avadepth.util.getSelectedFlow();
       $("#flowRate").val(flow.flowRate);
 
       if (flow.flowType !== "0") {
@@ -255,8 +217,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           + ("flowType=" + ($('#flowType').val()) + "&")
           + ("waterway=" + ($('#pwl_waterway').val()) + "&")
           + ("displayType=" + ($('input[name=report]:checked').val())),"api/depths/pwl_waterdepths.json"), function (data) {
-      //return $.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + ("displayType=" + ($('input[name=report]:checked').val())), function(data) {
-      //return $.getJSON(("api/depths/pwl_waterdepths.json"), function (data) {
         var count;
         $('#river-section').text(data.title);
         avaIFaceJS.pwl_func.table || (avaIFaceJS.pwl_func.table = $('#water-levels').dataTable({

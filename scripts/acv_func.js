@@ -15,35 +15,20 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#interval').hide();
       $('#from').prev().text('Time Period:');
       $('#date').change(function(){
-        //TODO: Replace following line for production
-        $.getJSON(getAPI("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')),"api/depths/depths.json"),function(data){
-        //$.getJSON("/api/depths?date=" + (moment($('#date').val()).format('YYYY-MM-DD')), function(data) {
-        //$.getJSON("api/depths/depths.json", function(data) {
-          $('#selected_discharge').empty();
-          $.each(data.Flowrates, function() {
-            return $('#selected_discharge').append("<option value='" + this + "'>" + this + "</option>");
-          });
-//          $('#predicted_discharge').text(data.Predicted);
-          avaIFaceJS.acv_func.discharge=data.Predicted;
-          $('#actual_discharge').text(data.Actual);
-          if (data.Actual) {
-//            $("#predicted_radio").attr('disabled', true);
-            $('#actual_radio').attr('disabled', false).prop('checked', true);
-          } else {
-            $("#actual_radio").attr('disabled', true);
-            $('#selected_radio').prop('checked', true);
-//            $("#predicted_radio").attr('disabled', false).prop('checked', true);
-          }
-          $('input[name=discharge]:checked').change();
-          //avaIFaceJS.acv_func.update();
+        avadepth.util.getFlow({
+          date: $(this).val(),
+          selected: $("#selected_discharge"),
+          actual: $("#actual_discharge")
         });
       }).datepicker().datepicker("setDate",new Date()).change();
+
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
         if ($('input[name="discharge"].checked').val() === "Selected") {
           avaIFaceJS.acv_func.discharge=$('#selected_discharge').val();
         }
       });
+
       $('input[name=discharge]').change(function() {
         avaIFaceJS.acv_func.discharge = (function() {
           switch ($(this).val()) {
@@ -140,30 +125,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#replay').click(avaIFaceJS.acv_func.play);
 
     },
-    getSelectedFlow: function () {
-      var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
-
-      var getFlowRate = {
-        Predicted: function () {
-          return $('#predicted_discharge').text();
-        },
-        Actual: function () {
-          return $('#actual_discharge').text();
-        },
-        Defined: function () {
-          return $('#defined_discharge').val();
-        },
-        Selected: function () {
-          return $('#selected_discharge').val();
-        }
-      };
-
-      flow.flowRate = getFlowRate[flow.flowType]();
-      if (flow.flowType == "Defined") {
-        flow.flowType = "0"
-      }
-      return flow;
-    },
     update: function(){
       var flow, end_hour, end_minute, getImage, hour, interval, minute;
       avaIFaceJS.acv_func.setTitle();
@@ -191,7 +152,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.acv_func.images = [];
       avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
 
-      flow = avaIFaceJS.acv_func.getSelectedFlow();
+      flow = avadepth.util.getSelectedFlow();
       $("#flowRate").val(flow.flowRate);
 
       if (flow.flowType !== "0") {
@@ -209,8 +170,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             + ("flowType=" + ($('#flowType').val()) + "&")
             + ("hour=" + hour + "&")
             + ("minute=" + minute),"api/depths/animated.json"), function(data) {
-        //return $.getJSON(("/api/animated?date=" + ($('#date').val()) + "&") + ("legendScale=" + ($('input[name=legend_scale]:checked').val()) + "&") + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&") + ("flowRate=" + avaIFaceJS.acv_func.discharge + "&") + "flowType=0&" + ("hour=" + hour + "&") + ("minute=" + minute), function(data) {
-        //return $.getJSON(("api/depths/animated.json"), function(data) {
           var result;
           result = data.toString();
           if (result !== '/images/') {

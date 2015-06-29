@@ -6,7 +6,7 @@ avadepth.util = {
     getFlow: function (options, callback) {
         var thisCallback = callback;
 
-        $.getJSON('/api/depths?date=' + options.date, function (data) {
+        $.getJSON(getAPI('/api/depths?date=' + options.date,'api/depths/depths.json'), function(data){
 
             selectList = $(options.selected);
 

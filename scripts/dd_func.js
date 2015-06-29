@@ -29,7 +29,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       /** Event Handlers **/
       // Retrieve content on Date change
       $('#date').change(function () {
-        avaIFaceJS.dd_func.getFlow({
+        avadepth.util.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
 //          predicted: $("#predicted_discharge"),
@@ -37,9 +37,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         });
       }).datepicker().datepicker('setDate', new Date()).change();
 
-      // Check "Selected" radio on "Selected" value combo selection
-      $('#selected_discharge').change(function () {
-        return $('#selected_radio').prop('checked', true).change();
+      $('#selected_discharge').change(function() {
+        $('#discharge_radio').prop('checked', true).change();
       });
 
       // Retrieve content on form submission
@@ -56,71 +55,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
       });
     },
-
-    // Retrieve current values for Parameters
-    getFlow: function (options, callback) {
-      var thisCallback = callback;
-
-      //TODO: Replace below line for production
-      $.getJSON(getAPI('/api/depths?date=' + options.date,'api/depths/depths.json'), function(data){
-      //$.getJSON('/api/depths?date=' + options.date, function (data) {
-      //$.getJSON('api/depths/depths.json', function (data) {
-        selectList = $(options.selected);
-
-        // Add values to Selected Value list
-        var s = '';
-        $.each(data.Flowrates, function (idx, itm) {
-          s += '<option value=' + itm + '>' + itm + '</option>';
-        });
-        $('option', selectList).remove();
-        selectList.append(s);
-
-        // Update values for "Predicted" and "Actual" values
-//        $(options.predicted).text(data.Predicted);
-        $(options.actual).text(data.Actual);
-        if (data.Actual) {
-//          $("#predicted_radio").attr('disabled', true);
-          $('#actual_radio').attr('disabled', false).prop('checked', true);
-        } else {
-          $("#actual_radio").attr('disabled', true);
-          $('#selected_radio').prop('checked', true);
-//          $("#predicted_radio").attr('disabled', false).prop('checked', true);
-        }
-
-        // Run callback if needed
-        if (thisCallback) {
-          callback(data);
-        }
-//        return data.Predicted;
-      });
-    },
-
-    // validate type of report to generate
-    getSelectedFlow: function () {
-      var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
-
-      var getFlowRate = {
-        Predicted: function () {
-          return $('#predicted_discharge').text();
-        },
-        Actual: function () {
-          return $('#actual_discharge').text();
-        },
-        Defined: function () {
-          return $('#defined_discharge').val();
-        },
-        Selected: function () {
-          return $('#selected_discharge').val();
-        }
-      };
-
-      flow.flowRate = getFlowRate[flow.flowType]();
-      if (flow.flowType == "Defined") {
-        flow.flowType = "0"
-      }
-      return flow;
-    },
-
+    
     // Update values and apply to Detail Window
     showDetail: function (period) {
       avaIFaceJS.detailWindow.loadLayout();
@@ -137,8 +72,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       //TODO: Replace line for production:
       $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {
-      //$.getJSON(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), function(data) {
-      //$.getJSON("api/depths/verify.json", function (data) {
         var least_depth;
         avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').dataTable({
           bPaginate: false,
@@ -173,7 +106,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var channel, flow;
 
       channel = $('input[name="channel"]:checked').val();
-      flow = avaIFaceJS.dd_func.getSelectedFlow();
+      flow = avadepth.util.getSelectedFlow();
       if (flag) {
         $("#flowRate").val(flow.flowRate);
       }
