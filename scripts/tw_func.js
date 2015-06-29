@@ -78,16 +78,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         ],
         availWindow:[
           {tag:'tr',child:[
-            {tag:'td',attr:{width:"90%"},child:["Total hours meeting standard:"]},
-            {tag:'td',child:[{tag:'span',attr:{id:'total_hr'}}]}
-          ]},
-          {tag:'tr',child:[
+            {tag:'td',attr:{width:"45%"},child:["Total hours meeting standard:"]},
+            {tag:'td',child:[{tag:'span',attr:{id:'total_hr'}}]},
             {tag:'td',child:["Average hours per day meeting standard:"]},
             {tag:'td',child:[{tag:'span',attr:{id:'avg_hr'}}]}
           ]},
           {tag:'tr',child:[
-            {tag:'td',child:["Number of days meeting standard:"]},
-            {tag:'td',child:[{tag:'span',attr:{id:'num_days_meeting_standard'}}]}
+            {tag:'td',attr:{width:"40%"},child:["Number of days meeting standard:"]},
+            {tag:'td',child:[{tag:'span',attr:{id:'num_days_meeting_standard'}}]},
+	    {tag:'td',child:[""]},
+            {tag:'td',child:[""]}
           ]}
         ]
       };

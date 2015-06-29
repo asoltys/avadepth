@@ -181,8 +181,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         strategies: [new OpenLayers.Strategy.Fixed()],
         projection: avaMapJS.map.displayProjection,
         renderers: avaMapJS.renderer,
-        styleMap: mapStyle.area_with_label("${name}"),
-        protocol: new OpenLayers.Protocol.HTTP({
+        styleMap: mapStyle.area_with_label("${location}"),
+		protocol: new OpenLayers.Protocol.HTTP({
           url: "sdb_tiles.kml?",
           format: new OpenLayers.Format.KML({
             extractStyles: false,
