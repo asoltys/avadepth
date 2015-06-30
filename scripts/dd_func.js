@@ -230,3 +230,5 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 } else if (!(typeof avaMapDetJS === 'undefined')) {
   avaMapDetJS.dd_func = {init: function () {}};
 }
+
+//# sourceURL=dd_func.js

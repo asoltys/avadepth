@@ -232,3 +232,5 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 } else if (!(typeof avaMapDetJS === 'undefined')) {
   avaMapDetJS.tw_func = {init: function () {}};
 }
+
+//# sourceURL=tw_func.js
