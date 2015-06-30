@@ -138,7 +138,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       } else {
         $('#flowType').val("UserDefined");
       }
-      $('#static-discharge').text(flow.flowrate);
+      $('#static-discharge').text(flow.flowRate);
       $('#static-discharge-eval').text($('input[name=discharge]:checked').val());
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
