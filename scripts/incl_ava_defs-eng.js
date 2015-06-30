@@ -795,7 +795,6 @@ incl_ava_defs={
                 ')'
               ]},
               {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:475px;width:570px;float:left;'}}
-			  x=570*500/600
             ]}
           ]}
         ]
