@@ -64,7 +64,7 @@ avaIFaceJS = {
       }
       $('#report_map').css('width','100%');
       repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
-	  repDet.show().css('top', '50px');
+	  repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 5));
 	  repDet.show().css('position', 'fixed');
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
 
