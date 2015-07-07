@@ -57,15 +57,21 @@ avaIFaceJS = {
     show: function () {
       var repDet = $('#report_detail');
       if (avaIFaceJS.detailWindow.useMap) {
-        $('#rep_detail_map').show().css('width','100%');
+	    // PWL map removal
+        $('#rep_detail_map').hide();//show().css('width','100%');
         avaIFaceJS.detailWindow.mapJS.renderMap();
       } else {
         $('#rep_detail_map').hide();
       }
       $('#report_map').css('width','100%');
       repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
-	  repDet.show().css('top', '50px');
+	  repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 5));
 	  repDet.show().css('position', 'fixed');
+	  
+	  // detail report height fit to window
+	  $('#cboxLoadedContent').css('height', (window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30)));
+	  $('#cboxLoadedContent').css('width', '101%');
+	  
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
 
     },

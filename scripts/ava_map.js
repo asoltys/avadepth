@@ -66,6 +66,9 @@ avaMapJS={
    	//avaMapJS.map.addLayers([gmap,wmsLayer]);
    	avaMapJS.map.addLayers([gmap]);
     //avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(-13625920,6283000,-13941007,6458623));
+    if(!avaMapJS.map.size) {
+      window.location.reload(true);
+    }
     avaMapJS.map.setCenter(new OpenLayers.LonLat(-13682000,6306500),5);
 
     // Notify parent page map is active
