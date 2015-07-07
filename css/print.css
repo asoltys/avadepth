@@ -188,3 +188,7 @@ div#hydrograph_report div#hydrograph_chart{
 div#reportTitle2 {
     padding:0 0 3px 0;
 }
+
+#pBarContainer{
+	display:none;
+}

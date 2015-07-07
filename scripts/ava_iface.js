@@ -224,7 +224,7 @@ avaIFaceJS = {
     isInit:false,
     hasAnimate:false,
     init: function(){
-      avaIFaceJS.paramWindow.linkBtn=$('#toggleLink');
+      avaIFaceJS.paramWindow.linkBtn=$('#paramButton');
       avaIFaceJS.paramWindow.paramForm=$('#map_parameters');
       avaIFaceJS.paramWindow.slideWrap=$('#map_param_wrap');
       avaIFaceJS.paramWindow.isInit=true;
@@ -288,7 +288,7 @@ avaIFaceJS = {
 
     isOpen: function(){
       if(!avaIFaceJS.paramWindow.isInit){avaIFaceJS.paramWindow.init()}
-      return (!(document.getElementById('toggleLink').innerText == "Parameters"))
+      // return (!(document.getElementById('paramButton').innerText == "Parameters"))
     }
   },
 
@@ -456,3 +456,32 @@ if(window.location.href.indexOf("fra") > -1) {
 	//If url does not contain 'fra' use
 		loadJS('incl_ava_defs-eng', function(){});
 }
+
+// moves param window if the page is resized
+window.onresize = function() {
+		var pBarLeft = $('#wb-main').css("width");
+		pBarLeft = pBarLeft.slice(0,-2);
+		pBarLeft = pBarLeft - 310 + "px";
+		$("#pBarContainer").css({left: pBarLeft});
+		//alert($('#wb-main').css( "width" ));
+	};
+
+// toggles param window when clicked
+document.getElementById('pBarHeaderContainer').onclick = function(){
+	pBarToggle();
+};
+
+// param toggle code
+function pBarToggle(){
+	if (document.getElementById('pBarButton').innerText == "-") {
+	document.getElementById('map_parameters').style.display = 'none'; 
+	document.getElementById('pBarContainer').style.opacity = '0.8'; 
+	document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=80)'; 
+	document.getElementById('pBarButton').innerText = "+"
+	} else {
+	document.getElementById('map_parameters').style.display = 'block'; 
+	document.getElementById('pBarContainer').style.opacity = '1'; 
+	document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=100)'; 
+	document.getElementById('pBarButton').innerText = "-"
+	}
+};
