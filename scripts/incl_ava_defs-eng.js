@@ -794,7 +794,7 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'det_static-discharge-eval'},child:['Predicted']},
                 ')'
               ]},
-              {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:475px;width:570px;float:left;'}}
+              {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
             ]}
           ]}
         ]
