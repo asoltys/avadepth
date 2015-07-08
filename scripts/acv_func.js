@@ -223,6 +223,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.reportWindow.loadReport();
       $('.spinner').hide();
       $('#loading').hide();
+	  pBarToggle();
       $('#animated').attr("src", "images/nodata.jpg");
       $('#animated_legend').hide().attr("src", "images/vectorscale" + ($('input[name=legend_scale]:checked').val()) + ".gif");
       $('#replay').prop('disabled', 'disabled');

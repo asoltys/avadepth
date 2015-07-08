@@ -265,6 +265,7 @@ a#toggleLink,summary#ref_map_link{
 	z-index:105;
 	position: absolute;
 	left:10000px;
+	margin-bottom: 50px;
 }
 #pBar{
 	border: 2px solid #1a568c;
