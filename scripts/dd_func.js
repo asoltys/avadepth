@@ -172,7 +172,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.reportWindow.setTitle();
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.dd_func.createGraph(points);
-        return $('.spinner').hide();
+        pBarToggle();
+		return $('.spinner').hide();
       }).fail(avadepth.util.apiFailureHandler);
     },
 

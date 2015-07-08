@@ -256,7 +256,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.pwl_func.updateReportTitle();
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
-        return $('.spinner').hide();
+        pBarToggle();
+		return $('.spinner').hide();
       }).success(function () {
         if (!(avaIFaceJS.pwl_func.detailValue == "")){
           if (avaIFaceJS.pwl_func.detailIsKM){

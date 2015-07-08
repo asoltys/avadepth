@@ -131,6 +131,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#report_tbl').append(drawingRows);
       }).done(function () {
         $('.spinner').hide();
+		pBarToggle();
         $('#report_tbl tr:nth-child(odd)').addClass('odd');
         return $('#report_tbl tr:nth-child(even)').addClass('even');
       });
@@ -159,6 +160,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#report_tbl').append(drawingRows);
       }).done(function () {
         $('.spinner').hide();
+		
         $('#report_tbl tr:nth-child(odd)').addClass('odd');
         avaIFaceJS.reportWindow.show();
         return $('#report_tbl tr:nth-child(even)').addClass('even');

@@ -56,24 +56,34 @@ avaIFaceJS = {
     // Displays Detail Window
     show: function () {
       var repDet = $('#report_detail');
+	  
+	  // PWL detail map removal
       if (avaIFaceJS.detailWindow.useMap) {
-	    // PWL map removal
-        $('#rep_detail_map').hide();//show().css('width','100%');
+        $('#rep_detail_map').hide();//.show().css('width','100%');
         avaIFaceJS.detailWindow.mapJS.renderMap();
       } else {
         $('#rep_detail_map').hide();
       }
       $('#report_map').css('width','100%');
-      repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
+      
+	  // detail report position parameters
+	  repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
 	  repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 5));
 	  repDet.show().css('position', 'fixed');
 	  
-	  // detail report height fit to window
-	  $('#cboxLoadedContent').css('height', (window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30)));
-	  $('#cboxLoadedContent').css('width', '101%');
+	  // detail report size parameters
+	  var dataHeight = $('#rep_detail_map').height() + $('#rep_detail_info').height();
+	  var windowHeight = window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30);
+	  
+	  if ((avaIFaceJS.currentPage == 'ccc') || (dataHeight >= windowHeight)) { // amount of data in detail report is greater than length of screen, or special case for current channel conditions
+		$('#cboxLoadedContent').css('height', windowHeight);
+	  } else {
+	    $('#cboxLoadedContent').css('height', dataHeight);
+	  }
+	  $('#cboxLoadedContent').css('width', '101%'); // prevents needless horizontal scroll bar
+	  
 	  
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
-
     },
 
     // Hides Detail Window
@@ -230,7 +240,7 @@ avaIFaceJS = {
     isInit:false,
     hasAnimate:false,
     init: function(){
-      avaIFaceJS.paramWindow.linkBtn=$('#toggleLink');
+      avaIFaceJS.paramWindow.linkBtn=$('#paramButton');
       avaIFaceJS.paramWindow.paramForm=$('#map_parameters');
       avaIFaceJS.paramWindow.slideWrap=$('#map_param_wrap');
       avaIFaceJS.paramWindow.isInit=true;
@@ -294,7 +304,7 @@ avaIFaceJS = {
 
     isOpen: function(){
       if(!avaIFaceJS.paramWindow.isInit){avaIFaceJS.paramWindow.init()}
-      return (!(document.getElementById('toggleLink').innerText == "Parameters"))
+      // return (!(document.getElementById('paramButton').innerText == "Parameters"))
     }
   },
 
@@ -462,3 +472,32 @@ if(window.location.href.indexOf("fra") > -1) {
 	//If url does not contain 'fra' use
 		loadJS('incl_ava_defs-eng', function(){});
 }
+
+// moves param window if the page is resized
+window.onresize = function() {
+		var pBarLeft = $('#wb-main').css("width");
+		pBarLeft = pBarLeft.slice(0,-2);
+		pBarLeft = pBarLeft - 310 + "px";
+		$("#pBarContainer").css({left: pBarLeft});
+		//alert($('#wb-main').css( "width" ));
+	};
+
+// toggles param window when clicked
+document.getElementById('pBarHeaderContainer').onclick = function(){
+	pBarToggle();
+};
+
+// param toggle code
+function pBarToggle(){
+	if (document.getElementById('pBarButton').innerText == "-") {
+	document.getElementById('map_parameters').style.display = 'none'; 
+	document.getElementById('pBarContainer').style.opacity = '0.8'; 
+	document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=80)'; 
+	document.getElementById('pBarButton').innerText = "+"
+	} else {
+	document.getElementById('map_parameters').style.display = 'block'; 
+	document.getElementById('pBarContainer').style.opacity = '1'; 
+	document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=100)'; 
+	document.getElementById('pBarButton').innerText = "-"
+	}
+};

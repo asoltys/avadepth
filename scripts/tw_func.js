@@ -218,6 +218,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#num_days_meeting_standard').text(num_days_meeting_standard);
       }).success(function() {
         $('.spinner').hide();
+		pBarToggle();
         avaIFaceJS.reportWindow.setTitle();
         return avaIFaceJS.reportWindow.show();
       }).error(function() {
