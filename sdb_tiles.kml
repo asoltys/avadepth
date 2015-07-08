@@ -77,7 +77,7 @@
         <name>MA6069</name>
         <description/>
         <waterway>FRMA</waterway>
-        <location>Russel Reach</location>
+        <location>Russel Reach / Langley Bar</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -207,7 +207,8 @@
         <name>UR000</name>
         <description/>
         <waterway>FRUR</waterway>
-        <location>All Locations (km 85 to km 105)</location>
+		<!--<location>All Locations (km 85 to km 105)</location>-->
+        <location>Gravel Reach (km 85 to km 105)</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -467,7 +468,8 @@
         <name>SAS00</name>
         <description/>
         <waterway>FRSA_SC</waterway>
-        <location>Ladner Sea Reach</location>
+        <!--<location>Ladner Sea Reach</location>-->
+		<location>Sea Reach</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -612,7 +614,8 @@
         <name>NA0709</name>
         <description/>
         <waterway>FRNA_SC</waterway>
-        <location>MacDonald Slough</location>
+        <!--<location>MacDonald Slough</location>-->
+		<location>Musqueam</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -626,7 +629,8 @@
         <name>NA0913</name>
         <description/>
         <waterway>FRNA_SC</waterway>
-        <location>Deering Channel</location>
+        <!--<location>Deering Channel</location>-->
+		<location>Sea Island</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -639,7 +643,8 @@
         <name>NA2529</name>
         <description/>
         <waterway>FRNA_SC</waterway>
-        <location>Tree Island</location>
+        <!--<location>Tree Island</location>-->
+		<location>Big Bend - Queens</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -652,7 +657,8 @@
         <name>NA_103</name>
         <description/>
         <waterway>FRNA_SC</waterway>
-        <location>Point Grey Scow Moorage</location>
+        <!--<location>Point Grey Scow Moorage</location>-->
+		<location>Point Grey</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -666,7 +672,8 @@
         <name>FRPR00</name>
         <description/>
         <waterway>FRPR</waterway>
-        <location>Channel Overview</location>
+        <!--<location>Channel Overview</location>-->
+		<location>Chatham Reach</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -694,7 +701,8 @@
         <name>PMV05</name>
         <description/>
         <waterway>PMV-BI</waterway>
-        <location>All Locations</location>
+        <!--<location>All Locations</location>-->
+		<location>Lynnterm Westgate</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -706,7 +714,8 @@
 	<Placemark id="kml_70">
         <name>PMV21</name>
         <waterway>PMV-FSD</waterway>
-        <location>Approach Channel and Berths</location>
+        <!--<location>Approach Channel and Berths</location>-->
+		<location>Fraser Surrey Docks</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
