@@ -56,24 +56,34 @@ avaIFaceJS = {
     // Displays Detail Window
     show: function () {
       var repDet = $('#report_detail');
+	  
+	  // PWL detail map removal
       if (avaIFaceJS.detailWindow.useMap) {
-	    // PWL map removal
-        $('#rep_detail_map').hide();//show().css('width','100%');
+        $('#rep_detail_map').hide();//.show().css('width','100%');
         avaIFaceJS.detailWindow.mapJS.renderMap();
       } else {
         $('#rep_detail_map').hide();
       }
       $('#report_map').css('width','100%');
-      repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
+      
+	  // detail report position parameters
+	  repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
 	  repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 5));
 	  repDet.show().css('position', 'fixed');
 	  
-	  // detail report height fit to window
-	  $('#cboxLoadedContent').css('height', (window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30)));
-	  $('#cboxLoadedContent').css('width', '101%');
+	  // detail report size parameters
+	  var dataHeight = $('#rep_detail_map').height() + $('#rep_detail_info').height();
+	  var windowHeight = window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30);
+	  
+	  if ((avaIFaceJS.currentPage == 'ccc') || (dataHeight >= windowHeight)) { // amount of data in detail report is greater than length of screen, or special case for current channel conditions
+		$('#cboxLoadedContent').css('height', windowHeight);
+	  } else {
+	    $('#cboxLoadedContent').css('height', dataHeight);
+	  }
+	  $('#cboxLoadedContent').css('width', '101%'); // prevents needless horizontal scroll bar
+	  
 	  
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
-
     },
 
     // Hides Detail Window
