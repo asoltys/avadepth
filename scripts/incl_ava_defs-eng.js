@@ -415,23 +415,26 @@ incl_ava_defs={
       ]}
       ],
       'reportBody':[
-        {tag:'div',attr:{style:'width:60%;margin:0 auto;'},child:[
-          {tag:'div',attr:{className:'span-7'},child:[
-            {tag:'table',attr:{id:'depths',style:"text-align:center"},child:[
-              {tag:'thead',child:[
-                {tag:'tr',child:[
-                  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
-                  {tag:'th',child:["Chainage (km)"]},
-                  {tag:'th',child:["Available Depth (m)"]},
-                  {tag:'th',child:["Location of Control Point"]}
-                ]}
-              ]},
-              {tag:'tbody'}
-            ]}
+        {tag:'div',child:[
+          {tag:'div',attr:{className:'span-12'},child:[
+		    {tag:'section',attr:{'style':'padding-left:20%; padding-right:20%'},child:[
+				{tag:'table',attr:{id:'depths',style:"text-align:center"},child:[
+				  {tag:'thead',child:[
+					{tag:'tr',child:[
+					  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
+					  {tag:'th',child:["Chainage (km)"]},
+					  {tag:'th',child:["Available Depth (m)"]},
+					  {tag:'th',child:["Location of Control Point"]}
+					]}
+				  ]},
+				  {tag:'tbody'}
+				]}
           ]},
-          {tag:'div',attr:{style:'margin-top:15px;',id:'depth_chart',className:'demo-placeholder span-6'}}
+		  {tag:'section',attr:{'style':'padding-left:30%; padding-right:30%'},child:[
+		    {tag:'div',attr:{style:'margin-top:15px;',id:'depth_chart',className:'demo-placeholder'}}
+		  ]}
         ]}
-      ],
+      ]}],
       'reportDetail':[
         {tag:'div',child:[
           {tag:'div',child:[
