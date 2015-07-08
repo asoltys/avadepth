@@ -117,8 +117,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
       //TODO: Replace bottom line for production
       return $.getJSON(getAPI(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())),"api/depths/calculate.json"), function (data) {
-      //return $.getJSON(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())), function(data) {
-      //return $.getJSON("api/depths/calculate.json", function (data) {
         var points = [];
         avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').dataTable({
           bPaginate: false,
@@ -175,7 +173,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.dd_func.createGraph(points);
         return $('.spinner').hide();
-      });
+      }).fail(avadepth.util.apiFailureHandler);
     },
 
     // Callback function for form submission
