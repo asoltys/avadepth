@@ -111,3 +111,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 } else if (!(typeof avaMapDetJS === 'undefined')) {
   avaMapDetJS.ccc_func = {init: function () {}};
 }
+
+
+document.getElementById('pBarContainer').style.display = 'none'; 
