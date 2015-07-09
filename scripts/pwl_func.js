@@ -404,7 +404,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       return avaIFaceJS.pwl_func.gotoGraph(1, $(this).text(),false);
     },
     gotoKMGraph: function () {
-      avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent($(this).text(), avaIFaceJS.detailWindow.mapColorKey);
+      // PWL detail map removal - note that the removal of the following comment will cause pwl KM graph detail report to display improperly on IE browsers
+	  // avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent($(this).text(), avaIFaceJS.detailWindow.mapColorKey);
       return avaIFaceJS.pwl_func.gotoGraph(0, $(this).text(),true);
     }
   }
