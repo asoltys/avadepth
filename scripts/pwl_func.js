@@ -15,7 +15,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     static_date: "",
     static_interval: "1 hour",
     static_discharge: "",
-    static_discharge_eval: "Prediected",
+    static_discharge_eval: "Predicted",
     cur_waterway: null,
     isParamProcessed: false,
     detailValue: "",
