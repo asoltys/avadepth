@@ -204,12 +204,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       flow = avadepth.util.getSelectedFlow();
       $("#flowRate").val(flow.flowRate);
+      avaIFaceJS.pwl_func.static_discharge = flow.flowRate;
 
       if (flow.flowType !== "0") {
         $('#flowType').val(flow.flowType);
       } else {
         $('#flowType').val("UserDefined");
       }
+
+      avaIFaceJS.pwl_func.static_discharge_eval = $('#flowType').val();
+
       //TODO: Replace next line for production
       return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
           + ("intervalMin=" + ($('#interval').val()) + "&")

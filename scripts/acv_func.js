@@ -127,7 +127,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     update: function(){
       var flow, end_hour, end_minute, getImage, hour, interval, minute;
-      avaIFaceJS.acv_func.setTitle();
       $(this).prop('disabled', 'disabled');
       $('#loading').show();
       $('.spinner').show();
@@ -154,12 +153,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       flow = avadepth.util.getSelectedFlow();
       $("#flowRate").val(flow.flowRate);
+      avaIFaceJS.acv_func.discharge = flow.flowRate;
 
       if (flow.flowType !== "0") {
         $('#flowType').val(flow.flowType);
       } else {
         $('#flowType').val("UserDefined");
       }
+
+      avaIFaceJS.acv_func.discharge_eval = $('#flowType').val();
+      avaIFaceJS.acv_func.setTitle();
 
       return (getImage = function() {
         //TODO: Replace following line for production
