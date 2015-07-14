@@ -121,6 +121,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           return $('#to_params').hide();
         }
       });
+
+      $('#defined_discharge').click(function(){
+        $('#defined_radio').prop('checked', true).change();
+      })
+
       $("#submit").click(avaIFaceJS.acv_func.update);
       $('#replay').click(avaIFaceJS.acv_func.play);
 
