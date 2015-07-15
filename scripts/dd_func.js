@@ -41,6 +41,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#discharge_radio').prop('checked', true).change();
       });
 
+      $('#defined_discharge').click(function(){
+        $('#defined_radio').prop('checked', true).change();
+      })
+
       // Retrieve content on form submission
       return $("#submit").click(function () {
         if (!$('input[name=discharge]').is(":checked")) {

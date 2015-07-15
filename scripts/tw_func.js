@@ -57,6 +57,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#cmp').val($(this).val());
         return $('input[name="window_radio"]').change();
       });
+
+      $('#defined_discharge').click(function(){
+        $('#defined_radio').prop('checked', true).change();
+      })
+
       $('#submit').click(avaIFaceJS.tw_func.update);
     },
 

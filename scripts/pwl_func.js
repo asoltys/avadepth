@@ -114,6 +114,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
        });
        */
 
+      $('#defined_discharge').click(function(){
+        $('#defined_radio').prop('checked', true).change();
+      })
+
       $('#ref_map_link').click(function () {
         avaIFaceJS.mapJS.map.updateSize();
       });
