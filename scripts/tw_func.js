@@ -112,9 +112,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         if(window.location.href.indexOf("fra") > -1) {
           //If url contains 'fra'	use 
           avaIFaceJS.reportWindow.title1='Profondeur maximum pour la fenêtre de '+$('#window').val()+' heures';
+          $('#transit-window-last-col').text('Maximum Depth (m)');
         } else {
           //If url does not contain 'fra' use
           avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
+          $('#transit-window-last-col').text('Maximum Depth (m)');
         }
       } else {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
@@ -122,11 +124,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         if(window.location.href.indexOf("fra") > -1) {
           //If url contains 'fra'	use 
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-          $('#transit-window-last-col').text('Heures');
+          $('#transit-window-last-col').text('Heures (h)');
         } else {
           //If url does not contain 'fra' use
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-          $('#transit-window-last-col').text('Hours');
+          $('#transit-window-last-col').text('Hours (h)');
           }
         }
 
@@ -216,6 +218,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#num_days_meeting_standard').text(num_days_meeting_standard);
       }).success(function() {
         $('.spinner').hide();
+		pBarToggle();
         avaIFaceJS.reportWindow.setTitle();
         return avaIFaceJS.reportWindow.show();
       }).error(function() {

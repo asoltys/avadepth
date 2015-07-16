@@ -415,23 +415,26 @@ incl_ava_defs={
       ]}
       ],
       'reportBody':[
-        {tag:'div',attr:{style:'width:60%;margin:0 auto;'},child:[
-          {tag:'div',attr:{className:'span-7'},child:[
-            {tag:'table',attr:{id:'depths',style:"text-align:center"},child:[
-              {tag:'thead',child:[
-                {tag:'tr',child:[
-                  {tag:'th',attr:{className:'verify'},child:["Heure (HNP)"]},
-                  {tag:'th',child:["Chaînage (km)"]},
-                  {tag:'th',child:["Profondeur disponible (m)"]},
-                  {tag:'th',child:["Emplacement"]}
-                ]}
-              ]},
-              {tag:'tbody'}
-            ]}
+        {tag:'div',child:[
+          {tag:'div',attr:{className:'span-12'},child:[
+		    {tag:'section',attr:{'style':'padding-left:15%; padding-right:15%'},child:[
+              {tag:'table',attr:{id:'depths',style:"text-align:center"},child:[
+			    {tag:'thead',child:[
+				  {tag:'tr',child:[
+				    {tag:'th',attr:{className:'verify'},child:["Heure (HNP)"]},
+				    {tag:'th',child:["Chaînage (km)"]},
+				    {tag:'th',child:["Profondeur disponible (m)"]},
+				    {tag:'th',child:["Emplacement"]}
+				  ]}
+			    ]},
+                {tag:'tbody'}
+              ]}
           ]},
-          {tag:'div',attr:{id:'depth_chart',className:'demo-placeholder span-6'}}
-        ]}
-      ],
+		  {tag:'section',attr:{'style':'padding-left:30%; padding-right:30%'},child:[
+            {tag:'div',attr:{style:'margin-top:15px;',id:'depth_chart',className:'demo-placeholder'}}
+          ]}
+		]}
+      ]}],
       'reportDetail':[
         {tag:'div',child:[
           {tag:'div',child:[
@@ -794,7 +797,7 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'det_static-discharge-eval'},child:['Predicted']},
                 ')'
               ]},
-              {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:500px;width:600px;float:left;'}}
+              {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
             ]}
           ]}
         ]

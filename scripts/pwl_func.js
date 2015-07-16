@@ -15,7 +15,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     static_date: "",
     static_interval: "1 hour",
     static_discharge: "",
-    static_discharge_eval: "Prediected",
+    static_discharge_eval: "Predicted",
     cur_waterway: null,
     isParamProcessed: false,
     detailValue: "",
@@ -256,7 +256,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.pwl_func.updateReportTitle();
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
-        return $('.spinner').hide();
+        pBarToggle();
+		return $('.spinner').hide();
       }).success(function () {
         if (!(avaIFaceJS.pwl_func.detailValue == "")){
           if (avaIFaceJS.pwl_func.detailIsKM){
@@ -403,7 +404,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       return avaIFaceJS.pwl_func.gotoGraph(1, $(this).text(),false);
     },
     gotoKMGraph: function () {
-      avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent($(this).text(), avaIFaceJS.detailWindow.mapColorKey);
+      // PWL detail map removal - note that the removal of the following comment will cause pwl KM graph detail report to display improperly on IE browsers
+	  // avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent($(this).text(), avaIFaceJS.detailWindow.mapColorKey);
       return avaIFaceJS.pwl_func.gotoGraph(0, $(this).text(),true);
     }
   }

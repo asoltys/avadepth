@@ -258,3 +258,41 @@ a#toggleLink,summary#ref_map_link{
 .axisLabels {
 	font-size:16px;
 }
+
+/* pBar */
+
+#pBarContainer {
+	z-index:105;
+	position: absolute;
+	left:10000px;
+	margin-bottom: 50px;
+}
+#pBar{
+	border: 2px solid #1a568c;
+	background-color: #ffffff;
+	width: 300px;
+	float: right;
+	z-index:105;
+}
+
+#pBarHeaderContainer{
+	width: 300px;
+	background-color:#1a568c;
+	color:#ffffff;
+	float:left;
+	cursor: pointer;
+}
+
+#pBarHeader{
+	float:left;
+	padding: 5px;
+}
+
+#pBarButton{
+	float:right;
+	padding: 5px;
+}
+
+#map_parameters{
+	padding-top:10px;
+}

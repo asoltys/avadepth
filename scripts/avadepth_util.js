@@ -58,5 +58,14 @@ avadepth.util = {
           flow.flowType = "0"
         }
         return flow;
+    },
+    apiFailureHandler: function(jqxhr, textStatus, error){
+      $('.spinner').hide();
+      if (jqxhr.status == 404) {
+        $("#errorContent p").text("API failed to return response");
+      }
+      $("#errorContent").show();
+      $("#report_panels").show();
+      $("#report_content").hide();
     }
 }
