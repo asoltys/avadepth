@@ -424,7 +424,8 @@ incl_ava_defs={
 					  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
 					  {tag:'th',child:["Chainage (km)"]},
 					  {tag:'th',child:["Available Depth (m)"]},
-					  {tag:'th',child:["Location of Control Point"]}
+					  {tag:'th',child:["Location of Control Point"]},
+					  {tag:'th',child:["num"]}
 					]}
 				  ]},
 				  {tag:'tbody'}

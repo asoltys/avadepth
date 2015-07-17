@@ -122,20 +122,29 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //TODO: Replace bottom line for production
       return $.getJSON(getAPI(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())),"api/depths/calculate.json"), function (data) {
         var points = [];
-        avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').dataTable({
-          bPaginate: false,
-          bInfo: false,
-          bAutoWidth: false,
-          bFilter: false
+        avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').DataTable({
+          "paging" : false,
+          "searching" : false,
+          "info" : false,
+          "autoWidth" : false,
+          "columnDefs": [
+            {"targets": 1, "orderData":[4]},
+            {"targets": -1, "visible": false}
+          ]
         }));
-        avaIFaceJS.dd_func.tableReport.fnClearTable();
+        avaIFaceJS.dd_func.tableReport.clear();
         $('#depths tbody tr').remove();
         $.each(data.items[channel].items, function () {
-          avaIFaceJS.dd_func.tableReport.fnAddData(['<a href="javascript:void(0)">' + this.period + "</a>", this.chainage, this.depth, this.location]);
+          avaIFaceJS.dd_func.tableReport.row.add(
+              ['<a href="javascript:void(0)">' + this.period + "</a>",
+              this.chainage,
+              this.depth,
+              this.location,
+              this.chainage.split('-')[0]]);
           return points.push([this.period, this.depth]);
         });
 
-        avaIFaceJS.dd_func.tableReport.fnDraw();
+        avaIFaceJS.dd_func.tableReport.draw();
         $('#depths tbody tr td:first-child a').click(function () {
           avaIFaceJS.dd_func.showDetail(this.innerText);
         });
