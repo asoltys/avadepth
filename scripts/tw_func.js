@@ -19,6 +19,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         });
       }).datepicker().datepicker('setDate', new Date()).change();
       $('#selected_radio').prop('checked', true);
+      $.fn.dataTable.moment('dddd, D-MMM-YYYY');
 
       $('#period').change(function(){
         var period = (function(){
@@ -175,21 +176,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));
         $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2));
         $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2));
-        avaIFaceJS.tw_func.table || (avaIFaceJS.tw_func.table = $('#transit-window').dataTable({
+        avaIFaceJS.tw_func.table || (avaIFaceJS.tw_func.table = $('#transit-window').DataTable({
           bPaginate: false,
           bInfo: false,
           bFilter: false,
           aaSorting: []
         }));
-        avaIFaceJS.tw_func.table.fnClearTable();
+        avaIFaceJS.tw_func.table.clear();
         _ref = data2.items;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          avaIFaceJS.tw_func.table.fnAddData([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
+          avaIFaceJS.tw_func.table.row.add([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
         }
         $('#transit-window tbody td').css('text-align', 'center');
-        avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
-        avaIFaceJS.tw_func.table.fnDraw();
+        //avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
+        avaIFaceJS.tw_func.table.draw();
         limit_text = (function() {
           switch (false) {
             case $('input[name="channel"]:checked').val() !== '2':
