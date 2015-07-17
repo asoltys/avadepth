@@ -424,7 +424,8 @@ incl_ava_defs={
 					  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
 					  {tag:'th',child:["Chainage (km)"]},
 					  {tag:'th',child:["Available Depth (m)"]},
-					  {tag:'th',child:["Location of Control Point"]}
+					  {tag:'th',child:["Location of Control Point"]},
+					  {tag:'th',child:["num"]}
 					]}
 				  ]},
 				  {tag:'tbody'}
@@ -490,7 +491,8 @@ incl_ava_defs={
                   {tag:'th',child:['Least Sounding']},
                   {tag:'th',attr:{colspan:'2'},child:['Available Width']},
                   {tag:'th',child:['Tidal Aid']},
-                  {tag:'th',child:['Depth']}
+                  {tag:'th',child:['Depth']},
+                  {tag:'th',child:['Number']}
                 ]},
                 {tag:'tr',attr:{style:'background-color: #EEEEEE;'},child:[
                   {tag:'th',child:['(km)']},
@@ -498,6 +500,7 @@ incl_ava_defs={
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['%']},
+                  {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']}
                 ]}

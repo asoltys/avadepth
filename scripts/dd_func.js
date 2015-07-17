@@ -77,17 +77,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //TODO: Replace line for production:
       $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {
         var least_depth;
-        avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').dataTable({
-          bPaginate: false,
-          bInfo: false,
-          bFilter: false,
-          bAutoWidth: false,
-          aaSorting: []
+        avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').DataTable({
+          "paging": false,
+          "searching" : false,
+          "info" : false,
+          "autoWidth" : false,
+          "columnDefs": [
+            {"targets": 0, "orderData":[7]},
+            {"targets": -1, "visible": false}
+          ]
         }));
-        avaIFaceJS.dd_func.tableDetail.fnClearTable();
+
+        avaIFaceJS.dd_func.tableDetail.clear();
         $('#verify tbody tr').remove();
         least_depth = 10000;
-        $.each(data.items, function () {
+        $.each(data.items, function (index) {
           var depth, fixed_depth;
           fixed_depth = this.depth.toFixed(1);
           if (this.depth <= least_depth) {
@@ -97,8 +101,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           } else {
             depth = fixed_depth;
           }
-          return avaIFaceJS.dd_func.tableDetail.fnAddData([this.location, this.designGrade, this.sounding, this.width, this.percent, this.tidalAid, depth]);
+          return avaIFaceJS.dd_func.tableDetail.row.add([
+              this.location,
+              this.designGrade,
+              this.sounding,
+              this.width,
+              this.percent,
+              this.tidalAid,
+              depth,
+              index]).draw();
         });
+
         avaIFaceJS.detailWindow.show();
         return $('#verify td').find('.low_depth').closest('tr').addClass('least-depth');
       });
@@ -122,20 +135,29 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //TODO: Replace bottom line for production
       return $.getJSON(getAPI(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())),"api/depths/calculate.json"), function (data) {
         var points = [];
-        avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').dataTable({
-          bPaginate: false,
-          bInfo: false,
-          bAutoWidth: false,
-          bFilter: false
+        avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').DataTable({
+          "paging" : false,
+          "searching" : false,
+          "info" : false,
+          "autoWidth" : false,
+          "columnDefs": [
+            {"targets": 1, "orderData":[4]},
+            {"targets": -1, "visible": false}
+          ]
         }));
-        avaIFaceJS.dd_func.tableReport.fnClearTable();
+        avaIFaceJS.dd_func.tableReport.clear();
         $('#depths tbody tr').remove();
         $.each(data.items[channel].items, function () {
-          avaIFaceJS.dd_func.tableReport.fnAddData(['<a href="javascript:void(0)">' + this.period + "</a>", this.chainage, this.depth, this.location]);
+          avaIFaceJS.dd_func.tableReport.row.add(
+              ['<a href="javascript:void(0)">' + this.period + "</a>",
+              this.chainage,
+              this.depth,
+              this.location,
+              this.chainage.split('-')[0]]);
           return points.push([this.period, this.depth]);
         });
 
-        avaIFaceJS.dd_func.tableReport.fnDraw();
+        avaIFaceJS.dd_func.tableReport.draw();
         $('#depths tbody tr td:first-child a').click(function () {
           avaIFaceJS.dd_func.showDetail(this.innerText);
         });
