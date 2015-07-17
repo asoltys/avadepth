@@ -134,7 +134,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         } else {
           //If url does not contain 'fra' use
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-          $('#transit-window-last-col').text('Hours (h)');
+          $('#transit-window-last-col').text('Transit Window (hrs)');
           }
         }
 
