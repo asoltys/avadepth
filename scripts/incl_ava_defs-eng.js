@@ -286,9 +286,9 @@ incl_ava_defs={
               {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
                 {key:4,value:'4 hr'},
                 {key:2,value:'2 hr'},
-                {key:1,value:'1 hr',select:'selected'},
+                {key:1,value:'1 hr'},
                 {key:0.5,value:'30 min.'},
-                {key:0.25,value:'15 min.'}
+                {key:0.25,value:'15 min.',select:'selected'}
               ]}}
             ]}
           ]},
