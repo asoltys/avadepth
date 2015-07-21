@@ -280,7 +280,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     gotoGraph: function (typCode, typValue, useMap) {
       avaIFaceJS.detailWindow.loadLayout();
-      avaIFaceJS.detailWindow.show();
+
       var detkmtime = $('#det_km_time');
       switch ($("#pwl_waterway").val()) {
         case '0':
@@ -299,7 +299,19 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#det_static-arm').text(avaIFaceJS.pwl_func.static_arm);
       $('#det_static-discharge').text(avaIFaceJS.pwl_func.static_discharge);
       $('#det_static-discharge-eval').text(avaIFaceJS.pwl_func.static_discharge_eval);
-      var step = (function () {
+
+	  avaIFaceJS.pwl_func.gotoGraph_sub(typCode, typValue, "#det_placeholder"); // create pwl plots for main detail report
+      
+	  avaIFaceJS.detailWindow.useMap=useMap;
+      avaIFaceJS.detailWindow.show();
+	  
+	  // once print div is initialized in ava_iface, add pwl plots to be printed
+	  $("#detail_print").find("#det_placeholder").replaceWith('<div class="demo-placeholder" id="det_placeholder_print" style="height: 450px; width: 100%; padding: 0px; position: relative;"></div>');
+	  
+	  avaIFaceJS.pwl_func.gotoGraph_sub(typCode, typValue, "#det_placeholder_print"); // create pwl plots for print version of detail report
+    },
+	gotoGraph_sub: function (typCode, typValue, plotId) {
+		var step = (function () {
         var t;
         switch ($("#pwl_waterway").val()) {
           case '0':
@@ -314,15 +326,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
         return t[typCode];
       })();
-
-      // if using IE, make tweaks
+	
+		// if using IE, make tweaks
       if (isIE){
-        $('#det_placeholder').css('font-size','inherit');
+        $(plotId).css('font-size','inherit');
       }
-
+	  
       if (typCode == 0) {
         $('#det_km_time-suff').text('km');
-
+		
         //TODO: Replace following line for production
         $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
             + ("intervalMin=" + ($('#interval').val()) + "&")
@@ -330,6 +342,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             + ("flowType=" + ($('#flowType').val()) + "&")
             + ("waterway=" + ($('#pwl_waterway').val()) + "&")
             + "displayType=0","api/depths/waterlevel_kmplot.json"), function (data) {
+			
         //$.getJSON(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&") + ("intervalMin=" + ($('#interval').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("waterway=" + ($('#pwl_waterway').val()) + "&") + "displayType=0", function(data) {
         //$.getJSON("api/depths/waterlevel_kmplot.json", function (data) {
           var points = [];
@@ -342,8 +355,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             }
             return points.push([date.getTime(), this.waterLevels[step]]);
           });
-
-          return $.plot("#det_placeholder", [points], {
+          return $.plot(plotId, [points], {
             xaxis: {
               color: 'black',
               tickColor: '#ddd',
@@ -381,7 +393,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             }
           });
 
-          return $.plot("#det_placeholder", [points], {
+          return $.plot(plotId, [points], {
             xaxis: {
               color: 'black',
               tickColor: '#ddd',
@@ -397,9 +409,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           });
         });
       }
-      avaIFaceJS.detailWindow.useMap=useMap;
-      return avaIFaceJS.detailWindow.show();
-    },
+	},
     gotoTimeGraph: function () {
       return avaIFaceJS.pwl_func.gotoGraph(1, $(this).text(),false);
     },

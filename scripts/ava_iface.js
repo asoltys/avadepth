@@ -93,6 +93,7 @@ avaIFaceJS = {
 	  var printReport = $( "#detail_content" ).clone();
 	  printReport.find("#print_remove").remove(); // specific to handle ccc radio buttons
 	  $("#detail_print").html(printReport);
+	  // see pwl_func.js goToGraph function for canvas printing fix
     },
 
     // Hides Detail Window
