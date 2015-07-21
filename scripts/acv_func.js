@@ -64,50 +64,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           //return $('#static-discharge').text($('#defined_discharge').val());
         }
       });
-      $('select#interval').change(function() {
-        var hour, i, interval, start, interval_start, minute, options, _i;
-        interval = parseFloat($(this).val());
-        options = "";
-        start=$('#from').val();
-        interval_start = parseFloat(start);
-        while (interval_start >= 0) {
-          interval_start -= interval;
-        }
-        interval_start += interval;
-        for (i = _i = interval_start; interval > 0 ? _i < 24 : _i > 24; i = _i += interval) {
-          hour = Math.floor(i);
-          if (hour < 10) {
-            hour = "0" + hour;
-          }
-          minute = i % 1 * 60;
-          if (minute === 0) {
-            minute = "00";
-          }
-          options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
-        }
-        $('select#from').html('').html(options);
-        $('#from').val(start).change();
-      });
-      $('select#from').change(function() {
-        var hour, i, interval, minute, options, _i, _ref;
-        interval = parseFloat($("#interval").val());
-        options = "";
-        for (i = _i = _ref = parseFloat($(this).val()) + interval; interval > 0 ? _i < 24 : _i > 24; i = _i += interval) {
-          hour = Math.floor(i);
-          if (hour < 10) {
-            hour = "0" + hour;
-          }
-          minute = i % 1 * 60;
-          if (minute === 0) {
-            minute = "00";
-          }
-          options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
-        }
-        $('select#to').html('').html(options);
-        if ($('input[name=type]:checked').val() === "0") {
-          $('#to_params').hide();
-        }
-      });
+      $('select#interval').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
+      $('select#from').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
+
       $('input[name=type]').change(function() {
         if ($('input[name=type]:checked').val() !== '0') {
           $('#interval').prev().show();
@@ -130,29 +89,49 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#replay').click(avaIFaceJS.acv_func.play);
 
     },
+    time_chg_evnt_hndlr: function(){
+      var interval, start, options;
+      interval = parseFloat($("#interval").val());
+      options = "";
+      start=$('#from').val();
+
+      for (var i = moment("00:00","HH:mm");
+          i.isBefore(moment("24:01","HH:mm").subtract(interval,"hours"));
+          i.add(0.25,"hours")) {
+        options += "<option value=\"" + i.format("HH:mm") + "\">" + i.format("HH:mm")+ "</option>";
+      }
+
+      $('select#from').html('').html(options);
+      $('#from').val(start);
+
+      options = '';
+      for (var i = moment(start,"HH:mm").add(interval,"hours");
+          i.isBefore(moment("24:01","HH:mm"));
+          i.add(interval,"hours")) {
+        options += "<option value=\"" + i.format("HH:mm") + "\">" + i.format("HH:mm")+ "</option>";
+      }
+      $('select#to').html('').html(options.replace(/00:00/g,"24:00"));
+
+    },
     update: function(){
-      var flow, end_hour, end_minute, getImage, hour, interval, minute;
+      var flow, getImage, interval;
       $(this).prop('disabled', 'disabled');
       $('#loading').show();
       $('.spinner').show();
       $('#animated, #animated_legend, #replay, #nodata').hide();
-      startVal=$('#from').val();
-      endVal=$('#to').val();
-      hour = Math.floor(parseFloat(startVal));
-      minute = (parseFloat(startVal) - hour) * 60;
-      interval = parseFloat($("#interval").val());
+
+      start_time = moment($('#from').val(),"HH:mm");
+      end_time = moment($('#to').val(),"HH:mm");
+      interval = moment.duration(parseFloat($("#interval").val()),"hours");
+
       $('#frames_retrieved').html('0');
-      $('#number_of_frames').html((endVal - startVal) / interval + 1);
+      $('#number_of_frames').html((end_time.diff(start_time,"minutes")) / interval.asMinutes() + 1);
       if ($('input[name=type]:checked').val() !== '0') {
-        end_hour = Math.floor(parseFloat(endVal));
-        end_minute = (parseFloat(endVal) - end_hour) * 60;
         $('#frame_count').show();
       } else {
-        end_hour = hour;
-        end_minute = minute;
         $('#frame_count').hide();
       }
-      //total = (end_hour - hour) * 4 + (end_minute - minute) / 15;
+
       avaIFaceJS.acv_func.images = [];
       avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
 
@@ -176,8 +155,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&")
             + ("flowRate=" + ($('#flowRate').val()) + "&")
             + ("flowType=" + ($('#flowType').val()) + "&")
-            + ("hour=" + hour + "&")
-            + ("minute=" + minute),"api/depths/animated.json"), function(data) {
+            + ("hour=" + start_time.hour() + "&")
+            + ("minute=" + start_time.minute()),"api/depths/animated.json"), function(data) {
           var result;
           result = data.toString();
           if (result !== '/images/') {
@@ -186,17 +165,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           avaIFaceJS.acv_func.preload(avaIFaceJS.acv_func.images[avaIFaceJS.acv_func.images.length - 1]);
           return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length);
         }).then(function() {
-          if (hour < end_hour || (hour === end_hour && minute <= end_minute)) {
+          if (!start_time.isAfter(end_time)){
             getImage();
-            minute += interval * 60;
-            if (minute >= 60) {
-              minute = minute - 60;
-              if (interval <= 1) {
-                return hour += 1;
-              } else {
-                return hour += interval;
-              }
-            }
+            start_time.add(interval);
           } else {
             avaIFaceJS.acv_func.play();
             return $('#submit').prop('disabled', '');
@@ -244,7 +215,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#animated').on("load", function() {
             $('#animated').show();
             return $('#animated_legend').show();
-          }).attr("src",  avaIFaceJS.acv_func.images[i]);
+          }).attr("src",  "http://205.193.152.175/" + avaIFaceJS.acv_func.images[i]);
           i++;
           if (i >= avaIFaceJS.acv_func.images.length) {
             clearInterval(handle);

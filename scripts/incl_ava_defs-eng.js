@@ -259,7 +259,8 @@ incl_ava_defs={
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
                 var hr=parseInt(i);
-                res.push({key:i,value:(hr)+":"+padZero((i-hr)*60)});
+                var time = (hr)+":"+padZero((i-hr)*60);
+                res.push({key:time,value:time});
                 if (i==17){
                   res[res.length-1].select="selected";
                 }
