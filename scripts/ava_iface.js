@@ -49,6 +49,7 @@ avaIFaceJS = {
     // Load Detail layout with empty template
     loadLayout: function(){
       $('#rep_detail_info').html('').append(avaIFaceJS.detailWindow.detailContent).show();
+	  
       $('#cboxClose').unbind('click').click(avaIFaceJS.detailWindow.hide);
       $('button[name="print"]').unbind('click').click(function(){window.print()});
     },
@@ -58,12 +59,13 @@ avaIFaceJS = {
       var repDet = $('#report_detail');
 	  
 	  // PWL detail map removal
-      if (avaIFaceJS.detailWindow.useMap) {
-        $('#rep_detail_map').hide();//.show().css('width','100%');
+      /*if (avaIFaceJS.detailWindow.useMap) {
+        $('#rep_detail_map').hide().show().css('width','100%');
         avaIFaceJS.detailWindow.mapJS.renderMap();
       } else {
         $('#rep_detail_map').hide();
-      }
+      }*/
+	  $('#rep_detail_map').hide();
       $('#report_map').css('width','100%');
       
 	  // detail report position parameters
@@ -84,6 +86,13 @@ avaIFaceJS = {
 	  
 	  
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
+	  
+	  // generates detial_print div html and css from current detail display window
+	  $('<style>@media print { #report_body { display: none; } }</style>').appendTo('head');
+	  
+	  var printReport = $( "#detail_content" ).clone();
+	  printReport.find("#print_remove").remove(); // specific to handle ccc radio buttons
+	  $("#detail_print").html(printReport);
     },
 
     // Hides Detail Window
@@ -94,6 +103,10 @@ avaIFaceJS = {
       }
       $('#report_det_cover').hide();
       $('#report_detail').hide();
+	  
+	  // hide report window printing div from print css
+	  $('<style>@media print { #report_body { display: block; } }</style>').appendTo('head');
+	  $("#detail_print").html("");
     }
   },
 

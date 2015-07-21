@@ -296,3 +296,8 @@ a#toggleLink,summary#ref_map_link{
 #map_parameters{
 	padding-top:10px;
 }
+
+
+#detail_print{
+	display:none;
+ }
