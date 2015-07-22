@@ -296,3 +296,9 @@ a#toggleLink,summary#ref_map_link{
 #map_parameters{
 	padding-top:10px;
 }
+
+
+#detail_print{
+	visibility: hidden;
+	position: fixed; /* to overlap with existing divs so it will not be seen
+ }

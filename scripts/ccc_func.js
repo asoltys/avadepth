@@ -82,14 +82,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.ccc_func.chainage = this.id;
       $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
-      $('#heading').text("Kilometre " + (avaIFaceJS.ccc_func.chainage - 1) + " to " + (avaIFaceJS.ccc_func.chainage));
+      $('#detail_print').find('#heading').text("Kilometre " + (avaIFaceJS.ccc_func.chainage - 1) + " to " + (avaIFaceJS.ccc_func.chainage));
       $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel).change();
     },
     setChannel:function(){
       if(!($(this).is(':checked'))){return;}
       avaIFaceJS.ccc_func.detailIsInnerChannel=($(this).val()==="1");
-      $('#segment').text($(this).next().text());
+	  
+	  $('#detail_print').find('#segment').text($(this).next().text());
       $('#surveys tbody').html('');
+	  
       //TODO: Replace following line for production
       return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "2")) + "&" + ("chainage=" + avaIFaceJS.ccc_func.chainage), function(data) {
       //return $.getJSON(("api/depths/History.json"), function (data) {
