@@ -299,5 +299,6 @@ a#toggleLink,summary#ref_map_link{
 
 
 #detail_print{
-	display:none;
+	visibility: hidden;
+	position: fixed; /* to overlap with existing divs so it will not be seen
  }

@@ -203,5 +203,6 @@ div#reportTitle2 {
 }
 
 #detail_print{
-	display:block;
+	visibility: visible;
+	position: static; /* set to default for proper formatting*/
 }

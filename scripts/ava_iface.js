@@ -73,6 +73,9 @@ avaIFaceJS = {
 	  repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 5));
 	  repDet.show().css('position', 'fixed');
 	  
+	  /* 
+	  * set dynamic detail report size 
+	  */
 	  // detail report size parameters
 	  var dataHeight = $('#rep_detail_map').height() + $('#rep_detail_info').height();
 	  var windowHeight = window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30);
@@ -84,10 +87,11 @@ avaIFaceJS = {
 	  }
 	  $('#cboxLoadedContent').css('width', '101%'); // prevents needless horizontal scroll bar
 	  
-	  
       $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
 	  
-	  // generates detial_print div html and css from current detail display window
+	  /*
+	  * generates detial_print div html and css from current detail display window
+	  */
 	  $('<style>@media print { #report_body { display: none; } }</style>').appendTo('head');
 	  
 	  var printReport = $( "#detail_content" ).clone();
