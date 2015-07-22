@@ -105,6 +105,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#from').val(start);
 
       options = '';
+      if(moment(start,"HH:mm").add(interval,"hours").isAfter(moment("24:00","HH:mm"))) start = "00:00";
+
       for (var i = moment(start,"HH:mm").add(interval,"hours");
           i.isBefore(moment("24:01","HH:mm"));
           i.add(interval,"hours")) {
@@ -129,6 +131,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if ($('input[name=type]:checked').val() !== '0') {
         $('#frame_count').show();
       } else {
+        end_time = start_time;
         $('#frame_count').hide();
       }
 
@@ -179,8 +182,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // Set Report Title Info
       avaIFaceJS.reportWindow.addTitle(
         "Fraser River - South Arm",
-        "Zone " + (avaIFaceJS.acv_func.selected_zone) + " at " + $('select#interval').find(':selected').text() + " intervals",
-        "Hope Discharge " + (avaIFaceJS.acv_func.discharge) + "m\u00B3/s (" + (avaIFaceJS.acv_func.discharge_eval) + ") - " + moment($('#date').val()).format("MMM D, YYYY") + " from " + ($('select#from').find(':selected').text()) + " to " + ($('select#to').find(':selected').text()),
+        "Zone " + (avaIFaceJS.acv_func.selected_zone)
+            + " at " + $('select#interval').find(':selected').text() + " intervals",
+        "Hope Discharge " + (avaIFaceJS.acv_func.discharge) + "m\u00B3/s ("
+            + (avaIFaceJS.acv_func.discharge_eval) + ") - "
+            + moment($('#date').val()).format("MMM D, YYYY")
+            + " from " + ($('select#from').find(':selected').text())
+            + " to " + ($('select#to').find(':selected').text()),
         "Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
       );
       /*
