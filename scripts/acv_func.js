@@ -64,8 +64,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           //return $('#static-discharge').text($('#defined_discharge').val());
         }
       });
-      $('select#interval').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
-      $('select#from').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
 
       $('input[name=type]').change(function() {
         if ($('input[name=type]:checked').val() !== '0') {
@@ -85,6 +83,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#defined_radio').prop('checked', true).change();
       })
 
+      $('#interval, #from').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
       $("#submit").click(avaIFaceJS.acv_func.update);
       $('#replay').click(avaIFaceJS.acv_func.play);
 
