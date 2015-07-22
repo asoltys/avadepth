@@ -305,11 +305,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  avaIFaceJS.detailWindow.useMap=useMap;
       avaIFaceJS.detailWindow.show();
 	  
-	  // once print div is initialized in ava_iface, add pwl plots to be printed
-	  $("#detail_print").find("#det_placeholder").replaceWith('<div class="demo-placeholder" id="det_placeholder_print" style="height: 450px; width: 100%; padding: 0px; position: relative;"></div>');
+	  // once print div is initialized in ava_iface.show(), add pwl canvas chart for printing
+	  $("#detail_print").find("#det_placeholder").replaceWith('<div class="demo-placeholder" id="det_placeholder_print" style="height: 450px; width: 100%; left:30px; padding: 0px; position: relative;"></div>'); // put width back to 100%
 	  
 	  avaIFaceJS.pwl_func.gotoGraph_sub(typCode, typValue, "#det_placeholder_print"); // create pwl plots for print version of detail report
     },
+	/* generate pwl canvas chart from given parameters */
 	gotoGraph_sub: function (typCode, typValue, plotId) {
 		var step = (function () {
         var t;
