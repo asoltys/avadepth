@@ -27,6 +27,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.mapJS.pwl_func.setExtents($(this).val());
       });
 
+      avaIFaceJS.detailWindow.loadLayout();
+
       /*** Set Event Triggers ***/
 
         // Changing date value in Parameters window
@@ -279,8 +281,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     gotoGraph: function (typCode, typValue, useMap) {
-      avaIFaceJS.detailWindow.loadLayout();
-
+      avaIFaceJS.detailWindow.show();
       var detkmtime = $('#det_km_time');
       switch ($("#pwl_waterway").val()) {
         case '0':

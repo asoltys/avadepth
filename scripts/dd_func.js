@@ -23,6 +23,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  }
       avaIFaceJS.reportWindow.title2 = "";
 
+      avaIFaceJS.detailWindow.loadLayout();
+
       // Style Elements
       $(".yaxislabel").css("color", "black");
 	  
@@ -58,7 +60,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     
     // Update values and apply to Detail Window
     showDetail: function (period) {
-      avaIFaceJS.detailWindow.loadLayout();
       avaIFaceJS.detailWindow.show();
 
       $('#static-time').text(period);

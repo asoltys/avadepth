@@ -15,6 +15,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		}
       var date, month, weekday, table;
       date = new Date();
+
+      avaIFaceJS.detailWindow.loadLayout();
+
 	  if(window.location.href.indexOf("fra") > -1) {
 		//If url contains 'fra'	use 
 		weekday = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
@@ -75,7 +78,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     },
     showDetail: function () {
-      avaIFaceJS.detailWindow.loadLayout();
       //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       avaIFaceJS.ccc_func.chainage = this.id;
       $('input[id="inner_select"]').attr('checked','checked');
