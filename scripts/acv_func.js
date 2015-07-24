@@ -130,7 +130,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if ($('input[name=type]:checked').val() !== '0') {
         $('#frame_count').show();
       } else {
-        end_time = start_time;
+        end_time = start_time.clone();
         $('#frame_count').hide();
       }
 
@@ -222,7 +222,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#animated').on("load", function() {
             $('#animated').show();
             return $('#animated_legend').show();
-          }).attr("src",  "http://205.193.152.175/" + avaIFaceJS.acv_func.images[i]);
+          }).attr("src", avaIFaceJS.acv_func.images[i]);
           i++;
           if (i >= avaIFaceJS.acv_func.images.length) {
             clearInterval(handle);
