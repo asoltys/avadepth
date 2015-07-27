@@ -123,6 +123,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
 	  $('#zone').change(function() {
         avaIFaceJS.acv_func.selected_zone = $('#zone').val(); // set zone var with most recently selected zone
+		avaIFaceJS.mapJS.acv_func.zoneSelect(avaIFaceJS.acv_func.selected_zone); // set selected zone on map
       });
       $("#submit").click(avaIFaceJS.acv_func.update);
       $('#replay').click(avaIFaceJS.acv_func.play);
