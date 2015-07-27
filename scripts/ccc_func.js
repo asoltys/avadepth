@@ -89,7 +89,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if(!($(this).is(':checked'))){return;}
       avaIFaceJS.ccc_func.detailIsInnerChannel=($(this).val()==="1");
 	  
-	  $('#detail_print').find('#segment').text($(this).next().text());
+	  $('#detail_print').find('#segment').text($(this).next().text()); // updates print div with current channel information
       $('#surveys tbody').html('');
 	  
       //TODO: Replace following line for production

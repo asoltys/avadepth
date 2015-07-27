@@ -121,12 +121,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           return $('#to_params').hide();
         }
       });
+	  $('#zone').change(function() {
+        avaIFaceJS.acv_func.selected_zone = $('#zone').val(); // set zone var with most recently selected zone
+      });
       $("#submit").click(avaIFaceJS.acv_func.update);
       $('#replay').click(avaIFaceJS.acv_func.play);
 
     },
     update: function(){
       var flow, end_hour, end_minute, getImage, hour, interval, minute;
+	  
       avaIFaceJS.acv_func.setTitle();
       $(this).prop('disabled', 'disabled');
       $('#loading').show();
@@ -160,7 +164,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       } else {
         $('#flowType').val("UserDefined");
       }
-
+	  
       return (getImage = function() {
         //TODO: Replace following line for production
         return $.getJSON(getAPI(("/api/animated?date=" + ($('#date').val()) + "&")
@@ -250,8 +254,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#replay').hide();
       }
     },
-    setZone:function(zone){
-      avaIFaceJS.acv_func.selected_zone=zone;
+    setZone:function(zone){ // update param bar zone when changed on map
+	  avaIFaceJS.acv_func.selected_zone = zone; // set zone var with most recently selected zone
 	  $("#zone").val(zone);
     }
   }
@@ -259,7 +263,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
   /*** Map Interaction functions ***/
   avaMapJS.acv_func = {
-    currentZone:1,
+    //currentZone:1,
     init: function () {
       mapStyle.callback_function=function(feat){return true};
       avaMapJS.acv_func.kml=new OpenLayers.Layer.Vector("KML", {

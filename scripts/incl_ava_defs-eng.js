@@ -294,7 +294,15 @@ incl_ava_defs={
 		   {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
               {tag:'label',attr:{htmlFor:'zone'},child:["Zone:"]},
-			  {tag:'input',attr:{type:'text',name:'zone',id:'zone',value:'',readonly:'readonly',style:'width:60px'}}
+			  {tag:'select',attr:{name:'zone',id:'zone',style:'width:60px'},ref:{tag:'option',values:function(){
+                var s=[],c=true;
+                for(var i=1;i<=11;i++){
+                  var t={key:i,value:i};
+                  if(c){t.select=true;c=false;}
+                  s.push(t);
+                }
+                return s;
+              }}}
             ]}
           ]},
           {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
