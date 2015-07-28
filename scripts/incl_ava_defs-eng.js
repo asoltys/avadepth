@@ -431,8 +431,8 @@ incl_ava_defs={
 				  {tag:'tbody'}
 				]}
           ]},
-		  {tag:'section',attr:{'style':'padding-left:30%; padding-right:30%'},child:[
-		    {tag:'div',attr:{style:'margin-top:15px;',id:'depth_chart',className:'demo-placeholder'}}
+		  {tag:'section',child:[
+		    {tag:'div',attr:{style:'margin-top:15px;;margin-left:auto; margin-right:auto',id:'depth_chart',className:'demo-placeholder'}}
 		  ]}
         ]}
       ]}],
@@ -927,7 +927,7 @@ incl_ava_defs={
                 ]}
               ]}
             ]},
-            {tag:'div',attr:{className:'print_hide'},child:[
+            {tag:'div',attr:{id:'print_remove', className:'print_hide'},child:[
               {tag:'strong',child:['Channel Select']},
               {tag:'br'},
               {tag:'input',attr:{id:'inner_select',type:'radio',name:'channel_select',style:'display:inline',checked:'checked',value:'1'}},

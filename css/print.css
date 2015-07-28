@@ -192,3 +192,17 @@ div#reportTitle2 {
 #pBarContainer{
 	display:none;
 }
+
+/* detail window and report window printing */
+/*#report_body{
+	display:none;
+}*/
+
+#cboxLoadedContent{
+	display:none;
+}
+
+#detail_print{
+	visibility: visible;
+	position: static; /* set to default for proper formatting*/
+}
