@@ -13,7 +13,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     report_title2: "",
     static_arm: "South Arm",
     static_date: "",
-    static_interval: "1 Hour",
+    static_interval: "1 hour",
     static_discharge: "3000",
     static_discharge_eval: "Selected",
     cur_waterway: null,
@@ -305,7 +305,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
 
     gotoGraph: function (typCode, typValue, useMap) {
-      avaIFaceJS.detailWindow.show();
 
       var detkmtime = $('#det_km_time');
       switch ($("#pwl_waterway").val()) {
