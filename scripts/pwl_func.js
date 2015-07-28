@@ -13,9 +13,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     report_title2: "",
     static_arm: "South Arm",
     static_date: "",
-    static_interval: "1 hour",
-    static_discharge: "",
-    static_discharge_eval: "Predicted",
+    static_interval: "1 Hour",
+    static_discharge: "3000",
+    static_discharge_eval: "Selected",
     cur_waterway: null,
     isParamProcessed: false,
     detailValue: "",
@@ -27,6 +27,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.mapJS.pwl_func.setExtents($(this).val());
       });
 
+      avaIFaceJS.detailWindow.loadLayout();
+
       /*** Set Event Triggers ***/
 
         // Changing date value in Parameters window
@@ -37,6 +39,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 //          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
+		avaIFaceJS.pwl_func.static_date = moment($('#pwl_date').val()).format("MMM D, YYYY");
       }).datepicker().datepicker('setDate', new Date()).change();
 
       // Check "Selected" radio on "Selected" value combo selection
@@ -46,9 +49,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
-        if ($('input[name="discharge"].checked').val() === "Selected") {
-          avaIFaceJS.pwl_func.discharge=$('#selected_discharge').val();
-        }
+      });
+	  
+	  // Check "User Defined" radio on "User Defined" input is focused on
+      $('#defined_discharge').on("click", function() {
+        $('#defined_radio').prop('checked', true).change();
+      });
+	  
+	  // update user defined value
+	  $('#defined_discharge').change(function() {
+        $('#defined_radio').prop('checked', true).change();
       });
 
       $('input[name=discharge]').change(function () {
@@ -97,14 +107,23 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }).call(this);
         return $('#flowType').val(flowtype);
       });
-      $('#defined_discharge').change(function () {
-      });
       $('input[name=channel]').change(function () {
         return $('#static-limit').text($(this).next().text());
       });
 
       $('select#interval').change(function () {
-        avaIFaceJS.pwl_func.static_interval = $(this).val() + " minutes";
+	    avaIFaceJS.pwl_func.static_interval = (function() {
+			switch ($(this).val()) {
+				case '120':
+				  return '2 hour';
+	            case '60':
+	              return '1 hour';
+				case '30':
+				  return '30 minute';
+				case '15':
+				  return '15 minute';
+			  }
+			}).call(this);
         return avaIFaceJS.pwl_func.updateReportTitle();
       });
 
@@ -120,10 +139,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $("#submit").click(avaIFaceJS.pwl_func.update);
     },
 
-    //
     update: function () {
+	  var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
+	  
+	  // user has left user-defined m^3/s value blank
+	  if(avaIFaceJS.pwl_func.static_discharge === "" && avaIFaceJS.pwl_func.static_discharge_eval === 'Defined') {
+	    $('#defined_discharge').focus();
+	    return;
+	  }
+	  
       avaIFaceJS.pwl_func.isParamProcessed=true;
-      var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
+      
       $('.spinner').show();
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
@@ -210,7 +236,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       } else {
         $('#flowType').val("UserDefined");
       }
-      //TODO: Replace next line for production
+      //TODO: Replace next line for production theresa
       return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
           + ("intervalMin=" + ($('#interval').val()) + "&")
           + ("flowRate=" + ($('#flowRate').val()) + "&")
@@ -273,13 +299,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     // Updates Report Title Info
     updateReportTitle: function () {
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
-          "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " intervals",
+          "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
           "Hope Discharge " + avaIFaceJS.pwl_func.static_discharge + "m\u00B3/s (" + avaIFaceJS.pwl_func.static_discharge_eval + ")"
       );
     },
 
     gotoGraph: function (typCode, typValue, useMap) {
-      avaIFaceJS.detailWindow.loadLayout();
+      avaIFaceJS.detailWindow.show();
 
       var detkmtime = $('#det_km_time');
       switch ($("#pwl_waterway").val()) {

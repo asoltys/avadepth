@@ -242,7 +242,7 @@ incl_ava_defs={
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
           {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User Defined"]},
-          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:60px'}},
+          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px'}},
           " m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
@@ -294,7 +294,15 @@ incl_ava_defs={
 		   {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
               {tag:'label',attr:{htmlFor:'zone'},child:["Zone:"]},
-			  {tag:'input',attr:{type:'text',name:'zone',id:'zone',value:'',readonly:'readonly',style:'width:60px'}}
+			  {tag:'select',attr:{name:'zone',id:'zone',style:'width:60px'},ref:{tag:'option',values:function(){
+                var s=[],c=true;
+                for(var i=1;i<=11;i++){
+                  var t={key:i,value:i};
+                  if(c){t.select=true;c=false;}
+                  s.push(t);
+                }
+                return s;
+              }}}
             ]}
           ]},
           {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
@@ -725,7 +733,7 @@ incl_ava_defs={
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
           {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User Defined']},
-          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:5em'}},
+          {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
           {tag:'div',child:[
@@ -734,7 +742,7 @@ incl_ava_defs={
               {key:'15',value:'15 Minute'},
               {key:'30',value:'30 Minute'},
               {key:'60',value:'1 Hour','select':true},
-              {key:'120',value:'2 hour'}
+              {key:'120',value:'2 Hour'}
             ]}}
           ]},
           {tag:'div',child:[

@@ -33,8 +33,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         })();
       });
       $('#selected_discharge').change(function() {
-        return $('#discharge_radio').prop('checked', true).change();
+        return $('#selected_radio').prop('checked', true).change();
       });
+	  // Check "User Defined" radio on "User Defined" input is focused on
+      $('#defined_discharge').on("click", function() {
+        $('#defined_radio').prop('checked', true).change();
+      });
+	  
       $('#compliance').change(function() {
         $('#cmp_box').val(0);
         if ($('#compliance').is(':checked')) {
@@ -91,6 +96,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           ]}
         ]
       };
+	  
+	  // user has left user-defined m^3/s value blank
+	  if(avadepth.util.getSelectedFlow().flowRate === "" && $('input[name=discharge]:checked').val() === 'Defined') {
+	    $('#defined_discharge').focus();
+	    return;
+	  }
+	  
       var dt=$('#date').val();
       var period = function(){
         switch ($('#period').val()){
