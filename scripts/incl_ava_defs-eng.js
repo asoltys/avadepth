@@ -87,7 +87,7 @@ incl_ava_defs={
     'Sections':{ 
       'PMV': {
         'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
-        'Names': ['1st Narrows', '2nd Narrows', 'Port Moody'],
+        'Names': ['Lynnterm Westgate','1st Narrows', '2nd Narrows', 'Port Moody'],
         'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
         },
       'PMV-FC': {

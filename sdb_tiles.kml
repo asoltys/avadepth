@@ -700,7 +700,7 @@
 	 <Placemark id="kml_69">
         <name>PMV05</name>
         <description/>
-        <waterway>PMV-BI</waterway>
+        <waterway>PMV</waterway>
         <!--<location>All Locations</location>-->
 		<location>Lynnterm Westgate</location>
         <Polygon>
