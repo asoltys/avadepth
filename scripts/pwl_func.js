@@ -13,7 +13,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     report_title2: "",
     static_arm: "South Arm",
     static_date: "",
-    static_interval: "1 hour",
+    static_interval: "1 Hour",
     static_discharge: "3000",
     static_discharge_eval: "Selected",
     cur_waterway: null,
@@ -39,6 +39,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 //          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
+		avaIFaceJS.pwl_func.static_date = moment($('#pwl_date').val()).format("MMM D, YYYY");
       }).datepicker().datepicker('setDate', new Date()).change();
 
       // Check "Selected" radio on "Selected" value combo selection
@@ -111,7 +112,18 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
 
       $('select#interval').change(function () {
-        avaIFaceJS.pwl_func.static_interval = $(this).val() + " minutes";
+	    avaIFaceJS.pwl_func.static_interval = (function() {
+			switch ($(this).val()) {
+				case '120':
+				  return '2 hour';
+	            case '60':
+	              return '1 hour';
+				case '30':
+				  return '30 minute';
+				case '15':
+				  return '15 minute';
+			  }
+			}).call(this);
         return avaIFaceJS.pwl_func.updateReportTitle();
       });
 
@@ -224,7 +236,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       } else {
         $('#flowType').val("UserDefined");
       }
-      //TODO: Replace next line for production
+      //TODO: Replace next line for production theresa
       return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
           + ("intervalMin=" + ($('#interval').val()) + "&")
           + ("flowRate=" + ($('#flowRate').val()) + "&")
@@ -287,7 +299,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     // Updates Report Title Info
     updateReportTitle: function () {
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
-          "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " intervals",
+          "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
           "Hope Discharge " + avaIFaceJS.pwl_func.static_discharge + "m\u00B3/s (" + avaIFaceJS.pwl_func.static_discharge_eval + ")"
       );
     },
