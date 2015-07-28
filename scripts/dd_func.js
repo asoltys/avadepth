@@ -42,19 +42,22 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
       });
-
-      $('#defined_discharge').click(function(){
+	  // Check "User Defined" radio on "User Defined" input is focused on
+      $('#defined_discharge').on("click", function() {
         $('#defined_radio').prop('checked', true).change();
-      })
-
+      });
+	  
       // Retrieve content on form submission
       return $("#submit").click(function () {
         if (!$('input[name=discharge]').is(":checked")) {
           $("#error_message").show();
           $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"");
           return $("#report_body").hide();
-        } else {
-          $('.spinner').show();
+		} else if (avadepth.util.getSelectedFlow().flowRate === "" && $('input[name=discharge]:checked').val() === 'Defined') {
+		  $('#defined_discharge').focus();
+		  return;
+		} else {
+		$('.spinner').show();
           $("#error_message").hide();
           $("#report_body").show();
           return avaIFaceJS.dd_func.update();

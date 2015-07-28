@@ -6,8 +6,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
   avaIFaceJS.acv_func = {
     images:[],
     flowtype:0,
-    discharge:"",
-    discharge_eval:"Predicted",
+    discharge:"3000",
+    discharge_eval:"Selected",
     selected_zone:1,
     init: function() {
       $('#static_rd').attr('checked','checked');
@@ -24,9 +24,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
-        if ($('input[name="discharge"].checked').val() === "Selected") {
-          avaIFaceJS.acv_func.discharge=$('#selected_discharge').val();
-        }
+      });
+
+      // Check "User Defined" radio on "User Defined" input is focused on
+      $('#defined_discharge').on("click", function() {
+        $('#defined_radio').prop('checked', true).change();
+      });
+
+      // update user defined value
+      $('#defined_discharge').change(function() {
+        $('#defined_radio').prop('checked', true).change();
       });
 
       $('input[name=discharge]').change(function() {
@@ -58,12 +65,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         }).call(this);
       });
-      $('#defined_discharge').change(function() {
-        if ($('input[name="discharge"].checked').val() === "Defined") {
-          avaIFaceJS.acv_func.discharge=$(this).val();
-          //return $('#static-discharge').text($('#defined_discharge').val());
-        }
-      });
 
       $('input[name=type]').change(function() {
         if ($('input[name=type]:checked').val() !== '0') {
@@ -81,7 +82,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       $('#defined_discharge').click(function(){
         $('#defined_radio').prop('checked', true).change();
-      })
+      });
+
+      $('#zone').change(function() {
+        avaIFaceJS.acv_func.selected_zone = $('#zone').val();
+        avaIFaceJS.mapJS.acv_func.zoneSelect(avaIFaceJS.acv_func.selected_zone);
+      });
 
       $('#interval, #from').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
       $("#submit").click(avaIFaceJS.acv_func.update);
@@ -116,6 +122,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     update: function(){
       var flow, getImage, interval;
+
+      // user has left user-defined m^3/s value blank
+      if(avaIFaceJS.acv_func.discharge === "" && avaIFaceJS.acv_func.discharge_eval === 'Defined') {
+        $('#defined_discharge').focus();
+        return;
+      }
+
       $(this).prop('disabled', 'disabled');
       $('#loading').show();
       $('.spinner').show();
@@ -236,8 +249,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#replay').hide();
       }
     },
-    setZone:function(zone){
-      avaIFaceJS.acv_func.selected_zone=zone;
+    setZone:function(zone){ // update param bar zone when changed on map
+         avaIFaceJS.acv_func.selected_zone = zone; // set zone var with most recently selected zone
 	  $("#zone").val(zone);
     }
   }
@@ -245,7 +258,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
   /*** Map Interaction functions ***/
   avaMapJS.acv_func = {
-    currentZone:1,
     init: function () {
       mapStyle.callback_function=function(feat){return true};
       avaMapJS.acv_func.kml=new OpenLayers.Layer.Vector("KML", {

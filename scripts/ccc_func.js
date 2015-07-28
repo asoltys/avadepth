@@ -89,7 +89,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if(!($(this).is(':checked'))){return;}
       avaIFaceJS.ccc_func.detailIsInnerChannel=($(this).val()==="1");
 	  
-	  $('#detail_print').find('#segment').text($(this).next().text());
+	  $('#detail_print').find('#segment').text($(this).next().text()); // updates print div with current channel information
       $('#surveys tbody').html('');
 	  
       //TODO: Replace following line for production
@@ -102,7 +102,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             ishigh=" class=\"red\"";
             ishighast="*";
           }
-          row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
+          row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf?\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
           return $("#surveys tbody").append(row);
         });
       });
