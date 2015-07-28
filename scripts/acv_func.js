@@ -6,8 +6,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
   avaIFaceJS.acv_func = {
     images:[],
     flowtype:0,
-    discharge:"",
-    discharge_eval:"Predicted",
+    discharge:"3000",
+    discharge_eval:"Selected",
     selected_zone:1,
     init: function() {
       $('#static_rd').attr('checked','checked');
@@ -24,11 +24,18 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
-        if ($('input[name="discharge"].checked').val() === "Selected") {
-          avaIFaceJS.acv_func.discharge=$('#selected_discharge').val();
-        }
       });
 
+	   // Check "User Defined" radio on "User Defined" input is focused on
+      $('#defined_discharge').on("click", function() {
+        $('#defined_radio').prop('checked', true).change();
+      });
+	  
+	  // update user defined value
+	  $('#defined_discharge').change(function() {
+        $('#defined_radio').prop('checked', true).change();
+      });
+	  
       $('input[name=discharge]').change(function() {
         avaIFaceJS.acv_func.discharge = (function() {
           switch ($(this).val()) {
@@ -57,12 +64,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
               return 3;
           }
         }).call(this);
-      });
-      $('#defined_discharge').change(function() {
-        if ($('input[name="discharge"].checked').val() === "Defined") {
-          avaIFaceJS.acv_func.discharge=$(this).val();
-          //return $('#static-discharge').text($('#defined_discharge').val());
-        }
       });
       $('select#interval').change(function() {
         var hour, i, interval, start, interval_start, minute, options, _i;
@@ -131,6 +132,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     update: function(){
       var flow, end_hour, end_minute, getImage, hour, interval, minute;
+	  
+	  	  // user has left user-defined m^3/s value blank
+	  if(avaIFaceJS.acv_func.discharge === "" && avaIFaceJS.acv_func.discharge_eval === 'Defined') {
+	    $('#defined_discharge').focus();
+	    return;
+	  }
 	  
       avaIFaceJS.acv_func.setTitle();
       $(this).prop('disabled', 'disabled');

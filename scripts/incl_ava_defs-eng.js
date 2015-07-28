@@ -242,7 +242,7 @@ incl_ava_defs={
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
           {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User Defined"]},
-          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:60px'}},
+          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px'}},
           " m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
@@ -733,7 +733,7 @@ incl_ava_defs={
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
           {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User Defined']},
-          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:5em'}},
+          {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
           {tag:'div',child:[

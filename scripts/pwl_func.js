@@ -14,8 +14,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     static_arm: "South Arm",
     static_date: "",
     static_interval: "1 hour",
-    static_discharge: "",
-    static_discharge_eval: "Predicted",
+    static_discharge: "3000",
+    static_discharge_eval: "Selected",
     cur_waterway: null,
     isParamProcessed: false,
     detailValue: "",
@@ -48,9 +48,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       $('#selected_discharge').change(function() {
         $('#discharge_radio').prop('checked', true).change();
-        if ($('input[name="discharge"].checked').val() === "Selected") {
-          avaIFaceJS.pwl_func.discharge=$('#selected_discharge').val();
-        }
+      });
+	  
+	  // Check "User Defined" radio on "User Defined" input is focused on
+      $('#defined_discharge').on("click", function() {
+        $('#defined_radio').prop('checked', true).change();
+      });
+	  
+	  // update user defined value
+	  $('#defined_discharge').change(function() {
+        $('#defined_radio').prop('checked', true).change();
       });
 
       $('input[name=discharge]').change(function () {
@@ -99,8 +106,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }).call(this);
         return $('#flowType').val(flowtype);
       });
-      $('#defined_discharge').change(function () {
-      });
       $('input[name=channel]').change(function () {
         return $('#static-limit').text($(this).next().text());
       });
@@ -122,10 +127,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $("#submit").click(avaIFaceJS.pwl_func.update);
     },
 
-    //
     update: function () {
+	  var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
+	  
+	  // user has left user-defined m^3/s value blank
+	  if(avaIFaceJS.pwl_func.static_discharge === "" && avaIFaceJS.pwl_func.static_discharge_eval === 'Defined') {
+	    $('#defined_discharge').focus();
+	    return;
+	  }
+	  
       avaIFaceJS.pwl_func.isParamProcessed=true;
-      var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
+      
       $('.spinner').show();
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
