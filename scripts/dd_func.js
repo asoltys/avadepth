@@ -7,7 +7,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
 /*** Interface functions ***/
   avaIFaceJS.dd_func= {
-    flowrate: 0,
     tableReport: null,
     tableDetail: null,
     limit_text: "",
@@ -34,13 +33,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avadepth.util.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
-//          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
       }).datepicker().datepicker('setDate', new Date()).change();
 
       $('#selected_discharge').change(function() {
-        $('#discharge_radio').prop('checked', true).change();
+        $('#selected_radio').prop('checked', true).change();
       });
 	  // Check "User Defined" radio on "User Defined" input is focused on
       $('#defined_discharge').on("click", function() {
@@ -53,17 +51,90 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $("#error_message").show();
           $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"");
           return $("#report_body").hide();
-		} else if (avadepth.util.getSelectedFlow().flowRate === "" && $('input[name=discharge]:checked').val() === 'Defined') {
+		} else if (avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
 		  // user has left user-defined m^3/s value blank
 		  $('#defined_discharge').focus();
 		  return;
 		} else {
-		$('.spinner').show();
+		  $('.spinner').show();
           $("#error_message").hide();
           $("#report_body").show();
           return avaIFaceJS.dd_func.update();
         }
       });
+    },
+	
+	// Process Report content and update Report Window
+    update: function () {
+      var channel, flow;
+
+      channel = $('input[name="channel"]:checked').val();
+	  
+	  // define report type values
+      flow = avadepth.util.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+      $('#flowType').val(flow.flowType);
+	  
+      //TODO: Replace bottom line for production
+      return $.getJSON(getAPI(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())),"api/depths/calculate.json"), function (data) {
+        var points = [];
+        avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').dataTable({
+          bPaginate: false,
+          bInfo: false,
+          bAutoWidth: false,
+          bFilter: false
+        }));
+        avaIFaceJS.dd_func.tableReport.fnClearTable();
+        $('#depths tbody tr').remove();
+        $.each(data.items[channel].items, function () {
+          avaIFaceJS.dd_func.tableReport.fnAddData(['<a href="javascript:void(0)">' + this.period + "</a>", this.chainage, this.depth, this.location]);
+          return points.push([this.period, this.depth]);
+        });
+
+        avaIFaceJS.dd_func.tableReport.fnDraw();
+        $('#depths tbody tr td:first-child a').click(function () {
+          avaIFaceJS.dd_func.showDetail(this.innerText);
+        });
+        avaIFaceJS.dd_func.limit_text = (function () {
+          switch (false) {
+            case channel !== '0':
+              if(window.location.href.indexOf("eng") > -1) {
+                return "Inner Channel Limit";
+              } else {
+                return "Limite intérieure";
+              }
+              break;
+            case channel !== '1':
+              if(window.location.href.indexOf("eng") > -1) {
+                return 'Outer Channel Limit';
+              } else {
+                return "Limite extérieure";
+              }
+              break;
+            default:
+              return '';
+          }
+        })();
+
+		if(window.location.href.indexOf("fra") > -1) {
+		  //If url contains 'fra'	use 
+		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
+		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
+		  avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+		} else {
+		  //If url does not contain 'fra' use
+		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
+		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
+		  avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+	    }
+        
+        
+        avaIFaceJS.reportWindow.setTitle();
+        avaIFaceJS.reportWindow.show();
+        avaIFaceJS.dd_func.createGraph(points);
+        pBarToggle();
+		return $('.spinner').hide();
+      }).fail(avadepth.util.apiFailureHandler);
     },
     
     // Update values and apply to Detail Window
@@ -108,87 +179,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#verify td').find('.low_depth').closest('tr').addClass('least-depth');
       });
 
-    },
-
-    // Process Report content and update Report Window
-    process_report: function (flag) {
-      var channel, flow;
-
-      channel = $('input[name="channel"]:checked').val();
-      flow = avadepth.util.getSelectedFlow();
-      if (flag) {
-        $("#flowRate").val(flow.flowRate);
-      }
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
-      //TODO: Replace bottom line for production
-      return $.getJSON(getAPI(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())),"api/depths/calculate.json"), function (data) {
-        var points = [];
-        avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').dataTable({
-          bPaginate: false,
-          bInfo: false,
-          bAutoWidth: false,
-          bFilter: false
-        }));
-        avaIFaceJS.dd_func.tableReport.fnClearTable();
-        $('#depths tbody tr').remove();
-        $.each(data.items[channel].items, function () {
-          avaIFaceJS.dd_func.tableReport.fnAddData(['<a href="javascript:void(0)">' + this.period + "</a>", this.chainage, this.depth, this.location]);
-          return points.push([this.period, this.depth]);
-        });
-
-        avaIFaceJS.dd_func.tableReport.fnDraw();
-        $('#depths tbody tr td:first-child a').click(function () {
-          avaIFaceJS.dd_func.showDetail(this.innerText);
-        });
-        avaIFaceJS.dd_func.limit_text = (function () {
-          switch (false) {
-            case channel !== '0':
-              if(window.location.href.indexOf("eng") > -1) {
-                return "Inner Channel Limit";
-              } else {
-                return "Limite intérieure";
-              }
-              break;
-            case channel !== '1':
-              if(window.location.href.indexOf("eng") > -1) {
-                return 'Outer Channel Limit';
-              } else {
-                return "Limite extérieure";
-              }
-              break;
-            default:
-              return '';
-          }
-        })();
-
-		if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
-		avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
-		avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
-		avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-		avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
-	  }
-        
-        
-        avaIFaceJS.reportWindow.setTitle();
-        avaIFaceJS.reportWindow.show();
-        avaIFaceJS.dd_func.createGraph(points);
-        pBarToggle();
-		return $('.spinner').hide();
-      }).fail(avadepth.util.apiFailureHandler);
-    },
-
-    // Callback function for form submission
-    update: function () {
-      return avaIFaceJS.dd_func.process_report(1);
     },
 
     // Create line graph using provided points from JSON query

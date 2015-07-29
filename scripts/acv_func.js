@@ -5,10 +5,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 /*** Interface functions ***/
   avaIFaceJS.acv_func = {
     images:[],
-    flowtype:0,
-    discharge:"3000",
-    discharge_eval:"Selected",
     selected_zone:1,
+	
     init: function() {
       $('#static_rd').attr('checked','checked');
       $('#interval').prev().hide();
@@ -23,7 +21,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }).datepicker().datepicker("setDate",new Date()).change();
 
       $('#selected_discharge').change(function() {
-        $('#discharge_radio').prop('checked', true).change();
+        $('#selected_radio').prop('checked', true).change();
       });
 
 	   // Check "User Defined" radio on "User Defined" input is focused on
@@ -31,40 +29,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#defined_radio').prop('checked', true).change();
       });
 	  
-	  // update user defined value
-	  $('#defined_discharge').change(function() {
-        $('#defined_radio').prop('checked', true).change();
-      });
-	  
-      $('input[name=discharge]').change(function() {
-        avaIFaceJS.acv_func.discharge = (function() {
-          switch ($(this).val()) {
-            case 'Actual':
-              return $('#actual_discharge').text();
-//            case 'Predicted':
-//              return $('#predicted_discharge').text();
-            case 'Defined':
-              return $('#defined_discharge').val();
-            case 'Selected':
-              return $('#selected_discharge').val();
-          }
-        }).call(this);
-        //$('#static-discharge').text(avaIFaceJS.acv_func.flowrate);
-        avaIFaceJS.acv_func.discharge_eval=$(this).val();
-        //$('#static-discharge-eval').text($(this).val());
-        avaIFaceJS.acv_func.flowtype = (function() {
-          switch ($(this).val()) {
-            case 'Actual':
-              return 0;
-//            case 'Predicted':
-//              return 1;
-            case 'Defined':
-              return 2;
-            case 'Selected':
-              return 3;
-          }
-        }).call(this);
-      });
       $('select#interval').change(function() {
         var hour, i, interval, start, interval_start, minute, options, _i;
         interval = parseFloat($(this).val());
@@ -126,24 +90,30 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.acv_func.selected_zone = $('#zone').val(); // set zone var with most recently selected zone
 		avaIFaceJS.mapJS.acv_func.zoneSelect(avaIFaceJS.acv_func.selected_zone); // set selected zone on map
       });
-      $("#submit").click(avaIFaceJS.acv_func.update);
+      $("#submit").click(function () {
+	    // user has left user-defined m^3/s value blank
+	    if(avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
+	      $('#defined_discharge').focus();
+	      return;
+	    } else {
+		  $('#loading').show();
+		  $('.spinner').show();
+		  $('#animated, #animated_legend, #replay, #nodata').hide();
+		  return avaIFaceJS.acv_func.update();
+		}
+	  });
       $('#replay').click(avaIFaceJS.acv_func.play);
 
     },
     update: function(){
       var flow, end_hour, end_minute, getImage, hour, interval, minute;
 	  
-	  	  // user has left user-defined m^3/s value blank
-	  if(avaIFaceJS.acv_func.discharge === "" && avaIFaceJS.acv_func.discharge_eval === 'Defined') {
-	    $('#defined_discharge').focus();
-	    return;
-	  }
+	  flow = avadepth.util.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+	  $('#flowType').val(flow.flowType);
 	  
       avaIFaceJS.acv_func.setTitle();
       $(this).prop('disabled', 'disabled');
-      $('#loading').show();
-      $('.spinner').show();
-      $('#animated, #animated_legend, #replay, #nodata').hide();
       startVal=$('#from').val();
       endVal=$('#to').val();
       hour = Math.floor(parseFloat(startVal));
@@ -164,14 +134,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.acv_func.images = [];
       avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
 
-      flow = avadepth.util.getSelectedFlow();
-      $("#flowRate").val(flow.flowRate);
-
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
 	  
       return (getImage = function() {
         //TODO: Replace following line for production
@@ -213,7 +175,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.reportWindow.addTitle(
         "Fraser River - South Arm",
         "Zone " + (avaIFaceJS.acv_func.selected_zone) + " at " + $('select#interval').find(':selected').text() + " intervals",
-        "Hope Discharge " + (avaIFaceJS.acv_func.discharge) + "m\u00B3/s (" + (avaIFaceJS.acv_func.discharge_eval) + ") - " + moment($('#date').val()).format("MMM D, YYYY") + " from " + ($('select#from').find(':selected').text()) + " to " + ($('select#to').find(':selected').text()),
+        "Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s (" + ($('#flowType').val()) + ") - " + moment($('#date').val()).format("MMM D, YYYY") + " from " + ($('select#from').find(':selected').text()) + " to " + ($('select#to').find(':selected').text()),
         "Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
       );
       /*
@@ -271,7 +233,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
   /*** Map Interaction functions ***/
   avaMapJS.acv_func = {
-    //currentZone:1,
     init: function () {
       mapStyle.callback_function=function(feat){return true};
       avaMapJS.acv_func.kml=new OpenLayers.Layer.Vector("KML", {
