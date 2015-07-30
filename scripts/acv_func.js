@@ -1,4 +1,3 @@
-
 // Animated Currents and Velocities Objects
 if(!(typeof avaIFaceJS === 'undefined')) {
 

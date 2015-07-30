@@ -7,7 +7,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
 /*** Interface functions ***/
   avaIFaceJS.dd_func= {
-    flowrate: 0,
     tableReport: null,
     tableDetail: null,
     limit_text: "",
@@ -34,13 +33,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avadepth.util.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
-//          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
       }).datepicker().datepicker('setDate', new Date()).change();
 
       $('#selected_discharge').change(function() {
-        $('#discharge_radio').prop('checked', true).change();
+        $('#selected_radio').prop('checked', true).change();
       });
 	  // Check "User Defined" radio on "User Defined" input is focused on
       $('#defined_discharge').on("click", function() {
@@ -53,89 +51,32 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $("#error_message").show();
           $("#error_message").html("Place select one of the options for the field \"River Discharge @ Hope\"");
           return $("#report_body").hide();
-		} else if (avadepth.util.getSelectedFlow().flowRate === "" && $('input[name=discharge]:checked').val() === 'Defined') {
+
+		} else if (avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
+		  // user has left user-defined m^3/s value blank
 		  $('#defined_discharge').focus();
 		  return;
 		} else {
-		$('.spinner').show();
+		  $('.spinner').show();
           $("#error_message").hide();
           $("#report_body").show();
           return avaIFaceJS.dd_func.update();
         }
       });
     },
-    
-    // Update values and apply to Detail Window
-    showDetail: function (period) {
-      avaIFaceJS.detailWindow.show();
 
-      $('#static-time').text(period);
-      $('#date-display').text(moment($('#date').val()).format("MMMM D, YYYY"));
-      $('#static-limit').text(avaIFaceJS.dd_func.limit_text);
-      $('#static-type').text($('input[name="condition"]:checked').next().text());
-      $('#static-chainage').text($('#chainage').val());
-      $('#static-width').text($('#width').val());
-      $('#static-discharge').text($('#flowRate').val());
-      $('#static-discharge-eval').text($('#flowType').val());
-
-      //TODO: Replace line for production:
-      $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {
-        var least_depth;
-        avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').DataTable({
-          "paging": false,
-          "searching" : false,
-          "info" : false,
-          "autoWidth" : false,
-          "columnDefs": [
-            {"targets": 0, "orderData":[7]},
-            {"targets": -1, "visible": false}
-          ]
-        }));
-
-        avaIFaceJS.dd_func.tableDetail.clear();
-        $('#verify tbody tr').remove();
-        least_depth = 10000;
-        $.each(data.items, function (index) {
-          var depth, fixed_depth;
-          fixed_depth = this.depth.toFixed(1);
-          if (this.depth <= least_depth) {
-            least_depth = parseFloat(fixed_depth);
-            $('#verify td').find('.low_depth').removeClass('low_depth');
-            depth = "<span class=\"low_depth\">" + fixed_depth + "</span>";
-          } else {
-            depth = fixed_depth;
-          }
-          return avaIFaceJS.dd_func.tableDetail.row.add([
-              this.location,
-              this.designGrade,
-              this.sounding,
-              this.width,
-              this.percent,
-              this.tidalAid,
-              depth,
-              index]).draw();
-        });
-
-        avaIFaceJS.detailWindow.show();
-        return $('#verify td').find('.low_depth').closest('tr').addClass('least-depth');
-      });
-
-    },
-
-    // Process Report content and update Report Window
-    process_report: function (flag) {
+	
+	// Process Report content and update Report Window
+    update: function () {
       var channel, flow;
 
       channel = $('input[name="channel"]:checked').val();
+	  
+	  // define report type values
       flow = avadepth.util.getSelectedFlow();
-      if (flag) {
-        $("#flowRate").val(flow.flowRate);
-      }
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
+      $("#flowRate").val(flow.flowRate);
+      $('#flowType').val(flow.flowType);
+	  
       //TODO: Replace bottom line for production
       return $.getJSON(getAPI(("/api/depths/calculate?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=condition]:checked').val())),"api/depths/calculate.json"), function (data) {
         var points = [];
@@ -187,16 +128,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         })();
 
 		if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
-		avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
-		avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+		  //If url contains 'fra'	use 
+		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
+		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
+		  avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
 		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
-		avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-		avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
-	  }
+		  //If url does not contain 'fra' use
+		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
+		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
+		  avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+	    }
         
         
         avaIFaceJS.reportWindow.setTitle();
@@ -206,10 +147,49 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		return $('.spinner').hide();
       }).fail(avadepth.util.apiFailureHandler);
     },
+    
+    // Update values and apply to Detail Window
+    showDetail: function (period) {
+      avaIFaceJS.detailWindow.show();
 
-    // Callback function for form submission
-    update: function () {
-      return avaIFaceJS.dd_func.process_report(1);
+      $('#static-time').text(period);
+      $('#date-display').text(moment($('#date').val()).format("MMMM D, YYYY"));
+      $('#static-limit').text(avaIFaceJS.dd_func.limit_text);
+      $('#static-type').text($('input[name="condition"]:checked').next().text());
+      $('#static-chainage').text($('#chainage').val());
+      $('#static-width').text($('#width').val());
+      $('#static-discharge').text($('#flowRate').val());
+      $('#static-discharge-eval').text($('#flowType').val());
+
+      //TODO: Replace line for production:
+      $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {
+        var least_depth;
+        avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').dataTable({
+          bPaginate: false,
+          bInfo: false,
+          bFilter: false,
+          bAutoWidth: false,
+          aaSorting: []
+        }));
+        avaIFaceJS.dd_func.tableDetail.fnClearTable();
+        $('#verify tbody tr').remove();
+        least_depth = 10000;
+        $.each(data.items, function () {
+          var depth, fixed_depth;
+          fixed_depth = this.depth.toFixed(1);
+          if (this.depth <= least_depth) {
+            least_depth = parseFloat(fixed_depth);
+            $('#verify td').find('.low_depth').removeClass('low_depth');
+            depth = "<span class=\"low_depth\">" + fixed_depth + "</span>";
+          } else {
+            depth = fixed_depth;
+          }
+          return avaIFaceJS.dd_func.tableDetail.fnAddData([this.location, this.designGrade, this.sounding, this.width, this.percent, this.tidalAid, depth]);
+        });
+        avaIFaceJS.detailWindow.show();
+        return $('#verify td').find('.low_depth').closest('tr').addClass('least-depth');
+      });
+
     },
 
     // Create line graph using provided points from JSON query

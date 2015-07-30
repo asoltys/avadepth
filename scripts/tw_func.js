@@ -14,12 +14,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avadepth.util.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
-//          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
       }).datepicker().datepicker('setDate', new Date()).change();
-      $('#selected_radio').prop('checked', true);
-      $.fn.dataTable.moment('dddd, D-MMM-YYYY');
+
 
       $('#period').change(function(){
         var period = (function(){
@@ -33,6 +31,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         })();
       });
+	  
       $('#selected_discharge').change(function() {
         return $('#selected_radio').prop('checked', true).change();
       });
@@ -64,14 +63,20 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('input[name="window_radio"]').change();
       });
 
-      $('#defined_discharge').click(function(){
-        $('#defined_radio').prop('checked', true).change();
-      })
-
-      $('#submit').click(avaIFaceJS.tw_func.update);
+      return $('#submit').click(function () {
+		// user has left user-defined m^3/s value blank
+		if(avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
+	      $('#defined_discharge').focus();
+	      return;
+		} else {
+		  $('.spinner').show();
+	      return avaIFaceJS.tw_func.update();
+		}
+	  });
     },
 
-    update: function(data){
+    update: function(){
+	  var flow, dt, period;
       var tableStruct={
         maxDepth:[
           {tag:'tr',child:[
@@ -103,14 +108,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         ]
       };
 	  
-	  // user has left user-defined m^3/s value blank
-	  if(avadepth.util.getSelectedFlow().flowRate === "" && $('input[name=discharge]:checked').val() === 'Defined') {
-	    $('#defined_discharge').focus();
-	    return;
-	  }
+      flow = avadepth.util.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+      $('#flowType').val(flow.flowType);
 	  
-      var dt=$('#date').val();
-      var period = function(){
+      dt=$('#date').val();
+      period = function(){
         switch ($('#period').val()){
           case "0":
             return 1;
@@ -149,22 +152,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#transit-window-last-col').text('Transit Window (hrs)');
           }
         }
-
-      var flow;
-      flow = avadepth.util.getSelectedFlow();
-      $("#flowRate").val(flow.flowRate);
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
+	  
       $('#static-discharge').text(flow.flowRate);
-      $('#static-discharge-eval').text($('input[name=discharge]:checked').val());
+      $('#static-discharge-eval').text(flow.flowType);
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
           switch ($(this).val()) {
-//            case 'Predicted':
-//              return "prévu";
             case 'Actual':
               return "réel";
             case 'Defined':
@@ -175,7 +168,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }).call(this);
         $("#static-discharge-eval").text(flowRate_txt);
       }
-      $('.spinner').show();
+
       $('#static-sounding').text($('input[name="sounding"]:checked').next().text());
       $('#static-width').text($('select#width').val());
       $('#static-chainage').text($('select#chainage').val());

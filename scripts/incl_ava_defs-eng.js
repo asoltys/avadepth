@@ -235,8 +235,8 @@ incl_ava_defs={
             "m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           " m\u00B3/s",
           {tag:'br'},
@@ -362,8 +362,8 @@ incl_ava_defs={
               "m\u00B3/s)"
             ]},
             {tag:'br'},
-            {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+            {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
             {tag:'select',attr:{id:'selected_discharge'}},
             " m\u00B3/s",
             {tag:'br'},
@@ -483,7 +483,7 @@ incl_ava_defs={
                     "Hope Discharge ",
                     {tag:'span',attr:{id:'static-discharge'}},
                     "m\u00B3/s (",
-                    {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                    {tag:'span',attr:{id:'static-discharge-eval'}},
                     ")",
                     {tag:'br'}
                   ]}
@@ -659,7 +659,7 @@ incl_ava_defs={
                   "Hope Discharge: ",
                   {tag:'span',attr:{id:'static-discharge'}},
                   " m\u00B3/s (",
-                  {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                  {tag:'span',attr:{id:'static-discharge-eval'}},
                   ")"
                 ]}
               ]}
@@ -730,8 +730,8 @@ incl_ava_defs={
             "m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio','style':'font-weight:normal'},child:["Selected"]},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
+          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           "m\u00B3/s",
           {tag:'br'},
@@ -805,8 +805,8 @@ incl_ava_defs={
                 {tag:'br'},
                 "Hope Discharge ",
                 {tag:'span',attr:{id:'det_static-discharge'}},
-                "m\u00B3/s (",
-                {tag:'span',attr:{id:'det_static-discharge-eval'},child:['Predicted']},
+                " m\u00B3/s (",
+                {tag:'span',attr:{id:'det_static-discharge-eval'}},
                 ')'
               ]},
               {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
