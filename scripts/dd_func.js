@@ -159,7 +159,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static-chainage').text($('#chainage').val());
       $('#static-width').text($('#width').val());
       $('#static-discharge').text($('#flowRate').val());
-      $('#static-discharge-eval').text($('#flowType').val());
+      $('#static-discharge-eval').text(translate_flow());
 
       //TODO: Replace line for production:
       $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {

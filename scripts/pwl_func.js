@@ -181,8 +181,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       flow = avadepth.util.getSelectedFlow();
       $("#flowRate").val(flow.flowRate);
-
-      $('#flowType').val(flow.flowType);
+	  $('#flowType').val(flow.flowType);
 
       //TODO: Replace next line for production 
       return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
@@ -248,7 +247,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     updateReportTitle: function () {
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
           "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
-          "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + $('#flowType').val() + ")"
+          "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")"
       );
     },
 
@@ -271,7 +270,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#det_static-interval').text(avaIFaceJS.pwl_func.static_interval);
       $('#det_static-arm').text(avaIFaceJS.pwl_func.static_arm);
       $('#det_static-discharge').text($('#flowRate').val());
-      $('#det_static-discharge-eval').text($('#flowType').val());
+      $('#det_static-discharge-eval').text(translate_flow());
 
 	  avaIFaceJS.pwl_func.gotoGraph_sub(typCode, typValue, "#det_placeholder"); // create pwl plots for main detail report
       

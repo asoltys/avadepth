@@ -154,7 +154,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
 	  
       $('#static-discharge').text(flow.flowRate);
-      $('#static-discharge-eval').text(flow.flowType);
+      $('#static-discharge-eval').text(translate_flow());
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
           switch ($(this).val()) {

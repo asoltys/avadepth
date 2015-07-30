@@ -153,7 +153,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         "Zone " + (avaIFaceJS.acv_func.selected_zone)
             + " at " + $('select#interval').find(':selected').text() + " intervals",
         "Hope Discharge " + ($('#flowRate').val()) + "m\u00B3/s ("
-            + ($('#flowType').val()) + ") - "
+            + translate_flow() + ") - "
             + moment($('#date').val()).format("MMM D, YYYY")
             + " from " + ($('select#from').find(':selected').text())
             + " to " + ($('select#to').find(':selected').text()),

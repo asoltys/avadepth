@@ -55,6 +55,7 @@ avadepth.util = {
         }
         return flow;
     },
+
     apiFailureHandler: function(jqxhr, textStatus, error){
       $('.spinner').hide();
       if (jqxhr.status == 404) {
