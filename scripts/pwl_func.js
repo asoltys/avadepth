@@ -151,7 +151,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         })();
       }
       $('#pwl_waterway').val(waterway);
-      $('#river-section').text(fraser_val);
       $('#water-levels tbody').empty();
       $('#headerkm').empty();
       step = 2;
