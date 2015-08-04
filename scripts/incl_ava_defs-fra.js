@@ -734,7 +734,7 @@ incl_ava_defs={
               {key:'15',value:'15 Minute'},
               {key:'30',value:'30 Minute'},
               {key:'60',value:'1 Hour','select':true},
-              {key:'120',value:'2 hour'}
+              {key:'120',value:'2 Hour'}
             ]}}
           ]},
           {tag:'div',child:[

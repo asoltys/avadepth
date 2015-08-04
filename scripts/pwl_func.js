@@ -13,7 +13,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     static_arm: "South Arm",
     static_date: "",
 
-    static_interval: "1 Hour",
+    static_interval: "1 hour",
     cur_waterway: null,
     isParamProcessed: false,
     detailValue: "",
