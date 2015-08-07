@@ -222,10 +222,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#transit-window tbody tr td:last-child').each(function() {
           var my_val;
           my_val = $(this).text();
-          return total_hr += parseFloat(my_val);
+			return total_hr += parseFloat(my_val);
         });
-        $('#total_hr').text(total_hr);
-        $('#avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
+		if(isNaN(total_hr)) { // table data does not exist
+		  $('#total_hr').text("---");
+		  $('#avg_hr').text("---");
+		} else {
+		  $('#total_hr').text(total_hr);
+          $('#avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
+		}
         return $('#num_days_meeting_standard').text(num_days_meeting_standard);
       }).success(function() {
         $('.spinner').hide();
