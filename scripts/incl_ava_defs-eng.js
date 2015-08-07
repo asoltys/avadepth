@@ -284,11 +284,11 @@ incl_ava_defs={
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
               {tag:'label',attr:{htmlFor:'interval'},child:["Interval:"]},
               {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
-                {key:4,value:'4 hr'},
-                {key:2,value:'2 hr'},
-                {key:1,value:'1 hr'},
-                {key:0.5,value:'30 min.'},
-                {key:0.25,value:'15 min.',select:'selected'}
+                {key:4,value:'4 hour'},
+                {key:2,value:'2 hour'},
+                {key:1,value:'1 hour'},
+                {key:0.5,value:'30 minute'},
+                {key:0.25,value:'15 minute',select:'selected'}
               ]}}
             ]}
           ]},
@@ -743,10 +743,10 @@ incl_ava_defs={
           {tag:'div',child:[
             {tag:'label',attr:{htmlFor:'interval'},child:['Interval:']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
-              {key:'15',value:'15 Minute'},
-              {key:'30',value:'30 Minute'},
-              {key:'60',value:'1 Hour','select':true},
-              {key:'120',value:'2 Hour'}
+			  {key:'120',value:'2 hour'},
+              {key:'60',value:'1 hour','select':true},
+			  {key:'30',value:'30 minute'},
+              {key:'15',value:'15 minute'}
             ]}}
           ]},
           {tag:'div',child:[

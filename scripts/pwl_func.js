@@ -61,13 +61,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	    avaIFaceJS.pwl_func.static_interval = (function() {
 			switch ($(this).val()) {
 				case '120':
-				  return '2 hour';
+				  return '2 Hour';
 	            case '60':
-	              return '1 hour';
+	              return '1 Hour';
 				case '30':
-				  return '30 minute';
+				  return '30 Minute';
 				case '15':
-				  return '15 minute';
+				  return '15 Minute';
 			  }
 			}).call(this);
         return avaIFaceJS.pwl_func.updateReportTitle();
