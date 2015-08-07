@@ -131,12 +131,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		  //If url contains 'fra'	use 
 		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
 		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
-		  avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+		  avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
 		} else {
 		  //If url does not contain 'fra' use
 		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
 		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-		  avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + "m\u00B3/s (" + translate_flow() + ")";
+		  avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
 	    }
         
         

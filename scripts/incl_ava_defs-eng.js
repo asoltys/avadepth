@@ -232,7 +232,7 @@ incl_ava_defs={
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
-            "m\u00B3/s)"
+            " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
@@ -308,10 +308,10 @@ incl_ava_defs={
           ]},
           {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Animated Interval 0.25ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Animated Interval 0.25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
-          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5ms)"]}
+          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5 ms)"]}
         ]}
       ],
       'reportBody':[
@@ -359,7 +359,7 @@ incl_ava_defs={
             {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
               "Actual (",
               {tag:'span',attr:{id:'actual_discharge'},child:["0"]},
-              "m\u00B3/s)"
+              " m\u00B3/s)"
             ]},
             {tag:'br'},
             {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
@@ -482,7 +482,7 @@ incl_ava_defs={
                   {tag:'p',attr:{style:'margin:0;'},child:[
                     "Hope Discharge ",
                     {tag:'span',attr:{id:'static-discharge'}},
-                    "m\u00B3/s (",
+                    " m\u00B3/s (",
                     {tag:'span',attr:{id:'static-discharge-eval'}},
                     ")",
                     {tag:'br'}
@@ -542,7 +542,7 @@ incl_ava_defs={
               {tag:'label',attr:{htmlFor:'actual_radio'},child:[
                 "Actual (",
                 {tag:'span',attr:{id:'actual_discharge'}},
-                "m\u00B3/s)"
+                " m\u00B3/s)"
               ]},
               {tag:'br'},
               {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
@@ -619,7 +619,7 @@ incl_ava_defs={
                 {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-bottom:0'},child:['Maximum Depth:']},
                 {tag:'br'},
                 {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
-                {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1hr'},{key:2,value:'2hrs',select:true},{key:3,value:'3hrs'},{key:4,value:'4hrs'}]}},
+                {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1 hr'},{key:2,value:'2 hrs',select:true},{key:3,value:'3 hrs'},{key:4,value:'4 hrs'}]}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'min_win_radio',type:'radio',name:'window_radio',value:'Min Window'}},
                 {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-bottom:0'},child:["Available Windows:"]},
@@ -727,19 +727,21 @@ incl_ava_defs={
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
-            "m\u00B3/s)"
+            " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
           {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
-          "m\u00B3/s",
+          " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
           {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User-defined']},
           {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
+		  " m\u00B3/s",
+		  {tag:'br'},
           {tag:'div',child:[
             {tag:'label',attr:{htmlFor:'interval'},child:['Interval:']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
