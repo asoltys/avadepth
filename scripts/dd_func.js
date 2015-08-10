@@ -104,7 +104,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
         avaIFaceJS.dd_func.tableReport.draw();
         $('#depths tbody tr td:first-child a').click(function () {
-          avaIFaceJS.dd_func.showDetail(this.innerText);
+          avaIFaceJS.dd_func.showDetail($(this).text());
         });
         avaIFaceJS.dd_func.limit_text = (function () {
           switch (false) {
@@ -160,7 +160,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#static-width').text($('#width').val());
       $('#static-discharge').text($('#flowRate').val());
       $('#static-discharge-eval').text(translate_flow());
-
       //TODO: Replace line for production:
       $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {
         var least_depth;

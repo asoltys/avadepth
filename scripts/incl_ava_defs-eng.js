@@ -766,7 +766,7 @@ incl_ava_defs={
               {tag:'table',attr:{id:'water-levels',className:'table-condensed align-center print-table-fixed'},child:[
                 {tag:'thead',child:[
                   {tag:'tr',child:[
-                    {tag:'td',attr:{id:'theresa_disable',style:'background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;',rowspan:'2'},child:["Time (PST)"]},
+                    {tag:'td',attr:{style:'background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;',rowspan:'2'},child:["Time (PST)"]},
                     {tag:'td',attr:{style:'background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;',colspan:'21',id:'location'},child:[
                       {tag:'span',attr:{id:'river-section'}}
                     ]}
