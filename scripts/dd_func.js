@@ -164,17 +164,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       //TODO: Replace line for production:
       $.getJSON(getAPI(("/api/depths/verify?date=" + ($('#date').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("flowType=1&") + ("sounding=" + $('input[name="condition"]:checked').val() + "&") + ("width=" + ($('#width').val()) + "&") + ("lane=" + (parseInt($('input[name="channel"]:checked').val()) + 1)  + "&") + ("period=" + (parseInt(period.substring(0,2))/2 + 1)), "api/depths/verify.json"), function (data) {
         var least_depth;
-        avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').dataTable({
-          bPaginate: false,
-          bInfo: false,
-          bFilter: false,
-          bAutoWidth: false,
-          aaSorting: []
+        avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').DataTable({
+          "paging": false,
+          "searching" : false,
+          "info" : false,
+          "autoWidth" : false,
+          "columnDefs": [
+            {"targets": 0, "orderData":[7]},
+            {"targets": -1, "visible": false}
+          ]
         }));
-        avaIFaceJS.dd_func.tableDetail.fnClearTable();
+
+        avaIFaceJS.dd_func.tableDetail.clear();
         $('#verify tbody tr').remove();
         least_depth = 10000;
-        $.each(data.items, function () {
+        $.each(data.items, function (index) {
           var depth, fixed_depth;
           fixed_depth = this.depth.toFixed(1);
           if (this.depth <= least_depth) {
@@ -184,7 +188,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           } else {
             depth = fixed_depth;
           }
-          return avaIFaceJS.dd_func.tableDetail.fnAddData([this.location, this.designGrade, this.sounding, this.width, this.percent, this.tidalAid, depth]);
+          return avaIFaceJS.dd_func.tableDetail.row.add([
+              this.location,
+              this.designGrade,
+              this.sounding,
+              this.width,
+              this.percent,
+              this.tidalAid,
+              depth,
+              index]).draw();
         });
         avaIFaceJS.detailWindow.show();
         return $('#verify td').find('.low_depth').closest('tr').addClass('least-depth');
