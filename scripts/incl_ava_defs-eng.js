@@ -571,6 +571,7 @@ incl_ava_defs={
               s.push({key:35,value:35,select:true});
               return s
             }}},
+			" km",
             {tag:'div',child:[
               {tag:'label',attr:{htmlFor:"sounding"},child:[{tag:'strong',child:["Channel Condition:"]}]},
               {tag:'input',attr:{type:'radio',name:'sounding',checked:'checked',value:'0'}},
