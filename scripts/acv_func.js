@@ -148,17 +148,30 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     setTitle:function(){
       // Set Report Title Info
-      avaIFaceJS.reportWindow.addTitle(
-        "Fraser River - South Arm",
-        "Zone " + (avaIFaceJS.acv_func.selected_zone)
-            + " at " + $('select#interval').find(':selected').text() + " intervals",
-        "Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
-            + translate_flow() + ") - "
-            + moment($('#date').val()).format("MMM D, YYYY")
-            + " from " + ($('select#from').find(':selected').text())
-            + " to " + ($('select#to').find(':selected').text()),
-        "Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
-      );
+	  if ($('#animated_rd').is(':checked')) { // animated series
+		avaIFaceJS.reportWindow.addTitle(
+		"Fraser River - South Arm",
+		"Zone " + (avaIFaceJS.acv_func.selected_zone)
+			+ " at " + $('select#interval').find(':selected').text() + " intervals",
+		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
+			+ translate_flow() + ") - "
+			+ moment($('#date').val()).format("MMM D, YYYY")
+			+ " from " + ($('select#from').find(':selected').text())
+			+ " to " + ($('select#to').find(':selected').text()),
+		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
+		);
+	  } else { // static image
+		avaIFaceJS.reportWindow.addTitle(
+		"Fraser River - South Arm",
+		"Zone " + (avaIFaceJS.acv_func.selected_zone),
+		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
+			+ translate_flow() + ") - "
+			+ moment($('#date').val()).format("MMM D, YYYY")
+			+ " from " + ($('select#from').find(':selected').text())
+			+ " to " + ($('select#to').find(':selected').text()),
+		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
+		);
+	  }
       /*
       $('#static-date').text(moment($('#date').val()).format("YYYY-MM-DD"));
       $('#static-start').text($('select#from').val());
