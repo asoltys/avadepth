@@ -57,22 +57,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#static-limit').text($(this).next().text());
       });
 
-      $('select#interval').change(function () {
-	    avaIFaceJS.pwl_func.static_interval = (function() {
-			switch ($(this).val()) {
-				case '120':
-				  return '2 Hour';
-	            case '60':
-	              return '1 Hour';
-				case '30':
-				  return '30 Minute';
-				case '15':
-				  return '15 Minute';
-			  }
-			}).call(this);
-        return avaIFaceJS.pwl_func.updateReportTitle();
-      });
-
       /* WS: Does this event ever get triggered?
        $('select#chainage').change(function() {
        return $('#static-chainage').text($(this).val());
@@ -226,10 +210,23 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#water-levels tbody').append(row);
           return $('.dataTables_empty').parent().html('');
         });
+	    avaIFaceJS.pwl_func.static_interval = (function() {
+			switch ($('#interval').val()) {
+				case '120':
+				  return '2 Hour';
+	            case '60':
+	              return '1 Hour';
+				case '30':
+				  return '30 Minute';
+				case '15':
+				  return '15 Minute';
+			  }
+			}).call(this);
         avaIFaceJS.pwl_func.updateReportTitle();
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
         pBarToggle();
+		// test
 		return $('.spinner').hide();
       }).success(function () {
         if (!(avaIFaceJS.pwl_func.detailValue == "")){
@@ -241,6 +238,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         }
       });
+	  
     },
 
     // Updates Report Title Info
