@@ -15,7 +15,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     static_interval: "1 Hour",
     cur_waterway: null,
-    isParamProcessed: false,
     detailValue: "",
     detailIsKM: true,
 
@@ -77,6 +76,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	      return;
 	    } else {
 		  $('.spinner').show();
+		  
+		  // resets detailValue if detail report is previously open
+		  avaIFaceJS.detailWindow.hide();
+	      avaIFaceJS.pwl_func.detailValue = "";
+		  
 		  return avaIFaceJS.pwl_func.update();
 		}
 	  });
@@ -84,8 +88,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     update: function () {
 	  var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
-	  
-      avaIFaceJS.pwl_func.isParamProcessed=true;
     
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
@@ -139,6 +141,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         })();
       }
+	  
       $('#pwl_waterway').val(waterway);
       $('#water-levels tbody').empty();
       $('#headerkm').empty();
@@ -226,8 +229,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
         pBarToggle();
-		// test
-		return $('.spinner').hide();
+		$('.spinner').hide();
       }).success(function () {
         if (!(avaIFaceJS.pwl_func.detailValue == "")){
           if (avaIFaceJS.pwl_func.detailIsKM){

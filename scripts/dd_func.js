@@ -60,7 +60,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		  $('.spinner').show();
           $("#error_message").hide();
           $("#report_body").show();
-          return avaIFaceJS.dd_func.update();
+		  
+		  // resets detail window if open when report is requested
+		  avaIFaceJS.detailWindow.hide();
+          
+		  return avaIFaceJS.dd_func.update();
         }
       });
     },
