@@ -7,86 +7,49 @@
 if(!(typeof avaIFaceJS === 'undefined')) {
 
   avaIFaceJS.sdb_func= {
-    /*** Local variables ***/
-    heading_waterway: "Fraser - South Arm",
-    tile: "",
-
     init: function () {
-      // Fill Form Parameters
-
+	  avaIFaceJS.sdb_func.fillChannel(); // populate dropdowns on load
+	
+	  /** Event Handlers **/
+	  // Load and fill channel drop down
+	  $('#sdb_waterway').change(avaIFaceJS.sdb_func.fillChannel);
+	  
       // Load and fill location drop down
       $('#channel').change(avaIFaceJS.sdb_func.fillLocation);
 	  
-	  $('#sdb_waterway').change(avaIFaceJS.sdb_func.fillChannel);
-
-      // Colour Tiles when location field changes
-      $('#location').change(function () {
-        avaIFaceJS.sdb_func.tile = $(this).val();
-		avaIFaceJS.sdb_func.loc_title = " at "+avaIFaceJS.sdb_func.tile;
-        return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#channel').val(), $(this).val()); //originally $('#sdb_waterway').val()
-      });
-
-      // Colour and resize map extents when waterway field changes
+	  // Colour and resize map extents when waterway field changes
       $('#sdb_waterway').change(function () {
-        avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
-        avaIFaceJS.sdb_func.tile = "";
-        if(window.location.href.indexOf("fra") > -1) {
-//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
-		}
         avaIFaceJS.mapJS.sdb_func.setExtents($(this).val());
         return $('#map').css("min-height", "400px");
       });
-	  
+
+	  // Colour and resize map when channel field changes
 	  $('#channel').change(function () {
-        avaIFaceJS.sdb_func.heading_waterway = $(this).find('option:selected').text();
-        avaIFaceJS.sdb_func.tile = "";
-        if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.loc_title);
-		}
         avaIFaceJS.mapJS.sdb_func.setChannelExtents( $('#sdb_waterway').val() , $(this).val() ); // Broken?
         return $('#map').css("min-height", "400px");
+      });
+	  
+      // Colour Tiles when location field changes
+      $('#location').change(function () {
+        return avaIFaceJS.mapJS.sdb_func.refreshTiles($('#channel').val(), $(this).val()); //originally $('#sdb_waterway').val()
       });
 
       // Submit form
       $("#submit").click(function () {
-        var ww = $('#channel').val();
+        $('.spinner').show();
+		avaIFaceJS.sdb_func.updateTitle();
+		// get report data
         return avaIFaceJS.sdb_func.getSurveyDrawings({
-          river: ww,
+          river: $('#channel').val(), // unique to waterway and channel combination
           drawingType: $('#type').val(),
-          channel: ww,
-          location: avaIFaceJS.sdb_func.tile,
+          channel: $('#channel').val(),
+          location: $('#location').val(),
           channelType: ""
         });
       });
-	  
-      // Print page to printer
-      $("#print").click(function () {
-        return window.print();
-      });
-      var mapElem = $('#embed_map');
-      mapElem.load(function () {
-        $('#sdb_waterway').change();
-      });
-	  
-	  return avaIFaceJS.sdb_func.fillChannel();
     },
 
-    fillLocation: function () {
-      $('#location option').remove();
-      $('#location').append('<option></option>');
-      return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function () {
-        return $('#location').append("<option>" + this + "</option>");
-      });
-    },
-	
+    // Load and fill channel drop down
 	fillChannel: function () {
 	  $('#location option').remove();
       $('#channel option').remove();
@@ -95,10 +58,37 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('#channel').append("<option value='" + this.Form.Key + "'>" + this.Form.Title + "</option>");
       });
     },
+	
+	// Load and fill location drop down
+    fillLocation: function () {
+      $('#location option').remove();
+      $('#location').append('<option></option>');
+      return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function () {
+        return $('#location').append("<option>" + this + "</option>");
+      });
+    },
 
+	// update report window title
+	updateTitle: function () {
+		var header, wat, chann, location;
+		// set report title
+		if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use
+		  header = "Enquêtes Résultats de la recherche";
+		} else {
+		  header = "Surveys Search Results";
+		}
+		
+		wat = $('#sdb_waterway').find('option:selected').text();
+		chann = $('#channel').find('option:selected').text();
+		location = $('#location').find('option:selected').text();
+
+		if (location != "") { location = "At " + location; }
+		
+		avaIFaceJS.reportWindow.addTitle(header + " for " + wat, chann + " " + location);
+	},
+	
     getSurveyDrawings: (function (jsonStuff) {
       var drawingRows;
-      $('.spinner').show();
       drawingRows = "";
       //TODO: Replace following line for Production
       return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + jsonStuff.river + "&")
@@ -107,13 +97,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           + ("channel=" + jsonStuff.channel + "&")
           + ("location=" + jsonStuff.location + "&")
           + ("channelType=" + jsonStuff.channelType),"includes/test.json"), function (data) {
-        if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
-		}
         $('#report_tbl tbody').html('');
         $.each(data, function () {
           var addRow;
@@ -140,6 +123,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
     }),
 
+	// update parameter bar from map selected channel
     updateParameters: (function(jsonData){
       var data = jsonData.data
       switch(data.waterway){
@@ -165,21 +149,19 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.sdb_func.fillLocation();
       $('#location').val(data.location).change();
     }),
-    getSurveyDrawingsFromTiles: (function (jsonStuff) {
+	
+	// update data for map selected channel
+    getSurveyDrawingsFromTiles: (function (tileName) {
       var drawingRows;
+	  drawingRows = "";
+	  
       $('.spinner').show();
-      drawingRows = "";
+	  avaIFaceJS.sdb_func.updateTitle();
+      
       //TODO: Replace following line for previous in production
-      return $.getJSON(getAPI("api/get_tile.asp?tile=" + jsonStuff.tile, "api/get_tile/" + jsonStuff.tile + ".json"), function (data) {
-      //return $.getJSON("api/get_tile.asp?tile=" + jsonStuff.tile, function(data) {
-      //return $.getJSON("api/get_tile/" + jsonStuff.tile + ".json", function (data) {
-        if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.addTitle("Surveys Search Results", avaIFaceJS.sdb_func.heading_waterway + " at " + jsonStuff.name);
-}
+      return $.getJSON(getAPI("api/get_tile.asp?tile=" + tileName, "api/get_tile/" + tileName + ".json"), function (data) {
+      //return $.getJSON("api/get_tile.asp?tile=" + tileName, function(data) {
+      //return $.getJSON("api/get_tile/" + tileName + ".json", function (data) {
         $('#report_tbl tbody').html('');
         $.each(data.drawings, function () {
 		if(this.Filename != 'datafile') {
@@ -259,6 +241,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.sdb_func.refreshTiles(waterway, "");
     },
 	
+	// page specific
 	setChannelExtents: function (waterway, channel) {
       if (!channel || !waterway) {
         return;
@@ -271,7 +254,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaMapJS.sdb_func.refreshTiles(channel, "");
     },
 	
-
     tileUnselect: function(tile){
       if(tile.feature.data.location==avaMapJS.sdb_func.curLocation) {
         avaMapJS.sdb_func.curLocation = "";
@@ -287,7 +269,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
       else {
         parent.avaIFaceJS.sdb_func.updateParameters({"data": tile.feature.data});
-        parent.avaIFaceJS.sdb_func.getSurveyDrawingsFromTiles({"tile": tileName, "name": tile.feature.data.location});
+        parent.avaIFaceJS.sdb_func.getSurveyDrawingsFromTiles(tileName);
       }
     },
 

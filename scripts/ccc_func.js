@@ -5,31 +5,22 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 /*** Interface functions ***/
   avaIFaceJS.ccc_func = {
     detailIsInnerChannel:true,
+	
     init: function () {
-		if(window.location.href.indexOf("fra") > -1) {
-			//If url contains 'fra'	use 
-			avaIFaceJS.reportWindow.title1 = "Conditions actuelles du chenal – bras sud du fleuve Fraser";
-		} else {
-		//If url does not contain 'fra' use
-			avaIFaceJS.reportWindow.title1 = "Fraser River Navigation Channel Condition Report";
-		}
-      var date, month, weekday, table;
+	  var date, month, weekday, table, title1, title2;
       date = new Date();
-
-      avaIFaceJS.detailWindow.loadLayout();
-
+	  
+	  avaIFaceJS.detailWindow.loadLayout();
+      
 	  if(window.location.href.indexOf("fra") > -1) {
 		//If url contains 'fra'	use 
 		weekday = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 		month = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-		avaIFaceJS.reportWindow.title2 = weekday[date.getDay()] + " " + (date.getDate()) + " " + month[date.getMonth()] + " " + (date.getFullYear());
-		} else {
+	  } else {
 		//If url does not contain 'fra' use
 		weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 		month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		avaIFaceJS.reportWindow.title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
-
-		}
+	  }
       //$('#static-date').text("For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()));
       //TODO: Replace next line for production
       return $.getJSON(getAPI(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), "api/depths/soundings.json"), function(data) {
@@ -72,7 +63,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }).success(function () {
         $('#soundings tbody tr a').click(avaIFaceJS.ccc_func.showDetail);
         $('#soundings').css('width', '800px');
-        avaIFaceJS.reportWindow.setTitle();
+        
+		// set title
+		if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra'	use 
+		  title1 = "Conditions actuelles du chenal – bras sud du fleuve Fraser";
+		  title2 = weekday[date.getDay()] + " " + (date.getDate()) + " " + month[date.getMonth()] + " " + (date.getFullYear());
+		} else { //If url does not contain 'fra' use
+		  title1 = "Fraser River Navigation Channel Condition Report";
+		  title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
+		}
+        avaIFaceJS.reportWindow.addTitle(title1, title2);
+		
         avaIFaceJS.reportWindow.show();
       });
 

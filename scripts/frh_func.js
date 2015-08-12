@@ -73,9 +73,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       if (month ===1) year += 1;
       period=$('#period option:selected').html().split(" ")[0];
       period_end=moment([year,month,1]).add('months',period-2);
-      avaIFaceJS.reportWindow.title1="Fraser River Hydrograph at Hope - 08MF005";
-      avaIFaceJS.reportWindow.title2="From "+moment(curDate).format("MMMM YYYY")+" to "+period_end.format("MMMM YYYY");
-      avaIFaceJS.reportWindow.setTitle();
+      avaIFaceJS.reportWindow.addTitle("Fraser River Hydrograph at Hope - 08MF005","From "+moment(curDate).format("MMMM YYYY")+" to "+period_end.format("MMMM YYYY"));
       $('#spinner').show();
       $('#loading').show();
       $('#hydrograph_chart').html('');

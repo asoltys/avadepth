@@ -12,16 +12,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     limit_text: "",
 
     init: function () {
-      // Set Report Title Header
-      if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		avaIFaceJS.reportWindow.title1 = "Rapport sur les profondeurs disponibles";
-		} else {
-		//If url does not contain 'fra' use
-		avaIFaceJS.reportWindow.title1 = "Available Depth Report for Fraser River South Arm";
-	  }
-      avaIFaceJS.reportWindow.title2 = "";
-
       avaIFaceJS.detailWindow.loadLayout();
 
       // Style Elements
@@ -72,7 +62,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	
 	// Process Report content and update Report Window
     update: function () {
-      var channel, flow;
+      var channel, flow, title1, title2, subT1, subT2;
 
       channel = $('input[name="channel"]:checked').val();
 	  
@@ -131,20 +121,19 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         })();
 
-		if(window.location.href.indexOf("fra") > -1) {
-		  //If url contains 'fra'	use 
-		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
-		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
-		  avaIFaceJS.reportWindow.subTitle2 = "Débit fluvial à Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
-		} else {
-		  //If url does not contain 'fra' use
-		  avaIFaceJS.reportWindow.title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
-		  avaIFaceJS.reportWindow.subTitle1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-		  avaIFaceJS.reportWindow.subTitle2 = "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
+		if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
+		  title1 = "Rapport sur les profondeurs disponibles";
+		  title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
+		  subT1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
+		  subT2 = "Débit fluvial à Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
+		} else { //If url does not contain 'fra' use
+		  title1 = "Available Depth Report for Fraser River South Arm";
+		  title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
+		  subT1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
+		  subT2 = "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
 	    }
-        
-        
-        avaIFaceJS.reportWindow.setTitle();
+        avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);
+		
         avaIFaceJS.reportWindow.show();
         avaIFaceJS.dd_func.createGraph(points);
         pBarToggle();

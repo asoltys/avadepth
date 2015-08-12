@@ -191,15 +191,15 @@ avaIFaceJS = {
     },
 
     // Adds strings to fit into Report Title Template
-    addTitle: function (reportTitle, reportLocation, subT1, subT2) {
+    addTitle: function (repTitle1, repTitle2, subT1, subT2) {
       if (!avaIFaceJS.reportWindow.isInit) {
         avaIFaceJS.reportWindow.init()
       }
-      if (reportTitle != undefined) {
-        avaIFaceJS.reportWindow.title1 = reportTitle;
+      if (repTitle1 != undefined) {
+        avaIFaceJS.reportWindow.title1 = repTitle1;
       }
-      if (reportLocation != undefined) {
-        avaIFaceJS.reportWindow.title2 = reportLocation;
+      if (repTitle2 != undefined) {
+        avaIFaceJS.reportWindow.title2 = repTitle2;
       }
       if (subT1 != undefined) {
         avaIFaceJS.reportWindow.subTitle1 = subT1;
