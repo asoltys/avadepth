@@ -101,9 +101,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('.spinner').show();
       drawingRows = "";
       //TODO: Replace following line for Production
-      return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType),"includes/test.json"), function (data) {
-      //return $.getJSON(("api/surveys/getsurveys?river=" + jsonStuff.river + "&") + ("drawingType=" + jsonStuff.drawingType + "&") + "recent=&" + ("channel=" + jsonStuff.channel + "&") + ("location=" + jsonStuff.location + "&") + ("channelType=" + jsonStuff.channelType), function(data) {
-      //return $.getJSON(("includes/test.json"), function (data) {
+      return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + jsonStuff.river + "&")
+          + ("drawingType=" + jsonStuff.drawingType + "&")
+          + "recent=&"
+          + ("channel=" + jsonStuff.channel + "&")
+          + ("location=" + jsonStuff.location + "&")
+          + ("channelType=" + jsonStuff.channelType),"includes/test.json"), function (data) {
         if(window.location.href.indexOf("fra") > -1) {
 		//If url contains 'fra'	use 
 		avaIFaceJS.reportWindow.addTitle("Enquêtes Résultats de la recherche", avaIFaceJS.sdb_func.heading_waterway + " " + avaIFaceJS.sdb_func.tile);
@@ -137,6 +140,31 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
     }),
 
+    updateParameters: (function(jsonData){
+      var data = jsonData.data
+      switch(data.waterway){
+        case "FRMA":
+        case "FRMA_SC":
+        case "FRNA":
+        case "FRNA_SC":
+        case "FRPR":
+        case "FRSA":
+        case "FRSA_SC":
+        case "FRUR":
+          $('#sdb_waterway').val("FR");
+          break;
+        case "PMV":
+        case "PMV-FSD":
+          $('#sdb_waterway').val("VH");
+          break;
+        default :
+          $('#sdb_waterway').val("CWC");
+      }
+      avaIFaceJS.sdb_func.fillChannel();
+      $('#channel').val(data.waterway);
+      avaIFaceJS.sdb_func.fillLocation();
+      $('#location').val(data.location).change();
+    }),
     getSurveyDrawingsFromTiles: (function (jsonStuff) {
       var drawingRows;
       $('.spinner').show();
@@ -258,6 +286,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         parent.window.open("http://www2.pac.dfo-mpo.gc.ca" + tileName, '_blank');
       }
       else {
+        parent.avaIFaceJS.sdb_func.updateParameters({"data": tile.feature.data});
         parent.avaIFaceJS.sdb_func.getSurveyDrawingsFromTiles({"tile": tileName, "name": tile.feature.data.location});
       }
     },
@@ -296,3 +325,5 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 } else if (!(typeof avaMapDetJS === 'undefined')) {
   avaMapDetJS.sdb_func = {init: function () {}};
 };
+
+//# sourceURL=sdb_func.js

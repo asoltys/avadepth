@@ -6,16 +6,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
 /*** Interface functions ***/
   avaIFaceJS.pwl_func= {
-
     // local variables
     table: null,
     report_title1: "",
     report_title2: "",
     static_arm: "South Arm",
     static_date: "",
+
     static_interval: "1 hour",
-    static_discharge: "3000",
-    static_discharge_eval: "Selected",
     cur_waterway: null,
     isParamProcessed: false,
     detailValue: "",
@@ -36,77 +34,25 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avadepth.util.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
-//          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
 		avaIFaceJS.pwl_func.static_date = moment($('#pwl_date').val()).format("MMM D, YYYY");
       }).datepicker().datepicker('setDate', new Date()).change();
 
       // Check "Selected" radio on "Selected" value combo selection
-      $('#discharge_radio').change(function () {
-        return $('#discharge_radio').prop('checked', true);
+      $('#selected_radio').change(function () {
+        return $('#selected_radio').prop('checked', true);
       }).change();
 
       $('#selected_discharge').change(function() {
-        $('#discharge_radio').prop('checked', true).change();
+        $('#selected_radio').prop('checked', true).change();
       });
 	  
 	  // Check "User Defined" radio on "User Defined" input is focused on
       $('#defined_discharge').on("click", function() {
         $('#defined_radio').prop('checked', true).change();
       });
-	  
-	  // update user defined value
-	  $('#defined_discharge').change(function() {
-        $('#defined_radio').prop('checked', true).change();
-      });
 
-      $('input[name=discharge]').change(function () {
-        var flowRate_txt, flowrate, flowtype;
-        flowrate = (function () {
-          switch ($(this).val()) {
-            case 'Actual':
-              return $('#actual_discharge').text();
-//            case 'Predicted':
-//              return $('#predicted_discharge').text();
-            case 'Defined':
-              return $('#defined_discharge').val();
-            case 'Selected':
-              return $('#selected_discharge').val();
-          }
-        }).call(this);
-        $('#flowRate').val(flowrate);
-        avaIFaceJS.pwl_func.static_discharge = flowrate;
-        avaIFaceJS.pwl_func.static_discharge_eval = $(this).val();
-        if ($('html').attr('lang') === 'fr') {
-          flowRate_txt = (function () {
-            switch ($(this).val()) {
-//              case 'Predicted':
-//                return "prévu";
-              case 'Actual':
-                return "réel";
-              case 'Defined':
-                return "défini par l'utilisateur";
-              case 'Selected':
-                return "choisi";
-            }
-          }).call(this);
-          avaIFaceJS.pwl_func.static_discharge_eval = flowRate_txt;
-        }
-        flowtype = (function () {
-          switch ($(this).val()) {
-            case 'Actual':
-              return 0;
-//            case 'Predicted':
-//              return 1;
-            case 'Defined':
-              return 2;
-            case 'Selected':
-              return 3;
-          }
-        }).call(this);
-        return $('#flowType').val(flowtype);
-      });
       $('input[name=channel]').change(function () {
         return $('#static-limit').text($(this).next().text());
       });
@@ -133,24 +79,30 @@ if(!(typeof avaIFaceJS === 'undefined')) {
        });
        */
 
+      $('#defined_discharge').click(function(){
+        $('#defined_radio').prop('checked', true).change();
+      })
+
       $('#ref_map_link').click(function () {
         avaIFaceJS.mapJS.map.updateSize();
       });
-      $("#submit").click(avaIFaceJS.pwl_func.update);
+      $("#submit").click(function () {
+	    // user has left user-defined m^3/s value blank
+	    if(avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
+	      $('#defined_discharge').focus();
+	      return;
+	    } else {
+		  $('.spinner').show();
+		  return avaIFaceJS.pwl_func.update();
+		}
+	  });
     },
 
     update: function () {
 	  var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
 	  
-	  // user has left user-defined m^3/s value blank
-	  if(avaIFaceJS.pwl_func.static_discharge === "" && avaIFaceJS.pwl_func.static_discharge_eval === 'Defined') {
-	    $('#defined_discharge').focus();
-	    return;
-	  }
-	  
       avaIFaceJS.pwl_func.isParamProcessed=true;
-      
-      $('.spinner').show();
+    
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
       waterway = (function () {
@@ -204,7 +156,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         })();
       }
       $('#pwl_waterway').val(waterway);
-      $('#river-section').text(fraser_val);
       $('#water-levels tbody').empty();
       $('#headerkm').empty();
       step = 2;
@@ -230,13 +181,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       flow = avadepth.util.getSelectedFlow();
       $("#flowRate").val(flow.flowRate);
+	  $('#flowType').val(flow.flowType);
 
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
-      //TODO: Replace next line for production theresa
+      //TODO: Replace next line for production 
       return $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
           + ("intervalMin=" + ($('#interval').val()) + "&")
           + ("flowRate=" + ($('#flowRate').val()) + "&")
@@ -300,7 +247,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     updateReportTitle: function () {
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
           "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
-          "Hope Discharge " + avaIFaceJS.pwl_func.static_discharge + "m\u00B3/s (" + avaIFaceJS.pwl_func.static_discharge_eval + ")"
+          "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")"
       );
     },
 
@@ -322,8 +269,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#det_static-date').text(avaIFaceJS.pwl_func.static_date);
       $('#det_static-interval').text(avaIFaceJS.pwl_func.static_interval);
       $('#det_static-arm').text(avaIFaceJS.pwl_func.static_arm);
-      $('#det_static-discharge').text(avaIFaceJS.pwl_func.static_discharge);
-      $('#det_static-discharge-eval').text(avaIFaceJS.pwl_func.static_discharge_eval);
+      $('#det_static-discharge').text($('#flowRate').val());
+      $('#det_static-discharge-eval').text(translate_flow());
 
 	  avaIFaceJS.pwl_func.gotoGraph_sub(typCode, typValue, "#det_placeholder"); // create pwl plots for main detail report
       
@@ -335,6 +282,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  
 	  avaIFaceJS.pwl_func.gotoGraph_sub(typCode, typValue, "#det_placeholder_print"); // create pwl plots for print version of detail report
     },
+	
 	/* generate pwl canvas chart from given parameters */
 	gotoGraph_sub: function (typCode, typValue, plotId) {
 		var step = (function () {

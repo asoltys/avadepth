@@ -87,7 +87,7 @@ incl_ava_defs={
     'Sections':{ 
       'PMV': {
         'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
-        'Names': ['1st Narrows', '2nd Narrows', 'Port Moody'],
+        'Names': ['Lynnterm Westgate','1st Narrows', '2nd Narrows', 'Port Moody'],
         'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
         },
       'PMV-FC': {
@@ -235,8 +235,8 @@ incl_ava_defs={
             "m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           " m\u00B3/s",
           {tag:'br'},
@@ -259,7 +259,8 @@ incl_ava_defs={
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
                 var hr=parseInt(i);
-                res.push({key:i,value:(hr)+":"+padZero((i-hr)*60)});
+                var time = (hr)+":"+padZero((i-hr)*60);
+                res.push({key:time,value:time});
                 if (i==17){
                   res[res.length-1].select="selected";
                 }
@@ -285,9 +286,9 @@ incl_ava_defs={
               {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
                 {key:4,value:'4 hr'},
                 {key:2,value:'2 hr'},
-                {key:1,value:'1 hr',select:'selected'},
+                {key:1,value:'1 hr'},
                 {key:0.5,value:'30 min.'},
-                {key:0.25,value:'15 min.'}
+                {key:0.25,value:'15 min.',select:'selected'}
               ]}}
             ]}
           ]},
@@ -361,8 +362,8 @@ incl_ava_defs={
               "m\u00B3/s)"
             ]},
             {tag:'br'},
-            {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+            {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
             {tag:'select',attr:{id:'selected_discharge'}},
             " m\u00B3/s",
             {tag:'br'},
@@ -432,7 +433,8 @@ incl_ava_defs={
 					  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
 					  {tag:'th',child:["Chainage (km)"]},
 					  {tag:'th',child:["Available Depth (m)"]},
-					  {tag:'th',child:["Location of Control Point"]}
+					  {tag:'th',child:["Location of Control Point"]},
+					  {tag:'th',child:["num"]}
 					]}
 				  ]},
 				  {tag:'tbody'}
@@ -481,7 +483,7 @@ incl_ava_defs={
                     "Hope Discharge ",
                     {tag:'span',attr:{id:'static-discharge'}},
                     "m\u00B3/s (",
-                    {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                    {tag:'span',attr:{id:'static-discharge-eval'}},
                     ")",
                     {tag:'br'}
                   ]}
@@ -498,7 +500,8 @@ incl_ava_defs={
                   {tag:'th',child:['Least Sounding']},
                   {tag:'th',attr:{colspan:'2'},child:['Available Width']},
                   {tag:'th',child:['Tidal Aid']},
-                  {tag:'th',child:['Depth']}
+                  {tag:'th',child:['Depth']},
+                  {tag:'th',child:['Number']}
                 ]},
                 {tag:'tr',attr:{style:'background-color: #EEEEEE;'},child:[
                   {tag:'th',child:['(km)']},
@@ -506,6 +509,7 @@ incl_ava_defs={
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['%']},
+                  {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']}
                 ]}
@@ -655,7 +659,7 @@ incl_ava_defs={
                   "Hope Discharge: ",
                   {tag:'span',attr:{id:'static-discharge'}},
                   " m\u00B3/s (",
-                  {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                  {tag:'span',attr:{id:'static-discharge-eval'}},
                   ")"
                 ]}
               ]}
@@ -726,8 +730,8 @@ incl_ava_defs={
             "m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio','style':'font-weight:normal'},child:["Selected"]},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
+          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           "m\u00B3/s",
           {tag:'br'},
@@ -801,8 +805,8 @@ incl_ava_defs={
                 {tag:'br'},
                 "Hope Discharge ",
                 {tag:'span',attr:{id:'det_static-discharge'}},
-                "m\u00B3/s (",
-                {tag:'span',attr:{id:'det_static-discharge-eval'},child:['Predicted']},
+                " m\u00B3/s (",
+                {tag:'span',attr:{id:'det_static-discharge-eval'}},
                 ')'
               ]},
               {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
