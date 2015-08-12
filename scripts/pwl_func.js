@@ -88,7 +88,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     update: function () {
 	  var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
-    
+
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
       waterway = (function () {
@@ -239,8 +239,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
           }
         }
+		// removes unwanted table sorting feature
+		$('#water-levels th').removeClass("sorting");
+		$('#water-levels td').removeClass("sorting_asc")
       });
-	  
     },
 
     // Updates Report Title Info
