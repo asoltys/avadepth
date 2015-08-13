@@ -310,7 +310,7 @@ avaIFaceJS = {
 		pgParam.push({tag: 'button', attr: {id: 'submit', type: 'button', className: 'button button-accent', name: 'submit'}, 'child': ['Apply']});
 	  }
       if(avaIFaceJS.paramWindow.hasAnimate) {
-        pgParam.push({tag:'button',attr:{id:'replay',className: "button button-accent",style:'display:none',name:'replay'},child:['Replay']});
+	    pgParam.push({tag: 'button', attr: {id: 'replay', type: 'button', className: 'button button-accent', name: 'replay'}, 'child': ['Replay']});
       }
       pgParam.push({tag: 'img', attr: {className: 'spinner', src: 'images/spinner.gif'}});
       var v = avaIFaceJS.getElements([
