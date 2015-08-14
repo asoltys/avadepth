@@ -12,7 +12,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  avaIFaceJS.detailWindow.loadLayout();
       
 	  if(window.location.href.indexOf("fra") > -1) {
-		  moment.locale('fr');
+		  moment.locale('fr-ca');
 	  }  else {
 		  moment.locale('en');
     }
