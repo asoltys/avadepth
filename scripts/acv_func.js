@@ -7,6 +7,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     selected_zone:1,
 	
     init: function() {
+	 $('#replay').hide();
       $('#static_rd').attr('checked','checked');
       $('#interval').prev().hide();
       $('#interval').hide();
@@ -65,7 +66,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		  }
 	  });
       $('#replay').click(avaIFaceJS.acv_func.play);
-
     },
     time_chg_evnt_hndlr: function(){
       var interval, start, options;
@@ -99,7 +99,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  $("#flowRate").val(flow.flowRate);
 	  $('#flowType').val(flow.flowType);
 	  
-      $(this).prop('disabled', 'disabled');
+      $(this).prop('disabled', true);
 
       start_time = moment($('#from').val(),"HH:mm");
       end_time = moment($('#to').val(),"HH:mm");
@@ -141,7 +141,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             start_time.add(interval);
           } else {
             avaIFaceJS.acv_func.play();
-            return $('#submit').prop('disabled', '');
+            return $('#submit').prop('disabled', false);
           }
         });
       })();
@@ -194,9 +194,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  pBarToggle();
       $('#animated').attr("src", "images/nodata.jpg");
       $('#animated_legend').hide().attr("src", "images/vectorscale" + ($('input[name=legend_scale]:checked').val()) + ".gif");
-      $('#replay').prop('disabled', 'disabled');
+	  $('#replay').prop("disabled", true);
       avaIFaceJS.reportWindow.show();
-
+	
       if (avaIFaceJS.acv_func.images.length > 0) {
         $('#replay').show();
         i = 1;
@@ -208,7 +208,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           i++;
           if (i >= avaIFaceJS.acv_func.images.length) {
             clearInterval(handle);
-            return $('#replay').prop('disabled', '');
+            return $('#replay').prop("disabled", false);
           }
         }, 1000);
       } else {

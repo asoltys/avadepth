@@ -88,7 +88,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     update: function () {
 	  var flow, headerRow, i, kmStart, report_type, step, waterway, _i, _ref;
-    
+
       report_type = $('input[name=report]:checked').val();
       var fraser_val = $('#fraser_river').val();
       waterway = (function () {
@@ -239,8 +239,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
           }
         }
+		// removes unwanted table sorting feature
+		$('#water-levels th').removeClass("sorting");
+		$('#water-levels td').removeClass("sorting_asc")
       });
-	  
     },
 
     // Updates Report Title Info
@@ -391,7 +393,25 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // PWL detail map removal - note that the removal of the following comment will cause pwl KM graph detail report to display improperly on IE browsers
 	  // avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent($(this).text(), avaIFaceJS.detailWindow.mapColorKey);
       return avaIFaceJS.pwl_func.gotoGraph(0, $(this).text(),true);
-    }
+    },
+	
+	// update parameter bar from map selection
+    updateParameters: (function(jsonData){
+      var data = jsonData.data;
+      switch(data.waterway){
+        case "FRNA": // north arm
+			$('#fraser_river').val("North Arm");
+			break;
+        case "FRSA": // south arm
+			$('#fraser_river').val("South Arm");
+			break;
+        case "FRMA": // main arm
+			$('#fraser_river').val("Main Arm");
+			break;
+      }
+	  
+	  parent.avaIFaceJS.pwl_func.detailValue = data.KM;
+    })
   }
 } else if(!(typeof avaMapJS === 'undefined')) {
 
@@ -477,11 +497,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     selectMarker: function(feat){
       avaMapJS.map.zoomToExtent(feat.feature.geometry.getBounds(), closest=true);
       avaMapJS.map.zoomToScale(100000);
-
-      // Select new graph and return graph
-      parent.avaIFaceJS.pwl_func.detailValue = feat.feature.attributes.KM;
-      parent.avaIFaceJS.pwl_func.update();
-      //parent.avaIFaceJS.pwl_func.gotoGraph(0, feat.feature.attributes.KM, true);
+	  
+	  parent.avaIFaceJS.pwl_func.updateParameters({"data": feat.feature.attributes});
+	  parent.avaIFaceJS.pwl_func.update();
     },
 
     setMarkerExtent: function(mrkKM,mrkRiver){
