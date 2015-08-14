@@ -7,25 +7,16 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     detailIsInnerChannel:true,
 	
     init: function () {
-	  var date, month, weekday, table, title1, title2;
-      date = new Date();
+	  var table, title1, title2;
 	  
 	  avaIFaceJS.detailWindow.loadLayout();
       
 	  if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	use 
-		weekday = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
-		month = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-	  } else {
-		//If url does not contain 'fra' use
-		weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-		month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	  }
-      //$('#static-date').text("For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear()));
-      //TODO: Replace next line for production
-      return $.getJSON(getAPI(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), "api/depths/soundings.json"), function(data) {
-      //return $.getJSON(("/api/Soundings?id=" + (date.getFullYear()) + "-") + ("" + (date.getMonth() + 1) + "-") + ("" + (date.getDate())), function(data) {
-      //return $.getJSON("api/depths/soundings.json", function (data) {
+		  moment.locale('fr');
+	  }  else {
+		  moment.locale('en');
+    }
+      return $.getJSON(getAPI("/api/Soundings?id=" + moment().format("YYYY-M-D"), "api/depths/soundings.json"), function(data) {
         table || (table = $('#soundings').dataTable({
           bPaginate: false,
           bInfo: false,
@@ -44,8 +35,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }));
         table.fnClearTable();
         $.each(data, function (index) {
-          //table.fnAddData(["<a href=\"soundings-sondages-eng.html?lane=1&chainage=" + (index + 1) + "\">" + this.Chainage + "</a>", this.SoundingDate, this.Dredge, this.Sounding, this.Width, this.WidthPerc, this.Dredge2, this.Sounding2, this.Width2, this.WidthPerc2]);
-          table.fnAddData(["<a href='javascript:void(0)' id='" + (index + 1) + "'>" + this.Chainage + "</a>", this.SoundingDate, this.Dredge, this.Sounding, this.Width, this.WidthPerc, this.Dredge2, this.Sounding2, this.Width2, this.WidthPerc2]);
+          table.fnAddData(
+              ["<a href='javascript:void(0)' id='" + (index + 1) + "'>" + this.Chainage + "</a>",
+              this.SoundingDate,
+              this.Dredge,
+              this.Sounding,
+              this.Width,
+              this.WidthPerc,
+              this.Dredge2,
+              this.Sounding2,
+              this.Width2,
+              this.WidthPerc2]);
           if (this.IsHigh) {
             $('#soundings tr:last').find('.1').addClass('red');
             $('#soundings tr:last td:eq(3)').append('*');
@@ -65,14 +65,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel);
         $('#soundings').css('width', '800px');
         
-		// set title
-		if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra'	use 
-		  title1 = "Conditions actuelles du chenal – bras sud du fleuve Fraser";
-		  title2 = weekday[date.getDay()] + " " + (date.getDate()) + " " + month[date.getMonth()] + " " + (date.getFullYear());
-		} else { //If url does not contain 'fra' use
-		  title1 = "Fraser River Navigation Channel Condition Report";
-		  title2 = "For " + weekday[date.getDay()] + ", " + month[date.getMonth()] + " " + (date.getDate()) + ", " + (date.getFullYear());
-		}
+      // set title
+      if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra'	use 
+        title1 = "Conditions actuelles du chenal – bras sud du fleuve Fraser";
+        title2 = moment().format("dddd, MMMM D, YYYY");
+      } else { //If url does not contain 'fra' use
+        title1 = "Fraser River Navigation Channel Condition Report";
+        title2 = "For " + moment().format("dddd, MMMM D, YYYY");
+      }
         avaIFaceJS.reportWindow.addTitle(title1, title2);
 		
         avaIFaceJS.reportWindow.show();
@@ -80,7 +80,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     },
     showDetail: function () {
-      //var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       avaIFaceJS.ccc_func.chainage = this.id;
       $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
