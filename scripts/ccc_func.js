@@ -95,17 +95,26 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('#surveys tbody').html('');
 	  
       //TODO: Replace following line for production
-      return $.getJSON(("/api/History?date=" + (moment().format("YYYY-M-D").toString()) + "&") + ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "2")) + "&" + ("chainage=" + avaIFaceJS.ccc_func.chainage), function(data) {
-      //return $.getJSON(("api/depths/History.json"), function (data) {
+      return $.getJSON(("/api/History?date=" + moment().format("YYYY-M-D") + "&") +
+          ("lane=" + (avaIFaceJS.ccc_func.detailIsInnerChannel ? "1" : "2")) + "&" +
+          ("chainage=" + avaIFaceJS.ccc_func.chainage), function(data) {
         $.each(data, function (index) {
           var row, surveydate, ishigh="", ishighast="";
-          surveydate = moment(this.date).format("D-MMM-YYYY").toString();
+          surveydate = moment(this.date).format("D-MMM-YYYY");
           if(this.grade>this.sounding){
             ishigh=" class=\"red\"";
             ishighast="*";
           }
           if(this.Plan.slice(0,2) != "FR"){
-            row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf?\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
+            row = "<tr>" +
+                    "<td>" + surveydate + "</td>" +
+                    "<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf?\"" +
+                            "target=\"_blank\">" + this.Plan + "</a></td>" +
+                    "<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td>" +
+                    "<td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>" +
+                    "<td"+ishigh+">" + this.width + "</td>" +
+                    "<td"+ishigh+">" + this.widthperc + "</td>" +
+                  "</tr>";
           }
           return $("#surveys tbody").append(row);
         });
@@ -122,3 +131,4 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
 
 document.getElementById('pBarContainer').style.display = 'none'; 
+//# sourceURL=ccc_func.js
