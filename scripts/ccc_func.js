@@ -62,6 +62,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return $('.first-row th:nth-child(3)').css('width', '218px');
       }).success(function () {
         $('#soundings tbody tr a').click(avaIFaceJS.ccc_func.showDetail);
+        $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel);
         $('#soundings').css('width', '800px');
         
 		// set title
@@ -84,7 +85,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
       $('#detail_print').find('#heading').text("Kilometre " + (avaIFaceJS.ccc_func.chainage - 1) + " to " + (avaIFaceJS.ccc_func.chainage));
-      $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel).change();
+      $('input[name=channel_select]').change();
     },
     setChannel:function(){
       if(!($(this).is(':checked'))){return;}
@@ -103,7 +104,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             ishigh=" class=\"red\"";
             ishighast="*";
           }
-          row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf?\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
+          if(this.Plan.slice(0,2) != "FR"){
+            row = "<tr>" + ("<td>" + surveydate + "</td>") + ("<td><a href=\"http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf?\" target=\"_blank\">" + this.Plan + "</a></td>") + ("<td"+ishigh+">" + (this.grade.toFixed(1)) + "</td><td"+ishigh+">" + (this.sounding.toFixed(1)) + ishighast + "</td>") + ("<td"+ishigh+">" + this.width + "</td><td"+ishigh+">" + this.widthperc + "</td>") + "</tr>";
+          }
           return $("#surveys tbody").append(row);
         });
       });
