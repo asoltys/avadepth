@@ -13,7 +13,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     static_arm: "South Arm",
     static_date: "",
 
-    static_interval: "1 hour",
+    static_interval: "1 Hour",
     cur_waterway: null,
     detailValue: "",
     detailIsKM: true,
@@ -400,13 +400,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var data = jsonData.data;
       switch(data.waterway){
         case "FRNA": // north arm
-			$('#fraser_river').val("North Arm");
+			$('#fraser_river').val("North Arm").change(); // change event triggers map update
 			break;
         case "FRSA": // south arm
-			$('#fraser_river').val("South Arm");
+			$('#fraser_river').val("South Arm").change();
 			break;
         case "FRMA": // main arm
-			$('#fraser_river').val("Main Arm");
+			$('#fraser_river').val("Main Arm").change();
 			break;
       }
 	  
