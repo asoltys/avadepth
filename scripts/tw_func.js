@@ -136,7 +136,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#transit-window-last-col').text('Maximum Depth (m)');
         } else {
           //If url does not contain 'fra' use
-          avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
+          avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+' hr. Transit Window';
           $('#transit-window-last-col').text('Maximum Depth (m)');
         }
       } else {
