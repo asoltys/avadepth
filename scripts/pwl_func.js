@@ -153,10 +153,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             return 0;
         }
       })();
-	  // report type 0 is water levels, else velocities
+	  
+	  $('#headerkm').append($("<th style='display:none'><a href=\"javascript:void(0)\"></a></th>")); // hidden table element to get rid of erroneous table sorting
+	  
       for (i = _i = kmStart, _ref = $('#river-section').parent().attr('colspan') * step - step + kmStart; step > 0 ? _i <= _ref : _i >= _ref; i = _i += step) {
-        if (report_type === "0") {
-          headerRow = $("<th><a href=\"javascript:void(0)\">" + i + "</a></th>");
+        if (report_type === "0") { // report type 0 is water levels, else velocities
+		  headerRow = $("<th><a href=\"javascript:void(0)\">" + i + "</a></th>");
           headerRow.click(avaIFaceJS.pwl_func.gotoKMGraph);
         } else {
           headerRow = $('<td style="background-color:rgb(238, 238, 238); border-bottom: 1px solid black; font-weight:bold;">' + i + '</td>');
@@ -237,9 +239,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
           }
         }
-		// removes unwanted table sorting feature
-		$('#water-levels th').removeClass("sorting");
-		$('#water-levels td').removeClass("sorting_asc")
+		
+		$('#water-levels td').removeClass("sorting_asc") // removes unwanted table sorting feature from header
       });
     },
 
