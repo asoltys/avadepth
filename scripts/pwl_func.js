@@ -313,8 +313,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $(plotId).css('font-size','inherit');
       }
 	  
-      if (typCode == 0) {
-        $('#det_km_time-suff').text('km');
+      if (typCode == 0) { 
+        $('#det_km_time-suff').text(' km');
 		
         //TODO: Replace following line for production
         $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
