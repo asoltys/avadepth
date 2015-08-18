@@ -57,7 +57,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           labelBoxBorderColor: "none"
         }
       };
-      avaIFaceJS.reportWindow.loadReport();
       var dataset, actual, maximum, minimum, month, period, period_end, predicted, year, curDate;
       minimum=[];
       maximum=[];
@@ -67,12 +66,22 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       month=curDate.getMonth();
       year=curDate.getFullYear();
 
+	  avaIFaceJS.reportWindow.loadReport();
+	  
+	  // set date language
+	  if(window.location.href.indexOf("fra") > -1) {
+		moment.locale('fr');
+	  }  else {
+		moment.locale('en');
+      }
+	  
       //mattys hax
       month += 2;
       if (month ===13) month = 1;
       if (month ===1) year += 1;
       period=$('#period option:selected').html().split(" ")[0];
       period_end=moment([year,month,1]).add('months',period-2);
+	  
       avaIFaceJS.reportWindow.addTitle("Fraser River Hydrograph at Hope - 08MF005","From "+moment(curDate).format("MMMM YYYY")+" to "+period_end.format("MMMM YYYY"));
       $('#spinner').show();
       $('#loading').show();

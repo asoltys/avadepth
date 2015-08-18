@@ -11,7 +11,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     report_title1: "",
     report_title2: "",
     static_arm: "South Arm",
-    static_date: "",
 
     static_interval: "1 Hour",
     cur_waterway: null,
@@ -35,7 +34,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           selected: $("#selected_discharge"),
           actual: $("#actual_discharge")
         });
-		avaIFaceJS.pwl_func.static_date = moment($('#pwl_date').val()).format("MMM D, YYYY");
       }).datepicker().datepicker('setDate', new Date()).change();
 
       // Check "Selected" radio on "Selected" value combo selection
@@ -247,8 +245,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
     // Updates Report Title Info
     updateReportTitle: function () {
+	if(window.location.href.indexOf("fra") > -1) {
+		moment.locale('fr');
+	}  else {
+		moment.locale('en');
+	}
+	  
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
-          "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
+          "For " + moment($('#pwl_date').val()).format("MMM D, YYYY") + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
           "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")"
       );
     },
@@ -268,7 +272,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           break;
       }
       $('#det_km_time').text(typValue);
-      $('#det_static-date').text(avaIFaceJS.pwl_func.static_date);
+      $('#det_static-date').text(moment($('#pwl_date').val()).format("MMM D, YYYY"));
       $('#det_static-interval').text(avaIFaceJS.pwl_func.static_interval);
       $('#det_static-arm').text(avaIFaceJS.pwl_func.static_arm);
       $('#det_static-discharge').text($('#flowRate').val());

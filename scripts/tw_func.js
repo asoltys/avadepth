@@ -125,33 +125,44 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
 
       }();
-      avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
+	  
+	  if(window.location.href.indexOf("fra") > -1) {
+		moment.locale('fr');
+	  } else {
+		moment.locale('en');
+	  }
 
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.maxDepth));
         $('#cmp').val(0);
-        if(window.location.href.indexOf("fra") > -1) {
-          //If url contains 'fra'	use 
+        if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
+          moment.locale('fr');
           avaIFaceJS.reportWindow.title1='Profondeur maximum pour la fenêtre de '+$('#window').val()+' heures';
+		  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Maximum Depth (m)');
-        } else {
-          //If url does not contain 'fra' use
+        } else { //If url does not contain 'fra' use
+		  moment.locale('en');
           avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+' hr. Transit Window';
+		  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Maximum Depth (m)');
         }
       } else {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
         $('#cmp').val($('#depth').val());
-        if(window.location.href.indexOf("fra") > -1) {
-          //If url contains 'fra'	use 
+        if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
+          moment.locale('fr');
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+		  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Heures (h)');
-        } else {
-          //If url does not contain 'fra' use
+        } else { //If url does not contain 'fra' use
+          moment.locale('en');
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+		  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Transit Window (hrs)');
           }
         }
+	  
+	  ///////
 	  
       $('#static-discharge').text(flow.flowRate);
       $('#static-discharge-eval').text(translate_flow());
