@@ -240,7 +240,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         }
 		
-		$('#water-levels td').removeClass("sorting_asc") // removes unwanted table sorting feature from header
+		$('#water-levels td').removeClass("sorting_asc"); // removes unwanted table sorting feature from header
       });
     },
 
