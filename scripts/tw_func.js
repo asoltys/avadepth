@@ -151,7 +151,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#cmp').val($('#depth').val());
         if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
           moment.locale('fr');
-          avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+          avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+' m depth';
 		  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Heures (h)');
         } else { //If url does not contain 'fra' use

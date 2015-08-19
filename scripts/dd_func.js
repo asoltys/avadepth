@@ -131,7 +131,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		  moment.locale('en');
 		  title1 = "Available Depth Report for Fraser River South Arm";
 		  title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
-		  subT1 = $('input[name="condition"]:checked').next().text() + " for KM 1-" + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
+		  subT1 = $('input[name="condition"]:checked').next().text() + " for KM 1 to " + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
 		  subT2 = "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
 	    }
         avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);

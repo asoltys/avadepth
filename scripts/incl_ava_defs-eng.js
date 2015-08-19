@@ -657,7 +657,7 @@ incl_ava_defs={
               ]},
               {tag:'tr',child:[
                 {tag:'td',child:[
-                  "Hope Discharge: ",
+                  "Hope Discharge ",
                   {tag:'span',attr:{id:'static-discharge'}},
                   " m\u00B3/s (",
                   {tag:'span',attr:{id:'static-discharge-eval'}},
