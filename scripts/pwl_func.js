@@ -178,7 +178,18 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           + ("waterway=" + ($('#pwl_waterway').val()) + "&")
           + ("displayType=" + ($('input[name=report]:checked').val())),"api/depths/pwl_waterdepths.json"), function (data) {
         var count;
-        $('#river-section').text(data.title);
+		
+		switch (data.title) {
+			case 'Location Sandheads Km 0 to Port Mann 42':
+			  $('#river-section').text('Location Sandheads Km 0 to Port Mann 40');
+			  break;
+			case 'Location Point Grey Km 0 to New West 32':
+			  $('#river-section').text('Location Point Grey Km 0 to New West 30');
+			  break;
+			default: // Location Port Mann Km 40 to Mission 96
+			  $('#river-section').text('Location Port Mann Km 40 to Mission 92');
+		}
+		
         avaIFaceJS.pwl_func.table || (avaIFaceJS.pwl_func.table = $('#water-levels').dataTable({
           bPaginate: false,
           bInfo: false,
