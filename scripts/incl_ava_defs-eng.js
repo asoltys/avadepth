@@ -213,7 +213,7 @@ incl_ava_defs={
 
   avaPages:{
     'acv':{
-      'title_e': "Animated Currents and Velocities",
+      'title_e': "Animated Currents and Velocities for Fraser River South Arm",
       'title_f': "Animation et vélocités du courant",
       'mapInitState':true,
       'hasParameters':true,
@@ -521,7 +521,7 @@ incl_ava_defs={
       ]
     },
     'tw':{
-      'title_e':"Transit Window Report",
+      'title_e':"Transit Window Report for Fraser River South Arm",
       'title_f':"Fenêtre de circulation",
       'mapInitState':false,
       'hasParameters':true,
@@ -790,21 +790,20 @@ incl_ava_defs={
         [
           {tag:'div',attr:{className:"grid-12"},child:[
             {tag:'div',attr:{className:'span-6 align-center'},child:[
-              {tag:'h2',child:[
+			  {tag:'h2',child:["Predicted Water Levels",
+			    {tag:'br'},
                 "Fraser River - ",
                 {tag:'span',attr:{id:'det_river-section'}},
-                " At ",
-                {tag:'span',attr:{id:'det_km_time'}},
-                {tag:'span',attr:{id:'det_km_time-suff'}}
+                " at ",
+				{tag:'span',attr:{id:'det_km_time-suff'}},
+                {tag:'span',attr:{id:'det_km_time'}}
+                
               ]},
               {tag:'p',child:[
                 {tag:'span',attr:{id:'det_static-date'}},
                 " at ",
                 {tag:'span',attr:{id:'det_static-interval'}},
                 " Intervals",
-                {tag:'br'},
-                "Fraser River - ",
-                {tag:'span',attr:{id:'det_static-arm'},child:['South Arm']},
                 {tag:'br'},
                 "Hope Discharge ",
                 {tag:'span',attr:{id:'det_static-discharge'}},
@@ -813,6 +812,8 @@ incl_ava_defs={
                 ')'
               ]},
               {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
+			  
+			  
             ]}
           ]}
         ]
