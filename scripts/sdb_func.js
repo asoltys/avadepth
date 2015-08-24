@@ -84,7 +84,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
 		if (location != "") { location = "At " + location; }
 		
-		avaIFaceJS.reportWindow.addTitle(header + " for " + wat, chann + " " + location);
+		avaIFaceJS.reportWindow.addTitle(header, wat, chann + " " + location);
 	},
 	
     getSurveyDrawings: (function (jsonStuff) {
