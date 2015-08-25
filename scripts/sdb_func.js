@@ -97,29 +97,36 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           + ("channel=" + jsonStuff.channel + "&")
           + ("location=" + jsonStuff.location + "&")
           + ("channelType=" + jsonStuff.channelType),"includes/test.json"), function (data) {
-        $('#report_tbl tbody').html('');
-        $.each(data, function () {
-          var addRow;
-          addRow = false;
-          if (jsonStuff.kmStart && jsonStuff.kmEnd) {
-            if (parseFloat(jsonStuff.kmStart) <= parseFloat(this.kmStart) && parseFloat(jsonStuff.kmEnd) >= parseFloat(this.kmEnd)) {
-              addRow = true;
-            }
-          } else {
-            addRow = true;
-          }
-          if (addRow) {
-            return drawingRows += "<tr>" + ("<td>" + (this.date.split("T")[0]) + "</td>") + ("<td><a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.fileNumber + ".dwf?' target='_blank'>" + this.fileNumber + "</a></td>") + ("<td>" + this.location + "</td>") + ("<td>" + this.drawType + "</td>") + ("<td>" + this.kmStart + "</td>") + ("<td>" + this.kmEnd + "</td>") + "</tr>";
-          }
+		
+		
+		
+		var points = [];
+        avaIFaceJS.sdb_func.tableReport || (avaIFaceJS.sdb_func.tableReport = $('#report_tbl').DataTable({
+          bPaginate: false,
+          bInfo: false,
+          bSort: false,
+          bFilter: false
+        }));
+		avaIFaceJS.sdb_func.tableReport.clear();
+		$('#report_tbl tbody tr').remove();
+		$.each(data, function () {
+		  avaIFaceJS.sdb_func.tableReport.row.add(
+			  [this.date.split("T")[0],
+			  "<a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.fileNumber + ".dwf?' target='_blank'>" + this.fileNumber + "</a>",
+			  this.location,
+			  this.drawType,
+			  this.kmStart,
+			  this.kmEnd]);
+		  return points.push([this.fileNumber, this.depth]);
         });
-        avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+		avaIFaceJS.sdb_func.tableReport.draw();
+		
+		
+		avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
         avaIFaceJS.reportWindow.show();
-        return $('#report_tbl').append(drawingRows);
       }).done(function () {
         $('.spinner').hide();
 		pBarToggle();
-        $('#report_tbl tr:nth-child(odd)').addClass('odd');
-        return $('#report_tbl tr:nth-child(even)').addClass('even');
       });
     }),
 
