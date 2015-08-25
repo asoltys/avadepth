@@ -37,15 +37,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       // Submit form
       $("#submit").click(function () {
         $('.spinner').show();
-		avaIFaceJS.sdb_func.updateTitle();
-		// get report data
-        return avaIFaceJS.sdb_func.getSurveyDrawings({
-          river: $('#channel').val(), // unique to waterway and channel combination
-          drawingType: $('#type').val(),
-          channel: $('#channel').val(),
-          location: $('#location').val(),
-          channelType: ""
-        });
+		return avaIFaceJS.sdb_func.update();
       });
     },
 
@@ -68,9 +60,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       });
     },
 
-	// update report window title
-	updateTitle: function () {
+	// process report content and update window
+	update: function() {
 		var header, wat, chann, location;
+		
 		// set report title
 		if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use
 		  header = "Enquêtes Résultats de la recherche";
@@ -85,50 +78,43 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		if (location != "") { location = "At " + location; }
 		
 		avaIFaceJS.reportWindow.addTitle(header, wat, chann + " " + location);
-	},
 	
-    getSurveyDrawings: (function (jsonStuff) {
-      var drawingRows;
-      drawingRows = "";
-      //TODO: Replace following line for Production
-      return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + jsonStuff.river + "&")
-          + ("drawingType=" + jsonStuff.drawingType + "&")
-          + "recent=&"
-          + ("channel=" + jsonStuff.channel + "&")
-          + ("location=" + jsonStuff.location + "&")
-          + ("channelType=" + jsonStuff.channelType),"includes/test.json"), function (data) {
-		
-		
-		
-		var points = [];
-        avaIFaceJS.sdb_func.tableReport || (avaIFaceJS.sdb_func.tableReport = $('#report_tbl').DataTable({
-          bPaginate: false,
-          bInfo: false,
-          bSort: false,
-          bFilter: false
-        }));
-		avaIFaceJS.sdb_func.tableReport.clear();
-		$('#report_tbl tbody tr').remove();
-		$.each(data, function () {
-		  avaIFaceJS.sdb_func.tableReport.row.add(
-			  [this.date.split("T")[0],
-			  "<a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.fileNumber + ".dwf?' target='_blank'>" + this.fileNumber + "</a>",
-			  this.location,
-			  this.drawType,
-			  this.kmStart,
-			  this.kmEnd]);
-		  return points.push([this.fileNumber, this.depth]);
-        });
-		avaIFaceJS.sdb_func.tableReport.draw();
-		
-		
-		avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
-        avaIFaceJS.reportWindow.show();
-      }).done(function () {
-        $('.spinner').hide();
+
+		// generate report data
+		//TODO: Replace following line for Production
+		return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + $('#channel').val() + "&") // unique to waterway and channel combination
+		  + ("drawingType=" + $('#type').val() + "&")
+		  + "recent=&"
+		  + ("channel=" + $('#channel').val() + "&")
+		  + ("location=" + $('#location').val() + "&")
+		  + ("channelType=" + ""),"includes/test.json"), function (data) {
+			avaIFaceJS.sdb_func.tableReport || (avaIFaceJS.sdb_func.tableReport = $('#report_tbl').DataTable({
+			  bPaginate: false,
+			  bInfo: false,
+			  bSort: false,
+			  bFilter: false
+			}));
+			avaIFaceJS.sdb_func.tableReport.clear();
+			$('#report_tbl tbody tr').remove();
+			$.each(data, function () {
+			  avaIFaceJS.sdb_func.tableReport.row.add(
+				  [this.date.split("T")[0],
+				  "<a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.fileNumber + ".dwf?' target='_blank'>" + this.fileNumber + "</a>",
+				  this.location,
+				  this.drawType,
+				  this.kmStart,
+				  this.kmEnd]);
+			});
+			avaIFaceJS.sdb_func.tableReport.draw();
+			
+			
+			avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+			avaIFaceJS.reportWindow.show();
+		}).done(function () {
+		$('.spinner').hide();
 		pBarToggle();
-      });
-    }),
+		});
+    },
 
 	// update parameter bar from map selected channel
     updateParameters: (function(jsonData){
@@ -156,34 +142,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.sdb_func.fillLocation();
       $('#location').val(data.location).change();
     }),
-	
-	// update data for map selected channel
-    getSurveyDrawingsFromTiles: (function (tileName) {
-      var drawingRows;
-	  drawingRows = "";
-	  
-      $('.spinner').show();
-	  avaIFaceJS.sdb_func.updateTitle();
-      
-      //TODO: Replace following line for previous in production
-      return $.getJSON(getAPI("api/get_tile.asp?tile=" + tileName, "api/get_tile/" + tileName + ".json"), function (data) {
-      //return $.getJSON("api/get_tile.asp?tile=" + tileName, function(data) {
-      //return $.getJSON("api/get_tile/" + tileName + ".json", function (data) {
-        $('#report_tbl tbody').html('');
-        $.each(data.drawings, function () {
-		if(this.Filename != 'datafile') {
-			return drawingRows += "<tr>" + ("<td>" + (moment(this.yyyy_mm_dd, "DD/MM/YYYY").format("YYYY-MM-DD")) + "</td>") + ("<td><a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Filename + ".dwf?' target='_blank'>" + this.Filename + "</a></td>") + ("<td>" + this.Location + "</td>") + ("<td>" + this.Type + "</td>") + ("<td>" + this.KMstart + "</td>") + ("<td>" + this.KMend + "</td>") + "</tr>";
-        }});
-        return $('#report_tbl').append(drawingRows);
-      }).done(function () {
-        $('.spinner').hide();
-		
-        $('#report_tbl tr:nth-child(odd)').addClass('odd');
-        avaIFaceJS.reportWindow.show();
-        return $('#report_tbl tr:nth-child(even)').addClass('even');
-      });
-    })
-
   };
 } else if(!(typeof avaMapJS === 'undefined')) {
   /*** Map Interaction functions ***/
@@ -276,7 +234,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
       else {
         parent.avaIFaceJS.sdb_func.updateParameters({"data": tile.feature.data});
-        parent.avaIFaceJS.sdb_func.getSurveyDrawingsFromTiles(tileName);
+        parent.avaIFaceJS.sdb_func.update(); // refresh page from updated parameters
       }
     },
 
