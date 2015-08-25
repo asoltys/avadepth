@@ -87,7 +87,7 @@ incl_ava_defs={
     'Sections':{ 
       'PMV': {
         'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
-        'Names': ['1st Narrows', '2nd Narrows', 'Port Moody'],
+        'Names': ['Lynnterm Westgate','1st Narrows', '2nd Narrows', 'Port Moody'],
         'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
         },
       'PMV-FC': {
@@ -232,16 +232,16 @@ incl_ava_defs={
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
-            "m\u00B3/s)"
+            " m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
           " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User Defined"]},
+          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User-defined"]},
           {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px'}},
           " m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
@@ -259,7 +259,8 @@ incl_ava_defs={
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
                 var hr=parseInt(i);
-                res.push({key:i,value:(hr)+":"+padZero((i-hr)*60)});
+                var time = (hr)+":"+padZero((i-hr)*60);
+                res.push({key:time,value:time});
                 if (i==17){
                   res[res.length-1].select="selected";
                 }
@@ -283,11 +284,11 @@ incl_ava_defs={
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
               {tag:'label',attr:{htmlFor:'interval'},child:["Interval:"]},
               {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
-                {key:4,value:'4 hr'},
-                {key:2,value:'2 hr'},
-                {key:1,value:'1 hr',select:'selected'},
-                {key:0.5,value:'30 min.'},
-                {key:0.25,value:'15 min.'}
+                {key:4,value:'4 hour'},
+                {key:2,value:'2 hour'},
+                {key:1,value:'1 hour'},
+                {key:0.5,value:'30 minute'},
+                {key:0.25,value:'15 minute',select:'selected'}
               ]}}
             ]}
           ]},
@@ -307,10 +308,10 @@ incl_ava_defs={
           ]},
           {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Animated Interval 0.25ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Animated Interval 0.25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
-          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5ms)"]}
+          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5 ms)"]}
         ]}
       ],
       'reportBody':[
@@ -358,11 +359,11 @@ incl_ava_defs={
             {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
               "Actual (",
               {tag:'span',attr:{id:'actual_discharge'},child:["0"]},
-              "m\u00B3/s)"
+              " m\u00B3/s)"
             ]},
             {tag:'br'},
-            {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'discharge_radio',style:'font-weight:normal'},child:["Selected"]},
+            {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
             {tag:'select',attr:{id:'selected_discharge'}},
             " m\u00B3/s",
             {tag:'br'},
@@ -432,7 +433,8 @@ incl_ava_defs={
 					  {tag:'th',attr:{className:'verify'},child:["Time (pst)"]},
 					  {tag:'th',child:["Chainage (km)"]},
 					  {tag:'th',child:["Available Depth (m)"]},
-					  {tag:'th',child:["Location of Control Point"]}
+					  {tag:'th',child:["Location of Control Point"]},
+					  {tag:'th',child:["num"]}
 					]}
 				  ]},
 				  {tag:'tbody'}
@@ -480,8 +482,8 @@ incl_ava_defs={
                   {tag:'p',attr:{style:'margin:0;'},child:[
                     "Hope Discharge ",
                     {tag:'span',attr:{id:'static-discharge'}},
-                    "m\u00B3/s (",
-                    {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                    " m\u00B3/s (",
+                    {tag:'span',attr:{id:'static-discharge-eval'}},
                     ")",
                     {tag:'br'}
                   ]}
@@ -498,7 +500,8 @@ incl_ava_defs={
                   {tag:'th',child:['Least Sounding']},
                   {tag:'th',attr:{colspan:'2'},child:['Available Width']},
                   {tag:'th',child:['Tidal Aid']},
-                  {tag:'th',child:['Depth']}
+                  {tag:'th',child:['Depth']},
+                  {tag:'th',child:['Number']}
                 ]},
                 {tag:'tr',attr:{style:'background-color: #EEEEEE;'},child:[
                   {tag:'th',child:['(km)']},
@@ -506,6 +509,7 @@ incl_ava_defs={
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['%']},
+                  {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']}
                 ]}
@@ -538,7 +542,7 @@ incl_ava_defs={
               {tag:'label',attr:{htmlFor:'actual_radio'},child:[
                 "Actual (",
                 {tag:'span',attr:{id:'actual_discharge'}},
-                "m\u00B3/s)"
+                " m\u00B3/s)"
               ]},
               {tag:'br'},
               {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
@@ -547,7 +551,7 @@ incl_ava_defs={
               " m\u00B3/s",
               {tag:'br'},
               {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-              {tag:'label',attr:{htmlFor:'defined_radio'},child:['User-Defined']},
+              {tag:'label',attr:{htmlFor:'defined_radio'},child:['User-defined']},
               {tag:'input',attr:{id:'defined_discharge',type:'text',style:'width:5em'}},
               " m\u00B3/s",
               {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
@@ -567,6 +571,7 @@ incl_ava_defs={
               s.push({key:35,value:35,select:true});
               return s
             }}},
+			" km",
             {tag:'div',child:[
               {tag:'label',attr:{htmlFor:"sounding"},child:[{tag:'strong',child:["Channel Condition:"]}]},
               {tag:'input',attr:{type:'radio',name:'sounding',checked:'checked',value:'0'}},
@@ -615,7 +620,7 @@ incl_ava_defs={
                 {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-bottom:0'},child:['Maximum Depth:']},
                 {tag:'br'},
                 {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
-                {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1hr'},{key:2,value:'2hrs',select:true},{key:3,value:'3hrs'},{key:4,value:'4hrs'}]}},
+                {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1 hr'},{key:2,value:'2 hrs',select:true},{key:3,value:'3 hrs'},{key:4,value:'4 hrs'}]}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'min_win_radio',type:'radio',name:'window_radio',value:'Min Window'}},
                 {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-bottom:0'},child:["Available Windows:"]},
@@ -655,7 +660,7 @@ incl_ava_defs={
                   "Hope Discharge: ",
                   {tag:'span',attr:{id:'static-discharge'}},
                   " m\u00B3/s (",
-                  {tag:'span',attr:{id:'static-discharge-eval'},child:["Predicted"]},
+                  {tag:'span',attr:{id:'static-discharge-eval'}},
                   ")"
                 ]}
               ]}
@@ -710,9 +715,9 @@ incl_ava_defs={
             {tag:'select',attr:{id:'fraser_river',name:'fraser_river'},
               ref:{
                 tag:'option',values:[
-                  {key:'South Arm',value:'South Arm (km 0-40)'},
-                  {key:'North Arm',value:'North Arm (km 0-30)'},
-                  {key:'Main Arm',value:'Main Arm (km 40-92)'}]
+                  {key:'South Arm',value:'South Arm (km 0-42)'},
+                  {key:'North Arm',value:'North Arm (km 0-32)'},
+                  {key:'Main Arm',value:'Main Arm (km 40-96)'}]
               }
             },
             {tag:'input',attr:{type:'hidden',name:'pwl_waterway',id:'pwl_waterway',value:"0"}}
@@ -723,26 +728,28 @@ incl_ava_defs={
           {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
-            "m\u00B3/s)"
+            " m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'discharge_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'discharge_radio','style':'font-weight:normal'},child:["Selected"]},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
+          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal'},child:["Selected"]},
           {tag:'select',attr:{id:'selected_discharge'}},
-          "m\u00B3/s",
+          " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User Defined']},
+          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User-defined']},
           {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
+		  " m\u00B3/s",
+		  {tag:'br'},
           {tag:'div',child:[
             {tag:'label',attr:{htmlFor:'interval'},child:['Interval:']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
-              {key:'15',value:'15 Minute'},
-              {key:'30',value:'30 Minute'},
-              {key:'60',value:'1 Hour','select':true},
-              {key:'120',value:'2 Hour'}
+			  {key:'120',value:'2 hour'},
+              {key:'60',value:'1 hour','select':true},
+			  {key:'30',value:'30 minute'},
+              {key:'15',value:'15 minute'}
             ]}}
           ]},
           {tag:'div',child:[
@@ -793,16 +800,16 @@ incl_ava_defs={
               {tag:'p',child:[
                 {tag:'span',attr:{id:'det_static-date'}},
                 " at ",
-                {tag:'span',attr:{id:'det_static_interval'},child:["1 hour"]},
-                " intervals",
+                {tag:'span',attr:{id:'det_static-interval'}},
+                " Intervals",
                 {tag:'br'},
                 "Fraser River - ",
                 {tag:'span',attr:{id:'det_static-arm'},child:['South Arm']},
                 {tag:'br'},
                 "Hope Discharge ",
                 {tag:'span',attr:{id:'det_static-discharge'}},
-                "m\u00B3/s (",
-                {tag:'span',attr:{id:'det_static-discharge-eval'},child:['Predicted']},
+                " m\u00B3/s (",
+                {tag:'span',attr:{id:'det_static-discharge-eval'}},
                 ')'
               ]},
               {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}

@@ -191,15 +191,15 @@ avaIFaceJS = {
     },
 
     // Adds strings to fit into Report Title Template
-    addTitle: function (reportTitle, reportLocation, subT1, subT2) {
+    addTitle: function (repTitle1, repTitle2, subT1, subT2) {
       if (!avaIFaceJS.reportWindow.isInit) {
         avaIFaceJS.reportWindow.init()
       }
-      if (reportTitle != undefined) {
-        avaIFaceJS.reportWindow.title1 = reportTitle;
+      if (repTitle1 != undefined) {
+        avaIFaceJS.reportWindow.title1 = repTitle1;
       }
-      if (reportLocation != undefined) {
-        avaIFaceJS.reportWindow.title2 = reportLocation;
+      if (repTitle2 != undefined) {
+        avaIFaceJS.reportWindow.title2 = repTitle2;
       }
       if (subT1 != undefined) {
         avaIFaceJS.reportWindow.subTitle1 = subT1;
@@ -310,7 +310,7 @@ avaIFaceJS = {
 		pgParam.push({tag: 'button', attr: {id: 'submit', type: 'button', className: 'button button-accent', name: 'submit'}, 'child': ['Apply']});
 	  }
       if(avaIFaceJS.paramWindow.hasAnimate) {
-        pgParam.push({tag:'button',attr:{id:'replay',className: "button button-accent",style:'display:none',name:'replay'},child:['Replay']});
+	    pgParam.push({tag: 'button', attr: {id: 'replay', type: 'button', className: 'button button-accent', name: 'replay', style: 'font-style: normal'}, 'child': ['Replay']});
       }
       pgParam.push({tag: 'img', attr: {className: 'spinner', src: 'images/spinner.gif'}});
       var v = avaIFaceJS.getElements([

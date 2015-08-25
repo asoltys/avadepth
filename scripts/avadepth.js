@@ -29,9 +29,10 @@ var translate_flow = function() {
         flow = "N/A"
         break;
     }
+  } else if ($("#flowType").val() === "UserDefined"){
+    flow = "User-defined";
   } else {
     flow = $("#flowType").val()
-
   }
 
   return flow;

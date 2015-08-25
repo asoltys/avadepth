@@ -14,11 +14,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avadepth.util.getFlow({
           date: $(this).val(),
           selected: $("#selected_discharge"),
-//          predicted: $("#predicted_discharge"),
           actual: $("#actual_discharge")
         });
       }).datepicker().datepicker('setDate', new Date()).change();
-      $('#selected_radio').prop('checked', true);
+
 
       $('#period').change(function(){
         var period = (function(){
@@ -32,6 +31,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         })();
       });
+	  
       $('#selected_discharge').change(function() {
         return $('#selected_radio').prop('checked', true).change();
       });
@@ -62,10 +62,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#cmp').val($(this).val());
         return $('input[name="window_radio"]').change();
       });
-      $('#submit').click(avaIFaceJS.tw_func.update);
+
+      return $('#submit').click(function () {
+		// user has left user-defined m^3/s value blank
+		if(avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
+	      $('#defined_discharge').focus();
+	      return;
+		} else {
+		  $('.spinner').show();
+	      return avaIFaceJS.tw_func.update();
+		}
+	  });
     },
 
-    update: function(data){
+    update: function(){
+	  var flow, dt, period;
       var tableStruct={
         maxDepth:[
           {tag:'tr',child:[
@@ -97,14 +108,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         ]
       };
 	  
-	  // user has left user-defined m^3/s value blank
-	  if(avadepth.util.getSelectedFlow().flowRate === "" && $('input[name=discharge]:checked').val() === 'Defined') {
-	    $('#defined_discharge').focus();
-	    return;
-	  }
+      flow = avadepth.util.getSelectedFlow();
+      $("#flowRate").val(flow.flowRate);
+      $('#flowType').val(flow.flowType);
 	  
-      var dt=$('#date').val();
-      var period = function(){
+      dt=$('#date').val();
+      period = function(){
         switch ($('#period').val()){
           case "0":
             return 1;
@@ -116,49 +125,42 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }
 
       }();
-      avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
 
       if($('input[name="window_radio"]:checked').val()=='Maximum Depth') {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.maxDepth));
         $('#cmp').val(0);
-        if(window.location.href.indexOf("fra") > -1) {
-          //If url contains 'fra'	use 
+        if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
+	  moment.locale('fr');
           avaIFaceJS.reportWindow.title1='Profondeur maximum pour la fenêtre de '+$('#window').val()+' heures';
+	  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Maximum Depth (m)');
-        } else {
-          //If url does not contain 'fra' use
-          avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+'hr. Transit Window';
+        } else { //If url does not contain 'fra' use
+	  moment.locale('en');
+          avaIFaceJS.reportWindow.title1='Maximum Depth for '+$('#window').val()+' hr. Transit Window';
+	  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Maximum Depth (m)');
         }
       } else {
         $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
         $('#cmp').val($('#depth').val());
-        if(window.location.href.indexOf("fra") > -1) {
-          //If url contains 'fra'	use 
+        if(window.location.href.indexOf("fra") > -1) { //If url contains 'fra'	use 
+	  moment.locale('fr');
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
+	  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
           $('#transit-window-last-col').text('Heures (h)');
-        } else {
-          //If url does not contain 'fra' use
+        } else { //If url does not contain 'fra' use
+	  moment.locale('en');
           avaIFaceJS.reportWindow.title1='Available Transit Window for '+$('#cmp').val()+'m depth';
-          $('#transit-window-last-col').text('Hours (h)');
+	  avaIFaceJS.reportWindow.title2="From "+moment(dt).format("MMMM DD, YYYY")+" to "+moment(dt).add(period, 'days').format("MMMM DD, YYYY");
+          $('#transit-window-last-col').text('Transit Window (hrs)');
           }
         }
-
-      var flow;
-      flow = avadepth.util.getSelectedFlow();
-      $("#flowRate").val(flow.flowRate);
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
+	  
       $('#static-discharge').text(flow.flowRate);
-      $('#static-discharge-eval').text($('input[name=discharge]:checked').val());
+      $('#static-discharge-eval').text(translate_flow());
       if ($('html').attr('lang') === 'fr') {
         flowRate_txt = (function() {
           switch ($(this).val()) {
-//            case 'Predicted':
-//              return "prévu";
             case 'Actual':
               return "réel";
             case 'Defined':
@@ -169,7 +171,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         }).call(this);
         $("#static-discharge-eval").text(flowRate_txt);
       }
-      $('.spinner').show();
+
       $('#static-sounding').text($('input[name="sounding"]:checked').next().text());
       $('#static-width').text($('select#width').val());
       $('#static-chainage').text($('select#chainage').val());
@@ -182,21 +184,21 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));
         $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2));
         $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2));
-        avaIFaceJS.tw_func.table || (avaIFaceJS.tw_func.table = $('#transit-window').dataTable({
+        avaIFaceJS.tw_func.table || (avaIFaceJS.tw_func.table = $('#transit-window').DataTable({
           bPaginate: false,
           bInfo: false,
           bFilter: false,
           aaSorting: []
         }));
-        avaIFaceJS.tw_func.table.fnClearTable();
+        avaIFaceJS.tw_func.table.clear();
         _ref = data2.items;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          avaIFaceJS.tw_func.table.fnAddData([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
+          avaIFaceJS.tw_func.table.row.add([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
         }
         $('#transit-window tbody td').css('text-align', 'center');
-        avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
-        avaIFaceJS.tw_func.table.fnDraw();
+        //avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
+        avaIFaceJS.tw_func.table.draw();
         limit_text = (function() {
           switch (false) {
             case $('input[name="channel"]:checked').val() !== '2':
@@ -223,10 +225,15 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#transit-window tbody tr td:last-child').each(function() {
           var my_val;
           my_val = $(this).text();
-          return total_hr += parseFloat(my_val);
+			return total_hr += parseFloat(my_val);
         });
-        $('#total_hr').text(total_hr);
-        $('#avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
+		if(isNaN(total_hr)) { // table data does not exist
+		  $('#total_hr').text("---");
+		  $('#avg_hr').text("---");
+		} else {
+		  $('#total_hr').text(total_hr);
+          $('#avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
+		}
         return $('#num_days_meeting_standard').text(num_days_meeting_standard);
       }).success(function() {
         $('.spinner').hide();

@@ -8,57 +8,54 @@ avadepth.util = {
 
         $.getJSON(getAPI('/api/depths?date=' + options.date,'api/depths/depths.json'), function(data){
 
+			/* populates Actual and Selected flow values */
             selectList = $(options.selected);
-
+			
+			// generates 'Selected' drop down menu
             var s = '';
             $.each(data.Flowrates, function (idx, itm) {
                 s += '<option value=' + itm + '>' + itm + '</option>';
             });
-
             $('option', selectList).remove()
             selectList.append(s);
 
-            $(options.predicted).text(data.Predicted);
+			// populates 'Actual' flow rate
             $(options.actual).text(data.Actual);
 
+			// sets default radio button
             if (data.Actual) {
               $("#actual_radio").attr('disabled', false);
-              $("#predicted_radio").attr('disabled', true);
               $('#actual_radio').prop('checked', true);
             } else {
               $("#actual_radio").attr('disabled', true);
-              $("#predicted_radio").attr('disabled', false);
-              $("#predicted_radio").prop('checked', true);
+              $("#selected_radio").prop('checked', true);
             }
 
             if (thisCallback) { callback(data); };
-            return data.Predicted;
         });
     },
     getSelectedFlow: function () {
         var flow = { flowRate: 0, flowType: $("input:radio[name=discharge]:checked").val() };
 
         getFlowRate = {
-          Predicted: function (){
-            return $('#predicted_discharge').text();
-          },
           Actual: function() {
             return $('#actual_discharge').text();
           },
-          Defined: function() {
-            return $('#defined_discharge').val();
-          },
           Selected: function() {
             return $('#selected_discharge').val();
+          },
+		  Defined: function() {
+            return $('#defined_discharge').val();
           }
         }
 
         flow.flowRate = getFlowRate[flow.flowType]();
         if (flow.flowType == "Defined"){
-          flow.flowType = "0"
+         flow.flowType = "UserDefined"
         }
         return flow;
     },
+
     apiFailureHandler: function(jqxhr, textStatus, error){
       $('.spinner').hide();
       if (jqxhr.status == 404) {

@@ -1,15 +1,13 @@
-
 // Animated Currents and Velocities Objects
 if(!(typeof avaIFaceJS === 'undefined')) {
 
 /*** Interface functions ***/
   avaIFaceJS.acv_func = {
     images:[],
-    flowtype:0,
-    discharge:"3000",
-    discharge_eval:"Selected",
     selected_zone:1,
+	
     init: function() {
+	 $('#replay').hide();
       $('#static_rd').attr('checked','checked');
       $('#interval').prev().hide();
       $('#interval').hide();
@@ -23,92 +21,14 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }).datepicker().datepicker("setDate",new Date()).change();
 
       $('#selected_discharge').change(function() {
-        $('#discharge_radio').prop('checked', true).change();
+        $('#selected_radio').prop('checked', true).change();
       });
 
-	   // Check "User Defined" radio on "User Defined" input is focused on
+      // Check "User Defined" radio on "User Defined" input is focused on
       $('#defined_discharge').on("click", function() {
         $('#defined_radio').prop('checked', true).change();
       });
-	  
-	  // update user defined value
-	  $('#defined_discharge').change(function() {
-        $('#defined_radio').prop('checked', true).change();
-      });
-	  
-      $('input[name=discharge]').change(function() {
-        avaIFaceJS.acv_func.discharge = (function() {
-          switch ($(this).val()) {
-            case 'Actual':
-              return $('#actual_discharge').text();
-//            case 'Predicted':
-//              return $('#predicted_discharge').text();
-            case 'Defined':
-              return $('#defined_discharge').val();
-            case 'Selected':
-              return $('#selected_discharge').val();
-          }
-        }).call(this);
-        //$('#static-discharge').text(avaIFaceJS.acv_func.flowrate);
-        avaIFaceJS.acv_func.discharge_eval=$(this).val();
-        //$('#static-discharge-eval').text($(this).val());
-        avaIFaceJS.acv_func.flowtype = (function() {
-          switch ($(this).val()) {
-            case 'Actual':
-              return 0;
-//            case 'Predicted':
-//              return 1;
-            case 'Defined':
-              return 2;
-            case 'Selected':
-              return 3;
-          }
-        }).call(this);
-      });
-      $('select#interval').change(function() {
-        var hour, i, interval, start, interval_start, minute, options, _i;
-        interval = parseFloat($(this).val());
-        options = "";
-        start=$('#from').val();
-        interval_start = parseFloat(start);
-        while (interval_start >= 0) {
-          interval_start -= interval;
-        }
-        interval_start += interval;
-        for (i = _i = interval_start; interval > 0 ? _i < 24 : _i > 24; i = _i += interval) {
-          hour = Math.floor(i);
-          if (hour < 10) {
-            hour = "0" + hour;
-          }
-          minute = i % 1 * 60;
-          if (minute === 0) {
-            minute = "00";
-          }
-          options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
-        }
-        $('select#from').html('').html(options);
-        $('#from').val(start).change();
-      });
-      $('select#from').change(function() {
-        var hour, i, interval, minute, options, _i, _ref;
-        interval = parseFloat($("#interval").val());
-        options = "";
-        for (i = _i = _ref = parseFloat($(this).val()) + interval; interval > 0 ? _i < 24 : _i > 24; i = _i += interval) {
-          hour = Math.floor(i);
-          if (hour < 10) {
-            hour = "0" + hour;
-          }
-          minute = i % 1 * 60;
-          if (minute === 0) {
-            minute = "00";
-          }
-          options += "<option value=\"" + i + "\">" + hour + ":" + minute + "</option>";
-        }
-        $('select#to').html('').html(options);
-        if ($('input[name=type]:checked').val() === "0") {
-          $('#to_params').hide();
-        }
-      });
+
       $('input[name=type]').change(function() {
         if ($('input[name=type]:checked').val() !== '0') {
           $('#interval').prev().show();
@@ -122,57 +42,83 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           return $('#to_params').hide();
         }
       });
-	  $('#zone').change(function() {
-        avaIFaceJS.acv_func.selected_zone = $('#zone').val(); // set zone var with most recently selected zone
-		avaIFaceJS.mapJS.acv_func.zoneSelect(avaIFaceJS.acv_func.selected_zone); // set selected zone on map
+
+      $('#defined_discharge').click(function(){
+        $('#defined_radio').prop('checked', true).change();
       });
-      $("#submit").click(avaIFaceJS.acv_func.update);
+
+      $('#zone').change(function() {
+        avaIFaceJS.acv_func.selected_zone = $('#zone').val();
+        avaIFaceJS.mapJS.acv_func.zoneSelect(avaIFaceJS.acv_func.selected_zone);
+      });
+
+      $('#interval, #from').change(avaIFaceJS.acv_func.time_chg_evnt_hndlr);
+      $("#submit").click(function(){
+		  // user has left user-defined m^3/s value blank
+		  if(avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {
+			$('#defined_discharge').focus();
+			return;
+		  } else {
+			$('#loading').show();
+			$('.spinner').show();
+			$('#animated, #animated_legend, #replay, #nodata').hide();
+			return avaIFaceJS.acv_func.update(); 
+		  }
+	  });
       $('#replay').click(avaIFaceJS.acv_func.play);
+    },
+    time_chg_evnt_hndlr: function(){
+      var interval, start, options;
+      interval = parseFloat($("#interval").val());
+      options = "";
+      start=$('#from').val();
+
+      for (var i = moment("00:00","HH:mm");
+          i.isBefore(moment("24:01","HH:mm").subtract(interval,"hours"));
+          i.add(0.25,"hours")) {
+        options += "<option value=\"" + i.format("HH:mm") + "\">" + i.format("HH:mm")+ "</option>";
+      }
+
+      $('select#from').html('').html(options);
+      $('#from').val(start);
+
+      options = '';
+      if(moment(start,"HH:mm").add(interval,"hours").isAfter(moment("24:00","HH:mm"))) start = "00:00";
+
+      for (var i = moment(start,"HH:mm").add(interval,"hours");
+          i.isBefore(moment("24:01","HH:mm"));
+          i.add(interval,"hours")) {
+        options += "<option value=\"" + i.format("HH:mm") + "\">" + i.format("HH:mm")+ "</option>";
+      }
+      $('select#to').html('').html(options.replace(/00:00/g,"24:00"));
 
     },
     update: function(){
-      var flow, end_hour, end_minute, getImage, hour, interval, minute;
+      var flow, getImage, interval;
+	  flow = avadepth.util.getSelectedFlow();
+	  $("#flowRate").val(flow.flowRate);
+	  $('#flowType').val(flow.flowType);
 	  
-	  	  // user has left user-defined m^3/s value blank
-	  if(avaIFaceJS.acv_func.discharge === "" && avaIFaceJS.acv_func.discharge_eval === 'Defined') {
-	    $('#defined_discharge').focus();
-	    return;
-	  }
-	  
-      avaIFaceJS.acv_func.setTitle();
-      $(this).prop('disabled', 'disabled');
-      $('#loading').show();
-      $('.spinner').show();
-      $('#animated, #animated_legend, #replay, #nodata').hide();
-      startVal=$('#from').val();
-      endVal=$('#to').val();
-      hour = Math.floor(parseFloat(startVal));
-      minute = (parseFloat(startVal) - hour) * 60;
-      interval = parseFloat($("#interval").val());
+      $(this).prop('disabled', true);
+
+      start_time = moment($('#from').val(),"HH:mm");
+      end_time = moment($('#to').val(),"HH:mm");
+      interval = moment.duration(parseFloat($("#interval").val()),"hours");
+
       $('#frames_retrieved').html('0');
-      $('#number_of_frames').html((endVal - startVal) / interval + 1);
+      $('#number_of_frames').html((end_time.diff(start_time,"minutes")) / interval.asMinutes() + 1);
       if ($('input[name=type]:checked').val() !== '0') {
-        end_hour = Math.floor(parseFloat(endVal));
-        end_minute = (parseFloat(endVal) - end_hour) * 60;
         $('#frame_count').show();
       } else {
-        end_hour = hour;
-        end_minute = minute;
+        end_time = start_time.clone();
         $('#frame_count').hide();
       }
-      //total = (end_hour - hour) * 4 + (end_minute - minute) / 15;
+
       avaIFaceJS.acv_func.images = [];
       avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+   
+      avaIFaceJS.acv_func.setTitle();
 
-      flow = avadepth.util.getSelectedFlow();
-      $("#flowRate").val(flow.flowRate);
-
-      if (flow.flowType !== "0") {
-        $('#flowType').val(flow.flowType);
-      } else {
-        $('#flowType').val("UserDefined");
-      }
-	  
       return (getImage = function() {
         //TODO: Replace following line for production
         return $.getJSON(getAPI(("/api/animated?date=" + ($('#date').val()) + "&")
@@ -180,8 +126,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             + ("zone=" + (avaIFaceJS.acv_func.selected_zone) + "&")
             + ("flowRate=" + ($('#flowRate').val()) + "&")
             + ("flowType=" + ($('#flowType').val()) + "&")
-            + ("hour=" + hour + "&")
-            + ("minute=" + minute),"api/depths/animated.json"), function(data) {
+            + ("hour=" + start_time.hour() + "&")
+            + ("minute=" + start_time.minute()),"api/depths/animated.json"), function(data) {
           var result;
           result = data.toString();
           if (result !== '/images/') {
@@ -190,32 +136,47 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           avaIFaceJS.acv_func.preload(avaIFaceJS.acv_func.images[avaIFaceJS.acv_func.images.length - 1]);
           return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length);
         }).then(function() {
-          if (hour < end_hour || (hour === end_hour && minute <= end_minute)) {
+          if (!start_time.isAfter(end_time)){
             getImage();
-            minute += interval * 60;
-            if (minute >= 60) {
-              minute = minute - 60;
-              if (interval <= 1) {
-                return hour += 1;
-              } else {
-                return hour += interval;
-              }
-            }
+            start_time.add(interval);
           } else {
             avaIFaceJS.acv_func.play();
-            return $('#submit').prop('disabled', '');
+            return $('#submit').prop('disabled', false);
           }
         });
       })();
     },
     setTitle:function(){
+	if(window.location.href.indexOf("fra") > -1) {
+	  moment.locale('fr-ca');
+	}  else {
+	  moment.locale('en');
+        }
       // Set Report Title Info
-      avaIFaceJS.reportWindow.addTitle(
-        "Fraser River - South Arm",
-        "Zone " + (avaIFaceJS.acv_func.selected_zone) + " at " + $('select#interval').find(':selected').text() + " intervals",
-        "Hope Discharge " + (avaIFaceJS.acv_func.discharge) + "m\u00B3/s (" + (avaIFaceJS.acv_func.discharge_eval) + ") - " + moment($('#date').val()).format("MMM D, YYYY") + " from " + ($('select#from').find(':selected').text()) + " to " + ($('select#to').find(':selected').text()),
-        "Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
-      );
+	  if ($('#animated_rd').is(':checked')) { // animated series
+		avaIFaceJS.reportWindow.addTitle(
+		"Fraser River - South Arm",
+		"Zone " + (avaIFaceJS.acv_func.selected_zone)
+			+ " at " + $('select#interval').find(':selected').text() + " intervals",
+		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
+			+ translate_flow() + ") - "
+			+ moment($('#date').val()).format("MMM D, YYYY")
+			+ " from " + ($('select#from').find(':selected').text())
+			+ " to " + ($('select#to').find(':selected').text()),
+		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
+		);
+	  } else { // static image
+		avaIFaceJS.reportWindow.addTitle(
+		"Fraser River - South Arm",
+		"Zone " + (avaIFaceJS.acv_func.selected_zone),
+		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
+			+ translate_flow() + ") - "
+			+ moment($('#date').val()).format("MMM D, YYYY")
+			+ " from " + ($('select#from').find(':selected').text())
+			+ " to " + ($('select#to').find(':selected').text()),
+		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
+		);
+	  }
       /*
       $('#static-date').text(moment($('#date').val()).format("YYYY-MM-DD"));
       $('#static-start').text($('select#from').val());
@@ -238,9 +199,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  pBarToggle();
       $('#animated').attr("src", "images/nodata.jpg");
       $('#animated_legend').hide().attr("src", "images/vectorscale" + ($('input[name=legend_scale]:checked').val()) + ".gif");
-      $('#replay').prop('disabled', 'disabled');
+	  $('#replay').prop("disabled", true);
       avaIFaceJS.reportWindow.show();
-
+	
       if (avaIFaceJS.acv_func.images.length > 0) {
         $('#replay').show();
         i = 1;
@@ -248,11 +209,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           $('#animated').on("load", function() {
             $('#animated').show();
             return $('#animated_legend').show();
-          }).attr("src",  avaIFaceJS.acv_func.images[i]);
+          }).attr("src", avaIFaceJS.acv_func.images[i]);
           i++;
           if (i >= avaIFaceJS.acv_func.images.length) {
             clearInterval(handle);
-            return $('#replay').prop('disabled', '');
+            return $('#replay').prop("disabled", false);
           }
         }, 1000);
       } else {
@@ -263,7 +224,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
     },
     setZone:function(zone){ // update param bar zone when changed on map
-	  avaIFaceJS.acv_func.selected_zone = zone; // set zone var with most recently selected zone
+         avaIFaceJS.acv_func.selected_zone = zone; // set zone var with most recently selected zone
 	  $("#zone").val(zone);
     }
   }
@@ -271,7 +232,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
   /*** Map Interaction functions ***/
   avaMapJS.acv_func = {
-    //currentZone:1,
     init: function () {
       mapStyle.callback_function=function(feat){return true};
       avaMapJS.acv_func.kml=new OpenLayers.Layer.Vector("KML", {
