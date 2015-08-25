@@ -11,9 +11,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     report_title1: "",
     report_title2: "",
     static_arm: "South Arm",
-    static_date: "",
 
-    static_interval: "1 hour",
+    static_interval: "1 Hour",
     cur_waterway: null,
     detailValue: "",
     detailIsKM: true,
@@ -35,7 +34,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           selected: $("#selected_discharge"),
           actual: $("#actual_discharge")
         });
-		avaIFaceJS.pwl_func.static_date = moment($('#pwl_date').val()).format("MMM D, YYYY");
       }).datepicker().datepicker('setDate', new Date()).change();
 
       // Check "Selected" radio on "Selected" value combo selection
@@ -155,9 +153,10 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             return 0;
         }
       })();
-	  // report type 0 is water levels, else velocities
+
+       $('#headerkm').append($("<th style='display:none'><a href=\"javascript:void(0)\"></a></th>")); // hidden table element to get rid of erroneous table sorting
       for (i = _i = kmStart, _ref = $('#river-section').parent().attr('colspan') * step - step + kmStart; step > 0 ? _i <= _ref : _i >= _ref; i = _i += step) {
-        if (report_type === "0") {
+        if (report_type === "0") { // report type 0 is water levels, else velocities
           headerRow = $("<th><a href=\"javascript:void(0)\">" + i + "</a></th>");
           headerRow.click(avaIFaceJS.pwl_func.gotoKMGraph);
         } else {
@@ -239,16 +238,19 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
           }
         }
-		// removes unwanted table sorting feature
-		$('#water-levels th').removeClass("sorting");
-		$('#water-levels td').removeClass("sorting_asc")
+		$('#water-levels td').removeClass("sorting_asc"); // removes unwanted table sorting feature from header
       });
     },
 
     // Updates Report Title Info
     updateReportTitle: function () {
+	if(window.location.href.indexOf("fra") > -1) {
+		moment.locale('fr');
+	}  else {
+		moment.locale('en');
+	}
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
-          "For " + avaIFaceJS.pwl_func.static_date + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
+          "For " + moment($('#pwl_date').val()).format("MMM D, YYYY") + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
           "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")"
       );
     },
@@ -268,7 +270,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           break;
       }
       $('#det_km_time').text(typValue);
-      $('#det_static-date').text(avaIFaceJS.pwl_func.static_date);
+      $('#det_static-date').text(moment($('#pwl_date').val()).format("MMM D, YYYY")); 
       $('#det_static-interval').text(avaIFaceJS.pwl_func.static_interval);
       $('#det_static-arm').text(avaIFaceJS.pwl_func.static_arm);
       $('#det_static-discharge').text($('#flowRate').val());
@@ -309,7 +311,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }
 	  
       if (typCode == 0) {
-        $('#det_km_time-suff').text('km');
+        $('#det_km_time-suff').text(' km');
 		
         //TODO: Replace following line for production
         $.getJSON(getAPI(("/api/waterlevel?date=" + ($('#pwl_date').val()) + "&")
@@ -400,13 +402,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       var data = jsonData.data;
       switch(data.waterway){
         case "FRNA": // north arm
-			$('#fraser_river').val("North Arm");
+			$('#fraser_river').val("North Arm").change(); // change event triggers map update
 			break;
         case "FRSA": // south arm
-			$('#fraser_river').val("South Arm");
+			$('#fraser_river').val("South Arm").change();
 			break;
         case "FRMA": // main arm
-			$('#fraser_river').val("Main Arm");
+			$('#fraser_river').val("Main Arm").change();
 			break;
       }
 	  

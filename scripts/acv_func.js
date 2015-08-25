@@ -147,6 +147,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       })();
     },
     setTitle:function(){
+	if(window.location.href.indexOf("fra") > -1) {
+	  moment.locale('fr-ca');
+	}  else {
+	  moment.locale('en');
+        }
       // Set Report Title Info
 	  if ($('#animated_rd').is(':checked')) { // animated series
 		avaIFaceJS.reportWindow.addTitle(

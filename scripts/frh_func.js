@@ -15,7 +15,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         minDate: new Date(1994,1,1)
       }).datepicker('setDate', new Date(curDate.getFullYear(),0,1));
       $('#submit').click(avaIFaceJS.frh_func.update);
-      avaIFaceJS.frh_func.update();
+
+      avaIFaceJS.frh_func.update(); // for initial load
     },
 
     update: function(){
@@ -57,23 +58,37 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           labelBoxBorderColor: "none"
         }
       };
-      avaIFaceJS.reportWindow.loadReport();
-      var dataset, actual, maximum, minimum, month, period, period_end, predicted, year, curDate;
-      minimum=[];
-      maximum=[];
+      var dataset, actual, maximum, minimum, predicted, curDate, period, month, month_end, year, year_end;
       actual=[];
+      maximum=[];
+      minimum=[];
       predicted=[];
-      curDate=$('#date').datepicker('getDate');
-      month=curDate.getMonth();
-      year=curDate.getFullYear();
 
-      //mattys hax
-      month += 2;
-      if (month ===13) month = 1;
-      if (month ===1) year += 1;
-      period=$('#period option:selected').html().split(" ")[0];
-      period_end=moment([year,month,1]).add('months',period-2);
-      avaIFaceJS.reportWindow.addTitle("Fraser River Hydrograph at Hope - 08MF005","From "+moment(curDate).format("MMMM YYYY")+" to "+period_end.format("MMMM YYYY"));
+      curDate=$('#date').datepicker('getDate');
+      period=parseInt($('#period option:selected').html().split(" ")[0]); // data period in months
+	  
+      month=curDate.getMonth();
+      month_end = (month + period) % 12;
+	  
+	  year=curDate.getFullYear();
+	  if ((period == 12) || ((month + period) > 11)){
+		year_end = year + 1;
+	  } else {
+		year_end = year;
+	  }
+	  
+	  month = (month == 11)? 1 : (month + 2); // increment value to align with database request
+
+	  avaIFaceJS.reportWindow.loadReport();
+	  
+	  // set date language
+	  if(window.location.href.indexOf("fra") > -1) {
+		moment.locale('fr');
+	  }  else {
+		moment.locale('en');
+      }
+
+      avaIFaceJS.reportWindow.addTitle("Fraser River Hydrograph at Hope - 08MF005","From "+moment(curDate).format("MMMM YYYY")+" to "+ moment([year_end,month_end,1]).format("MMMM YYYY"));
       $('#spinner').show();
       $('#loading').show();
       $('#hydrograph_chart').html('');

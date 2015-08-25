@@ -715,9 +715,9 @@ incl_ava_defs={
             {tag:'select',attr:{id:'fraser_river',name:'fraser_river'},
               ref:{
                 tag:'option',values:[
-                  {key:'South Arm',value:'South Arm (km 0-40)'},
-                  {key:'North Arm',value:'North Arm (km 0-30)'},
-                  {key:'Main Arm',value:'Main Arm (km 40-92)'}]
+                  {key:'South Arm',value:'South Arm (km 0-42)'},
+                  {key:'North Arm',value:'North Arm (km 0-32)'},
+                  {key:'Main Arm',value:'Main Arm (km 40-96)'}]
               }
             },
             {tag:'input',attr:{type:'hidden',name:'pwl_waterway',id:'pwl_waterway',value:"0"}}
