@@ -250,7 +250,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         return avaIFaceJS.reportWindow.show();
       }).error(function() {
         $('.spinner').hide();
-        avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
+		avaIFaceJS.reportWindow.show();
+        return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
       });
     }
   }

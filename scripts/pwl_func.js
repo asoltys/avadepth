@@ -229,12 +229,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 				  return '15 Minute';
 			  }
 			}).call(this);
-        avaIFaceJS.pwl_func.updateReportTitle();
-        avaIFaceJS.reportWindow.show();
+      }).success(function () {
+	    $('.spinner').hide();
+	    avaIFaceJS.pwl_func.updateReportTitle();
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
         pBarToggle();
-		$('.spinner').hide();
-      }).success(function () {
+		
         if (!(avaIFaceJS.pwl_func.detailValue == "")){
           if (avaIFaceJS.pwl_func.detailIsKM){
             avaIFaceJS.detailWindow.mapJS.pwl_func.setMarkerExtent(avaIFaceJS.pwl_func.detailValue, avaIFaceJS.detailWindow.mapColorKey);
@@ -243,6 +243,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
           }
         }
+		return avaIFaceJS.reportWindow.show();
+      }).error(function() {
+        $('.spinner').hide();
+		avaIFaceJS.reportWindow.show();
+        return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
       });
     },
 

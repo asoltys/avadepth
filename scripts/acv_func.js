@@ -142,7 +142,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
           avaIFaceJS.acv_func.preload(avaIFaceJS.acv_func.images[avaIFaceJS.acv_func.images.length - 1]);
           return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length);
-        }).then(function() {
+        }).success(function() {
           if (!start_time.isAfter(end_time)){
             getImage();
             start_time.add(interval);
@@ -152,7 +152,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.acv_func.play();
             return $('#submit').prop('disabled', false);
           }
-        });
+        }).error(function() {
+          $('.spinner').hide();
+		  avaIFaceJS.reportWindow.show();
+          return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
+      });
       })();
     },
     setTitle:function(){

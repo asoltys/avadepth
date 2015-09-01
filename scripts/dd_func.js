@@ -134,13 +134,17 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		  subT1 = $('input[name="condition"]:checked').next().text() + " for KM 1 to " + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
 		  subT2 = "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
 	    }
-        avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);
-		
-        avaIFaceJS.reportWindow.show();
+      }).success(function () {
+	    $('.spinner').hide();
+	    avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);
+		pBarToggle();
         avaIFaceJS.dd_func.createGraph(points);
-        pBarToggle();
-		return $('.spinner').hide();
-      }).fail(avadepth.util.apiFailureHandler);
+		return avaIFaceJS.reportWindow.show();
+      }).error(function() {
+        $('.spinner').hide();
+		avaIFaceJS.reportWindow.show();
+        return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
+      });
     },
     
     // Update values and apply to Detail Window

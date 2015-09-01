@@ -139,11 +139,10 @@ avaIFaceJS = {
 
     // Error Reporting Window
     showError: function(message){
-      avaIFaceJS.reportWindow.hide();
-      avaIFaceJS.reportWindow.loadReport();
       $('#errorContent p').text(message);
       $('#reportTitleDiv').hide();
       $('#errorContent').show();
+	  $('#report_content').hide();
     },
 
     reset: function(){
@@ -159,11 +158,11 @@ avaIFaceJS = {
       //Report Title Template
       var repResultsTemp = [
         {tag:'div',child:[
-          {tag: 'div',attr:{id:'errorContent'},child:[
-            {tag:'p'}
-          ]},
           {tag:'div',attr:{className:'print_holder'},child:[
             {tag: 'button', attr: {name: 'print', className: 'button button-accent print_button print_hide'}, child: ['Print']}
+          ]},
+		  {tag: 'div',attr:{id:'errorContent'},child:[
+            {tag:'p'}
           ]},
           {tag: 'div', attr: {id: 'reportTitleDiv'}, child: [
             {tag: 'h2', attr: {id: 'reportTitle1', className: 'print_hide', style: 'margin:3px 0 0 0'}},
@@ -229,8 +228,11 @@ avaIFaceJS = {
 
     // Displays Report Window
     show: function () {
+      $('#errorContent p').text(''); // reset from showError
+	  $('#reportTitleDiv').show();
       $('#errorContent').hide();
-      $('#errorContent p').text('');
+	  $('#report_content').show();
+	  
       if (!avaIFaceJS.reportWindow.isInit) {
         avaIFaceJS.reportWindow.init()
       }
