@@ -246,6 +246,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		return avaIFaceJS.reportWindow.show();
       }).error(function() {
         $('.spinner').hide();
+		avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
 		avaIFaceJS.reportWindow.show();
         return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
       });
