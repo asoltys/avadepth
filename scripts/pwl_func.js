@@ -232,6 +232,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       }).success(function () {
 	    $('.spinner').hide();
 	    avaIFaceJS.pwl_func.updateReportTitle();
+		avaIFaceJS.reportWindow.show();
         avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
         pBarToggle();
 		
@@ -243,7 +244,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.pwl_func.gotoGraph(1, avaIFaceJS.pwl_func.detailValue, false);
           }
         }
-		return avaIFaceJS.reportWindow.show();
       }).error(function() {
         $('.spinner').hide();
 		avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
@@ -423,6 +423,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 			break;
       }
 	  
+	  $('#report_wl').prop('checked',true); // set water levels report for default
 	  parent.avaIFaceJS.pwl_func.detailValue = data.KM;
     })
   }
