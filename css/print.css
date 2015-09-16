@@ -206,8 +206,3 @@ div#reportTitle2 {
 	visibility: visible;
 	position: static; /* set to default for proper formatting*/
 }
-
-/* hide main header Avadepth from print */
-#gcwu-title-in{
-	display:none;
-}
