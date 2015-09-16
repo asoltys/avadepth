@@ -749,9 +749,9 @@ incl_ava_defs={
           ]},
           {tag:'div',child:[
             {tag:'label',attr:{htmlFor:'report'},child:['Report:']},
-            {tag:'input',attr:{id:'report_wl',type:'radio',name:'report',checked:'checked',value:'0'}},
+            {tag:'input',attr:{id:'report',type:'radio',name:'report',checked:'checked',value:'0'}},
             " Water Levels",
-            {tag:'input',attr:{id:'report_v',type:'radio',name:'report',value:'1'}},
+            {tag:'input',attr:{id:'report',type:'radio',name:'report',value:'1'}},
             " Velocities"
           ]}
         ],
