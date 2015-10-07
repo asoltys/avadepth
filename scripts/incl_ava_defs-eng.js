@@ -536,29 +536,27 @@ incl_ava_defs={
             ]},
             {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
             {tag:'div',child:[
-              {tag:'strong',child:["River Discharge:"]},
+              {tag:'strong',child:["River Discharge @ Hope:"]},
               {tag:'br'},
               {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',value:'Actual'}},
-              {tag:'label',attr:{htmlFor:'actual_radio'},child:[
+              {tag:'label',attr:{htmlFor:'actual_radio',style:'margin-left:5px;'},child:[
                 "Actual (",
                 {tag:'span',attr:{id:'actual_discharge'}},
                 " m\u00B3/s)"
               ]},
               {tag:'br'},
               {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-              {tag:'label',attr:{htmlFor:'selected_radio'},child:['Selected']},
+              {tag:'label',attr:{htmlFor:'selected_radio',style:'margin-left:5px; margin-right:5px;'},child:['Selected']},
               {tag:'select',attr:{id:'selected_discharge'}},
               " m\u00B3/s",
               {tag:'br'},
               {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-              {tag:'label',attr:{htmlFor:'defined_radio'},child:['User-defined']},
+              {tag:'label',attr:{htmlFor:'defined_radio',style:'margin-left:5px; margin-right:5px;'},child:['User-defined']},
               {tag:'input',attr:{id:'defined_discharge',type:'text',style:'width:5em'}},
               " m\u00B3/s",
               {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
               {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
-            ]}
-          ]},
-          {tag:'div',attr:{className:'span-3'},child:[
+            ]},
             {tag:'label',attr:{htmlFor:'chainage'},child:[
               {tag:'strong',child:["Chainage:"]}
             ]},
@@ -583,7 +581,7 @@ incl_ava_defs={
               {tag:'span',child:["Design Grade"]}
             ]},
             {tag:'div',child:[
-              {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
+              {tag:'label',attr:{htmlFor:'channel', style:'margin-top:10px;'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
               {tag:'input',attr:{type:'radio',id:'channel',name:'channel',checked:'checked',value:'1'}},
               " ",
               {tag:'span',attr:{style:'margin-right:1em'},child:["Inner Limit"]},
