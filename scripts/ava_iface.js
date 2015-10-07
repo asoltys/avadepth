@@ -351,7 +351,7 @@ avaIFaceJS = {
         $('#embed_map').height(hgt);
       })
     }
-    avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Open);
+    // avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Open);
 
     // Check request for start page
     if(querystring('page').length>0){
@@ -379,12 +379,12 @@ avaIFaceJS = {
     var pg_entry = incl_ava_defs.avaPages[avaIFaceJS.currentPage];
 
     // Set Title
-	if(window.location.href.indexOf("fra") > -1) {
-		//If url contains 'fra'	show the French title
-		$('#ava_map_ttl').text(pg_entry.title_f);
-		} else {
-		//If url does not contain 'fra' show the English title
-		$('#ava_map_ttl').text(pg_entry.title_e);
+  	if(window.location.href.indexOf("fra") > -1) {
+  		//If url contains 'fra'	show the French title
+  		$('#ava_map_ttl').text(pg_entry.title_f);
+  		} else {
+  		//If url does not contain 'fra' show the English title
+  		$('#ava_map_ttl').text(pg_entry.title_e);
     }
 
     // Page Form Parameters
@@ -407,7 +407,9 @@ avaIFaceJS = {
 
     // Open Parameters Tab, Map Window
     avaIFaceJS.paramWindow.useParam(pg_entry.hasParameters);
-    avaIFaceJS.setMapOpen(pg_entry.mapInitState,avaIFaceJS.paramWindow.show,pg_entry.hasParameters);
+    avaIFaceJS.setMapOpen(pg_entry.mapInitState,
+                          avaIFaceJS.paramWindow.show,
+                          pg_entry.hasParameters);
 
     // Close Report Window
     avaIFaceJS.reportWindow.hide();
@@ -417,6 +419,8 @@ avaIFaceJS = {
   // Open/Close Map when needed
   MapState: {Close: false, Open: true},
   setMapOpen: function (state, callback, arg) {
+    // console.log("state: " + state + ", arg: " + arg 
+    //             + ", isMapOpen: " + this.isMapOpen());
     var mapLink=$('#ref_map_link');
     if (!(state == this.isMapOpen())) {
       mapLink.click().delay(500).promise().done(function(){

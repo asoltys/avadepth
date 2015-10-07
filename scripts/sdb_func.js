@@ -53,6 +53,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	
 	// Load and fill location drop down
     fillLocation: function () {
+		//alert('change channel');
       $('#location option').remove();
       $('#location').append('<option></option>');
       return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function () {
@@ -106,9 +107,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 				  this.kmEnd]);
 			});
 			avaIFaceJS.sdb_func.tableReport.draw();
-			
-			
-			avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+
+			//alert('close map');
+			//avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
 			avaIFaceJS.reportWindow.show();
 		}).done(function () {
 		$('.spinner').hide();
