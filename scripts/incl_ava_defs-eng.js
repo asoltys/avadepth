@@ -477,7 +477,7 @@ incl_ava_defs={
               {tag:'tr',child:[
                 {tag:'td',attr:{style:'padding: 2px;'},child:[
                   {tag:'p',attr:{style:'margin:0;'},child:[
-                    "Hope Discharge ",
+                    "River Discharge @ Hope ",
                     {tag:'span',attr:{id:'static-discharge'}},
                     " m\u00B3/s (",
                     {tag:'span',attr:{id:'static-discharge-eval'}},
@@ -520,7 +520,7 @@ incl_ava_defs={
     'tw':{
       'title_e':"Transit Window Report for Fraser River South Arm",
       'title_f':"Fenêtre de circulation",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
@@ -598,27 +598,23 @@ incl_ava_defs={
                 return s;
               }}},
               " %"
-            ]}
-          ]},
-          {tag:'div',attr:{className:'span-4'},child:[
+            ]},
             {tag:'div',child:[
               {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Transit Calculation:"]}]},
               {tag:'div',child:[
                 {tag:'label',attr:{htmlFor:'period',style:'display:inline'},child:["Period:"]},
-                {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:0,value:"Day"},{key:1,value:'Week'},{key:2,value:'Month'}]}}
-              ]},
-              {tag:'div',child:[
+                {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:0,value:"Day"},{key:1,value:'Week'},{key:2,value:'Month'}]}},
                 {tag:'input',attr:{id:'window',type:'hidden',name:'window',value:2}},
                 {tag:'input',attr:{id:'cmp',type:'hidden',name:'cmp',value:0}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'max_depth_radio',type:'radio',name:'window_radio',checked:'checked',value:'Maximum Depth'}},
-                {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-bottom:0'},child:['Maximum Depth:']},
+                {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Maximum Depth:"]}]},
                 {tag:'br'},
                 {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
                 {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1 hr'},{key:2,value:'2 hrs',select:true},{key:3,value:'3 hrs'},{key:4,value:'4 hrs'}]}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'min_win_radio',type:'radio',name:'window_radio',value:'Min Window'}},
-                {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-bottom:0'},child:["Available Windows:"]},
+                {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Available Windows:"]}]},
                 {tag:'br'},
                 {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Depth:"]},
                 {tag:'input',attr:{id:'depth',type:'text',name:'depth',value:10,style:"width:3em;diplay:inline-block"}},
@@ -626,7 +622,7 @@ incl_ava_defs={
                 {tag:'span',attr:{style:'margin: 0px 0 0 0; padding: 0 0 0 0;'},child:["m"]}
               ]}
             ]}
-          ]}
+          ]},
         ]}
       ],
       'reportBody':[
@@ -652,7 +648,7 @@ incl_ava_defs={
               ]},
               {tag:'tr',child:[
                 {tag:'td',child:[
-                  "Hope Discharge ",
+                  "River Discharge @ Hope ",
                   {tag:'span',attr:{id:'static-discharge'}},
                   " m\u00B3/s (",
                   {tag:'span',attr:{id:'static-discharge-eval'}},
@@ -800,7 +796,7 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'det_static-interval'}},
                 " Intervals",
                 {tag:'br'},
-                "Hope Discharge ",
+                "River Discharge @ Hope ",
                 {tag:'span',attr:{id:'det_static-discharge'}},
                 " m\u00B3/s (",
                 {tag:'span',attr:{id:'det_static-discharge-eval'}},

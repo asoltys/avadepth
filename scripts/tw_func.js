@@ -194,6 +194,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2));
         avaIFaceJS.tw_func.table || (avaIFaceJS.tw_func.table = $('#transit-window').DataTable({
           bPaginate: false,
+          ordering: false,
           bInfo: false,
           bFilter: false,
           aaSorting: []

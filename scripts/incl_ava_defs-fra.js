@@ -511,7 +511,7 @@ incl_ava_defs={
     'tw':{
       'title_e':"Transit Window Report",
       'title_f':"Fenêtre de circulation",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
