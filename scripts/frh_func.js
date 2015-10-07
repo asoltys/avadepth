@@ -48,7 +48,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         yaxis: {
           axisLabel: "Hope Discharge (m\u00B3/s)",
           axisLabelUseCanvas: true,
-          axisLabelFontSizePixels: 15,
+          axisLabelFontSizePixels: 20,
           axisLabelFontFamily: 'Verdana, Arial',
           axisLabelPadding: 6
         },

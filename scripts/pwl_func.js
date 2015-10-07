@@ -262,7 +262,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  
       return avaIFaceJS.reportWindow.addTitle(avaIFaceJS.pwl_func.report_title1, "Fraser River - " + avaIFaceJS.pwl_func.report_title2,
           "For " + moment($('#pwl_date').val()).format("MMM D, YYYY") + " at " + avaIFaceJS.pwl_func.static_interval + " Intervals",
-          "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")"
+          "River Discharge @ Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")"
       );
     },
 

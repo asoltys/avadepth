@@ -172,7 +172,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		"Fraser River - South Arm",
 		"Zone " + (avaIFaceJS.acv_func.selected_zone)
 			+ " at " + $('select#interval').find(':selected').text() + " intervals",
-		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
+		"River Discharge @ Hope " + ($('#flowRate').val()) + " m\u00B3/s ("
 			+ translate_flow() + ") - "
 			+ moment($('#date').val()).format("MMM D, YYYY")
 			+ " from " + ($('select#from').find(':selected').text())
@@ -183,7 +183,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		avaIFaceJS.reportWindow.addTitle(
 		"Fraser River - South Arm",
 		"Zone " + (avaIFaceJS.acv_func.selected_zone),
-		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
+		"River Discharge @ Hope " + ($('#flowRate').val()) + " m\u00B3/s ("
 			+ translate_flow() + ") - "
 			+ moment($('#date').val()).format("MMM D, YYYY")
 			+ " from " + ($('select#from').find(':selected').text())
