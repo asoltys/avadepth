@@ -76,6 +76,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         var points = [];
         avaIFaceJS.dd_func.tableReport || (avaIFaceJS.dd_func.tableReport = $('#depths').DataTable({
           "paging" : false,
+          "ordering": false,
           "searching" : false,
           "info" : false,
           "autoWidth" : false,
@@ -132,7 +133,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		  title1 = "Available Depth Report for Fraser River South Arm";
 		  title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
 		  subT1 = $('input[name="condition"]:checked').next().text() + " for KM 1 to " + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-		  subT2 = "Hope Discharge " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
+		  subT2 = "River Discharge @ Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
 	    }
 		 avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);
          avaIFaceJS.reportWindow.show();
@@ -164,6 +165,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         var least_depth;
         avaIFaceJS.dd_func.tableDetail || (avaIFaceJS.dd_func.tableDetail = $('#verify').DataTable({
           "paging": false,
+          "ordering": false,
           "searching" : false,
           "info" : false,
           "autoWidth" : false,
@@ -172,6 +174,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             {"targets": -1, "visible": false}
           ]
         }));
+        console.log("show");
 
         avaIFaceJS.dd_func.tableDetail.clear();
         $('#verify tbody tr').remove();
