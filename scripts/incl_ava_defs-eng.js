@@ -346,7 +346,7 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
-          {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
+          {tag:'label',attr:{htmlFor:'date',style:'font-weight:bold'},child:['Date:']},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker',value:function(){
 			var now = new Date();
 			var strDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
@@ -356,26 +356,24 @@ incl_ava_defs={
             {tag:'strong',child:['River Discharge @ Hope:']},
             {tag:'br'},
             {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',className:'rd_actual',value:'Actual'}},
-            {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+            {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left:5px;'},child:[
               "Actual (",
               {tag:'span',attr:{id:'actual_discharge'},child:["0"]},
               " m\u00B3/s)"
             ]},
             {tag:'br'},
             {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
+            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["Selected"]},
             {tag:'select',attr:{id:'selected_discharge'}},
             " m\u00B3/s",
             {tag:'br'},
             {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-            {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User-defined"]},
+            {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["User-defined"]},
             {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:5em'}},
             " m\u00B3/s",
             {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:"0"}},
             {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
-          ]}
-        ]},
-        {tag:'div',attr:{className:'span-4'},child:[
+          ]},
           {tag:'label',attr:{htmlFor:'chainage'},child:[{tag:'strong',child:['Chainage:']}]},
           "1 to ",
           {tag:'select',attr:{id:'chainage'},ref:{tag:'option',values:function(){
@@ -397,17 +395,16 @@ incl_ava_defs={
           " ",
           {tag:'span',child:["Design Grade"]}
         ]},
-        {tag:'div',child:[
+        {tag:'div',attr:{style:'margin-top:10px;'},child:[
           {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
           {tag:'input',attr:{type:'radio',id:'inner_channel',name:'channel',checked:'checked',value:'0'}},
           " Inner Limit",
+		  {tag:'br'},
           {tag:'input',attr:{type:'radio',id:'outter_channel',name:'channel',value:'1'}},
           " Outer Limit"
-        ]}
-      ]},
-      {tag:'div',attr:{className:'span-3'},child:[
+        ]},
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'width'},child:["Available Width:"]},
+          {tag:'label',attr:{htmlFor:'width',style:'font-weight:bold; margin-top:10px;'},child:["Available Width:"]},
           {tag:'select',attr:{id:'width'},ref:{tag:'option',values:function(){
             var res=[];
             for(var c=100;c>59;c=c-5){
@@ -478,7 +475,7 @@ incl_ava_defs={
                 ]}
               ]},
               {tag:'tr',child:[
-                {tag:'td',attr:{style:'padding: 2px; '},child:[
+                {tag:'td',attr:{style:'padding: 2px;'},child:[
                   {tag:'p',attr:{style:'margin:0;'},child:[
                     "Hope Discharge ",
                     {tag:'span',attr:{id:'static-discharge'}},
