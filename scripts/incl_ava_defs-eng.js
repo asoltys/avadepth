@@ -810,18 +810,18 @@ incl_ava_defs={
       'landscapeReport':true,
       'formParam':[
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
+          {tag:'label',attr:{htmlFor:'date', style:'font-weight: bold;'},child:["Date:"]},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
-          {tag:'label',attr:{htmlFor:'period'},child:["Period:"]},
+          {tag:'label',attr:{htmlFor:'period', style:'font-weight: bold;'},child:["Period:"]},
           {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:3,value:"12 Months"},{key:2,value:'6 Months'},{key:1,value:'2 Months'},{key:0,value:'1 Month'}]}},
-          {tag:'label',attr:{htmlFor:'plot'},child:["Plot:"]},
+          {tag:'label',attr:{htmlFor:'plot', style:'font-weight: bold;'},child:["Plot:"]},
           {tag:'input',attr:{id:'actual',type:'checkbox',name:'actual',checked:'checked'}},
           " Actual",
           {tag:'br'},
           {tag:'input',attr:{id:'predicted',type:'checkbox',name:'predicted',checked:'checked'}},
           " Predicted",
-          {tag:'br'}
+          {tag:'br'},{tag:'br'}
         ]}
       ],
       'reportBody':[

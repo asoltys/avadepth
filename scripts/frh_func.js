@@ -54,10 +54,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         },
         legend: {
           container: "#legend_container",
+          labelFormatter: labelFontControl,
           noColumns: 0,
           labelBoxBorderColor: "none"
         }
       };
+
       var dataset, actual, maximum, minimum, predicted, curDate, period, month, month_end, year, year_end;
       actual=[];
       maximum=[];
@@ -176,4 +178,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
   avaMapJS.frh_func={init: function(){}}
 } else if (!(typeof avaMapDetJS === 'undefined')) {
   avaMapDetJS.frh_func = {init: function () {}};
+}
+function labelFontControl(label,series) {
+  return '<span style="font-size: 150%">' + label;
 }
