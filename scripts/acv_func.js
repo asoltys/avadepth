@@ -117,8 +117,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 	  $('#loading').show();
 	  
 	  // set loading notification variables
-      $('#frames_retrieved').html('0');
-      $('#number_of_frames').html((end_time.diff(start_time,"minutes")) / interval.asMinutes() + 1);
+      $('#frames_retrieved').html('0/');
+      $('#number_of_frames').html(String((end_time.diff(start_time,"minutes")) / interval.asMinutes() + 1) + ")");
       if ($('input[name=type]:checked').val() !== '0') { // animated series report
         $('#frame_count').show();
       } else { // static image report
@@ -141,7 +141,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.acv_func.images.push(result);
           }
           avaIFaceJS.acv_func.preload(avaIFaceJS.acv_func.images[avaIFaceJS.acv_func.images.length - 1]);
-          return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length);
+          return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length + "/");
         }).success(function() {
           if (!start_time.isAfter(end_time)){
             getImage();
@@ -166,28 +166,27 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		moment.locale('en');
 	  }
 	
+    var report_title_main = "Fraser River - South Arm" + "Zone " + (avaIFaceJS.acv_func.selected_zone)
+                            + " at " + $('select#interval').find(':selected').text() + " intervals";
+    var report_title_2 = "For " + moment($('#date').val()).format("MMM D, YYYY")
+                          + " from " + ($('select#from').find(':selected').text())
+                          + " to " + ($('select#to').find(':selected').text());
+
       // Set Report Title Info
 	  if ($('#animated_rd').is(':checked')) { // animated series
 		avaIFaceJS.reportWindow.addTitle(
-		"Fraser River - South Arm",
-		"Zone " + (avaIFaceJS.acv_func.selected_zone)
-			+ " at " + $('select#interval').find(':selected').text() + " intervals",
+		report_title_main,
+		report_title_2,
 		"River Discharge @ Hope " + ($('#flowRate').val()) + " m\u00B3/s ("
-			+ translate_flow() + ") - "
-			+ moment($('#date').val()).format("MMM D, YYYY")
-			+ " from " + ($('select#from').find(':selected').text())
-			+ " to " + ($('select#to').find(':selected').text()),
+			+ translate_flow() + ")",
 		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
 		);
 	  } else { // static image
 		avaIFaceJS.reportWindow.addTitle(
-		"Fraser River - South Arm",
-		"Zone " + (avaIFaceJS.acv_func.selected_zone),
+		report_title_main,
+		report_title_2,
 		"River Discharge @ Hope " + ($('#flowRate').val()) + " m\u00B3/s ("
-			+ translate_flow() + ") - "
-			+ moment($('#date').val()).format("MMM D, YYYY")
-			+ " from " + ($('select#from').find(':selected').text())
-			+ " to " + ($('select#to').find(':selected').text()),
+			+ translate_flow() + ")",
 		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
 		);
 	  }
