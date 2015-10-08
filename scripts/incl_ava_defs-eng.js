@@ -697,12 +697,12 @@ incl_ava_defs={
       'formParam':
         [
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'pwl_date'},child:['Date:']},
+            {tag:'label',attr:{htmlFor:'pwl_date', style:'font-weight:bold'},child:['Date:']},
             {tag:'input',attr:{id:'pwl_date',type:'text',name:'pwl_date',className:'datepicker'}},
             {tag:'input',attr:{id:'alt-date',type:'hidden'}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'fraser_river'},child:['Fraser River:']},
+            {tag:'label',attr:{htmlFor:'fraser_river', style:'font-weight:bold'},child:['Fraser River:']},
             {tag:'select',attr:{id:'fraser_river',name:'fraser_river'},
               ref:{
                 tag:'option',values:[
@@ -716,26 +716,26 @@ incl_ava_defs={
           {tag:'strong',child:['River Discharge @ Hope:']},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',className:'rd_actual',value:'Actual',disabled:'true'}},
-          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
             " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal'},child:["Selected"]},
-          {tag:'select',attr:{id:'selected_discharge'}},
+          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          {tag:'select',attr:{id:'selected_discharge', 'style':'margin-left: 5px'}},
           " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User-defined']},
-          {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em'}},
+          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal; margin-left: 5px'},child:['User-defined']},
+          {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em; margin-left: 5px'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
 		  " m\u00B3/s",
 		  {tag:'br'},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'interval'},child:['Interval:']},
+            {tag:'label',attr:{htmlFor:'interval', style:'font-weight:bold'},child:['Interval:']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
 			  {key:'120',value:'2 hour'},
               {key:'60',value:'1 hour','select':true},
@@ -744,11 +744,14 @@ incl_ava_defs={
             ]}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'report'},child:['Report:']},
+            {tag:'label',attr:{htmlFor:'report', style:'font-weight:bold'},child:['Report:']},
             {tag:'input',attr:{id:'report_wl',type:'radio',name:'report',checked:'checked',value:'0'}},
             " Water Levels",
+            {tag:'br'},
             {tag:'input',attr:{id:'report_v',type:'radio',name:'report',value:'1'}},
-            " Velocities"
+            " Velocities",
+            {tag:'br'},
+            {tag:'br'}
           ]}
         ],
       'reportBody':
@@ -812,7 +815,7 @@ incl_ava_defs={
     'frh':{
       'title_e':"Fraser River Hydrograph",
       'title_f':"Hydrographie du fleuve Fraser",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
@@ -849,7 +852,7 @@ incl_ava_defs={
     'ccc':{
       'title_e':"Current Channel Conditions for Fraser River South Arm",
       'title_f':"Conditions actuelles du chenal – bras sud du fleuve Fraser",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':false,
       'hasAnimate':false,
       'longReport':true,
