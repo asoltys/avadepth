@@ -315,17 +315,6 @@ incl_ava_defs={
       ],
       'reportBody':[
         {tag:'div',child:[
-          {tag:'div',attr:{id:'loading',style:'padding:1em 1em;display:none'},child:[
-            {tag:'div',attr:{style:'width: 35px;height: 30px; float: left;'}},
-            "Processing... ",
-            {tag:'span',attr:{style:'font-weight:bold;',id:'frame_count'},child:[
-              "(Frames retrieved: ",
-              {tag:'span',attr:{id:'frames_retrieved'}},
-              " / ",
-              {tag:'span',attr:{id:'number_of_frames'}},
-              ")"
-            ]}
-          ]},
           {tag:'div',attr:{id:'nodata',style:'padding:1em 1em;display:none'},child:["No images were found"]},
           {tag:'div',attr:{style:'width: 100%; margin-auto; text-align: center'},child:[
             {tag:'img',attr:{id:'animated',src:'images/nodata.jpg',style:'width:550px;height:550px;display:block'}},
