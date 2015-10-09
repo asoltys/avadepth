@@ -28,9 +28,8 @@ avaIFaceJS = {
 
         // Add inner content to Detail Window (uses JSON struct format for layout)
         addContent: function(content) {
-            var detCont = [];
             if (content.length > 0) {
-                detCont = [{
+                var detCont = [{
                     tag: 'div',
                     attr: {
                         id: 'detail_content'
@@ -159,6 +158,7 @@ avaIFaceJS = {
         errorMessage: "",
         isLong: true,
         isLandscape: false,
+        disclaimerBox: "",
 
         // Initiate Report Window
         init: function() {
@@ -177,6 +177,7 @@ avaIFaceJS = {
         },
 
         reset: function() {
+            avaIFaceJS.reportWindow.disclaimerBox = "";
             avaIFaceJS.reportWindow.title1 = "";
             avaIFaceJS.reportWindow.title2 = "";
             avaIFaceJS.reportWindow.subTitle1 = "";

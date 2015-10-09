@@ -861,6 +861,12 @@ incl_ava_defs={
                   {tag:'span',attr:{style:'color: red;'},child:["RED"]},
                   " and marked with * denote high spots and shoal areas within the navigation channel limits."
                 ]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'td',attr:{className:'align-left', style:'white-space: pre-line;'},child:[
+                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.\n",
+                  {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/',target:'_blank'},child:['Download Autodesk viewer']}
+                ]}
               ]}
             ]}
           ]},
