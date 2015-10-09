@@ -321,10 +321,12 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     ordering: false,
                     bInfo: false,
                     bFilter: false,
-                    aaSorting: []
+                    aaSorting: [],
+                    asStripeClasses: []
                 }));
                 avaIFaceJS.tw_func.table.clear();
                 _ref = data2.items;
+                console.log(_ref);
                 for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                     item = _ref[_i];
                     avaIFaceJS.tw_func.table.row.add([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);

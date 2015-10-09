@@ -623,14 +623,14 @@ incl_ava_defs={
                 {tag:'tr',child:[
                   {tag:'th',attr:{colspan:2},child:["From"]},
                   {tag:'th',attr:{colspan:2},child:["To"]},
-                  {tag:'th',child:["&nbsp;"]}
+                  {tag:'th',attr:{id:'transit-window-last-col', colspan:2},child:["Maximum Depth (m)"]}
                 ]},
                 {tag:'tr',child:[
                   {tag:'th',child:["Date"]},
                   {tag:'th',child:["Time (PST)"]},
                   {tag:'th',child:["Date"]},
                   {tag:'th',child:["Time (PST)"]},
-                  {tag:'th',attr:{id:'transit-window-last-col'},child:["Maximum Depth (m)"]}
+                  {tag:'th',attr:{},child:["&nbsp;"]}
                 ]}
               ]},
               {tag:'tbody',child:[
