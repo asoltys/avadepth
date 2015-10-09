@@ -615,37 +615,7 @@ incl_ava_defs={
       ],
       'reportBody':[
         {tag:'div',child:[
-          {tag:'div',child:[
-            {tag:'table',attr:{id:'maximum_depth_table',className:'print-width-70',style:'width:75%;margin:0 auto;'},child:[
-              {tag:'tr',child:[
-                {tag:'td',child:[
-                  "Navigation Channel: Fraser River - ",
-                  {tag:'span',attr:{id:'static-channel'},child:['Inner Channel Limit']}
-                ]}
-              ]},
-              {tag:'tr',child:[
-                {tag:'td',child:[
-                  "Channel Condition: ",
-                  {tag:'span',attr:{id:'static-sounding'},child:["Current Soundings"]},
-                  " for Km 1 to Km ",
-                  {tag:'span',attr:{id:'static-chainage'},child:["35"]},
-                  " at ",
-                  {tag:'span',attr:{id:'static-width'},child:["100"]},
-                  "% Available Width"
-                ]}
-              ]},
-              {tag:'tr',child:[
-                {tag:'td',child:[
-                  "River Discharge @ Hope ",
-                  {tag:'span',attr:{id:'static-discharge'}},
-                  " m\u00B3/s (",
-                  {tag:'span',attr:{id:'static-discharge-eval'}},
-                  ")"
-                ]}
-              ]}
-            ]},
-            {tag:'table',attr:{id:'header_table',style:'width:75%;margin:5px auto'}}
-          ]},
+          {tag:'table',attr:{id:'header_table',style:'width:75%;margin:5px auto'}},
           {tag:'div',attr:{className:'clear'}},
           {tag:'section',attr:{style:'padding-top: 20px;margin:1em auto;width:75%'},child:[
             {tag:'table',attr:{id:'transit-window',className:'zebra-striped'},child:[
