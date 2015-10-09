@@ -92,21 +92,11 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             tag: 'span',
                             attr: {
                                 id: 'num_days'
-                            }
-                        }]
-                    }, {
-                        tag: 'td',
-                        child: ["Maximum Depth (m):"]
-                    }, {
-                        tag: 'td',
-                        child: [{
-                            tag: 'span',
-                            attr: {
-                                id: 'max_depth'
-                            }
+                            },
+                            child: ["-"]
                         }]
                     }]
-                }, {
+                },{
                     tag: 'tr',
                     child: [{
                         tag: 'td',
@@ -120,10 +110,17 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             tag: 'span',
                             attr: {
                                 id: 'avg_depth'
-                            }
+                            },
+                            child: ["-"]
                         }]
-                    }, {
+                    }]
+                },{
+                    tag: 'tr',
+                    child: [{
                         tag: 'td',
+                        attr: {
+                            width: "40%"
+                        },
                         child: ["Minimum Depth (m):"]
                     }, {
                         tag: 'td',
@@ -135,13 +132,31 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             child: ["-"]
                         }]
                     }]
+                },{
+                    tag: 'tr',
+                    child: [{
+                        tag: 'td',
+                        attr: {
+                            width: "40%"
+                        },
+                        child: ["Maximum Depth (m):"]
+                    }, {
+                        tag: 'td',
+                        child: [{
+                            tag: 'span',
+                            attr: {
+                                id: 'max_depth'
+                            },
+                            child: ["-"]
+                        }]
+                    }]
                 }],
                 availWindow: [{
                     tag: 'tr',
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "45%"
+                            width: "40%"
                         },
                         child: ["Total hours meeting standard:"]
                     }, {
@@ -150,10 +165,17 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             tag: 'span',
                             attr: {
                                 id: 'total_hr'
-                            }
+                            },
+                            child: ["-"]
                         }]
-                    }, {
+                    }]
+                },{ 
+                    tag: 'tr',
+                    child: [{
                         tag: 'td',
+                        attr: {
+                            width: "40%"
+                        },
                         child: ["Average hours per day meeting standard:"]
                     }, {
                         tag: 'td',
@@ -161,10 +183,11 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             tag: 'span',
                             attr: {
                                 id: 'avg_hr'
-                            }
+                            },
+                            child: ["-"]
                         }]
                     }]
-                }, {
+                },{
                     tag: 'tr',
                     child: [{
                         tag: 'td',
@@ -178,14 +201,9 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             tag: 'span',
                             attr: {
                                 id: 'num_days_meeting_standard'
-                            }
+                            },
+                            child: ["-"]
                         }]
-                    }, {
-                        tag: 'td',
-                        child: [""]
-                    }, {
-                        tag: 'td',
-                        child: [""]
                     }]
                 }]
             };
