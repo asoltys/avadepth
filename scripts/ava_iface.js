@@ -184,13 +184,41 @@ avaIFaceJS = {
             avaIFaceJS.reportWindow.subTitle2 = "";
         },
 
+        addAutoDeskDisclaimer: function() {
+            if (window.location.href.indexOf("sdb") > -1) {
+                return {
+                    tag:'table',
+                    attr:{
+                        className:'align-center',
+                        style:'margin-top: 10px auto; width: 930px;'},
+                        child:[{
+                            tag:'tr',
+                            child:[{
+                                tag:'td',
+                                attr:{
+                                    className:'align-left',
+                                    style:'white-space: pre-line;'
+                                },
+                                child:["Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.\n", {
+                                    tag:'a',
+                                    attr:{
+                                        href:'http://usa.autodesk.com/design-review/',
+                                        target:'_blank'
+                                    },
+                                    child:['Download Autodesk viewer']
+                                }
+                            ]}
+                        ]}
+                ]};
+            } else return;
+        },
+
         // Adds report layout. Used for Javascript event handling and dynamic element modification
         loadReport: function() {
-
             //Report Title Template
             var repResultsTemp = [{
                 tag: 'div',
-                child: [{
+                child: [avaIFaceJS.reportWindow.addAutoDeskDisclaimer(), {
                     tag: 'div',
                     attr: {
                         className: 'print_holder'
