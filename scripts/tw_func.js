@@ -312,10 +312,12 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             //TODO: Change to following line for production
             return $.getJSON(getAPI(("api/transit?date=" + ($('#date').val()) + "&") + ("lane=" + ($('input[name=channel]:checked').val()) + "&") + ("window=" + ($('#window').val()) + "&") + ("cmp=" + ($('#cmp').val()) + "&") + ("flowType=" + ($('#flowType').val()) + "&") + ("periodType=" + ($('#period').val()) + "&") + ("chainage=" + ($('#chainage').val()) + "&") + ("flowRate=" + ($('#flowRate').val()) + "&") + ("width=" + ($('#width').val()) + "&") + ("sounding=" + ($('input[name=sounding]:checked').val())), "api/depths/transit.json"), function(data2) {
                 var item, limit_text, num_days_meeting_standard, total_hr, _i, _len, _ref;
+
                 $('#num_days').text(data2.statistics.numberOfDays);
                 $('#min_depth').text(data2.statistics.minimumDepth.toFixed(2));
                 $('#max_depth').text(data2.statistics.maximumDepth.toFixed(2));
                 $('#avg_depth').text(data2.statistics.totalWindow.toFixed(2));
+                
                 avaIFaceJS.tw_func.table || (avaIFaceJS.tw_func.table = $('#transit-window').DataTable({
                     bPaginate: false,
                     ordering: false,
@@ -326,10 +328,11 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 }));
                 avaIFaceJS.tw_func.table.clear();
                 _ref = data2.items;
-                console.log(_ref);
                 for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                     item = _ref[_i];
-                    avaIFaceJS.tw_func.table.row.add([item.startTime, item.windowStart, item.endTime, item.windowEnd, item.depth]);
+                    var from = item.startTime + " " + item.windowStart;
+                    var to = item.endTime + " " + item.windowEnd;
+                    avaIFaceJS.tw_func.table.row.add([from, to, item.depth]);
                 }
                 $('#transit-window tbody td').css('text-align', 'center');
                 //avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
