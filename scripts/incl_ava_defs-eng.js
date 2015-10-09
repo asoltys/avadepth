@@ -851,7 +851,7 @@ incl_ava_defs={
       reportBody:[
         {tag:'div',attr:{id:'conditions'},child:[
           {tag:'div',attr:{id:'soundings-header'},child:[
-            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'table-layout: fixed; margin: 0 auto; width: 800px;'},child:[
+            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'margin: 0 auto; width: 800px;'},child:[
               {tag:'tr',child:[
                 {tag:'td',attr:{className:'align-left'},child:["Note:  All soundings / depths are relative to local low water level"]}
               ]},
@@ -872,16 +872,17 @@ incl_ava_defs={
           ]},
           {tag:'div',attr:{className:'clear'}},
           {tag:'br'},
-          {tag:'table',attr:{id:'soundings',className:'align-center print-align-center print-margin-0'},child:[
+          {tag:'table',attr:{id:'soundings',className:'align-center print-align-center print-margin-0', style:'width: 800px'},child:[
             {tag:'thead',child:[
               {tag:'tr',attr:{className:'first-row'},child:[
-                {tag:'th',attr:{colspan:2,style:'background-color: white;'}},
+                {tag:'th',attr:{colspan:3,style:'background-color: white;'}},
                 {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Inner Channel Limit"]},
                 {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Outer Channel Limit"]}
               ]},
               {tag:'tr',child:[
                 {tag:'th',child:["Km"]},
                 {tag:'th',child:["Date of Survey"]},
+                {tag:'th',child:["Reference Plan"]},
                 {tag:'th',child:["Design Grade"]},
                 {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
                 {tag:'th',attr:{colspan:2},child:["Available Width"]},
@@ -890,7 +891,7 @@ incl_ava_defs={
                 {tag:'th',attr:{colspan:2},child:["Available Width"]}
               ]},
               {tag:'tr',child:[
-                {tag:'th',attr:{colspan:2}},
+                {tag:'th',attr:{colspan:3}},
                 {tag:'th',child:["(m)"]},
                 {tag:'th',child:["(m)"]},
                 {tag:'th',child:["(m)"]},
@@ -917,7 +918,7 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'segment',className:'print_show_inline'},child:["Inner Channel"]}
               ]}
             ]},
-            {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'table-layout: fixed; margin-left: auto; margin-right: auto; width: 550px;'},child:[
+            {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'margin-left: auto; margin-right: auto; width: 550px;'},child:[
               {tag:'tr',child:[
                 {tag:'td',child:["Note:  All soundings / depths are relative to local low water level"]}
               ]},

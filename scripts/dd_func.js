@@ -151,7 +151,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     // Update values and apply to Detail Window
     showDetail: function (period) {
       avaIFaceJS.detailWindow.show();
-
       $('#static-time').text(period);
       $('#date-display').text(moment($('#date').val()).format("MMMM D, YYYY"));
       $('#static-limit').text(avaIFaceJS.dd_func.limit_text);

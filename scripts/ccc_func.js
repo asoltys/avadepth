@@ -38,6 +38,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           table.fnAddData(
               ["<a href='javascript:void(0)' id='" + (index + 1) + "'>" + this.Chainage + "</a>",
               this.SoundingDate,
+              "<a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf'>" + this.Plan + "</a>",
               this.Dredge,
               this.Sounding,
               this.Width,
@@ -56,7 +57,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         });
         table.fnAdjustColumnSizing();
-        $('#soundings').css('table-layout', 'fixed');
         $('.first-row th:nth-child(1)').css('width', '123px');
         $('.first-row th:nth-child(2)').css('width', '218px');
         return $('.first-row th:nth-child(3)').css('width', '218px');
@@ -83,6 +83,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.ccc_func.chainage = this.id;
       $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
+      console.log(1);
       $('#detail_print').find('#heading').text("Kilometre " + (avaIFaceJS.ccc_func.chainage - 1) + " to " + (avaIFaceJS.ccc_func.chainage));
       $('input[name=channel_select]').change();
     },
