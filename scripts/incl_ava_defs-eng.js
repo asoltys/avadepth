@@ -969,7 +969,7 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':
         [
-          {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},
+          {tag:'label',attr:{htmlFor:'sdb_waterway', style:'font-weight: bold;'},child:['Waterway:']},
           {tag:'select',attr:{id:'sdb_waterway'},ref:{tag:'option',values:
             function(){
               var oArr=[];
@@ -980,11 +980,11 @@ incl_ava_defs={
               return oArr;
             }
           }},
-          {tag:'label',attr:{htmlFor:'channel'},child:['Channel:']},
+          {tag:'label',attr:{htmlFor:'channel', style:'font-weight: bold;'},child:['Channel:']},
           {tag:'select',attr:{id:'channel'}},
-          {tag:'label',attr:{htmlFor:'location'},child:['Location:']},
+          {tag:'label',attr:{htmlFor:'location', style:'font-weight: bold;'},child:['Location:']},
           {tag:'select',attr:{id:'location'}},
-          {tag:'label',attr:{htmlFor:'type'},child:['Type:']},
+          {tag:'label',attr:{htmlFor:'type', style:'font-weight: bold;'},child:['Type:']},
           {tag:'div',child:[
             {tag:'select',attr:{id:'type',name:'type'},ref:{tag:'option',values:
               function() {
