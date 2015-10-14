@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Available Depth Verification</title>
+	<script src="/scripts/jquery-1.9.1.js"></script>
+	<script src="/scripts/jquery.ui.core.js"></script>
+	<script src="/scripts/jquery.ui.datepicker.js"></script>
+	<script src="/scripts/jquery.dataTables.min.js"></script>
+	<script src="/scripts/avadepth.js"></script>
+	<link rel="stylesheet" type="text/css" href="/wet-boew/dist/js/css/pe-ap-min.css">
+	<link rel="stylesheet" type="text/css" href="/wet-boew/dist/grids/css/util-min.css">
+	<link rel="stylesheet" type="text/css" href="/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-min.css">
+
+	<style type="text/css" media="screen">
+		.span-8 {
+			width: 98%;
+		}
+		#verify_wrapper {
+			display: table;
+			margin: 0 auto;
+		}
+		.print_holder {
+			display: flex;
+			height: 50px;
+		}
+		.button {
+			height: 26px;
+			margin: auto;
+		}
+	</style>
+
+	<style type="text/css" media="print">
+		.button {
+			display: none;
+		}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+			if (opener.document) {
+				var parentElem = window.opener.$("#detail_content").clone();
+				if ((/Trident\/7\./).test(navigator.userAgent) ||
+					(/MSIE/).test(navigator.userAgent)) {
+					var outer = parentElem[0].outerHTML;
+					$('#detail_content_popup')[0].innerHTML = outer;
+				} else {
+					$('#detail_content_popup').html(parentElem);
+				}
+				console.log(parentElem);
+			}
+			$('button[name="print"]').click(function() {
+				window.print()
+			});
+			var closeButton = $('<input type="button" class="button button-accent" value="Close" onClick="window.close()">');
+			$('.print_holder').append(closeButton);
+		});
+	</script>
+</head>
+<body>
+	<div id="detail_content_popup"></div>
+</body>
+</html>
