@@ -166,7 +166,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 		moment.locale('en');
 	  }
 	
-    var report_title_main = "Fraser River - South Arm" + "Zone " + (avaIFaceJS.acv_func.selected_zone)
+    var report_title_main = "Fraser River - South Arm" + " for Zone " + (avaIFaceJS.acv_func.selected_zone)
                             + " at " + $('select#interval').find(':selected').text() + " intervals";
     var report_title_2 = "For " + moment($('#date').val()).format("MMM D, YYYY")
                           + " from " + ($('select#from').find(':selected').text())

@@ -61,7 +61,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         $('.first-row th:nth-child(2)').css('width', '218px');
         return $('.first-row th:nth-child(3)').css('width', '218px');
       }).success(function () {
-        $('#soundings tbody tr a').click(avaIFaceJS.ccc_func.showDetail);
+        $('#soundings tbody tr a[id]').click(avaIFaceJS.ccc_func.showDetail);
         $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel);
         $('#soundings').css('width', '800px');
         
@@ -83,7 +83,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
       avaIFaceJS.ccc_func.chainage = this.id;
       $('input[id="inner_select"]').attr('checked','checked');
       avaIFaceJS.detailWindow.show();
-      console.log(1);
       $('#detail_print').find('#heading').text("Kilometre " + (avaIFaceJS.ccc_func.chainage - 1) + " to " + (avaIFaceJS.ccc_func.chainage));
       $('input[name=channel_select]').change();
     },
