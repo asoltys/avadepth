@@ -8,6 +8,7 @@ var padZero = function(num){
 };
 
 function getAPI(extURL, intURL){
+    // console.log(extURL);
   if(document.URL.split("/")[2].split(":")[0] === "localhost") {
     return intURL;
   } else {
@@ -348,11 +349,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "PMV-FSD" : {
+            "FSD" : {
                 "Form" : {
                     "Title" : "Fraser Surrey Docks",
                     "Order" : 4,
-                    "Key" : "PMV-FSD"
+                    "Key" : "FSD"
                 },
                 "Names" : "Approach Channel and Berths",
                 "Coords" : {
@@ -384,11 +385,11 @@ incl_ava_defs={
             }
         },
         "Sections" : {
-            "CWC1" : {
+            "BC_CB" : {
                 "Form" : {
                     "Title" : "Campbell River",
                     "Order" : 0,
-                    "Key" : "CWC1"
+                    "Key" : "BC_CB"
                 },
                 "Names" : "",
                 "Coords" : {
@@ -402,11 +403,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "CWC2" : {
+            "BC_CR" : {
                 "Form" : {
                     "Title" : "Courtenay River",
                     "Order" : 1,
-                    "Key" : "CWC2"
+                    "Key" : "BC_CR"
                 },
                 "Names" : "",
                 "Coords" : {
@@ -420,11 +421,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "CWC3" : {
+            "BC_SQ" : {
                 "Form" : {
                     "Title" : "Squamish",
                     "Order" : 2,
-                    "Key" : "CWC3"
+                    "Key" : "BC_SQ"
                 },
                 "Names" : "",
                 "Coords" : {
@@ -438,11 +439,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "CWC4" : {
+            "BC_NAN" : {
                 "Form" : {
                     "Title" : "Nanaimo",
                     "Order" : 3,
-                    "Key" : "CWC4"
+                    "Key" : "BC_NAN"
                 },
                 "Names" : "",
                 "Coords" : {
@@ -474,11 +475,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "CWC6" : {
+            "BC_TOF" : {
                 "Form" : {
                     "Title" : "Tofino Harbour",
                     "Order" : 5,
-                    "Key" : "CWC6"
+                    "Key" : "BC_TOF"
                 },
                 "Names" : "",
                 "Coords" : {
@@ -492,11 +493,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "CWC7" : {
+            "BC_FC" : {
                 "Form" : {
                     "Title" : "French Creek",
                     "Order" : 6,
-                    "Key" : "CWC7"
+                    "Key" : "BC_FC"
                 },
                 "Names" : "",
                 "Coords" : {
@@ -510,11 +511,11 @@ incl_ava_defs={
                     }
                 }
             },
-            "CWC8" : {
+            "BC_QCI" : {
                 "Form" : {
                     "Title" : "Queen Charlotte Islands",
                     "Order" : 7,
-                    "Key" : "CWC8"
+                    "Key" : "BC_QCI"
                 },
                 "Names" : "",
                 "Coords" : {

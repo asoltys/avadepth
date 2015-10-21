@@ -66,9 +66,14 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 console.log("sdb_waterway: " + $('#sdb_waterway').val());
                 console.log("channel: " + $('#channel').val());
             }
-            return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function() {
-                return $('#location').append("<option>" + this + "</option>");
-            });
+            try {
+                return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function() {
+                    return $('#location').append("<option>" + this + "</option>");
+                });
+            } catch (err) {
+                console.log("No location defined for channel " + $('#channel').val());
+                return;
+            }
         },
 
         // process report content and update window
@@ -95,18 +100,23 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             // generate report data
             //TODO: Replace following line for Production
             
-            
+            // (Param)      (Column Name)
+            // river:       RiverCode
+            // drawingType: Type
+            // channel:     NA - not used in the search
+            // location:    Location
+            // channelType: NA - not used in the search
             var apiBase = "api/surveys/getsurveys?";
             var apiParams = [];
             apiParams.push("river=", $("#channel").val(), "&");
-            apiParams.push("drawingType=", $("#type").val(), "&");
-            apiParams.push("channel=", $("#channel").val(), "&");
             apiParams.push("location=", $("#location").val(), "&");
+            apiParams.push("drawingType=", $("#type").val(), "&");
+            apiParams.push("channel=", "", "&");
             apiParams.push("channelType=", "");
 
             var apiURL = apiBase + apiParams.join("");
 
-            return $.getJSON(getAPI(apiURL, "includes/test.json"), function(data) {
+            return $.getJSON(getAPI(apiURL, ""), function(data) {
                 avaIFaceJS.sdb_func.tableReport || (avaIFaceJS.sdb_func.tableReport = $('#report_tbl').DataTable({
                     bPaginate: false,
                     bInfo: false,
@@ -194,7 +204,6 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 toggle: false,
                 clickout: true,
                 multiple: false,
-                //renderIntent: "select",
                 toggleKey: "ctrlKey",
                 multipleKey: "shiftKey"
             });
@@ -202,18 +211,12 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             avaMapJS.sdb_func.HLFeat.activate();
             avaMapJS.sdb_func.HLFeat.handlers.feature.stopDown = false;
             avaMapJS.sdb_func.kml.events.on({
-                'beforefeatureselected': avaMapJS.sdb_func.checkChannel,
                 'featureselected': avaMapJS.sdb_func.tileSelect,
                 'featureunselected': avaMapJS.sdb_func.tileUnselect
             });
 
             // Sets extents of map
             avaMapJS.sdb_func.setExtents("FR");
-        },
-
-        checkChannel : function(tile) {
-            
-            //console.log(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names']);
         },
 
         /*** Page-specific functions ***/
@@ -252,6 +255,10 @@ if (!(typeof avaIFaceJS === 'undefined')) {
         tileSelect: function(tile) {
             //console.profile("tile selection");
             var tileName = tile.feature.data.name;
+            if (debug) {
+                console.log(tileName);
+                console.log(tile.feature.data);
+            }
             if (tileName.indexOf('/') >= 0) {
                 parent.window.open("http://www2.pac.dfo-mpo.gc.ca" + tileName, '_blank');
             } else {
