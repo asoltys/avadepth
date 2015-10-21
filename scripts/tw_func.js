@@ -334,6 +334,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     var to = item.endTime + " " + item.windowEnd;
                     avaIFaceJS.tw_func.table.row.add([from, to, item.depth]);
                 }
+                $("#transit-window th").css("cursor", "default");
                 $('#transit-window tbody td').css('text-align', 'center');
                 //avaIFaceJS.tw_func.table.fnAdjustColumnSizing();
                 avaIFaceJS.tw_func.table.draw();
@@ -378,10 +379,12 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 pBarToggle();
                 avaIFaceJS.reportWindow.setTitle();
                 $("#reportSubT1").css("white-space", "pre-line");
+                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 return avaIFaceJS.reportWindow.show();
             }).error(function() {
                 $('.spinner').hide();
                 avaIFaceJS.reportWindow.show();
+                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
             });
         }

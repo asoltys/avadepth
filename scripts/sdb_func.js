@@ -3,6 +3,8 @@
  * Maintained by seor since 02/10/2015.
  */
 
+var debug = false;
+
 
 /*** Interface functions ***/
 if (!(typeof avaIFaceJS === 'undefined')) {
@@ -60,6 +62,10 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             locationDropdownFilled = true;
             $('#location option').remove();
             $('#location').append('<option></option>');
+            if (debug) {
+                console.log("sdb_waterway: " + $('#sdb_waterway').val());
+                console.log("channel: " + $('#channel').val());
+            }
             return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function() {
                 return $('#location').append("<option>" + this + "</option>");
             });
@@ -68,7 +74,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
         // process report content and update window
         update: function() {
             var header, wat, chann, location;
-
+            
             // set report title
             if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use
                 header = "Enquêtes Résultats de la recherche";
@@ -86,11 +92,21 @@ if (!(typeof avaIFaceJS === 'undefined')) {
 
             avaIFaceJS.reportWindow.addTitle(header, wat, chann + " " + location);
 
-
             // generate report data
             //TODO: Replace following line for Production
-            return $.getJSON(getAPI(("api/surveys/getsurveys?river=" + $('#channel').val() + "&") // unique to waterway and channel combination
-                + ("drawingType=" + $('#type').val() + "&") + "recent=&" + ("channel=" + $('#channel').val() + "&") + ("location=" + $('#location').val() + "&") + ("channelType=" + ""), "includes/test.json"), function(data) {
+            
+            
+            var apiBase = "api/surveys/getsurveys?";
+            var apiParams = [];
+            apiParams.push("river=", $("#channel").val(), "&");
+            apiParams.push("drawingType=", $("#type").val(), "&");
+            apiParams.push("channel=", $("#channel").val(), "&");
+            apiParams.push("location=", $("#location").val(), "&");
+            apiParams.push("channelType=", "");
+
+            var apiURL = apiBase + apiParams.join("");
+
+            return $.getJSON(getAPI(apiURL, "includes/test.json"), function(data) {
                 avaIFaceJS.sdb_func.tableReport || (avaIFaceJS.sdb_func.tableReport = $('#report_tbl').DataTable({
                     bPaginate: false,
                     bInfo: false,
@@ -110,12 +126,11 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                         ]);
                 });
                 avaIFaceJS.sdb_func.tableReport.draw();
-
-                //avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 avaIFaceJS.reportWindow.show();
             }).done(function() {
                 $('.spinner').hide();
-                //pBarToggle();
+                pBarToggle();
             });
         },
 
@@ -219,6 +234,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 return;
             }
             var obj = incl_ava_defs.locDefs[waterway]['Sections'][channel].Coords;
+            // console.log(obj);
             try {
                 avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
             } catch (err) {}

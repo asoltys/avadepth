@@ -161,9 +161,9 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           ];
         }
         avaIFaceJS.reportWindow.show();
-		pBarToggle();
+        avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+		    pBarToggle();
         var h = $.plot($('#hydrograph_chart'), dataset, options);
-        avaIFaceJS.reportWindow.show();
         h.getData()[2].lines.lineWidth=2.5;
         h.getData()[3].lines.lineWidth=2.5;
         h.draw();

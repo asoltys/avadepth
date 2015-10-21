@@ -89,6 +89,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     }]
                 }));
                 avaIFaceJS.dd_func.tableReport.clear();
+                $("#depths th").css("cursor", "default")
                 $('#depths tbody tr').remove();
                 $.each(data.items[channel].items, function() {
                     avaIFaceJS.dd_func.tableReport.row.add(
@@ -141,6 +142,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 }
                 avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);
                 avaIFaceJS.reportWindow.show();
+                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 avaIFaceJS.dd_func.createGraph(points);
             }).success(function() {
                 pBarToggle();
@@ -148,6 +150,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             }).error(function() {
                 $('.spinner').hide();
                 avaIFaceJS.reportWindow.show();
+                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
             });
         },
