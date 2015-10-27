@@ -368,6 +368,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             for (var i = 0; i < features.length; i++) {
                 var data = features[i].data.location;
                 var regEx = new RegExp(location);
+                var start = /^/;
+                regEx = (start.source + regEx.source);
                 if (data.search(regEx) > -1) return features[i];
             }
             return -1;

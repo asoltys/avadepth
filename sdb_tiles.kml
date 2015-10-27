@@ -465,11 +465,11 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_47">
-        <name>SAS00</name>
+        <name>SA_LSR</name>
         <description/>
         <waterway>FRSA_SC</waterway>
         <!--<location>Ladner Sea Reach</location>-->
-		<location>Sea Reach</location>
+		<location>Ladner Sea Reach Overview</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -479,7 +479,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_48">
-        <name>SAS0912</name>
+        <name>SA_CC</name>
         <description/>
         <waterway>FRSA_SC</waterway>
         <location>Cannery Channel</location>
@@ -492,7 +492,7 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_49">
-        <name>SAS2636</name>
+        <name>SA_AC</name>
         <description/>
         <waterway>FRSA_SC</waterway>
         <location>Annacis Channel</location>
@@ -569,7 +569,7 @@
 	
 		
 	<Placemark id="kml_60">
-        <name>SAS2636</name>
+        <name>SA_GS</name>
         <description/>
         <waterway>FRSA_SC</waterway>
         <location>Gundersen Slough</location>
@@ -583,7 +583,7 @@
     </Placemark>
 	
 	<Placemark id="kml_61">
-        <name>SAS2636</name>
+        <name>SA_AC</name>
         <description/>
         <waterway>FRSA_SC</waterway>
         <location>Shoal Point - New West</location>
@@ -818,7 +818,71 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-	
+	<Placemark id="kml_78">
+        <name>SA_LSR</name>
+        <description/>
+        <waterway>FRSA_SC</waterway>
+        <location>Deas Slough</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.173329022278,49.1066160614173,0 -123.118388321973,49.1027250962674,0 -123.07811444757,49.1144085302819,0 -123.078038901866,49.0662310290498,0 -123.173188154413,49.0661274778377,0 -123.173329022278,49.1066160614173,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_79">
+        <name>SA_LSR</name>
+        <description/>
+        <waterway>FRSA_SC</waterway>
+        <location>Ladner Reach</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.173329022278,49.1066160614173,0 -123.118388321973,49.1027250962674,0 -123.07811444757,49.1144085302819,0 -123.078038901866,49.0662310290498,0 -123.173188154413,49.0661274778377,0 -123.173329022278,49.1066160614173,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_80">
+        <name>SA_LSR</name>
+        <description/>
+        <waterway>FRSA_SC</waterway>
+        <location>Ladner Harbour</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.173329022278,49.1066160614173,0 -123.118388321973,49.1027250962674,0 -123.07811444757,49.1144085302819,0 -123.078038901866,49.0662310290498,0 -123.173188154413,49.0661274778377,0 -123.173329022278,49.1066160614173,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_81">
+        <name>SA_LSR</name>
+        <description/>
+        <waterway>FRSA_SC</waterway>
+        <location>Canoe Pass</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.173329022278,49.1066160614173,0 -123.118388321973,49.1027250962674,0 -123.07811444757,49.1144085302819,0 -123.078038901866,49.0662310290498,0 -123.173188154413,49.0661274778377,0 -123.173329022278,49.1066160614173,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_82">
+        <name>SA_LSR</name>
+        <description/>
+        <waterway>FRSA_SC</waterway>
+        <location>Sea Reach</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.173329022278,49.1066160614173,0 -123.118388321973,49.1027250962674,0 -123.07811444757,49.1144085302819,0 -123.078038901866,49.0662310290498,0 -123.173188154413,49.0661274778377,0 -123.173329022278,49.1066160614173,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
 	
 </Document>
 </kml>
