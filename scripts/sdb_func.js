@@ -4,13 +4,17 @@
  */
 
 var debug = false;
-
+var locException = [];
 
 /*** Interface functions ***/
 if (!(typeof avaIFaceJS === 'undefined')) {
 
     avaIFaceJS.sdb_func = {
         init: function() {
+
+            locException.push({ riverCode: "FSD",
+                                re: /Fraser\sSurrey\sDocks/});
+
             avaIFaceJS.sdb_func.fillChannel(); // populate dropdowns on load
 
             /** Event Handlers **/
@@ -96,10 +100,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             }
 
             avaIFaceJS.reportWindow.addTitle(header, wat, chann + " " + location);
-
-            // generate report data
-            //TODO: Replace following line for Production
             
+
             // (Param)      (Column Name)
             // river:       RiverCode
             // drawingType: Type
@@ -108,14 +110,30 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             // channelType: NA - not used in the search
             var apiBase = "api/surveys/getsurveys?";
             var apiParams = [];
+            var apiURL = "";
             apiParams.push("river=", $("#channel").val(), "&");
             apiParams.push("location=", $("#location").val(), "&");
             apiParams.push("drawingType=", $("#type").val(), "&");
             apiParams.push("channel=", "", "&");
             apiParams.push("channelType=", "");
 
-            var apiURL = apiBase + apiParams.join("");
+            // DB Exceptions handled in front end -> dangerous, probably
+            // should be moved to backend for production
+            var chosenLoc = $("#location").val();
+            for (var i = 0; i < locException.length; i++) {
+                var code = locException[i].riverCode;
+                if (locException[i].re.test(chosenLoc)) {
+                    exceptionAPI = true;
+                    if (code.match("FSD")) {
+                        apiParams[1] = locException[i].riverCode;
+                        apiParams[4] = "";
+                    }
+                }
+            }
 
+            if (debug) console.log(apiParams);
+            apiURL = apiBase + apiParams.join("");
+            
             return $.getJSON(getAPI(apiURL, ""), function(data) {
                 avaIFaceJS.sdb_func.tableReport || (avaIFaceJS.sdb_func.tableReport = $('#report_tbl').DataTable({
                     bPaginate: false,
@@ -160,7 +178,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     break;
                 case "PMV":
                 case "PMV-FSD":
-                    $('#sdb_waterway').val("VH");
+                    $('#sdb_waterway').val("FR");
                     break;
                 default:
                     $('#sdb_waterway').val("CWC");
@@ -228,20 +246,45 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             var obj = incl_ava_defs.locDefs[waterway].Coords;
             try {
                 avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
-            } catch (err) {}
+            } catch (err) {
+                console.log(err);
+            }
         },
 
         // page specific
         setChannelExtents: function(waterway, channel) {
             if (!channel || !waterway) {
+                console.log("Both channel and waterway needs to be defined");
                 return;
             }
+
             var obj = incl_ava_defs.locDefs[waterway]['Sections'][channel].Coords;
-            // console.log(obj);
-            try {
-                avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
-            } catch (err) {}
+            console.log(channel);
+
+            if (channel.match(/FRMA/) || channel.match(/FRNA/)) {
+                avaMapJS.sdb_func.setExtentsLatLon(obj);
+            } else {
+                try {
+                    avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+            
             avaMapJS.sdb_func.refreshTiles(channel, "");
+        },
+
+        setExtentsLatLon : function(obj) {
+            try {
+                // LatLon to Spherical Mercator projection
+                var proj = new OpenLayers.Projection("EPSG:4326");
+                var targetProj = new OpenLayers.Projection("EPSG:3857");
+                var box = new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max);
+                box.transform(proj, targetProj);
+                avaMapJS.map.zoomToExtent(box);
+            } catch (err) {
+                if (debug) console.log(err);
+            }
         },
 
         tileUnselect: function(tile) {
