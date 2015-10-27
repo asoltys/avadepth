@@ -70,7 +70,6 @@ incl_ava_defs={
                         }
                     }
                 },
-                // TODO
                 "BC_FC" : {
                     "Form" : {
                         "Title" : "French Creek",
@@ -79,12 +78,12 @@ incl_ava_defs={
                     "Names" : "",
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6386746,
-                            "max" : 6394750
+                            "min" : 6329755,
+                            "max" : 6341821
                         },
                         "Lon" : {
-                            "min" : -13918066,
-                            "max" : -13902404
+                            "min" : -13856419,
+                            "max" : -13835752
                         }
                     }
                 },
@@ -105,7 +104,6 @@ incl_ava_defs={
                         }
                     }
                 },
-                // TODO
                 "BC_QCI" : {
                     "Form" : {
                         "Title" : "Queen Charlotte Islands",
@@ -114,12 +112,12 @@ incl_ava_defs={
                     "Names" : "",
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6300184,
-                            "max" : 6310614
+                            "min" : 6978612,
+                            "max" : 7082344
                         },
                         "Lon" : {
-                            "min" : -13801517,
-                            "max" : -13790703
+                            "min" : -14760436,
+                            "max" : -14677682
                         }
                     }
                 },
@@ -182,6 +180,7 @@ incl_ava_defs={
                         "Key" : "BC_INT"
                     },
                     "Names" : "",
+                    // TODO
                     "Coords" : {
                         "Lat" : {
                             "min" : 6264828,
@@ -228,12 +227,12 @@ incl_ava_defs={
                     ],
                     "Coords" : {
                         "Lat" : {
-                            "min" : 49.11403,
-                            "max" : 49.22890
+                            "min" : 6288931,
+                            "max" : 6322318
                         },
                         "Lon" : {
-                            "min" : -122.90444,
-                            "max" : -122.32160
+                            "min" : -13687226,
+                            "max" : -13611212
                         }
                     },
                     "pwl" : {
@@ -284,12 +283,12 @@ incl_ava_defs={
                     ],
                     "Coords" : {
                         "Lat" : {
-                            "min" : 49.16508,
-                            "max" : 49.27295
+                            "min" : 6298982,
+                            "max" : 6321496
                         },
                         "Lon" : {
-                            "min" : -123.30116,
-                            "max" : -122.92145
+                            "min" : -13731388,
+                            "max" : -13679437
                         }
                     },
                     "pwl" : {
@@ -330,12 +329,12 @@ incl_ava_defs={
                     "Names" : "",
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6312424,
-                            "max" : 6352933
+                            "min" : 6305212,
+                            "max" : 6353705
                         },
                         "Lon" : {
-                            "min" : -13669210,
-                            "max" : -13633754
+                            "min" : -13674602,
+                            "max" : -13633759
                         }
                     }
                 },
@@ -358,12 +357,12 @@ incl_ava_defs={
                     ],
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6287000,
-                            "max" : 6317590
+                            "min" : 6283747,
+                            "max" : 6319249
                         },
                         "Lon" : {
-                            "min" : -13730400,
-                            "max" : -13669354
+                            "min" : -13730915,
+                            "max" : -13677725
                         }
                     },
                     "pwl" : {
@@ -425,12 +424,12 @@ incl_ava_defs={
             },
             "Coords" : {
                 "Lat" : {
-                    "min" : 6283000,
-                    "max" : 6319590
+                    "min" : 6311123,
+                    "max" : 6342847
                 },
                 "Lon" : {
-                    "min" : -13730400,
-                    "max" : -13669354
+                    "min" : -13725424,
+                    "max" : -13667414
                 }
             },
             "Sections" : {
@@ -442,29 +441,29 @@ incl_ava_defs={
                     "Names" : "",
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6283000,
-                            "max" : 6319590
+                            "min" : 6311123,
+                            "max" : 6342847
                         },
                         "Lon" : {
-                            "min" : -13730400,
-                            "max" : -13669354
+                            "min" : -13725424,
+                            "max" : -13667414
                         }
                     }
                 },
                 "PMV-BI" : {
                     "Form" : {
                         "Title" : "Burrard Inlet - Terminal",
-                        "Key" : "PMV"
+                        "Key" : "PMV-BI"
                     },
                     "Names" : "",
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6283000,
-                            "max" : 6319590
+                            "min" : 6311123,
+                            "max" : 6342847
                         },
                         "Lon" : {
-                            "min" : -13730400,
-                            "max" : -13669354
+                            "min" : -13725424,
+                            "max" : -13667414
                         }
                     }
                 }

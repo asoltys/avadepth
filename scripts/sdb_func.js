@@ -3,7 +3,7 @@
  * Maintained by seor since 02/10/2015.
  */
 
-var debug = false;
+var debug = true;
 var locException = [];
 
 /*** Interface functions ***/
@@ -67,15 +67,15 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             $('#location option').remove();
             $('#location').append('<option></option>');
             if (debug) {
-                console.log("sdb_waterway: " + $('#sdb_waterway').val());
-                console.log("channel: " + $('#channel').val());
+                console.log("void fillLocation(): sdb_waterway=" + $('#sdb_waterway').val());
+                console.log("void fillLocation(): channel=" + $('#channel').val());
             }
             try {
                 return $.each(incl_ava_defs.locDefs[$('#sdb_waterway').val()]['Sections'][$('#channel').val()]['Names'], function() {
                     return $('#location').append("<option>" + this + "</option>");
                 });
             } catch (err) {
-                console.log("No location defined for channel " + $('#channel').val());
+                if (debug) console.log("void fillLocation(): No location defined for channel " + $('#channel').val());
                 return;
             }
         },
@@ -101,7 +101,6 @@ if (!(typeof avaIFaceJS === 'undefined')) {
 
             avaIFaceJS.reportWindow.addTitle(header, wat, chann + " " + location);
             
-
             // (Param)      (Column Name)
             // river:       RiverCode
             // drawingType: Type
@@ -131,7 +130,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 }
             }
 
-            if (debug) console.log(apiParams);
+            if (debug) console.log("void update(): " + apiParams);
             apiURL = apiBase + apiParams.join("");
             
             return $.getJSON(getAPI(apiURL, ""), function(data) {
@@ -154,11 +153,11 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                         ]);
                 });
                 avaIFaceJS.sdb_func.tableReport.draw();
-                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+                // avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 avaIFaceJS.reportWindow.show();
             }).done(function() {
                 $('.spinner').hide();
-                pBarToggle();
+                // pBarToggle();
             });
         },
 
@@ -177,9 +176,18 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     $('#sdb_waterway').val("FR");
                     break;
                 case "PMV":
-                case "PMV-FSD":
+                    $('#sdb_waterway').val("VH");
+                    avaIFaceJS.sdb_func.fillChannel();
+                    $('#channel').val("PMV");
+                    avaIFaceJS.sdb_func.fillLocation();
+                    return;
+                case "FSD":
                     $('#sdb_waterway').val("FR");
-                    break;
+                    avaIFaceJS.sdb_func.fillChannel();
+                    $('#channel').val("FRSA");
+                    avaIFaceJS.sdb_func.fillLocation();
+                    $('#location').val(data.location);
+                    return;
                 default:
                     $('#sdb_waterway').val("CWC");
             }
@@ -247,30 +255,28 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             try {
                 avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
             } catch (err) {
-                console.log(err);
+                if (debug) console.log("void setExtents(): " + err);
             }
         },
 
         // page specific
         setChannelExtents: function(waterway, channel) {
             if (!channel || !waterway) {
-                console.log("Both channel and waterway needs to be defined");
+                if (debug) console.log("void setChannelExtents(): Both channel and waterway needs to be defined");
                 return;
             }
 
             var obj = incl_ava_defs.locDefs[waterway]['Sections'][channel].Coords;
-            console.log(channel);
-
-            if (channel.match(/FRMA/) || channel.match(/FRNA/)) {
-                avaMapJS.sdb_func.setExtentsLatLon(obj);
-            } else {
-                try {
-                    avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
-                } catch (err) {
-                    console.log(err);
-                }
+            if (debug) {
+                console.log("void setChannelExtents(): minLat=" + obj.Lat.min);
+                console.log("void setChannelExtents(): channel=" + channel);
             }
-            
+
+            try {
+                avaMapJS.map.zoomToExtent(new OpenLayers.Bounds(obj.Lon.min, obj.Lat.min, obj.Lon.max, obj.Lat.max));
+            } catch (err) {
+                if (debug) console.log("void setChannelExtents(): " + err);
+            }            
             avaMapJS.sdb_func.refreshTiles(channel, "");
         },
 
@@ -283,8 +289,24 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 box.transform(proj, targetProj);
                 avaMapJS.map.zoomToExtent(box);
             } catch (err) {
-                if (debug) console.log(err);
+                if (debug) console.log("void setExtentsLatLon(): " + err);
             }
+        },
+
+        /**
+         * Convert LatLon to Spherical Mercator Projection in console
+         * @param  {[Array]} obj [minLon, minLat, maxLon, maxLat]
+         * @return {[Object]}     [OpenLayers.Bounds object]
+         */
+        projectLatLon : function(obj) {
+            // LatLon to Spherical Mercator projection
+            var proj = new OpenLayers.Projection("EPSG:4326");
+            var targetProj = new OpenLayers.Projection("EPSG:3857");
+            var box = new OpenLayers.Bounds(obj[0], obj[1], obj[2], obj[3]);
+            box.transform(proj, targetProj);
+            console.log("Lat min/max: " + Math.round(box.bottom) + " & " + Math.round(box.top));
+            console.log("Lon min/max: " + Math.round(box.left) + " & " + Math.round(box.right));
+            return box;
         },
 
         tileUnselect: function(tile) {
@@ -296,10 +318,10 @@ if (!(typeof avaIFaceJS === 'undefined')) {
 
         // tileSelect: callBack function for tile selection from the map interface
         tileSelect: function(tile) {
-            //console.profile("tile selection");
             var tileName = tile.feature.data.name;
             if (debug) {
-                console.log(tileName);
+                console.log("void tileSelect(): " + tileName);
+                console.log("void tileSelect(): " + tile.feature.data);
                 console.log(tile.feature.data);
             }
             if (tileName.indexOf('/') >= 0) {
@@ -310,7 +332,6 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 });
                 parent.avaIFaceJS.sdb_func.update(); // refresh page from updated parameters
             }
-            //console.profileEnd();
         },
 
         // refreshTiles: function to refresh the draw of the tile layer using the new selected form settings
