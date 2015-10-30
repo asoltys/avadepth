@@ -2,7 +2,6 @@
  * Created by wsiddall on 26/08/2014.
  * Maintained by seor since 02/10/2015.
  */
-
 var debug = true;
 var locException = [];
 

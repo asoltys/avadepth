@@ -207,8 +207,7 @@
         <name>UR000</name>
         <description/>
         <waterway>FRUR</waterway>
-		<!--<location>All Locations (km 85 to km 105)</location>-->
-        <location>Gravel Reach (km 85 to km 105)</location>
+		<location>Gravel Reach (km 85 to km 105)</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
@@ -504,43 +503,6 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-    <Placemark id="kml_55">
-        <name>PMV01</name>
-        <description/>
-        <waterway>PMV</waterway>
-        <location>1st Narrows</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.150253191526,49.2981654009088,0 -123.150323038606,49.3211272402878,0 -123.106458311658,49.32117596839,0 -123.106408846058,49.2982140897837,0 -123.150253191526,49.2981654009088,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_56">
-        <name>PMV02</name>
-        <waterway>PMV</waterway>
-        <location>2nd Narrows</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.046424737358,49.2846176338692,0 -123.046446308197,49.3075795988999,0 -123.002593520942,49.3075889030762,0 -123.002592316445,49.2846269305559,0 -123.046424737358,49.2846176338692,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_57">
-        <name>PMV03</name>
-        <waterway>PMV</waterway>
-        <location>Port Moody</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.931470226308,49.3029276749533,0 -122.858167176045,49.302860958361,0 -122.858232567266,49.2800624882182,0 -122.931501821671,49.2801291514891,0 -122.931470226308,49.3029276749533,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
     <Placemark id="kml_58">
         <name>PMV21</name>
         <waterway>FRSA</waterway>
@@ -682,35 +644,7 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-	
-	 <Placemark id="kml_68">
-        <name>PMV04</name>
-        <description/>
-        <waterway>PMV-FC</waterway>
-        <location>All Locations</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.150253191526,49.2981654009088,0 -123.150323038606,49.3211272402878,0 -123.106458311658,49.32117596839,0 -123.106408846058,49.2982140897837,0 -123.150253191526,49.2981654009088,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-	
-	 <Placemark id="kml_69">
-        <name>PMV05</name>
-        <description/>
-        <waterway>PMV</waterway>
-        <!--<location>All Locations</location>-->
-		<location>Lynnterm Westgate</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.150253191526,49.2981654009088,0 -123.150323038606,49.3211272402878,0 -123.106458311658,49.32117596839,0 -123.106408846058,49.2982140897837,0 -123.150253191526,49.2981654009088,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
+		
 	<Placemark id="kml_70">
         <name>SA3136</name>
         <waterway>FSD</waterway>
@@ -884,6 +818,50 @@
         </Polygon>
     </Placemark>
 	
+    <!-- Interior Waterway, BC -->
+    <Placemark id="kml_83">
+        <name>SIC01</name>
+        <waterway>BC_INT</waterway>
+        <location>Sicamous</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-119.0029617297284,50.83868219072722,0 -119.0042528219351,50.82358642469226,0 -118.9801209968325,50.82275621363625,0 -118.978822156909,50.83785153597975,0 -119.0029617297284,50.83868219072722,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+
+    <!-- Vancouver Harbour, BC -->
+    <Placemark id="kml_84">
+        <name>PMV01</name>
+        <waterway>PMV</waterway>
+        <location>Burrard Inlet</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.247583721088,49.34892583693011,0 -123.2471548016982,49.26324777856451,0 -122.8267657652266,49.26338224989103,0 -122.8264651217484,49.34906071300496,0 -123.247583721088,49.34892583693011,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+
+
+<!-- Template to copy
+    <Placemark id="">
+        <name></name>
+        <waterway></waterway>
+        <location></location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates></coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+-->
+
 </Document>
 </kml>
 
