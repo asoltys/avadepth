@@ -476,8 +476,8 @@ incl_ava_defs={
             },
             "Coords" : {
                 "Lat" : {
-                    "min" : 6289422,
-                    "max" : 6322074
+                    "min" : 6289181,
+                    "max" : 6325119
                 },
                 "Lon" : {
                     "min" : -13728265,
@@ -485,20 +485,23 @@ incl_ava_defs={
                 }
             },
             "Sections" : {
-                "WS_MA" : {
+                "WS_NA" : {
                     "Form" : {
-                        "Title" : "Fraser - Main Arm",
-                        "Key" : "WS_MA"
+                        "Title" : "Fraser - North Arm",
+                        "Key" : "WS_NA"
                     },
-                    "Names" : "",
+                    "Names" : [
+                        "North Arm Breakwater",
+                        "North Arm Jetty"
+                    ],
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6294031,
-                            "max" : 6317201
+                            "min" : 6309661,
+                            "max" : 6322555
                         },
                         "Lon" : {
-                            "min" : -13683886,
-                            "max" : -13614552
+                            "min" : -13725650,
+                            "max" : -13714402
                         }
                     }
                 },
@@ -507,15 +510,85 @@ incl_ava_defs={
                         "Title" : "Fraser - South Arm",
                         "Key" : "WS_SA"
                     },
-                    "Names" : "",
+                    "Names" : [
+                        "Steveston North Jetty",
+                        "Steveston South Jetty No. 2",
+                        "Albion Dyke No. 2",
+                        "Steveston Island Wingdams No. 2 & 3",
+                        "Steveston Island Shearboom",
+                        "Woodward Island Training Wall",
+                        "Deas & Kirkland Island Bank Protection",
+                        "Trifurcation Phase I Training Wall",
+                        "Trifurcation Phase II Training Wall",
+                        "Trifurcation Phase III Training Wall"
+                    ],
                     "Coords" : {
                         "Lat" : {
-                            "min" : 6282692,
-                            "max" : 6314133
+                            "min" : 6289181,
+                            "max" : 6312251
                         },
                         "Lon" : {
-                            "min" : -13730138,
-                            "max" : -13677350
+                            "min" : -13728265,
+                            "max" : -13678949
+                        }
+                    }
+                },
+                "WS_MA" : {
+                    "Form" : {
+                        "Title" : "Fraser - Main Arm",
+                        "Key" : "WS_MA"
+                    },
+                    "Names" : [
+                        "Sapperton Wingdams 2 & 3",
+                        "Sapperton V-Dyke"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6308005,
+                            "max" : 6315807
+                        },
+                        "Lon" : {
+                            "min" : -13681802,
+                            "max" : -13673052
+                        }
+                    }
+                },
+                "WS_MH" : {
+                    "Form" : {
+                        "Title" : "Fraser - Mission to Hope",
+                        "Key" : "WS_MH"
+                    },
+                    "Names" : "Big & Middle Eddy Groyne",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6295882,
+                            "max" : 6302924
+                        },
+                        "Lon" : {
+                            "min" : -13593487,
+                            "max" : -13588166
+                        }
+                    }
+                },
+                "WS_HR" : {
+                    "Form" : {
+                        "Title" : "Fraser - Harrison River, BC",
+                        "Key" : "WS_HR"
+                    },
+                    "Names" : [
+                        "Harrison Mills (CPR Bridge) Shearboom",
+                        "Harrison River Dykes V, R, W, P",
+                        "Harrison Hwy No.7 Bridge Shearboom",
+                        "Harrison Rapids Shearboom"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6311285,
+                            "max" : 6325119
+                        },
+                        "Lon" : {
+                            "min" : -13579382,
+                            "max" : -13569386
                         }
                     }
                 }

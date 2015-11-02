@@ -8,35 +8,111 @@
     <visibility>1</visibility>
     <name>tiles</name>
 	
+    <!-- Coastal Waterway, BC -->
     <Placemark id="kml_1">
         <name>BR4650</name>
-        <description/>
         <waterway>BC_CB</waterway>
         <location>Campbell River</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
-                    <coordinates>-125.274167555,50.033648340,0 -125.242567658,50.034263545,0 -125.243716331,50.058897934,0 -125.275332380,50.058282196,0 </coordinates>
+                    <coordinates>-125.2753323804501,50.05828219603638,0 -125.2741675549964,50.03364834038806,0 -125.242567657608,50.03426354467842,0 -125.2437163309579,50.05889793438376,0 -125.2753323804501,50.05828219603638,0</coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
     <Placemark id="kml_2">
         <name>CR0107</name>
-        <description/>
         <waterway>BC_CR</waterway>
         <location>Courtenay River</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
-                    <coordinates>-124.986868978,49.687831585,0 -124.991374211,49.683731101,0 -124.974198938,49.678641687,0 -124.957799764,49.672846964,0 -124.944726662,49.663654840,0 -124.938521733,49.658945289,0 -124.934014226,49.663043759,0 -124.940219260,49.667753547,0 -124.953291097,49.676947736,0 -124.969692697,49.682741518,0 </coordinates>
+                    <coordinates>-124.9608360417444,49.68044093905631,0 -124.9868689781776,49.68783158481551,0 -124.99137421131,49.68373110060812,0 -124.9653428294795,49.67634144471229,0 -124.9505730238994,49.66869124652576,0 -124.9385217333067,49.65894528912708,0 -124.9340142264863,49.66304375858578,0 -124.9460656662046,49.67279017740128,0 -124.9608360417444,49.68044093905631,0</coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
+    <Placemark id="kml_3">
+        <name>FCR01</name>
+        <waterway>BC_FC</waterway>
+        <location>French Creek</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-124.4088554985811,49.36773525955036,0 -124.4082268981105,49.34572740738344,0 -124.3454088227976,49.34647577551333,0 -124.3460094037814,49.36848420571889,0 -124.4088554985811,49.36773525955036,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_4">
+        <name>NAN01</name>
+        <waterway>BC_NAN</waterway>
+        <location>Nanaimo</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.9553592545781,49.18968838681534,0 -123.9353159152155,49.15943473678899,0 -123.9059249771621,49.15966906998036,0 -123.9061464299498,49.17180568509046,0 -123.9175232521929,49.17171584949509,0 -123.921366716671,49.17840143685211,0 -123.9357246898137,49.17822725241636,0 -123.9465238314851,49.19550586905925,0 -123.9553592545781,49.18968838681534,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_5">
+        <name>QCI001</name>
+        <waterway>BC_QCI</waterway>
+        <location>Queen Charlotte Islands</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-132.4101481724907,53.20269045536514,0 -132.3828662814665,53.07879731035108,0 -131.9615962275966,53.11153939767656,0 -131.9876946086885,53.23557958534012,0 -132.4101481724907,53.20269045536514,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_6">
+        <name>SQ0105</name>
+        <waterway>BC_SQ</waterway>
+        <location>Squamish</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.1415847161561,49.70264037506705,0 -123.1480198815828,49.70503929088984,0 -123.1579613251813,49.69426316020191,0 -123.1568842401487,49.69386171658229,0 -123.1663133466658,49.68365312003142,0 -123.1712930419633,49.67810070060001,0 -123.1648602931466,49.67570306416391,0 -123.1601323099663,49.68097036890244,0 -123.1501978047422,49.6917481070187,0 -123.1512747880936,49.69214961306253,0 -123.1415847161561,49.70264037506705,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_7">
+        <name>TOF01</name>
+        <waterway>BC_TOF</waterway>
+        <location>Tofino Harbour</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-125.9946027897557,49.18954301450658,0 -125.9885039724321,49.08830072639065,0 -125.797184538722,49.09309930785755,0 -125.8028942069948,49.19435865195793,0 -125.9946027897557,49.18954301450658,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <!-- Coastal Waterway, BC end -->
+
+    <!-- Interior Waterway, BC -->
+    <Placemark id="kml_8">
+        <name>SIC01</name>
+        <waterway>BC_INT</waterway>
+        <location>Sicamous</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-119.0029617297284,50.83868219072722,0 -119.0042528219351,50.82358642469226,0 -118.9801209968325,50.82275621363625,0 -118.978822156909,50.83785153597975,0 -119.0029617297284,50.83868219072722,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <!-- Interior Waterway, BC end -->
+
+    <!-- Fraser River, BC -->
     <Placemark id="kml_9">
         <name>MA3644</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Queens Reach</location>
         <Polygon>
@@ -49,7 +125,6 @@
     </Placemark>
     <Placemark id="kml_10">
         <name>MA4447</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Douglas Island</location>
         <Polygon>
@@ -62,7 +137,6 @@
     </Placemark>
     <Placemark id="kml_11">
         <name>MA4754</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Bishops Reach</location>
         <Polygon>
@@ -75,7 +149,6 @@
     </Placemark>
     <Placemark id="kml_12">
         <name>MA6069</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Russel Reach &amp; Langley Bar</location>
         <Polygon>
@@ -88,7 +161,6 @@
     </Placemark>
     <Placemark id="kml_13">
         <name>MA5460</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Derby Reach</location>
         <Polygon>
@@ -101,7 +173,6 @@
     </Placemark>
     <Placemark id="kml_14">
         <name>MA6978</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Plumper Reach</location>
         <Polygon>
@@ -114,7 +185,6 @@
     </Placemark>
     <Placemark id="kml_15">
         <name>MA7884</name>
-        <description/>
         <waterway>FRMA</waterway>
         <location>Matsqui Island</location>
         <Polygon>
@@ -127,7 +197,6 @@
     </Placemark>
     <Placemark id="kml_16">
         <name>MAS00</name>
-        <description/>
         <waterway>FRMA_SC</waterway>
         <location>Sapperton Channel</location>
         <Polygon>
@@ -140,7 +209,6 @@
     </Placemark>
     <Placemark id="kml_17">
         <name>MAS00</name>
-        <description/>
         <waterway>FRMA_SC</waterway>
         <location>Essondale Channel</location>
         <Polygon>
@@ -153,7 +221,6 @@
     </Placemark>
     <Placemark id="kml_18">
         <name>MA4447</name>
-        <description/>
         <waterway>FRMA_SC</waterway>
         <location>Douglas Island North</location>
         <Polygon>
@@ -165,21 +232,19 @@
         </Polygon>
     </Placemark>
     <Placemark id="kml_19">
-        <name>MAS00</name>
-        <description/>
+        <name>MA_PC</name>
         <waterway>FRMA_SC</waterway>
         <location>Parsons Channel</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
-                    <coordinates>-122.733191117026,49.2076074120984,0 -122.664771004522,49.1898125596786,0 -122.664822133512,49.1819286214121,0 -122.733328232846,49.18210712358,0 -122.733191117026,49.2076074120984,0 </coordinates>
+                    <coordinates>-122.7332073142532,49.20766477575283,0 -122.7333435908084,49.18211277280403,0 -122.6648374803917,49.18193427852435,0 -122.664786353509,49.18981821716259,0 -122.7332073142532,49.20766477575283,0</coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
     <Placemark id="kml_20">
         <name>MAS00</name>
-        <description/>
         <waterway>FRMA_SC</waterway>
         <location>Bedford Channel</location>
         <Polygon>
@@ -192,7 +257,6 @@
     </Placemark>
     <Placemark id="kml_21">
         <name>MAS00</name>
-        <description/>
         <waterway>FRMA_SC</waterway>
         <location>Enterprise Channel</location>
         <Polygon>
@@ -203,165 +267,8 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-    <Placemark id="kml_22">
-        <name>UR000</name>
-        <description/>
-        <waterway>FRUR</waterway>
-		<location>Gravel Reach (km 85 to km 105)</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.322846745315,49.1316500303851,0 -122.255679353216,49.1548687980426,0 -122.217348498788,49.1395769970144,0 -122.116693448475,49.157778948347,0 -122.072253573088,49.1574305207077,0 -121.981555289883,49.2082553062114,0 -121.947415844159,49.2186030550538,0 -121.934686509609,49.2331784692955,0 -121.818345939735,49.2320187941991,0 -121.778919565167,49.2142221588777,0 -121.739707522603,49.219984363112,0 -121.695583519213,49.2774351070578,0 -121.676298844028,49.308668989483,0 -121.587429540736,49.3691496862188,0 -121.541401738452,49.3756428563475,0 -121.536478937661,49.3597912363606,0 -121.574501188639,49.3544242613885,0 -121.654405310276,49.3006443490406,0 -121.672694564267,49.2713280292057,0 -121.722566974927,49.2058084970995,0 -121.784428683893,49.1968622583108,0 -121.826502233664,49.2159392782291,0 -121.919118493983,49.216959595803,0 -121.927327320306,49.2068674097425,0 -121.968516771033,49.1943866210189,0 -122.062507535935,49.1415619565727,0 -122.111628671429,49.141950363723,0 -122.220896256748,49.1221636864398,0 -122.256595249282,49.1363287943019,0 -122.321586997802,49.1140205539134,0 -122.322846745315,49.1316500303851,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_23">
-        <name>NA0913</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Sea Island</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.183727091982,49.2083310701228,0 -123.177535462103,49.2240696241809,0 -123.136225611264,49.2062327821414,0 -123.136178714802,49.1919565193552,0 -123.149918476,49.1919461827791,0 -123.183727091982,49.2083310701228,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_24">
-        <name>NA1307</name>
-        <description/>
-        <waterway>FRNA_SC</waterway>
-        <location>Morey Channel</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.220042755949,49.1913822083401,0 -123.161853118946,49.1803661774035,0 -123.149918476,49.1919461827791,0 -123.123616302995,49.1919645393955,0 -123.148151747005,49.1662168425773,0 -123.164412246515,49.1650703294792,0 -123.225347429869,49.1763810882433,0 -123.220042755949,49.1913822083401,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_25">
-        <name>NA2529</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Big Bend - Queens</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.93445777087,49.187720556267,0 -122.986280319597,49.1735937281137,0 -122.986659626774,49.1903871902232,0 -122.94681773272,49.2012689274029,0 -122.93445777087,49.187720556267,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_26">
-        <name>NA_103</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Point Grey</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_27">
-        <name>NA0307</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Iona</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.205096635118,49.2285829121875,0 -123.211424241106,49.2125018631934,0 -123.260080859631,49.2370697396923,0 -123.243173339169,49.2488984667049,0 -123.205096635118,49.2285829121875,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_28">
-        <name>NA0709</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Musqueam</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.177535462103,49.2240696241809,0 -123.183727091982,49.2083310701228,0 -123.211424241106,49.2125018631934,0 -123.205096635118,49.2285829121875,0 -123.177535462103,49.2240696241809,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_29">
-        <name>NA1314</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Marpole Basin</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.123616302995,49.1919645393955,0 -123.136178714802,49.1919565193552,0 -123.136225611264,49.2062327821414,0 -123.123558384492,49.206230267074,0 -123.123616302995,49.1919645393955,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_31">
-        <name>NA1921</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Mac-Blo</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.028333934942,49.2087003996446,0 -123.03614542877,49.1937368180968,0 -123.058702023771,49.1958597403259,0 -123.058720721195,49.211653005936,0 -123.028333934942,49.2087003996446,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_32">
-        <name>NA2125</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Byrne Road</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.986659626774,49.1903871902232,0 -122.986280319597,49.1735937281137,0 -123.03614542877,49.1937368180968,0 -123.028333934942,49.2087003996446,0 -122.986659626774,49.1903871902232,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_33">
-        <name>NA2931</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Poplar Island</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.94681773272,49.2012689274029,0 -122.907741016968,49.2119132190501,0 -122.923605202555,49.1906918715055,0 -122.93445777087,49.187720556267,0 -122.94681773272,49.2012689274029,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_34">
-        <name>NA1419</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <location>Mitchell Island</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.123569709421,49.2034414766738,0 -123.058711058222,49.2034926545616,0 -123.058702023771,49.1958597403259,0 -123.123600443994,49.1958714388174,0 -123.123569709421,49.2034414766738,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
     <Placemark id="kml_39">
         <name>SA0105</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Sand Heads Reach</location>
         <Polygon>
@@ -374,7 +281,6 @@
     </Placemark>
     <Placemark id="kml_40">
         <name>SA_101</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Sand Heads Entrance</location>
         <Polygon>
@@ -387,7 +293,6 @@
     </Placemark>
     <Placemark id="kml_41">
         <name>SA0711</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Steveston Cut</location>
         <Polygon>
@@ -400,7 +305,6 @@
     </Placemark>
     <Placemark id="kml_42">
         <name>SA0507</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Steveston Bend</location>
         <Polygon>
@@ -413,7 +317,6 @@
     </Placemark>
     <Placemark id="kml_43">
         <name>SA1119</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Woodward Reach</location>
         <Polygon>
@@ -426,7 +329,6 @@
     </Placemark>
     <Placemark id="kml_44">
         <name>SA1927</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Burr Landing Channel</location>
         <Polygon>
@@ -439,7 +341,6 @@
     </Placemark>
     <Placemark id="kml_45">
         <name>SA2731</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>City Reach</location>
         <Polygon>
@@ -452,7 +353,6 @@
     </Placemark>
     <Placemark id="kml_46">
         <name>SA3136</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Annieville - New West</location>
         <Polygon>
@@ -465,7 +365,6 @@
     </Placemark>
     <Placemark id="kml_47">
         <name>SA_LSR</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <!--<location>Ladner Sea Reach</location>-->
 		<location>Ladner Sea Reach Overview</location>
@@ -479,7 +378,6 @@
     </Placemark>
     <Placemark id="kml_48">
         <name>SA_CC</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Cannery Channel</location>
         <Polygon>
@@ -492,7 +390,6 @@
     </Placemark>
     <Placemark id="kml_49">
         <name>SA_AC</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Annacis Channel</location>
         <Polygon>
@@ -517,7 +414,6 @@
     </Placemark>
     <Placemark id="kml_59">
         <name>PMV20</name>
-        <description/>
         <waterway>PMV-DP</waterway>
         <location>Approach Channel and Berths</location>
         <Polygon>
@@ -528,11 +424,9 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
-	
 		
 	<Placemark id="kml_60">
         <name>SA_GS</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Gundersen Slough</location>
         <Polygon>
@@ -546,7 +440,6 @@
 	
 	<Placemark id="kml_61">
         <name>SA_AC</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Shoal Point - New West</location>
         <Polygon>
@@ -558,83 +451,11 @@
         </Polygon>
     </Placemark>
 	
-	<Placemark id="kml_62">
-        <name>NA_103</name>
-        <description/>
-        <waterway>FRNA_SC</waterway>
-        <location>Cowards Cove</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
 	
-	<Placemark id="kml_63">
-        <name>NA0709</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <!--<location>MacDonald Slough</location>-->
-		<location>Musqueam</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.177535462103,49.2240696241809,0 -123.183727091982,49.2083310701228,0 -123.211424241106,49.2125018631934,0 -123.205096635118,49.2285829121875,0 -123.177535462103,49.2240696241809,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-	
-    <Placemark id="kml_64">
-        <name>NA0913</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <!--<location>Deering Channel</location>-->
-		<location>Sea Island</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.183727091982,49.2083310701228,0 -123.177535462103,49.2240696241809,0 -123.136225611264,49.2062327821414,0 -123.136178714802,49.1919565193552,0 -123.149918476,49.1919461827791,0 -123.183727091982,49.2083310701228,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-    <Placemark id="kml_65">
-        <name>NA2529</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <!--<location>Tree Island</location>-->
-		<location>Big Bend - Queens</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-122.93445777087,49.187720556267,0 -122.986280319597,49.1735937281137,0 -122.986659626774,49.1903871902232,0 -122.94681773272,49.2012689274029,0 -122.93445777087,49.187720556267,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>	
-	<Placemark id="kml_66">
-        <name>NA_103</name>
-        <description/>
-        <waterway>FRNA</waterway>
-        <!--<location>Point Grey Scow Moorage</location>-->
-		<location>Point Grey</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
 	
 	<Placemark id="kml_67">
         <name>FRPR00</name>
-        <description/>
         <waterway>FRPR</waterway>
-        <!--<location>Channel Overview</location>-->
 		<location>Pitt River</location>
         <Polygon>
             <outerBoundaryIs>
@@ -660,7 +481,6 @@
     </Placemark>
 	 <Placemark id="kml_71">
         <name>SA1927</name>
-        <description/>
         <waterway>FRSA</waterway>
         <location>Gravesend Reach</location>
         <Polygon>
@@ -671,35 +491,10 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>	
-	<Placemark id="kml_72">
-        <name>SQ0105</name>
-        <description/>
-        <waterway>BC_SQ</waterway>
-        <location>Squamish</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.141584716,49.702640375,0 -123.148019882,49.705039291,0 -123.157961325,49.694263160,0 -123.171293042,49.678100701,0 -123.164860293,49.675703064,0 -123.151527097,49.691864791,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>		
-	<Placemark id="kml_73">
-        <name>NAN01</name>
-        <description/>
-        <waterway>BC_NAN</waterway>
-        <location>Nanaimo</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-123.935315915,49.159434737,0 -123.905924977,49.159669070,0 -123.906146430,49.171805685,0 -123.917523252,49.171715849,0 -123.921366717,49.178401437,0 -123.935724690,49.178227252,0 -123.946523831,49.195505869,0 -123.955359255,49.189688387,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
+	
+	
 	<Placemark id="kml_74">
         <name>PR001</name>
-        <description/>
         <waterway>CWC5</waterway>
         <location>All Locations</location>
         <Polygon>
@@ -711,50 +506,8 @@
         </Polygon>
     </Placemark>
 	
-	<Placemark id="kml_75">
-        <name>TOF01</name>
-        <description/>
-        <waterway>BC_TOF</waterway>
-        <location>Tofino Harbour</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-125.988503972,49.088300726,0 -125.797184539,49.093099308,0 -125.802894207,49.194358652,0 -125.994602790,49.189543015,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-	
-	<Placemark id="kml_76">
-        <name>FCR01</name>
-        <description/>
-        <waterway>BC_FC</waterway>
-        <location>French Creek</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-124.408226898,49.345727407,0 -124.345408823,49.346475776,0 -124.346009404,49.368484206,0 -124.408855499,49.367735260 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
-	
-	<Placemark id="kml_77">
-        <name>QCI001</name>
-        <description/>
-        <waterway>BC_QCI</waterway>
-        <location>Queen Charlotte Islands</location>
-        <Polygon>
-            <outerBoundaryIs>
-                <LinearRing>
-                    <coordinates>-132.382866281,53.078797310,0 -131.961596228,53.111539398,0 -131.987694609,53.235579585,0 -132.410148172,53.202690455,0 </coordinates>
-                </LinearRing>
-            </outerBoundaryIs>
-        </Polygon>
-    </Placemark>
 	<Placemark id="kml_78">
         <name>SA_LSR</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Deas Slough</location>
         <Polygon>
@@ -767,7 +520,6 @@
     </Placemark>
     <Placemark id="kml_79">
         <name>SA_LSR</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Ladner Reach</location>
         <Polygon>
@@ -780,7 +532,6 @@
     </Placemark>
     <Placemark id="kml_80">
         <name>SA_LSR</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Ladner Harbour</location>
         <Polygon>
@@ -793,7 +544,6 @@
     </Placemark>
     <Placemark id="kml_81">
         <name>SA_LSR</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Canoe Pass</location>
         <Polygon>
@@ -806,7 +556,6 @@
     </Placemark>
     <Placemark id="kml_82">
         <name>SA_LSR</name>
-        <description/>
         <waterway>FRSA_SC</waterway>
         <location>Sea Reach</location>
         <Polygon>
@@ -818,19 +567,243 @@
         </Polygon>
     </Placemark>
 	
-    <!-- Interior Waterway, BC -->
-    <Placemark id="kml_83">
-        <name>SIC01</name>
-        <waterway>BC_INT</waterway>
-        <location>Sicamous</location>
+
+    <!-- Fraser River, BC - North Arm -->
+    <Placemark id="kml_200">
+        <name>NA_103</name>
+        <waterway>FRNA</waterway>
+        <location>Point Grey</location>
         <Polygon>
             <outerBoundaryIs>
                 <LinearRing>
-                    <coordinates>-119.0029617297284,50.83868219072722,0 -119.0042528219351,50.82358642469226,0 -118.9801209968325,50.82275621363625,0 -118.978822156909,50.83785153597975,0 -119.0029617297284,50.83868219072722,0</coordinates>
+                    <coordinates>-123.2431887964422,49.24890406000966,0 -123.2432925959935,49.24896739013529,0 -123.2847873721015,49.27295314917055,0 -123.3011639211086,49.26080951484306,0 -123.260096316378,49.23707533051376,0 -123.2431887964422,49.24890406000966,0</coordinates>
                 </LinearRing>
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
+    <Placemark id="kml_201">
+        <name>NA0307</name>
+        <waterway>FRNA</waterway>
+        <location>Iona</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.2051120808768,49.22858850900247,0 -123.2431887964422,49.24890406000966,0 -123.260096316378,49.23707533051376,0 -123.2114396835271,49.21250745856026,0 -123.2051120808768,49.22858850900247,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_202">
+        <name>NA0709</name>
+        <waterway>FRNA</waterway>
+        <location>Musqueam</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.1775509022795,49.22407522398646,0 -123.2051120808768,49.22858850900247,0 -123.2114396835271,49.21250745856026,0 -123.1837425288931,49.20833666850977,0 -123.1775509022795,49.22407522398646,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_203">
+        <name>NA0913</name>
+        <waterway>FRNA</waterway>
+        <location>Sea Island</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.1837425288931,49.20833666850977,0 -123.1499339031401,49.19195178434519,0 -123.1361941397662,49.19196212251073,0 -123.1362410400806,49.20623838593104,0 -123.1775509022795,49.22407522398646,0 -123.1837425288931,49.20833666850977,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_204">
+        <name>NA1314</name>
+        <waterway>FRNA</waterway>
+        <location>Marpole Basin</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.1236317259685,49.19197014400411,0 -123.1235738112978,49.20623587232902,0 -123.1362410400806,49.20623838593104,0 -123.1361941397662,49.19196212251073,0 -123.1236317259685,49.19197014400411,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_205">
+        <name>NA1419</name>
+        <waterway>FRNA</waterway>
+        <location>Mitchell Island</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.123569709421,49.2034414766738,0 -123.058711058222,49.2034926545616,0 -123.058702023771,49.1958597403259,0 -123.123600443994,49.1958714388174,0 -123.123569709421,49.2034414766738,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_206">
+        <name>NA1921</name>
+        <waterway>FRNA</waterway>
+        <location>Mac-Blo</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.0283493472745,49.20870601602309,0 -123.0587361391598,49.21165861893394,0 -123.0587174374795,49.19586535261463,0 -123.0361608383182,49.19374243289695,0 -123.0283493472745,49.20870601602309,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_207">
+        <name>NA2125</name>
+        <waterway>FRNA</waterway>
+        <location>Byrne Road</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.9866750275362,49.19039281058967,0 -123.0283493472745,49.20870601602309,0 -123.0361608383182,49.19374243289695,0 -122.9862957157857,49.17359934776241,0 -122.9866750275362,49.19039281058967,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_208">
+        <name>NA2529</name>
+        <waterway>FRNA</waterway>
+        <location>Big Bend - Queens</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.9344731625845,49.1877261825414,0 -122.9468331300511,49.20127455286573,0 -122.9866750275362,49.19039281058967,0 -122.9862957157857,49.17359934776241,0 -122.9344731625845,49.1877261825414,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_209">
+        <name>NA2931</name>
+        <waterway>FRNA</waterway>
+        <location>Poplar Island</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.9468331300511,49.20127455286573,0 -122.9344731625845,49.1877261825414,0 -122.9270890731092,49.19154655031125,0 -122.9206869408026,49.2012584800951,0 -122.9468331300511,49.20127455286573,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <!-- Fraser River, BC - North Arm end -->
+
+    <!-- Fraser River, BC - North Arm Side Channel -->
+    <Placemark id="kml_250">
+        <name>NA_103</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Cowards Cove</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_251">
+        <name>NA_103</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Point Grey Scow Moorage</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.243173339169,49.2488984667049,0 -123.260080859631,49.2370697396923,0 -123.301148451456,49.260803927735,0 -123.284771901745,49.2729475596275,0 -123.243277138687,49.2489617968397,0 -123.243173339169,49.2488984667049,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_252">
+        <name>NA0709</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Deering Channel</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.1775509022795,49.22407522398646,0 -123.2051120808768,49.22858850900247,0 -123.2114396835271,49.21250745856026,0 -123.1837425288931,49.20833666850977,0 -123.1775509022795,49.22407522398646,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_253">
+        <name>NA0709</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Macdonald Slough</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.1775509022795,49.22407522398646,0 -123.2051120808768,49.22858850900247,0 -123.2114396835271,49.21250745856026,0 -123.1837425288931,49.20833666850977,0 -123.1775509022795,49.22407522398646,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_254">
+        <name>NA1307</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Morey Channel</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.220042755949,49.1913822083401,0 -123.161853118946,49.1803661774035,0 -123.149918476,49.1919461827791,0 -123.123616302995,49.1919645393955,0 -123.148151747005,49.1662168425773,0 -123.164412246515,49.1650703294792,0 -123.225347429869,49.1763810882433,0 -123.220042755949,49.1913822083401,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_255">
+        <name>NA1307</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Swishwash Island South</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.220042755949,49.1913822083401,0 -123.161853118946,49.1803661774035,0 -123.149918476,49.1919461827791,0 -123.123616302995,49.1919645393955,0 -123.148151747005,49.1662168425773,0 -123.164412246515,49.1650703294792,0 -123.225347429869,49.1763810882433,0 -123.220042755949,49.1913822083401,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_256">
+        <name>NA1419</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Mitchell Island North</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-123.123569709421,49.2034414766738,0 -123.058711058222,49.2034926545616,0 -123.058702023771,49.1958597403259,0 -123.123600443994,49.1958714388174,0 -123.123569709421,49.2034414766738,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <Placemark id="kml_257">
+        <name>NA2529</name>
+        <waterway>FRNA_SC</waterway>
+        <location>Tree Island</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.9344731625845,49.1877261825414,0 -122.9468331300511,49.20127455286573,0 -122.9866750275362,49.19039281058967,0 -122.9862957157857,49.17359934776241,0 -122.9344731625845,49.1877261825414,0</coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <!-- Fraser River, BC - North Arm Side Channel end -->
+
+    <!-- Fraser River, BC - Mission to Hope -->
+    <Placemark id="kml_22">
+        <name>UR000</name>
+        <waterway>FRUR</waterway>
+        <location>Gravel Reach (km 85 to km 105)</location>
+        <Polygon>
+            <outerBoundaryIs>
+                <LinearRing>
+                    <coordinates>-122.322846745315,49.1316500303851,0 -122.255679353216,49.1548687980426,0 -122.217348498788,49.1395769970144,0 -122.116693448475,49.157778948347,0 -122.072253573088,49.1574305207077,0 -121.981555289883,49.2082553062114,0 -121.947415844159,49.2186030550538,0 -121.934686509609,49.2331784692955,0 -121.818345939735,49.2320187941991,0 -121.778919565167,49.2142221588777,0 -121.739707522603,49.219984363112,0 -121.695583519213,49.2774351070578,0 -121.676298844028,49.308668989483,0 -121.587429540736,49.3691496862188,0 -121.541401738452,49.3756428563475,0 -121.536478937661,49.3597912363606,0 -121.574501188639,49.3544242613885,0 -121.654405310276,49.3006443490406,0 -121.672694564267,49.2713280292057,0 -121.722566974927,49.2058084970995,0 -121.784428683893,49.1968622583108,0 -121.826502233664,49.2159392782291,0 -121.919118493983,49.216959595803,0 -121.927327320306,49.2068674097425,0 -121.968516771033,49.1943866210189,0 -122.062507535935,49.1415619565727,0 -122.111628671429,49.141950363723,0 -122.220896256748,49.1221636864398,0 -122.256595249282,49.1363287943019,0 -122.321586997802,49.1140205539134,0 -122.322846745315,49.1316500303851,0 </coordinates>
+                </LinearRing>
+            </outerBoundaryIs>
+        </Polygon>
+    </Placemark>
+    <!-- Fraser River, BC - Mission to Hope end -->
 
     <!-- Vancouver Harbour, BC -->
     <Placemark id="kml_84">
@@ -845,7 +818,165 @@
             </outerBoundaryIs>
         </Polygon>
     </Placemark>
+    <!-- Vancouver Harbour, BC end -->
 
+    <!-- Waterway Structure -->
+    <Placemark id="400">
+        <name>WS_P01</name>
+        <waterway>WS_NA</waterway>
+        <location>North Arm Breakwater</location>
+                <LineString>
+                    <coordinates>-123.2619055255132,49.26028897626364,0 -123.2650629828025,49.25812740042947,0 -123.2658595441681,49.25738728693825,0 -123.2663722765249,49.25630922413813,0 -123.2664251361806,49.25558512113943,0 -123.2660785975373,49.25481934250823,0 -123.2675446635821,49.25424927158348,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="401">
+        <name>WS_P02</name>
+        <waterway>WS_NA</waterway>
+        <location>North Arm Jetty</location>
+                <LineString>
+                    <coordinates>-123.2185683780943,49.22467065504604,0 -123.2202789021492,49.22509890654629,0 -123.2230898903082,49.22600408387379,0 -123.2296212122484,49.2278672480679,0 -123.2325690875391,49.22955409778799,0 -123.2399441752604,49.2340402184388,0 -123.2462480426436,49.2377680645331,0 -123.2591807941248,49.24571551815811,0 -123.2712192325502,49.2531033051274,0 -123.2796124349091,49.25747488577129,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="402">
+        <name>WS_P03</name>
+        <waterway>WS_SA</waterway>
+        <location>Steveston North Jetty</location>
+                <LineString>
+                    <coordinates>-123.2018195933468,49.12620480011625,0 -123.201502282776,49.12594237661538,0 -123.2013961765784,49.12583312157607,0 -123.2012699256741,49.12573790293958,0 -123.2011675749492,49.12567819785237,0 -123.2010527585362,49.12563987222651,0 -123.2010005959321,49.12559342969904,0 -123.2009528730612,49.12552293464096,0 -123.2010255753176,49.12551359676203,0 -123.2011712205194,49.1255307222517,0 -123.2012759613123,49.12556027859134,0 -123.2015918653454,49.12569167238639,0 -123.2025147703789,49.12600474973215,0 -123.2038076707562,49.12652958157729,0 -123.2040192054587,49.12660153571004,0 -123.204241483927,49.12670014099017,0 -123.204430713486,49.12675873423494,0 -123.2046449793718,49.12680011502463,0 -123.2052522181694,49.12709028653812,0 -123.205396944849,49.12717592019105,0 -123.2055048769137,49.12725319044409,0 -123.2062343482258,49.12765594537994,0 -123.2068207140124,49.12786329982687,0 -123.2073418451717,49.12811229673509,0 -123.2077490829885,49.12834819833459,0 -123.2078761228409,49.12839117470114,0 -123.216325084824,49.13033768249898,0 -123.2247292506286,49.1321806424251,0 -123.2267721019078,49.13248218575703,0 -123.2293688682199,49.13269748643597,0 -123.2308110820306,49.13269900937781,0 -123.2327245505777,49.13268046543043,0 -123.2339796553536,49.13258529398383,0 -123.2366774892138,49.13224732823554,0 -123.238924907316,49.13174634745261,0 -123.240818911936,49.13128828863193,0 -123.2418737556256,49.13095814746242,0 -123.2427873901666,49.13061418792328,0 -123.2442131454916,49.13006395972021,0 -123.3031011147997,49.10573602520154,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="403">
+        <name>WS_P04</name>
+        <waterway>WS_SA</waterway>
+        <location>Steveston South Jetty No. 2</location>
+                <LineString>
+                    <coordinates>-123.1980766504131,49.11743276961251,0 -123.2066439728551,49.12044293011809,0 -123.2108258090682,49.1219149056007,0 -123.2122682557632,49.12240668858206,0 -123.2146156646924,49.12318991444518,0 -123.2169095663795,49.12380806749776,0 -123.219505978397,49.12433961556822,0 -123.2222012489567,49.12473314098951,0 -123.2242765650439,49.12492485090539,0 -123.2271807382134,49.12505103611755,0 -123.229283767212,49.12501510614673,0 -123.2318197414678,49.12488326953727,0 -123.2341017326144,49.12463605289507,0 -123.2368110453235,49.12417952903955,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="404">
+        <name>WS_P05</name>
+        <waterway>WS_SA</waterway>
+        <location>Albion Dyke No. 2</location>
+                <LineString>
+                    <coordinates>-123.1816174092918,49.11135345101114,0 -123.1855053043086,49.11291965927636,0 -123.1905783083728,49.1149361165933,0 -123.2017470911737,49.11886389614764,0 -123.2073356895065,49.12083991795713,0 -123.2169239764266,49.12419667636408,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="405">
+        <name>WS_P06</name>
+        <waterway>WS_SA</waterway>
+        <location>Steveston Island Wingdams No. 2 &amp; 3</location>
+                <LineString>
+          <coordinates> -123.1598524759044,49.11382017220636,0 -123.1603194306277,49.11292390140138,0 -123.1622311230511,49.1133640865625,0</coordinates>
+        </LineString>
+        <LineString>
+          <coordinates> -123.167256440257,49.11516666121034,0 -123.1675294377994,49.11463495588388,0 -123.1703939950941,49.1153269173376,0</coordinates>
+        </LineString>
+    </Placemark>
+    <Placemark id="406">
+        <name>WS_P07</name>
+        <waterway>WS_SA</waterway>
+        <location>Steveston Island Shearboom</location>
+                <LineString>
+                    <coordinates>-123.155960453804,49.11233294341465,0 -123.1521976021927,49.11291420539632,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="407">
+        <name>WS_P08</name>
+        <waterway>WS_SA</waterway>
+        <location>Woodward Island Training Wall</location>
+                <LineString>
+                    <coordinates>-123.1192168983235,49.104319914745,0 -123.1199744606535,49.10448238938694,0 -123.1209819362195,49.10486687423852,0 -123.1230015732874,49.10564806431651,0 -123.1248009532243,49.10620288700105,0 -123.1257571382363,49.10634190139881,0 -123.1330354335165,49.10613951384575,0 -123.1343674892545,49.10603083530454,0 -123.1364409814551,49.1061277626575,0 -123.1377762064971,49.10617290378693,0 -123.1398569841512,49.10626311255167,0 -123.1417100007096,49.10634337356196,0 -123.1427615184936,49.10635319012989,0 -123.1473141166115,49.10663455785277,0 -123.1510268202111,49.10695501375414,0 -123.1529879901957,49.10707779305744,0 -123.1556101283332,49.10740564950979,0 -123.1586476816569,49.10794961182516,0 -123.1612440223429,49.10850588991054,0 -123.1656547022242,49.1095673127748,0 -123.1674055827871,49.11000715376119,0 -123.1685834622728,49.11025679153912,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="408">
+        <name>WS_P09</name>
+        <waterway>WS_SA</waterway>
+        <location>Deas and Kirkland Island Bank Protection</location>
+                <LineString>
+                    <coordinates>-123.0851716259839,49.11490114319459,0 -123.08734070112,49.1146461679292,0 -123.087776900056,49.11460262303061,0 -123.0890757126016,49.11429848195959,0 -123.0903211095253,49.11379152088377,0 -123.0918193462373,49.11351257874368,0 -123.0930711188269,49.11338103368284,0 -123.0938895442848,49.1130593237128,0 -123.0965308386491,49.11265846751782,0 -123.0980397224241,49.11241309033137,0 -123.0998118511309,49.11211037204771,0 -123.1021851304727,49.1117611634953,0 -123.1025518823995,49.11163407900288,0 -123.1029733521542,49.11125072460587,0 -123.1029828019722,49.11118546591919,0 -123.0704556160013,49.12096005134344,0 -123.0749137243768,49.11910003932554,0 -123.0750142479413,49.11895281149499,0 -123.0771255283828,49.11805809034647,0 -123.0773241098013,49.11797331049441,0 -123.0793129339177,49.11697382801384,0 -123.0801090884036,49.11643130336001,0 -123.0804648750531,49.11611288737245,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="409">
+        <name>WS_P10</name>
+        <waterway>WS_SA</waterway>
+        <location>Trifurcation Phase I Training Wall</location>
+                <LineString>
+                    <coordinates>-122.9167437321323,49.18285557615778,0 -122.9172207531941,49.18289658605544,0 -122.9182718705784,49.18255023090885,0 -122.9195243502039,49.18028958363465,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="410">
+        <name>WS_P11</name>
+        <waterway>WS_SA</waterway>
+        <location>Trifurcation Phase II Training Wall</location>
+                <LineString>
+                    <coordinates>-122.9277662713508,49.17257151647383,0 -122.9273450517262,49.17340191855928,0 -122.9257875526881,49.17784011461984,0 -122.925084307952,49.17963014393082,0 -122.9243701562296,49.1811019567193,0 -122.9225056200042,49.184576884723,0 -122.9207356585744,49.187849856419,0 -122.9186941271851,49.1916015442491,0 -122.9177067023912,49.19298571893967,0 -122.9179195758858,49.19298524074998,0 -122.9165359194306,49.19443429388146,0 -122.9154901422402,49.1956040071183,0 -122.915629824068,49.19565152532884,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="411">
+        <name>WS_P12</name>
+        <waterway>WS_SA</waterway>
+        <location>Trifurcation Phase III Training Wall</location>
+                <LineString>
+                    <coordinates>-122.9000906853315,49.19935183834718,0 -122.9011704339695,49.19986608715735,0 -122.9025112795173,49.19934518500411,0 -122.9045690092915,49.19846518622016,0 -122.9055372564714,49.19795694218333,0 -122.9070682779041,49.19708816779903,0 -122.9087440392408,49.19597318233119,0 -122.9103097262191,49.19469322531355,0 -122.9115835984559,49.19337017188995,0 -122.9128024981561,49.19199084189837,0 -122.9136996596586,49.1908368955598,0 -122.9162688600623,49.18629020275693,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="412">
+        <name>WS_P13</name>
+        <waterway>WS_MA</waterway>
+        <location>Sapperton Wingdams 2 &amp; 3</location>
+                <LineString>
+                    <coordinates>-122.8849902956892,49.21495236386801,0 -122.8857247870324,49.21649524214221,0 -122.8791538033782,49.21701136197974,0 -122.8792232292938,49.21917604126434,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="413">
+        <name>WS_P14</name>
+        <waterway>WS_MA</waterway>
+        <location>Sapperton V-Dyke</location>
+                <LineString>
+                    <coordinates>-122.8483076195361,49.21951748625711,0 -122.8471193065787,49.22024561651922,0 -122.8480147116649,49.22072525686043,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="414">
+        <name>WS_P15</name>
+        <waterway>WS_MH</waterway>
+        <location>Big &amp; Middle Eddy Groyne</location>
+                <LineString>
+                    <coordinates>-122.0923697149792,49.14493504875031,0 -122.0921055438246,49.14498268389083,0 -122.0914996824849,49.14500590874406,0 -122.0912339504974,49.14506272126488,0 -122.0907621624344,49.14507090710895,0 -122.0902173147868,49.14510644114995,0 -122.0899974799802,49.1450990442033,0 -122.089105404259,49.1449977966257,0 -122.0874289799843,49.14450982809678,0 -122.0871718876936,49.14439926261994,0 -122.086769344027,49.1441944673909,0 -122.0864600796359,49.14411159965071,0 -122.08597569334,49.14395017918594,0 -122.0853253934452,49.14380222390057,0 -122.0845720890569,49.14373351054366,0 -122.1005092154509,49.14682893703065,0 -122.100457460606,49.14680187642291,0 -122.1002092602764,49.14672377985161,0 -122.0999495913145,49.14663797771331,0 -122.0996316741795,49.14656314422086,0 -122.0993548707937,49.14646197496246,0 -122.0990938411909,49.14639858437516,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="415">
+        <name>WS_P16</name>
+        <waterway>WS_HR</waterway>
+        <location>Harrison Mills (CPR Bridge) Shearboom</location>
+                <LineString>
+                    <coordinates>-121.9604022336256,49.23420413603505,0 -121.9625544326044,49.23556583684984,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="416">
+        <name>WS_P17</name>
+        <waterway>WS_HR</waterway>
+        <location>Harrison River Dykes V, R, W, P</location>
+                <LineString>
+                    <coordinates>-121.9649146042884,49.23532996498393,0 -121.9656592066121,49.23517955076359,0 -121.9654807320731,49.23658980100941,0 -121.9663218161712,49.23721614457388,0 -121.9657638192587,49.2386986830059,0 -121.9662947915698,49.23938175082525,0 -121.9655005067312,49.23999345380663,0 -121.9643081769375,49.2413870005714,0 -121.9652496347676,49.2415620416619,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="417">
+        <name>WS_P18</name>
+        <waterway>WS_HR</waterway>
+        <location>Harrison Hwy No. 7 Bridge Shearboom</location>
+                <LineString>
+                    <coordinates>-121.942117908323,49.2472590149828,0 -121.9466896908148,49.24682478126161,0</coordinates>
+                </LineString>
+    </Placemark>
+    <Placemark id="418">
+        <name>WS_P19</name>
+        <waterway>WS_HR</waterway>
+        <location>Harrison Rapids Shearboom</location>
+            <LineString>
+                <coordinates>-121.9160630632404,49.26677986950614,0 -121.9162178483537,49.26967545861102,0 -121.9159065372188,49.27259523388461,0 -121.91586997273,49.27492733451587,0 -121.9160943840123,49.27531024696333,0</coordinates>
+            </LineString>
+    </Placemark>
+    <!-- Waterway Structure end -->
 
 <!-- Template to copy
     <Placemark id="">

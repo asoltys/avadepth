@@ -2,7 +2,7 @@
  * Created by wsiddall on 26/08/2014.
  * Maintained by seor since 02/10/2015.
  */
-var debug = true;
+var debug = false;
 var locException = [];
 
 /*** Interface functions ***/
@@ -190,6 +190,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 default:
                     $('#sdb_waterway').val("CWC");
             }
+            if ((/WS*/).test(data.waterway)) $('#sdb_waterway').val("WS");
+            
             avaIFaceJS.sdb_func.fillChannel();
             $('#channel').val(data.waterway);
             avaIFaceJS.sdb_func.fillLocation();
