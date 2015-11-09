@@ -152,11 +152,11 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                         ]);
                 });
                 avaIFaceJS.sdb_func.tableReport.draw();
-                // avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+                avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
                 avaIFaceJS.reportWindow.show();
             }).done(function() {
                 $('.spinner').hide();
-                // pBarToggle();
+                pBarToggle();
             });
         },
 
