@@ -38,6 +38,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           table.fnAddData(
               ["<a href='javascript:void(0)' id='" + (index + 1) + "'>" + this.Chainage + "</a>",
               this.SoundingDate,
+              "<a href='http://www2.pac.dfo-mpo.gc.ca/Data/dwf/" + this.Plan + ".dwf'>" + this.Plan + "</a>",
               this.Dredge,
               this.Sounding,
               this.Width,
@@ -56,12 +57,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           }
         });
         table.fnAdjustColumnSizing();
-        $('#soundings').css('table-layout', 'fixed');
         $('.first-row th:nth-child(1)').css('width', '123px');
         $('.first-row th:nth-child(2)').css('width', '218px');
         return $('.first-row th:nth-child(3)').css('width', '218px');
       }).success(function () {
-        $('#soundings tbody tr a').click(avaIFaceJS.ccc_func.showDetail);
+        $('#soundings tbody tr a[id]').click(avaIFaceJS.ccc_func.showDetail);
         $('input[name=channel_select]').change(avaIFaceJS.ccc_func.setChannel);
         $('#soundings').css('width', '800px');
         

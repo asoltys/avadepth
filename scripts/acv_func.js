@@ -59,9 +59,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 			$('#defined_discharge').focus();
 			return;
 		  } else {
-			$('#loading').show();
 			$('.spinner').show();
-			$('#animated, #animated_legend, #replay, #nodata').hide();
 			return avaIFaceJS.acv_func.update(); 
 		  }
 	  });
@@ -95,29 +93,38 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     update: function(){
       var flow, getImage, interval;
+	  avaIFaceJS.acv_func.images = [];
+	  
+	  // disable submit button
+	  $(this).prop('disabled', true);
+	  
+	  // set page title and headers
 	  flow = avadepth.util.getSelectedFlow();
 	  $("#flowRate").val(flow.flowRate);
 	  $('#flowType').val(flow.flowType);
-	  
-      $(this).prop('disabled', true);
 
       start_time = moment($('#from').val(),"HH:mm");
       end_time = moment($('#to').val(),"HH:mm");
       interval = moment.duration(parseFloat($("#interval").val()),"hours");
 
-      $('#frames_retrieved').html('0');
-      $('#number_of_frames').html((end_time.diff(start_time,"minutes")) / interval.asMinutes() + 1);
-      if ($('input[name=type]:checked').val() !== '0') {
+	  avaIFaceJS.acv_func.setTitle();
+	  
+	  // load page
+	  avaIFaceJS.reportWindow.loadReport();
+	  avaIFaceJS.reportWindow.show();
+	  avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
+	  $('#animated, #animated_legend, #replay, #nodata').hide();
+	  $('#loading').show();
+	  
+	  // set loading notification variables
+      $('#frames_retrieved').html('0/');
+      $('#number_of_frames').html(String((end_time.diff(start_time,"minutes")) / interval.asMinutes() + 1) + ")");
+      if ($('input[name=type]:checked').val() !== '0') { // animated series report
         $('#frame_count').show();
-      } else {
+      } else { // static image report
         end_time = start_time.clone();
         $('#frame_count').hide();
       }
-
-      avaIFaceJS.acv_func.images = [];
-      avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
-   
-      avaIFaceJS.acv_func.setTitle();
 
       return (getImage = function() {
         //TODO: Replace following line for production
@@ -134,46 +141,52 @@ if(!(typeof avaIFaceJS === 'undefined')) {
             avaIFaceJS.acv_func.images.push(result);
           }
           avaIFaceJS.acv_func.preload(avaIFaceJS.acv_func.images[avaIFaceJS.acv_func.images.length - 1]);
-          return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length);
-        }).then(function() {
+          return $('#frames_retrieved').html(avaIFaceJS.acv_func.images.length + "/");
+        }).success(function() {
           if (!start_time.isAfter(end_time)){
             getImage();
             start_time.add(interval);
           } else {
+		    $('.spinner').hide();
+            $('#loading').hide();
             avaIFaceJS.acv_func.play();
             return $('#submit').prop('disabled', false);
           }
-        });
+        }).error(function() {
+          $('.spinner').hide();
+		  avaIFaceJS.reportWindow.show();
+          return avaIFaceJS.reportWindow.showError('An error occured while retrieving your results');
+      });
       })();
     },
     setTitle:function(){
-	if(window.location.href.indexOf("fra") > -1) {
-	  moment.locale('fr-ca');
-	}  else {
-	  moment.locale('en');
-        }
+	  if(window.location.href.indexOf("fra") > -1) {
+		moment.locale('fr');
+	  }  else {
+		moment.locale('en');
+	  }
+	
+    var report_title_main = "Fraser River - South Arm" + " for Zone " + (avaIFaceJS.acv_func.selected_zone)
+                            + " at " + $('select#interval').find(':selected').text() + " intervals";
+    var report_title_2 = "For " + moment($('#date').val()).format("MMM D, YYYY")
+                          + " from " + ($('select#from').find(':selected').text())
+                          + " to " + ($('select#to').find(':selected').text());
+
       // Set Report Title Info
 	  if ($('#animated_rd').is(':checked')) { // animated series
 		avaIFaceJS.reportWindow.addTitle(
-		"Fraser River - South Arm",
-		"Zone " + (avaIFaceJS.acv_func.selected_zone)
-			+ " at " + $('select#interval').find(':selected').text() + " intervals",
-		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
-			+ translate_flow() + ") - "
-			+ moment($('#date').val()).format("MMM D, YYYY")
-			+ " from " + ($('select#from').find(':selected').text())
-			+ " to " + ($('select#to').find(':selected').text()),
+		report_title_main,
+		report_title_2,
+		"River Discharge @ Hope " + ($('#flowRate').val()) + " m\u00B3/s ("
+			+ translate_flow() + ")",
 		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
 		);
 	  } else { // static image
 		avaIFaceJS.reportWindow.addTitle(
-		"Fraser River - South Arm",
-		"Zone " + (avaIFaceJS.acv_func.selected_zone),
-		"Hope Discharge " + ($('#flowRate').val()) + " m\u00B3/s ("
-			+ translate_flow() + ") - "
-			+ moment($('#date').val()).format("MMM D, YYYY")
-			+ " from " + ($('select#from').find(':selected').text())
-			+ " to " + ($('select#to').find(':selected').text()),
+		report_title_main,
+		report_title_2,
+		"River Discharge @ Hope " + ($('#flowRate').val()) + " m\u00B3/s ("
+			+ translate_flow() + ")",
 		"Velocity legend: "+ $('input[name="legend_scale"]:checked').next().text()
 		);
 	  }
@@ -193,14 +206,13 @@ if(!(typeof avaIFaceJS === 'undefined')) {
     },
     play: function(){
       var handle, i;
+	  
       avaIFaceJS.reportWindow.loadReport();
-      $('.spinner').hide();
-      $('#loading').hide();
+	  
 	  pBarToggle();
       $('#animated').attr("src", "images/nodata.jpg");
       $('#animated_legend').hide().attr("src", "images/vectorscale" + ($('input[name=legend_scale]:checked').val()) + ".gif");
 	  $('#replay').prop("disabled", true);
-      avaIFaceJS.reportWindow.show();
 	
       if (avaIFaceJS.acv_func.images.length > 0) {
         $('#replay').show();

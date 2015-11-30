@@ -330,7 +330,7 @@ incl_ava_defs={
     'dd': {
       'title_e': "Available Depth Report for Fraser River South Arm",
       'title_f': "Rapport sur les profondeurs disponibles",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
@@ -511,7 +511,7 @@ incl_ava_defs={
     'tw':{
       'title_e':"Transit Window Report",
       'title_f':"Fenêtre de circulation",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,

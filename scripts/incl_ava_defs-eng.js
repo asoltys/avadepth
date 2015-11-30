@@ -8,6 +8,7 @@ var padZero = function(num){
 };
 
 function getAPI(extURL, intURL){
+    // console.log(extURL);
   if(document.URL.split("/")[2].split(":")[0] === "localhost") {
     return intURL;
   } else {
@@ -18,202 +19,586 @@ function getAPI(extURL, intURL){
 var currentDate = new Date();
 
 incl_ava_defs={
-
-  locDefs: {
-    /*'BR': {
-      'Form':{'Title': "Campbell River, BC",'Order':5},
-      'Names': {'Main': ['Marina', 'Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6450273,'max':6458623},'Lon':{'min':-13948221,'max':-13941007}}
+    locDefs: {
+        "CWC" : {
+            "Form" : {
+                "Title" : "Coastal Waterway, BC",
+                "Order" : 0
+            },
+            "Coords" : {
+                "Lat" : {
+                    "min" : 6197437,
+                    "max" : 7470050
+                },
+                "Lon" : {
+                    "min" : -15055722,
+                    "max" : -12980383
+                }
+            },
+            "Sections" : {
+                "BC_CB" : {
+                    "Form" : {
+                        "Title" : "Campbell River",
+                        "Key" : "BC_CB"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6448640,
+                            "max" : 6459951
+                        },
+                        "Lon" : {
+                            "min" : -13947812,
+                            "max" : -13939713
+                        }
+                    }
+                },
+                "BC_CR" : {
+                    "Form" : {
+                        "Title" : "Courtenay River",
+                        "Key" : "BC_CR"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6383982,
+                            "max" : 6395830
+                        },
+                        "Lon" : {
+                            "min" : -13916202,
+                            "max" : -13905364
+                        }
+                    }
+                },
+                "BC_FC" : {
+                    "Form" : {
+                        "Title" : "French Creek",
+                        "Key" : "BC_FC"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6330313,
+                            "max" : 6341037
+                        },
+                        "Lon" : {
+                            "min" : -13851357,
+                            "max" : -13839841
+                        }
+                    }
+                },
+                "BC_NAN" : {
+                    "Form" : {
+                        "Title" : "Nanaimo",
+                        "Key" : "BC_NAN"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6298553,
+                            "max" : 6311508
+                        },
+                        "Lon" : {
+                            "min" : -13800874,
+                            "max" : -13790918
+                        }
+                    }
+                },
+                "BC_QCI" : {
+                    "Form" : {
+                        "Title" : "Queen Charlotte Islands",
+                        "Key" : "BC_QCI"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6993882,
+                            "max" : 7030414
+                        },
+                        "Lon" : {
+                            "min" : -14742057,
+                            "max" : -14687672
+                        }
+                    }
+                },
+                "BC_SQ" : {
+                    "Form" : {
+                        "Title" : "Squamish",
+                        "Key" : "BC_SQ"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6386861,
+                            "max" : 6398793
+                        },
+                        "Lon" : {
+                            "min" : -13713592,
+                            "max" : -13705832
+                        }
+                    }
+                },
+                "BC_TOF" : {
+                    "Form" : {
+                        "Title" : "Tofino Harbour",
+                        "Key" : "BC_TOF"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6286458,
+                            "max" : 6311312
+                        },
+                        "Lon" : {
+                            "min" : -14027881,
+                            "max" : -14001452
+                        }
+                    }
+                }
+            }
+        },
+        "IW" : {
+            "Form": {
+                "Title" : "Interior Waterway, BC",
+                "Order" : 1
+            },
+            "Coords" : {
+                "Lat" : {
+                    "min" : 6586478,
+                    "max" : 6596334
+                },
+                "Lon" : {
+                    "min" : -13249719,
+                    "max" : -13242435
+                }
+            },
+            // add tile
+            "Sections" : {
+                "BC_INT" : {
+                    "Form" : {
+                        "Title" : "Sicamous",
+                        "Key" : "BC_INT"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6586478,
+                            "max" : 6596334
+                        },
+                        "Lon" : {
+                            "min" : -13249719,
+                            "max" : -13242435
+                        }
+                    }
+                }
+            }
+        },
+        "FR" : {
+            "Form" : {
+                "Title" : "Fraser River, BC",
+                "Order" : 2
+            },
+            "Coords" : {
+                "Lat" : {
+                    "min" : 6287000,
+                    "max" : 6352933
+                },
+                "Lon" : {
+                    "min" : -13730400,
+                    "max" : -13510906
+                }
+            },
+            "Sections" : {
+                "FRMA" : {
+                    "Form" : {
+                        "Title" : "Main Arm",
+                        "Key" : "FRMA"
+                    },
+                    "Names" : [
+                        "Channel Overview",
+                        "Queens Reach",
+                        "Douglas Island",
+                        "Bishops Reach",
+                        "Derby Reach",
+                        "Russel Reach & Langley Bar",
+                        "Plumper Reach",
+                        "Matsqui Island"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6294031,
+                            "max" : 6317201
+                        },
+                        "Lon" : {
+                            "min" : -13683886,
+                            "max" : -13614552
+                        }
+                    },
+                    "pwl" : {
+                        "key" : "Main Arm"
+                    }
+                },
+                "FRMA_SC" : {
+                    "Form" : {
+                        "Title" : "Main Arm - Side Channel",
+                        "Key" : "FRMA_SC"
+                    },
+                    "Names" : [
+                        "Sapperton Channel",
+                        "Essondale Channel",
+                        "Douglas Island North",
+                        "Parsons Channel",
+                        "Bedford Channel",
+                        "Enterprise Channel"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6294031,
+                            "max" : 6317201
+                        },
+                        "Lon" : {
+                            "min" : -13683886,
+                            "max" : -13614552
+                        }
+                    }
+                },
+                "FRNA" : {
+                    "Form" : {
+                        "Title" : "North Arm",
+                        "Key" : "FRNA"
+                    },
+                    "Names" : [
+                        "Channel Overview",
+                        "Point Grey",
+                        "Iona",
+                        "Musqueam",
+                        "Sea Island",
+                        "Marpole Basin",
+                        "Mitchell Island",
+                        "Mac-Blo",
+                        "Byrne Road",
+                        "Big Bend - Queens",
+                        "Poplar Island"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6299514,
+                            "max" : 6324716
+                        },
+                        "Lon" : {
+                            "min" : -13728049,
+                            "max" : -13682776
+                        }
+                    },
+                    "pwl" : {
+                        "key" : "North Arm"
+                    }
+                },
+                "FRNA_SC" : {
+                    "Form" : {
+                        "Title" : "North Arm - Side Channel",
+                        "Key" : "FRNA_SC"
+                    },
+                    "Names" : [
+                        "Cowards Cove",
+                        "Point Grey Scow Moorage",
+                        "Deering Channel",
+                        "MacDonald Slough",
+                        "Morey Channel",
+                        "Swishwash Island South",
+                        "Mitchell Island North",
+                        "Tree Island"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6299514,
+                            "max" : 6324716
+                        },
+                        "Lon" : {
+                            "min" : -13728049,
+                            "max" : -13682776
+                        }
+                    }
+                },
+                "FRPR" : {
+                    "Form" : {
+                        "Title" : "Pitt River",
+                        "Key" : "FRPR"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6310322,
+                            "max" : 6348569
+                        },
+                        "Lon" : {
+                            "min" : -13671262,
+                            "max" : -13639325
+                        }
+                    }
+                },
+                "FRSA" : {
+                    "Form" : {
+                        "Title" : "South Arm",
+                        "Key" : "FRSA"
+                    },
+                    "Names" : [
+                        "Channel Overview",
+                        "Sand Heads Entrance",
+                        "Sand Heads Reach",
+                        "Steveston Bend",
+                        "Steveston Cut",
+                        "Woodward Reach",
+                        "Gravesend Reach",
+                        "City Reach",
+                        "Annieville - New West",
+                        "Fraser Surrey Docks"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6282692,
+                            "max" : 6314133
+                        },
+                        "Lon" : {
+                            "min" : -13730138,
+                            "max" : -13677350
+                        }
+                    },
+                    "pwl" : {
+                        "key" : "South Arm"
+                    }
+                },
+                "FRSA_SC" : {
+                    "Form" : {
+                        "Title" : "South Arm - Side Channel",
+                        "Key" : "FRSA_SC"
+                    },
+                    "Names" : [
+                        "Shoal Point - New West",
+                        "Annacis Channel",
+                        "Gundersen Slough",
+                        "Burr Landing Channel",
+                        "Cannery Channel",
+                        "Ladner Sea Reach Overview",
+                        "Deas Slough",
+                        "Ladner Reach",
+                        "Ladner Harbour",
+                        "Canoe Pass",
+                        "Sea Reach"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6282692,
+                            "max" : 6314133
+                        },
+                        "Lon" : {
+                            "min" : -13730138,
+                            "max" : -13677350
+                        }
+                    }
+                },
+                "FRUR" : {
+                    "Form" : {
+                        "Title" : "Mission to Hope",
+                        "Key" : "FRUR"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6293247,
+                            "max" : 6349886
+                        },
+                        "Lon" : {
+                            "min" : -13625920,
+                            "max" : -13510906
+                        }
+                    }
+                }
+            }
+        },
+        "VH" : {
+            "Form" : {
+                "Title" : "Vancouver Harbour, BC",
+                "Order" : 3
+            },
+            "Coords" : {
+                "Lat" : {
+                    "min" : 6316237,
+                    "max" : 6337717
+                },
+                "Lon" : {
+                    "min" : -13722084,
+                    "max" : -13670754
+                }
+            },
+            // TODO
+            "Sections" : {
+                "PMV" : {
+                    "Form" : {
+                        "Title" : "Burrard Inlet",
+                        "Key" : "PMV"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6311123,
+                            "max" : 6342847
+                        },
+                        "Lon" : {
+                            "min" : -13725424,
+                            "max" : -13667414
+                        }
+                    }
+                },
+                "PMV-BI" : {
+                    "Form" : {
+                        "Title" : "Burrard Inlet - Terminal",
+                        "Key" : "PMV-BI"
+                    },
+                    "Names" : "",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6311123,
+                            "max" : 6342847
+                        },
+                        "Lon" : {
+                            "min" : -13725424,
+                            "max" : -13667414
+                        }
+                    }
+                }
+            }
+        },
+        "WS" : {
+            "Form" : {
+                "Title" : "Waterway Structure",
+                "Order" : 4
+            },
+            "Coords" : {
+                "Lat" : {
+                    "min" : 6289181,
+                    "max" : 6325119
+                },
+                "Lon" : {
+                    "min" : -13728265,
+                    "max" : -13569386
+                }
+            },
+            "Sections" : {
+                "WS_NA" : {
+                    "Form" : {
+                        "Title" : "Fraser - North Arm",
+                        "Key" : "WS_NA"
+                    },
+                    "Names" : [
+                        "North Arm Breakwater",
+                        "North Arm Jetty"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6309661,
+                            "max" : 6322555
+                        },
+                        "Lon" : {
+                            "min" : -13725650,
+                            "max" : -13714402
+                        }
+                    }
+                },
+                "WS_SA" : {
+                    "Form" : {
+                        "Title" : "Fraser - South Arm",
+                        "Key" : "WS_SA"
+                    },
+                    "Names" : [
+                        "Steveston North Jetty",
+                        "Steveston South Jetty No. 2",
+                        "Albion Dyke No. 2",
+                        "Steveston Island Wingdams No. 2 & 3",
+                        "Steveston Island Shearboom",
+                        "Woodward Island Training Wall",
+                        "Deas & Kirkland Island Bank Protection",
+                        "Trifurcation Phase I Training Wall",
+                        "Trifurcation Phase II Training Wall",
+                        "Trifurcation Phase III Training Wall"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6289181,
+                            "max" : 6312251
+                        },
+                        "Lon" : {
+                            "min" : -13728265,
+                            "max" : -13678949
+                        }
+                    }
+                },
+                "WS_MA" : {
+                    "Form" : {
+                        "Title" : "Fraser - Main Arm",
+                        "Key" : "WS_MA"
+                    },
+                    "Names" : [
+                        "Sapperton Wingdams 2 & 3",
+                        "Sapperton V-Dyke"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6308005,
+                            "max" : 6315807
+                        },
+                        "Lon" : {
+                            "min" : -13681802,
+                            "max" : -13673052
+                        }
+                    }
+                },
+                "WS_MH" : {
+                    "Form" : {
+                        "Title" : "Fraser - Mission to Hope",
+                        "Key" : "WS_MH"
+                    },
+                    "Names" : "Big & Middle Eddy Groyne",
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6295882,
+                            "max" : 6302924
+                        },
+                        "Lon" : {
+                            "min" : -13593487,
+                            "max" : -13588166
+                        }
+                    }
+                },
+                "WS_HR" : {
+                    "Form" : {
+                        "Title" : "Fraser - Harrison River, BC",
+                        "Key" : "WS_HR"
+                    },
+                    "Names" : [
+                        "Harrison Mills (CPR Bridge) Shearboom",
+                        "Harrison River Dykes V, R, W, P",
+                        "Harrison Hwy No.7 Bridge Shearboom",
+                        "Harrison Rapids Shearboom"
+                    ],
+                    "Coords" : {
+                        "Lat" : {
+                            "min" : 6311285,
+                            "max" : 6325119
+                        },
+                        "Lon" : {
+                            "min" : -13579382,
+                            "max" : -13569386
+                        }
+                    }
+                }
+            }
+        }
     },
-    'CR': {
-      'Form':{'Title': "Courtenay River, BC",'Order':6},
-      'Names': {'Main': ['Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6386978,'max':6394557},'Lon':{'min':-13918640,'max':-13904727}}
-    },*/
-	
-  "FR": {
-    'Form':{'Title':'Fraser River, BC', 'Order':0},
-    'Coords':{'Lat':{'min':6287000,'max':6352933},'Lon':{'min':-13730400,'max':-13510906}},
-    'Sections':{
-      'FRMA': {
-        'Form': {'Title': "Main Arm", 'Order': 4, 'Key': "FRMA"},
-        'Names': ['Channel Overview', 'Queens Reach', 'Douglas Island', 'Bishops Reach', 'Derby Reach', 'Russel Reach', 'Plumper Reach', 'Matsqui Island'],
-        'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
-        'pwl': {'key': 'Main Arm'}
-      },
-	  'FRMA_SC': {
-        'Form': {'Title': "Main Arm - Side Channel", 'Order': 5, 'Key': "FRMA_SC"},
-        'Names': ['Sapperton Channel', 'Essondale Channel', 'Douglas Island North', 'Parsons Channel', 'Bedford Channel', 'Enterprise Channel'],
-        'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}}
-      },
-      'FRSA': {
-        'Form': {'Title': "South Arm", 'Order': 0, 'Key': "FRSA"},
-        'Names': ['Channel Overview', 'Sand Heads Entrance', 'Sand Heads Reach', 'Steveston Bend', 'Steveston Cut', 'Woodward Reach', 'Gravesend Reach', 'City Reach', 'Annieville - New West', 'Fraser Surrey Docks'],
-        'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
-        'pwl': {'key': "South Arm"}
-      },
-      'FRSA_SC': {
-        'Form': {'Title': "South Arm - Side Channel", 'Order': 1, 'Key': "FRSA_SC"},
-        'Names': ['Ladner Sea Reach','Cannery Channel','Burr Landing Channel','Gundersen Slough','Annacis Channel','Shoal Point - New West'],
-        'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
-      },
-      'FRNA': {
-        'Form': {'Title': "North Arm", 'Order': 2, 'Key': "FRNA"},
-        'Names': ['Channel Overview', 'Point Grey', 'Iona', 'Musqueam', 'Sea Island', 'Marpole Basin', 'Mitchell Island', 'Mac-Blo', 'Byrne Road', 'Big Bend - Queens', 'Poplar Island'],
-        'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
-        'pwl': {'key': "North Arm"}
-      },
-      'FRNA_SC': {
-        'Form': {'Title': "North Arm - Side Channel", 'Order': 3, 'Key': "FRNA_SC"},
-        'Names': ['Morey Channel', 'Cowards Cove', 'Point Grey Scow Moorage', 'MacDonald Slough', 'Deering Channel', 'Tree Island'],
-        'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}}
-      },
-      'FRUR': {
-        'Form': {'Title': "Mission to Hope", 'Order': 6, 'Key': "FRUR"},
-        'Names': [''],
-        'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
-      },
-      'FRPR': {
-        'Form':{'Title': "Pitt River",'Order': 7, 'Key': "FRPR"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
-      }
-    }
-  },
-
-  "VH": {
-    'Form':{'Title':'Vancouver Harbour, BC', 'Order':1},
-    'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}},
-    'Sections':{ 
-      'PMV': {
-        'Form':{'Title': "Burrard Inlet",'Order':0, 'Key': "PMV"},
-        'Names': ['Lynnterm Westgate','1st Narrows', '2nd Narrows', 'Port Moody'],
-        'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-        },
-      'PMV-FC': {
-        'Form':{'Title': "False Creek",'Order': 1, 'Key': "PMV-FC"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-      },
-      'PMV-BI': {
-        'Form':{'Title': "Burrard Inlet - Terminals",'Order': 2, 'Key': "PMV-BI"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-      },
-      'PMV-DP': {
-        'Form':{'Title': "Delta Port",'Order': 3, 'Key': "PMV-DP"},
-        'Names': ['Approach Channel and Berths'],
-      'Coords':{'Lat':{'min':6283000,'max':6319590},'Lon':{'min':-13730400,'max':-13669354}}
-      },
-      'PMV-FSD': {
-        'Form':{'Title': "Fraser Surrey Docks",'Order': 4, 'Key': "PMV-FSD"},
-        'Names': ['Approach Channel and Berths'],
-      'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}}
-      }
-    }
-  },
-  
-  "CWC": {
-    'Form':{'Title':'Coastal Waterway, BC', 'Order':2},
-    'Coords':{'Lat':{'min':6197437,'max':7470050},'Lon':{'min':-15055722,'max':-12980383}},
-    'Sections':{ 
-      'CWC1': {
-      'Form':{'Title': "Campbell River",'Order':0, 'Key': "CWC1"},
-      'Names': [''],
-      'Coords':{'Lat':{'min':6448024,'max':6457036},'Lon':{'min':-13948839,'max':-13939513}}
-      },
-       'CWC2': {
-        'Form':{'Title': "Courtenay River",'Order':1, 'Key': "CWC2"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6386746,'max':6394750},'Lon':{'min':-13918066,'max':-13902404}}
-        },
-       'CWC3': {
-        'Form':{'Title': "Squamish",'Order':2, 'Key': "CWC3"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
-        },
-       'CWC4': {
-        'Form':{'Title': "Nanaimo",'Order':3, 'Key': "CWC4"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6300184,'max':6310614},'Lon':{'min':-13801517,'max':-13790703}}
-        },
-       'CWC5': {
-        'Form':{'Title': "Prince Rupert",'Order':4, 'Key': "CWC5"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':7194359,'max':7240989},'Lon':{'min':-14539724,'max':-14494798}}
-        },
-       'CWC6': {
-        'Form':{'Title': "Tofino Harbour",'Order':5, 'Key': "CWC6"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6264828,'max':6309876},'Lon':{'min':-14040703,'max':-13969259}}
-        },
-       'CWC7': {
-        'Form':{'Title': "French Creek",'Order':6, 'Key': "CWC7"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6329755,'max':6341821},'Lon':{'min':-13856419,'max':-13835752}}
-        },
-       'CWC8': {
-        'Form':{'Title': "Queen Charlotte Islands",'Order':7, 'Key': "CWC8"},
-        'Names': [''],
-        'Coords':{'Lat':{'min':6978612,'max':7082344},'Lon':{'min':-14760436,'max':-14677682}}
-      }
-    }
-  }
-  /*
-  
-  ,
-    "WCS": {
-    'Form':{'Title':'Waterway Control Structures', 'Order':3},
-    'Coords':{'Lat':{'min':6287000,'max':6352933},'Lon':{'min':-13730400,'max':-13510906}},
-    'Sections':{
-      'FRMA': {
-        'Form': {'Title': "Fraser - Main Arm", 'Order': 2, 'Key': "FRMA"},
-        'Names': ['Sapperton Wingdams 2 & 3', 'Sapperton V-Dyke'],
-        'Coords': {'Lat': {'min': 6290650, 'max': 6315727}, 'Lon': {'min': -13685417, 'max': -13610377}},
-        'pwl': {'key': 'Main Arm'}
-      },
-      'FRSA': {
-        'Form': {'Title': "Fraser - South Arm", 'Order': 1, 'Key': "FRSA"},
-        'Names': ['Steveston North Jetty', 'Steveston South Jetty No. 2', 'Albion Dyke No. 2', 'Steveston Island Wingdams  No. 2 & 3', 'Steveston Island Shearboom', 'Woodward Island Training Wall', 'Deas & Kirkland Island Bank Protection', 'Trifurcation Phase I Training Wall', 'Trifurcation Phase II Training Wall', 'Trifurcation Phase III Training Wall'],
-        'Coords': {'Lat': {'min': 6287000, 'max': 6317590}, 'Lon': {'min': -13730400, 'max': -13669354}},
-        'pwl': {'key': "South Arm"}
-      },
-      'FRNA': {
-        'Form': {'Title': "Fraser - North Arm", 'Order': 0, 'Key': "FRNA"},
-        'Names': ['North Arm', 'North Arm Jetty'],
-        'Coords': {'Lat': {'min': 6302401, 'max': 6318147}, 'Lon': {'min': -13724567, 'max': -13679776}},
-        'pwl': {'key': "North Arm"}
-      },
-      'FRUR': {
-        'Form': {'Title': "Fraser - Mission to Hope", 'Order': 3, 'Key': "FRUR"},
-        'Names': ['Big & Middle Eddy Groyne'],
-        'Coords': {'Lat': {'min': 6293247, 'max': 6349886}, 'Lon': {'min': -13625920, 'max': -13510906}}
-      },
-	  'HR': {
-      'Form':{'Title': "Harrison River, BC",'Order':4, 'Key': "HR"},
-      'Names': ['Harrison Mills (CPR Bridge) Shearboom', 'Harrison River Dykes V, R, W, P', 'Harrison Hwy No.7 Bridge Shearboom', 'Harrison Rapids Shearboom'],
-      'Coords':{'Lat':{'min':6312424,'max':6352933},'Lon':{'min':-13669210,'max':-13633754}}
-	  }
-    }
-  }  
-  ,
-    
-    'SQ': {
-      'Form':{'Title': "Squamish, BC",'Order':7},
-      'Names': {'Main': ['Mamquam Blind Channel'],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6389408,'max':6397810},'Lon':{'min':-13712876,'max':-13706003}}
-    },
-    
-    'FPORT': {
-      'Form':{'Title': "Fraser Surrey Docks",'Order':9},
-      'Names': {'Main': [],'Secondary': [],'Other': []},
-      'Coords':{'Lat':{'min':6305047,'max':6308238},'Lon':{'min':-13684111,'max':-13680844}}
-    }*/
-  },
 
   avaPages:{
     'acv':{
-      'title_e': "Animated Currents and Velocities",
+      'title_e': "Animated Currents and Velocities for Fraser River South Arm",
       'title_f': "Animation et vélocités du courant",
       'mapInitState':true,
       'hasParameters':true,
@@ -222,39 +607,50 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
-          {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
+          {tag:'label',attr:{htmlFor:'date', style: 'font-weight: bold'},child:["Date:"]},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
           {tag:'br'},
           {tag:'strong',child:["River Discharge @ Hope:"]},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',value:'Actual'}},
-          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
             " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
-          {tag:'select',attr:{id:'selected_discharge'}},
+          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          {tag:'select',attr:{id:'selected_discharge', style:'margin-left: 5px'}},
           " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User-defined"]},
-          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px'}},
+          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal; margin-left: 5px'},child:["User-defined"]},
+          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px; margin-left: 5px'}},
           " m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
-          {tag:'label',attr:{htmlFor:'static_rd'},child:["Display Type:"]},
+          {tag:'label',attr:{htmlFor:'static_rd', style: 'font-weight: bold'},child:["Display Type:"]},
           {tag:'input',attr:{type:'radio',name:'type',id:'static_rd',value:0}},
-          "Static Image",
+          {tag:'label',attr:{style:'margin-left: 5px'}, child:["Static Image"]},
           {tag:'br'},
           {tag:'input',attr:{type:'radio',name:'type',id:'animated_rd',value:1}},
-          "Animated Series",
-          {tag:'div',attr:{className:'clear'}},
+          {tag:'label',attr:{style:'margin-left: 5px'}, child:["Animated Series"]},
+          {tag:'div',child:[
+            {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
+              {tag:'label',attr:{htmlFor:'interval', style: 'font-weight: bold'},child:["Interval:"]},
+              {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
+                {key:4,value:'4 hour'},
+                {key:2,value:'2 hour'},
+                {key:1,value:'1 hour',select:'selected'},
+                {key:0.5,value:'30 minute'},
+                {key:0.25,value:'15 minute'}
+              ]}}
+            ]}
+          ]},
           {tag:'div',attr:{className:'inline-block'},child:[
-            {tag:'label',attr:{htmlFor:'from'},child:["From:"]},
+            {tag:'label',attr:{htmlFor:'from' , style: 'font-weight: bold'},child:["From:"]},
             {tag:'select',attr:{name:'from',id:'from'},ref:{tag:'option',values:function(){
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
@@ -269,7 +665,7 @@ incl_ava_defs={
             }}}
           ]},
           {tag:'div',attr:{id:'to_params',className:'inline-block',style:'display:none'},child:[
-            {tag:'label',attr:{htmlFor:'to'},child:["To:"]},
+            {tag:'label',attr:{htmlFor:'to', style: 'font-weight: bold'},child:["To:"]},
             {tag:'select',attr:{name:'to',id:'to'},ref:{tag:'option',values:[
               {key:18,select:'selected',value:'18:00'},
               {key:19,value:'19:00'},
@@ -280,21 +676,9 @@ incl_ava_defs={
               {key:24,value:'24:00'}
             ]}}
           ]},
-          {tag:'div',child:[
-            {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'interval'},child:["Interval:"]},
-              {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
-                {key:4,value:'4 hour'},
-                {key:2,value:'2 hour'},
-                {key:1,value:'1 hour'},
-                {key:0.5,value:'30 minute'},
-                {key:0.25,value:'15 minute',select:'selected'}
-              ]}}
-            ]}
-          ]},
 		   {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'zone'},child:["Zone:"]},
+              {tag:'label',attr:{htmlFor:'zone', style: 'font-weight: bold'},child:["Zone:"]},
 			  {tag:'select',attr:{name:'zone',id:'zone',style:'width:60px'},ref:{tag:'option',values:function(){
                 var s=[],c=true;
                 for(var i=1;i<=11;i++){
@@ -306,9 +690,9 @@ incl_ava_defs={
               }}}
             ]}
           ]},
-          {tag:'label',attr:{htmlFor:'legend_scale'},child:["Velocity Legend"]},
+          {tag:'label',attr:{htmlFor:'legend_scale', style: 'font-weight: bold'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 to 2 m/s (Animated Interval 0.25 ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:normal'},child:["0 to 2 m/s (Animated Interval 0.25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
           {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5 ms)"]}
@@ -316,17 +700,6 @@ incl_ava_defs={
       ],
       'reportBody':[
         {tag:'div',child:[
-          {tag:'div',attr:{id:'loading',style:'padding:1em 1em;display:none'},child:[
-            {tag:'div',attr:{style:'width: 35px;height: 30px; float: left;'}},
-            "Processing... ",
-            {tag:'span',attr:{style:'font-weight:bold;',id:'frame_count'},child:[
-              "(Frames retrieved: ",
-              {tag:'span',attr:{id:'frames_retrieved'}},
-              " / ",
-              {tag:'span',attr:{id:'number_of_frames'}},
-              ")"
-            ]}
-          ]},
           {tag:'div',attr:{id:'nodata',style:'padding:1em 1em;display:none'},child:["No images were found"]},
           {tag:'div',attr:{style:'width: 100%; margin-auto; text-align: center'},child:[
             {tag:'img',attr:{id:'animated',src:'images/nodata.jpg',style:'width:550px;height:550px;display:block'}},
@@ -339,14 +712,14 @@ incl_ava_defs={
     'dd': {
       'title_e': "Available Depth Report for Fraser River South Arm",
       'title_f': "Rapport sur les profondeurs disponibles",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
       'landscapeReport':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
-          {tag:'label',attr:{htmlFor:'date'},child:['Date:']},
+          {tag:'label',attr:{htmlFor:'date',style:'font-weight:bold'},child:['Date:']},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker',value:function(){
 			var now = new Date();
 			var strDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
@@ -356,26 +729,24 @@ incl_ava_defs={
             {tag:'strong',child:['River Discharge @ Hope:']},
             {tag:'br'},
             {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',className:'rd_actual',value:'Actual'}},
-            {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+            {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left:5px;'},child:[
               "Actual (",
               {tag:'span',attr:{id:'actual_discharge'},child:["0"]},
               " m\u00B3/s)"
             ]},
             {tag:'br'},
             {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Selected"]},
+            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["Selected"]},
             {tag:'select',attr:{id:'selected_discharge'}},
             " m\u00B3/s",
             {tag:'br'},
             {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-            {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["User-defined"]},
+            {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["User-defined"]},
             {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:5em'}},
             " m\u00B3/s",
             {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:"0"}},
             {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
-          ]}
-        ]},
-        {tag:'div',attr:{className:'span-4'},child:[
+          ]},
           {tag:'label',attr:{htmlFor:'chainage'},child:[{tag:'strong',child:['Chainage:']}]},
           "1 to ",
           {tag:'select',attr:{id:'chainage'},ref:{tag:'option',values:function(){
@@ -397,17 +768,16 @@ incl_ava_defs={
           " ",
           {tag:'span',child:["Design Grade"]}
         ]},
-        {tag:'div',child:[
+        {tag:'div',attr:{style:'margin-top:10px;'},child:[
           {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
           {tag:'input',attr:{type:'radio',id:'inner_channel',name:'channel',checked:'checked',value:'0'}},
           " Inner Limit",
+		  {tag:'br'},
           {tag:'input',attr:{type:'radio',id:'outter_channel',name:'channel',value:'1'}},
           " Outer Limit"
-        ]}
-      ]},
-      {tag:'div',attr:{className:'span-3'},child:[
+        ]},
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'width'},child:["Available Width:"]},
+          {tag:'label',attr:{htmlFor:'width',style:'font-weight:bold; margin-top:10px;'},child:["Available Width:"]},
           {tag:'select',attr:{id:'width'},ref:{tag:'option',values:function(){
             var res=[];
             for(var c=100;c>59;c=c-5){
@@ -478,9 +848,9 @@ incl_ava_defs={
                 ]}
               ]},
               {tag:'tr',child:[
-                {tag:'td',attr:{style:'padding: 2px; '},child:[
+                {tag:'td',attr:{style:'padding: 2px;'},child:[
                   {tag:'p',attr:{style:'margin:0;'},child:[
-                    "Hope Discharge ",
+                    "River Discharge @ Hope ",
                     {tag:'span',attr:{id:'static-discharge'}},
                     " m\u00B3/s (",
                     {tag:'span',attr:{id:'static-discharge-eval'}},
@@ -521,9 +891,9 @@ incl_ava_defs={
       ]
     },
     'tw':{
-      'title_e':"Transit Window Report",
+      'title_e':"Transit Window Report for Fraser River South Arm",
       'title_f':"Fenêtre de circulation",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
@@ -536,29 +906,27 @@ incl_ava_defs={
             ]},
             {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
             {tag:'div',child:[
-              {tag:'strong',child:["River Discharge:"]},
+              {tag:'strong',child:["River Discharge @ Hope:"]},
               {tag:'br'},
               {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',value:'Actual'}},
-              {tag:'label',attr:{htmlFor:'actual_radio'},child:[
+              {tag:'label',attr:{htmlFor:'actual_radio',style:'margin-left:5px;'},child:[
                 "Actual (",
                 {tag:'span',attr:{id:'actual_discharge'}},
                 " m\u00B3/s)"
               ]},
               {tag:'br'},
               {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-              {tag:'label',attr:{htmlFor:'selected_radio'},child:['Selected']},
+              {tag:'label',attr:{htmlFor:'selected_radio',style:'margin-left:5px; margin-right:5px;'},child:['Selected']},
               {tag:'select',attr:{id:'selected_discharge'}},
               " m\u00B3/s",
               {tag:'br'},
               {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-              {tag:'label',attr:{htmlFor:'defined_radio'},child:['User-defined']},
+              {tag:'label',attr:{htmlFor:'defined_radio',style:'margin-left:5px; margin-right:5px;'},child:['User-defined']},
               {tag:'input',attr:{id:'defined_discharge',type:'text',style:'width:5em'}},
               " m\u00B3/s",
               {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
               {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
-            ]}
-          ]},
-          {tag:'div',attr:{className:'span-3'},child:[
+            ]},
             {tag:'label',attr:{htmlFor:'chainage'},child:[
               {tag:'strong',child:["Chainage:"]}
             ]},
@@ -583,7 +951,7 @@ incl_ava_defs={
               {tag:'span',child:["Design Grade"]}
             ]},
             {tag:'div',child:[
-              {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
+              {tag:'label',attr:{htmlFor:'channel', style:'margin-top:10px;'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
               {tag:'input',attr:{type:'radio',id:'channel',name:'channel',checked:'checked',value:'1'}},
               " ",
               {tag:'span',attr:{style:'margin-right:1em'},child:["Inner Limit"]},
@@ -603,27 +971,23 @@ incl_ava_defs={
                 return s;
               }}},
               " %"
-            ]}
-          ]},
-          {tag:'div',attr:{className:'span-4'},child:[
+            ]},
             {tag:'div',child:[
               {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Transit Calculation:"]}]},
               {tag:'div',child:[
                 {tag:'label',attr:{htmlFor:'period',style:'display:inline'},child:["Period:"]},
-                {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:0,value:"Day"},{key:1,value:'Week'},{key:2,value:'Month'}]}}
-              ]},
-              {tag:'div',child:[
+                {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:0,value:"Day"},{key:1,value:'Week'},{key:2,value:'Month'}]}},
                 {tag:'input',attr:{id:'window',type:'hidden',name:'window',value:2}},
                 {tag:'input',attr:{id:'cmp',type:'hidden',name:'cmp',value:0}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'max_depth_radio',type:'radio',name:'window_radio',checked:'checked',value:'Maximum Depth'}},
-                {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-bottom:0'},child:['Maximum Depth:']},
+                {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Maximum Depth:"]}]},
                 {tag:'br'},
                 {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
                 {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1 hr'},{key:2,value:'2 hrs',select:true},{key:3,value:'3 hrs'},{key:4,value:'4 hrs'}]}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'min_win_radio',type:'radio',name:'window_radio',value:'Min Window'}},
-                {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-bottom:0'},child:["Available Windows:"]},
+                {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Available Windows:"]}]},
                 {tag:'br'},
                 {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Depth:"]},
                 {tag:'input',attr:{id:'depth',type:'text',name:'depth',value:10,style:"width:3em;diplay:inline-block"}},
@@ -631,65 +995,65 @@ incl_ava_defs={
                 {tag:'span',attr:{style:'margin: 0px 0 0 0; padding: 0 0 0 0;'},child:["m"]}
               ]}
             ]}
-          ]}
+          ]},
         ]}
       ],
       'reportBody':[
         {tag:'div',child:[
-          {tag:'div',child:[
-            {tag:'table',attr:{id:'maximum_depth_table',className:'print-width-70',style:'width:75%;margin:0 auto;'},child:[
-              {tag:'tr',child:[
-                {tag:'td',child:[
-                  "Navigation Channel: Fraser River - ",
-                  {tag:'span',attr:{id:'static-channel'},child:['Inner Channel Limit']}
-                ]}
-              ]},
-              {tag:'tr',child:[
-                {tag:'td',child:[
-                  "Channel Condition: ",
-                  {tag:'span',attr:{id:'static-sounding'},child:["Current Soundings"]},
-                  " for Km 1 to Km ",
-                  {tag:'span',attr:{id:'static-chainage'},child:["35"]},
-                  " at ",
-                  {tag:'span',attr:{id:'static-width'},child:["100"]},
-                  "% Available Width"
-                ]}
-              ]},
-              {tag:'tr',child:[
-                {tag:'td',child:[
-                  "Hope Discharge: ",
-                  {tag:'span',attr:{id:'static-discharge'}},
-                  " m\u00B3/s (",
-                  {tag:'span',attr:{id:'static-discharge-eval'}},
-                  ")"
-                ]}
-              ]}
-            ]},
-            {tag:'table',attr:{id:'header_table',style:'width:75%;margin:5px auto'}}
-          ]},
+          {tag:'table',attr:{id:'header_table',style:'width:75%;margin:5px auto'}},
           {tag:'div',attr:{className:'clear'}},
-          {tag:'section',attr:{style:'padding-top: 20px;margin:1em auto;width:75%'},child:[
-            {tag:'table',attr:{id:'transit-window',className:'zebra-striped'},child:[
-              {tag:'thead',child:[
-                {tag:'tr',child:[
-                  {tag:'th',attr:{colspan:2},child:["From"]},
-                  {tag:'th',attr:{colspan:2},child:["To"]},
-                  {tag:'th',child:["&nbsp;"]}
-                ]},
-                {tag:'tr',child:[
-                  {tag:'th',child:["Date"]},
-                  {tag:'th',child:["Time (PST)"]},
-                  {tag:'th',child:["Date"]},
-                  {tag:'th',child:["Time (PST)"]},
-                  {tag:'th',attr:{id:'transit-window-last-col'},child:["Maximum Depth (m)"]}
-                ]}
-              ]},
-              {tag:'tbody',child:[
-                {tag:'tr',child:[{tag:'td',child:[0]},{tag:'td',child:[0]},{tag:'td',child:[0]},{tag:'td',child:[0]},{tag:'td',child:[0]}]}
-              ]}
-            ]},
-            {tag:'div',attr:{style:'text-align:left;margin-top:1em'},child:["* Depths are relative to local low water level"]}
-          ]}
+          
+
+
+          {
+            tag: 'section',
+            attr: {
+              style:'padding-top: 20px;margin:1em auto;width:75%'
+            },
+            child: [{
+              tag: 'table',
+              attr: {
+                id: 'transit-window',
+                className: 'zebra-striped'
+              },
+              child: [{
+                tag: 'thead',
+                child: [{
+                  tag: 'tr',
+                  child: [{
+                    tag: 'th',
+                    child: ["From"]
+                  },{
+                    tag: 'th',
+                    child: ["To"]
+                  },{
+                    tag: 'th',
+                    attr: {
+                      id: 'transit-window-last-col'
+                    },
+                    child: ["Maximum Depth (m)"]
+                  }]
+                }]
+              },{
+                tag: 'tbody',
+                child: [{
+                  tag: 'tr',
+                  child: [{
+                    tag: 'td',
+                    child: [0]
+                  },{
+                    tag: 'td',
+                    child: [0]
+                  },{
+                    tag: 'td',
+                    child: [0]
+                  }]
+                }]
+              }]
+            },{
+              tag:'div',attr:{style:'text-align:left;margin-top:1em'},child:["* Depths are relative to local low water level"]
+            }]
+          }
         ]}
       ],
       'reportDetail':[
@@ -706,18 +1070,18 @@ incl_ava_defs={
       'formParam':
         [
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'pwl_date'},child:['Date:']},
+            {tag:'label',attr:{htmlFor:'pwl_date', style:'font-weight:bold'},child:['Date:']},
             {tag:'input',attr:{id:'pwl_date',type:'text',name:'pwl_date',className:'datepicker'}},
             {tag:'input',attr:{id:'alt-date',type:'hidden'}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'fraser_river'},child:['Fraser River:']},
+            {tag:'label',attr:{htmlFor:'fraser_river', style:'font-weight:bold'},child:['Fraser River:']},
             {tag:'select',attr:{id:'fraser_river',name:'fraser_river'},
               ref:{
                 tag:'option',values:[
-                  {key:'South Arm',value:'South Arm (km 0-42)'},
-                  {key:'North Arm',value:'North Arm (km 0-32)'},
-                  {key:'Main Arm',value:'Main Arm (km 40-96)'}]
+                  {key:'South Arm',value:'South Arm (km 0-40)'},
+                  {key:'North Arm',value:'North Arm (km 0-30)'},
+                  {key:'Main Arm',value:'Main Arm (km 40-92)'}]
               }
             },
             {tag:'input',attr:{type:'hidden',name:'pwl_waterway',id:'pwl_waterway',value:"0"}}
@@ -725,26 +1089,26 @@ incl_ava_defs={
           {tag:'strong',child:['River Discharge @ Hope:']},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',className:'rd_actual',value:'Actual',disabled:'true'}},
-          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
             " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal'},child:["Selected"]},
-          {tag:'select',attr:{id:'selected_discharge'}},
+          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          {tag:'select',attr:{id:'selected_discharge', 'style':'margin-left: 5px'}},
           " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal'},child:['User-defined']},
-          {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em'}},
+          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal; margin-left: 5px'},child:['User-defined']},
+          {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em; margin-left: 5px'}},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
 		  " m\u00B3/s",
 		  {tag:'br'},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'interval'},child:['Interval:']},
+            {tag:'label',attr:{htmlFor:'interval', style:'font-weight:bold'},child:['Interval:']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
 			  {key:'120',value:'2 hour'},
               {key:'60',value:'1 hour','select':true},
@@ -753,11 +1117,14 @@ incl_ava_defs={
             ]}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'report'},child:['Report:']},
-            {tag:'input',attr:{id:'report',type:'radio',name:'report',checked:'checked',value:'0'}},
+            {tag:'label',attr:{htmlFor:'report', style:'font-weight:bold'},child:['Report:']},
+            {tag:'input',attr:{id:'report_wl',type:'radio',name:'report',checked:'checked',value:'0'}},
             " Water Levels",
-            {tag:'input',attr:{id:'report',type:'radio',name:'report',value:'1'}},
-            " Velocities"
+            {tag:'br'},
+            {tag:'input',attr:{id:'report_v',type:'radio',name:'report',value:'1'}},
+            " Velocities",
+            {tag:'br'},
+            {tag:'br'}
           ]}
         ],
       'reportBody':
@@ -790,12 +1157,14 @@ incl_ava_defs={
         [
           {tag:'div',attr:{className:"grid-12"},child:[
             {tag:'div',attr:{className:'span-6 align-center'},child:[
-              {tag:'h2',child:[
+			  {tag:'h2',child:["Predicted Water Levels",
+			    {tag:'br'},
                 "Fraser River - ",
                 {tag:'span',attr:{id:'det_river-section'}},
-                " At ",
-                {tag:'span',attr:{id:'det_km_time'}},
-                {tag:'span',attr:{id:'det_km_time-suff'}}
+                " at ",
+				{tag:'span',attr:{id:'det_km_time-suff'}},
+                {tag:'span',attr:{id:'det_km_time'}}
+                
               ]},
               {tag:'p',child:[
                 {tag:'span',attr:{id:'det_static-date'}},
@@ -803,16 +1172,15 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'det_static-interval'}},
                 " Intervals",
                 {tag:'br'},
-                "Fraser River - ",
-                {tag:'span',attr:{id:'det_static-arm'},child:['South Arm']},
-                {tag:'br'},
-                "Hope Discharge ",
+                "River Discharge @ Hope ",
                 {tag:'span',attr:{id:'det_static-discharge'}},
                 " m\u00B3/s (",
                 {tag:'span',attr:{id:'det_static-discharge-eval'}},
                 ')'
               ]},
               {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
+			  
+			  
             ]}
           ]}
         ]
@@ -820,25 +1188,25 @@ incl_ava_defs={
     'frh':{
       'title_e':"Fraser River Hydrograph",
       'title_f':"Hydrographie du fleuve Fraser",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':true,
       'hasAnimate':false,
       'longReport':false,
       'landscapeReport':true,
       'formParam':[
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'date'},child:["Date:"]},
+          {tag:'label',attr:{htmlFor:'date', style:'font-weight: bold;'},child:["Date:"]},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
-          {tag:'label',attr:{htmlFor:'period'},child:["Period:"]},
+          {tag:'label',attr:{htmlFor:'period', style:'font-weight: bold;'},child:["Period:"]},
           {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:3,value:"12 Months"},{key:2,value:'6 Months'},{key:1,value:'2 Months'},{key:0,value:'1 Month'}]}},
-          {tag:'label',attr:{htmlFor:'plot'},child:["Plot:"]},
+          {tag:'label',attr:{htmlFor:'plot', style:'font-weight: bold;'},child:["Plot:"]},
           {tag:'input',attr:{id:'actual',type:'checkbox',name:'actual',checked:'checked'}},
           " Actual",
           {tag:'br'},
           {tag:'input',attr:{id:'predicted',type:'checkbox',name:'predicted',checked:'checked'}},
           " Predicted",
-          {tag:'br'}
+          {tag:'br'},{tag:'br'}
         ]}
       ],
       'reportBody':[
@@ -857,7 +1225,7 @@ incl_ava_defs={
     'ccc':{
       'title_e':"Current Channel Conditions for Fraser River South Arm",
       'title_f':"Conditions actuelles du chenal – bras sud du fleuve Fraser",
-      'mapInitState':false,
+      'mapInitState':true,
       'hasParameters':false,
       'hasAnimate':false,
       'longReport':true,
@@ -868,7 +1236,7 @@ incl_ava_defs={
       reportBody:[
         {tag:'div',attr:{id:'conditions'},child:[
           {tag:'div',attr:{id:'soundings-header'},child:[
-            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'table-layout: fixed; margin: 0 auto; width: 800px;'},child:[
+            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'margin: 0 auto; width: 800px;'},child:[
               {tag:'tr',child:[
                 {tag:'td',attr:{className:'align-left'},child:["Note:  All soundings / depths are relative to local low water level"]}
               ]},
@@ -878,21 +1246,28 @@ incl_ava_defs={
                   {tag:'span',attr:{style:'color: red;'},child:["RED"]},
                   " and marked with * denote high spots and shoal areas within the navigation channel limits."
                 ]}
+              ]},
+              {tag:'tr',child:[
+                {tag:'td',attr:{className:'align-left', style:'white-space: pre-line;'},child:[
+                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.\n",
+                  {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/',target:'_blank'},child:['Download Autodesk viewer']}
+                ]}
               ]}
             ]}
           ]},
           {tag:'div',attr:{className:'clear'}},
           {tag:'br'},
-          {tag:'table',attr:{id:'soundings',className:'align-center print-align-center print-margin-0'},child:[
+          {tag:'table',attr:{id:'soundings',className:'align-center print-align-center print-margin-0', style:'width: 800px'},child:[
             {tag:'thead',child:[
               {tag:'tr',attr:{className:'first-row'},child:[
-                {tag:'th',attr:{colspan:2,style:'background-color: white;'}},
+                {tag:'th',attr:{colspan:3,style:'background-color: white;'}},
                 {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Inner Channel Limit"]},
                 {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Outer Channel Limit"]}
               ]},
               {tag:'tr',child:[
                 {tag:'th',child:["Km"]},
                 {tag:'th',child:["Date of Survey"]},
+                {tag:'th',child:["Reference Plan"]},
                 {tag:'th',child:["Design Grade"]},
                 {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
                 {tag:'th',attr:{colspan:2},child:["Available Width"]},
@@ -901,7 +1276,7 @@ incl_ava_defs={
                 {tag:'th',attr:{colspan:2},child:["Available Width"]}
               ]},
               {tag:'tr',child:[
-                {tag:'th',attr:{colspan:2}},
+                {tag:'th',attr:{colspan:3}},
                 {tag:'th',child:["(m)"]},
                 {tag:'th',child:["(m)"]},
                 {tag:'th',child:["(m)"]},
@@ -928,7 +1303,7 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'segment',className:'print_show_inline'},child:["Inner Channel"]}
               ]}
             ]},
-            {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'table-layout: fixed; margin-left: auto; margin-right: auto; width: 550px;'},child:[
+            {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'margin-left: auto; margin-right: auto; width: 550px;'},child:[
               {tag:'tr',child:[
                 {tag:'td',child:["Note:  All soundings / depths are relative to local low water level"]}
               ]},
@@ -986,7 +1361,7 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':
         [
-          {tag:'label',attr:{htmlFor:'sdb_waterway'},child:['Waterway:']},
+          {tag:'label',attr:{htmlFor:'sdb_waterway', style:'font-weight: bold;'},child:['Waterway:']},
           {tag:'select',attr:{id:'sdb_waterway'},ref:{tag:'option',values:
             function(){
               var oArr=[];
@@ -997,16 +1372,18 @@ incl_ava_defs={
               return oArr;
             }
           }},
-          {tag:'label',attr:{htmlFor:'channel'},child:['Channel:']},
+          {tag:'label',attr:{htmlFor:'channel', style:'font-weight: bold;'},child:['Channel:']},
           {tag:'select',attr:{id:'channel'}},
-          {tag:'label',attr:{htmlFor:'location'},child:['Location:']},
+          {tag:'label',attr:{htmlFor:'location', style:'font-weight: bold;'},child:['Location:']},
           {tag:'select',attr:{id:'location'}},
-          {tag:'label',attr:{htmlFor:'type'},child:['Type:']},
+          {tag:'label',attr:{htmlFor:'type', style:'font-weight: bold;'},child:['Type:']},
           {tag:'div',child:[
             {tag:'select',attr:{id:'type',name:'type'},ref:{tag:'option',values:
               function() {
                 var res = [];
-                var oArr = ["", "Composite", "Annual", "Monitor", "Recon", "Investigation", "Dredging", "Structure", "Photograph"];
+                var oArr = ["",
+                            "Recon", "Monitor", "Annual", "Investigation", "Composite",
+                            "Dredging", "Design", "Photograph"];
                 for (var k in oArr) {
                   res.push({key: oArr[k], value: oArr[k]});
                 }
