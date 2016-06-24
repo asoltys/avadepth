@@ -260,7 +260,8 @@ avaIFaceJS = {
                     }, {
                         tag: 'p',
                         attr: {
-                            id: 'reportSubTitle'
+                            id: 'reportSubTitle',
+                            style: 'font-size:14px'
                         },
                         child: [{
                             tag: 'span',

@@ -112,14 +112,14 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                             if (window.location.href.indexOf("eng") > -1) {
                                 return "Inner Channel Limit";
                             } else {
-                                return "Limite intérieure";
+                                return "Limite Intérieure";
                             }
                             break;
                         case channel !== '1':
                             if (window.location.href.indexOf("eng") > -1) {
                                 return 'Outer Channel Limit';
                             } else {
-                                return "Limite extérieure";
+                                return "Limite Extérieure";
                             }
                             break;
                         default:
@@ -129,16 +129,16 @@ if (!(typeof avaIFaceJS === 'undefined')) {
 
                 if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
                     moment.locale('fr');
-                    title1 = "Rapport sur les profondeurs disponibles";
-                    title2 = avaIFaceJS.dd_func.limit_text + " pour " + moment($('#date').val()).format("MMMM D, YYYY");
+                    title1 = "Rapport sur les profondeurs disponibles pour " + moment($('#date').val()).format("D MMMM YYYY");
+                    title2 = "Fleuve Fraser – Bras Sud, " + avaIFaceJS.dd_func.limit_text;
                     subT1 = $('input[name="condition"]:checked').next().text() + " pour KM 1-" + $('#chainage').val() + " à " + $('#width').val() + "% Largeur disponible";
-                    subT2 = "Débit fluvial à Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
+                    subT2 = "Débit fluvial à Hope, " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
-                    title1 = "Available Depth Report for Fraser River South Arm";
-                    title2 = avaIFaceJS.dd_func.limit_text + " for " + moment($('#date').val()).format("MMMM D, YYYY");
+                    title1 = "Available Depth Report for " + moment($('#date').val()).format("MMMM D, YYYY");
+                    title2 = "Fraser River – South Arm, " + avaIFaceJS.dd_func.limit_text;
                     subT1 = $('input[name="condition"]:checked').next().text() + " for KM 1 to " + $('#chainage').val() + " at " + $('#width').val() + "% Available Width";
-                    subT2 = "River Discharge @ Hope " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
+                    subT2 = "River Discharge @ Hope, " + $('#flowRate').val() + " m\u00B3/s (" + translate_flow() + ")";
                 }
                 avaIFaceJS.reportWindow.addTitle(title1, title2, subT1, subT2);
                 avaIFaceJS.reportWindow.show();
