@@ -1223,9 +1223,9 @@ incl_ava_defs={
       ]
     },
     'ccc':{
-      'title_e':"Current Channel Conditions for Fraser River South Arm",
+      'title_e':"Current Channel Conditions for Fraser River – South Arm",
       'title_f':"Conditions actuelles du chenal – bras sud du fleuve Fraser",
-      'mapInitState':true,
+      'mapInitState':false,
       'hasParameters':false,
       'hasAnimate':false,
       'longReport':true,

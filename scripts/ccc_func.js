@@ -70,13 +70,12 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         title1 = "Conditions actuelles du chenal – bras sud du fleuve Fraser";
         title2 = moment().format("dddd, MMMM D, YYYY");
       } else { //If url does not contain 'fra' use
-        title1 = "Fraser River Navigation Channel Condition Report";
-        title2 = "For " + moment().format("dddd, MMMM D, YYYY");
+        title1 = "Fraser River – South Arm Channel Condition Report";
+        title2 = "for " + moment().format("dddd, MMMM D, YYYY");
       }
         avaIFaceJS.reportWindow.addTitle(title1, title2);
 		
         avaIFaceJS.reportWindow.show();
-        avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
       });
 
     },
