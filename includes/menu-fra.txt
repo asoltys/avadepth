@@ -40,8 +40,8 @@ wet-boew.github.com/wet-boew/License-fra.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Conditions au fond du chenal</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-fra.html'>Current Channel Conditions for Fraser River South Arm</a></li>
-<li><a href='/Data/overview/FR_Overview_S.dwf?' target="_blank" style="background-image:none;">Channel Overview for Fraser River South Arm</a></li>
+<li><a href='/cc-ca-fra.html'>Conditions actuelles du chenal – bras sud du fleuve Fraser</a></li>
+<li><a href='/Data/overview/FR_Overview_S.dwf?' target="_blank" style="background-image:none;">Aperçu du chenal – bras sud du fleuve Fraser</a></li>
 <li><a href='/sdb-bds-fra.html'>Dessins d'arpentage</a></li>
 </ul>
 </section>
