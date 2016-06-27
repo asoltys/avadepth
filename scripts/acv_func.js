@@ -275,6 +275,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
 
       // Set Map Extents
       avaMapJS.setExtents("VH");
+
+      avaMapJS.map.setCenter(new OpenLayers.LonLat(-13687000,6291500),6);
     },
     newZoneSelect: function(feat){
       parent.avaIFaceJS.acv_func.setZone(parseInt(feat.feature.data.Zone));
