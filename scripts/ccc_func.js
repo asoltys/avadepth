@@ -76,6 +76,7 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.reportWindow.addTitle(title1, title2);
 		
         avaIFaceJS.reportWindow.show();
+        avaIFaceJS.setMapOpen(avaIFaceJS.MapState.Close);
       });
 
     },
