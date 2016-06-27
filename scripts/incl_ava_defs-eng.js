@@ -1296,7 +1296,8 @@ incl_ava_defs={
         {tag:'div',child:[
           {tag:'div',attr:{className:'grid-12'},child:[
             {tag:'div',attr:{className:'align-center print-align-center print-margin-0'},child:[
-              {tag:'h3',attr:{style:'margin:0'},child:["Fraser River Least Soundings & Available Widths"]},
+              {tag:'h3',attr:{style:'margin:0'},child:["Least Soundings and Available Widths"]},
+              {tag:'h3',attr:{id:'km_chainage',style:'margin:0'},child:["for Fraser River – South Arm"]},
               {tag:'h3',attr:{id:'heading-chainage',style:"margin:0"},child:[
                 {tag:'span',attr:{id:'heading'}},
                 {tag:'span',attr:{className:'print_show_inline'},child:[" - "]},
