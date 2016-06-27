@@ -918,7 +918,7 @@ incl_ava_defs={
               {tag:'tr',child:[
                 {tag:'td',child:["Note:  All soundings / depths are relative to local low water level"]}
               ]},
-              {tag:'tr',child:[
+              {tag:'tr',attr:{className:'print_hide'},child:[
                 {tag:'td',child:[
                   "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan. ",
                   {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/'},child:['Download Autodesk viewer']}
