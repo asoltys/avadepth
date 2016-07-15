@@ -42,6 +42,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <ul>
 <li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('ccc')">Conditions actuelles du chenal – bras sud du fleuve Fraser</a></li>
 <li><a href='/Data/overview/FR_Overview_S.dwf?' target="_blank" style="background-image:none;">Aperçu du chenal – bras sud du fleuve Fraser</a></li>
+<li><a href='/Data/overview/FSD_Overview.dwf?' target="_blank" style="background-image:none;">Sondages pour les postes d'amarrage - docks Fraser Surrey</a></li>
 <li><a href='javascript:void(0)' onclick="avaIFaceJS.loadPage('sdb')">Dessins d’arpentage</a></li>
 </ul>
 </section>

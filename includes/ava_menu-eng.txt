@@ -42,6 +42,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <ul>
 <li><a href='/avdpth_srch-eng.html?page=ccc'>Fraser River – South Arm Channel Condition Report</a></li>
 <li><a href='/Data/overview/FR_Overview_S.dwf?' target="_blank" style="background-image:none;">Fraser River – South Arm Channel Overview</a></li>
+<li><a href='/Data/overview/FSD_Overview.dwf?' target="_blank" style="background-image:none;">Fraser Surrey Docks – Berth Soundings</a></li>
 <li><a href='/avdpth_srch-eng.html?page=sdb'>Survey Drawings</a></li>
 </ul>
 </section>
