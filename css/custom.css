@@ -131,7 +131,7 @@ div#report_body {
 }
 
 div#report_body table tr td{
-  padding:4px;
+  padding:2px 10px 2px 10px;
 }
 
 div#report_content  {

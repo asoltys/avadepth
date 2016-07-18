@@ -76,6 +76,8 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.reportWindow.addTitle(title1, title2);
 		
         avaIFaceJS.reportWindow.show();
+
+        $('#reportSubTitle').addClass('print_hide');
       });
 
     },
