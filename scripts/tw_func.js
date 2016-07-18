@@ -373,6 +373,13 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     $('#total_hr').text(total_hr);
                     $('#avg_hr').text(Math.round(total_hr / num_days_meeting_standard * 100) / 100);
                 }
+
+                if ($('html').attr('lang') === 'en') {
+                    $(".dataTables_empty").text("Specified depth not available");
+                } else {
+                    $(".dataTables_empty").text("Profondeur spécifiée pas disponible");
+                }
+
                 return $('#num_days_meeting_standard').text(num_days_meeting_standard);
             }).success(function() {
                 $('.spinner').hide();
