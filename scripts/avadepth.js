@@ -11,7 +11,7 @@ var querystring = function(key) {
 
 var translate_flow = function() {
   var flow = "";
-  if ($("#lang").val() == "fra") {
+  if (window.location.href.indexOf("fra") > -1) {
     switch($("#flowType").val()) {
       case "Predicted":
         flow = "Prévu";
