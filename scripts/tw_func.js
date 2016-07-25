@@ -238,7 +238,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
                     moment.locale('fr');
                     avaIFaceJS.reportWindow.title1 = 'Profondeur maximum pour la fenêtre de ' + $('#window').val() + ' heures';
-                    avaIFaceJS.reportWindow.title2 = "From " + moment(dt).format("MMMM DD, YYYY") + " to " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
+                    avaIFaceJS.reportWindow.title2 = moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
                     $('#transit-window-last-col').text('Maximum Depth (m)');
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
@@ -252,7 +252,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
                     moment.locale('fr');
                     avaIFaceJS.reportWindow.title1 = 'Available Transit Window for ' + $('#cmp').val() + ' m depth';
-                    avaIFaceJS.reportWindow.title2 = "From " + moment(dt).format("MMMM DD, YYYY") + " to " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
+                    avaIFaceJS.reportWindow.title2 = moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
                     $('#transit-window-last-col').text('Heures (h)');
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
@@ -266,10 +266,25 @@ if (!(typeof avaIFaceJS === 'undefined')) {
             // TODO: French Translation
             var subTitle1, subTitle2;
             if (window.location.href.indexOf("fra") > -1) {
-              subTitle1 = "French translation needed...";
-              subTitle2 = "French translation needed...";
+              subTitle1 = "Chenal navigation: Fleuve Fraser - "
+                          + $('input[name="channel"]:checked').next().text()
+                          + "\n"
+                          + "Condition du chenal: "
+                          + $('input[name="sounding"]:checked').next().text()
+                          + " pour Km 1 à Km "
+                          + $('select#chainage').val()
+                          + " à "
+                          + $('select#width').val()
+                          + "% largeur disponible";
+              subTitle2 = "Rivière décharge @ Hope "
+                          + flow.flowRate
+                          + " m\u00B3/s (" 
+                          + translate_flow()
+                          + ")";
             } else {
-              subTitle1 = "Navigation Channel: Fraser River - Inner Channel Limit \n"
+              subTitle1 = "Navigation Channel: Fraser River - "
+                          + $('input[name="channel"]:checked').next().text()
+                          + "\n"
                           + "Channel Condition: "
                           + $('input[name="sounding"]:checked').next().text()
                           + " for Km 1 to Km "
