@@ -238,7 +238,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
                     moment.locale('fr');
                     avaIFaceJS.reportWindow.title1 = 'Profondeur maximum pour la fenêtre de ' + $('#window').val() + ' heures';
-                    avaIFaceJS.reportWindow.title2 = moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
+                    avaIFaceJS.reportWindow.title2 = "de " + moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
                     $('#transit-window-last-col').text('Maximum Depth (m)');
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
@@ -252,7 +252,7 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 if (window.location.href.indexOf("fra") > -1) { //If url contains 'fra' use 
                     moment.locale('fr');
                     avaIFaceJS.reportWindow.title1 = 'Available Transit Window for ' + $('#cmp').val() + ' m depth';
-                    avaIFaceJS.reportWindow.title2 = moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
+                    avaIFaceJS.reportWindow.title2 = "de " + moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
                     $('#transit-window-last-col').text('Heures (h)');
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
