@@ -492,7 +492,8 @@ incl_ava_defs={
                   {tag:'th',child:['Profondeur minimum sondée']},
                   {tag:'th',attr:{colspan:'2'},child:['Largeur disponible']},
                   {tag:'th',child:['Tidal Aid']},
-                  {tag:'th',child:['Profondeur']}
+                  {tag:'th',child:['Profondeur']},
+                  {tag:'th',child:['Nombre']}
                 ]},
                 {tag:'tr',attr:{style:'background-color: #EEEEEE;'},child:[
                   {tag:'th',child:['(km)']},
@@ -500,6 +501,7 @@ incl_ava_defs={
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['%']},
+                  {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']},
                   {tag:'th',child:['(m)']}
                 ]}
