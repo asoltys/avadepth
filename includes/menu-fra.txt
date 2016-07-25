@@ -20,17 +20,17 @@ wet-boew.github.com/wet-boew/License-fra.txt / wet-boew.github.com/wet-boew/Lice
 <section>
 <ul>
 <li><a href='/Data/Weekly/weekly.pdf?' target="_blank" style="background-image:none;">Rapport hebdomadaire</a></li>
-<li><a href='/ad-pd-fra.html'>Profondeurs disponibles</a></li>
-<li><a href='/tw-ft-fra.html'>Fenêtre de circulation</a></li>
+<li><a href='/avdpth_srch-fra.html?page=dd'>Profondeurs disponibles</a></li>
+<li><a href='/avdpth_srch-fra.html?page=tw'>Fenêtre de circulation</a></li>
 </ul>
 </section>
 </div>
 <div class="span-2">
 <section>
 <ul>
-<li><a href='/pwl-nep-fra.html'>Niveaux et vélocités prévus de l'eau</a></li>
-<li><a href='/acv-cva-fra.html'>Animation et vélocités du courant</a></li>
-<li><a href='/hydrograph-hydrogramme-fra.html'>Hydrographie du fleuve Fraser</a></li>
+<li><a href='/avdpth_srch-fra.html?page=pwl'>Niveaux et vélocités prévus de l'eau</a></li>
+<li><a href='/avdpth_srch-fra.html?page=acv'>Animation et vélocités du courant</a></li>
+<li><a href='/avdpth_srch-fra.html?page=frh'>Hydrographie du fleuve Fraser</a></li>
 </ul>
 </section>
 </div>
@@ -40,10 +40,10 @@ wet-boew.github.com/wet-boew/License-fra.txt / wet-boew.github.com/wet-boew/Lice
 <li><section><h3><a href="#">Conditions au fond du chenal</a></h3><div class="mb-sm">
 <section>
 <ul>
-<li><a href='/cc-ca-fra.html'>Conditions actuelles du chenal – bras sud du fleuve Fraser</a></li>
+<li><a href='/avdpth_srch-fra.html?page=ccc'>Conditions actuelles du chenal – bras sud du fleuve Fraser</a></li>
 <li><a href='/Data/overview/FR_Overview_S.dwf?' target="_blank" style="background-image:none;">Aperçu du chenal – bras sud du fleuve Fraser</a></li>
 <li><a href='/Data/overview/FSD_Overview.pdf?' target="_blank" style="background-image:none;">Sondages pour les postes d'amarrage - docks Fraser Surrey</a></li>
-<li><a href='/sdb-bds-fra.html'>Dessins d'arpentage</a></li>
+<li><a href='/avdpth_srch-fra.html?page=sdb'>Dessins d'arpentage</a></li>
 </ul>
 </section>
 <div class="clear"></div>
