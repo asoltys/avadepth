@@ -222,44 +222,56 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
-          {tag:'label',attr:{htmlFor:'date'},child:["Date :"]},
+          {tag:'label',attr:{htmlFor:'date', style: 'font-weight: bold'},child:["Date:"]},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
           {tag:'br'},
-          {tag:'strong',child:["Débit fluvial à Hope :"]},
+          {tag:'strong',child:["Débit fluvial à Hope:"]},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',value:'Actual'}},
-          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal'},child:[
+          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
             "Réel (",
             {tag:'span',attr:{id:'actual_discharge'}},
-            "m\u00B3/s)"
+            " m\u00B3/s)"
           ]},
           {tag:'br'},
-          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal'},child:["Choisi"]},
-          {tag:'select',attr:{id:'selected_discharge'}},
+          {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
+          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal; margin-left: 5px'},child:["Choisi"]},
+          {tag:'select',attr:{id:'selected_discharge', style:'margin-left: 5px'}},
           " m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal'},child:["Défini par l’utilisateur"]},
-          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'discharge',style:'width:60px'}},
+          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal; margin-left: 5px'},child:["Défini par l’utilisateur"]},
+          {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px; margin-left: 5px'}},
           " m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
-          {tag:'label',attr:{htmlFor:'static_rd'},child:["Type d’affichage :"]},
+          {tag:'label',attr:{htmlFor:'static_rd', style: 'font-weight: bold'},child:["Type d’affichage:"]},
           {tag:'input',attr:{type:'radio',name:'type',id:'static_rd',value:0}},
-          "Image statique",
+          {tag:'label',attr:{style:'margin-left: 5px'}, child:["Image statique"]},
           {tag:'br'},
           {tag:'input',attr:{type:'radio',name:'type',id:'animated_rd',value:1}},
-          "Séries animées",
-          {tag:'div',attr:{className:'clear'}},
+          {tag:'label',attr:{style:'margin-left: 5px'}, child:["Séries animées"]},
+          {tag:'div',child:[
+            {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
+              {tag:'label',attr:{htmlFor:'interval', style: 'font-weight: bold'},child:["Intervalle:"]},
+              {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
+                {key:4,value:'4 hour'},
+                {key:2,value:'2 hour'},
+                {key:1,value:'1 hour',select:'selected'},
+                {key:0.5,value:'30 minute'},
+                {key:0.25,value:'15 minute'}
+              ]}}
+            ]}
+          ]},
           {tag:'div',attr:{className:'inline-block'},child:[
-            {tag:'label',attr:{htmlFor:'from'},child:["De :"]},
+            {tag:'label',attr:{htmlFor:'from' , style: 'font-weight: bold'},child:["De:"]},
             {tag:'select',attr:{name:'from',id:'from'},ref:{tag:'option',values:function(){
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
                 var hr=parseInt(i);
-                res.push({key:i,value:(hr)+":"+padZero((i-hr)*60)});
+                var time = (hr)+":"+padZero((i-hr)*60);
+                res.push({key:time,value:time});
                 if (i==17){
                   res[res.length-1].select="selected";
                 }
@@ -268,7 +280,7 @@ incl_ava_defs={
             }}}
           ]},
           {tag:'div',attr:{id:'to_params',className:'inline-block',style:'display:none'},child:[
-            {tag:'label',attr:{htmlFor:'to'},child:["To:"]},
+            {tag:'label',attr:{htmlFor:'to', style: 'font-weight: bold'},child:["À:"]},
             {tag:'select',attr:{name:'to',id:'to'},ref:{tag:'option',values:[
               {key:18,select:'selected',value:'18:00'},
               {key:19,value:'19:00'},
@@ -279,27 +291,23 @@ incl_ava_defs={
               {key:24,value:'24:00'}
             ]}}
           ]},
-          {tag:'div',child:[
+       {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'interval'},child:["Intervalle :"]},
-              {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
-                {key:4,value:'4 hr'},
-                {key:2,value:'2 hr'},
-                {key:1,value:'1 hr',select:'selected'},
-                {key:0.5,value:'30 min.'},
-                {key:0.25,value:'15 min.'}
-              ]}}
+              {tag:'label',attr:{htmlFor:'zone', style: 'font-weight: bold'},child:["Zone:"]},
+        {tag:'select',attr:{name:'zone',id:'zone',style:'width:60px'},ref:{tag:'option',values:function(){
+                var s=[],c=true;
+                for(var i=1;i<=11;i++){
+                  var t={key:i,value:i};
+                  if(c){t.select=true;c=false;}
+                  s.push(t);
+                }
+                return s;
+              }}}
             ]}
           ]},
-		   {tag:'div',child:[
-            {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'zone'},child:["Zone:"]},
-			  {tag:'input',attr:{type:'text',name:'zone',id:'zone',value:'',readonly:'readonly',style:'width:60px'}}
-            ]}
-          ]},
-          {tag:'label',attr:{htmlFor:'legend_scale'},child:["Légende de la vélocité"]},
+          {tag:'label',attr:{htmlFor:'legend_scale', style: 'font-weight: bold'},child:["Légende de la vélocité"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:norma'},child:["0 à 2 m/s (Intervalle 0,25 ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:normal'},child:["0 à 2 m/s (Intervalle 0,25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
           {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 à 4 m/s (Intervalle 0,5 ms)"]}
