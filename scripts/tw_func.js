@@ -83,7 +83,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "num_days_selected"
                         },
                         child: ["Number of Days with Selected Window:"]
                     }, {
@@ -101,7 +102,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "avg_depth_selected"
                         },
                         child: ["Average Depth of Selected Window:"]
                     }, {
@@ -119,7 +121,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "min_depth_selected"
                         },
                         child: ["Minimum Depth (m):"]
                     }, {
@@ -137,7 +140,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "max_depth_selected"
                         },
                         child: ["Maximum Depth (m):"]
                     }, {
@@ -156,7 +160,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "total_hours_avail"
                         },
                         child: ["Total hours meeting standard:"]
                     }, {
@@ -174,7 +179,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "avg_hours_avail"
                         },
                         child: ["Average hours per day meeting standard:"]
                     }, {
@@ -192,7 +198,8 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     child: [{
                         tag: 'td',
                         attr: {
-                            width: "40%"
+                            width: "40%",
+                            id: "num_days_avail"
                         },
                         child: ["Number of days meeting standard:"]
                     }, {
@@ -239,12 +246,20 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     moment.locale('fr');
                     avaIFaceJS.reportWindow.title1 = 'Profondeur maximum pour la fenêtre de ' + $('#window').val() + ' heures';
                     avaIFaceJS.reportWindow.title2 = "de " + moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
-                    $('#transit-window-last-col').text('Maximum Depth (m)');
+                    $('#transit-window-last-col').text('profondeur maximum (m)');
+                    $('#num_days_selected').text('Nombre de jours avec la fenêtre sélectionnée:');
+                    $('#avg_depth_selected').text('Profondeur moyenne de la fenêtre sélectionnée:');
+                    $('#min_depth_selected').text('Profondeur minimum (m):');
+                    $('#max_depth_selected').text('Profondeur maximum (m):');
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
                     avaIFaceJS.reportWindow.title1 = 'Maximum Depth for ' + $('#window').val() + ' hr. Transit Window';
                     avaIFaceJS.reportWindow.title2 = "From " + moment(dt).format("MMMM DD, YYYY") + " to " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
                     $('#transit-window-last-col').text('Maximum Depth (m)');
+                    $('#num_days_selected').text('Number of Days with Selected Window:');
+                    $('#avg_depth_selected').text('Average Depth of Selected Window:');
+                    $('#min_depth_selected').text('Minimum Depth (m):');
+                    $('#max_depth_selected').text('Maximum Depth (m):');
                 }
             } else {
                 $('#header_table').html('').append(avaIFaceJS.getElements(tableStruct.availWindow));
@@ -253,12 +268,18 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                     moment.locale('fr');
                     avaIFaceJS.reportWindow.title1 = 'Available Transit Window for ' + $('#cmp').val() + ' m depth';
                     avaIFaceJS.reportWindow.title2 = "de " + moment(dt).format("MMMM DD, YYYY") + " à " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
-                    $('#transit-window-last-col').text('Heures (h)');
+                    $('#transit-window-last-col').text('heures (h)');
+                    $('#total_hours_avail').text('Nombre d’heures standard de réunion:');
+                    $('#avg_hours_avail').text('Heures moyennes par type de réunion d’une journée:');
+                    $('#num_days_avail').text('Nombre de jours de réunion standard:');
                 } else { //If url does not contain 'fra' use
                     moment.locale('en');
                     avaIFaceJS.reportWindow.title1 = 'Available Transit Window for ' + $('#cmp').val() + 'm depth';
                     avaIFaceJS.reportWindow.title2 = "From " + moment(dt).format("MMMM DD, YYYY") + " to " + moment(dt).add(period, 'days').format("MMMM DD, YYYY");
                     $('#transit-window-last-col').text('Transit Window (hrs)');
+                    $('#total_hours_avail').text('Total hours meeting standard:');
+                    $('#avg_hours_avail').text('Average hours per day meeting standard:');
+                    $('#num_days_avail').text('Number of days meeting standard:');
                 }
             }
 

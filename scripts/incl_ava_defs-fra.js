@@ -654,16 +654,16 @@ incl_ava_defs={
                   tag: 'tr',
                   child: [{
                     tag: 'th',
-                    child: ["From"]
+                    child: ["de"]
                   },{
                     tag: 'th',
-                    child: ["To"]
+                    child: ["à"]
                   },{
                     tag: 'th',
                     attr: {
                       id: 'transit-window-last-col'
                     },
-                    child: ["Maximum Depth (m)"]
+                    child: ["profondeur maximum (m)"]
                   }]
                 }]
               },{
@@ -683,7 +683,7 @@ incl_ava_defs={
                 }]
               }]
             },{
-              tag:'div',attr:{style:'text-align:left;margin-top:1em'},child:["* Depths are relative to local low water level"]
+              tag:'div',attr:{style:'text-align:left;margin-top:1em'},child:["* Profondeurs sont liés à l'échelon local de l'eau à faible"]
             }]
           }
         ]}
