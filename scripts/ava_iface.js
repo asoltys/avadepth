@@ -99,8 +99,8 @@ avaIFaceJS = {
             $('#report_map').css('width', '100%');
 
             // detail report position parameters
-            repDet.show().css('left', ($( document ).width() - repDet.width()) / 2);
-            repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 50));
+            repDet.show().css('left', ($('#wb-core').width() - repDet.width()) / 2);
+            repDet.show().css('top', ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 5));
             repDet.show().css('position', 'fixed');
 
             /* 
@@ -108,14 +108,14 @@ avaIFaceJS = {
              */
             // detail report size parameters
             var dataHeight = $('#rep_detail_map').height() + $('#rep_detail_info').height();
-            var windowHeight = window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 80);
+            var windowHeight = window.innerHeight - ($('#gcwu-gcnb-in').height() + $('#cboxClose').height() + 30);
 
             if ((avaIFaceJS.currentPage == 'ccc') || (dataHeight >= windowHeight)) { // amount of data in detail report is greater than length of screen, or special case for current channel conditions
                 $('#cboxLoadedContent').css('height', windowHeight);
             } else {
                 $('#cboxLoadedContent').css('height', dataHeight);
             }
-            $('#cboxLoadedContent').css('width', '103%'); // prevents needless horizontal scroll bar
+            $('#cboxLoadedContent').css('width', '101%'); // prevents needless horizontal scroll bar
 
             $('#report_det_cover').show().css('height', (repDet.height() + repDet.offset().top + 50 < $(document).height() ? $(document).height() : repDet.height() + repDet.offset().top + 50));
 
@@ -248,6 +248,7 @@ avaIFaceJS = {
                         tag: 'h2',
                         attr: {
                             id: 'reportTitle1',
+                            className: 'print_hide',
                             style: 'margin:3px 0 0 0'
                         }
                     }, {
@@ -260,7 +261,7 @@ avaIFaceJS = {
                         tag: 'p',
                         attr: {
                             id: 'reportSubTitle',
-                            style: 'font-size:16px'
+                            style: 'font-size:14px'
                         },
                         child: [{
                             tag: 'span',
@@ -660,7 +661,6 @@ avaIFaceJS = {
             hgt = 680
         }
         embedMap.height(hgt);
-        $('#map').height(hgt);
         var ifr = $('iframe');
         var mp = $('#ava_map_ref', ifr.contents());
         mp.height(hgt);
@@ -668,7 +668,7 @@ avaIFaceJS = {
     },
 
     isMapOpen: function() {
-        return document.getElementById('ref_map_det').clientHeight > 50;
+        return document.getElementById('ref_map_det').clientHeight > 30;
     },
 
     // Parse incoming JSON struct to DOM for Form, Report, and Detail layouts
@@ -732,16 +732,10 @@ if (window.location.href.indexOf("fra") > -1) {
 window.onresize = function() {
     var pBarLeft = $('#wb-main').css("width");
     pBarLeft = pBarLeft.slice(0, -2);
-    pBarLeft = pBarLeft - (310 - 5) + "px";
+    pBarLeft = pBarLeft - 310 + "px";
     $("#pBarContainer").css({
         left: pBarLeft
     });
-
-    // var pBarTop = $('#ref_map_det').position().top;
-    // pBarTop = pBarTop + 2 + "px";
-    // $("#pBarContainer").css({
-    //     top: pBarTop
-    // });
     //alert($('#wb-main').css( "width" ));
 };
 
@@ -754,13 +748,13 @@ document.getElementById('pBarHeaderContainer').onclick = function() {
 function pBarToggle() {
     if (document.getElementById('pBarButton').innerText == "-") {
         document.getElementById('map_parameters').style.display = 'none';
-        //document.getElementById('pBarContainer').style.opacity = '0.8';
-        //document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=80)';
+        document.getElementById('pBarContainer').style.opacity = '0.8';
+        document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=80)';
         document.getElementById('pBarButton').innerText = "+"
     } else {
         document.getElementById('map_parameters').style.display = 'block';
-        //document.getElementById('pBarContainer').style.opacity = '1';
-        //document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=100)';
+        document.getElementById('pBarContainer').style.opacity = '1';
+        document.getElementById('pBarContainer').style.filter = 'Alpha(opacity=100)';
         document.getElementById('pBarButton').innerText = "-"
     }
 };

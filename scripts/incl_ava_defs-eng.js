@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Created by wsiddall on 14/07/2014.
  */
 
@@ -692,10 +692,10 @@ incl_ava_defs={
           ]},
           {tag:'label',attr:{htmlFor:'legend_scale', style: 'font-weight: bold'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:normal;margin-left:5px'},child:["0 to 2 m/s (Interval 0.25 ms)"]},
+          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:normal'},child:["0 to 2 m/s (Animated Interval 0.25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
-          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal;margin-left:5px'},child:["0 to 4 m/s (Interval 0.5 ms)"]}
+          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5 ms)"]}
         ]}
       ],
       'reportBody':[
@@ -1238,20 +1238,20 @@ incl_ava_defs={
       reportBody:[
         {tag:'div',attr:{id:'conditions'},child:[
           {tag:'div',attr:{id:'soundings-header'},child:[
-            {tag:'table',attr:{className:'print-margin-0',style:'margin: 0 auto; width: 950px;'},child:[
+            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'margin: 0 auto; width: 800px;'},child:[
               {tag:'tr',child:[
                 {tag:'td',attr:{className:'align-left'},child:["Note:  All soundings / depths are relative to local low water level"]}
               ]},
               {tag:'tr',child:[
                 {tag:'td',attr:{className:'align-left'},child:[
                   "Least soundings highlighted in ",
-                  {tag:'span',attr:{className:'red'},child:["RED"]},
+                  {tag:'span',attr:{style:'color: red;'},child:["RED"]},
                   " and marked with * denote high spots and shoal areas within the navigation channel limits."
                 ]}
               ]},
               {tag:'tr',attr:{className:'print_hide'},child:[
                 {tag:'td',attr:{className:'align-left', style:'white-space: pre-line;'},child:[
-                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.\n",
                   {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/',target:'_blank'},child:['Download Autodesk viewer']}
                 ]}
               ]}
@@ -1268,13 +1268,13 @@ incl_ava_defs={
               ]},
               {tag:'tr',child:[
                 {tag:'th',child:["Km"]},
-                {tag:'th',child:["Survey Date"]},
+                {tag:'th',child:["Date of Survey"]},
                 {tag:'th',child:["Reference Plan"]},
                 {tag:'th',child:["Design Grade"]},
-                {tag:'th',child:["Least Depth"]},
+                {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
                 {tag:'th',attr:{colspan:2},child:["Available Width"]},
                 {tag:'th',child:["Design Grade"]},
-                {tag:'th',child:["Least Depth"]},
+                {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
                 {tag:'th',attr:{colspan:2},child:["Available Width"]}
               ]},
               {tag:'tr',child:[
