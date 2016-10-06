@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by wsiddall on 14/07/2014.
  */
 
@@ -607,39 +607,47 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':[
         {tag:'div',attr:{className:'span-3'},child:[
-          {tag:'label',attr:{htmlFor:'date', style: 'font-weight: bold'},child:["Date:"]},
+          {tag:'label',attr:{for:'date', style: 'font-weight: bold'},child:["Date:"]},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
           {tag:'br'},
           {tag:'strong',child:["River Discharge @ Hope:"]},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',value:'Actual'}},
-          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
+          {tag:'label',attr:{for:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
             " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          {tag:'label',attr:{for:'selected_radio',style:'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          //{tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left: 5px; display:inline-block'},child:[" "]},
           {tag:'select',attr:{id:'selected_discharge', style:'margin-left: 5px'}},
-          " m\u00B3/s",
+          {tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left: 5px; display:inline-block'},child:[" m\u00B3/s"]},
+          //" m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal; margin-left: 5px'},child:["User-defined"]},
+          {tag:'label',attr:{for:'defined_radio',style:'font-weight:normal; margin-left: 5px'},child:["User-defined"]},
+          //{tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
+          //{tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
           {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:60px; margin-left: 5px'}},
-          " m\u00B3/s",
+          {tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" m\u00B3/s"]},
+          //" m\u00B3/s",
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
-          {tag:'label',attr:{htmlFor:'static_rd', style: 'font-weight: bold'},child:["Display Type:"]},
+          {tag:'br'},
+          //{tag:'label',attr:{for:'static_rd', style: 'font-weight: bold'},child:["Display Type:"]},
+          {tag:'strong',child:["Display Type:"]},
+          {tag:'br'},
           {tag:'input',attr:{type:'radio',name:'type',id:'static_rd',value:0}},
-          {tag:'label',attr:{style:'margin-left: 5px'}, child:["Static Image"]},
+          {tag:'label',attr:{for:'static_rd',style:'margin-left: 5px'}, child:["Static Image"]},
           {tag:'br'},
           {tag:'input',attr:{type:'radio',name:'type',id:'animated_rd',value:1}},
-          {tag:'label',attr:{style:'margin-left: 5px'}, child:["Animated Series"]},
+          {tag:'label',attr:{for:'animated_rd',style:'margin-left: 5px'}, child:["Animated Series"]},
           {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'interval', style: 'font-weight: bold'},child:["Interval:"]},
+              {tag:'label',attr:{for:'interval', style: 'font-weight: bold'},child:["Interval:"]},
               {tag:'select',attr:{name:'interval',id:'interval'},ref:{tag:'option',values:[
                 {key:4,value:'4 hour'},
                 {key:2,value:'2 hour'},
@@ -650,7 +658,7 @@ incl_ava_defs={
             ]}
           ]},
           {tag:'div',attr:{className:'inline-block'},child:[
-            {tag:'label',attr:{htmlFor:'from' , style: 'font-weight: bold'},child:["From:"]},
+            {tag:'label',attr:{for:'from' , style: 'font-weight: bold'},child:["From:"]},
             {tag:'select',attr:{name:'from',id:'from'},ref:{tag:'option',values:function(){
               var res=[];
               for(var i=0.00;i<24;i=i+0.25){
@@ -665,7 +673,7 @@ incl_ava_defs={
             }}}
           ]},
           {tag:'div',attr:{id:'to_params',className:'inline-block',style:'display:none'},child:[
-            {tag:'label',attr:{htmlFor:'to', style: 'font-weight: bold'},child:["To:"]},
+            {tag:'label',attr:{for:'to', style: 'font-weight: bold'},child:["To:"]},
             {tag:'select',attr:{name:'to',id:'to'},ref:{tag:'option',values:[
               {key:18,select:'selected',value:'18:00'},
               {key:19,value:'19:00'},
@@ -678,7 +686,7 @@ incl_ava_defs={
           ]},
 		   {tag:'div',child:[
             {tag:'div',attr:{className:'inline-block',style:'margin:0 0 0 0'},child:[
-              {tag:'label',attr:{htmlFor:'zone', style: 'font-weight: bold'},child:["Zone:"]},
+              {tag:'label',attr:{for:'zone', style: 'font-weight: bold'},child:["Zone:"]},
 			  {tag:'select',attr:{name:'zone',id:'zone',style:'width:60px'},ref:{tag:'option',values:function(){
                 var s=[],c=true;
                 for(var i=1;i<=11;i++){
@@ -690,20 +698,20 @@ incl_ava_defs={
               }}}
             ]}
           ]},
-          {tag:'label',attr:{htmlFor:'legend_scale', style: 'font-weight: bold'},child:["Velocity Legend"]},
+          {tag:'label',attr:{for:'legend_scale', style: 'font-weight: bold'},child:["Velocity Legend"]},
           {tag:'input',attr:{id:'zero_to_two',type:'radio',name:'legend_scale',value:0,checked:'checked'}},
-          {tag:'label',attr:{htmlFor:'zero_to_two',style:'font-weight:normal'},child:["0 to 2 m/s (Animated Interval 0.25 ms)"]},
+          {tag:'label',attr:{for:'zero_to_two',style:'font-weight:normal;margin-left:5px'},child:["0 to 2 m/s (Interval 0.25 ms)"]},
           {tag:'br'},
           {tag:'input',attr:{id:'zero_to_four',type:'radio',name:'legend_scale',className:'rd_actual',value:1}},
-          {tag:'label',attr:{htmlFor:'zero_to_four',style:'font-weight:normal'},child:["0 to 4 m/s (Animated Interval 0.5 ms)"]}
+          {tag:'label',attr:{for:'zero_to_four',style:'font-weight:normal;margin-left:5px'},child:["0 to 4 m/s (Interval 0.5 ms)"]}
         ]}
       ],
       'reportBody':[
         {tag:'div',child:[
           {tag:'div',attr:{id:'nodata',style:'padding:1em 1em;display:none'},child:["No images were found"]},
           {tag:'div',attr:{style:'width: 100%; margin-auto; text-align: center'},child:[
-            {tag:'img',attr:{id:'animated',src:'images/nodata.jpg',style:'width:550px;height:550px;display:block'}},
-            {tag:'img',attr:{id:'animated_legend',src:'images/nodata.jpg',style:'width: 325px; height: 67px; display: block;'}}
+            {tag:'img',attr:{id:'animated',src:'images/nodata.jpg',style:'width:550px;height:550px;display:block',alt:'no data image'}},
+            {tag:'img',attr:{id:'animated_legend',src:'images/nodata.jpg',style:'width: 325px; height: 67px; display: block;',alt:'no data image'}}
           ]}
         ]}
       ],
@@ -719,7 +727,7 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam': [
         {tag:'div',attr:{className:'span-4'},child:[
-          {tag:'label',attr:{htmlFor:'date',style:'font-weight:bold'},child:['Date:']},
+          {tag:'label',attr:{for:'date',style:'font-weight:bold'},child:['Date:']},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker',value:function(){
 			var now = new Date();
 			var strDate = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
@@ -729,25 +737,29 @@ incl_ava_defs={
             {tag:'strong',child:['River Discharge @ Hope:']},
             {tag:'br'},
             {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',disabled:'true',className:'rd_actual',value:'Actual'}},
-            {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left:5px;'},child:[
+            {tag:'label',attr:{for:'actual_radio',style:'font-weight:normal; margin-left:5px;'},child:[
               "Actual (",
               {tag:'span',attr:{id:'actual_discharge'},child:["0"]},
               " m\u00B3/s)"
             ]},
             {tag:'br'},
             {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected',checked:'checked'}},
-            {tag:'label',attr:{htmlFor:'selected_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["Selected"]},
+            {tag:'label',attr:{for:'selected_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["Selected"]},
+            //{tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
             {tag:'select',attr:{id:'selected_discharge'}},
-            " m\u00B3/s",
+            {tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" m\u00B3/s"]},
+            //" m\u00B3/s",
             {tag:'br'},
             {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-            {tag:'label',attr:{htmlFor:'defined_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["User-defined"]},
+            {tag:'label',attr:{for:'defined_radio',style:'font-weight:normal; margin-left:5px; margin-right:5px;'},child:["User-defined"]},
+            //{tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
             {tag:'input',attr:{id:'defined_discharge',type:'text',name:'defined_discharge',style:'width:5em'}},
-            " m\u00B3/s",
+            {tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" m\u00B3/s"]},
+            //" m\u00B3/s",
             {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:"0"}},
             {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
           ]},
-          {tag:'label',attr:{htmlFor:'chainage'},child:[{tag:'strong',child:['Chainage:']}]},
+          {tag:'label',attr:{for:'chainage'},child:[{tag:'strong',child:['Chainage:']}]},
           "1 to ",
           {tag:'select',attr:{id:'chainage'},ref:{tag:'option',values:function(){
             var ref=[];
@@ -759,25 +771,35 @@ incl_ava_defs={
           }}},
         " km",
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'condition'},child:[{tag:'strong',child:["Channel Condition:"]}]},
+          {tag:'strong',child:["Channel Condition:"]},
+          //{tag:'label',attr:{for:'condition'},child:[{tag:'strong',child:["Channel Condition:"]}]},
+          {tag:'br'},
           {tag:'input',attr:{id:'condition',type:'radio',name:'condition',checked:'checked',value:'0'}},
           " ",
-          {tag:'span',child:["Current Soundings"]},
+   		  {tag:'label',attr:{for:'condition'},child:["Current Soundings"]},
+          //{tag:'span',child:["Current Soundings"]},
           {tag:'br'},
-          {tag:'input',attr:{type:'radio',name:'condition',value:'1'}},
+          {tag:'input',attr:{id:'condition_dg',type:'radio',name:'condition_dg',value:'1'}},
           " ",
-          {tag:'span',child:["Design Grade"]}
+          {tag:'label',attr:{for:'condition_dg'},child:["Design Grade"]},
+          //{tag:'span',child:["Design Grade"]}
         ]},
         {tag:'div',attr:{style:'margin-top:10px;'},child:[
-          {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
+          //{tag:'label',attr:{for:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
+          {tag:'strong',child:["Navigation Channel:"]},
+          {tag:'br'},
           {tag:'input',attr:{type:'radio',id:'inner_channel',name:'channel',checked:'checked',value:'0'}},
-          " Inner Limit",
+          " ",
+          {tag:'label',attr:{for: 'inner_channel'},child:["Inner Limit"]},
+          //" Inner Limit",
 		  {tag:'br'},
-          {tag:'input',attr:{type:'radio',id:'outter_channel',name:'channel',value:'1'}},
-          " Outer Limit"
+          {tag:'input',attr:{type:'radio',id:'outer_channel',name:'channel',value:'1'}},
+          " ",
+          {tag:'label',attr:{for:'outer_channel'},child:["Outer Limit"]},
+          //" Outer Limit"
         ]},
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'width',style:'font-weight:bold; margin-top:10px;'},child:["Available Width:"]},
+          {tag:'label',attr:{for:'width',style:'font-weight:bold; margin-top:10px;'},child:["Available Width:"]},
           {tag:'select',attr:{id:'width'},ref:{tag:'option',values:function(){
             var res=[];
             for(var c=100;c>59;c=c-5){
@@ -830,14 +852,16 @@ incl_ava_defs={
               {tag:'div',attr:{style:'display: inline-block; padding: 0 0 0 0; margin: 0 0 0 0;',id:'date-display'}}
             ]},
             {tag:'table',attr:{style:'width: 600px; margin-left: auto; margin-right: auto;'},child:[
+             {tag:'thead',child:[
               {tag:'tr',child:[
-                {tag:'td',attr:{style:'padding: 2px;'},child:[
+                {tag:'th',attr:{style:'padding: 2px;'},child:[
                   {tag:'span',child:[
                     "Navigation Channel: Fraser River - ",
                     {tag:'span',attr:{id:'static-limit'}}
                   ]}
                 ]}
-              ]},
+              ]}
+             ]},
               {tag:'tr',child:[
                 {tag:'td',attr:{style:'padding: 2px;'},child:[
                   "Channel Condition: ",
@@ -903,7 +927,7 @@ incl_ava_defs={
       'formParam':[
         {tag:'div',child:[
           {tag:'div',attr:{className:'span-4'},child:[
-            {tag:'label',attr:{htmlFor:'date'},child:[
+            {tag:'label',attr:{for:'date'},child:[
               {tag:'strong',child:["Date:"]}
             ]},
             {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
@@ -911,25 +935,30 @@ incl_ava_defs={
               {tag:'strong',child:["River Discharge @ Hope:"]},
               {tag:'br'},
               {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',value:'Actual'}},
-              {tag:'label',attr:{htmlFor:'actual_radio',style:'margin-left:5px;'},child:[
+              {tag:'label',attr:{for:'actual_radio',style:'margin-left:5px;'},child:[
                 "Actual (",
                 {tag:'span',attr:{id:'actual_discharge'}},
                 " m\u00B3/s)"
               ]},
               {tag:'br'},
               {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-              {tag:'label',attr:{htmlFor:'selected_radio',style:'margin-left:5px; margin-right:5px;'},child:['Selected']},
+              {tag:'label',attr:{for:'selected_radio',style:'margin-left:5px; margin-right:5px;'},child:['Selected']},
+              //{tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
               {tag:'select',attr:{id:'selected_discharge'}},
-              " m\u00B3/s",
+              {tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" m\u00B3/s"]},
+              //" m\u00B3/s",
               {tag:'br'},
               {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-              {tag:'label',attr:{htmlFor:'defined_radio',style:'margin-left:5px; margin-right:5px;'},child:['User-defined']},
+              {tag:'label',attr:{for:'defined_radio',style:'margin-left:5px; margin-right:5px;'},child:['User-defined']},
+              //{tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
+              //{tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
               {tag:'input',attr:{id:'defined_discharge',type:'text',style:'width:5em'}},
-              " m\u00B3/s",
+              {tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" m\u00B3/s"]},
+              //" m\u00B3/s",
               {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
               {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}}
             ]},
-            {tag:'label',attr:{htmlFor:'chainage'},child:[
+            {tag:'label',attr:{for:'chainage'},child:[
               {tag:'strong',child:["Chainage:"]}
             ]},
             "1 to ",
@@ -943,26 +972,35 @@ incl_ava_defs={
             }}},
 			" km",
             {tag:'div',child:[
-              {tag:'label',attr:{htmlFor:"sounding"},child:[{tag:'strong',child:["Channel Condition:"]}]},
-              {tag:'input',attr:{type:'radio',name:'sounding',checked:'checked',value:'0'}},
-              " ",
-              {tag:'span',child:["Current Sounding"]},
-              {tag:'br'},
-              {tag:'input',attr:{type:'radio',name:'sounding',value:'1'}},
-              " ",
-              {tag:'span',child:["Design Grade"]}
+              {tag:'strong',child:["Channel Condition:"]},
+          	  //{tag:'label',attr:{for:'condition'},child:[{tag:'strong',child:["Channel Condition:"]}]},
+          	  {tag:'br'},
+         	  {tag:'input',attr:{id:'condition',type:'radio',name:'condition',checked:'checked',value:'0'}},
+         	  " ",
+   		  	  {tag:'label',attr:{for:'condition'},child:["Current Soundings"]},
+         	  //{tag:'span',child:["Current Soundings"]},
+          	  {tag:'br'},
+         	  {tag:'input',attr:{id:'condition_dg',type:'radio',name:'condition_dg',value:'1'}},
+         	  " ",
+         	  {tag:'label',attr:{for:'condition_dg'},child:["Design Grade"]},
+         	  //{tag:'span',child:["Design Grade"]}
             ]},
+            {tag:'div',attr:{style:'margin-top:10px;'},child:[
+          		//{tag:'label',attr:{for:'channel'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
+          		{tag:'strong',child:["Navigation Channel:"]},
+          		{tag:'br'},
+          		{tag:'input',attr:{type:'radio',id:'inner_channel',name:'channel',checked:'checked',value:'0'}},
+          		" ",
+          		{tag:'label',attr:{for: 'inner_channel'},child:["Inner Limit"]},
+         		//" Inner Limit",
+		 		{tag:'br'},
+          		{tag:'input',attr:{type:'radio',id:'outer_channel',name:'channel',value:'1'}},
+          		" ",
+          		{tag:'label',attr:{for:'outer_channel'},child:["Outer Limit"]},
+          		//" Outer Limit"
+        	]},
             {tag:'div',child:[
-              {tag:'label',attr:{htmlFor:'channel', style:'margin-top:10px;'},child:[{tag:'strong',child:["Navigation Channel:"]}]},
-              {tag:'input',attr:{type:'radio',id:'channel',name:'channel',checked:'checked',value:'1'}},
-              " ",
-              {tag:'span',attr:{style:'margin-right:1em'},child:["Inner Limit"]},
-              {tag:'input',attr:{type:'radio',name:'channel',value:'2'}},
-              " ",
-              {tag:'span',child:["Outer Limit"]}
-            ]},
-            {tag:'div',child:[
-              {tag:'label',attr:{htmlFor:'width',style:"display:inline-block;"},child:["Available Width:"]},
+              {tag:'label',attr:{for:'width',style:"display:inline-block;"},child:["Available Width:"]},
               {tag:'select',attr:{id:'width',style:'margin-top:10px'},ref:{tag:'option',values:function(){
                 var s=[],c=true;
                 for(var i=100;i>45;i=i-5){
@@ -975,23 +1013,23 @@ incl_ava_defs={
               " %"
             ]},
             {tag:'div',child:[
-              {tag:'label',attr:{htmlFor:'channel'},child:[{tag:'strong',child:["Transit Calculation:"]}]},
+              {tag:'label',attr:{for:'channel'},child:[{tag:'strong',child:["Transit Calculation:"]}]},
               {tag:'div',child:[
-                {tag:'label',attr:{htmlFor:'period',style:'display:inline'},child:["Period:"]},
+                {tag:'label',attr:{for:'period',style:'display:inline'},child:["Period:"]},
                 {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:0,value:"Day"},{key:1,value:'Week'},{key:2,value:'Month'}]}},
                 {tag:'input',attr:{id:'window',type:'hidden',name:'window',value:2}},
                 {tag:'input',attr:{id:'cmp',type:'hidden',name:'cmp',value:0}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'max_depth_radio',type:'radio',name:'window_radio',checked:'checked',value:'Maximum Depth'}},
-                {tag:'label',attr:{htmlFor:'max_depth_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Maximum Depth:"]}]},
+                {tag:'label',attr:{for:'max_depth_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Maximum Depth:"]}]},
                 {tag:'br'},
-                {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
+                {tag:'label',attr:{for:'minimum_window',style:'display:inline-block;margin-left:30px'},child:["Min. Window:"]},
                 {tag:'select',attr:{id:'minimum_window',name:'minimum_window',style:'display:inline-block'},ref:{tag:'option',values:[{key:1,value:'1 hr'},{key:2,value:'2 hrs',select:true},{key:3,value:'3 hrs'},{key:4,value:'4 hrs'}]}},
                 {tag:'br'},
                 {tag:'input',attr:{id:'min_win_radio',type:'radio',name:'window_radio',value:'Min Window'}},
-                {tag:'label',attr:{htmlFor:'min_win_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Available Windows:"]}]},
+                {tag:'label',attr:{for:'min_win_radio',style:'margin-left:5px'},child:[{tag:'strong',child:["Available Windows:"]}]},
                 {tag:'br'},
-                {tag:'label',attr:{style:'display:inline-block;margin-left:30px'},child:["Depth:"]},
+                {tag:'label',attr:{for:'depth',style:'display:inline-block;margin-left:30px'},child:["Depth:"]},
                 {tag:'input',attr:{id:'depth',type:'text',name:'depth',value:10,style:"width:3em;diplay:inline-block"}},
                 " ",
                 {tag:'span',attr:{style:'margin: 0px 0 0 0; padding: 0 0 0 0;'},child:["m"]}
@@ -1072,12 +1110,12 @@ incl_ava_defs={
       'formParam':
         [
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'pwl_date', style:'font-weight:bold'},child:['Date:']},
+            {tag:'label',attr:{for:'pwl_date', style:'font-weight:bold'},child:['Date:']},
             {tag:'input',attr:{id:'pwl_date',type:'text',name:'pwl_date',className:'datepicker'}},
             {tag:'input',attr:{id:'alt-date',type:'hidden'}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'fraser_river', style:'font-weight:bold'},child:['Fraser River:']},
+            {tag:'label',attr:{for:'fraser_river', style:'font-weight:bold'},child:['Fraser River:']},
             {tag:'select',attr:{id:'fraser_river',name:'fraser_river'},
               ref:{
                 tag:'option',values:[
@@ -1091,26 +1129,29 @@ incl_ava_defs={
           {tag:'strong',child:['River Discharge @ Hope:']},
           {tag:'br'},
           {tag:'input',attr:{id:'actual_radio',type:'radio',name:'discharge',className:'rd_actual',value:'Actual',disabled:'true'}},
-          {tag:'label',attr:{htmlFor:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
+          {tag:'label',attr:{for:'actual_radio',style:'font-weight:normal; margin-left: 5px'},child:[
             "Actual (",
             {tag:'span',attr:{id:'actual_discharge'}},
             " m\u00B3/s)"
           ]},
           {tag:'br'},
           {tag:'input',attr:{id:'selected_radio',type:'radio',name:'discharge',value:'Selected'}},
-          {tag:'label',attr:{htmlFor:'selected_radio','style':'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          {tag:'label',attr:{for:'selected_radio','style':'font-weight:normal; margin-left: 5px'},child:["Selected"]},
+          //{tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left: 5px; display:inline-block'}, child:[" m\u00B3/s"]},
           {tag:'select',attr:{id:'selected_discharge', 'style':'margin-left: 5px'}},
-          " m\u00B3/s",
+          {tag:'label',attr:{for:'selected_discharge',style:'font-weight:normal; margin-left: 5px; display:inline-block'}, child:[" m\u00B3/s"]},
+          //" m\u00B3/s",
           {tag:'br'},
           {tag:'input',attr:{id:'defined_radio',type:'radio',name:'discharge',value:'Defined'}},
-          {tag:'label',attr:{htmlFor:'defined_radio','style':'font-weight:normal; margin-left: 5px'},child:['User-defined']},
+          {tag:'label',attr:{for:'defined_radio','style':'font-weight:normal; margin-left: 5px'},child:['User-defined']},
+          //{tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" "]},
           {tag:'input',attr:{id:'defined_discharge',name:'defined_discharge',type:'text',style:'width:5em; margin-left: 5px'}},
+          {tag:'label',attr:{for:'defined_discharge',style:'font-weight:normal; margin-left:5px; display:inline-block'},child:[" m\u00B3/s"]},
           {tag:'input',attr:{type:'hidden',name:'flowRate',id:'flowRate',value:'0'}},
           {tag:'input',attr:{type:'hidden',name:'flowType',id:'flowType',value:'0'}},
-		  " m\u00B3/s",
 		  {tag:'br'},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'interval', style:'font-weight:bold'},child:['Interval:']},
+            {tag:'label',attr:{for:'interval', style:'font-weight:bold'},child:['Interval:']},
             {tag:'select',attr:{id:'interval'},ref:{tag:'option',values:[
 			  {key:'120',value:'2 hour'},
               {key:'60',value:'1 hour','select':true},
@@ -1119,12 +1160,17 @@ incl_ava_defs={
             ]}}
           ]},
           {tag:'div',child:[
-            {tag:'label',attr:{htmlFor:'report', style:'font-weight:bold'},child:['Report:']},
+            {tag:'strong',child:['Report: ']},
+            {tag:'br'},
             {tag:'input',attr:{id:'report_wl',type:'radio',name:'report',checked:'checked',value:'0'}},
-            " Water Levels",
+            ' ',
+            {tag:'label',attr:{for:'report_wl', style:'font-weight:normal'},child:['Water Levels']},
+            //" Water Levels",
             {tag:'br'},
             {tag:'input',attr:{id:'report_v',type:'radio',name:'report',value:'1'}},
-            " Velocities",
+            ' ',
+            {tag:'label',attr:{for:'report_v', style:'font-weight:normal'},child:['Velocities']},
+            //" Velocities",
             {tag:'br'},
             {tag:'br'}
           ]}
@@ -1132,7 +1178,7 @@ incl_ava_defs={
       'reportBody':
         [{tag:"div",child:[
           {tag:'div',attr:{className:'span-12'},child:[
-            {tag:'section',attr:{'style':'padding:20px'},child:[
+            {tag:'section',attr:{'style':'padding:0 20px 0 20px'},child:[
               {tag:'table',attr:{id:'water-levels',className:'table-condensed align-center print-table-fixed'},child:[
                 {tag:'thead',child:[
                   {tag:'tr',child:[
@@ -1180,7 +1226,7 @@ incl_ava_defs={
                 {tag:'span',attr:{id:'det_static-discharge-eval'}},
                 ')'
               ]},
-              {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:100%;'}}
+              {tag:'div',attr:{id:'det_placeholder',className:'demo-placeholder',style:'height:450px;width:800px;'}}
 			  
 			  
             ]}
@@ -1197,17 +1243,19 @@ incl_ava_defs={
       'landscapeReport':true,
       'formParam':[
         {tag:'div',child:[
-          {tag:'label',attr:{htmlFor:'date', style:'font-weight: bold;'},child:["Date:"]},
+          {tag:'label',attr:{for:'date', style:'font-weight: bold;'},child:["Date:"]},
           {tag:'input',attr:{id:'date',type:'text',name:'date',className:'datepicker'}},
           {tag:'input',attr:{id:'alt-date',type:'hidden'}},
-          {tag:'label',attr:{htmlFor:'period', style:'font-weight: bold;'},child:["Period:"]},
+          {tag:'label',attr:{for:'period', style:'font-weight: bold;'},child:["Period:"]},
           {tag:'select',attr:{id:'period'},ref:{tag:'option',values:[{key:3,value:"12 Months"},{key:2,value:'6 Months'},{key:1,value:'2 Months'},{key:0,value:'1 Month'}]}},
-          {tag:'label',attr:{htmlFor:'plot', style:'font-weight: bold;'},child:["Plot:"]},
+          {tag:'label',attr:{for:'plot', style:'font-weight: bold;'},child:["Plot:"]},
           {tag:'input',attr:{id:'actual',type:'checkbox',name:'actual',checked:'checked'}},
-          " Actual",
+          {tag:'label',attr:{for:'actual',style:'font-weight:normal'},child:[" Actual"]},
+          //" Actual",
           {tag:'br'},
           {tag:'input',attr:{id:'predicted',type:'checkbox',name:'predicted',checked:'checked'}},
-          " Predicted",
+          {tag:'label',attr:{for:'predicted',style:'font-weight:normal'},child:[" Predicted"]},
+          //" Predicted",
           {tag:'br'},{tag:'br'}
         ]}
       ],
@@ -1238,20 +1286,22 @@ incl_ava_defs={
       reportBody:[
         {tag:'div',attr:{id:'conditions'},child:[
           {tag:'div',attr:{id:'soundings-header'},child:[
-            {tag:'table',attr:{className:'align-center print-align-center print-margin-0',style:'margin: 0 auto; width: 800px;'},child:[
+            {tag:'table',attr:{className:'print-margin-0',style:'margin: 0 auto; width: 950px;'},child:[
+             {tag:'thead',child:[
               {tag:'tr',child:[
-                {tag:'td',attr:{className:'align-left'},child:["Note:  All soundings / depths are relative to local low water level"]}
+                {tag:'th',attr:{className:'align-left'},child:["Note:  All soundings / depths are relative to local low water level"]}
+              ]}
               ]},
               {tag:'tr',child:[
                 {tag:'td',attr:{className:'align-left'},child:[
-                  "Least soundings highlighted in ",
-                  {tag:'span',attr:{style:'color: red;'},child:["RED"]},
+                  "Least depths highlighted in ",
+                  {tag:'span',attr:{className:'red'},child:["RED"]},
                   " and marked with * denote high spots and shoal areas within the navigation channel limits."
                 ]}
               ]},
               {tag:'tr',attr:{className:'print_hide'},child:[
                 {tag:'td',attr:{className:'align-left', style:'white-space: pre-line;'},child:[
-                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.\n",
+                  "Users will need to download an Autodesk DWF viewer to view and display the Reference Plan.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
                   {tag:'a',attr:{href:'http://usa.autodesk.com/design-review/',target:'_blank'},child:['Download Autodesk viewer']}
                 ]}
               ]}
@@ -1266,15 +1316,15 @@ incl_ava_defs={
                 {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Inner Channel Limit"]},
                 {tag:'th',attr:{colspan:4,style:'background-color: white;'},child:["Outer Channel Limit"]}
               ]},
-              {tag:'tr',child:[
+              {tag:'tr',attr:{style:'white-space:nowrap;'},child:[
                 {tag:'th',child:["Km"]},
-                {tag:'th',child:["Date of Survey"]},
+                {tag:'th',child:["Survey Date"]},
                 {tag:'th',child:["Reference Plan"]},
                 {tag:'th',child:["Design Grade"]},
-                {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
+                {tag:'th',child:["Least Depth"]},
                 {tag:'th',attr:{colspan:2},child:["Available Width"]},
                 {tag:'th',child:["Design Grade"]},
-                {tag:'th',attr:{style:'padding:0'},child:["Least Sounding"]},
+                {tag:'th',child:["Least Depth"]},
                 {tag:'th',attr:{colspan:2},child:["Available Width"]}
               ]},
               {tag:'tr',child:[
@@ -1309,8 +1359,10 @@ incl_ava_defs={
               ]}
             ]},
             {tag:'table',attr:{id:'survey-header',className:'styled align-center',style:'margin-left: auto; margin-right: auto; width: 550px;'},child:[
+              {tag:'thead',child:[
               {tag:'tr',child:[
                 {tag:'td',child:["Note:  All soundings / depths are relative to local low water level"]}
+              ]}
               ]},
               {tag:'tr',attr:{className:'print_hide'},child:[
                 {tag:'td',child:[
@@ -1323,10 +1375,10 @@ incl_ava_defs={
               {tag:'strong',child:['Channel Select']},
               {tag:'br'},
               {tag:'input',attr:{id:'inner_select',type:'radio',name:'channel_select',style:'display:inline',checked:'checked',value:'1'}},
-              {tag:'label',attr:{htmlFor:'inner_select',style:'display:inline'},child:["Inner Channel"]},
+              {tag:'label',attr:{for:'inner_select',style:'display:inline'},child:["Inner Channel"]},
               "  ",
               {tag:'input',attr:{id:'outer_select',type:'radio',name:'channel_select',style:'display:inline',value:'2'}},
-              {tag:'label',attr:{htmlFor:'outer_select',style:'display:inline'},child:["Outer Channel"]},
+              {tag:'label',attr:{for:'outer_select',style:'display:inline'},child:["Outer Channel"]},
               {tag:'br'}
             ]}
           ]},
@@ -1366,7 +1418,7 @@ incl_ava_defs={
       'landscapeReport':false,
       'formParam':
         [
-          {tag:'label',attr:{htmlFor:'sdb_waterway', style:'font-weight: bold;'},child:['Waterway:']},
+          {tag:'label',attr:{for:'sdb_waterway', style:'font-weight: bold;'},child:['Waterway:']},
           {tag:'select',attr:{id:'sdb_waterway'},ref:{tag:'option',values:
             function(){
               var oArr=[];
@@ -1377,11 +1429,11 @@ incl_ava_defs={
               return oArr;
             }
           }},
-          {tag:'label',attr:{htmlFor:'channel', style:'font-weight: bold;'},child:['Channel:']},
+          {tag:'label',attr:{for:'channel', style:'font-weight: bold;'},child:['Channel:']},
           {tag:'select',attr:{id:'channel'}},
-          {tag:'label',attr:{htmlFor:'location', style:'font-weight: bold;'},child:['Location:']},
+          {tag:'label',attr:{for:'location', style:'font-weight: bold;'},child:['Location:']},
           {tag:'select',attr:{id:'location'}},
-          {tag:'label',attr:{htmlFor:'type', style:'font-weight: bold;'},child:['Type:']},
+          {tag:'label',attr:{for:'type', style:'font-weight: bold;'},child:['Type:']},
           {tag:'div',child:[
             {tag:'select',attr:{id:'type',name:'type'},ref:{tag:'option',values:
               function() {
@@ -1399,7 +1451,7 @@ incl_ava_defs={
         ],
       'reportBody':
         [
-          {tag:'section',attr:{'style':'padding:20px;'},child:[
+          {tag:'section',attr:{'style':'padding:0 20px 0 20px;'},child:[
             {tag:'table',attr:{id:'report_tbl',className:"styled width-80"},child:[
               {tag:'thead',child:[
                 {tag:'tr',child:[

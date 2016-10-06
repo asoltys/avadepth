@@ -41,3 +41,23 @@ $(function() {
   $('.datepicker').datepicker({dateFormat: 'yy-mm-dd', altFormat: 'MM d, yy', altField: '#alt-date'});
   $('#date').datepicker("setDate", new Date());
 });
+
+//highlight current link and tab in local nav
+$( document ).on( "wb-ready.wb-tabs", ".wb-tabs", function( event ) {
+    var arr = document.getElementsByClassName("wb-tabs").item(0).getElementsByTagName("a");
+    for (var i = 0, len = arr.length; i < len; ++i) {
+        if (arr[i].href == window.location.href) {
+            var targetTab = $(arr[i]).parent().closest('details').attr('id').slice(-1);
+            var currentTab = $('details.in[role="tabpanel"]').attr('id').slice(-1);
+            var shift = Number(targetTab) - Number(currentTab);
+            if (shift != 0) {
+              $(".wb-tabs").trigger({
+                type: "wb-shift.wb-tabs",
+                shiftto: shift
+              });
+            }
+            $(arr[i]).contents().unwrap().wrap("<strong></strong>");
+            break;
+        }
+    }
+});

@@ -63,6 +63,17 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 return $('input[name="window_radio"]').change();
             });
 
+            // default Current Soundings
+            $("#date").datepicker("option", "minDate", 0);
+            // $('input[type=radio][name=condition]').change(function() {
+            //     if (this.value == '0') {
+            //         $("#date").datepicker("option", "minDate", 0);
+            //     }
+            //     else if (this.value == '1') {
+            //         $("#date").datepicker("option", "minDate", null);
+            //     }
+            // });
+
             return $('#submit').click(function() {
                 // user has left user-defined m^3/s value blank
                 if (avadepth.util.getSelectedFlow().flowRate === "" && avadepth.util.getSelectedFlow().flowType === 'UserDefined') {

@@ -1,4 +1,4 @@
-
+﻿
 // Current Channel Conditions Objects
 if(!(typeof avaIFaceJS === 'undefined')) {
 
@@ -25,11 +25,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
           aoColumnDefs: [
             {
               sClass: "1",
-              "aTargets": [2, 3, 4, 5]
+              "aTargets": [4, 5, 6]
             },
             {
               sClass: "2",
-              "aTargets": [6, 7, 8, 9]
+              "aTargets": [8, 9, 10]
             }
           ]
         }));
@@ -49,11 +49,11 @@ if(!(typeof avaIFaceJS === 'undefined')) {
               this.WidthPerc2]);
           if (this.IsHigh) {
             $('#soundings tr:last').find('.1').addClass('red');
-            $('#soundings tr:last td:eq(3)').append('*');
+            $('#soundings tr:last td:eq(4)').append('*');
           }
           if (this.IsHigh2) {
             $('#soundings tr:last').find('.2').addClass('red');
-            return $('#soundings tr:last td:eq(7)').append('*');
+            return $('#soundings tr:last td:eq(8)').append('*');
           }
         });
         table.fnAdjustColumnSizing();
@@ -76,8 +76,6 @@ if(!(typeof avaIFaceJS === 'undefined')) {
         avaIFaceJS.reportWindow.addTitle(title1, title2);
 		
         avaIFaceJS.reportWindow.show();
-
-        $('#reportSubTitle').addClass('print_hide');
       });
 
     },

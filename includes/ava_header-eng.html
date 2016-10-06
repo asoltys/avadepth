@@ -7,20 +7,23 @@
 <head>
 <meta charset="utf-8" />
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-wet-boew.github.io/wet-boew/License-eng.txt / wet-boew.github.io/wet-boew/Licence-fra.txt -->
+wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Avadepth</title>
-
-<link rel="shortcut icon" href="/wet-boew/dist/theme-gcwu-fegc/images/favicon.ico" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta name="dcterms.description" content="Avadepth" />
 <meta name="description" content="Avadepth" />
 <meta name="dcterms.creator" content="DFO" />
 <meta name="dcterms.title" content="Avadepth" />
 <meta name="dcterms.issued" title="W3CDTF" content="2013-02-27" />
 <meta name="dcterms.modified" title="W3CDTF" content="<!--#config timefmt='%Y-%m-%d'--><!--#echo var='LAST_MODIFIED'-->" />
-<meta name="dcterms.subject" title="gccore" content="Waterways; Bathymetry; Hydrography" />
+<meta name="dcterms.subject" title="gccore" content="Waterways; Hydrography" />
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
+<meta name="dcterms.language" lang="fr" title="ISO639-2" content="fra" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="X-UA-Compatible" content="IE=9" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="HTML, CSS, XHTML, JavaScript" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="robots" content="noindex, follow" />
+<!-- Meta data-->
 
 <script src="/scripts/jquery-1.9.1.js"></script>
 <script src="/scripts/jquery.ui.core.js"></script>
@@ -28,113 +31,161 @@ wet-boew.github.io/wet-boew/License-eng.txt / wet-boew.github.io/wet-boew/Licenc
 <script src="/scripts/jquery.dataTables.min.js"></script>
 <script src="/scripts/moment.min.js"></script>
 <script src="/scripts/moment.fr-ca.js"></script>
-<script src="/scripts/datetime-moment.js"></script>
 <script src="/scripts/flot/jquery.flot.js"></script>
 <script src="/scripts/flot/jquery.flot.time.js"></script>
 <script src="/scripts/flot/jquery.flot.axislabels.js"></script>
 <script src="/scripts/avadepth.js"></script>
 
-<!--[if lte IE 8]>
-<script src="/wet-boew/dist/js/polyfills/html5shiv-min.js"></script>
-<script language="javascript" type="text/javascript" src="/scripts/flot/excanvas.min.js"></script>
-<link rel="stylesheet" href="/wet-boew/dist/grids/css/util-ie-min.css" />
-<link rel="stylesheet" href="/wet-boew/dist/js/css/pe-ap-ie-min.css" />
-<link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-ie-min.css" />
-<noscript><link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-ns-ie-min.css" /></noscript>
-<![endif]-->
-<!--[if gt IE 8]><!-->
-<link rel="stylesheet" href="/wet-boew/dist/grids/css/util-min.css" />
-<link rel="stylesheet" href="/wet-boew/dist/js/css/pe-ap-min.css" />
-<link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-min.css" />
-<noscript><link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-ns-min.css" /></noscript>
+<!--[if gte IE 9 | !IE ]><!-->
+<link href="/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/GCWeb/css/theme.min.css" />
 <!--<![endif]-->
+<!--[if lt IE 9]>
+<link href="/GCWeb/assets/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" href="/GCWeb/css/ie8-theme.min.css" />
+<![endif]-->
+<noscript><link rel="stylesheet" href="/wet-boew/css/noscript.min.css" /></noscript>
 
 <!-- CustomCSSStart -->
 <link rel="stylesheet" href="/css/custom.css" />
 <link rel="stylesheet" media="print" href="/css/print.css" />
 <link rel="stylesheet" href="/css/smoothness/jquery-ui-1.7.1.custom.css" />
 <!-- CustomCSSEnd -->
+
+<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+<script>dataLayer1 = [];</script>
+<!-- End Google Tag Manager -->
 </head>
 
-<body><div id="wb-body">
-<div id="wb-skip">
+<body class="home" vocab="http://schema.org/" typeof="WebPage">
+<!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
+<noscript><iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
+<!-- End Google Tag Manager -->
 <ul id="wb-tphp">
-<li id="wb-skip1"><a href="#wb-cont">Skip to main content</a></li>
-<li id="wb-skip2"><a href="#wb-nav">Skip to footer</a></li>
+<li class="wb-slc">
+<a class="wb-sl" href="#wb-cont">Skip to main content</a>
+</li>
+<li class="wb-slc visible-sm visible-md visible-lg">
+<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
+</li>
+</ul>
+
+<header role="banner" class="print_hide">
+<div id="wb-bnr" class="container">
+<section id="wb-lng" class="visible-md visible-lg text-right">
+<h2 class="wb-inv">Language selection</h2>
+<div class="row">
+<div class="col-md-12">
+<ul class="list-inline margin-bottom-none">
+<li><a href="/language.asp" lang="fr">Français</a></li>
 </ul>
 </div>
-
-<div id="wb-head"><div id="wb-head-in"><header>
-<!-- HeaderStart -->
-<nav role="navigation"><div id="gcwu-gcnb"><h2>Government of Canada navigation bar</h2><div id="gcwu-gcnb-in"><div id="gcwu-gcnb-fip">
-<div id="gcwu-sig">
-	<div id="gcwu-sig-in">
-		<!--[if IE]>
-			<img style="position: absolute;" class="print_hide" src="/wet-boew/dist/theme-gcwu-fegc/images/sig-eng-w.png" alt="Government of Canada" />
-		<![endif]-->
-		<!--[if !IE]><!-->
-			<img style="position: absolute;" src="/wet-boew/dist/theme-gcwu-fegc/images/sig-eng-w.png" alt="Government of Canada" />
-		<!--<![endif]-->	
-	</div>
 </div>
-<ul>
-<li id="gcwu-gcnb1"><a rel="external" href="http://www.canada.ca/menu-eng.html">Canada.ca</a></li>
-<li id="gcwu-gcnb2"><a rel="external" href="http://www.servicecanada.gc.ca/eng/home.shtml">Services</a></li>
-<li id="gcwu-gcnb3"><a rel="external" href="http://www.canada.ca/aboutgov-ausujetgouv/depts/menu-eng.html">Departments</a></li>
-<li id="gcwu-gcnb-lang"><a href="/language.asp" lang="fr">Français</a></li>
-</ul>
-</div></div></div></nav>
-
-<div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in"><img src="/images/ccg-signature-eng.png" alt="CCG Word Mark" id="ccg-word" /><img src="/images/ccg-logotran.gif" alt="CCG Logo" width="65" height="85" id="ccg-logo" />
-<div id="gcwu-wmms">
-	<div id="gcwu-wmms-in">
-		<!--[if IE]>
-			<object class="print_hide" data="/wet-boew/dist/theme-gcwu-fegc/images/wmms.svg" role="img" tabindex="-1" aria-label="Symbol of the Government of Canada" type="image/svg+xml">
-				<img src="/wet-boew/dist/theme-gcwu-fegc/images/wmms.png" alt="Symbol of the Government of Canada" />
-			</object>
-		<![endif]-->
-		<!--[if !IE]><!-->
-			<object class="print_hide" data="/wet-boew/dist/theme-gcwu-fegc/images/wmms.svg" role="img" tabindex="-1" aria-label="Symbol of the Government of Canada" type="image/svg+xml">
-				<img src="/wet-boew/dist/theme-gcwu-fegc/images/wmms.png" alt="Symbol of the Government of Canada" />
-			</object>
-		<!--<![endif]-->			
-	</div>
+</section>
+<div class="row">
+<div class="brand col-xs-8 col-sm-9 col-md-6">
+<a href="http://www.canada.ca/en/index.html"><object type="image/svg+xml" tabindex="-1" data="/GCWeb/assets/sig-blk-en.svg">Government of Canada</object><span class="wb-inv"> Government of Canada</span></a>
 </div>
-<div id="gcwu-title"><p id="gcwu-title-in"><a href="/index-eng.html">Avadepth</a></p></div>
-
-<section role="search"><div id="gcwu-srchbx"><h2>Search</h2>
-<form action="#" method="post"><div id="gcwu-srchbx-in">
-<label for="gcwu-srch">Search</label><input id="gcwu-srch" name="gcwu-srch" type="search" value="" size="27" maxlength="150" />
-<input id="gcwu-srch-submit" name="gcwu-srch-submit" type="submit" value="Search" />
-</div></form>
-</div></section>
-</div></div>
-
-<nav role="navigation">
-<div id="gcwu-psnb"><h2>Site menu</h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
-<ul class="mb-menu" data-ajax-replace="../includes/ava_menu-eng.txt">
-<li><div><a href="">About Avadepth</a></div></li>
-<li><div><a href="">Avadepth Reports</a></div></li>
-<li><div><a href="">Channel Bottom Conditions</a></div></li>
-<!-- <li><div><a href="">Bathymetry Analysis</a></div></li> -->
+<section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+<h2>Search and menus</h2>
+<ul class="list-inline text-right chvrn">
+<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
-</div></div></div></div>
-
-<!--
-<div id="gcwu-bc"><h2>Breadcrumb trail</h2><div id="gcwu-bc-in">
-<ol>
-<li><a href="../../index-eng.html">Home</a></li>
-<li><a href="../index-eng.html">Working examples</a></li>
-<li>GC Web Usability theme</li>
-</ol>
-</div></div>
--->
+<div id="mb-pnl"></div>
+</section>
+<section id="wb-srch" class="col-xs-6 text-right visible-md visible-lg">
+<h2>Search</h2>
+<form action="https://www.canada.ca/en/sr.html" method="get" name="cse-search-box" role="search" class="form-inline">
+<input name="st" value="s" type="hidden" />
+<input name="s5bm3ts21rch" value="x" type="hidden" />
+<input name="num" value="10" type="hidden" />
+<input name="st1rt" value="1" type="hidden" />
+<input name="langs" value="en" type="hidden" />
+<input name="cdn" value="canada" type="hidden" />
+<input name="hq" type="hidden" />
+<div class="form-group">
+<label for="wb-srch-q" class="wb-inv">Search website</label>
+<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="27" maxlength="150" placeholder="Search Canada.ca" />
+<datalist id="wb-srch-q-ac">
+<!--[if lte IE 9]><select><![endif]-->
+<!--[if lte IE 9]></select><![endif]-->
+</datalist>
+</div>
+<div class="form-group submit">
+<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+</div>
+</form>
+</section>
+</div>
+</div>
+<nav role="navigation" id="wb-sm" data-ajax-replace="https://cdn.canada.ca/gcweb-cdn-live/sitemenu/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+<div class="container nvbar">
+<h2>Topics menu</h2>
+<div class="row">
+<ul class="list-inline menu">
+<li><a href="http://www.esdc.gc.ca/en/jobs/index.page">Jobs</a></li>
+<li><a href="http://www.cic.gc.ca/english/index.asp">Immigration</a></li>
+<li><a href="http://travel.gc.ca">Travel</a></li>
+<li><a href="http://www.canada.ca/en/services/business/index.html">Business</a></li>
+<li><a href="http://www.canada.ca/en/services/benefits/index.html">Benefits</a></li>
+<li><a href="http://healthycanadians.gc.ca/index-eng.php">Health</a></li>
+<li><a href="http://www.canada.ca/en/services/taxes/index.html">Taxes</a></li>
+<li><a href="http://www.canada.ca/en/services/index.html">More services</a></li>
+</ul>
+</div>
+</div>
 </nav>
-<!-- HeaderEnd -->
-</header></div></div>
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+<h2>You are here:</h2>
+<div class="container">
+<div class="row">
+<ol class="breadcrumb">
+<li><a href="http://www.canada.ca/en.html">Home</a></li>
+<!-- <li><a href="http://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+<li><a href="http://www.canada.ca/en/services/transport/marine.html">Marine transportation</a></li>
+<li><a href="http://www.canada.ca/en/services/transport/marine/navigation.html">Navigation and marine conditions</a></li> -->
+<li>...</li>
+<li><a href="http://www.marinfo.gc.ca/e-nav/portal-eng.php">Navigation by Region</a></li>
+<li><a href="http://www.marinfo.gc.ca/e-nav/pacific-pacifique/pacific-pacifique-s-eng.php">Pacific South Coast</a></li>
+<!-- <li><a href="http://www.marinfo.gc.ca/e-nav/pacific-pacifique/pacific-pacifique-s3-eng.php">Tides, Water Levels and Currents</a></li>
+ --><li><a href="/index-eng.html">Avadepth</a></li>
+</ol>
+</div>
+</div>
+</nav>
+</header>
 
-<div id="wb-core"><div id="wb-core-in" class="equalize">
-<div id="wb-main" role="main"><div id="wb-main-in">
+<main role="main" property="mainContentOfPage" class="container" id="wb-main">
+<div id="wb-main-in">
+
+<!-- local nav -->
+<br class="print_hide">
+<div class="wb-tabs ignore-session print_hide">
+<div class="tabpanels">
+<details id="details-panel1">
+<summary>About Avadepth</summary>
+<section class="col-lg-6 col-md-6 gc-drmt"><a href="/theory-theorie-eng.html">Background & Theory of Operation</a></section>
+</details>
+<details id="details-panel2">
+<summary>Avadepth Reports</summary>
+<section class="col-lg-4 col-md-6 gc-drmt"><a href="/Data/weekly/weekly.pdf?" target="_blank">CCG Weekly Report</a></section>
+<section class="col-lg-4 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=dd">Daily Depths</a></section>
+<section class="col-lg-4 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=tw">Transit Window</a></section>
+<section class="col-lg-4 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=pwl">Predicted Water Levels & Velocities</a></section>
+<section class="col-lg-4 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=acv">Animated Current & Velocities</a></section>
+<section class="col-lg-4 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=frh">Fraser River Hydrograph</a></section>
+</details>
+<details id="details-panel3">
+<summary>Channel Bottom Conditions</summary>
+<section class="col-lg-6 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=ccc">Fraser River – South Arm Channel Condition Report</a></section>
+<section class="col-lg-6 col-md-6 gc-drmt"><a href="/Data/overview/FR_Overview_S.dwf?" target="_blank">Fraser River – South Arm Channel Overview</a></section>
+<section class="col-lg-6 col-md-6 gc-drmt"><a href="/Data/overview/FSD_Overview.pdf?" target="_blank">Fraser Surrey Docks – Berth Soundings</a></section>
+<section class="col-lg-6 col-md-6 gc-drmt"><a href="/avdpth_srch-eng.html?page=sdb">Survey Drawings</a></section>
+</details>
+</div>
+</div>
+
 <input type="hidden"
   id="lang"
   name="lang"

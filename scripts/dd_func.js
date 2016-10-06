@@ -35,6 +35,17 @@ if (!(typeof avaIFaceJS === 'undefined')) {
                 $('#defined_radio').prop('checked', true).change();
             });
 
+            // default Current Soundings
+            $("#date").datepicker("option", "minDate", 0);
+            // $('input[type=radio][name=condition]').change(function() {
+            //     if (this.value == '0') {
+            //         $("#date").datepicker("option", "minDate", 0);
+            //     }
+            //     else if (this.value == '1') {
+            //         $("#date").datepicker("option", "minDate", null);
+            //     }
+            // });
+
             // Retrieve content on form submission
             return $("#submit").click(function() {
                 if (!$('input[name=discharge]').is(":checked")) {
