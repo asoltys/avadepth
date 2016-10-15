@@ -1,102 +1,169 @@
 <div class="clear"></div>
-<dl id="gcwu-date-mod" role="contentinfo">
-<dt>Date modified:</dt><dd><span><time><!--#config timefmt='%Y-%m-%d'--><!--#echo var='LAST_MODIFIED'--></time></span></dd>
-</dl>
-<div class="clear"></div>
 <!-- MainContentEnd -->
-</div></div>
-</div></div>
+</div>
+</main>
 
-<div id="wb-foot"><div id="wb-foot-in"><footer><h2 id="wb-nav">Footer</h2>
-<!-- FooterStart -->
-<nav role="navigation"> 
-  <div id="gcwu-sft">
-    <h3>Site footer</h3>
-    <div id="gcwu-sft-in">
-      <div id="gcwu-tctr">
-        <ul>
-          <li class="gcwu-tc"><a href="http://www.dfo-mpo.gc.ca/terms-conditions-avis-eng.htm" rel="license">Terms and conditions</a></li>
-          <li class="gcwu-tr"><a href="http://www.dfo-mpo.gc.ca/transparency-transparence/index-eng.htm">Transparency</a></li>
-        </ul>
-      </div>
-      <div class="clear"></div>
-      <section>
-        <div class="span-2">
-          <h4 class="gcwu-col-head"><a href="http://www.dfo-mpo.gc.ca/about-notre-sujet/index-eng.htm">About us</a></h4>
-          <ul>
-            <li><a href="http://www.dfo-mpo.gc.ca/organization-ministere-eng.htm">Our organization</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/minister-ministre/minister-ministre-eng.htm">Our Minister</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/acts-lois/index-eng.htm">Acts and regulations</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/career-carriere-eng.htm">Careers</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/about-notre-sujet/publications/index-eng.htm">Publications</a></li>
-          </ul>
+<div class="container print_hide">
+<div class="row pagedetails">
+<div class="col-sm-5 col-xs-12 datemod">
+<dl id="wb-dtmd">
+<dt>Date modified:&#32;</dt>
+<dd><time property="dateModified" id="dateModified">
+<script>
+var dateLast = Date(document.lastModified);
+var format = { month : 'numeric', day : 'numeric', year: 'numeric' };
+var dateConvert = new Date(dateLast).toLocaleDateString('en-CA', format);
+document.write(dateConvert);
+</script>
+</time></dd>
+</dl>
+</div>
+<div class="clear visible-xs"></div>
+<div class="col-sm-4 col-xs-6">
+<a href="http://www.canada.ca/en/contact/feedback.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Feedback<span class="wb-inv"> about this web site</span></a>
+</div>
+<div class="col-sm-3 col-xs-6 text-right">
+<div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
+</div>
+<div class="clear visible-xs"></div>
+</div>
+</div>
+
+<aside class="gc-nttvs container print_hide">
+<h2>Government of Canada activities and initiatives</h2>
+<div class="wb-eqht row mrgn-bttm-md" data-ajax-replace="https://cdn.canada.ca/gcweb-cdn-live/features/features-en.html">
+    <p><ul><li><a href="http://www.canada.ca/en/">Visit the Canada.ca home page to see activities and initiatives in the Government of Canada.</a></li></ul></p>
+</div>
+</aside>
+
+<div id="wb-foot"><div id="wb-foot-in">
+
+<footer role="contentinfo" id="wb-info">
+<nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
+    <h2 class="wb-inv">About this site</h2>
+    <div class="row">
+        <div class="col-sm-3 col-lg-3">
+            <section>
+                <h3>Contacts</h3>
+                <ul class="list-unstyled">
+                    <li><a class="gl-footer" href="http://www.canada.ca/en/contact.html">Contact information</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>News</h3>
+                <ul class="list-unstyled">
+                    <li><a class="gl-footer" href="http://news.gc.ca/web/index-en.do">Newsroom</a></li>
+                
+                    <li><a class="gl-footer" href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=1&amp;_ga=1.163843263.1403012476.1399396777">News releases</a></li>
+                
+                    <li><a class="gl-footer" href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=3&amp;_ga=1.202532049.1365865838.1443638203">Media advisories</a></li>
+                
+                    <li><a class="gl-footer" href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=970&amp;_ga=1.201983249.1403012476.1399396777">Speeches</a></li>
+                
+                    <li><a class="gl-footer" href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=980&amp;_ga=1.125501834.1403012476.1399396777">Statements</a></li>
+                </ul>
+            </section>
         </div>
-      </section>
-      <section>
-        <div class="span-2">
-          <h4 class="gcwu-col-head"><a href="http://www.dfo-mpo.gc.ca/media/index-eng.htm">News</a></h4>
-          <ul>
-            <li><a href="http://www.dfo-mpo.gc.ca/media/news-presse-eng.htm">News releases</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/media/statement-declarations-eng.htm">Ministerial statements</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/media/charges-inculpations-eng.htm">Charges and convictions</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/media/gallery-galerie-eng.htm">Photo gallery</a></li>
-          </ul>
+
+        <section class="col-sm-3 col-lg-3">
+            <h3>Government</h3>
+            <ul class="list-unstyled">
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/system.html">How government works</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+            
+                <li><a class="gl-footer" href="http://pm.gc.ca/eng">Prime Minister</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/ministers.html">Ministers</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/publicservice.html">Public service and military</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/libraries.html">Libraries</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/publications.html">Publications</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/government/statistics.html">Statistics and data</a></li>
+            
+                <li><a class="gl-footer" href="http://www1.canada.ca/en/newsite.html">About Canada.ca</a></li>
+            </ul>
+        </section>
+
+        <section class="col-sm-3 col-lg-3 brdr-lft">
+            <h3>Transparency</h3>
+            <ul class="list-unstyled">
+                <li><a class="gl-footer" href="http://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+            
+                <li><a class="gl-footer" href="http://open.canada.ca/en">Open government</a></li>
+            
+                <li><a class="gl-footer" href="http://www.tbs-sct.gc.ca/pd-dp/gr-rg/index-eng.asp">Proactive disclosure</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+            
+                <li><a class="gl-footer" href="http://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+            </ul>
+        </section>
+
+        <div class="col-sm-3 col-lg-3 brdr-lft">
+            <section>
+    <h3>Feedback</h3>
+    <p>
+        <a class="gl-footer" href="http://www1.canada.ca/en/contact/feedback.html">
+            <img src="/GCWeb/assets/feedback.png" alt="Feedback about this Web site">
+        </a>
+    </p>
+</section>
+            <section>
+    <h3>Social media</h3>
+    <p>
+        <a class="gl-footer" href="http://www.canada.ca/en/social.html">
+            <img src="/GCWeb/assets/social.png" alt="Social media">
+        </a>
+    </p>
+</section>
+<section>
+    <h3>Mobile centre</h3>
+    <p>
+        <a class="gl-footer" href="http://www.canada.ca/en/mobile.html">
+            <img src="/GCWeb/assets/mobile.png" alt="Mobile centre">
+        </a>
+    </p>
+</section>
         </div>
-      </section>
-      <section>
-        <div class="span-2">
-          <h4 class="gcwu-col-head"><a href="http://www.dfo-mpo.gc.ca/contact/index-eng.htm">Contact us</a></h4>
-          <ul>
-            <li><a href="http://www.dfo-mpo.gc.ca/regions/contact/index-eng.htm">Regional offices</a></li>
-            <li><a href="http://www.dfo-mpo.gc.cahttp://www.ccg-gcc.gc.ca/eng/CCG/Contact_Us">Canadian Coast Guard</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/contact/report-problem-signalements-eng.htm">Report a problem</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/contact/emergency-urgence-eng.htm">Emergency assistance</a></li>
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div class="span-2">
-          <h4 class="gcwu-col-head"><a href="http://www.dfo-mpo.gc.ca/connect/index-eng.htm">Stay connected</a></h4>
-          <ul>
-            <li><a href="http://www.dfo-mpo.gc.ca/connect/youtube-eng.htm">YouTube</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/connect/twitter-eng.htm">Twitter</a></li>
-            <li><a href="http://www.dfo-mpo.gc.ca/media/rss-eng.htm">Feeds</a></li>
-          </ul>
-        </div>
-      </section>
     </div>
-  </div>
 </nav>
 
-<nav role="navigation"><div id="gcwu-gcft"><h3>Government of Canada footer</h3><div id="gcwu-gcft-in"><div id="gcwu-gcft-fip">
-<ul>
-<li><a rel="external" href="http://healthycanadians.gc.ca/index-eng.php"><span>Health</span><br />healthycanadians.gc.ca</a></li>
-<li><a rel="external" href="http://www.voyage.gc.ca/index-eng.asp"><span>Travel</span><br />travel.gc.ca</a></li>
-<li><a rel="external" href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span><br />servicecanada.gc.ca</a></li>
-<li><a rel="external" href="http://www.jobbank.gc.ca/intro-eng.aspx"><span>Jobs</span><br />jobbank.gc.ca</a></li>
-<li><a rel="external" href="http://actionplan.gc.ca/en"><span>Economy</span><br />actionplan.gc.ca</a></li>
-<li id="gcwu-gcft-ca"><div><a rel="external" href="http://www.canada.gc.ca/menu-eng.html">Canada.gc.ca</a></div></li>
-</ul>
-</div></div></div></nav>
-<!-- FooterEnd -->
-</footer>
-</div></div></div>
+<div class="brand">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 visible-sm visible-xs tofpg">
+                <a class="gl-footer" href="#wb-cont">Top of page
+                    <span class="glyphicon glyphicon-chevron-up"></span>
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-12 text-right">
+                <object type="image/svg+xml" tabindex="-1" role="img" data="/GCWeb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- ScriptsStart -->
-<script src="/wet-boew/dist/js/settings.js"></script>
-<!--[if lte IE 8]>
-<script src="/wet-boew/dist/theme-gcwu-fegc/js/theme-ie-min.js"></script>
-<script src="/wet-boew/dist/js/pe-ap-ie-min.js"></script>
-<script src="/wet-boew/dist/js/jquerymobile/jquery.mobile-ie.min.js"></script>
-<![endif]-->
-<!--[if gt IE 8]><!-->
-<script src="/wet-boew/dist/theme-gcwu-fegc/js/theme-min.js"></script>
-<script src="/wet-boew/dist/js/pe-ap-min.js"></script>
-<script src="/wet-boew/dist/js/jquerymobile/jquery.mobile.min.js"></script>
+</footer>
+
+</div></div>
+
+<!--[if gte IE 9 | !IE ]><!-->
+<script src="/wet-boew/js/wet-boew.min.js"></script>
 <!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="/wet-boew/js/ie8-wet-boew2.min.js"></script>
+<![endif]-->
+
 <!-- ScriptsEnd -->
 
 <!-- CustomScriptsStart -->
+<script src="/scripts/custom.js"></script>
 <!-- CustomScriptsEnd -->
 </body>
 </html>

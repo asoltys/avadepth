@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+wet-boew.github.io/wet-boew/License-eng.txt / wet-boew.github.io/wet-boew/Licence-fra.txt -->
+<title>Avadepth</title>
+
+<link rel="shortcut icon" href="/wet-boew/dist/theme-gcwu-fegc/images/favicon.ico" />
+<meta name="description" content="Avadepth" />
+<meta name="dcterms.creator" content="MPO" />
+<meta name="dcterms.title" content="Avadepth" />
+<meta name="dcterms.issued" title="W3CDTF" content="2013-02-27" />
+<meta name="dcterms.modified" title="W3CDTF" content="<!--#config timefmt='%Y-%m-%d'--><!--#echo var='LAST_MODIFIED'-->" />
+<meta name="dcterms.subject" title="gccore" content="Cours d'eau; bathymétrie; hydrographie" />
+<meta name="dcterms.language" title="ISO639-2" content="eng" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<script src="/scripts/jquery-1.9.1.js"></script>
+<script src="/scripts/jquery.ui.core.js"></script>
+<script src="/scripts/jquery.ui.datepicker.js"></script>
+<script src="/scripts/jquery.dataTables.min.js"></script>
+<script src="/scripts/moment.min.js"></script>
+<script src="/scripts/flot/jquery.flot.js"></script>
+<script src="/scripts/flot/jquery.flot.axislabels.js"></script>
+<script src="/scripts/avadepth.js"></script>
+<!--[if lte IE 8]>
+<script src="/wet-boew/dist/js/polyfills/html5shiv-min.js"></script>
+<script language="javascript" type="text/javascript" src="/scripts/flot/excanvas.min.js"></script>
+<link rel="stylesheet" href="/wet-boew/dist/grids/css/util-ie-min.css" />
+<link rel="stylesheet" href="/wet-boew/dist/js/css/pe-ap-ie-min.css" />
+<link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-ie-min.css" />
+<noscript><link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-ns-ie-min.css" /></noscript>
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<link rel="stylesheet" href="/wet-boew/dist/grids/css/util-min.css" />
+<link rel="stylesheet" href="/wet-boew/dist/js/css/pe-ap-min.css" />
+<link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-min.css" />
+<noscript><link rel="stylesheet" href="/wet-boew/dist/theme-gcwu-fegc/css/theme-ns-min.css" /></noscript>
+<!--<![endif]-->
+
+<!-- CustomCSSStart -->
+<link rel="stylesheet" href="/css/custom.css" />
+<link rel="stylesheet" media="print" href="/css/print.css" />
+<link rel="stylesheet" href="/css/smoothness/jquery-ui-1.7.1.custom.css" />
+<!-- CustomCSSEnd -->
+</head>
+
+<body><div id="wb-body">
+<div id="wb-skip">
+<ul id="wb-tphp">
+<li id="wb-skip1"><a href="#wb-cont">Skip to main content</a></li>
+<li id="wb-skip2"><a href="#wb-nav">Skip to footer</a></li>
+</ul>
+</div>
+
+<div id="wb-head"><div id="wb-head-in"><header>
+<!-- HeaderStart -->
+<nav role="navigation"><div id="gcwu-gcnb"><h2>Government of Canada navigation bar</h2><div id="gcwu-gcnb-in"><div id="gcwu-gcnb-fip">
+<div id="gcwu-sig"><div id="gcwu-sig-in"><object data="/wet-boew/dist/theme-gcwu-fegc/images/sig-fra.svg" role="img" tabindex="-1" aria-label="Government of Canada" type="image/svg+xml"><img src="/wet-boew/dist/theme-gcwu-fegc/images/sig-fra.png" alt="Government of Canada" /></object></div></div>
+<ul>
+<li id="gcwu-gcnb1"><a rel="external" href="http://www.canada.gc.ca/menu-fra.html">Canada.gc.ca</a></li>
+<li id="gcwu-gcnb2"><a rel="external" href="http://www.servicecanada.gc.ca/fra/accuiel.shtml">Services</a></li>
+<li id="gcwu-gcnb3"><a rel="external" href="http://www.canada.gc.ca/aboutgov-ausujetgouv/depts/menu-fra.html">Ministères</a></li>
+<li id="gcwu-gcnb-lang"><a href="/language.asp" lang="en">English</a></li>
+</ul>
+</div></div></div></nav>
+
+<div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in">
+<div id="gcwu-wmms"><div id="gcwu-wmms-in"><object data="/wet-boew/dist/theme-gcwu-fegc/images/wmms.svg" role="img" tabindex="-1" aria-label="Symbol of the Government of Canada" type="image/svg+xml"><img src="/wet-boew/dist/theme-gcwu-fegc/images/wmms.png" alt="Symbol of the Government of Canada" /></object></div></div>
+<div id="gcwu-title"><p id="gcwu-title-in"><a href="/index-fra.html">Avadepth</a></p></div>
+
+<section role="search"><div id="gcwu-srchbx"><h2>Recherche</h2>
+<form action="#" method="post"><div id="gcwu-srchbx-in">
+<label for="gcwu-srch">Recherche</label><input id="gcwu-srch" name="gcwu-srch" type="search" value="" size="27" maxlength="150" />
+<input id="gcwu-srch-submit" name="gcwu-srch-submit" type="submit" value="Recherche" />
+</div></form>
+</div></section>
+</div></div>
+
+<nav role="navigation">
+<div id="gcwu-psnb"><h2>Site menu</h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
+<ul class="mb-menu" data-ajax-replace="../includes/menu-fra.txt">
+<li><div><a href="">À propos d'Avadepth</a></div></li>
+<li><div><a href="">Rapports Avadepth</a></div></li>
+<li><div><a href="">Conditions au fond du chenal</a></div></li>
+<li><div><a href="">Analyse bathymétrique</a></div></li>
+</ul>
+</div></div></div></div>
+
+<!--
+<div id="gcwu-bc"><h2>Breadcrumb trail</h2><div id="gcwu-bc-in">
+<ol>
+<li><a href="../../index-eng.html">Home</a></li>
+<li><a href="../index-eng.html">Working examples</a></li>
+<li>GC Web Usability theme</li>
+</ol>
+</div></div>
+-->
+</nav>
+<!-- HeaderEnd -->
+</header></div></div>
+
+<div id="wb-core"><div id="wb-core-in" class="equalize">
+<div id="wb-main" role="main"><div id="wb-main-in">
+

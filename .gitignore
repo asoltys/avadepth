@@ -1,2 +1,8 @@
 Data/*
 bin
+images/tmp*.jpg
+web.config
+.idea/*
+*local.html
+scripts/*local.js
+avafiles/*

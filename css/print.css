@@ -1,0 +1,213 @@
+
+.print_hide, form, ul.tabs, #gcwu-psnb, #gcwu-date-mod {
+  display: none;
+}
+
+.print_show {
+  display: block;
+}
+
+.print_show_inline {
+  display: inline;
+}
+
+#gcwu-title {
+ text-align:center;
+}
+
+#wb-main-in {
+  font-size: 9pt;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+}
+
+table {
+  max-width: 6in;
+  margin: 0 auto;
+}
+
+/*.demo-placeholder {
+  float: right;
+  position: relative;
+  top: 50px;
+  width: 200px;
+}*/
+
+.grid-12 {
+  float: none;
+  position: static;
+}
+
+.grid-12, .span-6 {
+  float: none;
+  position: relative;
+  margin: 0 auto;
+}
+
+#placeholder {
+  margin: 10px 100px;
+}
+
+div#depth_chart {
+  margin-top:0.25in;
+  width:5in;
+}
+
+div#depths_report_header h2 {
+  margin-top:0;
+}
+/*
+.page-break { 
+  clear: both;
+  display: block;
+  height:1px;
+  page-break-before: always;
+}
+*/
+#hydrograph_chart, #legend_container {
+  margin:0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+#legend_container {
+  width:450px;
+  margin-left:20px;
+}
+
+.print-float-left{
+	float: left;
+}
+
+.print-align-center{
+	text-align: center;
+}
+
+.print-width-90{
+	width: 90%;
+}
+
+.print-width-50{
+	width: 50%;
+}
+
+.print-margin-auto{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.print-margin-0{
+	margin: 0 0 0 0;
+}
+
+.print-table-fixed{
+	table-layout: fixed;
+	max-width: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.print-table-fixed tr th:first-child, .print-table-fixed tr td:first-child{
+	width: 7%;
+}
+
+
+/* "Survey drawings" page. (sdb-bds-eng.html) */
+.print-gcwu-gcnb{
+	position: relative;
+	top: -30px;
+}
+
+.print-gcwu-bnr{
+	position: relative;
+	top: -20px;
+}
+
+.print-survey-drawing-title{
+	position: relative;
+	top: -30px;
+}
+
+
+/* tw-ft transit windows page - ie */
+.print-tw-ft-result-header > h2{
+	margin-left: -60px;
+}
+
+.print-tw-ft-result-header > p{
+	margin-left: -60px;
+}
+
+.print-tw-ft-table{
+	margin-left: 45px;
+}
+
+/* cc-ca Current Channel Conditions page - ie */
+.ie7 #soundings, .ie8 #soundings{
+	margin-left: 0px;
+}
+
+.ie7 #soundings-header, .ie8 #soundings-header{
+	margin-left: 0px;
+	width: 625px;
+}
+
+.ie7 #soundings-header table, .ie8 #soundings-header table, .ie7 #soundings-header table td, .ie8 #soundings-header table td{
+	width: 625px;
+}
+
+.ie7 #soundings-header-title, .ie8 #soundings-header-title{
+	width: 625px;
+}
+
+
+
+div.report_body{
+  text-align:center;
+  width: 6in;
+  margin:0 auto 0 auto;
+}
+
+div.report_body table#transit-window {
+  margin: 1em auto;
+}
+
+h2#ajax_message {
+  margin:0
+}
+
+div#hydrograph_report div#legend_container{
+  margin: 10px -24px;
+}
+
+div#hydrograph_report div#hydrograph_chart{
+  margin:0
+  width: 100%;
+  height:100px;
+}
+
+div#reportTitle2 {
+    padding:0 0 3px 0;
+}
+
+#pBarContainer{
+	display:none;
+}
+
+/* detail window and report window printing */
+/*#report_body{
+	display:none;
+}*/
+
+#cboxLoadedContent{
+	display:none;
+}
+
+#detail_print{
+	visibility: visible;
+	position: static; /* set to default for proper formatting*/
+}
+
+/* hide main header Avadepth from print */
+#gcwu-title-in{
+	display:none;
+}
